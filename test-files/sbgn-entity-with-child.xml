@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbgn xmlns="http://sbgn.org/libsbgn/0.1">
+	<compartment>
+		<label/>
+		<bbox/>
+		<epn class="unspecified entity" id="epn2">
+			<label text="..."/>
+			<bbox x="100" y="100" w="30" h="20"/>
+			<glyph class="..." id="...">
+				<bbox x="1" y="1" w="10" h="10"/>
+			</glyph>
+		</epn>
+	</compartment>
+	
+	<!-- epn below is not part of compartment -->
+	<epn class="unspecified entity" id="epn1">
+		<label text="..."/>
+		<bbox x="100" y="100" w="30" h="20"/>
+		<glyph class="..." id="...">
+			<bbox x="1" y="1" w="10" h="10"/>
+		</glyph>
+	</epn>
+	
+	<!-- pd is never part of a compartment -->
+	<pd class="process" id=""
+	</pd>
+</sbgn>
