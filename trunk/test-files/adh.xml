@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbgn xmlns="http://sbgn.org/libsbgn/0.1">
+	<epn class="simple chemical" id="epn_ethanol">
+		<label text="Ethanol"/> <!-- fontsize="" etc -->
+		<!-- Line breaks are allowed in the text attribute -->
+		<bbox x="100" y="100" w="30" h="20"/>
+	</epn>
+	<epn class="simple chemical" id="epn_ethanal">
+		<label text="Ethanal" />
+		<bbox x="200" y="100" w="30" h="20"/>
+	</epn>
+	<epn class="macromolecule" id="epn_adh1">
+		<label text="ADH1" />
+		<bbox x="150" y="50" w="30" h="20"/>
+	</epn>
+	<epn class="simple chemical" id="epn_h">
+		<label text="H+" />
+		<bbox x="200" y="100" w="30" h="20"/>
+	</epn>
+	<epn class="simple chemical" id="epn_nad">
+		<label text="NAD+" />
+		<bbox x="200" y="100" w="30" h="20"/>
+	</epn>
+	<epn class="simple chemical" id="epn_nadh">
+		<label text="NADH" />
+		<bbox x="200" y="100" w="30" h="20"/>
+	</epn>
+	<pn class="process" id="pn1">
+		<bbox x="150" y="100" w="20" h="10"/>
+		<arc class="consumption" ref="epn_ethanol">
+			<source x="0" y="0"/>
+			<target x="0" y="0"/>	
+		</arc>
+		<arc class="consumption" ref="epn_nadh">
+			<source x="0" y="0"/>
+			<target x="0" y="0"/>			
+		</arc>
+		<arc class="catalysis" ref="epn_adh">
+			<source x="0" y="0"/>
+			<target x="0" y="0"/>			
+		</arc>
+		<arc class="production" ref="epn_h">
+			<source x="0" y="0"/>
+			<target x="0" y="0"/>			
+		</arc>
+		<arc class="production" ref="epn_ethanal">
+			<source x="0" y="0"/>
+			<target x="0" y="0"/>			
+		</arc>
+		<arc class="production" ref="epn_nad">
+			<source x="0" y="0"/>
+			<target x="0" y="0"/>			
+		</arc>
+	</pn>
+</sbgn>
