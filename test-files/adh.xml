@@ -29,33 +29,35 @@
 	
 	<node class="process" orientation="horizontal" id="pn1">
 		<bbox x="150" y="100" w="20" h="10"/>
+		<port x="0" y="0" id="pn1.1"/>
+		<port x="0" y="0" id="pn1.2"/>
 	</node>
 
-	<arc class="consumption" in="node1" out="pn1">
-		<source x="0" y="0"/>
-		<target x="0" y="0"/>
+	<arc class="consumption">
+		<source x="0" y="0" ref="node1" />
+		<target x="0" y="0" ref="pn1.1" />
 	</arc>
 	
-	<arc class="consumption" in="node_nadh" out="pn1">
-		<source x="0" y="0"/>
-		<target x="0" y="0"/>			
+	<arc class="consumption">
+		<source x="0" y="0" ref="node_nadh" />
+		<target x="0" y="0" ref="pn1.1" />			
 	</arc>
 	
-	<arc class="catalysis" in="node_adh" out="pn1">
-		<source x="0" y="0"/>
-		<target x="0" y="0"/>			
+	<arc class="catalysis">
+		<source x="0" y="0" ref="node_adh" />
+		<target x="0" y="0" ref="pn1" />			
 	</arc>
 
-	<arc class="production" in="node_h" out="pn1">
-		<source x="0" y="0"/>
-		<target x="0" y="0"/>			
+	<arc class="production" >
+		<source x="0" y="0" ref="node_h" />
+		<target x="0" y="0" ref="pn1.2" />			
 	</arc>
-	<arc class="production" in="node_ethanal" out="pn1">
-		<source x="0" y="0"/>
-		<target x="0" y="0"/>			
+	<arc class="production">
+		<source x="0" y="0" ref="node_ethanal" />
+		<target x="0" y="0" ref="pn1.2" />			
 	</arc>
-	<arc class="production" in="node_nad" out="pn1">
-		<source x="0" y="0"/>
-		<target x="0" y="0"/>			
+	<arc class="production">
+		<source x="0" y="0" ref="node_nad" />
+		<target x="0" y="0" ref="pn1.2" />			
 	</arc>
 </sbgn>
