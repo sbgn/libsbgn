@@ -19,12 +19,12 @@
 		<port x="0" y="0" id="pn1.2"/>
 	</node>
 
-	<arc class="reversible">
+	<arc class="production">
 		<source x="0" y="0" ref="node1" />
 		<target x="0" y="0" ref="pn1.1" />
 	</arc>
 	
-	<arc class="reversible">
+	<arc class="production">
 		<source x="0" y="0" ref="node2" />
 		<target x="0" y="0" ref="pn1.2" />			
 	</arc>
