@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbgn xmlns="http://sbgn.org/libsbgn/0.1">
+
+	<node class="simple chemical" id="node1">
+		<label text="DHA-P"/>
+		<bbox x="100" y="100" w="30" h="20"/>
+	</node>
+	<node class="simple chemical" id="node2">
+		<label text="GA-3P" />
+		<bbox x="200" y="100" w="30" h="20"/>
+	</node>
+	<node class="macromolecule" id="node3">
+		<label text="Triose-P Isomerase" />
+		<bbox x="150" y="50" w="30" h="20"/>
+	</node>
+	<node class="process" orientation="vertical" id="pn1">
+		<bbox x="150" y="100" w="20" h="10"/>
+		<port x="0" y="0" id="pn1.1"/>
+		<port x="0" y="0" id="pn1.2"/>
+	</node>
+
+	<arc class="reversible">
+		<source x="0" y="0" ref="node1" />
+		<target x="0" y="0" ref="pn1.1" />
+	</arc>
+	
+	<arc class="reversible">
+		<source x="0" y="0" ref="node2" />
+		<target x="0" y="0" ref="pn1.2" />			
+	</arc>
+	
+	<arc class="catalysis">
+		<source x="0" y="0" ref="node3" />
+		<target x="0" y="0" ref="pn1" />			
+	</arc>
+
+</sbgn>
