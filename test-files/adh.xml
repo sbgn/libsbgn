@@ -1,55 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sbgn xmlns="http://sbgn.org/libsbgn/0.1">
-	<epn class="simple chemical" id="epn_ethanol">
+
+	<node class="simple chemical" id="node1">
 		<label text="Ethanol"/> <!-- fontsize="" etc -->
 		<!-- Line breaks are allowed in the text attribute -->
 		<bbox x="100" y="100" w="30" h="20"/>
-	</epn>
-	<epn class="simple chemical" id="epn_ethanal">
+	</node>
+	<node class="simple chemical" id="node_ethanal">
 		<label text="Ethanal" />
 		<bbox x="200" y="100" w="30" h="20"/>
-	</epn>
-	<epn class="macromolecule" id="epn_adh1">
+	</node>
+	<node class="macromolecule" id="node_adh1">
 		<label text="ADH1" />
 		<bbox x="150" y="50" w="30" h="20"/>
-	</epn>
-	<epn class="simple chemical" id="epn_h">
+	</node>
+	<node class="simple chemical" id="node_h">
 		<label text="H+" />
 		<bbox x="200" y="100" w="30" h="20"/>
-	</epn>
-	<epn class="simple chemical" id="epn_nad">
+	</node>
+	<node class="simple chemical" id="node_nad">
 		<label text="NAD+" />
 		<bbox x="200" y="100" w="30" h="20"/>
-	</epn>
-	<epn class="simple chemical" id="epn_nadh">
+	</node>
+	<node class="simple chemical" id="node_nadh">
 		<label text="NADH" />
 		<bbox x="200" y="100" w="30" h="20"/>
-	</epn>
-	<pn class="process" id="pn1">
+	</node>
+	
+	<node class="process" orientation="horizontal" id="pn1">
 		<bbox x="150" y="100" w="20" h="10"/>
-		<arc class="consumption" ref="epn_ethanol">
-			<source x="0" y="0"/>
-			<target x="0" y="0"/>	
-		</arc>
-		<arc class="consumption" ref="epn_nadh">
-			<source x="0" y="0"/>
-			<target x="0" y="0"/>			
-		</arc>
-		<arc class="catalysis" ref="epn_adh">
-			<source x="0" y="0"/>
-			<target x="0" y="0"/>			
-		</arc>
-		<arc class="production" ref="epn_h">
-			<source x="0" y="0"/>
-			<target x="0" y="0"/>			
-		</arc>
-		<arc class="production" ref="epn_ethanal">
-			<source x="0" y="0"/>
-			<target x="0" y="0"/>			
-		</arc>
-		<arc class="production" ref="epn_nad">
-			<source x="0" y="0"/>
-			<target x="0" y="0"/>			
-		</arc>
-	</pn>
+	</node>
+
+	<arc class="consumption" in="node1" out="pn1">
+		<source x="0" y="0"/>
+		<target x="0" y="0"/>
+	</arc>
+	
+	<arc class="consumption" in="node_nadh" out="pn1">
+		<source x="0" y="0"/>
+		<target x="0" y="0"/>			
+	</arc>
+	
+	<arc class="catalysis" in="node_adh" out="pn1">
+		<source x="0" y="0"/>
+		<target x="0" y="0"/>			
+	</arc>
+
+	<arc class="production" in="node_h" out="pn1">
+		<source x="0" y="0"/>
+		<target x="0" y="0"/>			
+	</arc>
+	<arc class="production" in="node_ethanal" out="pn1">
+		<source x="0" y="0"/>
+		<target x="0" y="0"/>			
+	</arc>
+	<arc class="production" in="node_nad" out="pn1">
+		<source x="0" y="0"/>
+		<target x="0" y="0"/>			
+	</arc>
 </sbgn>
