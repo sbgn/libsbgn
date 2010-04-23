@@ -6,16 +6,16 @@
 	<xsd:element name="sbgn">
 		<xsd:complexType>
 			<xsd:sequence>
-				<xsd:element ref="sbgn:epn" minOccurs="0" maxOccurs="unbounded"/>
-				<xsd:element ref="sbgn:pn" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="sbgn:node" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="sbgn:arc" minOccurs="0" maxOccurs="unbounded"/>
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>
 
-	<xsd:element name="epn">
+	<xsd:element name="node">
 		<xsd:complexType>
 			<xsd:sequence>
-				<xsd:element name="label" minOccurs="1" maxOccurs="1">
+				<xsd:element name="label" minOccurs="0" maxOccurs="1">
 					<xsd:complexType>
 						<xsd:attribute name="text" type="xsd:string" use="required"/>
 
@@ -31,6 +31,13 @@
 						<xsd:attribute name="h" type="xsd:float" use="required"/>						
 					</xsd:complexType>
 				</xsd:element>
+				<xsd:element name="port" minOccurs="0" maxOccurs="unbounded">
+					<xsd:complexType>
+						<xsd:attribute name="x" type="xsd:float" use="required"/>
+						<xsd:attribute name="y" type="xsd:float" use="required"/>						
+						<xsd:attribute name="id" type="xsd:ID" use="required"/>						
+					</xsd:complexType>
+				</xsd:element>
 			</xsd:sequence>
 			<xsd:attribute name="class" default="unspecified entity">
 				<xsd:simpleType>
@@ -39,62 +46,6 @@
 						<xsd:enumeration value="simple chemical"/>
 						<xsd:enumeration value="macromolecule"/>
 						<xsd:enumeration value="nucleic acid feature"/>
-					</xsd:restriction>
-				</xsd:simpleType>
-			</xsd:attribute>
-			<xsd:attribute name="id" type="xsd:ID" use="required" />
-		</xsd:complexType>
-	</xsd:element>
-
-	<xsd:element name="pn">
-		<xsd:complexType>
-			<xsd:sequence>
-				<xsd:element name="bbox" minOccurs="1" maxOccurs="1">
-					<xsd:complexType>
-						<xsd:attribute name="x" type="xsd:float" use="required"/>
-						<xsd:attribute name="y" type="xsd:float" use="required"/>						
-						<xsd:attribute name="w" type="xsd:float" use="required"/>						
-						<xsd:attribute name="h" type="xsd:float" use="required"/>						
-					</xsd:complexType>
-				</xsd:element>
-				<xsd:element name="arc" minOccurs="0" maxOccurs="unbounded">
-					<xsd:complexType>
-						<xsd:sequence>
-								<xsd:element name="source" minOccurs="1" maxOccurs="1">
-									<xsd:complexType>
-										<xsd:attribute name="x" type="xsd:float" use="required"/>
-										<xsd:attribute name="y" type="xsd:float" use="required"/>						
-									</xsd:complexType>
-								</xsd:element>
-								<xsd:element name="target" minOccurs="1" maxOccurs="1">
-									<xsd:complexType>
-										<xsd:attribute name="x" type="xsd:float" use="required"/>
-										<xsd:attribute name="y" type="xsd:float" use="required"/>						
-									</xsd:complexType>
-								</xsd:element>
-						</xsd:sequence>
-						<xsd:attribute name="class">
-							<xsd:simpleType>
-								<xsd:restriction base="xsd:string">
-									<xsd:enumeration value="production"/>
-									<xsd:enumeration value="consumption"/>
-									<xsd:enumeration value="modulation"/>
-									<xsd:enumeration value="stimulation"/>
-									<xsd:enumeration value="catalysis"/>
-									<xsd:enumeration value="inhibition"/>
-									<xsd:enumeration value="necessary stimulation"/>
-									<xsd:enumeration value="logic arc"/>
-									<xsd:enumeration value="equivalence arc"/>
-								</xsd:restriction>
-							</xsd:simpleType>
-						</xsd:attribute>
-						<xsd:attribute name="ref" type="xsd:IDREF" use="required"/>
-					</xsd:complexType>
-				</xsd:element>
-			</xsd:sequence>
-			<xsd:attribute name="class" default="process">
-				<xsd:simpleType>
-					<xsd:restriction base="xsd:string">
 						<xsd:enumeration value="process"/>
 						<xsd:enumeration value="omitted process"/>
 						<xsd:enumeration value="uncertain process"/>
@@ -104,7 +55,51 @@
 					</xsd:restriction>
 				</xsd:simpleType>
 			</xsd:attribute>
+			<xsd:attribute name="orientation" default="horizontal">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:enumeration value="horizontal"/>
+						<xsd:enumeration value="vertical"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:attribute>
 			<xsd:attribute name="id" type="xsd:ID" use="required" />
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="arc">
+		<xsd:complexType>
+			<xsd:sequence>
+					<xsd:element name="source" minOccurs="1" maxOccurs="1">
+						<xsd:complexType>
+							<xsd:attribute name="x" type="xsd:float" use="required"/>
+							<xsd:attribute name="y" type="xsd:float" use="required"/>						
+							<xsd:attribute name="ref" type="xsd:IDREF" use="required"/>						
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="target" minOccurs="1" maxOccurs="1">
+						<xsd:complexType>
+							<xsd:attribute name="x" type="xsd:float" use="required"/>
+							<xsd:attribute name="y" type="xsd:float" use="required"/>						
+							<xsd:attribute name="ref" type="xsd:IDREF" use="required"/>						
+						</xsd:complexType>
+					</xsd:element>
+			</xsd:sequence>
+			<xsd:attribute name="class">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:enumeration value="production"/>
+						<xsd:enumeration value="consumption"/>
+						<xsd:enumeration value="modulation"/>
+						<xsd:enumeration value="stimulation"/>
+						<xsd:enumeration value="catalysis"/>
+						<xsd:enumeration value="inhibition"/>
+						<xsd:enumeration value="necessary stimulation"/>
+						<xsd:enumeration value="logic arc"/>
+						<xsd:enumeration value="equivalence arc"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:attribute>
 		</xsd:complexType>
 	</xsd:element>
 
