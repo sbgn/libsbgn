@@ -1,7 +1,9 @@
-<xsd:schema targetNamespace="http://sbgn.org/libsbgn/0.1"
-	xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+<xsd:schema 
+	targetNamespace="http://sbgn.org/libsbgn/0.1"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" 	
 	xmlns:sbgn="http://sbgn.org/libsbgn/0.1"
 	elementFormDefault="qualified">
+	<!-- the target Namespace is to be used for versioning the spec, as recommended by W3C -->
 
 	<xsd:element name="sbgn">
 		<xsd:complexType>
@@ -15,26 +17,39 @@
 	<xsd:element name="node">
 		<xsd:complexType>
 			<xsd:sequence>
+				<!-- Label is optional. You should not define a label for process nodes. -->
 				<xsd:element name="label" minOccurs="0" maxOccurs="1">
 					<xsd:complexType>
-						<xsd:attribute name="text" type="xsd:string" use="required"/>
-
-						<xsd:attribute name="font" type="xsd:string" use="optional"/>						
+						<!-- Multi-line labels are allowed. Encoding of line breaks as specified in XML -->
+						<xsd:attribute name="text" type="xsd:string" use="required"/>						
+						<!-- The font and fontsize attributes are just examples,
+						more font attributes will probably be added in the future -->
+						<xsd:attribute name="font" type="xsd:string" use="optional"/>
 						<xsd:attribute name="fontsize" type="xsd:float" use="optional"/>						
 					</xsd:complexType>
 				</xsd:element>
 				<xsd:element name="bbox" minOccurs="1" maxOccurs="1">
+					<!-- bbox defines outer bounding box, even if the shape
+					is irregular (as may be the case for compartments.
+					In the case of process nodes, the ports and the lines to them
+					should be included in the bounding box -->
 					<xsd:complexType>
 						<xsd:attribute name="x" type="xsd:float" use="required"/>
-						<xsd:attribute name="y" type="xsd:float" use="required"/>						
-						<xsd:attribute name="w" type="xsd:float" use="required"/>						
-						<xsd:attribute name="h" type="xsd:float" use="required"/>						
+						<xsd:attribute name="y" type="xsd:float" use="required"/>					
+						<xsd:attribute name="w" type="xsd:float" use="required"/>					
+						<xsd:attribute name="h" type="xsd:float" use="required"/>					
 					</xsd:complexType>
 				</xsd:element>
+				<!-- ports are necessary for process nodes, but we may decide to
+					use them also for other node types in the future, to help
+					routing arcs -->
 				<xsd:element name="port" minOccurs="0" maxOccurs="unbounded">
 					<xsd:complexType>
 						<xsd:attribute name="x" type="xsd:float" use="required"/>
-						<xsd:attribute name="y" type="xsd:float" use="required"/>						
+						<xsd:attribute name="y" type="xsd:float" use="required"/>
+						<!-- xsd:ID type is an alphanumeric identifier, starting with a letter.
+						It is recommended to generate meaningless ID's such as node1234.
+						Avoid ID's that have meaning in them, such as "epn1" or "epn_ethanol" -->
 						<xsd:attribute name="id" type="xsd:ID" use="required"/>						
 					</xsd:complexType>
 				</xsd:element>
@@ -42,20 +57,31 @@
 			<xsd:attribute name="class" default="unspecified entity">
 				<xsd:simpleType>
 					<xsd:restriction base="xsd:string">
+						<!-- Entity Pool Node classes -->
 						<xsd:enumeration value="unspecified entity"/>
 						<xsd:enumeration value="simple chemical"/>
 						<xsd:enumeration value="macromolecule"/>
 						<xsd:enumeration value="nucleic acid feature"/>
+						<xsd:enumeration value="multimer"/>
+						<xsd:enumeration value="complex"/>
+						<xsd:enumeration value="source and sink"/>
+						<xsd:enumeration value="perturbating agent"/>
+						<!-- Other -->
+						<xsd:enumeration value="compartment"/>
+						<xsd:enumeration value="tag"/>
+						<!-- Process Node classes -->
 						<xsd:enumeration value="process"/>
 						<xsd:enumeration value="omitted process"/>
 						<xsd:enumeration value="uncertain process"/>
 						<xsd:enumeration value="association"/>
 						<xsd:enumeration value="dissociation"/>
 						<xsd:enumeration value="phenotype"/>
+						<!-- NB Arc classes are in a separate enumeration -->
 					</xsd:restriction>
 				</xsd:simpleType>
 			</xsd:attribute>
 			<xsd:attribute name="orientation" default="horizontal">
+				<!-- orientation attribute is only meaningful for process nodes -->
 				<xsd:simpleType>
 					<xsd:restriction base="xsd:string">
 						<xsd:enumeration value="horizontal"/>
@@ -70,24 +96,28 @@
 	<xsd:element name="arc">
 		<xsd:complexType>
 			<xsd:sequence>
-					<xsd:element name="source" minOccurs="1" maxOccurs="1">
-						<xsd:complexType>
-							<xsd:attribute name="x" type="xsd:float" use="required"/>
-							<xsd:attribute name="y" type="xsd:float" use="required"/>						
-							<xsd:attribute name="ref" type="xsd:IDREF" use="required"/>						
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="target" minOccurs="1" maxOccurs="1">
-						<xsd:complexType>
-							<xsd:attribute name="x" type="xsd:float" use="required"/>
-							<xsd:attribute name="y" type="xsd:float" use="required"/>						
-							<xsd:attribute name="ref" type="xsd:IDREF" use="required"/>						
-						</xsd:complexType>
-					</xsd:element>
+				<xsd:element name="source" minOccurs="1" maxOccurs="1">
+					<xsd:complexType>
+						<xsd:attribute name="x" type="xsd:float" use="required"/>
+						<xsd:attribute name="y" type="xsd:float" use="required"/>	
+						<!-- ref may refer to the id of a node or the id of a port on a node -->
+						<xsd:attribute name="ref" type="xsd:IDREF" use="required"/>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="target" minOccurs="1" maxOccurs="1">
+					<xsd:complexType>
+						<xsd:attribute name="x" type="xsd:float" use="required"/>
+						<xsd:attribute name="y" type="xsd:float" use="required"/>						
+						<!-- ref may refer to the id of a node or the id of a port on a node -->
+						<xsd:attribute name="ref" type="xsd:IDREF" use="required"/>						
+					</xsd:complexType>
+				</xsd:element>
 			</xsd:sequence>
 			<xsd:attribute name="class">
 				<xsd:simpleType>
 					<xsd:restriction base="xsd:string">
+						<!-- in case of reversible reactions, 
+						use production on both the left and right hand sice arcs -->
 						<xsd:enumeration value="production"/>
 						<xsd:enumeration value="consumption"/>
 						<xsd:enumeration value="modulation"/>
@@ -97,6 +127,7 @@
 						<xsd:enumeration value="necessary stimulation"/>
 						<xsd:enumeration value="logic arc"/>
 						<xsd:enumeration value="equivalence arc"/>
+						<!-- NB Process- and Entity Pool node classes are in a separate enumeration -->
 					</xsd:restriction>
 				</xsd:simpleType>
 			</xsd:attribute>

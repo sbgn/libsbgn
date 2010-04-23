@@ -5,7 +5,7 @@
 		<label text="extracellular"/>
 		<bbox x="0" y="0" w="0" h="0"/>
 	</node>
-	<node class="compartment" id="node1">
+	<node class="compartment" id="node8">
 		<label text="cytosol"/>
 		<bbox x="0" y="0" w="0" h="0"/>
 	</node>
