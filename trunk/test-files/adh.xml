@@ -4,60 +4,60 @@
 	<node class="simple chemical" id="node1">
 		<label text="Ethanol"/> <!-- fontsize="" etc -->
 		<!-- Line breaks are allowed in the text attribute -->
-		<bbox x="100" y="100" w="30" h="20"/>
+		<bbox x="40" y="120" w="60" h="60"/>
 	</node>
 	<node class="simple chemical" id="node_ethanal">
 		<label text="Ethanal" />
-		<bbox x="200" y="100" w="30" h="20"/>
+		<bbox x="220" y="110" w="60" h="60"/>
 	</node>
 	<node class="macromolecule" id="node_adh1">
 		<label text="ADH1" />
-		<bbox x="150" y="50" w="30" h="20"/>
+		<bbox x="106" y="20" w="108" h="60"/>
 	</node>
 	<node class="simple chemical" id="node_h">
 		<label text="H+" />
-		<bbox x="200" y="100" w="30" h="20"/>
+		<bbox x="220" y="190" w="60" h="60"/>
 	</node>
 	<node class="simple chemical" id="node_nad">
 		<label text="NAD+" />
-		<bbox x="200" y="100" w="30" h="20"/>
+		<bbox x="40" y="190" w="60" h="60"/>
 	</node>
 	<node class="simple chemical" id="node_nadh">
 		<label text="NADH" />
-		<bbox x="200" y="100" w="30" h="20"/>
+		<bbox x="300" y="150" w="60" h="60"/>
 	</node>
 	
 	<node class="process" orientation="horizontal" id="pn1">
-		<bbox x="150" y="100" w="20" h="10"/>
-		<port x="0" y="0" id="pn1.1"/>
-		<port x="0" y="0" id="pn1.2"/>
+		<bbox x="148" y="168" w="24" h="24"/>
+		<port x="148" y="180" id="pn1.1"/>
+		<port x="172" y="180" id="pn1.2"/>
 	</node>
 
 	<arc class="consumption">
-		<source x="0" y="0" ref="node1" />
-		<target x="0" y="0" ref="pn1.1" />
+		<source x="70" y="150" ref="node1" />
+		<target x="148" y="180" ref="pn1.1" />
 	</arc>
 	
 	<arc class="consumption">
-		<source x="0" y="0" ref="node_nadh" />
-		<target x="0" y="0" ref="pn1.1" />			
+		<source x="330" y="180" ref="node_nadh" />
+		<target x="172" y="180" ref="pn1.2" />			
 	</arc>
 	
 	<arc class="catalysis">
-		<source x="0" y="0" ref="node_adh" />
-		<target x="0" y="0" ref="pn1" />			
+		<source x="160" y="148" ref="pn1" />		
+		<target x="160" y="50" ref="node_adh" />
 	</arc>
 
 	<arc class="production" >
-		<source x="0" y="0" ref="node_h" />
-		<target x="0" y="0" ref="pn1.2" />			
+		<source x="250" y="220" ref="node_h" />
+		<target x="172" y="180" ref="pn1.2" />			
 	</arc>
 	<arc class="production">
-		<source x="0" y="0" ref="node_ethanal" />
-		<target x="0" y="0" ref="pn1.2" />			
+		<source x="250" y="140" ref="node_ethanal" />
+		<target x="172" y="180" ref="pn1.2" />			
 	</arc>
 	<arc class="production">
-		<source x="0" y="0" ref="node_nad" />
-		<target x="0" y="0" ref="pn1.2" />			
+		<source x="70" y="220" ref="node_nad" />
+		<target x="148" y="180" ref="pn1.1" />			
 	</arc>
 </sbgn>
