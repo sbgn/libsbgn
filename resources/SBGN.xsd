@@ -40,6 +40,8 @@
 						<xsd:attribute name="h" type="xsd:float" use="required"/>					
 					</xsd:complexType>
 				</xsd:element>
+				<!-- subnodes are for states and units of information -->
+				<xsd:element ref="sbgn:node" minOccurs="0" maxOccurs="unbounded"/>
 				<!-- ports are necessary for process nodes, but we may decide to
 					use them also for other node types in the future, to help
 					routing arcs -->
@@ -76,16 +78,25 @@
 						<xsd:enumeration value="association"/>
 						<xsd:enumeration value="dissociation"/>
 						<xsd:enumeration value="phenotype"/>
+						<!-- Subnode classes -->
+						<xsd:enumeration value="state variable"/>
+						<xsd:enumeration value="unit of information"/>
 						<!-- NB Arc classes are in a separate enumeration -->
 					</xsd:restriction>
 				</xsd:simpleType>
 			</xsd:attribute>
 			<xsd:attribute name="orientation" default="horizontal">
-				<!-- orientation attribute is only meaningful for process nodes -->
+				<!-- orientation attribute is only meaningful for some node classes-->
 				<xsd:simpleType>
 					<xsd:restriction base="xsd:string">
+						<!-- horizontal / vertical are for process nodes -->
 						<xsd:enumeration value="horizontal"/>
 						<xsd:enumeration value="vertical"/>
+						<!-- left / right / up / down are for tags -->
+						<xsd:enumeration value="left"/>
+						<xsd:enumeration value="right"/>
+						<xsd:enumeration value="up"/>
+						<xsd:enumeration value="down"/>
 					</xsd:restriction>
 				</xsd:simpleType>
 			</xsd:attribute>

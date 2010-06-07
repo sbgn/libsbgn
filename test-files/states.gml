@@ -38,66 +38,6 @@ graph [
     zlevel -1
 
     graphics [
-      x 240.0
-      y 280.0
-      w 60.0
-      h 60.0
-      fill "#FFFFFF"
-      outline "#000000"
-      frameThickness 1.0
-      gradient -0.3
-      rounding 5.0
-      type "oval"
-    ]
-    label "ATP"
-    labelgraphics [
-      alignment "left"
-      anchor "c"
-      color "#000000"
-      fontName "Arial"
-      fontSize 12
-      fontStyle "plain"
-      type "text"
-    ]
-    sbgn [
-      role "SIMPLECHEMICAL"
-    ]
-  ]
-  node [
-    id 3
-    zlevel -1
-
-    graphics [
-      x 400.0
-      y 280.0
-      w 60.0
-      h 60.0
-      fill "#FFFFFF"
-      outline "#000000"
-      frameThickness 1.0
-      gradient -0.3
-      rounding 5.0
-      type "oval"
-    ]
-    label "ADP"
-    labelgraphics [
-      alignment "left"
-      anchor "c"
-      color "#000000"
-      fontName "Arial"
-      fontSize 12
-      fontStyle "plain"
-      type "text"
-    ]
-    sbgn [
-      role "SIMPLECHEMICAL"
-    ]
-  ]
-  node [
-    id 4
-    zlevel -1
-
-    graphics [
       x 170.0
       y 160.0
       w 100.0
@@ -139,7 +79,7 @@ graph [
     ]
   ]
   node [
-    id 5
+    id 3
     zlevel -1
 
     graphics [
@@ -169,7 +109,7 @@ graph [
     ]
   ]
   node [
-    id 6
+    id 4
     zlevel -1
 
     graphics [
@@ -214,7 +154,7 @@ graph [
     ]
   ]
   node [
-    id 7
+    id 5
     zlevel -1
 
     graphics [
@@ -261,7 +201,7 @@ graph [
   edge [
     id 1
     source 1
-    target 7
+    target 5
     SBGN [
       BendOut "340.0;160.0"
     ]
@@ -286,32 +226,6 @@ graph [
   ]
   edge [
     id 2
-    source 1
-    target 3
-    SBGN [
-      BendOut "340.0;160.0"
-    ]
-    graphics [
-      fill "#000000"
-      outline "#000000"
-      Line [
-        point [ x 0.0 y 0.0 ]
-        point [ x 340.0 y 160.0 ]
-        point [ x 0.0 y 0.0 ]
-      ]
-      arrow "last"
-      frameThickness 1.0
-      gradient 0.0
-      rounding 5.0
-      type "org.graffiti.plugins.views.defaults.PolyLineEdgeShape"
-      thickness 10.0
-    ]
-    sbgn [
-      role "PRODUCTION"
-    ]
-  ]
-  edge [
-    id 3
     source 2
     target 1
     SBGN [
@@ -337,34 +251,8 @@ graph [
     ]
   ]
   edge [
-    id 4
+    id 3
     source 4
-    target 1
-    SBGN [
-      BendIn "300.0;160.0"
-    ]
-    graphics [
-      fill "#000000"
-      outline "#000000"
-      Line [
-        point [ x 0.0 y 0.0 ]
-        point [ x 300.0 y 160.0 ]
-        point [ x 0.0 y 0.0 ]
-      ]
-      arrow "none"
-      frameThickness 1.0
-      gradient 0.0
-      rounding 5.0
-      type "org.graffiti.plugins.views.defaults.PolyLineEdgeShape"
-      thickness 1.0
-    ]
-    sbgn [
-      role "CONSUMPTION"
-    ]
-  ]
-  edge [
-    id 5
-    source 6
     target 1
     graphics [
       fill "#000000"
@@ -385,9 +273,9 @@ graph [
     ]
   ]
   edge [
-    id 6
-    source 6
-    target 5
+    id 4
+    source 4
+    target 3
     graphics [
       fill "#000000"
       outline "#000000"
