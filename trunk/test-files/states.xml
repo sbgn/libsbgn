@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbgn xmlns="http://sbgn.org/libsbgn/0.1">
+	
+	<node class="tag" orientation="right" id="node1">
+		<label text="RAS"/>
+		<bbox x="100" y="20" w="100" h="60"/>
+	</node>
+	
+	<node class="macromolecule" id="node2">
+		<label text="RAS" />
+		<bbox x="270" y="20" w="100" h="60"/>
+		<node class="state variable" id="node2a">
+			<label text="active"/>
+			<bbox x="304" y="74" w="32" h="12"/>
+		</node>
+	</node>
+
+	<node class="macromolecule" id="node3">
+		<label text="RAF" />
+		<bbox x="120" y="150" w="100" h="60"/>
+		<node class="state variable" id="node3a">
+			<bbox x="164" y="204" w="12" h="12"/>
+		</node>
+	</node>
+
+	<node class="macromolecule" id="node4">
+		<label text="RAF" />
+		<bbox x="400" y="150" w="100" h="60"/>
+		<node class="state variable" id="node4a">
+			<label text="P"/>
+			<bbox x="444" y="204" w="12" h="12"/>
+		</node>
+	</node>
+
+	<node class="process" id="node5">
+		<bbox x="308" y="168" w="24" h="24"/>
+		<port x="308" y="180" id="node5a"/>
+		<port x="332" y="180" id="node5b"/>
+	</node>
+
+	<arc class="consumption">
+		<source x="200" y="50" ref="node1" />
+		<target x="270" y="50" ref="node2" />			
+	</arc>
+	
+	<arc class="catalysis">
+		<source x="320" y="168" ref="node5" />
+		<target x="320" y="86" ref="node1" />		
+	</arc>
+
+	<arc class="consumption">
+		<source x="220" y="180" ref="node3" />
+		<target x="308" y="180" ref="node5a" />
+	</arc>
+
+	<arc class="production" >
+		<source x="332" y="180" ref="node5b" />
+		<target x="400" y="180" ref="node4" />			
+	</arc>
+
+</sbgn>
