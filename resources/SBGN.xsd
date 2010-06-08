@@ -20,7 +20,9 @@
 				<!-- Label is optional. You should not define a label for process nodes. -->
 				<xsd:element name="label" minOccurs="0" maxOccurs="1">
 					<xsd:complexType>
-						<!-- Multi-line labels are allowed. Encoding of line breaks as specified in XML -->
+						<!-- Multi-line labels are allowed. 
+							Line breaks are encoded as &#xA;
+							as specified by the XML standard. -->
 						<xsd:attribute name="text" type="xsd:string" use="required"/>						
 						<!-- The font and fontsize attributes are just examples,
 						more font attributes will probably be added in the future -->
