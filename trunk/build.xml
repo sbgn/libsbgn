@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<project name="libsbgn" default="build" basedir=".">
+  
+  <property name="libsbgn.version" value="0.1"/>
+  
+   <macrodef name="iterate">
+		<attribute name="target"/>
+		<sequential>
+			<subant target="@{target}">
+				<filelist dir=".">
+					<!-- NOTE: order is important! -->
+					<file name="org.sbgn/build.xml"/>
+					<!-- add more module directories here -->
+				</filelist>
+			</subant>
+		</sequential>
+	</macrodef>
+
+  <target name="build">
+	<iterate target="build"/>
+  </target>
+
+  <target name="clean">
+		<iterate target="clean"/>
+  </target>
+
+  <target name="test" depends="build">
+		<iterate target="test"/>
+  </target>
+
+</project>
