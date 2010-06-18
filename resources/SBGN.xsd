@@ -103,6 +103,7 @@
 				</xsd:simpleType>
 			</xsd:attribute>
 			<xsd:attribute name="id" type="xsd:ID" use="required" />
+			<xsd:attribute name="clone" type="xsd:boolean" use="optional" default="false" />
 		</xsd:complexType>
 	</xsd:element>
 
