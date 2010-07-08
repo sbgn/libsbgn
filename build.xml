@@ -20,6 +20,10 @@
 	<iterate target="build"/>
   </target>
 
+  <target name="dist">
+	<iterate target="dist"/>
+  </target>
+
   <target name="clean">
 		<iterate target="clean"/>
   </target>

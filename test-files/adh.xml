@@ -45,7 +45,7 @@
 	
 	<arc class="catalysis">
 		<source x="160" y="148" ref="pn1" />		
-		<target x="160" y="50" ref="node_adh" />
+		<target x="160" y="50" ref="node_adh1" />
 	</arc>
 
 	<arc class="production" >
