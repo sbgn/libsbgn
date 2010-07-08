@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2009 sp1 (http://www.altova.com) by Emek Demir (MSKCC) -->
+<xs:schema xmlns="http://www.sbgn.org/sbgn-x/level1/version1" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.sbgn.org/sbgn-x/level1/version1" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<!--______________SECTION 0 : DOCUMENT____________________-->
+	<xs:element name="diagram" type="Diagram">
+		<xs:annotation>
+			<xs:documentation>This is the container for all diagram elements. It is one of the three (PD,ER or AF) diagram types </xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<!--______________SECTION 1 : ABSTRACT ELEMENTS____________________-->
+	<xs:complexType name="Diagram" abstract="true">
+		<xs:sequence>
+			<xs:element name="node" type="Node" maxOccurs="unbounded"/>
+			<xs:element name="edge" type="Edge" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SBGNElement" abstract="true">
+		<xs:annotation>
+			<xs:documentation>Root class containing properties common to all SBGN elements</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="id" type="xs:ID" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="Node" abstract="true">
+		<xs:annotation>
+			<xs:documentation>Abstract Node class</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="SBGNElement">
+				<xs:attribute name="x" type="xs:int"/>
+				<xs:attribute name="y" type="xs:int"/>
+				<xs:attribute name="width" type="xs:int"/>
+				<xs:attribute name="height" type="xs:int"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Edge" abstract="true">
+		<xs:annotation>
+			<xs:documentation>Abstract Edge class</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="SBGNElement">
+				<xs:sequence>
+					<xs:element name="source" type="Node"/>
+					<xs:element name="target" type="Node"/>
+					<!--ED:TODO: Check spec to see if we need hypergraphs -->
+					<!--ED:TODO: Can't remember if there was a more intuitive way to bound cardinality-->
+					<xs:element name="route" type="Route" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>A sequence of path nodes ED:TODO--> Curves</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Label" abstract="true">
+		<xs:annotation>
+			<xs:documentation>Abstract Label class</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="SBGNElement"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<!--______________SECTION 2 : PD Types____________________-->
+	<xs:complexType name="PDDiagram">
+		<xs:complexContent>
+			<xs:extension base="RestrictedAbstractPDDiagram">
+				<xs:sequence>
+					<xs:element name="compartment" type="Compartment" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="RestrictedAbstractPDDiagram" abstract="true">
+		<xs:complexContent>
+			<xs:restriction base="Diagram">
+				<xs:sequence>
+					<xs:element name="node" type="PDNode" maxOccurs="unbounded"/>
+					<xs:element name="edge" type="PDEdge" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:restriction>
+		</xs:complexContent>
+		<!--ED:TODO>>make this local-->
+	</xs:complexType>
+	<!--______________SECTION 2.1 : PD Nodes____________________-->
+	<xs:complexType name="PDNode" abstract="true">
+		<xs:complexContent>
+			<xs:restriction base="Node"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Process">
+		<xs:complexContent>
+			<xs:restriction base="PDNode"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ConsumptionConnector">
+		<xs:annotation>
+			<xs:documentation> The node where the consumption edges converge</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:restriction base="PDNode">
+				<xs:attribute name="id" type="xs:ID" use="required"/>
+				<xs:attribute name="x" type="xs:int"/>
+				<xs:attribute name="y" type="xs:int"/>
+				<xs:attribute name="width" type="xs:int" fixed="0"/>
+				<xs:attribute name="height" type="xs:int" fixed="0"/>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductionConnector">
+		<xs:annotation>
+			<xs:documentation> The node where the production edges converge</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:restriction base="PDNode">
+				<xs:attribute name="id" type="xs:ID" use="required"/>
+				<xs:attribute name="x" type="xs:int"/>
+				<xs:attribute name="y" type="xs:int"/>
+				<xs:attribute name="width" type="xs:int" fixed="0"/>
+				<xs:attribute name="height" type="xs:int" fixed="0"/>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="EntityPool" abstract="true">
+		<xs:complexContent>
+			<xs:restriction base="PDNode"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="LabeledClonableEntityPool" abstract="true">
+		<xs:complexContent>
+			<xs:extension base="EntityPool">
+				<xs:sequence>
+					<xs:element name="label" type="Label" maxOccurs="1"/>
+					<xs:element name="cloneTag" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+					<!--xsi:nil="true" to be treated  as untagged clone ED:TBD>> not a good practice? -->
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="UnspecifiedEntity">
+		<xs:complexContent>
+			<xs:extension base="LabeledClonableEntityPool">
+				<xs:sequence>
+					<xs:element name="multimer" type="xs:int" minOccurs="0" maxOccurs="1"/>
+					<!--a missing value to be treated  as monomeric-->
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Macromolecule">
+		<xs:complexContent>
+			<xs:extension base="UnspecifiedEntity"/> <!--Not sure if I should have used a parent class, name unspecified entity is ontologically offending- it is essentially a "not/other" class-->
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SimpleChemical">
+		<xs:complexContent>
+			<xs:extension base="UnspecifiedEntity"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Complex">
+		<xs:complexContent>
+			<xs:extension base="UnspecifiedEntity">
+				<xs:sequence>
+					<xs:element name="complexMember" type="EntityPool"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<!--______________SECTION 2.2 : PD Edges____________________-->
+	<xs:complexType name="PDEdge">
+		<xs:complexContent>
+			<xs:restriction base="Edge">
+				<xs:sequence>
+					<xs:sequence>
+						<xs:element name="source" type="PDNode"/>
+						<xs:element name="target" type="PDNode"/>
+						<xs:element name="route" type="Route" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>A sequence of path nodes ED:TODO--> Curves</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:sequence>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Consumption">
+		<xs:complexContent>
+			<xs:restriction base="PDEdge">
+				<xs:sequence>
+					<xs:sequence>
+						<xs:element name="source" type="EntityPool"/>
+						<xs:element name="target" type="ConsumptionConnector"/>
+						<xs:element name="route" type="Route" minOccurs="0"/>
+					</xs:sequence>
+				</xs:sequence>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ConsumptionTerminal">
+		<xs:annotation>
+			<xs:documentation>The small edge between consumption connector and process</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:restriction base="PDEdge">
+				<xs:sequence>
+					<xs:sequence>
+						<xs:element name="source" type="ConsumptionConnector"/>
+						<xs:element name="target" type="Process"/>
+						<xs:element name="route" type="Route" minOccurs="0"/>
+					</xs:sequence>
+				</xs:sequence>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Production">
+		<xs:complexContent>
+			<xs:restriction base="PDEdge">
+				<xs:sequence>
+					<xs:sequence>
+						<xs:element name="source" type="EntityPool"/>
+						<xs:element name="target" type="ProductionConnector"/>
+						<xs:element name="route" type="Route" minOccurs="0"/>
+					</xs:sequence>
+				</xs:sequence>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductionTerminal">
+		<xs:annotation>
+			<xs:documentation>The small edge between production connector and process</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:restriction base="PDEdge">
+				<xs:sequence>
+					<xs:sequence>
+						<xs:element name="source" type="ProductionConnector"/>
+						<xs:element name="target" type="Process"/>
+						<xs:element name="route" type="Route" minOccurs="0"/>
+					</xs:sequence>
+				</xs:sequence>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	<!--______________SECTION 2.3 : Other PD Types____________________-->
+	<xs:complexType name="Compartment">
+		<xs:complexContent>
+			<xs:extension base="SBGNElement"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<!--______________SECTION 3 : ER Types____________________-->
+	<xs:complexType name="ERDiagram">
+		<xs:sequence>
+			<xs:element name="node" type="Node" maxOccurs="unbounded"/>
+			<xs:element name="edge" type="Edge" maxOccurs="unbounded"/>
+			<xs:element name="compartment" type="Compartment" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ERNode" abstract="true">
+		<xs:complexContent>
+			<xs:restriction base="Node"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="EREdge">
+		<xs:complexContent>
+			<xs:restriction base="Edge">
+				<xs:sequence>
+					<xs:sequence>
+						<xs:element name="source" type="ERNode"/>
+						<xs:element name="target" type="ERNode"/>
+						<xs:element name="route" type="Route" minOccurs="0"/>
+					</xs:sequence>
+				</xs:sequence>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	<!--______________SECTION 4 : AF Types____________________-->
+	<xs:complexType name="AFDiagram">
+		<xs:sequence>
+			<xs:element name="node" type="PDNode" maxOccurs="unbounded"/>
+			<xs:element name="edge" type="PDEdge" maxOccurs="unbounded"/>
+			<xs:element name="compartment" type="Compartment" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AFNode">
+		<xs:complexContent>
+			<xs:extension base="Node"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="AFEdge">
+		<xs:complexContent>
+			<xs:extension base="Edge"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<!--______________SECTION XX : EDGE ROUTING____________________-->
+	<xs:complexType name="Route">
+		<xs:sequence>
+			<xs:element name="pathnode" type="Pathnode"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Pathnode">
+		<xs:attribute name="x" type="xs:int"/>
+		<xs:attribute name="y" type="xs:int"/>
+	</xs:complexType>
+</xs:schema>
