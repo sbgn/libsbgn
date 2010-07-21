@@ -5,6 +5,27 @@
 	elementFormDefault="qualified">
 	<!-- the target Namespace is to be used for versioning the spec, as recommended by W3C -->
 
+	<!-- Type Definitions -->	
+	<xsd:attributeGroup name="SegmentAttributes">
+		<xsd:attribute name="curve" default="straight">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:string">
+					<xsd:enumeration value="straight"/>
+					<xsd:enumeration value="quadratic"/>
+					<xsd:enumeration value="cubic"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+		<xsd:attribute name="x" type="xsd:float" use="required"/>
+		<xsd:attribute name="y" type="xsd:float" use="required"/>
+		<!-- x1 and y1 only to be used in case of quadratic and cubic segments !-->
+		<xsd:attribute name="x1" type="xsd:float" use="optional"/>
+		<xsd:attribute name="y1" type="xsd:float" use="optional"/>						
+		<!-- x2 and y2 only to be used in case of cubic segments !-->
+		<xsd:attribute name="x2" type="xsd:float" use="optional"/>
+		<xsd:attribute name="y2" type="xsd:float" use="optional"/>						
+	</xsd:attributeGroup>
+
 	<xsd:element name="sbgn">
 		<xsd:complexType>
 			<xsd:sequence>
@@ -112,6 +133,19 @@
 	<xsd:element name="arc">
 		<xsd:complexType>
 			<xsd:sequence>
+				<!-- an arc has one source, followed by 0 or more segments,
+					followed by one target. An arc can be approximated
+					by only looking at source and target.
+					
+					For each segment, only the end point is defined. The start
+					point of the segment is assumed to be the same as the end point of
+					the previous segment (or the "source", in the case of the first segment)
+					
+					The target element defines the final part of the arc. 
+					Thus the source and target elements are very different: 
+					source only specifies a single coordinate,
+					whereas target specifies a whole (curving) segment.
+				-->
 				<xsd:element name="source" minOccurs="1" maxOccurs="1">
 					<xsd:complexType>
 						<xsd:attribute name="x" type="xsd:float" use="required"/>
@@ -120,10 +154,14 @@
 						<xsd:attribute name="ref" type="xsd:IDREF" use="required"/>
 					</xsd:complexType>
 				</xsd:element>
+				<xsd:element name="segment" minOccurs="0" maxOccurs="unbounded">
+					<xsd:complexType>
+						<xsd:attributeGroup ref="sbgn:SegmentAttributes"/>
+					</xsd:complexType>
+				</xsd:element>
 				<xsd:element name="target" minOccurs="1" maxOccurs="1">
 					<xsd:complexType>
-						<xsd:attribute name="x" type="xsd:float" use="required"/>
-						<xsd:attribute name="y" type="xsd:float" use="required"/>						
+						<xsd:attributeGroup ref="sbgn:SegmentAttributes"/>
 						<!-- ref may refer to the id of a node or the id of a port on a node -->
 						<xsd:attribute name="ref" type="xsd:IDREF" use="required"/>						
 					</xsd:complexType>

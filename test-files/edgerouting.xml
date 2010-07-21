@@ -1,3 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sbgn xmlns="http://sbgn.org/libsbgn/0.1">
+
+	<node class="simple chemical" id="node1">
+		<label text="Ethanol"/> <!-- fontsize="" etc -->
+		<!-- Line breaks are allowed in the text attribute -->
+		<bbox x="90" y="240" w="60" h="60"/>
+	</node>
+	
+	<node class="simple chemical" id="node2">
+		<label text="Ethanal" />
+		<bbox x="290" y="150" w="60" h="60"/>
+	</node>
+	
+	<node class="macromolecule" id="node3">
+		<label text="ADH1" />
+		<bbox x="196" y="80" w="108" h="60"/>
+	</node>
+	
+	<node class="process" orientation="horizontal" id="pn1">
+		<bbox x="148" y="168" w="24" h="24"/>
+		<port x="148" y="180" id="pn1.1"/>
+		<port x="172" y="180" id="pn1.2"/>
+	</node>
+
+	<arc class="consumption">
+		<source x="145" y="180" ref="pn1.1" />
+		<segment x="70" y="180"/>
+		<segment x="70" y="270"/>
+		<target x="90" y="270" ref="node1" />
+	</arc>
+
+	<arc class="catalysis">
+		<source x="250" y="80" ref="node3" />
+		<segment x="250" y="50"/>
+		<segment x="160" y="50"/>
+		<target x="160" y="160" ref="pn1" />		
+	</arc>
+
+	<arc class="production" >
+		<source x="170" y="180" ref="pn1.2" />
+		<segment x="190" y="180"/>
+		<segment x="190" y="240"/>
+		<segment x="240" y="240"/>
+		<segment x="240" y="180"/>
+		<target x="290" y="180" ref="node2" />
+	</arc>
+
 </sbgn>
