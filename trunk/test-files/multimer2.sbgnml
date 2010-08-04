@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<sbgn xmlns="http://sbgn.org/libsbgn/0.1" language="process description">
+    <glyph id="glyph0" class="macromolecule multimer">
+        <bbox h="60.0" w="108.0" y="20.0" x="136.0"/>
+    </glyph>
+    <glyph id="glyph1" class="nucleic acid feature multimer">
+        <bbox h="49.0" w="97.0" y="25.5" x="291.5"/>
+    </glyph>
+    <glyph id="glyph2" class="simple chemical multimer">
+        <bbox h="60.0" w="60.0" y="20.0" x="30.0"/>
+    </glyph>
+</sbgn>

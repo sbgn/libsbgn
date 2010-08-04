@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<sbgn xmlns="http://sbgn.org/libsbgn/0.1" language="process description">
+    <glyph id="glyph0" class="simple chemical">
+        <label text="Ethanol"/>
+        <bbox h="60.0" w="60.0" y="120.0" x="40.0"/>
+    </glyph>
+    <glyph id="glyph1" class="simple chemical">
+        <label text="Ethanal"/>
+        <bbox h="60.0" w="60.0" y="110.0" x="220.0"/>
+    </glyph>
+    <glyph id="glyph2" class="simple chemical">
+        <label text="NADH"/>
+        <bbox h="60.0" w="60.0" y="150.0" x="300.0"/>
+    </glyph>
+    <glyph id="glyph3" class="simple chemical">
+        <label text="NAD+"/>
+        <bbox h="60.0" w="60.0" y="190.0" x="40.0"/>
+    </glyph>
+    <glyph id="glyph4" class="macromolecule">
+        <label text="ADH1"/>
+        <bbox h="60.0" w="108.0" y="20.0" x="106.0"/>
+    </glyph>
+    <glyph id="glyph5" orientation="horizontal" class="process">
+        <bbox h="24.0" w="24.0" y="168.0" x="148.0"/>
+        <port id="glyph5.1" y="180.0" x="148.0"/>
+        <port id="glyph5.2" y="180.0" x="172.0"/>
+    </glyph>
+    <glyph id="glyph6" class="simple chemical">
+        <label text="H+"/>
+        <bbox h="60.0" w="60.0" y="190.0" x="220.0"/>
+    </glyph>
+    <arc class="consumption">
+        <source ref="glyph3" y="220.0" x="70.0"/>
+        <target y="180.0" x="148.0" ref="glyph5.1"/>
+    </arc>
+    <arc class="consumption">
+        <source ref="glyph0" y="150.0" x="70.0"/>
+        <target y="180.0" x="148.0" ref="glyph5.1"/>
+    </arc>
+    <arc class="production">
+        <source ref="glyph5.2" y="180.0" x="172.0"/>
+        <target y="140.0" x="250.0" ref="glyph1"/>
+    </arc>
+    <arc class="production">
+        <source ref="glyph5.2" y="180.0" x="172.0"/>
+        <target y="180.0" x="330.0" ref="glyph2"/>
+    </arc>
+    <arc class="production">
+        <source ref="glyph5.2" y="180.0" x="172.0"/>
+        <target y="220.0" x="250.0" ref="glyph6"/>
+    </arc>
+    <arc class="catalysis">
+        <source ref="glyph4" y="50.0" x="160.0"/>
+        <target y="180.0" x="160.0" ref="glyph5"/>
+    </arc>
+</sbgn>

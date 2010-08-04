@@ -1,42 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<sbgn xmlns="http://sbgn.org/libsbgn/0.1">
+<sbgn xmlns="http://sbgn.org/libsbgn/0.1" language="process description">
 	
-	<node class="tag" orientation="right" id="node1">
+	<glyph class="tag" orientation="right" id="node1">
 		<label text="RAS"/>
 		<bbox x="100" y="20" w="100" h="60"/>
-	</node>
+	</glyph>
 	
-	<node class="macromolecule" id="node2">
+	<glyph class="macromolecule" id="node2">
 		<label text="RAS" />
 		<bbox x="270" y="20" w="100" h="60"/>
-		<node class="state variable" id="node2a">
+		<glyph class="state variable" id="node2a">
 			<label text="active"/>
 			<bbox x="304" y="74" w="32" h="12"/>
-		</node>
-	</node>
+		</glyph>
+	</glyph>
 
-	<node class="macromolecule" id="node3">
+	<glyph class="macromolecule" id="node3">
 		<label text="RAF" />
 		<bbox x="120" y="150" w="100" h="60"/>
-		<node class="state variable" id="node3a">
+		<glyph class="state variable" id="node3a">
 			<bbox x="164" y="204" w="12" h="12"/>
-		</node>
-	</node>
+		</glyph>
+	</glyph>
 
-	<node class="macromolecule" id="node4">
+	<glyph class="macromolecule" id="node4">
 		<label text="RAF" />
 		<bbox x="400" y="150" w="100" h="60"/>
-		<node class="state variable" id="node4a">
+		<glyph class="state variable" id="node4a">
 			<label text="P"/>
 			<bbox x="444" y="204" w="12" h="12"/>
-		</node>
-	</node>
+		</glyph>
+	</glyph>
 
-	<node class="process" id="node5">
+	<glyph class="process" id="node5">
 		<bbox x="308" y="168" w="24" h="24"/>
 		<port x="308" y="180" id="node5a"/>
 		<port x="332" y="180" id="node5b"/>
-	</node>
+	</glyph>
 
 	<arc class="consumption">
 		<source x="200" y="50" ref="node1" />

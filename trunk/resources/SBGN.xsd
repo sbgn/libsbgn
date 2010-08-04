@@ -29,13 +29,22 @@
 	<xsd:element name="sbgn">
 		<xsd:complexType>
 			<xsd:sequence>
-				<xsd:element ref="sbgn:node" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="sbgn:glyph" minOccurs="0" maxOccurs="unbounded"/>
 				<xsd:element ref="sbgn:arc" minOccurs="0" maxOccurs="unbounded"/>
 			</xsd:sequence>
+			<xsd:attribute name="language" use="required">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:enumeration value="process description"/>
+						<xsd:enumeration value="entity relationship"/>
+						<xsd:enumeration value="activity flow"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:attribute>
 		</xsd:complexType>
 	</xsd:element>
 
-	<xsd:element name="node">
+	<xsd:element name="glyph">
 		<xsd:complexType>
 			<xsd:sequence>
 				<!-- Label is optional. You should not define a label for process nodes. -->
@@ -64,16 +73,16 @@
 					</xsd:complexType>
 				</xsd:element>
 				<!-- subnodes are for states and units of information -->
-				<xsd:element ref="sbgn:node" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="sbgn:glyph" minOccurs="0" maxOccurs="unbounded"/>
 				<!-- ports are necessary for process nodes, but we may decide to
-					use them also for other node types in the future, to help
+					use them also for other glyph types in the future, to help
 					routing arcs -->
 				<xsd:element name="port" minOccurs="0" maxOccurs="unbounded">
 					<xsd:complexType>
 						<xsd:attribute name="x" type="xsd:float" use="required"/>
 						<xsd:attribute name="y" type="xsd:float" use="required"/>
 						<!-- xsd:ID type is an alphanumeric identifier, starting with a letter.
-						It is recommended to generate meaningless ID's such as node1234.
+						It is recommended to generate meaningless ID's such as glyph1234.
 						Avoid ID's that have meaning in them, such as "epn1" or "epn_ethanol" -->
 						<xsd:attribute name="id" type="xsd:ID" use="required"/>						
 					</xsd:complexType>
@@ -92,9 +101,10 @@
 						<xsd:enumeration value="nucleic acid feature multimer"/>
 						<xsd:enumeration value="complex"/>
 						<xsd:enumeration value="source and sink"/>
-						<xsd:enumeration value="perturbating agent"/>
+						<xsd:enumeration value="perturbing agent"/>
 						<!-- Other -->
 						<xsd:enumeration value="compartment"/>
+						<xsd:enumeration value="submap"/>
 						<xsd:enumeration value="tag"/>
 						<!-- Process Node classes -->
 						<xsd:enumeration value="process"/>
@@ -103,6 +113,10 @@
 						<xsd:enumeration value="association"/>
 						<xsd:enumeration value="dissociation"/>
 						<xsd:enumeration value="phenotype"/>
+						<!-- Logical Operators classes -->
+						<xsd:enumeration value="and"/>
+						<xsd:enumeration value="or"/>
+						<xsd:enumeration value="not"/>
 						<!-- Subnode classes -->
 						<xsd:enumeration value="state variable"/>
 						<xsd:enumeration value="unit of information"/>
@@ -111,7 +125,7 @@
 				</xsd:simpleType>
 			</xsd:attribute>
 			<xsd:attribute name="orientation" default="horizontal">
-				<!-- orientation attribute is only meaningful for some node classes-->
+				<!-- orientation attribute is only meaningful for some glyph classes-->
 				<xsd:simpleType>
 					<xsd:restriction base="xsd:string">
 						<!-- horizontal / vertical are for process nodes -->
@@ -150,7 +164,7 @@
 					<xsd:complexType>
 						<xsd:attribute name="x" type="xsd:float" use="required"/>
 						<xsd:attribute name="y" type="xsd:float" use="required"/>	
-						<!-- ref may refer to the id of a node or the id of a port on a node -->
+						<!-- ref may refer to the id of a glyph or the id of a port on a glyph -->
 						<xsd:attribute name="ref" type="xsd:IDREF" use="required"/>
 					</xsd:complexType>
 				</xsd:element>
@@ -162,7 +176,7 @@
 				<xsd:element name="target" minOccurs="1" maxOccurs="1">
 					<xsd:complexType>
 						<xsd:attributeGroup ref="sbgn:SegmentAttributes"/>
-						<!-- ref may refer to the id of a node or the id of a port on a node -->
+						<!-- ref may refer to the id of a glyph or the id of a port on a glyph -->
 						<xsd:attribute name="ref" type="xsd:IDREF" use="required"/>						
 					</xsd:complexType>
 				</xsd:element>
