@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<sbgn xmlns="http://sbgn.org/libsbgn/0.1" language="process description">
+<sbgn xmlns="http://sbgn.org/libsbgn/0.1">
 
-	<glyph class="macromolecule" id="node1">
+	<node class="macromolecule" id="node1">
 		<label text="Monomer"/>
 		<bbox x="326" y="30" w="108" h="60"/>
-	</glyph>
+	</node>
 
-	<glyph class="macromolecule multimer" id="node2">
+	<node class="macromolecule multimer" id="node2">
 		<label text="Dimer" />
 		<bbox x="116" y="30" w="108" h="60"/>
 
-		<glyph class="unit of information" id="node2a">
+		<node class="unit of information" id="node2a">
 			<label text="N:2"/>
 			<bbox x="130" y="24" w="32" h="12"/>
-		</glyph>
-	</glyph>
+		</node>
+	</node>
 	
-	<glyph class="process" orientation="horizontal" id="pn1">
+	<node class="process" orientation="horizontal" id="pn1">
 		<bbox x="268" y="48" w="24" h="24"/>
 		<port x="268" y="60" id="pn1.1"/>
 		<port x="292" y="60" id="pn1.2"/>
-	</glyph>
+	</node>
 
 	<arc class="consumption">
 		<source x="326" y="60" ref="node1" />
