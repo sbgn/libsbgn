@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<sbgn xmlns="http://sbgn.org/libsbgn/0.1" language="process description">
+<sbgn xmlns="http://sbgn.org/libsbgn/0.1">
 
-	<glyph class="simple chemical" id="node1">
+	<node class="simple chemical" id="node1">
 		<label text="Ethanol"/> <!-- fontsize="" etc -->
 		<!-- Line breaks are allowed in the text attribute -->
 		<bbox x="40" y="120" w="60" h="60"/>
-	</glyph>
-	<glyph class="simple chemical" id="node_ethanal">
+	</node>
+	<node class="simple chemical" id="node_ethanal">
 		<label text="Ethanal" />
 		<bbox x="220" y="110" w="60" h="60"/>
-	</glyph>
-	<glyph class="macromolecule" id="node_adh1">
+	</node>
+	<node class="macromolecule" id="node_adh1">
 		<label text="ADH1" />
 		<bbox x="106" y="20" w="108" h="60"/>
-	</glyph>
-	<glyph class="simple chemical" id="node_h">
+	</node>
+	<node class="simple chemical" id="node_h">
 		<label text="H+" />
 		<bbox x="220" y="190" w="60" h="60"/>
-	</glyph>
-	<glyph class="simple chemical" id="node_nad">
+	</node>
+	<node class="simple chemical" id="node_nad">
 		<label text="NAD+" />
 		<bbox x="40" y="190" w="60" h="60"/>
-	</glyph>
-	<glyph class="simple chemical" id="node_nadh">
+	</node>
+	<node class="simple chemical" id="node_nadh">
 		<label text="NADH" />
 		<bbox x="300" y="150" w="60" h="60"/>
-	</glyph>
+	</node>
 	
-	<glyph class="process" orientation="horizontal" id="pn1">
+	<node class="process" orientation="horizontal" id="pn1">
 		<bbox x="148" y="168" w="24" h="24"/>
 		<port x="148" y="180" id="pn1.1"/>
 		<port x="172" y="180" id="pn1.2"/>
-	</glyph>
+	</node>
 
 	<arc class="consumption">
 		<source x="70" y="150" ref="node1" />

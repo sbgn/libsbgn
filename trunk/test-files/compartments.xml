@@ -1,43 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<sbgn xmlns="http://sbgn.org/libsbgn/0.1" language="process description">
+<sbgn xmlns="http://sbgn.org/libsbgn/0.1">
 
-	<glyph class="compartment" id="node1">
+	<node class="compartment" id="node1">
 		<label text="extracellular"/>
 		<bbox x="0" y="0" w="0" h="0"/>
-	</glyph>
-	<glyph class="compartment" id="node8">
+	</node>
+	<node class="compartment" id="node8">
 		<label text="cytosol"/>
 		<bbox x="0" y="0" w="0" h="0"/>
-	</glyph>
+	</node>
 	
-	<glyph class="complex" id="node2">
+	<node class="complex" id="node2">
 		<bbox x="0" y="0" w="0" h="0"/>
-	</glyph>
+	</node>
 	
-	<glyph class="macromolecule" id="node3">
+	<node class="macromolecule" id="node3">
 		<label text="IGF"/>
 		<bbox x="0" y="0" w="0" h="0"/>
-	</glyph>
-	<glyph class="macromolecule" id="node4">
+	</node>
+	<node class="macromolecule" id="node4">
 		<label text="IGF-R"/>
 		<bbox x="0" y="0" w="0" h="0"/>
-	</glyph>
+	</node>
 	
-	<glyph class="macromolecule" id="node5">
+	<node class="macromolecule" id="node5">
 		<label text="IGF"/>
 		<bbox x="0" y="0" w="0" h="0"/>
-	</glyph>
-	<glyph class="macromolecule" id="node6">
+	</node>
+	<node class="macromolecule" id="node6">
 		<label text="IGF"/>
 		<bbox x="0" y="0" w="0" h="0"/>
-	</glyph>
+	</node>
 
-	<glyph class="process" id="pn1">
+	<node class="process" id="pn1">
 		<label text="IGF"/>
 		<bbox x="0" y="0" w="0" h="0"/>
 		<port x="0" y="0" id="pn1.1"/>
 		<port x="0" y="0" id="pn1.2"/>
-	</glyph>
+	</node>
 	
 	<arc class="production">
 		<source x="0" y="0" ref="node2" />
