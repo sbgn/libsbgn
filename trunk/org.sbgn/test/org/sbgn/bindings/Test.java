@@ -18,7 +18,7 @@ public class Test extends TestCase
 		Unmarshaller unmarshaller = context.createUnmarshaller() ;
 		Sbgn sbgn = (Sbgn)unmarshaller.unmarshal (file1);
 		
-		assertEquals (7, sbgn.getNode().size());
+		assertEquals (7, sbgn.getGlyph().size());
 		assertEquals (6, sbgn.getArc().size());
 	}
 }
