@@ -1,55 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<sbgn xmlns="http://sbgn.org/libsbgn/0.1">
+<sbgn xmlns="http://sbgn.org/libsbgn/pd/0.1">
 
-	<node class="compartment" id="node1">
+	<glyph class="compartment" id="glyph1">
 		<label text="extracellular"/>
-		<bbox x="0" y="0" w="0" h="0"/>
-	</node>
-	<node class="compartment" id="node8">
+		<bbox x="90" y="70" w="440" h="140"/>
+	</glyph>
+	<glyph class="compartment" id="glyph8">
 		<label text="cytosol"/>
-		<bbox x="0" y="0" w="0" h="0"/>
-	</node>
+		<bbox x="90" y="230" w="440" h="260"/>
+	</glyph>
 	
-	<node class="complex" id="node2">
-		<bbox x="0" y="0" w="0" h="0"/>
-	</node>
+	<glyph class="complex" id="glyph2">
+		<bbox x="360" y="150" w="140" h="160"/>
+	</glyph>
 	
-	<node class="macromolecule" id="node3">
+	<glyph class="macromolecule" id="glyph3">
 		<label text="IGF"/>
-		<bbox x="0" y="0" w="0" h="0"/>
-	</node>
-	<node class="macromolecule" id="node4">
-		<label text="IGF-R"/>
-		<bbox x="0" y="0" w="0" h="0"/>
-	</node>
+		<bbox x="380" y="171" w="100" h="60"/>
+	</glyph>
+	<glyph class="macromolecule" id="glyph4">
+		<label text="IGFR"/>
+		<bbox x="120" y="250" w="100" h="60"/>
+	</glyph>
 	
-	<node class="macromolecule" id="node5">
+	<glyph class="macromolecule" id="glyph5">
 		<label text="IGF"/>
-		<bbox x="0" y="0" w="0" h="0"/>
-	</node>
-	<node class="macromolecule" id="node6">
-		<label text="IGF"/>
-		<bbox x="0" y="0" w="0" h="0"/>
-	</node>
+		<bbox x="170" y="130" w="100" h="60"/>
+	</glyph>
+	<glyph class="macromolecule" id="glyph6">
+		<label text="IGFR"/>
+		<bbox x="380" y="232" w="100" h="60"/>
+	</glyph>
 
-	<node class="process" id="pn1">
-		<label text="IGF"/>
-		<bbox x="0" y="0" w="0" h="0"/>
-		<port x="0" y="0" id="pn1.1"/>
-		<port x="0" y="0" id="pn1.2"/>
-	</node>
+	<glyph class="association" id="pn1">
+		<bbox x="280" y="270" w="20" h="20"/>
+		<port x="280" y="280" id="pn1.1"/>
+		<port x="300" y="280" id="pn1.2"/>
+	</glyph>
 	
 	<arc class="production">
-		<source x="0" y="0" ref="node2" />
-		<target x="0" y="0" ref="pn1.2" />			
+		<source x="300" y="280" ref="pn1.2" />			
+		<target x="0" y="0" ref="glyph2" />
 	</arc>
 	<arc class="consumption">
-		<source x="0" y="0" ref="node4" />
-		<target x="0" y="0" ref="pn1.1" />			
+		<source x="0" y="0" ref="glyph4" />
+		<target x="280" y="280" ref="pn1.1" />			
 	</arc>
 	<arc class="consumption">
-		<source x="0" y="0" ref="node5" />
-		<target x="0" y="0" ref="pn1.1" />			
+		<source x="0" y="0" ref="glyph5" />
+		<target x="280" y="280" ref="pn1.1" />			
 	</arc>
 
 </sbgn>
