@@ -1,7 +1,7 @@
 <xsd:schema 
-	targetNamespace="http://sbgn.org/libsbgn/0.1"
+	targetNamespace="http://sbgn.org/libsbgn/pd/0.1"
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema" 	
-	xmlns:sbgn="http://sbgn.org/libsbgn/0.1"
+	xmlns:sbgn-pd="http://sbgn.org/libsbgn/pd/0.1"
 	elementFormDefault="qualified">
 	<!-- the target Namespace is to be used for versioning the spec, as recommended by W3C -->
 
@@ -29,18 +29,9 @@
 	<xsd:element name="sbgn">
 		<xsd:complexType>
 			<xsd:sequence>
-				<xsd:element ref="sbgn:glyph" minOccurs="0" maxOccurs="unbounded"/>
-				<xsd:element ref="sbgn:arc" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="sbgn-pd:glyph" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="sbgn-pd:arc" minOccurs="0" maxOccurs="unbounded"/>
 			</xsd:sequence>
-			<xsd:attribute name="language" use="required">
-				<xsd:simpleType>
-					<xsd:restriction base="xsd:string">
-						<xsd:enumeration value="process description"/>
-						<xsd:enumeration value="entity relationship"/>
-						<xsd:enumeration value="activity flow"/>
-					</xsd:restriction>
-				</xsd:simpleType>
-			</xsd:attribute>
 		</xsd:complexType>
 	</xsd:element>
 
@@ -73,7 +64,7 @@
 					</xsd:complexType>
 				</xsd:element>
 				<!-- subnodes are for states and units of information -->
-				<xsd:element ref="sbgn:glyph" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="sbgn-pd:glyph" minOccurs="0" maxOccurs="unbounded"/>
 				<!-- ports are necessary for process nodes, but we may decide to
 					use them also for other glyph types in the future, to help
 					routing arcs -->
@@ -113,7 +104,7 @@
 						<xsd:enumeration value="association"/>
 						<xsd:enumeration value="dissociation"/>
 						<xsd:enumeration value="phenotype"/>
-						<!-- Logical Operators classes -->
+						<!-- Logical Operator classes -->
 						<xsd:enumeration value="and"/>
 						<xsd:enumeration value="or"/>
 						<xsd:enumeration value="not"/>
@@ -170,12 +161,12 @@
 				</xsd:element>
 				<xsd:element name="segment" minOccurs="0" maxOccurs="unbounded">
 					<xsd:complexType>
-						<xsd:attributeGroup ref="sbgn:SegmentAttributes"/>
+						<xsd:attributeGroup ref="sbgn-pd:SegmentAttributes"/>
 					</xsd:complexType>
 				</xsd:element>
 				<xsd:element name="target" minOccurs="1" maxOccurs="1">
 					<xsd:complexType>
-						<xsd:attributeGroup ref="sbgn:SegmentAttributes"/>
+						<xsd:attributeGroup ref="sbgn-pd:SegmentAttributes"/>
 						<!-- ref may refer to the id of a glyph or the id of a port on a glyph -->
 						<xsd:attribute name="ref" type="xsd:IDREF" use="required"/>						
 					</xsd:complexType>
