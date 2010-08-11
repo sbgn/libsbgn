@@ -14,6 +14,8 @@ public class Test extends TestCase
 	
 	public static void test1() throws JAXBException
 	{
+		assertTrue (file1.exists());
+		
 		JAXBContext context = JAXBContext.newInstance("org.sbgn.bindings");
 		Unmarshaller unmarshaller = context.createUnmarshaller() ;
 		Sbgn sbgn = (Sbgn)unmarshaller.unmarshal (file1);
