@@ -29,35 +29,35 @@
 	
 	<glyph class="process" orientation="horizontal" id="pn1">
 		<bbox x="148" y="168" w="24" h="24"/>
-		<port x="148" y="180" id="pn1.1"/>
-		<port x="172" y="180" id="pn1.2"/>
+		<port x="136" y="180" id="pn1.1"/>
+		<port x="184" y="180" id="pn1.2"/>
 	</glyph>
 
 	<arc class="consumption">
-		<source x="70" y="150" ref="glyph1" />
-		<target x="148" y="180" ref="pn1.1" />
+		<source x="98" y="160" ref="glyph1" />
+		<target x="136" y="180" ref="pn1.1" />
 	</arc>
 	
 	<arc class="production">
-		<source x="172" y="180" ref="pn1.2" />			
-		<target x="330" y="180" ref="glyph_nadh" />
+		<source x="184" y="180" ref="pn1.2" />			
+		<target x="300" y="180" ref="glyph_nadh" />
 	</arc>
 	
 	<arc class="catalysis">
-		<source x="160" y="50" ref="glyph_adh1" />
-		<target x="160" y="148" ref="pn1" />		
+		<source x="160" y="80" ref="glyph_adh1" />
+		<target x="160" y="168" ref="pn1" />		
 	</arc>
 
 	<arc class="production" >
-		<source x="172" y="180" ref="pn1.2" />			
-		<target x="250" y="220" ref="glyph_h" />
+		<source x="184" y="180" ref="pn1.2" />			
+		<target x="224" y="202" ref="glyph_h" />
 	</arc>
 	<arc class="production">
-		<source x="172" y="180" ref="pn1.2" />			
-		<target x="250" y="140" ref="glyph_ethanal" />
+		<source x="184" y="180" ref="pn1.2" />			
+		<target x="224" y="154" ref="glyph_ethanal" />
 	</arc>
 	<arc class="consumption">
-		<source x="70" y="220" ref="glyph_nad" />
-		<target x="148" y="180" ref="pn1.1" />			
+		<source x="95" y="202" ref="glyph_nad" />
+		<target x="136" y="180" ref="pn1.1" />			
 	</arc>
 </sbgn>
