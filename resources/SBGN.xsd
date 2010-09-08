@@ -26,6 +26,21 @@
 		<xsd:attribute name="y2" type="xsd:float" use="optional"/>						
 	</xsd:attributeGroup>
 
+	<xsd:element name="bbox">
+		<!-- bbox defines outer bounding box, even if the shape
+		is irregular (as may be the case for compartments.
+		In the case of process nodes, the ports and the lines to them
+		should be included in the bounding box.
+
+		bbox can also be (optionally) added to labels-->
+		<xsd:complexType>
+			<xsd:attribute name="x" type="xsd:float" use="required"/>
+			<xsd:attribute name="y" type="xsd:float" use="required"/>					
+			<xsd:attribute name="w" type="xsd:float" use="required"/>					
+			<xsd:attribute name="h" type="xsd:float" use="required"/>					
+		</xsd:complexType>
+	</xsd:element>
+
 	<xsd:element name="sbgn">
 		<xsd:complexType>
 			<xsd:sequence>
@@ -39,8 +54,16 @@
 		<xsd:complexType>
 			<xsd:sequence>
 				<!-- Label is optional. You should not define a label for process nodes. -->
-				<xsd:element name="label" minOccurs="0" maxOccurs="1">
+				<xsd:element name="label" minOccurs="0" maxOccurs="unbounded">
 					<xsd:complexType>
+						<xsd:sequence>
+							<!-- a bbox on a label is optional. In case that there is no bbox defined,
+							the bbox of the parent glyph is inherited.
+							The label should be drawn centered horizontally and vertically 
+							within  this bounding box
+							!-->
+							<xsd:element ref="sbgn-pd:bbox" minOccurs="0" maxOccurs="1"/>
+						</xsd:sequence>
 						<!-- Multi-line labels are allowed. 
 							Line breaks are encoded as &#xA;
 							as specified by the XML standard. -->
@@ -51,18 +74,7 @@
 						<xsd:attribute name="fontsize" type="xsd:float" use="optional"/>						
 					</xsd:complexType>
 				</xsd:element>
-				<xsd:element name="bbox" minOccurs="1" maxOccurs="1">
-					<!-- bbox defines outer bounding box, even if the shape
-					is irregular (as may be the case for compartments.
-					In the case of process nodes, the ports and the lines to them
-					should be included in the bounding box -->
-					<xsd:complexType>
-						<xsd:attribute name="x" type="xsd:float" use="required"/>
-						<xsd:attribute name="y" type="xsd:float" use="required"/>					
-						<xsd:attribute name="w" type="xsd:float" use="required"/>					
-						<xsd:attribute name="h" type="xsd:float" use="required"/>					
-					</xsd:complexType>
-				</xsd:element>
+				<xsd:element ref="sbgn-pd:bbox" minOccurs="1" maxOccurs="1"/>
 				<!-- subnodes are for states and units of information -->
 				<xsd:element ref="sbgn-pd:glyph" minOccurs="0" maxOccurs="unbounded"/>
 				<!-- ports are necessary for process nodes, but we may decide to
