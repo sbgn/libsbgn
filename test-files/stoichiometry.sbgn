@@ -1,3 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sbgn xmlns="http://sbgn.org/libsbgn/pd/0.1">
+
+<glyph class="simple chemical" id="glyph1">
+	<label text="lactose"/>
+	<bbox x="50" y="50" w="60" h="60"/>
+</glyph>
+
+<glyph class="simple chemical" id="glyph2">
+	<label text="galactose"/>
+	<bbox x="250" y="50" w="60" h="60"/>
+</glyph>
+
+<glyph class="process" orientation="horizontal" id="pn1">
+	<bbox x="170" y="70" w="24" h="24"/>
+	<port x="170" y="82" id="pn1.1"/>
+	<port x="184" y="82" id="pn1.2"/>
+</glyph>
+
+<arc class="consumption">
+	<glyph class="stoichiometry" id="glyph10">
+		<label text="2"/>
+		<bbox x="140" y="60" w="20" h="16"/>
+	</glyph>
+	<source x="70" y="150" ref="glyph1" />
+	<target x="148" y="180" ref="pn1.1" />
+</arc>
+
+<arc class="production">
+	<glyph class="stoichiometry" id="glyph10">
+		<label text="1"/>
+		<bbox x="200" y="60" w="20" h="16"/>
+	</glyph>
+	<source x="172" y="180" ref="pn1.2" />			
+	<target x="330" y="180" ref="glyph2" />
+</arc>
+
 </sbgn>
