@@ -34,8 +34,8 @@
 
 	<glyph class="process" id="glyph5">
 		<bbox x="308" y="168" w="24" h="24"/>
-		<port x="308" y="180" id="glyph5a"/>
-		<port x="332" y="180" id="glyph5b"/>
+		<port x="296" y="180" id="glyph5a"/>
+		<port x="344" y="180" id="glyph5b"/>
 	</glyph>
 
 	<arc class="equivalence arc">
@@ -50,11 +50,11 @@
 
 	<arc class="consumption">
 		<source x="220" y="180" ref="glyph3" />
-		<target x="308" y="180" ref="glyph5a" />
+		<target x="296" y="180" ref="glyph5a" />
 	</arc>
 
 	<arc class="production" >
-		<source x="332" y="180" ref="glyph5b" />
+		<source x="344" y="180" ref="glyph5b" />
 		<target x="400" y="180" ref="glyph4" />			
 	</arc>
 

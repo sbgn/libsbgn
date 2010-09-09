@@ -18,16 +18,16 @@
 	
 	<glyph class="process" orientation="horizontal" id="pn1">
 		<bbox x="268" y="48" w="24" h="24"/>
-		<port x="268" y="60" id="pn1.1"/>
-		<port x="292" y="60" id="pn1.2"/>
+		<port x="256" y="60" id="pn1.1"/>
+		<port x="304" y="60" id="pn1.2"/>
 	</glyph>
 
 	<arc class="consumption">
 		<source x="326" y="60" ref="glyph1" />
-		<target x="292" y="60" ref="pn1.2" />			
+		<target x="304" y="60" ref="pn1.2" />			
 	</arc>
 	<arc class="production" >
-		<source x="268" y="60" ref="pn1.1" />			
+		<source x="256" y="60" ref="pn1.1" />			
 		<target x="226" y="60" ref="glyph2" />
 	</arc>
 

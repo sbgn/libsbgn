@@ -3,59 +3,59 @@
 
 <glyph class="macromolecule" id="glyph1">
 	<label text="Enzym1"/>
-	<bbox x="55" y="50" w="100" h="60"/>
+	<bbox x="56" y="50" w="108" h="60"/>
 </glyph>
 
 <glyph class="macromolecule" id="glyph2">
 	<label text="Enzym2"/>
-	<bbox x="215" y="50" w="100" h="60"/>
+	<bbox x="216" y="50" w="108" h="60"/>
 </glyph>
 
 <glyph class="or" id="glyph3" orientation="vertical">
-	<bbox x="165" y="185" w="40" h="40"/>
-	<port x="185" y="185" id="port3.1"/>
-	<port x="185" y="225" id="port3.2"/>
+	<bbox x="169" y="189" w="42" h="42"/>
+	<port x="190" y="168" id="port3.1"/>
+	<port x="190" y="252" id="port3.2"/>
 </glyph>
 
-<glyph class="process" id="glyph4">
-	<bbox x="175" y="275" w="24" h="24"/>
-	<port x="175" y="287" id="port4.1"/>
-	<port x="199" y="287" id="port4.2"/>
+<glyph class="process" id="glyph4" orientation="horizontal">
+	<bbox x="178" y="278" w="24" h="24"/>
+	<port x="166" y="290" id="port4.1"/>
+	<port x="214" y="290" id="port4.2"/>
 </glyph>
 
 <glyph class="simple chemical" id="glyph5">
 	<label text="Subst"/>
-	<bbox x="65" y="255" w="60" h="60"/>
+	<bbox x="70" y="260" w="60" h="60"/>
 </glyph>
 
 <glyph class="simple chemical" id="glyph6">
 	<label text="Prod"/>
-	<bbox x="260" y="255" w="60" h="60"/>
+	<bbox x="260" y="260" w="60" h="60"/>
 </glyph>
 
 <arc class="logic arc">
-	<source x="105" y="80" ref="glyph1" />
-	<target x="185" y="185" ref="port3.1" />
+	<source x="139" y="110" ref="glyph1" />
+	<target x="190" y="168" ref="port3.1" />
 </arc>
 
 <arc class="logic arc">
-	<source x="265" y="80" ref="glyph2" />
-	<target x="185" y="185" ref="port3.1" />
+	<source x="241" y="110" ref="glyph2" />
+	<target x="190" y="168" ref="port3.1" />
 </arc>
 
 <arc class="catalysis">
-	<source x="185" y="275" ref="port3.2" />
-	<target x="175" y="287" ref="glyph4" />
+	<source x="190" y="252" ref="port3.2" />
+	<target x="190" y="278" ref="glyph4" />
 </arc>
 
 <arc class="consumption">
-	<source x="125" y="287" ref="glyph5" />
-	<target x="175" y="287" ref="port4.1" />
+	<source x="130" y="290" ref="glyph5" />
+	<target x="166" y="290" ref="port4.1" />
 </arc>
 
 <arc class="production">
-	<source x="199" y="287" ref="port4.2" />
-	<target x="260" y="287" ref="glyph6" />
+	<source x="214" y="290" ref="port4.2" />
+	<target x="260" y="290" ref="glyph6" />
 </arc>
 
 </sbgn>

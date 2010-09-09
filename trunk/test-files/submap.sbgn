@@ -34,14 +34,14 @@
 	</glyph>
 </glyph>
 
-<arc class="consumption">
+<arc class="equivalence arc">
 	<source x="170" y="100" ref="glyph1" />
 	<target x="220" y="100" ref="glyph2" <!-- TODO: glyph5 -->/>
 </arc>
 
-<arc class="consumption">
-	<source x="520" y="100" ref="glyph2" />
-	<target x="440" y="100" ref="glyph2" <!-- TODO: glyph6 --> />
+<arc class="equivalence arc">
+	<source x="520" y="100" ref="glyph3" />
+	<target x="440" y="100" ref="glyph2" <!-- TODO: glyph6 -->/>
 </arc>
 
 </sbgn>
