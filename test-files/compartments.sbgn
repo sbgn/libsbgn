@@ -34,21 +34,21 @@
 
 	<glyph class="association" id="pn1">
 		<bbox x="280" y="270" w="20" h="20"/>
-		<port x="280" y="280" id="pn1.1"/>
-		<port x="300" y="280" id="pn1.2"/>
+		<port x="270" y="280" id="pn1.1"/>
+		<port x="310" y="280" id="pn1.2"/>
 	</glyph>
 	
 	<arc class="production">
-		<source x="300" y="280" ref="pn1.2" />			
+		<source x="310" y="280" ref="pn1.2" />			
 		<target x="360" y="280" ref="glyph2" />
 	</arc>
 	<arc class="consumption">
 		<source x="220" y="280" ref="glyph4" />
-		<target x="280" y="280" ref="pn1.1" />			
+		<target x="270" y="280" ref="pn1.1" />			
 	</arc>
 	<arc class="consumption">
-		<source x="232" y="190" ref="glyph5" />
-		<target x="280" y="280" ref="pn1.1" />			
+		<source x="233" y="190" ref="glyph5" />
+		<target x="270" y="280" ref="pn1.1" />			
 	</arc>
 
 </sbgn>

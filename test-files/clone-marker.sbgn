@@ -36,60 +36,60 @@
 
 	<glyph class="process" orientation="horizontal" id="glyph9">
 		<bbox x="150" y="130" w="20" h="20"/>
-		<port x="150" y="140" id="glyph9a"/>
-		<port x="170" y="140" id="glyph9b"/>
+		<port x="140" y="140" id="glyph9a"/>
+		<port x="180" y="140" id="glyph9b"/>
 	</glyph>
 	<glyph class="process" orientation="horizontal" id="glyph10">
 		<bbox x="360" y="130" w="20" h="20"/>
-		<port x="360" y="140" id="glyph10a"/>
-		<port x="380" y="140" id="glyph10b"/>
+		<port x="350" y="140" id="glyph10a"/>
+		<port x="390" y="140" id="glyph10b"/>
 	</glyph>
 	<glyph class="process" orientation="horizontal" id="glyph11">
 		<bbox x="580" y="130" w="20" h="20"/>
-		<port x="580" y="140" id="glyph11a"/>
-		<port x="600" y="140" id="glyph11b"/>
+		<port x="570" y="140" id="glyph11a"/>
+		<port x="610" y="140" id="glyph11b"/>
 	</glyph>
 
 	<arc class="consumption">
-		<source x="50" y="140" ref="glyph1" />
-		<target x="150" y="140" ref="glyph9a" />
+		<source x="80" y="140" ref="glyph1" />
+		<target x="140" y="140" ref="glyph9a" />
 	</arc>
 	<arc class="consumption">
-		<source x="100" y="230" ref="glyph2" />
-		<target x="150" y="140" ref="glyph9a" />			
+		<source x="110" y="201" ref="glyph2" />
+		<target x="140" y="140" ref="glyph9a" />			
 	</arc>
 	<arc class="consumption">
-		<source x="280" y="140" ref="glyph4" />
-		<target x="360" y="140" ref="glyph10a" />			
+		<source x="310" y="140" ref="glyph4" />
+		<target x="350" y="140" ref="glyph10a" />			
 	</arc>
 	<arc class="consumption">
-		<source x="480" y="140" ref="glyph5" />
-		<target x="580" y="140" ref="glyph11a" />			
+		<source x="510" y="140" ref="glyph5" />
+		<target x="570" y="140" ref="glyph11a" />			
 	</arc>
 	<arc class="consumption">
-		<source x="530" y="230" ref="glyph6" />
-		<target x="580" y="140" ref="glyph11a" />			
+		<source x="540" y="201" ref="glyph6" />
+		<target x="570" y="140" ref="glyph11a" />			
 	</arc>
 
 	<arc class="production">
-		<source x="170" y="140" ref="glyph9b" />
-		<target x="230" y="230" ref="glyph3" />			
+		<source x="180" y="140" ref="glyph9b" />
+		<target x="214" y="203" ref="glyph3" />			
 	</arc>
 	<arc class="production">
-		<source x="170" y="140" ref="glyph9b" />
-		<target x="280" y="140" ref="glyph4" />			
+		<source x="180" y="140" ref="glyph9b" />
+		<target x="250" y="140" ref="glyph4" />			
 	</arc>
 	<arc class="production">
-		<source x="380" y="140" ref="glyph10b" />
-		<target x="480" y="140" ref="glyph5" />			
+		<source x="390" y="140" ref="glyph10b" />
+		<target x="450" y="140" ref="glyph5" />			
 	</arc>
 	<arc class="production">
-		<source x="600" y="140" ref="glyph11b" />
-		<target x="660" y="230" ref="glyph7" />			
+		<source x="610" y="140" ref="glyph11b" />
+		<target x="644" y="203" ref="glyph7" />			
 	</arc>
 	<arc class="production">
-		<source x="600" y="140" ref="glyph11b" />
-		<target x="690" y="140" ref="glyph8" />			
+		<source x="610" y="140" ref="glyph11b" />
+		<target x="660" y="140" ref="glyph8" />			
 	</arc>
 
 </sbgn>

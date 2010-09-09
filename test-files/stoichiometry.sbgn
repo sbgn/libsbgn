@@ -12,9 +12,9 @@
 </glyph>
 
 <glyph class="process" orientation="horizontal" id="pn1">
-	<bbox x="170" y="70" w="24" h="24"/>
-	<port x="170" y="82" id="pn1.1"/>
-	<port x="184" y="82" id="pn1.2"/>
+	<bbox x="170" y="70" w="20" h="20"/>
+	<port x="160" y="80" id="pn1.1"/>
+	<port x="200" y="80" id="pn1.2"/>
 </glyph>
 
 <arc class="consumption">
@@ -22,8 +22,8 @@
 		<label text="2"/>
 		<bbox x="140" y="60" w="20" h="16"/>
 	</glyph>
-	<source x="70" y="150" ref="glyph1" />
-	<target x="148" y="180" ref="pn1.1" />
+	<source x="110" y="80" ref="glyph1" />
+	<target x="160" y="80" ref="pn1.1" />
 </arc>
 
 <arc class="production">
@@ -31,8 +31,8 @@
 		<label text="1"/>
 		<bbox x="200" y="60" w="20" h="16"/>
 	</glyph>
-	<source x="172" y="180" ref="pn1.2" />			
-	<target x="330" y="180" ref="glyph2" />
+	<source x="200" y="80" ref="pn1.2" />			
+	<target x="250" y="80" ref="glyph2" />
 </arc>
 
 </sbgn>
