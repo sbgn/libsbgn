@@ -11,7 +11,7 @@
 </glyph>
 
 <glyph class="submap" id="glyph2">
-	<label text="MAPK cascade"/>
+	<label text="MAPK&#xA;cascade"/>
 	<bbox x="220" y="40" w="220" h="120"/>
 	<!--
 	<glyph class="submap element" id="glyph5">
@@ -29,19 +29,21 @@
 	<label text="ERK"/>
 	<bbox x="520" y="70" w="100" h="60"/>
 	<glyph class="state variable" id="glyph7">
-		<label text="active"/>
+		<label text="2P"/>
 		<bbox x="530" y="120" w="30" h="20"/>
 	</glyph>
 </glyph>
 
 <arc class="equivalence arc">
 	<source x="170" y="100" ref="glyph1" />
-	<target x="220" y="100" ref="glyph2" <!-- TODO: glyph5 -->/>
+	<!-- TODO: glyph5 -->
+	<target x="220" y="100" ref="glyph2" />
 </arc>
 
 <arc class="equivalence arc">
 	<source x="520" y="100" ref="glyph3" />
-	<target x="440" y="100" ref="glyph2" <!-- TODO: glyph6 -->/>
+	<!-- TODO: glyph6 -->
+	<target x="440" y="100" ref="glyph2" />
 </arc>
 
 </sbgn>
