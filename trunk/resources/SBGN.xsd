@@ -71,7 +71,14 @@
 						<!-- The font and fontsize attributes are just examples,
 						more font attributes will probably be added in the future -->
 						<xsd:attribute name="font" type="xsd:string" use="optional"/>
-						<xsd:attribute name="fontsize" type="xsd:float" use="optional"/>						
+						<xsd:attribute name="fontsize" type="xsd:float" use="optional"/>
+						<xsd:attribute name="role" use="optional">
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:enumeration value="clone marker"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:attribute>
 					</xsd:complexType>
 				</xsd:element>
 				<xsd:element ref="sbgn-pd:bbox" minOccurs="1" maxOccurs="1"/>
