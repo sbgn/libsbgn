@@ -41,7 +41,7 @@
 	<label text="LABEL">
         <bbox x="0" y="20" w="210" h="80"/>
 	</label>
-    <label text="marker">
+    <label role="clone marker" text="marker">
         <bbox x="0" y="80" w="210" h="40"/>
     </label> 
 	<bbox x="440" y="20" w="210" h="120"/>
