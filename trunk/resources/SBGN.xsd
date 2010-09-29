@@ -52,38 +52,57 @@
 
 	<xsd:element name="glyph">
 		<xsd:complexType>
-			<xsd:sequence>
-				<!-- Label is optional. You should not define a label for process nodes. -->
-				<xsd:element name="label" minOccurs="0" maxOccurs="unbounded">
-					<xsd:complexType>
-						<xsd:sequence>
-							<!-- a bbox on a label is optional. In case that there is no bbox defined,
-							the bbox of the parent glyph is inherited.
-							The label should be drawn centered horizontally and vertically 
-							within  this bounding box
-							!-->
-							<xsd:element ref="sbgn-pd:bbox" minOccurs="0" maxOccurs="1"/>
-						</xsd:sequence>
-						<!-- Multi-line labels are allowed. 
-							Line breaks are encoded as &#xA;
-							as specified by the XML standard. -->
-						<xsd:attribute name="text" type="xsd:string" use="required"/>						
-						<!-- The font and fontsize attributes are just examples,
-						more font attributes will probably be added in the future -->
-						<xsd:attribute name="font" type="xsd:string" use="optional"/>
-						<xsd:attribute name="fontsize" type="xsd:float" use="optional"/>
-						<xsd:attribute name="role" use="optional">
-							<xsd:simpleType>
-								<xsd:restriction base="xsd:string">
-									<xsd:enumeration value="clone marker"/>
-								</xsd:restriction>
-							</xsd:simpleType>
-						</xsd:attribute>
-					</xsd:complexType>
-				</xsd:element>
+			<xsd:sequence>			
+			
+				<xsd:choice> <!-- Either some label(s), or a state element [state variables only] --> 
+					<!-- Label is optional. You should not define a label for process nodes. -->
+					<xsd:element name="label" minOccurs="0" maxOccurs="unbounded">
+						<xsd:complexType>
+							<xsd:sequence>
+								<!-- a bbox on a label is optional.
+								In case that there is no bbox defined,
+								the bbox of the parent glyph is inherited.
+								The label should be drawn centered horizontally and vertically 
+								within  this bounding box
+								!-->
+								<xsd:element ref="sbgn-pd:bbox" minOccurs="0" maxOccurs="1"/>
+							</xsd:sequence>
+							<!-- Multi-line labels are allowed. 
+								Line breaks are encoded as &#xA;
+								as specified by the XML standard. -->
+							<xsd:attribute name="text" type="xsd:string" use="required"/>						
+							<!-- The font and fontsize attributes are just examples,
+							more font attributes will probably be added in the future -->
+							<xsd:attribute name="font" type="xsd:string" use="optional"/>
+							<xsd:attribute name="fontsize" type="xsd:float" use="optional"/>
+							<xsd:attribute name="role" use="optional">
+								<xsd:simpleType>
+									<xsd:restriction base="xsd:string">
+										<xsd:enumeration value="clone marker"/>
+									</xsd:restriction>
+								</xsd:simpleType>
+							</xsd:attribute>
+						</xsd:complexType>
+					</xsd:element>
+					<!-- State should only be used for state variables. It then replaces the label -->
+					<xsd:element name="state" minOccurs="0" maxOccurs="1">
+						<xsd:complexType>
+							<!-- value can be either from a predefined set of string (P, S, etc.)
+							which correspond to specific SBO terms, or any arbitrary string -->
+							<xsd:attribute name="value" type="xsd:string" use="required"/>	
+							<!-- variable is required
+							when there is more than one state variable on a given EPN -->
+							<xsd:attribute name="variable" type="xsd:string" use="optional"/>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:choice>
+								
+				<!-- Bounding box is mandatory and unique: exactly one per glyph -->
 				<xsd:element ref="sbgn-pd:bbox" minOccurs="1" maxOccurs="1"/>
+
 				<!-- subnodes are for states and units of information -->
 				<xsd:element ref="sbgn-pd:glyph" minOccurs="0" maxOccurs="unbounded"/>
+
 				<!-- ports are necessary for process nodes, but we may decide to
 					use them also for other glyph types in the future, to help
 					routing arcs -->
@@ -98,6 +117,7 @@
 					</xsd:complexType>
 				</xsd:element>
 			</xsd:sequence>
+
 			<xsd:attribute name="class" default="unspecified entity">
 				<xsd:simpleType>
 					<xsd:restriction base="xsd:string">
