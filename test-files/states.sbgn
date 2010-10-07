@@ -38,24 +38,24 @@
 		<port x="344" y="180" id="glyph5b"/>
 	</glyph>
 
-	<arc class="equivalence arc">
-		<source x="200" y="50" ref="glyph1" />
-		<target x="270" y="50" ref="glyph2" />			
+	<arc class="equivalence arc" source="glyph1" target="glyph2">
+		<start x="200" y="50" />
+		<end x="270" y="50" />			
 	</arc>
 	
-	<arc class="catalysis">
-		<source x="320" y="86" ref="glyph2" />		
-		<target x="320" y="168" ref="glyph5" />
+	<arc class="catalysis" source="glyph2" target="glyph5">
+		<start x="320" y="86" />		
+		<end x="320" y="168" />
 	</arc>
 
-	<arc class="consumption">
-		<source x="220" y="180" ref="glyph3" />
-		<target x="296" y="180" ref="glyph5a" />
+	<arc class="consumption" source="glyph3" target="glyph5a">
+		<start x="220" y="180" />
+		<end x="296" y="180" />
 	</arc>
 
-	<arc class="production" >
-		<source x="344" y="180" ref="glyph5b" />
-		<target x="400" y="180" ref="glyph4" />			
+	<arc class="production" source="glyph5b" target="glyph4">
+		<start x="344" y="180" />
+		<end x="400" y="180" />			
 	</arc>
 
 </sbgn>

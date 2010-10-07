@@ -20,19 +20,19 @@
 		<port x="60" y="170" id="pn1.2"/>
 	</glyph>
 
-	<arc class="production">
-		<source x="60" y="130" ref="pn1.1" />
-		<target x="60" y="80" ref="glyph1" />
+	<arc class="production" source="pn1.1" target="glyph1">
+		<start x="60" y="130" />
+		<end x="60" y="80" />
 	</arc>
 	
-	<arc class="production">
-		<source x="60" y="170" ref="pn1.2" />			
-		<target x="60" y="220" ref="glyph2" />
+	<arc class="production" source="pn1.2" target="glyph2">
+		<start x="60" y="170" />			
+		<end x="60" y="220" />
 	</arc>
 	
-	<arc class="catalysis">
-		<source x="150" y="150" ref="glyph3" />
-		<target x="70" y="150" ref="pn1" />			
+	<arc class="catalysis" source="glyph3" target="pn1">
+		<start x="150" y="150" />
+		<end x="70" y="150" />			
 	</arc>
 
 </sbgn>

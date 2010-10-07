@@ -12,12 +12,12 @@
         <label text="Protein"/>
         <bbox x="16" y="50" w="108" h="60"/>
     </glyph>
-    <arc class="production">
-        <source x="224" y="80" ref="glyph2.2"/>
-        <target x="270" y="80" ref="glyph1"/>
+    <arc class="production" source="glyph2.2" target="glyph1">
+        <start x="224" y="80" />
+        <end x="270" y="80" />
     </arc>
-    <arc class="consumption">
-        <source x="124" y="80" ref="glyph3"/>
-        <target x="176" y="80" ref="glyph2.1"/>
+    <arc class="consumption" source="glyph3" target="glyph2.1">
+        <start x="124" y="80" />
+        <end x="176" y="80" />
     </arc>
 </sbgn>

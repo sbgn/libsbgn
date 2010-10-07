@@ -34,16 +34,16 @@
 	</glyph>
 </glyph>
 
-<arc class="equivalence arc">
-	<source x="170" y="100" ref="glyph1" />
+<arc class="equivalence arc" source="glyph1" target="glyph2">
+	<start x="170" y="100" />
 	<!-- TODO: glyph5 -->
-	<target x="220" y="100" ref="glyph2" />
+	<end x="220" y="100" />
 </arc>
 
-<arc class="equivalence arc">
-	<source x="520" y="100" ref="glyph3" />
+<arc class="equivalence arc" source="glyph3" target="glyph2">
+	<start x="520" y="100" />
 	<!-- TODO: glyph6 -->
-	<target x="440" y="100" ref="glyph2" />
+	<end x="440" y="100" />
 </arc>
 
 </sbgn>
