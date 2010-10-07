@@ -36,38 +36,11 @@
 
 	<xsd:element name="glyph">
 		<xsd:complexType>
-			<xsd:sequence>			
+			<xsd:sequence>
 			
 				<xsd:choice> <!-- Either some label(s), or a state element [state variables only] --> 
 					<!-- Label is optional. You should not define a label for process nodes. -->
-					<xsd:element name="label" minOccurs="0" maxOccurs="unbounded">
-						<xsd:complexType>
-							<xsd:sequence>
-								<!-- a bbox on a label is optional.
-								In case that there is no bbox defined,
-								the bbox of the parent glyph is inherited.
-								The label should be drawn centered horizontally and vertically 
-								within  this bounding box
-								!-->
-								<xsd:element ref="sbgn-pd:bbox" minOccurs="0" maxOccurs="1"/>
-							</xsd:sequence>
-							<!-- Multi-line labels are allowed. 
-								Line breaks are encoded as &#xA;
-								as specified by the XML standard. -->
-							<xsd:attribute name="text" type="xsd:string" use="required"/>						
-							<!-- The font and fontsize attributes are just examples,
-							more font attributes will probably be added in the future -->
-							<xsd:attribute name="font" type="xsd:string" use="optional"/>
-							<xsd:attribute name="fontsize" type="xsd:float" use="optional"/>
-						</xsd:complexType>
-					</xsd:element>
-					<!-- Clone should only be used for clone marker. -->
-					<xsd:element name="clone" minOccurs="0" maxOccurs="1">
-						<xsd:complexType>
-							<xsd:attribute name="text" type="xsd:string" use="optional"/>	
-						</xsd:complexType>
-					</xsd:element>
-					
+					<xsd:element ref="sbgn-pd:label" minOccurs="0" maxOccurs="1"/>
 					<!-- State should only be used for state variables. It then replaces the label -->
 					<xsd:element name="state" minOccurs="0" maxOccurs="1">
 						<xsd:complexType>
@@ -80,6 +53,15 @@
 						</xsd:complexType>
 					</xsd:element>
 				</xsd:choice>
+
+				<!-- Clone should only be used for clone marker. -->
+				<xsd:element name="clone" minOccurs="0" maxOccurs="1">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element ref="sbgn-pd:label" minOccurs="0" maxOccurs="1"/>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
 								
 				<!-- Bounding box is mandatory and unique: exactly one per glyph -->
 				<xsd:element ref="sbgn-pd:bbox" minOccurs="1" maxOccurs="1"/>
@@ -242,6 +224,28 @@
 	<xsd:element name="point">
 		<xsd:complexType>
 			<xsd:attributeGroup ref="sbgn-pd:PointAttributes"/>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="label">
+		<xsd:complexType>
+			<xsd:sequence>
+				<!-- a bbox on a label is optional.
+				In case that there is no bbox defined,
+				the bbox of the parent glyph is inherited.
+				The label should be drawn centered horizontally and vertically 
+				within  this bounding box
+				!-->
+				<xsd:element ref="sbgn-pd:bbox" minOccurs="0" maxOccurs="1"/>
+			</xsd:sequence>
+			<!-- Multi-line labels are allowed. 
+				Line breaks are encoded as &#xA;
+				as specified by the XML standard. -->
+			<xsd:attribute name="text" type="xsd:string" use="required"/>						
+			<!-- The font and fontsize attributes are just examples,
+			more font attributes will probably be added in the future -->
+			<xsd:attribute name="font" type="xsd:string" use="optional"/>
+			<xsd:attribute name="fontsize" type="xsd:float" use="optional"/>
 		</xsd:complexType>
 	</xsd:element>
 
