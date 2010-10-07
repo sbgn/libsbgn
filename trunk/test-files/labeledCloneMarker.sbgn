@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sbgn xmlns="http://sbgn.org/libsbgn/pd/0.1">
 
-<glyph class="macromolecule" id="glyph1" clone="true">
+<glyph class="macromolecule" id="glyph1">
 	<label text="LABEL">
         <bbox x="0" y="20" w="210" h="80"/>
 	</label>
-    <label role="clone marker" text="marker">
-        <bbox x="0" y="80" w="210" h="40"/>
-    </label> 
+	<clone>
+		<label text="marker">
+			<bbox x="0" y="80" w="210" h="40"/>
+		</label>
+	</clone>
 	<bbox x="0" y="20" w="210" h="120"/>
 	<glyph class="unit of information" id="glyph10">
 		<label text="INFO"/>
@@ -19,13 +21,15 @@
 	</glyph>
 </glyph>
 
-<glyph class="nucleic acid feature" id="glyph2" clone="true">
+<glyph class="nucleic acid feature" id="glyph2">
 	<label text="LABEL">
         <bbox x="0" y="20" w="210" h="80"/>
 	</label>
-    <label role="clone marker" text="marker">
-        <bbox x="0" y="80" w="210" h="40"/>
-    </label> 
+	<clone>
+		<label text="marker">
+			<bbox x="0" y="80" w="210" h="40"/>
+		</label> 
+	</clone>
 	<bbox x="220" y="20" w="210" h="120"/>
 	<glyph class="unit of information" id="glyph12">
 		<label text="INFO"/>
@@ -37,13 +41,15 @@
 	</glyph>
 </glyph>
 
-<glyph class="macromolecule multimer" id="glyph3" clone="true">
+<glyph class="macromolecule multimer" id="glyph3">
 	<label text="LABEL">
         <bbox x="0" y="20" w="210" h="80"/>
 	</label>
-    <label role="clone marker" text="marker">
-        <bbox x="0" y="80" w="210" h="40"/>
-    </label> 
+	<clone>
+		<label text="marker">
+			<bbox x="0" y="80" w="210" h="40"/>
+		</label> 
+	</clone>
 	<bbox x="440" y="20" w="210" h="120"/>
 	<glyph class="unit of information" id="glyph14">
 		<label text="N:5"/>
