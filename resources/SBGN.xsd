@@ -60,15 +60,15 @@
 							more font attributes will probably be added in the future -->
 							<xsd:attribute name="font" type="xsd:string" use="optional"/>
 							<xsd:attribute name="fontsize" type="xsd:float" use="optional"/>
-							<xsd:attribute name="role" use="optional">
-								<xsd:simpleType>
-									<xsd:restriction base="xsd:string">
-										<xsd:enumeration value="clone marker"/>
-									</xsd:restriction>
-								</xsd:simpleType>
-							</xsd:attribute>
 						</xsd:complexType>
 					</xsd:element>
+					<!-- Clone should only be used for clone marker. -->
+					<xsd:element name="clone" minOccurs="0" maxOccurs="1">
+						<xsd:complexType>
+							<xsd:attribute name="text" type="xsd:string" use="optional"/>	
+						</xsd:complexType>
+					</xsd:element>
+					
 					<!-- State should only be used for state variables. It then replaces the label -->
 					<xsd:element name="state" minOccurs="0" maxOccurs="1">
 						<xsd:complexType>
@@ -155,7 +155,6 @@
 				</xsd:simpleType>
 			</xsd:attribute>
 			<xsd:attribute name="id" type="xsd:ID" use="required" />
-			<xsd:attribute name="clone" type="xsd:boolean" use="optional" default="false" />
 		</xsd:complexType>
 	</xsd:element>
 
