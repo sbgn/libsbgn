@@ -19,8 +19,7 @@
 
 		bbox can also be (optionally) added to labels-->
 		<xsd:complexType>
-			<xsd:attribute name="x" type="xsd:float" use="required"/>
-			<xsd:attribute name="y" type="xsd:float" use="required"/>					
+			<xsd:attributeGroup ref="sbgn-pd:PointAttributes"/>
 			<xsd:attribute name="w" type="xsd:float" use="required"/>					
 			<xsd:attribute name="h" type="xsd:float" use="required"/>					
 		</xsd:complexType>
@@ -189,36 +188,23 @@
 				-->
 				<xsd:element name="start" minOccurs="1" maxOccurs="1">
 					<xsd:complexType>
-						<xsd:attribute name="x" type="xsd:float" use="required"/>
-						<xsd:attribute name="y" type="xsd:float" use="required"/>	
+						<xsd:attributeGroup ref="sbgn-pd:PointAttributes"/>
 					</xsd:complexType>
 				</xsd:element>
 				<xsd:element name="next" minOccurs="0" maxOccurs="unbounded">
 					<xsd:complexType>
 						<xsd:sequence>
-							<xsd:element name="point" minOccurs="0" maxOccurs="2">
-								<xsd:complexType>
-									<xsd:attribute name="x" type="xsd:float" use="required"/>
-									<xsd:attribute name="y" type="xsd:float" use="required"/>	
-								</xsd:complexType>
-							</xsd:element>
+							<xsd:element ref="sbgn-pd:point" minOccurs="0" maxOccurs="2"/>
 						</xsd:sequence>
-						<xsd:attribute name="x" type="xsd:float" use="required"/>
-						<xsd:attribute name="y" type="xsd:float" use="required"/>	
+						<xsd:attributeGroup ref="sbgn-pd:PointAttributes"/>
 					</xsd:complexType>
 				</xsd:element>
 				<xsd:element name="end" minOccurs="1" maxOccurs="1">
 					<xsd:complexType>
 						<xsd:sequence>
-							<xsd:element name="point" minOccurs="0" maxOccurs="2">
-								<xsd:complexType>
-									<xsd:attribute name="x" type="xsd:float" use="required"/>
-									<xsd:attribute name="y" type="xsd:float" use="required"/>	
-								</xsd:complexType>
-							</xsd:element>
+							<xsd:element ref="sbgn-pd:point" minOccurs="0" maxOccurs="2"/>
 						</xsd:sequence>
-						<xsd:attribute name="x" type="xsd:float" use="required"/>
-						<xsd:attribute name="y" type="xsd:float" use="required"/>	
+						<xsd:attributeGroup ref="sbgn-pd:PointAttributes"/>
 					</xsd:complexType>
 				</xsd:element>
 			</xsd:sequence>
@@ -245,6 +231,12 @@
 			<xsd:attribute name="source" type="xsd:IDREF" use="required"/>
 			<!-- ref may refer to the id of a glyph or the id of a port on a glyph -->
 			<xsd:attribute name="target" type="xsd:IDREF" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="point">
+		<xsd:complexType>
+			<xsd:attributeGroup ref="sbgn-pd:PointAttributes"/>
 		</xsd:complexType>
 	</xsd:element>
 
