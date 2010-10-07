@@ -38,17 +38,17 @@
 		<port x="310" y="280" id="pn1.2"/>
 	</glyph>
 	
-	<arc class="production">
-		<source x="310" y="280" ref="pn1.2" />			
-		<target x="360" y="280" ref="glyph2" />
+	<arc class="production" source="pn1.2" target="glyph2">
+		<start x="310" y="280" />			
+		<end x="360" y="280" />
 	</arc>
-	<arc class="consumption">
-		<source x="220" y="280" ref="glyph4" />
-		<target x="270" y="280" ref="pn1.1" />			
+	<arc class="consumption" source="glyph4" target="pn1.1">
+		<start x="220" y="280" />
+		<end x="270" y="280" />			
 	</arc>
-	<arc class="consumption">
-		<source x="233" y="190" ref="glyph5" />
-		<target x="270" y="280" ref="pn1.1" />			
+	<arc class="consumption" source="glyph5" target="pn1.1">
+		<start x="233" y="190" />
+		<end x="270" y="280" />			
 	</arc>
 
 </sbgn>

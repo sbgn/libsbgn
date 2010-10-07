@@ -23,27 +23,27 @@
 		<port x="184" y="180" id="pn1.2"/>
 	</glyph>
 
-	<arc class="consumption">
-		<source x="90" y="270" ref="glyph1" />
-		<segment x="70" y="270"/>
-		<segment x="70" y="180"/>
-		<target x="136" y="180" ref="pn1.1" />
+	<arc class="consumption" source="glyph1" target="pn1.1">
+		<start x="90" y="270" />
+		<next x="70" y="270"/>
+		<next x="70" y="180"/>
+		<end x="136" y="180" />
 	</arc>
 
-	<arc class="catalysis">
-		<source x="250" y="80" ref="glyph3" />
-		<segment x="250" y="50"/>
-		<segment x="160" y="50"/>
-		<target x="160" y="168" ref="pn1" />		
+	<arc class="catalysis" source="glyph3" target="pn1">
+		<start x="250" y="80" />
+		<next x="250" y="50"/>
+		<next x="160" y="50"/>
+		<end x="160" y="168" />		
 	</arc>
 
-	<arc class="production" >
-		<source x="184" y="180" ref="pn1.2" />
-		<segment x="190" y="180"/>
-		<segment x="190" y="240"/>
-		<segment x="240" y="240"/>
-		<segment x="240" y="180"/>
-		<target x="290" y="180" ref="glyph2" />
+	<arc class="production" source="pn1.2" target="glyph2">
+		<start x="184" y="180" />
+		<next x="190" y="180"/>
+		<next x="190" y="240"/>
+		<next x="240" y="240"/>
+		<next x="240" y="180"/>
+		<end x="290" y="180" />
 	</arc>
 
 </sbgn>
