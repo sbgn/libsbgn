@@ -131,9 +131,11 @@
 						<xsd:enumeration value="and"/>
 						<xsd:enumeration value="or"/>
 						<xsd:enumeration value="not"/>
-						<!-- Subnode classes -->
+						<!-- Subglyph on glyph classes -->
 						<xsd:enumeration value="state variable"/>
 						<xsd:enumeration value="unit of information"/>
+						<!-- Subglyph on arc classes -->
+						<xsd:enumeration value="stoichiometry"/>
 						<!-- NB Arc classes are in a separate enumeration -->
 					</xsd:restriction>
 				</xsd:simpleType>
@@ -160,6 +162,9 @@
 	<xsd:element name="arc">
 		<xsd:complexType>
 			<xsd:sequence>
+				<!-- subnodes are for stoichiometry markers, no more than one per arc -->
+				<xsd:element ref="sbgn-pd:glyph" minOccurs="0" maxOccurs="1"/>
+				
 				<!-- an arc has one source, and one target
 					which reference either a glyph or a glyph port
 
