@@ -25,7 +25,7 @@ Ant script to validate the SBGNML test files
 	
 	<target name="schematron-validate" depends="schema-validate"> 
 		<schematron 
-			schema="${project.dir}src${file.separator}sbgn_pd.sch" 
+			schema="${project.dir}rules${file.separator}sbgn_pd.sch" 
 			format="svrl" 
 			failonerror="false"
 			diagnose="yes"
