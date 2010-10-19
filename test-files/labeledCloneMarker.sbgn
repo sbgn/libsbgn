@@ -16,7 +16,7 @@
 		<bbox x="20" y="0" w="60" h="40"/>
 	</glyph>
 	<glyph class="state variable" id="glyph11">
-		<label text="var@val"/>
+		<state value="var" variable="val"/>
 		<bbox x="100" y="0" w="60" h="40"/>
 	</glyph>
 </glyph>
@@ -36,7 +36,7 @@
 		<bbox x="240" y="0" w="60" h="40"/>
 	</glyph>
 	<glyph class="state variable" id="glyph13">
-		<label text="var@val"/>
+		<state value="var" variable="val"/>
 		<bbox x="320" y="0" w="60" h="40"/>
 	</glyph>
 </glyph>
@@ -56,7 +56,7 @@
 		<bbox x="460" y="0" w="60" h="40"/>
 	</glyph>
 	<glyph class="state variable" id="glyph15">
-		<label text="var@val"/>
+		<state value="var" variable="val"/>
 		<bbox x="540" y="0" w="60" h="40"/>
 	</glyph>
 </glyph>
