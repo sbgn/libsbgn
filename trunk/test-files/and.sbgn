@@ -34,11 +34,11 @@
             <bbox x="123" y="86" w="53" h="18"/>
         </glyph>
         <glyph class="state variable" id="glyph4b">
-            <label text="P@Y701"/>
+            <state value="P" variable="Y701"/>
             <bbox x="80" y="141" w="69" h="28"/>
         </glyph>
         <glyph class="state variable" id="glyph4c">
-            <label text="P@Y727"/>
+            <state value="P" variable="Y727"/>
             <bbox x="150" y="141" w="69" h="28"/>
         </glyph>
     </glyph>
