@@ -96,6 +96,7 @@
 						<xsd:enumeration value="macromolecule multimer"/>
 						<xsd:enumeration value="nucleic acid feature multimer"/>
 						<xsd:enumeration value="complex"/>
+						<xsd:enumeration value="complex multimer"/>
 						<xsd:enumeration value="source and sink"/>
 						<xsd:enumeration value="perturbing agent"/>
 						<!-- Other -->
