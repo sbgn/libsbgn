@@ -5,7 +5,7 @@
 	<label text="LABEL"/>
 	<clone>
 		<label text="marker">
-			<bbox x="0" y="80" w="210" h="40"/>
+			<bbox x="0" y="100" w="210" h="40"/>
 		</label>
 	</clone>
 	<bbox x="0" y="20" w="210" h="120"/>
@@ -23,7 +23,7 @@
 	<label text="LABEL"/>
 	<clone>
 		<label text="marker">
-			<bbox x="0" y="80" w="210" h="40"/>
+			<bbox x="220" y="100" w="210" h="40"/>
 		</label> 
 	</clone>
 	<bbox x="220" y="20" w="210" h="120"/>
@@ -41,7 +41,7 @@
 	<label text="LABEL"/>
 	<clone>
 		<label text="marker">
-			<bbox x="0" y="80" w="210" h="40"/>
+			<bbox x="440" y="100" w="210" h="40"/>
 		</label> 
 	</clone>
 	<bbox x="440" y="20" w="210" h="120"/>
