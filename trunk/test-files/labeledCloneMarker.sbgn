@@ -2,9 +2,7 @@
 <sbgn xmlns="http://sbgn.org/libsbgn/pd/0.1">
 
 <glyph class="macromolecule" id="glyph1">
-	<label text="LABEL">
-        <bbox x="0" y="20" w="210" h="80"/>
-	</label>
+	<label text="LABEL"/>
 	<clone>
 		<label text="marker">
 			<bbox x="0" y="80" w="210" h="40"/>
@@ -22,9 +20,7 @@
 </glyph>
 
 <glyph class="nucleic acid feature" id="glyph2">
-	<label text="LABEL">
-        <bbox x="0" y="20" w="210" h="80"/>
-	</label>
+	<label text="LABEL"/>
 	<clone>
 		<label text="marker">
 			<bbox x="0" y="80" w="210" h="40"/>
@@ -42,9 +38,7 @@
 </glyph>
 
 <glyph class="macromolecule multimer" id="glyph3">
-	<label text="LABEL">
-        <bbox x="0" y="20" w="210" h="80"/>
-	</label>
+	<label text="LABEL"/>
 	<clone>
 		<label text="marker">
 			<bbox x="0" y="80" w="210" h="40"/>
