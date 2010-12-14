@@ -12,6 +12,7 @@
 	<tstamp /> <!-- set ${TODAY} and ${TSTAMP} -->
 	<mkdir dir="build"/>
 	<mkdir dir="gensrc"/>
+	<mkdir dir="../docs"/>
 	<mkdir dir="../dist"/>
   </target>
 
@@ -51,6 +52,18 @@
 	</jar>
   </target>
 
+  <target name="doc" depends="build">
+	<javadoc destdir="../docs">
+<!--			<packageset dir="src/org/sbgn"/> -->
+			<packageset dir="gensrc/org/sbgn/bindings"/>
+			<sourcepath>
+				<pathelement location="src"/>
+				<pathelement location="gensrc"/>
+			</sourcepath>
+	</javadoc>
+
+  </target>
+  
   <target name="clean">
 	<delete dir="build"/>
 	<delete dir="gensrc"/>

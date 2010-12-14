@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<project name="libsbgn" default="build" basedir=".">
+<project name="libsbgn" default="doc" basedir=".">
   
   <property name="libsbgn.version" value="0.1"/>
   
@@ -18,6 +18,10 @@
 
   <target name="build">
 	<iterate target="build"/>
+  </target>
+
+  <target name="doc" depends="build">
+	<iterate target="doc"/>
   </target>
 
   <target name="dist">
