@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sbgn xmlns="http://sbgn.org/libsbgn/pd/0.1">
-
+  <map>
 	<glyph class="simple chemical" id="glyph1">
 		<label text="Ethanol"/> <!-- fontsize="" etc -->
 		<!-- Line breaks are allowed in the text attribute -->
@@ -60,4 +60,5 @@
 		<start x="95" y="202" />
 		<end x="136" y="180" />			
 	</arc>
+  </map>
 </sbgn>
