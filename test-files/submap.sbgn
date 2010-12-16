@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sbgn xmlns="http://sbgn.org/libsbgn/pd/0.1">
+<map>
 
 <glyph class="macromolecule" id="glyph1">
 	<label text="RAS"/>
@@ -46,4 +47,5 @@
 	<end x="440" y="100" />
 </arc>
 
+</map>
 </sbgn>

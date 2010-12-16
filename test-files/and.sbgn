@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sbgn xmlns="http://sbgn.org/libsbgn/pd/0.1">
-
+  <map>
     <glyph class="nucleic acid feature" id="glyph0">
         <label text="IRF1"/>
         <bbox x="440" y="330" w="120" h="60"/>
@@ -96,5 +96,5 @@
         <start x="260" y="188" />
         <end x="370" y="210" />
     </arc>
-	
+  </map>
 </sbgn>

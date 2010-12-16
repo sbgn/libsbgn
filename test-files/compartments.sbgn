@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sbgn xmlns="http://sbgn.org/libsbgn/pd/0.1">
-
+  <map>
 	<glyph class="compartment" id="glyph1">
 		<label text="extracellular"/>
 		<bbox x="90" y="70" w="440" h="140"/>
@@ -50,5 +50,5 @@
 		<start x="233" y="190" />
 		<end x="270" y="280" />			
 	</arc>
-
+  </map>
 </sbgn>
