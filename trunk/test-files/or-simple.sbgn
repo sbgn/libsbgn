@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sbgn xmlns="http://sbgn.org/libsbgn/pd/0.1">
-
+<map>
 <glyph class="macromolecule" id="glyph1">
 	<label text="Enzym1"/>
 	<bbox x="56" y="50" w="108" h="60"/>
@@ -57,5 +57,5 @@
 	<start x="214" y="290" />
 	<end x="260" y="290" />
 </arc>
-
+</map>
 </sbgn>

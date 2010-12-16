@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sbgn xmlns="http://sbgn.org/libsbgn/pd/0.1">
+  <map>
 	<glyph class="macromolecule" id="glyph1">
  		<label text="X" />
  		<bbox x="42" y="17" w="60" h="100"/>
@@ -20,4 +21,5 @@
 			<bbox x="76" y="78" w="50" h="25"/>
 		</glyph>
  	</glyph>
+  </map>
 </sbgn>

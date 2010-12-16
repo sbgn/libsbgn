@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sbgn xmlns="http://sbgn.org/libsbgn/pd/0.1">
-
+  <map>
 	<glyph class="macromolecule" id="glyph1">
 		<label text="Monomer"/>
 		<bbox x="326" y="30" w="108" h="60"/>
@@ -30,5 +30,5 @@
 		<start x="256" y="60" />			
 		<end x="226" y="60" />
 	</arc>
-
+  </map>
 </sbgn>
