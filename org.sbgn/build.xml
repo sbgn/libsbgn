@@ -28,7 +28,7 @@
 
   <target name="jaxb" depends="prepare">
 	<xjc schema="${sbgn.xsd}" destdir="gensrc" package="org.sbgn.bindings">
-		<produces dir="${generated-src.dir}" includes="**/*.java" />
+		<produces dir="gensrc" includes="**/*.java" />
 	</xjc>
   </target>
   
@@ -53,9 +53,8 @@
   </target>
 
   <target name="doc" depends="build">
-	<javadoc destdir="../docs">
-<!--			<packageset dir="src/org/sbgn"/> -->
-			<packageset dir="gensrc/org/sbgn/bindings"/>
+	<javadoc packagenames = "org.sbgn.bindings"
+			destdir="../docs">
 			<sourcepath>
 				<pathelement location="src"/>
 				<pathelement location="gensrc"/>
@@ -74,9 +73,6 @@
   </target>
 
   <target name="dist" depends="jar"/>
-
-  	<taskdef resource="checkstyletask.properties"
-			 classpath="build-lib/checkstyle-all-5.0.jar"/>
 			 
 	<target name="test" depends="build">
 		<path id="test.classpath">
@@ -99,15 +95,6 @@
 				</fileset>
 			</batchtest>
 		</junit>
-	</target>
-
-	<target name="checkstyle">
-		<checkstyle config="checks.xml">
-			<fileset dir="src">
-				<include name="**/*.java"/>
-			</fileset>
-			<formatter toFile="${checkstyle.output.file}"/>
-		</checkstyle>	
 	</target>
 
 </project>
