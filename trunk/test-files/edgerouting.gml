@@ -153,6 +153,7 @@ graph [
       outline "#000000"
       Line [
         point [ x 0.0 y 0.0 ]
+        point [ x 184.0 y 180.0 ]
         point [ x 190.0 y 180.0 ]
         point [ x 190.0 y 240.0 ]
         point [ x 240.0 y 240.0 ]

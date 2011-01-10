@@ -10,7 +10,7 @@
         </glyph>
     </glyph>
 	
-    <glyph class="and" id="glyph1">
+    <glyph class="and" id="glyph1" orientation="vertical">
         <bbox x="350" y="230" w="40" h="40"/>
 		<port x="370" y="210" id="glyph1.1"/>
 		<port x="370" y="290" id="glyph1.2"/>
