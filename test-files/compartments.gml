@@ -248,7 +248,7 @@ graph [
     source 4
     target 6
     SBGN [
-      BendIn "220.0;230.0"
+      BendIn "270.0;280.0"
     ]
     graphics [
       fill "#000000"
@@ -274,7 +274,7 @@ graph [
     source 5
     target 6
     SBGN [
-      BendIn "220.0;230.0"
+      BendIn "270.0;280.0"
     ]
     graphics [
       fill "#000000"
@@ -300,7 +300,7 @@ graph [
     source 6
     target 3
     SBGN [
-      BendOut "260.0;230.0"
+      BendOut "310.0;280.0"
     ]
     graphics [
       fill "#000000"

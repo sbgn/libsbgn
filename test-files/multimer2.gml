@@ -32,8 +32,8 @@ graph [
     graphics [
       x 340.0
       y 50.0
-      w 97.0
-      h 49.0
+      w 108.0
+      h 60.0
       fill "#FFFFFF"
       outline "#000000"
       frameThickness 2.0
@@ -41,7 +41,7 @@ graph [
       offX 10
       offY 10
       rounding 15.0
-      type "de.ipk_gatersleben.ag_nw.graffiti.plugins.shapes.MultiNucleicAcidFeatureShape"
+      type "multinucleic"
     ]
     sbgn [
       role "MULTIMERNUCLEICACIDFEATURE"
