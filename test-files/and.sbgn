@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <sbgn xmlns="http://sbgn.org/libsbgn/pd/0.1">
   <map>
     <glyph class="nucleic acid feature" id="glyph0">
@@ -34,7 +34,7 @@
 			<bbox x="60" y="55" w="180" h="140"/>
 							
 			<glyph class="macromolecule" id="glyph4">
-				<label text="STAT1&amp;#945;"/>
+				<label text="STAT1α"/>
 				<bbox x="80" y="95" w="140" h="60"/>
 				<glyph class="unit of information" id="glyph4a">
 					<label text="mt:prot"/>
