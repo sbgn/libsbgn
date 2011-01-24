@@ -15,11 +15,11 @@
 	<label text="MAPK&#xA;cascade"/>
 	<bbox x="220" y="40" w="220" h="120"/>
 	
-	<glyph class="tag"  orientation="right" id="glyph5">
+	<glyph class="terminal"  orientation="right" id="glyph5">
 		<label text="RAS"/>
 		<bbox x="220" y="77" w="80" h="45"/>
 	</glyph>
-	<glyph class="tag"  orientation="left" id="glyph6">
+	<glyph class="terminal"  orientation="left" id="glyph6">
 		<label text="ERK"/>
 		<bbox x="360" y="77" w="80" h="45"/>
 	</glyph>	
