@@ -6,7 +6,7 @@
 	<label text="RAS"/>
 	<bbox x="70" y="70" w="100" h="60"/>
 	<glyph class="state variable" id="glyph4">
-		<label text="active"/>
+		<state value="active"/>
 		<bbox x="90" y="110" w="50" h="30"/>
 	</glyph>
 </glyph>
@@ -30,7 +30,7 @@
 	<label text="ERK"/>
 	<bbox x="520" y="70" w="100" h="60"/>
 	<glyph class="state variable" id="glyph7">
-		<label text="2P"/>
+		<state value="2P"/>
 		<bbox x="530" y="120" w="30" h="20"/>
 	</glyph>
 </glyph>

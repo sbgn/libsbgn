@@ -35,7 +35,7 @@
             <label text="RAF"/>
             <bbox y="140.0" x="480.0" h="60.0" w="100.0"/>
             <glyph id="glyph2a" class="state variable">
-                <label text="P"/>
+    			<state value="P"/>
                 <bbox y="189.0" x="517.5" h="22.0" w="25.0"/>
             </glyph>
         </glyph>
@@ -63,7 +63,7 @@
             <label text="MEK"/>
             <bbox y="380.0" x="650.0" h="60.0" w="100.0"/>
             <glyph id="glyph12a" class="state variable">
-                <label text="2P"/>
+    			<state value="2P"/>
                 <bbox y="429.0" x="684.0" h="22.0" w="32.0"/>
             </glyph>
         </glyph>
@@ -71,7 +71,7 @@
             <label text="ERK"/>
             <bbox y="630.0" x="590.0" h="60.0" w="100.0"/>
             <glyph id="glyph19a" class="state variable">
-                <label text="2P"/>
+    			<state value="2P"/>
                 <bbox y="679.0" x="599.0" h="22.0" w="32.0"/>
             </glyph>
         </glyph>
@@ -83,7 +83,7 @@
             <label text="RAS"/>
             <bbox y="30.0" x="330.0" h="60.0" w="100.0"/>
             <glyph id="glyph1a" class="state variable">
-                <label text="active"/>
+    			<state value="active"/>
                 <bbox y="77.0" x="355.0" h="26.0" w="50.0"/>
             </glyph>
         </glyph>
@@ -95,7 +95,7 @@
             <label text="MEK"/>
             <bbox y="380.0" x="310.0" h="60.0" w="100.0"/>
             <glyph id="glyph24a" class="state variable">
-                <label text="P"/>
+    			<state value="P"/>
                 <bbox y="429.0" x="322.5" h="22.0" w="25.0"/>
             </glyph>
         </glyph>
@@ -149,7 +149,7 @@
             <label text="ERK"/>
             <bbox y="630.0" x="310.0" h="60.0" w="100.0"/>
             <glyph id="glyph21a" class="state variable">
-                <label text="P"/>
+    			<state value="P"/>
                 <bbox y="679.0" x="322.5" h="22.0" w="25.0"/>
             </glyph>
         </glyph>
