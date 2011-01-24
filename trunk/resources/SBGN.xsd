@@ -130,7 +130,7 @@
 		<xsd:annotation>
 			<xsd:documentation>
 				The sbgn element is the root of any SBGNML document.
-				It can contain any number of map elements. [!] Do we keep the map element?
+				Currently each document must contain exactly one map element.
 			</xsd:documentation>
 		</xsd:annotation>
 		<xsd:complexType>
@@ -148,7 +148,6 @@
 				The map element describes a single SBGN PD map.
 				It contains a list of glyph elements and a list of arc elements.
 				These lists can be of any size (possibly empty).
-				 [!] Do we keep the map element?
 			</xsd:documentation>
 		</xsd:annotation>
 		<xsd:complexType>
