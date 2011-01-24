@@ -1,0 +1,322 @@
+\documentclass[11pt]{article}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\usepackage{booktabs}
+\usepackage{topcapt}
+\usepackage{float}
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\title{SBGN Exchange Format Requirements Specification: Draft 1.1}
+\author{Sarah Boyd, ... , ...}
+%\date{}                                           % Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+
+\section{SBGN Graph Parameters}
+\label{graph_params}
+
+The following could be provided as parameters defining the preferred drawing of an SBGN graph:
+
+\begin{itemize}
+\item Location of origin\footnote{As discussed in Auckland (April 2009), different systems use different locations for the origin when drawing (see also discussion about specifying the node location, etc), so this is included here to ensure it is discussed.}: where the origin of the graph is assumed to be with respect to the specification of this graph, for example (0,0) maps to bottom left, or top right.
+\item Preferred size: the preferred size of this graph.
+\item Units: the units being used to describe the sizes in the file.
+\item Label: a label for a graph.
+\end{itemize}
+
+
+
+\section{Process Diagram}
+
+This section outlines the requirements for an exchange format for Process Diagram language of SBGN.
+
+%%%%%%%%%%%  PROCESS DIAGRAM GRAPH %%%%%%%%%%%
+
+%%%%%%%%%%%  ENTITY POOL NODE %%%%%%%%%%%
+\subsection{Entity Pool Node Parameters}
+\label{epn_params}
+
+The requirements for the exchange format for EPNs depends partly on the type of the EPN, although some requirements are universal, and some should be treated as optional.
+
+\subsubsection{Parameters for specific Entity Pool Nodes}
+
+Table \ref{tab:epn_specs} summarises the required and optional parameters needed by EPNs in the SBGN exchange format for Process Diagram.
+
+\begin{table}[H]
+   \centering
+   \topcaption{Summary of exchange format requirements for Entity Pool Nodes} % requires the topcapt package
+   \begin{tabular*}{0.95\textwidth}{ l l l   }
+      \toprule
+      \toprule
+      \textbf{EPN}    		& \textbf{Required} 			&  \textbf{Optional} \\
+     \midrule
+     \midrule
+      Unspecified Entity	& ID				& Colour \\
+					& Node location	& Preferred size \\
+      				      	& Label 			& Label drawn as multiline\\
+      					& Node orientation	&  \\
+     \midrule
+      Simple Chemical		& ID				& Colour \\
+					& Node location	& Preferred size \\
+      				      	& Label 			& Label drawn as multiline\\
+      					& Node orientation	&  \\
+      				       	& Clone marker	& 		 \\
+      					& Multimeric state	&  \\
+      					& Unit of information	&  \\
+     \midrule
+      Macomolecule		& ID				& Colour \\
+					& Node location	& Preferred size \\
+      				      	& Label 			& Label drawn as multiline\\
+      					& Node orientation	&  \\
+      				       	& Clone marker	& 		 \\
+      					& Multimeric state	&  \\
+        					& Unit of information	&  \\
+      					& State variable	&  \\
+   \midrule
+      Nucleid Acid Feature	& ID				& Colour \\
+					& Node location	& Preferred size \\
+      				      	& Label 			& Label drawn as multiline\\
+      					& Node orientation	&  \\
+      				       	& Clone marker	& 		 \\
+      					& Multimeric state	&  \\
+       					& Unit of information	&  \\
+     					& State variable	&  \\
+     \midrule
+      Source/Sink			& ID				& Colour \\
+					& Node location	& Preferred size \\
+      					& Node orientation	&  \\
+     \midrule
+      Tag				& ID				& Colour \\
+					& Node location	& Preferred size \\
+      				      	& Label 			& Label drawn as multiline\\
+      					& Node orientation	&  \\
+     \midrule
+      Observable			& ID				& Colour \\
+					& Node location	& Preferred size \\
+      				      	& Label 			& Label drawn as multiline\\
+      					& Node orientation	&  \\
+     \midrule
+      Orientation			& ID				& Colour \\
+					& Node location	& Preferred size \\
+      				      	& Label 			& Label drawn as multiline\\
+      					& Node orientation	&  \\
+     \bottomrule
+   \end{tabular*}
+   \label{tab:epn_specs}
+\end{table}
+
+The definitions of the required parameters listed in Table \ref{tab:epn_specs} are as follows:
+
+\begin{itemize}
+\item ID: a unique numerical identifier for this entity within the parent PD.
+\item EPN location\footnote{Defining locations is going to be complex, because different systems have different origins.  This is just one suggestion for how to specify this, and also see discussion regarding the preferred graph layout in the \ref{graph_params} section.  Also, defining the centre is not necessarily the best option, however defining the centre of the node will also define the position of the label.}: define the centre of the node relative to the origin of the graph.
+\item Orientation: Whether the EPN is drawn in the horizontal or vertical alignment.
+\item Multimeric state: boolean defining whether this EPN has a multimeric state.
+\item Label: a string defining the label of this node.
+\item Clone marker: defined if the EPN carries a clone marker, see Section \ref{aux_params} for details.
+\item Unit of information: defined for each unit of information carried on the EPN, see Section \ref{aux_params} for details.
+\item State variable: defined for each state variable carried on the EPN, see Section \ref{aux_params} for details.
+\end{itemize}
+
+The definitions of the optional parameters listed in Table \ref{tab:epn_specs} are as follows:
+
+\begin{itemize}
+\item Colour: All EPNs can specify colour as an optional parameter.
+\item Label drawn as multiline: optional parameter specifying where the line is split, if it is split over multiple lines.
+\item Preferred size: the preferred size of this EPN.
+\end{itemize}
+
+%%%%%%%%%%%  AUXILIARY UNITS %%%%%%%%%%%
+\subsection{Auxiliary Units}
+\label{aux_params}
+
+\subsubsection{Parameters for Auxiliary Units}
+
+This section describes parameters that are used to describe Auxiliary Units.
+
+\begin{itemize}
+\item Label \footnote{Point for discussion: the label on a unit of information includes a prefix that has a controlled vocabulary.  Because the prefix is separated from the label name with the colon character ":", it is relatively straightforward for a program that wants to separate the label name and prefix to parse this, rather than requiring that they be specified separately.   Similarly, for the state variable label, which is separated using the "@" character.  This will reduce the amount of text required to specify the exchange document, and removes the need for programs that don't allow users to manipulate these states from having to glue them back together again.
+}: clone markers can carry a label, so should be specified.  To prevent ambiguity and error checking, this should be left as an empty string if no label is defined.
+\item Parent entity \footnote{This actually doesn't have to be defined if the auxiliary unit is defined as part of the object to which it relates, which is probably a much more sensible arrangement.  For example, if a state variable belongs to a macromolecule, and is included within the definition of the macromolecule, then this becomes redundant.  This would also mean that an auxiliary unit can simply be declared within the definition of the "owner" entity, with just a label, which makes defining, parsing, and error checking much simpler.}: the EPN, container or compartment to which this auxiliary unit belongs.
+\end{itemize}
+
+Parameters that can be optionally specified for auxiliary units are:
+
+\begin{itemize}
+\item Location \footnote{Points for discussion: If the location of the auxiliary item is specified, should this be relative to the graph or the parent entity?  Specifying the location of the Auxiliary Unit should probably be optional, because it is something of a stylistic specification.  
+}: Auxiliary Items can optionally specify the original location where it should be drawn.
+\item Colour: Auxiliary Items can specify colour as an optional parameter.
+\item Preferred size: the preferred size of the Auxiliary Item.
+\end{itemize}
+
+%%%%%%%%%%%  Process Nodes %%%%%%%%%%%
+\subsection{Process Nodes}
+\label{procnodes_params}
+
+\subsubsection{Parameters for Process Nodes}
+\label{pn_params}
+
+All Process Nodes (PNs) require definition of the following parameters:
+
+\begin{itemize}
+\item ID: a unique numerical identifier for this entity within the parent PD.
+\item Position \footnote{See also discussion of EPN position in Section \ref{epn_params}}: define the centre of the PN relative to the origin (x=0, y=0) of the graph.
+\end{itemize}
+
+Process Nodes can also optionally define the following parameters:
+\begin{itemize}
+\item Colour: PNs can be optionally coloured.
+\item Preferred size: the preferred size of this PN.
+\item Orientation \footnote{Since orientation of PNs is currently under discussion, it seems that this should be specified as optional, and may be calculated according to the specific style decisions of individual programs}: Whether the PN is drawn in the horizontal or vertical alignment.
+\end{itemize}
+
+%%%%%%%%%%%  CONNECTING ARCS %%%%%%%%%%%
+\subsection{Connecting Arcs}
+\label{connarcs_params}
+
+\subsubsection{Parameters for Connecting Arcs}
+
+Table \ref{tab:epn_specs} summarises the required and optional parameters needed for Connecting Arcs in the SBGN exchange format for Process Diagram.
+
+\begin{table}[H]
+   \centering
+   \topcaption{Summary of exchange format requirements for Connecting Arcs} % requires the topcapt package
+   \begin{tabular*}{0.95\textwidth}{ l l l   }
+      \toprule
+      \toprule
+      \textbf{Connecting Arc}    		& \textbf{Required} 			&  \textbf{Optional} \\
+     \midrule
+     \midrule
+      Consumption		& Source EPN		& Colour	\\
+      					& Target PN		& Preferred path \\
+      				      	& Cardinality 		&  \\
+     \midrule
+      Production			& Source PN		& Colour	\\
+      					& Target EPN		& Preferred path \\
+      				      	& Cardinality 		&  \\
+     \midrule
+      Modulation			& Source EPN		& Colour	\\
+      					& Target PN		& Preferred path \\
+					& ID				& \\
+     \midrule
+      Stimulation			& Source EPN		& Colour	\\
+      					& Target PN		& Preferred path \\
+					& ID				& \\
+     \midrule
+      Catalysis			& Source EPN		& Colour	\\
+      					& Target PN		& Preferred path \\
+					& ID				& \\
+     \midrule
+      Inhibition			& Source EPN		& Colour	\\
+      					& Target PN		& Preferred path \\
+					& ID				& \\
+     \midrule
+      Trigger			& Source EPN		& Colour	\\
+      					& Target PN		& Preferred path \\
+					& ID				& \\
+     \midrule
+      Logic Arc			& Source EPN		& Colour	\\
+      					& Target Logical Operator		& Preferred path \\
+     \midrule
+      Equivalence Arc		& Source EPN		& Colour	\\
+      					& Target Tag		& Preferred path \\
+    \bottomrule
+   \end{tabular*}
+   \label{tab:connarc_specs}
+\end{table}
+
+The definition of the required parameters for Connecting Arcs are:
+
+\begin{itemize}
+\item ID: a unique numerical identifier for this entity within the parent PD.
+\item Source PN: the ID of the PN that is the source to the Connecting Arc.
+\item Target PN: the ID of the PN that is the target of this Connecting Arc.
+\item Source EPN: the ID of the EPN that is the source to the Connecting Arc.
+\item Target EPN: the ID of the EPN that is the target of this Connecting Arc.
+\item Target Logical Operator: the ID of the Logical Operator that is the target of this Connecting Arc.
+\item Target Tag: the ID of the Tag that is the target of this Connecting Arc.
+\end{itemize}
+
+Connecting Arcs can also optionally define the following parameters:
+\begin{itemize}
+\item Colour: Connecting Arcs can be optionally coloured.
+\item Preferred Path: this can be used to specify the path along which the Connecting Arc should be drawn.
+\end{itemize}
+
+%%%%%%%%%%%  Connecting Arcs %%%%%%%%%%%
+\subsection{Logical Operators}
+\label{logical_params}
+
+\subsubsection{Parameters for Logical Operators}
+
+Logical Operators require the following parameters:
+
+\begin{itemize}
+\item Input source: ID of an EPN or logical operator.  Single input for "NOT" operator, multiple inputs for "AND" and "OR" operators.
+\item Output target: the ID of a modulation, stimulation, catalysis, inhibition or trigger arc.
+\item ID: a unique numerical identifier for this entity within the parent PD.
+\end{itemize}
+
+Process Nodes can also optionally define the following parameters:
+\begin{itemize}
+\item Colour: Logical Operators can be optionally coloured.
+\item Preferred size: the preferred size of this Logical Operator.
+\item Orientation \footnote{See footnote relating to discussion about orientation of PNs}: Whether the Logical Operator is drawn in the horizontal or vertical alignment.
+\end{itemize}
+
+%%%%%%%%%%%  COMPARTMENTS %%%%%%%%%%%
+\subsection{Compartments}
+\label{compartment_params}
+
+\begin{table}[H]
+   \centering
+   \topcaption{Summary of exchange format requirements for Compartments} % requires the topcapt package
+   \begin{tabular*}{0.95\textwidth}{ l l l   }
+      \toprule
+      \toprule
+      \textbf{Connecting Arc}    		& \textbf{Required} 			&  \textbf{Optional} \\
+     \midrule
+     \midrule
+      Complex			& Components		& Colour	\\
+  					& Location		& Preferred size \\
+     				      	& Label 			& Label drawn as multiline\\
+       				      	& State variables 	&  \\
+       				      	& Units of information &  \\
+					& ID				& \\
+     \midrule
+      Compartment		& Components		& Colour	\\
+  					& Location		& Preferred size \\
+     				      	& Label 			& Label drawn as multiline\\
+       				      	& Units of information &  \\
+					& ID				& \\
+     \midrule
+      Submap			& Terminals		& Colour	\\
+     				      	& Label 			& Label drawn as multiline\\
+					& ID				& \\
+    \bottomrule
+   \end{tabular*}
+   \label{tab:compartment_specs}
+\end{table}
+
+
+
+
+%%%%%%%%%%%  ABBREVIATIONS %%%%%%%%%%%
+\section{Abbreviations}
+
+Abbreviations used in this document:
+
+\begin{itemize}
+\item EPN: Entity Pool Node
+\item PD: Process Diagram
+\item PN: Process Node
+\item SBGN: Systems Biology Graphical Notation
+\end{itemize}
+
+\end{document}  
