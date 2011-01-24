@@ -10,7 +10,7 @@ import org.xml.sax.SAXException;
 public class ValidationExample
 {
 
-	public static void main (String[] args) throws SAXException, JAXBException
+	public static void main (String[] args) throws JAXBException, SAXException
 	{
 		File xsd = new File ("../resources/SBGN.xsd");
 		File f = new File ("../test-files/adh.sbgn");
