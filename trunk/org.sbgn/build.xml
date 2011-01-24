@@ -54,7 +54,8 @@
 
   <target name="doc" depends="build">
 	<javadoc packagenames = "org.sbgn.bindings"
-			destdir="../docs">
+			destdir="../docs"
+			footer="Generated ${TODAY}">
 			<sourcepath>
 				<pathelement location="src"/>
 				<pathelement location="gensrc"/>
