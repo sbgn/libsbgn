@@ -86,7 +86,7 @@
             <label text="nAChR"/>
             <bbox y="670.0" x="350.0" h="60.0" w="120.0"/>
             <glyph id="glyph20a" class="state variable">
-                <label text="closed"/>
+    			<state value="closed"/>
                 <bbox y="715.0" x="380.0" h="30.0" w="60.0"/>
             </glyph>
         </glyph>
@@ -107,7 +107,7 @@
         <glyph id="glyph38" class="complex">
             <bbox y="1080.0" x="630.0" h="160.0" w="260.0"/>
             <glyph id="glyph38a" class="state variable">
-                <label text="relaxed"/>
+    			<state value="relaxed"/>
                 <bbox y="1225.0" x="726.5" h="30.0" w="67.0"/>
             </glyph>
             <glyph id="glyph29" class="macromolecule">
@@ -173,7 +173,7 @@
             <label text="nAChR"/>
             <bbox y="670.0" x="680.0" h="60.0" w="120.0"/>
             <glyph id="glyph21a" class="state variable">
-                <label text="open"/>
+    			<state value="open"/>
                 <bbox y="716.0" x="714.5" h="28.0" w="51.0"/>
             </glyph>
         </glyph>
@@ -211,7 +211,7 @@
         <glyph id="glyph37" class="complex">
             <bbox y="1080.0" x="170.0" h="120.0" w="260.0"/>
             <glyph id="glyph37a" class="state variable">
-                <label text="tense"/>
+    			<state value="tense"/>
                 <bbox y="1186.0" x="273.0" h="28.0" w="54.0"/>
             </glyph>
             <glyph id="glyph31" class="macromolecule">

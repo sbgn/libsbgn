@@ -10,7 +10,7 @@
 		<label text="RAS" />
 		<bbox x="270" y="20" w="100" h="60"/>
 		<glyph class="state variable" id="glyph2a">
-			<label text="active"/>
+			<state value="active"/>
 			<bbox x="304" y="74" w="32" h="12"/>
 		</glyph>
 	</glyph>
@@ -27,7 +27,7 @@
 		<label text="RAF" />
 		<bbox x="400" y="150" w="100" h="60"/>
 		<glyph class="state variable" id="glyph4a">
-			<label text="P"/>
+			<state value="P"/>
 			<bbox x="444" y="204" w="12" h="12"/>
 		</glyph>
 	</glyph>
