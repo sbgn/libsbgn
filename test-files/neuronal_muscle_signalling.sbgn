@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <sbgn xmlns="http://sbgn.org/libsbgn/pd/0.1">
     <map>
-        <glyph id="glyph0" class="compartment">
-            <label text="synaptic button">
-                <bbox y="58.0" x="478.0" h="23.0" w="144.0"/>
-            </label>
-            <bbox y="50.0" x="90.0" h="320.0" w="920.0"/>
-        </glyph>
         <glyph id="glyph1" class="compartment">
             <label text="synaptic cleft">
                 <bbox y="478.5" x="487.0" h="23.0" w="126.0"/>
             </label>
             <bbox y="320.0" x="50.0" h="340.0" w="1000.0"/>
+        </glyph>
+        <glyph id="glyph0" class="compartment">
+            <label text="synaptic button">
+                <bbox y="58.0" x="478.0" h="23.0" w="144.0"/>
+            </label>
+            <bbox y="50.0" x="90.0" h="320.0" w="920.0"/>
         </glyph>
         <glyph id="glyph2" class="compartment">
             <label text="muscle cytosol">
