@@ -12,7 +12,7 @@
 		</xsd:documentation>
 	</xsd:annotation>
 
-<!-- COMMON TYPES AND ELEMENTS -- COMMON TYPES AND ELEMENTS -- COMMON TYPES AND ELEMENTS -->
+<!-- COMMON TYPES AND ELEMENTS - COMMON TYPES AND ELEMENTS - COMMON TYPES AND ELEMENTS -->
 
 <!-- PointAttributes attribute group -->
 	<xsd:attributeGroup name="PointAttributes">
@@ -111,7 +111,7 @@
 					</xsd:documentation>
 				</xsd:annotation>
 			</xsd:attribute>
-			<xsd:attribute name="fontsize" type="xsd:float" use="optional"/>
+			<xsd:attribute name="fontsize" type="xsd:float" use="optional">
 				<xsd:annotation>
 					<xsd:documentation>
 						The fontsize attribute is expressed in ...? [!] Point, pixel, whatever?
