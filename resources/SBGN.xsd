@@ -135,7 +135,7 @@
 		</xsd:annotation>
 		<xsd:complexType>
 			<xsd:sequence>
-				<xsd:element ref="sbgn-pd:map" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="sbgn-pd:map" minOccurs="1" maxOccurs="1"/>
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>
