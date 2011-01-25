@@ -17,7 +17,10 @@ import org.xml.sax.SAXException;
 public class SbgnUtil
 {
 	/**
-	 * Read an sbgn file (without validating) 
+	 * Read an sbgn file (without validating against the schema)
+	 * @param f file to read from 
+	 * @returns Sbgn data structure
+	 * @throws JAXBException if there is an IO error, or the file is not SBGNML.
 	 */
 	public static Sbgn readFromFile (File f) throws JAXBException
 	{
@@ -30,7 +33,9 @@ public class SbgnUtil
 	}
 	
 	/**
-	 * Check if a given file validates against the given xsd.
+	 * Check if a given file validates against the given xsd. If validation fails,
+	 * an error message is printed to System.err.
+	 * @returns true if the file is valid
 	 * @param f the file to validate
 	 * @param xsd the file containing the schema to validate against
 	 * @throws SAXException if there are problems reading xsd
@@ -68,7 +73,10 @@ public class SbgnUtil
 	}
 	
 	/**
-	 * Write an sbgn file 
+	 * Write sbgn to a file 
+	 * @param sbgn Sbgn data structure to write
+	 * @f output file
+	 * @throws JAXBException if there is an IO error
 	 */
 	public static void writeToFile (Sbgn sbgn, File f) throws JAXBException
 	{
