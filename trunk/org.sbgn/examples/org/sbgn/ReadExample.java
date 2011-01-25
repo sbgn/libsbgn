@@ -20,32 +20,28 @@ public class ReadExample
 		// Now read from "f" and put the result in "sbgn"
 		Sbgn sbgn = SbgnUtil.readFromFile(f);
 
-		// an sbgn file may consist of multiple maps.
-		// we can access a list of them with getMap() 
-		for (Map map : sbgn.getMap())
-		{
-			System.out.println ("Begin of Map");
-
-			// we can get a list of glyphs (nodes) in this map with getGlyph()
-			for (Glyph g : map.getGlyph())
-			{
-				// print the sbgn class of this glyph
-				System.out.print (" Glyph with class " + g.getId());
-				
-				// if there is a label, print it as well
-				if (g.getLabel() != null)
-					System.out.println (", and label " + g.getLabel().getText());
-				else
-					System.out.println (", without label");
-			}
-
-			// we can get a list of arcs (edges) in this map with getArc()
-			for (Arc a : map.getArc())
-			{
-				// print the class of this arc
-				System.out.println (" Arc with class " + a.getClazz());
-			}
+		// map is a container for the glyphs and arcs 
+		Map map = sbgn.getMap();
 		
+		// we can get a list of glyphs (nodes) in this map with getGlyph()
+		for (Glyph g : map.getGlyph())
+		{
+			// print the sbgn class of this glyph
+			System.out.print (" Glyph with class " + g.getId());
+			
+			// if there is a label, print it as well
+			if (g.getLabel() != null)
+				System.out.println (", and label " + g.getLabel().getText());
+			else
+				System.out.println (", without label");
 		}
+
+		// we can get a list of arcs (edges) in this map with getArc()
+		for (Arc a : map.getArc())
+		{
+			// print the class of this arc
+			System.out.println (" Arc with class " + a.getClazz());
+		}
+	
 	}
 }
