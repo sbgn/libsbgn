@@ -304,7 +304,7 @@
 						- Logic Operator Nodes
 						- Sub-glyphs on Nodes (State Variable, Unit of Information)
 						- Sub-glyphs on Arcs (Stoichiometry Label)
-						- Other glyphs (Compartment, Submap, Tag)
+						- Other glyphs (Compartment, Submap, Tag, Terminal)
 					</xsd:documentation>
 				</xsd:annotation>
 				<xsd:simpleType>
@@ -325,6 +325,7 @@
 						<xsd:enumeration value="compartment"/>
 						<xsd:enumeration value="submap"/>
 						<xsd:enumeration value="tag"/>
+						<xsd:enumeration value="terminal"/>
 						<!-- Process Node classes -->
 						<xsd:enumeration value="process"/>
 						<xsd:enumeration value="omitted process"/>
@@ -351,7 +352,7 @@
 						The orientation attribute is used to express how to draw asymmetric glyphs.
 						The orientation of Process Nodes is either horizontal or vertical.
 						It refers to an (imaginary) line connecting the two in/out sides of the PN.
-						The orientation of Tags can be left, right, up or down.
+						The orientation of Tags and Terminals can be left, right, up or down.
 						It refers to the direction the arrow side of the glyph is pointing at.
 					</xsd:documentation>
 				</xsd:annotation>
@@ -360,7 +361,7 @@
 						<!-- horizontal / vertical are for process nodes -->
 						<xsd:enumeration value="horizontal"/>
 						<xsd:enumeration value="vertical"/>
-						<!-- left / right / up / down are for tags -->
+						<!-- left / right / up / down are for tags and terminals -->
 						<xsd:enumeration value="left"/>
 						<xsd:enumeration value="right"/>
 						<xsd:enumeration value="up"/>

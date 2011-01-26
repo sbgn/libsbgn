@@ -34,15 +34,13 @@
 	</glyph>
 </glyph>
 
-<arc class="equivalence arc" source="glyph1" target="glyph2">
+<arc class="equivalence arc" source="glyph1" target="glyph5">
 	<start x="170" y="100" />
-	<!-- TODO: glyph5 -->
 	<end x="220" y="100" />
 </arc>
 
-<arc class="equivalence arc" source="glyph3" target="glyph2">
+<arc class="equivalence arc" source="glyph3" target="glyph6">
 	<start x="520" y="100" />
-	<!-- TODO: glyph6 -->
 	<end x="440" y="100" />
 </arc>
 
