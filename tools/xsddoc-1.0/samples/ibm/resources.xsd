@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xmi="http://www.omg.org/XMI" xmlns="http://www.ibm.com/websphere/appserver/schemas/5.0/resources.xmi" targetNamespace="http://www.ibm.com/websphere/appserver/schemas/5.0/resources.xmi">
+
+<xsd:import namespace="http://www.omg.org/XMI" schemaLocation="xmi20.xsd"/>
+
+<xsd:simpleType name="boolean">
+  <xsd:restriction base="xsd:string">
+    <xsd:enumeration value="true"/>
+    <xsd:enumeration value="false"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="AuthMechanismType">
+  <xsd:restriction base="xsd:string">
+    <xsd:enumeration value="BASIC_PASSWORD"/>
+    <xsd:enumeration value="KERBEROS"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="PurgePolicyKind">
+  <xsd:restriction base="xsd:string">
+    <xsd:enumeration value="FailingConnectionOnly"/>
+    <xsd:enumeration value="EntirePool"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:annotation>
+  <xsd:documentation>PACKAGE: resources</xsd:documentation>
+</xsd:annotation>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: J2EEResourceFactory</xsd:documentation>
+  <xsd:documentation>Configuration for the resources that are bound within the java:comp namespace.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: name</xsd:documentation>
+  <xsd:documentation>The required display name for the resource.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: jndiName</xsd:documentation>
+  <xsd:documentation>The required JNDI name for the resource, including any naming subcontexts. The name is used to link the platform binding information. The binding associates the resources defined the deployment descriptor of the module to the actual (physical) resources bound into JNDI by the platform.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: description</xsd:documentation>
+  <xsd:documentation>An optional description of the resource.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: category</xsd:documentation>
+  <xsd:documentation>An optional category string that can be used to classify or group the resource.</xsd:documentation>
+  <xsd:documentation>ASSOCIATION END: provider</xsd:documentation>
+  <xsd:documentation>The provider that created the resource factory.</xsd:documentation>
+  <xsd:documentation>ASSOCIATION END: propertySet</xsd:documentation>
+  <xsd:documentation>Configuration settings for resource factories.</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="J2EEResourceFactory">
+  <xsd:choice minOccurs="0" maxOccurs="unbounded">
+    <xsd:element name="name" type="xsd:string" nillable="true"/>
+    <xsd:element name="jndiName" type="xsd:string" nillable="true"/>
+    <xsd:element name="description" type="xsd:string" nillable="true"/>
+    <xsd:element name="category" type="xsd:string" nillable="true"/>
+    <xsd:element name="provider" type="J2EEResourceProvider"/>
+    <xsd:element name="propertySet" type="J2EEResourcePropertySet"/>
+    <xsd:element ref="xmi:Extension"/>
+  </xsd:choice>
+  <xsd:attribute ref="xmi:id"/>
+  <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  <xsd:attribute name="name" type="xsd:string" use="optional"/>
+  <xsd:attribute name="jndiName" type="xsd:string" use="optional"/>
+  <xsd:attribute name="description" type="xsd:string" use="optional"/>
+  <xsd:attribute name="category" type="xsd:string" use="optional"/>
+  <xsd:attribute name="provider" type="xsd:IDREFS" use="optional"/>
+</xsd:complexType>
+
+<xsd:element name="J2EEResourceFactory" type="J2EEResourceFactory"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: ConnectionFactory</xsd:documentation>
+  <xsd:documentation>Settings used when creating connections to resources, such as authentication preferences and pool settings.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: authMechanismPreference</xsd:documentation>
+  <xsd:documentation>The value of this attribute specifies which of the defined authentication mechanisms for the corresponding resource adapter applies to this connection factory. For example, if two authentication mechanism entries have been defined for a resource adapter, KerbV5 and Basic Password, this will specify one of those two types. If the authentication mechanism preference specified is not an available authentication mechanism on the corresponding resource adapter, it is ignored. Default=BASIC PASSWORD.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: authDataAlias</xsd:documentation>
+  <xsd:documentation>An alias to an AuthDataEntry (Specified by name).  It is an alias into the AuthDataEntries list in security.xml.  |#</xsd:documentation>
+  <xsd:documentation>ASSOCIATION END: connectionPool</xsd:documentation>
+  <xsd:documentation>An optional set of connection pool settings.</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="ConnectionFactory">
+    <xsd:complexContent>
+        <xsd:extension base="J2EEResourceFactory">
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="authMechanismPreference" type="AuthMechanismType" nillable="true"/>
+            <xsd:element name="authDataAlias" type="xsd:string" nillable="true"/>
+            <xsd:element name="mapping" type="MappingModule"/>
+            <xsd:element name="connectionPool" type="ConnectionPool"/>
+          </xsd:choice>
+          <xsd:attribute name="authMechanismPreference" type="AuthMechanismType" use="optional"/>
+          <xsd:attribute name="authDataAlias" type="xsd:string" use="optional"/>
+        </xsd:extension>
+    </xsd:complexContent>
+</xsd:complexType>
+
+<xsd:element name="ConnectionFactory" type="ConnectionFactory"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: J2EEResourceProperty</xsd:documentation>
+  <xsd:documentation>Properties which are specific to various resource provider implementations.  Typically used to customize or configure settings per resource factory.  A property has a name which is known to the resource provider's implementation, and a string value for the property.  There are additonal attributes of a property such as required and validation expression which can be used by tooling such as administrative consoles to assist the user with configuring properties.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: name</xsd:documentation>
+  <xsd:documentation>Name associated with this property, such as PortNumber or ConnectionURL.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: type</xsd:documentation>
+  <xsd:documentation>Fully qualified Java type of this property, such as java.lang.Integer or java.lang.Byte.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: value</xsd:documentation>
+  <xsd:documentation>Value associated with this property in this property set.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: description</xsd:documentation>
+  <xsd:documentation>Text to describe any bounds or well-defined values for this property.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: required</xsd:documentation>
+  <xsd:documentation>An optional attribute which specifies whether this property is required to have a value.</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="J2EEResourceProperty">
+  <xsd:choice minOccurs="0" maxOccurs="unbounded">
+    <xsd:element name="name" type="xsd:string" nillable="true"/>
+    <xsd:element name="type" type="xsd:string" nillable="true"/>
+    <xsd:element name="value" type="xsd:string" nillable="true"/>
+    <xsd:element name="description" type="xsd:string" nillable="true"/>
+    <xsd:element name="required" type="boolean" nillable="true"/>
+    <xsd:element ref="xmi:Extension"/>
+  </xsd:choice>
+  <xsd:attribute ref="xmi:id"/>
+  <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  <xsd:attribute name="name" type="xsd:string" use="optional"/>
+  <xsd:attribute name="type" type="xsd:string" use="optional"/>
+  <xsd:attribute name="value" type="xsd:string" use="optional"/>
+  <xsd:attribute name="description" type="xsd:string" use="optional"/>
+  <xsd:attribute name="required" type="boolean" use="optional"/>
+</xsd:complexType>
+
+<xsd:element name="J2EEResourceProperty" type="J2EEResourceProperty"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: J2EEResourcePropertySet</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="J2EEResourcePropertySet">
+  <xsd:choice minOccurs="0" maxOccurs="unbounded">
+    <xsd:element name="resourceProperties" type="J2EEResourceProperty"/>
+    <xsd:element ref="xmi:Extension"/>
+  </xsd:choice>
+  <xsd:attribute ref="xmi:id"/>
+  <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+</xsd:complexType>
+
+<xsd:element name="J2EEResourcePropertySet" type="J2EEResourcePropertySet"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: J2EEResourceProvider</xsd:documentation>
+  <xsd:documentation>Resource Provider subtypes define configuration settings for resource provider implementations such as JDBC Providers, JMS Providers, Mail Providers, etc.  A provider is a pluggable implementation for a kind of resource under which resource factories like connections can be configured.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: name</xsd:documentation>
+  <xsd:documentation>The name of the resource provider.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: description</xsd:documentation>
+  <xsd:documentation>An optional description for the resource provider.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: classpath</xsd:documentation>
+  <xsd:documentation>A list of paths or jarfile names which together form the location for the resource provider classes.  </xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: nativepath</xsd:documentation>
+  <xsd:documentation>An optional native path (which may include substitution variables).</xsd:documentation>
+  <xsd:documentation>ASSOCIATION END: propertySet</xsd:documentation>
+  <xsd:documentation>A set of properties describing a resource provider configuration.</xsd:documentation>
+  <xsd:documentation>ASSOCIATION END: factories</xsd:documentation>
+  <xsd:documentation>Configurations for entities that create objects. For example, JMS connection factories produce JMS connections. The factories themselves are created by resource providers, such as JMS providers.</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="J2EEResourceProvider">
+  <xsd:choice minOccurs="0" maxOccurs="unbounded">
+    <xsd:element name="name" type="xsd:string" nillable="true"/>
+    <xsd:element name="description" type="xsd:string" nillable="true"/>
+    <xsd:element name="classpath" type="xsd:string" nillable="true"/>
+    <xsd:element name="nativepath" type="xsd:string" nillable="true"/>
+    <xsd:element name="propertySet" type="J2EEResourcePropertySet"/>
+    <xsd:element name="factories" type="J2EEResourceFactory"/>
+    <xsd:element ref="xmi:Extension"/>
+  </xsd:choice>
+  <xsd:attribute ref="xmi:id"/>
+  <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  <xsd:attribute name="name" type="xsd:string" use="optional"/>
+  <xsd:attribute name="description" type="xsd:string" use="optional"/>
+  <xsd:attribute name="classpath" type="xsd:string" use="optional"/>
+  <xsd:attribute name="nativepath" type="xsd:string" use="optional"/>
+</xsd:complexType>
+
+<xsd:element name="J2EEResourceProvider" type="J2EEResourceProvider"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: MappingModule</xsd:documentation>
+  <xsd:documentation>Maps credentials from WebSphere domain into credentials in the back end domain</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: mappingConfigAlias</xsd:documentation>
+  <xsd:documentation>The alias of a JAAS configuration entry that has been defined in the security configuration</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: authDataAlias</xsd:documentation>
+  <xsd:documentation>A name alias to an auth data entry that has been defined in the security configuration</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="MappingModule">
+  <xsd:choice minOccurs="0" maxOccurs="unbounded">
+    <xsd:element name="mappingConfigAlias" type="xsd:string" nillable="true"/>
+    <xsd:element name="authDataAlias" type="xsd:string" nillable="true"/>
+    <xsd:element ref="xmi:Extension"/>
+  </xsd:choice>
+  <xsd:attribute ref="xmi:id"/>
+  <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  <xsd:attribute name="mappingConfigAlias" type="xsd:string" use="optional"/>
+  <xsd:attribute name="authDataAlias" type="xsd:string" use="optional"/>
+</xsd:complexType>
+
+<xsd:element name="MappingModule" type="MappingModule"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: ConnectionPool</xsd:documentation>
+  <xsd:documentation>Connection pool properties that can be modified to change the behavior of the J2C connection pool manager.  Default values are provided for non-production use.  Reviewing and possible modification of these configuration values is recommended.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: connectionTimeout</xsd:documentation>
+  <xsd:documentation>Connection timeout is the interval, in seconds, after which a connection request times out and a ConnectionWaitTimeoutException is thrown. The wait may be necessary if the maximum value of connections to a particular connection pool has been reached (Max Connections) .  This value has no meaning if Max Connections is set to 0 (infinite number of ManagedConnections). If Connection Timeout is set to 0 the Pool Manager waits until a connection can be allocated (which happens when the number of connections falls below Max Connections).</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: maxConnections</xsd:documentation>
+  <xsd:documentation>The maximum number of managed connections that can be created by a particular ManagedConnectionFactory. After this number is reached, no new connections are created and either the requester waits for the Connection Timeout or the ResourceAllocationException is thrown. If Maximum Connections is set to 0 (zero), the number of connections can grow indefinitely.  Maximum Connections must be larger than or equal to Minimum Connections.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: minConnections</xsd:documentation>
+  <xsd:documentation>The minimum number of managed connections to maintain. If this number is reached, the garbage collector will not discard any managed connections. Note, if the actual number of connections is lower than the value specified by the minimum connections settings, no attempt will be made to increase the number of connections to the minimum.  Minimum Connections must be less than or equal to Maximum Connections.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: reapTime</xsd:documentation>
+  <xsd:documentation>Number of seconds between runs of the garbage collector. The garbage collector discards all connections that have been unused for the value specified by the Unused Timeout. &lt;br&gt;&lt;br&gt;To disable the garbage collector, set the reap time to 0 (zero) or set the Unused Timeout to 0 (zero).</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: unusedTimeout</xsd:documentation>
+  <xsd:documentation>Interval, in seconds, after which an unused connection is discarded by the pool maintenance thread.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: agedTimeout</xsd:documentation>
+  <xsd:documentation>Interval, in seconds, after which an unused, aged connection is discarded (regardless of recent usage activity) by the pool maintenance thread. </xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: purgePolicy</xsd:documentation>
+  <xsd:documentation>Whenever a fatal connection error signal is received by the Connection Pool Manager, the Connection Pool Manager needs to either remove just the failing connection or to remove all of the connections in the pool.  This Purge Policy setting will determine the action of the Connection Pool Manager.</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="ConnectionPool">
+  <xsd:choice minOccurs="0" maxOccurs="unbounded">
+    <xsd:element name="connectionTimeout" type="xsd:string" nillable="true"/>
+    <xsd:element name="maxConnections" type="xsd:string" nillable="true"/>
+    <xsd:element name="minConnections" type="xsd:string" nillable="true"/>
+    <xsd:element name="reapTime" type="xsd:string" nillable="true"/>
+    <xsd:element name="unusedTimeout" type="xsd:string" nillable="true"/>
+    <xsd:element name="agedTimeout" type="xsd:string" nillable="true"/>
+    <xsd:element name="purgePolicy" type="PurgePolicyKind" nillable="true"/>
+    <xsd:element ref="xmi:Extension"/>
+  </xsd:choice>
+  <xsd:attribute ref="xmi:id"/>
+  <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  <xsd:attribute name="connectionTimeout" type="xsd:string" use="optional"/>
+  <xsd:attribute name="maxConnections" type="xsd:string" use="optional"/>
+  <xsd:attribute name="minConnections" type="xsd:string" use="optional"/>
+  <xsd:attribute name="reapTime" type="xsd:string" use="optional"/>
+  <xsd:attribute name="unusedTimeout" type="xsd:string" use="optional"/>
+  <xsd:attribute name="agedTimeout" type="xsd:string" use="optional"/>
+  <xsd:attribute name="purgePolicy" type="PurgePolicyKind" use="optional"/>
+</xsd:complexType>
+
+<xsd:element name="ConnectionPool" type="ConnectionPool"/>
+
+<xsd:element name="resources">
+  <xsd:complexType>
+    <xsd:choice minOccurs="0" maxOccurs="unbounded">
+      <xsd:element ref="J2EEResourceFactory"/>
+      <xsd:element ref="ConnectionFactory"/>
+      <xsd:element ref="J2EEResourceProperty"/>
+      <xsd:element ref="J2EEResourcePropertySet"/>
+      <xsd:element ref="J2EEResourceProvider"/>
+      <xsd:element ref="MappingModule"/>
+      <xsd:element ref="ConnectionPool"/>
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+  </xsd:complexType>
+</xsd:element>
+
+</xsd:schema>

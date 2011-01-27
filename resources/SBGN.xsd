@@ -5,10 +5,14 @@
 	elementFormDefault="qualified">
 	<xsd:annotation>
 		<xsd:documentation>
-			SBGNML is an XML implementation of the Systems Biology Graphical Notation.
-			For more information, consult http://libsbgn.sourceforge.net
-
-			Version: LibSBGN_PD_0.1 (cf. targetNamespace attribute - as recommended by the W3C)
+			<p>
+				SBGNML is an XML implementation of the Systems Biology Graphical Notation.
+				For more information, please consult
+				<a href="http://libsbgn.sourceforge.net">http://libsbgn.sourceforge.net</a>.
+			</p>
+			<p>
+				Version: LibSBGN_PD_0.1 (cf. targetNamespace attribute - as recommended by the W3C)
+			</p>
 		</xsd:documentation>
 	</xsd:annotation>
 
@@ -18,14 +22,20 @@
 	<xsd:attributeGroup name="PointAttributes">
 		<xsd:annotation>
 			<xsd:documentation>
-				The PointAttributes group describes absolute 2D cartesian coordinates:
-				- x (horizontal, from left to right)
-				- y (vertical, from top to bottom)
-				The origin is located in the top-left corner of the map.
-				There is no unit:
-				proportions must be preserved, but the maps can be drawn at any scale.
-				In the test files examples, to obtain a drawing similar to the reference *.png file,
-				values in the corresponding *.sbgn file should be read as pixels.
+				<p>
+					The PointAttributes group describes absolute 2D cartesian coordinates. Namely:
+					<ul>
+						<li>x (horizontal, from left to right),</li>
+						<li>y (vertical, from top to bottom).</li>
+					</ul>
+				</p>
+				<p>
+					The origin is located in the top-left corner of the map.
+					There is no unit:
+					proportions must be preserved, but the maps can be drawn at any scale.
+					In the test files examples, to obtain a drawing similar to the reference
+					*.png file, values in the corresponding *.sbgn file should be read as pixels.
+				</p>
 			</xsd:documentation>
 		</xsd:annotation>
 		<xsd:attribute name="x" type="xsd:float" use="required"/>
@@ -36,15 +46,21 @@
 	<xsd:element name="point">
 		<xsd:annotation>
 			<xsd:documentation>
-				The point element is characterized by PointAttributes,
-				which describe absolute 2D cartesian coordinates:
-				- x (horizontal, from left to right)
-				- y (vertical, from top to bottom)
-				The origin is located in the top-left corner of the map
-				There is no unit:
-				proportions must be preserved, but the maps can be drawn at any scale.
-				In the test files examples, to obtain a drawing similar to the reference *.png file,
-				values in the corresponding *.sbgn file should be read as pixels.
+				<p>
+					The point element is characterized by PointAttributes,
+					which describe absolute 2D cartesian coordinates. Namely:
+					<ul>
+						<li>x (horizontal, from left to right),</li>
+						<li>y (vertical, from top to bottom).</li>
+					</ul>
+				</p>
+				<p>
+					The origin is located in the top-left corner of the map.
+					There is no unit:
+					proportions must be preserved, but the maps can be drawn at any scale.
+					In the test files examples, to obtain a drawing similar to the reference
+					*.png file, values in the corresponding *.sbgn file should be read as pixels.
+				</p>
 			</xsd:documentation>
 		</xsd:annotation>
 		<xsd:complexType>
@@ -56,18 +72,30 @@
 	<xsd:element name="bbox">
 		<xsd:annotation>
 			<xsd:documentation>
-				The bbox element describes a rectangle:
-				- PointAttributes corresponding to the 2D coordinates of the top left corner
-				- width and height attributes
-				The rectangle corresponds to the outer bounding box of a shape.
-				The shape itself can be irregular (for instance in the case of some compartments)
-				
-				In the case of process nodes,
-				the bounding box only concerns the central glyph (square, or circle),
-				the input/output ports are not included, and neither are the lines connecting them
-				to the central glyph.
-
-				A bbox is required for all glyphs, and is optional for labels.
+				<p>
+					The bbox element describes a rectangle. This rectangle is defined by:
+					<ul>
+						<li>
+							PointAttributes corresponding to the 2D coordinates of the top left
+							corner,
+						</li>
+						<li>width and height attributes.</li>
+					</ul>
+				</p>
+				<p>
+					The rectangle corresponds to the outer bounding box of a shape.
+					The shape itself can be irregular
+					(for instance in the case of some compartments).
+				</p>
+				<p>
+					In the case of process nodes,
+					the bounding box only concerns the central glyph (square, or circle),
+					the input/output ports are not included, and neither are the lines connecting
+					them to the central glyph.
+				</p>
+				<p>
+					A bbox is required for all glyphs, and is optional for labels.
+				</p>
 			</xsd:documentation>
 		</xsd:annotation>
 		<xsd:complexType>
@@ -82,33 +110,42 @@
 	<xsd:element name="label">
 		<xsd:annotation>
 			<xsd:documentation>
-				The label element describes the text accompanying a glyph.
-				The text attribute is mandatory.
-				Its position can be specified by a bbox (optional).
-				Tools are free to display the text in any style (font, font-size, etc.)
+				<p>
+					The label element describes the text accompanying a glyph.
+					The text attribute is mandatory.
+					Its position can be specified by a bbox (optional).
+					Tools are free to display the text in any style (font, font-size, etc.)
+				</p>
 			</xsd:documentation>
 		</xsd:annotation>
 		<xsd:complexType>
 			<xsd:sequence>
 				<xsd:annotation>
 					<xsd:documentation>
-						The bbox element of a label is optional.
-						When no bbox is defined, the bbox of the parent glyph is inherited.
-						The label should be drawn centered horizontally and vertically in the bbox.
-
-						When the bbox is inherited, the label can freely spill outside (just like it
-						can spill outside its parent glyph)
-						An explicit bbox provides a stronger hint regarding what surface the label
-						should cover. It defines an upper boundary outside of which the label should
-						(ideally) not spill. It also represents a preferred size: the surface
-						covered by the label can be smaller, but should ideally be as close as
-						possible to the bbox.
-						
-					    In most glyphs (EPNs, unit of information, etc.), the label is supposed to
-					    be centered, so the bbox is usually omitted (unless there's a specific hint
-					    to be shared concerning the area the label should ideally cover)
-					    However, labels can be drawn anywhere inside compartments or complex, so
-					    these should preferably have an explicit bbox.
+						<p>
+							The bbox element of a label is optional.
+							When no bbox is defined, the bbox of the parent glyph is
+							inherited.
+							The label should be drawn centered horizontally and vertically in the
+							bbox.
+						</p>
+						<p>
+							When the bbox is inherited, the label can freely spill outside (just
+							like it can spill outside its parent glyph).
+							An explicit bbox provides a stronger hint regarding what surface the
+							label should cover. It defines an upper boundary outside of which the
+							label should (ideally) not spill. It also represents a preferred size:
+							the surface covered by the label can be smaller, but should ideally be
+							as close as possible to the bbox.
+						</p>
+						<p>						
+						    In most glyphs (EPNs, unit of information, etc.), the label is supposed
+						    to be centered, so the bbox is usually omitted (unless there's a
+						    specific hint to be shared concerning the area the label should ideally
+						    cover).
+						    However, labels can be drawn anywhere inside compartments or complex, so
+						    these should preferably have an explicit bbox.
+						</p>
 					</xsd:documentation>
 				</xsd:annotation>
 				<xsd:element ref="sbgn-pd:bbox" minOccurs="0" maxOccurs="1"/>
@@ -116,9 +153,11 @@
 			<xsd:attribute name="text" type="xsd:string" use="required">
 				<xsd:annotation>
 					<xsd:documentation>
-						Multi-line labels are allowed.
-						Line breaks are encoded as &#xA;
-						as specified by the XML standard.
+						<p>
+							Multi-line labels are allowed.
+							Line breaks are encoded as &amp;#xA; as specified by the
+							XML standard.
+						</p>
 					</xsd:documentation>
 				</xsd:annotation>
 			</xsd:attribute>						
@@ -132,8 +171,10 @@
 	<xsd:element name="sbgn">
 		<xsd:annotation>
 			<xsd:documentation>
-				The sbgn element is the root of any SBGNML document.
-				Currently each document must contain exactly one map element.
+				<p>
+					The sbgn element is the root of any SBGNML document.
+					Currently each document must contain exactly one map element.
+				</p>
 			</xsd:documentation>
 		</xsd:annotation>
 		<xsd:complexType>
@@ -148,9 +189,11 @@
 	<xsd:element name="map">
 		<xsd:annotation>
 			<xsd:documentation>
-				The map element describes a single SBGN PD map.
-				It contains a list of glyph elements and a list of arc elements.
-				These lists can be of any size (possibly empty).
+				<p>
+					The map element describes a single SBGN PD map.
+					It contains a list of glyph elements and a list of arc elements.
+					These lists can be of any size (possibly empty).
+				</p>
 			</xsd:documentation>
 		</xsd:annotation>
 		<xsd:complexType>
@@ -166,11 +209,19 @@
 	<xsd:element name="glyph">
 		<xsd:annotation>
 			<xsd:documentation>
+			<p>
 				The glyph element is:
-				- either a stand-alone, high-level SBGN glyph (an EPN, PN, compartment, etc.)
-				- or a sub-glyph (state variable, unit of information, inside of a complex, etc.)
+				<ul>
+					<li>either a stand-alone, high-level SBGN glyph
+						(EPN, PN, compartment, etc),</li>
+					<li>or a sub-glyph
+						(state variable, unit of information, inside of a complex, ...)</li>
+				</ul>
+			</p>
+			<p>
 				In the first case, it appears directly in the glyph list of the map.
 				In the second case, it is a child of another glyph element.
+			</p>
 			</xsd:documentation>
 		</xsd:annotation>
 
@@ -179,42 +230,71 @@
 				<xsd:choice>
 					<xsd:annotation>
 						<xsd:documentation>
-							The text inside a glyph is described:
-							- either by a label element (optional) [process nodes can't have one]
-							- or by a state element (optional) [for state variables only]
+							<p>
+								The text inside a glyph is described:
+								<ul>
+									<li>
+										either by a label element (optional)
+										[process nodes can't have one],
+									</li>
+									<li>
+										or by a state element (optional)
+										[for state variables only].
+									</li>
+								</ul>
+							</p>
 						</xsd:documentation>
 					</xsd:annotation>
 					<xsd:element ref="sbgn-pd:label" minOccurs="0" maxOccurs="1"/>
 					<xsd:element name="state" minOccurs="0" maxOccurs="1">
 						<xsd:annotation>
 							<xsd:documentation>
-								The state element should only be used for state variables.
-								It replaces the label element used for other glyphs.
-								It describes the text to be drawn inside the state variable.
+								<p>
+									The state element should only be used for state variables.
+									It replaces the label element used for other glyphs.
+									It describes the text to be drawn inside the state variable.
+								</p>
 							</xsd:documentation>
 						</xsd:annotation>
 						<xsd:complexType>
 							<xsd:attribute name="value" type="xsd:string" use="required">
 								<xsd:annotation>
 									<xsd:documentation>
-										The value attribute represents the state of the variable.
-										It can be:
-										- either from a predefined set of string (P, S, etc.)
-										which correspond to specific SBO terms (cf. SBGN specs)
-										- or any arbitrary string
+										<p>
+											The value attribute represents the state of the
+											variable. It can be:
+											<ul>
+												<li>
+													either from a predefined set of string
+													(P, S, etc.) which correspond to specific
+													SBO terms (cf. SBGN specs),
+												</li>
+												<li>
+													or any arbitrary string.
+												</li>
+											</ul>
+										</p>
 									</xsd:documentation>
 								</xsd:annotation>
 							</xsd:attribute>	
 							<xsd:attribute name="variable" type="xsd:string" use="optional">
 								<xsd:annotation>
 									<xsd:documentation>
-										The variable attribute describes the site where the 
-										modification described by the value attribute occurs.
-										It is:
-										- optional when there is only one state variable on the
-										parent EPN
-										- required when there is more than one state variable the
-										parent EPN
+										<p>
+											The variable attribute describes the site where the 
+											modification described by the value attribute occurs.
+											It is:
+											<ul>
+												<li>
+													optional when there is only one state variable
+													on the parent EPN,
+												</li>
+												<li>
+													required when there is more than one state
+													variable the parent EPN.
+												</li>
+											</ul>
+										</p>
 									</xsd:documentation>
 								</xsd:annotation>
 							</xsd:attribute>
@@ -225,9 +305,10 @@
 				<xsd:element name="clone" minOccurs="0" maxOccurs="1">
 					<xsd:annotation>
 						<xsd:documentation>
-							The clone element is optional.
-							It means the glyph carries a clone marker.
-							It can contain an optional label.
+							<p>
+								The clone element (which is optional) means the glyph carries a
+								clone marker. It can contain an optional label.
+							</p>
 						</xsd:documentation>
 					</xsd:annotation>
 					<xsd:complexType>
@@ -240,15 +321,19 @@
 				<xsd:element ref="sbgn-pd:bbox" minOccurs="1" maxOccurs="1">
 					<xsd:annotation>
 						<xsd:documentation>
-							 The bbox element is mandatory and unique: exactly one per glyph.
-							 It defines the outer bounding box of the glyph.
-							 The actual shape of the glyph can be irregular
-							 (for instance in the case of some compartments)
-
-							In the case of process nodes,
-							the bounding box only concerns the central glyph (square, or circle),
-							the input/output ports are not included, and neither are the lines connecting them
-							to the central glyph.
+							<p>
+								The bbox element is mandatory and unique: exactly one per
+								glyph.
+								It defines the outer bounding box of the glyph.
+								The actual shape of the glyph can be irregular
+								(for instance in the case of some compartments)
+							</p>
+							<p>
+								In the case of process nodes, the bounding box only concerns the
+								central glyph (square, or circle):
+								the input/output ports are not included, and neither are the lines
+								connecting them to the central glyph.
+							</p>
 						</xsd:documentation>
 					</xsd:annotation>
 				</xsd:element>
@@ -256,11 +341,22 @@
 				<xsd:element ref="sbgn-pd:glyph" minOccurs="0" maxOccurs="unbounded">
 					<xsd:annotation>
 						<xsd:documentation>
-							A glyph element can contain any number of children glyph elements.
-							In practice, this should only happen in the following cases:
-							- a compartment with unit of information children
-							- an EPN with states variables and/or unit of information children
-							- a complex, with state variables, unit of info, and/or EPN children
+							<p>
+								A glyph element can contain any number of children glyph
+								elements.
+								In practice, this should only happen in the following cases:
+								<ul>
+									<li>a compartment with unit of information children,</li>
+									<li>
+										an EPN with states variables and/or unit of information
+										children,
+									</li>
+									<li>
+										a complex, with state variables, unit of info, and/or EPN
+										children.
+									</li>
+								</ul>
+							</p>
 						</xsd:documentation>
 					</xsd:annotation>
 				</xsd:element>
@@ -268,13 +364,20 @@
 				<xsd:element name="port" minOccurs="0" maxOccurs="unbounded">
 					<xsd:annotation>
 						<xsd:documentation>
-							The port element describes an anchor point
-							which arcs can refer to as a source or target.
-							It consists in:
-							- absolute 2D cartesian coordinates (PointAttribute)
-							- a unique id attribute
-							Two port elements are required for process nodes (= two "sides")
-							Other glyphs don't need ports, but can use them if desired
+							<p>
+								The port element describes an anchor point which arcs can refer to
+								as a source or target. It consists in:
+								<ul>
+									<li>absolute 2D cartesian coordinates (PointAttribute),</li>
+									<li>a unique id attribute.</li>
+								</ul>
+							</p>
+							<p>
+								Two port elements are required for process nodes. They represent
+								the extremity of the two "arms" which protrude on both sides of the
+								core of the glyph (= square or circle shape).
+								Other glyphs don't need ports (but can use them if desired).
+							</p>
 						</xsd:documentation>
 					</xsd:annotation>
 					<xsd:complexType>
@@ -282,12 +385,14 @@
 						<xsd:attribute name="id" type="xsd:ID" use="required">	
 							<xsd:annotation>
 								<xsd:documentation>
-									The xsd:ID type is an alphanumeric identifier,
-									starting with a letter.
-									Port IDs often contain the ID of their glyph,
-									followed by a local port number (e.g. glyph4.1, glyph4.2, etc.)
-									However, this style convention is not mandatory,
-									and IDs should never be interpreted as carrying any meaning.
+									<p>
+										The xsd:ID type is an alphanumeric identifier,
+										starting with a letter.
+										Port IDs often contain the ID of their glyph, followed by a
+										local port number (e.g. glyph4.1, glyph4.2, etc.)
+										However, this style convention is not mandatory,
+										and IDs should never be interpreted as carrying any meaning.
+									</p>
 								</xsd:documentation>
 							</xsd:annotation>
 						</xsd:attribute>
@@ -298,16 +403,24 @@
 			<xsd:attribute name="class" default="unspecified entity">
 				<xsd:annotation>
 					<xsd:documentation>
-						The class attribute defines the semantic of the glyph, and influences:
-						- the way that glyph should be rendered
-						- the overall syntactic validity of the map
-						The various classes encompass the following SBGN elements:
-						- Entity Pool Nodes (EPN)
-						- Process Nodes (PN)
-						- Logic Operator Nodes
-						- Sub-glyphs on Nodes (State Variable, Unit of Information)
-						- Sub-glyphs on Arcs (Stoichiometry Label)
-						- Other glyphs (Compartment, Submap, Tag, Terminal)
+						<p>
+							The class attribute defines the semantic of the glyph, and influences:
+							<ul>
+								<li>the way that glyph should be rendered,</li>
+								<li>the overall syntactic validity of the map.</li>
+							</ul>
+						</p>
+						<p>
+							The various classes encompass the following SBGN elements:
+							<ul>
+								<li>Entity Pool Nodes (EPN),</li>
+								<li>Process Nodes (PN),</li>
+								<li>Logic Operator Nodes,</li>
+								<li>Sub-glyphs on Nodes (State Variable, Unit of Information),</li>
+								<li>Sub-glyphs on Arcs (Stoichiometry Label),</li>
+								<li>Other glyphs (Compartment, Submap, Tag, Terminal).</li>
+							</ul>
+						</p>
 					</xsd:documentation>
 				</xsd:annotation>
 				<xsd:simpleType>
@@ -352,11 +465,16 @@
 			<xsd:attribute name="orientation" default="horizontal">
 				<xsd:annotation>
 					<xsd:documentation>
-						The orientation attribute is used to express how to draw asymmetric glyphs.
-						The orientation of Process Nodes is either horizontal or vertical.
-						It refers to an (imaginary) line connecting the two in/out sides of the PN.
-						The orientation of Tags and Terminals can be left, right, up or down.
-						It refers to the direction the arrow side of the glyph is pointing at.
+						<p>
+							The orientation attribute is used to express how to draw asymmetric
+							glyphs.
+							The orientation of Process Nodes is either horizontal or vertical.
+							It refers to an (imaginary) line connecting the two in/out sides of the
+							PN.
+							The orientation of Tags and Terminals can be left, right, up or down.
+							It refers to the direction the arrow side of the glyph is pointing
+							at.
+						</p>
 					</xsd:documentation>
 				</xsd:annotation>
 				<xsd:simpleType>
@@ -375,10 +493,12 @@
 			<xsd:attribute name="id" type="xsd:ID" use="required">	
 				<xsd:annotation>
 					<xsd:documentation>
-						The xsd:ID type is an alphanumeric identifier,
-						starting with a letter.
-						It is recommended to generate meaningless IDs (e.g. "glyph1234")
-						and avoid IDs with a meaning (e.g. "epn_ethanol")
+						<p>
+							The xsd:ID type is an alphanumeric identifier, starting with a
+							letter.
+							It is recommended to generate meaningless IDs (e.g. "glyph1234")
+							and avoid IDs with a meaning (e.g. "epn_ethanol")
+						</p>
 					</xsd:documentation>
 				</xsd:annotation>
 			</xsd:attribute>
@@ -390,12 +510,18 @@
 	<xsd:element name="arc">
 		<xsd:annotation>
 			<xsd:documentation>
-				The arc element describes an SBGN arc between two SBGN nodes.
-				It contains:
-				- an optional stoichiometry marker
-				- a mandatory source and target (glyph or port)
-				- a geometric description of its whole path, from start to end
-				This path can involve any number of straight lines or quadratic/cubic Bezier curves.
+				<p>
+					The arc element describes an SBGN arc between two SBGN nodes. It contains:
+					<ul>
+						<li>an optional stoichiometry marker,</li>
+						<li>a mandatory source and target (glyph or port),</li>
+						<li>a geometric description of its whole path, from start to end.</li>
+					</ul>
+				<p>
+				</p>
+					This path can involve any number of straight lines or quadratic/cubic Bezier
+					curves.
+				</p>
 			</xsd:documentation>
 		</xsd:annotation>
 		<xsd:complexType>
@@ -403,16 +529,21 @@
 				<xsd:element ref="sbgn-pd:glyph" minOccurs="0" maxOccurs="1">
 					<xsd:annotation>
 						<xsd:documentation>
-							An arc can contain a single optional sub-glyph.
-							This glyph must be a stoichiometry marker (square with a numeric label)
+							<p>
+								An arc can contain a single optional sub-glyph.
+								This glyph must be a stoichiometry marker
+								(square with a numeric label)
+							</p>
 						</xsd:documentation>
 					</xsd:annotation>
 				</xsd:element>
 				<xsd:element name="start" minOccurs="1" maxOccurs="1">
 					<xsd:annotation>
 						<xsd:documentation>
-							The start element represents the starting point of the arc's path
-							It is unique and mandatory.
+							<p>
+								The start element represents the starting point of the arc's path.
+								It is unique and mandatory.
+							</p>
 						</xsd:documentation>
 					</xsd:annotation>
 					<xsd:complexType>
@@ -422,23 +553,28 @@
 				<xsd:element name="next" minOccurs="0" maxOccurs="unbounded">
 					<xsd:annotation>
 						<xsd:documentation>
-							The next element represents the next point in the arc's path.
-							Between the start and the end of the path, there can be any number
-							(even zero) of next elements (intermediate points).
-							They are read consecutively: start, next, next, ..., next, end
-							When the path from the previous point to this point is not straight,
-							this element also contains a list of control points (between 1 and 2)
-							describing a Bezier curve (quadratic if 1 control point, cubic if 2)
-							between the previous point and this point.
+							<p>
+								The next element represents the next point in the arc's path.
+								Between the start and the end of the path, there can be any number
+								(even zero) of next elements (intermediate points). They are read
+								consecutively: start, next, next, ..., next, end.
+								When the path from the previous point to this point is not straight,
+								this element also contains a list of control points
+								(between 1 and 2) describing a Bezier curve (quadratic if 1 control
+								point, cubic if 2) between the previous point and this point.
+							</p>
 						</xsd:documentation>
 					</xsd:annotation>
 					<xsd:complexType>
 						<xsd:sequence>
 							<xsd:annotation>
 								<xsd:documentation>
-									List of control points, used when the path describes a curve.
-									The number of points describes the degree of the Bezier curve:
-									linear (0), quadratic (1) or cubic (2)
+									<p>
+										List of control points, used when the path describes a
+										curve.
+										The number of points describes the degree of the Bezier
+										curve: linear (0), quadratic (1) or cubic (2)
+									</p>
 								</xsd:documentation>
 							</xsd:annotation>
 							<xsd:element ref="sbgn-pd:point" minOccurs="0" maxOccurs="2"/>
@@ -449,21 +585,26 @@
 				<xsd:element name="end" minOccurs="1" maxOccurs="1">
 					<xsd:annotation>
 						<xsd:documentation>
-							The end element represents the ending point of the arc's path.
-							It is unique and mandatory.
-							When the path from the previous point to this point is not straight,
-							this element also contains a list of control points (between 1 and 2)
-							describing a Bezier curve (quadratic if 1 control point, cubic if 2)
-							between the previous point and this point.
+							<p>
+								The end element represents the ending point of the arc's path.
+								It is unique and mandatory.
+								When the path from the previous point to this point is not straight,
+								this element also contains a list of control points
+								(between 1 and 2) describing a Bezier curve (quadratic if 1 control
+								point, cubic if 2) between the previous point and this point.
+							</p>
 						</xsd:documentation>
 					</xsd:annotation>
 					<xsd:complexType>
 						<xsd:sequence>
 							<xsd:annotation>
 								<xsd:documentation>
-									List of control points, used when the path describes a curve.
-									The number of points describes the degree of the Bezier curve:
-									linear (0), quadratic (1) or cubic (2)
+									<p>
+										List of control points, used when the path describes a
+										curve.
+										The number of points describes the degree of the Bezier
+										curve: linear (0), quadratic (1) or cubic (2)
+									</p>
 								</xsd:documentation>
 							</xsd:annotation>
 							<xsd:element ref="sbgn-pd:point" minOccurs="0" maxOccurs="2"/>
@@ -476,16 +617,24 @@
 			<xsd:attribute name="class">
 				<xsd:annotation>
 					<xsd:documentation>
-						The class attribute defines the semantic of the arc, and influences:
-						- the way that arc should be rendered
-						- the overall syntactic validity of the map
-						The various classes encompass all possible types of SBGN arcs:
-						- production and consumption arcs
-						- all types of modification arcs
-						- logic arcs
-						- equivalence arcs
-						To express a reversible reaction,
-						use production arcs on both sides of the Process Node
+						<p>
+							The class attribute defines the semantic of the arc, and influences:
+							<ul>
+								<li>the way that arc should be rendered,</li>
+								<li>the overall syntactic validity of the map.</li>
+							</ul>
+						</p>
+						<p>
+							The various classes encompass all possible types of SBGN arcs:
+							<ul>
+								<li>production and consumption arcs,</li>
+								<li>all types of modification arcs,</li>
+								<li>logic arcs,</li>
+								<li>equivalence arcs.</li>
+							</ul>
+							To express a reversible reaction,
+							use production arcs on both sides of the Process Node.
+						</p>
 					</xsd:documentation>
 				</xsd:annotation>
 				<xsd:simpleType>
@@ -506,18 +655,26 @@
 			<xsd:attribute name="source" type="xsd:IDREF" use="required">
 				<xsd:annotation>
 					<xsd:documentation>
-						The source attribute can refer:
-						- either to the id of a glyph
-						- or to the id of a port on a glyph
+						<p>
+							The source attribute can refer:
+							<ul>
+								<li>either to the id of a glyph,</li>
+								<li>or to the id of a port on a glyph.</li>
+							</ul>
+						</p>
 					</xsd:documentation>
 				</xsd:annotation>
 			</xsd:attribute>
 			<xsd:attribute name="target" type="xsd:IDREF" use="required">
 				<xsd:annotation>
 					<xsd:documentation>
-						The target attribute can refer:
-						- either to the id of a glyph
-						- or to the id of a port on a glyph
+						<p>
+							The target attribute can refer:
+							<ul>
+								<li>either to the id of a glyph,</li>
+								<li>or to the id of a port on a glyph.</li>
+							</ul>
+						</p>
 					</xsd:documentation>
 				</xsd:annotation>
 			</xsd:attribute>

@@ -1,0 +1,3 @@
+#!/bin/sh
+../tools/xsddoc-1.0/bin/xsddoc -o sbgn.doc -t "libSBGN Documentation" ../resources/SBGN.xsd
+echo "Last generated on `date`" > sbgn.doc/readme.text

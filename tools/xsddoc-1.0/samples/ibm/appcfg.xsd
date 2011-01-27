@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xmi="http://www.omg.org/XMI" xmlns="http://www.ibm.com/websphere/appserver/schemas/5.0/appcfg.xmi" targetNamespace="http://www.ibm.com/websphere/appserver/schemas/5.0/appcfg.xmi" xmlns:applicationserver.webcontainer="http://www.ibm.com/websphere/appserver/schemas/5.0/applicationserver.webcontainer.xmi">
+
+<xsd:import namespace="http://www.omg.org/XMI" schemaLocation="xmi20.xsd"/>
+<xsd:import namespace="http://www.ibm.com/websphere/appserver/schemas/5.0/applicationserver.webcontainer.xmi" schemaLocation="applicationserver.webcontainer.xsd"/>
+
+<xsd:annotation>
+  <xsd:documentation>PACKAGE: appcfg</xsd:documentation>
+</xsd:annotation>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: DeployedObjectConfig</xsd:documentation>
+  <xsd:documentation>Represents the configuration of a deployed object on a specific deployment target. This configuration overrides the one defined in the deployment target.|#</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="DeployedObjectConfig">
+  <xsd:choice minOccurs="0" maxOccurs="unbounded">
+    <xsd:element ref="xmi:Extension"/>
+  </xsd:choice>
+  <xsd:attribute ref="xmi:id"/>
+  <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+</xsd:complexType>
+
+<xsd:element name="DeployedObjectConfig" type="DeployedObjectConfig"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: ApplicationConfig</xsd:documentation>
+  <xsd:documentation>The configuration of an enterprise application on a specific deployment target.</xsd:documentation>
+  <xsd:documentation>ASSOCIATION END: sessionManagement</xsd:documentation>
+  <xsd:documentation> Specifies the session management settings used by WAR modules of this application. These settings override the corresponding session management settings defined in the deployment target.</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="ApplicationConfig">
+    <xsd:complexContent>
+        <xsd:extension base="DeployedObjectConfig">
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="sessionManagement" type="applicationserver.webcontainer:SessionManager"/>
+          </xsd:choice>
+        </xsd:extension>
+    </xsd:complexContent>
+</xsd:complexType>
+
+<xsd:element name="ApplicationConfig" type="ApplicationConfig"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: ModuleConfig</xsd:documentation>
+  <xsd:documentation>The configuration of an enterprise application module on a specific deployment target.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: name</xsd:documentation>
+  <xsd:documentation>A unique name for this module configuration which can be used to reference this specific configuration if it is shared between modules.</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="ModuleConfig">
+    <xsd:complexContent>
+        <xsd:extension base="DeployedObjectConfig">
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="name" type="xsd:string" nillable="true"/>
+            <xsd:element name="description" type="xsd:string" nillable="true"/>
+          </xsd:choice>
+          <xsd:attribute name="name" type="xsd:string" use="optional"/>
+          <xsd:attribute name="description" type="xsd:string" use="optional"/>
+        </xsd:extension>
+    </xsd:complexContent>
+</xsd:complexType>
+
+<xsd:element name="ModuleConfig" type="ModuleConfig"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: WebModuleConfig</xsd:documentation>
+  <xsd:documentation>Web Module Configuration settings for a specific deployment target.</xsd:documentation>
+  <xsd:documentation>ASSOCIATION END: sessionManagement</xsd:documentation>
+  <xsd:documentation> Specifies the session management settings used by this WAR module. These settings override the corresponding session management setting defined in ApplicationConfig instance and in deployment target.</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="WebModuleConfig">
+    <xsd:complexContent>
+        <xsd:extension base="ModuleConfig">
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="sessionManagement" type="applicationserver.webcontainer:SessionManager"/>
+          </xsd:choice>
+        </xsd:extension>
+    </xsd:complexContent>
+</xsd:complexType>
+
+<xsd:element name="WebModuleConfig" type="WebModuleConfig"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: EJBModuleConfiguration</xsd:documentation>
+  <xsd:documentation>EJB Module Configuration settings for a specific deployment target.</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="EJBModuleConfiguration">
+    <xsd:complexContent>
+        <xsd:extension base="ModuleConfig">
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="enterpriseBeanConfigs" type="EnterpriseBeanConfig"/>
+          </xsd:choice>
+        </xsd:extension>
+    </xsd:complexContent>
+</xsd:complexType>
+
+<xsd:element name="EJBModuleConfiguration" type="EJBModuleConfiguration"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: EnterpriseBeanConfig</xsd:documentation>
+  <xsd:documentation>Enterprise Bean configuration settings for a deployment target.</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="EnterpriseBeanConfig">
+  <xsd:choice minOccurs="0" maxOccurs="unbounded">
+    <xsd:element name="ejbName" type="xsd:string" nillable="true"/>
+    <xsd:element name="instancePool" type="InstancePool"/>
+    <xsd:element ref="xmi:Extension"/>
+  </xsd:choice>
+  <xsd:attribute ref="xmi:id"/>
+  <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  <xsd:attribute name="ejbName" type="xsd:string" use="optional"/>
+</xsd:complexType>
+
+<xsd:element name="EnterpriseBeanConfig" type="EnterpriseBeanConfig"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: SessionBeanConfig</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="SessionBeanConfig">
+    <xsd:complexContent>
+        <xsd:extension base="EnterpriseBeanConfig">
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+          </xsd:choice>
+        </xsd:extension>
+    </xsd:complexContent>
+</xsd:complexType>
+
+<xsd:element name="SessionBeanConfig" type="SessionBeanConfig"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: StatefulSessionBeanConfig</xsd:documentation>
+  <xsd:documentation>Contains properties for configuring the behavior of stateful session beans</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: timeout</xsd:documentation>
+  <xsd:documentation>Specifies the stateful session bean timeout in milliseconds</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="StatefulSessionBeanConfig">
+    <xsd:complexContent>
+        <xsd:extension base="SessionBeanConfig">
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="timeout" type="xsd:string" nillable="true"/>
+          </xsd:choice>
+          <xsd:attribute name="timeout" type="xsd:string" use="optional"/>
+        </xsd:extension>
+    </xsd:complexContent>
+</xsd:complexType>
+
+<xsd:element name="StatefulSessionBeanConfig" type="StatefulSessionBeanConfig"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: InstancePool</xsd:documentation>
+  <xsd:documentation>Enterprise Bean instance pool settings for a deployment target.</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="InstancePool">
+  <xsd:choice minOccurs="0" maxOccurs="unbounded">
+    <xsd:element name="minSize" type="xsd:string" nillable="true"/>
+    <xsd:element name="maxSize" type="xsd:string" nillable="true"/>
+    <xsd:element ref="xmi:Extension"/>
+  </xsd:choice>
+  <xsd:attribute ref="xmi:id"/>
+  <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  <xsd:attribute name="minSize" type="xsd:string" use="optional"/>
+  <xsd:attribute name="maxSize" type="xsd:string" use="optional"/>
+</xsd:complexType>
+
+<xsd:element name="InstancePool" type="InstancePool"/>
+
+<xsd:element name="appcfg">
+  <xsd:complexType>
+    <xsd:choice minOccurs="0" maxOccurs="unbounded">
+      <xsd:element ref="DeployedObjectConfig"/>
+      <xsd:element ref="ApplicationConfig"/>
+      <xsd:element ref="ModuleConfig"/>
+      <xsd:element ref="WebModuleConfig"/>
+      <xsd:element ref="EJBModuleConfiguration"/>
+      <xsd:element ref="EnterpriseBeanConfig"/>
+      <xsd:element ref="SessionBeanConfig"/>
+      <xsd:element ref="StatefulSessionBeanConfig"/>
+      <xsd:element ref="InstancePool"/>
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+  </xsd:complexType>
+</xsd:element>
+
+</xsd:schema>

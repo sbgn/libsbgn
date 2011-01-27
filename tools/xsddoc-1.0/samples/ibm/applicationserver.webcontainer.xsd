@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xmi="http://www.omg.org/XMI" xmlns="http://www.ibm.com/websphere/appserver/schemas/5.0/applicationserver.webcontainer.xmi" targetNamespace="http://www.ibm.com/websphere/appserver/schemas/5.0/applicationserver.webcontainer.xmi" xmlns:multibroker.drsclient="http://www.ibm.com/websphere/appserver/schemas/5.0/multibroker.drsclient.xmi" xmlns:process="http://www.ibm.com/websphere/appserver/schemas/5.0/process.xmi" xmlns:ipc="http://www.ibm.com/websphere/appserver/schemas/5.0/ipc.xmi" xmlns:applicationserver="http://www.ibm.com/websphere/appserver/schemas/5.0/applicationserver.xmi" xmlns:datatype="http://www.ibm.com/websphere/appserver/schemas/5.0/datatype.xmi">
+
+<xsd:import namespace="http://www.omg.org/XMI" schemaLocation="xmi20.xsd"/>
+<xsd:import namespace="http://www.ibm.com/websphere/appserver/schemas/5.0/multibroker.drsclient.xmi" schemaLocation="multibroker.drsclient.xsd"/>
+<xsd:import namespace="http://www.ibm.com/websphere/appserver/schemas/5.0/process.xmi" schemaLocation="process.xsd"/>
+<xsd:import namespace="http://www.ibm.com/websphere/appserver/schemas/5.0/ipc.xmi" schemaLocation="ipc.xsd"/>
+<xsd:import namespace="http://www.ibm.com/websphere/appserver/schemas/5.0/applicationserver.xmi" schemaLocation="applicationserver.xsd"/>
+<xsd:import namespace="http://www.ibm.com/websphere/appserver/schemas/5.0/datatype.xmi" schemaLocation="datatype.xsd"/>
+
+<xsd:simpleType name="boolean">
+  <xsd:restriction base="xsd:string">
+    <xsd:enumeration value="true"/>
+    <xsd:enumeration value="false"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="SessionPersistenceKind">
+  <xsd:restriction base="xsd:string">
+    <xsd:enumeration value="NONE"/>
+    <xsd:enumeration value="DATABASE"/>
+    <xsd:enumeration value="DATA_REPLICATION"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="DB2RowSizeEnum">
+  <xsd:restriction base="xsd:string">
+    <xsd:enumeration value="ROW_SIZE_4KB"/>
+    <xsd:enumeration value="ROW_SIZE_8KB"/>
+    <xsd:enumeration value="ROW_SIZE_16KB"/>
+    <xsd:enumeration value="ROW_SIZE_32KB"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="WriteFrequencyEnum">
+  <xsd:restriction base="xsd:string">
+    <xsd:enumeration value="END_OF_SERVLET_SERVICE"/>
+    <xsd:enumeration value="MANUAL_UPDATE"/>
+    <xsd:enumeration value="TIME_BASED_WRITE"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="WriteContentsEnum">
+  <xsd:restriction base="xsd:string">
+    <xsd:enumeration value="ONLY_UPDATED_ATTRIBUTES"/>
+    <xsd:enumeration value="ALL_SESSION_ATTRIBUTES"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:annotation>
+  <xsd:documentation>PACKAGE: webcontainer</xsd:documentation>
+</xsd:annotation>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: DRSSettings</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="DRSSettings">
+  <xsd:choice minOccurs="0" maxOccurs="unbounded">
+    <xsd:element name="dataReplicationMode" type="multibroker.drsclient:DRSRuntimeMode" nillable="true"/>
+    <xsd:element name="messageBrokerDomainName" type="xsd:string" nillable="true"/>
+    <xsd:element name="preferredLocalDRSBrokerName" type="xsd:string" nillable="true"/>
+    <xsd:element name="overrideHostConnectionPoints" type="xsd:string" nillable="true"/>
+    <xsd:element name="ids" type="xsd:string" nillable="true"/>
+    <xsd:element ref="xmi:Extension"/>
+  </xsd:choice>
+  <xsd:attribute ref="xmi:id"/>
+  <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  <xsd:attribute name="dataReplicationMode" type="multibroker.drsclient:DRSRuntimeMode" use="optional"/>
+  <xsd:attribute name="messageBrokerDomainName" type="xsd:string" use="optional"/>
+  <xsd:attribute name="preferredLocalDRSBrokerName" type="xsd:string" use="optional"/>
+  <xsd:attribute name="overrideHostConnectionPoints" type="xsd:string" use="optional"/>
+  <xsd:attribute name="ids" type="xsd:string" use="optional"/>
+</xsd:complexType>
+
+<xsd:element name="DRSSettings" type="DRSSettings"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: WebContainer</xsd:documentation>
+  <xsd:documentation>Configuration for the Web container part of the application server. The Web container manages Web modules. It creates servlet instances, loads and unloads servlets, creates and manages request and response objects, and performs other tasks for managing the components of a Web module effectively.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: sessionAffinityTimeout</xsd:documentation>
+  <xsd:documentation>When non-zero, WebSphere will be able to switch the HTTP session affinity for requests to a different server instance after the specifed time period has elapsed.  In certain situations, this can improve load balancing performance.|#|#Default: 0|#Range: 0-MAX_INT</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: sessionAffinityFailoverServer</xsd:documentation>
+  <xsd:documentation>When WLM is utilized and a server of a server group is down, WLM normally routes requests with affinity to the down server to another random server within the server group.  |#This field allows an administrator to specify the name of a server within the server group that affinity requests will route to, instead of using random server selection.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: defaultVirtualHostName</xsd:documentation>
+  <xsd:documentation>The default virtual host for Web applications. This value can be overridden during application installation.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: enableServletCaching</xsd:documentation>
+  <xsd:documentation>Specifies whether servlets and jsp caching is enabled.</xsd:documentation>
+  <xsd:documentation>ASSOCIATION END: threadPool</xsd:documentation>
+  <xsd:documentation>The thread pool settings for the Web container.</xsd:documentation>
+  <xsd:documentation>ASSOCIATION END: transports</xsd:documentation>
+  <xsd:documentation>A list of transports defined for the Web container. Transports describe how requests get from the Web server to the Web container.</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="WebContainer">
+    <xsd:complexContent>
+        <xsd:extension base="applicationserver:ApplicationContainer">
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="sessionAffinityTimeout" type="xsd:string" nillable="true"/>
+            <xsd:element name="sessionAffinityFailoverServer" type="xsd:string" nillable="true"/>
+            <xsd:element name="defaultVirtualHostName" type="xsd:string" nillable="true"/>
+            <xsd:element name="enableServletCaching" type="boolean" nillable="true"/>
+            <xsd:element name="threadPool" type="process:ThreadPool"/>
+            <xsd:element name="transports" type="ipc:Transport"/>
+          </xsd:choice>
+          <xsd:attribute name="sessionAffinityTimeout" type="xsd:string" use="optional"/>
+          <xsd:attribute name="sessionAffinityFailoverServer" type="xsd:string" use="optional"/>
+          <xsd:attribute name="defaultVirtualHostName" type="xsd:string" use="optional"/>
+          <xsd:attribute name="enableServletCaching" type="boolean" use="optional"/>
+        </xsd:extension>
+    </xsd:complexContent>
+</xsd:complexType>
+
+<xsd:element name="WebContainer" type="WebContainer"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: HTTPTransport</xsd:documentation>
+  <xsd:documentation>Configuration for using an HTTP transport to communicate requests to the Web container.</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="HTTPTransport">
+    <xsd:complexContent>
+        <xsd:extension base="ipc:Transport">
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+          </xsd:choice>
+        </xsd:extension>
+    </xsd:complexContent>
+</xsd:complexType>
+
+<xsd:element name="HTTPTransport" type="HTTPTransport"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: SessionManager</xsd:documentation>
+  <xsd:documentation>Configuration for session support in the Web container. When configuring the Session Manager, you can specify:  ·Whether to enable sessions  ·How to convey session IDs to servlets (cookies or URL rewriting)  ·AE: Whether to save session data in a database during execution (persistent sessions)  ·Whether to add session IDs to URLs in transition from HTTP to HTTPS and back (protocol switch rewriting)&lt;BR&gt;&lt;BR&gt;.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: enableUrlRewriting</xsd:documentation>
+  <xsd:documentation>Specifies whether the Session Manager uses rewritten URLs to carry the session IDs. If URL rewriting is enabled, the Session Manager recognizes session IDs that arrive in the URL and, if necessary, rewrites the URL to send the session IDs.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: enableCookies</xsd:documentation>
+  <xsd:documentation>Whether session tracking will use cookies to carry session IDs. If cookies are enabled, session tracking will recognize session IDs that arrive as cookies and try to use cookies for sending session IDs. If cookies are not enabled, session tracking will use URL rewriting instead of cookies (if URL rewriting is enabled). Enabling cookies takes precedence over URL rewriting.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: enableSSLTracking</xsd:documentation>
+  <xsd:documentation>Whether session tracking uses SSL to carry session IDs. Enabling SSL tracking takes precedence over cookie-based session tracking.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: enableProtocolSwitchRewriting</xsd:documentation>
+  <xsd:documentation>Whether the session ID is added to a URL when the URL requires a switch from HTTP to HTTPS or from HTTPS to HTTP. If rewriting is enabled, the session ID is required in order to go between HTTP and HTTPS.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: sessionPersistenceMode</xsd:documentation>
+  <xsd:documentation>When enabled, the session manager will persist session information into the datasource specified by the datasourceConnection settings.  Specifies whether to save session data in a database, or discard the session data when the server shuts down. |#|#True - The session data is stored in a database |#False - The session data is kept in memory for a single instance of the servlet engine |#|#For changes to take effect, this property requires stopping and restarting the application server with which the session manager is associated. |#</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: enableSecurityIntegration</xsd:documentation>
+  <xsd:documentation>When security integration is enabled, the Session Manager will associate the identity of users with their HTTP sessions.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: allowSerializedSessionAccess</xsd:documentation>
+  <xsd:documentation>By default, access to session is concurrent.  When true, this option forces all session access by an application to be serialized, so that the web container can manage conconcurrency control to session data; rather than forcing customers to code access control logic in their applications.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: maxWaitTime</xsd:documentation>
+  <xsd:documentation>When allow serialized session access is enabled, this value specifies the maximum amount of time (in milliseconds) that a request thread which is waiting to access the session will be blocked.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: accessSessionOnTimeout</xsd:documentation>
+  <xsd:documentation>When allow serialized session access is enabled, this option specifies what happens if max wait time has been reached for a request thread.  If true, the thread is allowed to access the session; if false, an exception is thrown to the web application.</xsd:documentation>
+  <xsd:documentation>ASSOCIATION END: defaultCookieSettings</xsd:documentation>
+  <xsd:documentation>Session tracking through HTTP cookies is the most used session tracking mechanism and is required to be supported by all servlet containers. The container sends a cookie to the client. The client will then return the cookie on each subsequent request to the server unambiguously associating the request with a session. The name of the session tracking cookie must be JSESSIONID.</xsd:documentation>
+  <xsd:documentation>ASSOCIATION END: sessionDatabasePersistence</xsd:documentation>
+  <xsd:documentation>Specifies information about the data source that the session manager will use to obtain database connections.</xsd:documentation>
+  <xsd:documentation>ASSOCIATION END: tuningParams</xsd:documentation>
+  <xsd:documentation>Tuning parameters for session management.</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="SessionManager">
+    <xsd:complexContent>
+        <xsd:extension base="process:Service">
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="enableUrlRewriting" type="boolean" nillable="true"/>
+            <xsd:element name="enableCookies" type="boolean" nillable="true"/>
+            <xsd:element name="enableSSLTracking" type="boolean" nillable="true"/>
+            <xsd:element name="enableProtocolSwitchRewriting" type="boolean" nillable="true"/>
+            <xsd:element name="sessionPersistenceMode" type="SessionPersistenceKind" nillable="true"/>
+            <xsd:element name="enableSecurityIntegration" type="boolean" nillable="true"/>
+            <xsd:element name="allowSerializedSessionAccess" type="boolean" nillable="true"/>
+            <xsd:element name="maxWaitTime" type="xsd:string" nillable="true"/>
+            <xsd:element name="accessSessionOnTimeout" type="boolean" nillable="true"/>
+            <xsd:element name="defaultCookieSettings" type="Cookie"/>
+            <xsd:element name="sessionDatabasePersistence" type="SessionDatabasePersistence"/>
+            <xsd:element name="tuningParams" type="TuningParams"/>
+            <xsd:element name="sessionDRSPersistence" type="DRSSettings"/>
+          </xsd:choice>
+          <xsd:attribute name="enableUrlRewriting" type="boolean" use="optional"/>
+          <xsd:attribute name="enableCookies" type="boolean" use="optional"/>
+          <xsd:attribute name="enableSSLTracking" type="boolean" use="optional"/>
+          <xsd:attribute name="enableProtocolSwitchRewriting" type="boolean" use="optional"/>
+          <xsd:attribute name="sessionPersistenceMode" type="SessionPersistenceKind" use="optional"/>
+          <xsd:attribute name="enableSecurityIntegration" type="boolean" use="optional"/>
+          <xsd:attribute name="allowSerializedSessionAccess" type="boolean" use="optional"/>
+          <xsd:attribute name="maxWaitTime" type="xsd:string" use="optional"/>
+          <xsd:attribute name="accessSessionOnTimeout" type="boolean" use="optional"/>
+        </xsd:extension>
+    </xsd:complexContent>
+</xsd:complexType>
+
+<xsd:element name="SessionManager" type="SessionManager"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: Cookie</xsd:documentation>
+  <xsd:documentation>Configuration for session tracking through HTTP cookies. It is the most used session tracking mechanism. Servlet containers are required to support it. A container sends a cookie to the client. The client will return the cookie on each subsequent request to the server, to associate the request with a session.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: name</xsd:documentation>
+  <xsd:documentation>Specifies a unique name for the cookie. The name must be JSESSIONID as specified in the Servlet 2.2 API.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: domain</xsd:documentation>
+  <xsd:documentation>The value of the domain field of a session tracking cookie. This value will restrict where the cookie is sent. For example, if you specify a particular domain, session cookies will be sent only to hosts in that domain.|#|#</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: maximumAge</xsd:documentation>
+  <xsd:documentation>The amount of time that the cookie will live on the client browser. This value corresponds to the Time to Live (TTL) value described in the Cookie specification.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: path</xsd:documentation>
+  <xsd:documentation>The paths (on the server) to which the session tracking cookie will be sent. Specify any string representing a path on the server. To indicate the root directory "/", leave the field blank.&lt;br&gt;&lt;br&gt;Specify a value in order to restrict the paths to which the cookie will be sent. By restricting paths, you can keep the cookie from being sent to certain URLs on the server. If you specify the root directory, the cookie will be sent no matter which path on the given server is accessed.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: secure</xsd:documentation>
+  <xsd:documentation>Whether session cookies include the secure field. When enabled, restricts the exchange of cookies to only HTTPS sessions.</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="Cookie">
+  <xsd:choice minOccurs="0" maxOccurs="unbounded">
+    <xsd:element name="name" type="xsd:string" nillable="true"/>
+    <xsd:element name="domain" type="xsd:string" nillable="true"/>
+    <xsd:element name="maximumAge" type="xsd:string" nillable="true"/>
+    <xsd:element name="path" type="xsd:string" nillable="true"/>
+    <xsd:element name="secure" type="boolean" nillable="true"/>
+    <xsd:element ref="xmi:Extension"/>
+  </xsd:choice>
+  <xsd:attribute ref="xmi:id"/>
+  <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  <xsd:attribute name="name" type="xsd:string" use="optional"/>
+  <xsd:attribute name="domain" type="xsd:string" use="optional"/>
+  <xsd:attribute name="maximumAge" type="xsd:string" use="optional"/>
+  <xsd:attribute name="path" type="xsd:string" use="optional"/>
+  <xsd:attribute name="secure" type="boolean" use="optional"/>
+</xsd:complexType>
+
+<xsd:element name="Cookie" type="Cookie"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: SessionDatabasePersistence</xsd:documentation>
+  <xsd:documentation>Specifies information about the data source that the session manager will use to obtain database connections.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: datasourceJNDIName</xsd:documentation>
+  <xsd:documentation>Specifies the JNDI name of the datasource from which the session manager will obtain database connections. The data source represents a pool of database connections and a configuration for that pool (such as the pool size).The datasource must already exist as a configured resource in the environment.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: userId</xsd:documentation>
+  <xsd:documentation>The user ID for database access.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: password</xsd:documentation>
+  <xsd:documentation>The password for database access.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: db2RowSize</xsd:documentation>
+  <xsd:documentation>Specified in kilobytes (kb). This corresponds to the tablespace page size configured for the sessions table.  This parameter is specific to db2.  Possible values are 4, 8, 16, and 32.  |#This determines the session data size that can be stored in varchar for binary data.  When this value is other than 4K, you must specify tableSpaceName to use. For 4K pages, tableSpaceName is optional.|#</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: tableSpaceName</xsd:documentation>
+  <xsd:documentation>Specifies tablespace that is to be used for sessions table.  This value is required when db2RowSize is specified other than 4Kb</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="SessionDatabasePersistence">
+  <xsd:choice minOccurs="0" maxOccurs="unbounded">
+    <xsd:element name="datasourceJNDIName" type="xsd:string" nillable="true"/>
+    <xsd:element name="userId" type="xsd:string" nillable="true"/>
+    <xsd:element name="password" type="xsd:string" nillable="true"/>
+    <xsd:element name="db2RowSize" type="DB2RowSizeEnum" nillable="true"/>
+    <xsd:element name="tableSpaceName" type="xsd:string" nillable="true"/>
+    <xsd:element ref="xmi:Extension"/>
+  </xsd:choice>
+  <xsd:attribute ref="xmi:id"/>
+  <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  <xsd:attribute name="datasourceJNDIName" type="xsd:string" use="optional"/>
+  <xsd:attribute name="userId" type="xsd:string" use="optional"/>
+  <xsd:attribute name="password" type="xsd:string" use="optional"/>
+  <xsd:attribute name="db2RowSize" type="DB2RowSizeEnum" use="optional"/>
+  <xsd:attribute name="tableSpaceName" type="xsd:string" use="optional"/>
+</xsd:complexType>
+
+<xsd:element name="SessionDatabasePersistence" type="SessionDatabasePersistence"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: TuningParams</xsd:documentation>
+  <xsd:documentation>Tuning parameters for session support.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: usingMultiRowSchema</xsd:documentation>
+  <xsd:documentation>Whether to place each instance of application data in a separate row in the database, allowing larger amounts of data to be stored for each session. This can yield better performance in certain usage scenarios. If using multirow schema is not enabled, instances of application data can be placed in the same row.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: maxInMemorySessionCount</xsd:documentation>
+  <xsd:documentation>Specifies the number of sessions to maintain in memory. The meaning differs depending on whether you are using in-memory or persistent sessions.|#For in-memory sessions, this value specifies the number of sessions in the base session table. Use the Allow Overflow property to specify whether to limit sessions to this number for the entire Session Manager, or allow additional sessions to be stored in secondary tables. |#For persistent sessions, this value specifies the size of the general cache. If the Cache property is enabled, the Max In-Memory Session Count specifies how many session updates will be cached before the Session Manager reverts to reading session updates from the database automatically.This value holds when you are using in-memory sessions, persistent sessions with caching, or persistent sessions with manual updates. (The manual update cache keeps the last n time stamps representing "last access" times, with n being the Max In-Memory Session Count value).|#</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: allowOverflow</xsd:documentation>
+  <xsd:documentation>Whether to allow the number of sessions in memory to exceed the value specified by Max In Memory Session Count property.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: scheduleInvalidation</xsd:documentation>
+  <xsd:documentation>Enables the scheduled invalidation process for cleaning up the invalidated HttpSessions from the sessions database. When enabled, this setting specifies the two hours of a day in which the invalidator process cleans up the invalidated persistent sessions in the database.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: writeFrequency</xsd:documentation>
+  <xsd:documentation>When the session is written to the database. If you specify END_OF_ SERVLET_SERVICE, a session is written to the database after the servlet completes execution. If you specify MANUAL_UPDATE, programmatic sync on the IBMSession object is required in order to write the session data to the database. If you specify TIME_BASED_WRITE, session data is written to the database based on the specified Write Interval value.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: writeInterval</xsd:documentation>
+  <xsd:documentation>If the Write Frequency is specified as TIME_BASED_WRITE, this value specifies how often the session data will be written to the database. The value must be a number of seconds, specified as a positive integer in the range from 5 to 9999. At minimum, a configured Invalidation Timeout should be twice as large as the configured write interval.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: writeContents</xsd:documentation>
+  <xsd:documentation>Whether only updated attributes should be written to the database. Otherwise, all of the session attributes will be written to the database, whether or not they have changed.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: invalidationTimeout</xsd:documentation>
+  <xsd:documentation>Specifies how long a session is allowed to go unused before it will be considered valid no longer. The value is in minutes. Use a -1 to specify that the session will not be invalidated.&lt;br&gt;&lt;br&gt;The value of this setting is used as a default when the session timeout is not specified in a Web module deployment descriptor.&lt;br&gt;&lt;br&gt;Note, to preserve performance, the invalidation timer is not accurate "to the second." It is safe to assume that the timer is accurate to within two minutes. When the Write Frequency is time based, this value should be at least twice as large as the write interval.|#|#TuningParams.maxInMemorySessionCount.description=Specifies the maximum number of sessions to maintain in memory.&lt;br&gt;&lt;br&gt;The meaning differs depending on whether you are using in-memory or persistent sessions. For in-memory sessions, this value specifies the number of sessions in the base session table. Use the Allow Overflow property to specify whether to limit sessions to this number for the entire Session Manager, or to allow additional sessions to be stored in secondary tables.&lt;br&gt;&lt;br&gt;For persistent sessions, this value specifies the size of the general cache. If the Cache property is enabled, this value specifies how many session updates will be cached before the Session Manager reverts to reading session updates from the database automatically.&lt;br&gt;&lt;br&gt;This value holds when you are using in-memory sessions, persistent sessions with caching, or persistent sessions with manual updates. (The manual update cache keeps the last n time stamps representing "last access" times, with n being the Max In Memory Session Count value).</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="TuningParams">
+  <xsd:choice minOccurs="0" maxOccurs="unbounded">
+    <xsd:element name="usingMultiRowSchema" type="boolean" nillable="true"/>
+    <xsd:element name="maxInMemorySessionCount" type="xsd:string" nillable="true"/>
+    <xsd:element name="allowOverflow" type="boolean" nillable="true"/>
+    <xsd:element name="scheduleInvalidation" type="boolean" nillable="true"/>
+    <xsd:element name="writeFrequency" type="WriteFrequencyEnum" nillable="true"/>
+    <xsd:element name="writeInterval" type="xsd:string" nillable="true"/>
+    <xsd:element name="writeContents" type="WriteContentsEnum" nillable="true"/>
+    <xsd:element name="invalidationTimeout" type="xsd:string" nillable="true"/>
+    <xsd:element name="invalidationSchedule" type="InvalidationSchedule"/>
+    <xsd:element ref="xmi:Extension"/>
+  </xsd:choice>
+  <xsd:attribute ref="xmi:id"/>
+  <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  <xsd:attribute name="usingMultiRowSchema" type="boolean" use="optional"/>
+  <xsd:attribute name="maxInMemorySessionCount" type="xsd:string" use="optional"/>
+  <xsd:attribute name="allowOverflow" type="boolean" use="optional"/>
+  <xsd:attribute name="scheduleInvalidation" type="boolean" use="optional"/>
+  <xsd:attribute name="writeFrequency" type="WriteFrequencyEnum" use="optional"/>
+  <xsd:attribute name="writeInterval" type="xsd:string" use="optional"/>
+  <xsd:attribute name="writeContents" type="WriteContentsEnum" use="optional"/>
+  <xsd:attribute name="invalidationTimeout" type="xsd:string" use="optional"/>
+</xsd:complexType>
+
+<xsd:element name="TuningParams" type="TuningParams"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: InvalidationSchedule</xsd:documentation>
+  <xsd:documentation>Configuration for the scheduled invalidation process for cleaning up the invalidated HttpSessions from the sessions database. Enable this option to reduce the number of database updates that are required to keep the HttpSessions alive. With this option turned off, the invalidator process runs every few minutes to remove invalidated HttpSessions. &lt;br&gt;&lt;br&gt;When enabled, this setting specifies the two hours of a day in which the invalidator process cleans up the invalidated persistent sessions in the database. Specify the times at which activity on your site is minimum, meaning there will be less activity in the session database.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: firstHour</xsd:documentation>
+  <xsd:documentation>The first hour during which the invalidated persistent sessions will be cleared from the database. This value must be a positive integer between 0 and 23.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: secondHour</xsd:documentation>
+  <xsd:documentation>The second hour during which the invalidated persistent sessions will be cleared from the database. This value must be a positive integer between 0 and 23.</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="InvalidationSchedule">
+  <xsd:choice minOccurs="0" maxOccurs="unbounded">
+    <xsd:element name="firstHour" type="xsd:string" nillable="true"/>
+    <xsd:element name="secondHour" type="xsd:string" nillable="true"/>
+    <xsd:element ref="xmi:Extension"/>
+  </xsd:choice>
+  <xsd:attribute ref="xmi:id"/>
+  <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  <xsd:attribute name="firstHour" type="xsd:string" use="optional"/>
+  <xsd:attribute name="secondHour" type="xsd:string" use="optional"/>
+</xsd:complexType>
+
+<xsd:element name="InvalidationSchedule" type="InvalidationSchedule"/>
+
+<xsd:element name="webcontainer">
+  <xsd:complexType>
+    <xsd:choice minOccurs="0" maxOccurs="unbounded">
+      <xsd:element ref="DRSSettings"/>
+      <xsd:element ref="WebContainer"/>
+      <xsd:element ref="HTTPTransport"/>
+      <xsd:element ref="SessionManager"/>
+      <xsd:element ref="Cookie"/>
+      <xsd:element ref="SessionDatabasePersistence"/>
+      <xsd:element ref="TuningParams"/>
+      <xsd:element ref="InvalidationSchedule"/>
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+  </xsd:complexType>
+</xsd:element>
+
+</xsd:schema>

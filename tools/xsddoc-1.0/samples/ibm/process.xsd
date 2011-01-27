@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xmi="http://www.omg.org/XMI" xmlns="http://www.ibm.com/websphere/appserver/schemas/5.0/process.xmi" targetNamespace="http://www.ibm.com/websphere/appserver/schemas/5.0/process.xmi" xmlns:properties="http://www.ibm.com/websphere/appserver/schemas/5.0/properties.xmi" xmlns:processexec="http://www.ibm.com/websphere/appserver/schemas/5.0/processexec.xmi">
+
+<xsd:import namespace="http://www.omg.org/XMI" schemaLocation="xmi20.xsd"/>
+<xsd:import namespace="http://www.ibm.com/websphere/appserver/schemas/5.0/properties.xmi" schemaLocation="properties.xsd"/>
+<xsd:import namespace="http://www.ibm.com/websphere/appserver/schemas/5.0/processexec.xmi" schemaLocation="processexec.xsd"/>
+
+<xsd:simpleType name="boolean">
+  <xsd:restriction base="xsd:string">
+    <xsd:enumeration value="true"/>
+    <xsd:enumeration value="false"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="ExecutionState">
+  <xsd:restriction base="xsd:string">
+    <xsd:enumeration value="START"/>
+    <xsd:enumeration value="STOP"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="RolloverType">
+  <xsd:restriction base="xsd:string">
+    <xsd:enumeration value="NONE"/>
+    <xsd:enumeration value="SIZE"/>
+    <xsd:enumeration value="TIME"/>
+    <xsd:enumeration value="BOTH"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="MessageFormatKind">
+  <xsd:restriction base="xsd:string">
+    <xsd:enumeration value="BASIC"/>
+    <xsd:enumeration value="ADVANCED"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:annotation>
+  <xsd:documentation>PACKAGE: process</xsd:documentation>
+</xsd:annotation>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: Service</xsd:documentation>
+  <xsd:documentation>Specifies the configuration settings for a service which executes within the application server.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: enable</xsd:documentation>
+  <xsd:documentation>Specifies whether the server will attempt to start the specified service.  Some kinds of services are always enabled and will disregard this property if set.</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="Service">
+  <xsd:choice minOccurs="0" maxOccurs="unbounded">
+    <xsd:element name="enable" type="boolean" nillable="true"/>
+    <xsd:element name="context" type="ServiceContext"/>
+    <xsd:element name="properties" type="properties:Property"/>
+    <xsd:element ref="xmi:Extension"/>
+  </xsd:choice>
+  <xsd:attribute ref="xmi:id"/>
+  <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  <xsd:attribute name="enable" type="boolean" use="optional"/>
+  <xsd:attribute name="context" type="xsd:IDREFS" use="optional"/>
+</xsd:complexType>
+
+<xsd:element name="Service" type="Service"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: CustomService</xsd:documentation>
+  <xsd:documentation>Configuration for plug-in services.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: externalConfigURL</xsd:documentation>
+  <xsd:documentation>The URL of a custom service configuration file. |#</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: classname</xsd:documentation>
+  <xsd:documentation>The classname of the service implementation. The class must implement the Services API of the product.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: displayName</xsd:documentation>
+  <xsd:documentation>The name of the service.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: description</xsd:documentation>
+  <xsd:documentation>An optional description for the custom service.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: classpath</xsd:documentation>
+  <xsd:documentation>Classpath which is used to locate the classes/jars for this service.</xsd:documentation>
+  <xsd:documentation>ASSOCIATION END: prerequisiteServices</xsd:documentation>
+  <xsd:documentation>A list of references to other custom services defined in this process that this custom service will wait for prior to being initialized.</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="CustomService">
+    <xsd:complexContent>
+        <xsd:extension base="Service">
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="externalConfigURL" type="xsd:string" nillable="true"/>
+            <xsd:element name="classname" type="xsd:string" nillable="true"/>
+            <xsd:element name="displayName" type="xsd:string" nillable="true"/>
+            <xsd:element name="description" type="xsd:string" nillable="true"/>
+            <xsd:element name="classpath" type="xsd:string" nillable="true"/>
+            <xsd:element name="prerequisiteServices" type="CustomService"/>
+          </xsd:choice>
+          <xsd:attribute name="externalConfigURL" type="xsd:string" use="optional"/>
+          <xsd:attribute name="classname" type="xsd:string" use="optional"/>
+          <xsd:attribute name="displayName" type="xsd:string" use="optional"/>
+          <xsd:attribute name="description" type="xsd:string" use="optional"/>
+          <xsd:attribute name="classpath" type="xsd:string" use="optional"/>
+          <xsd:attribute name="prerequisiteServices" type="xsd:IDREFS" use="optional"/>
+        </xsd:extension>
+    </xsd:complexContent>
+</xsd:complexType>
+
+<xsd:element name="CustomService" type="CustomService"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: Server</xsd:documentation>
+  <xsd:documentation>A property on the Server model that identifies the |#Context name for a model context. This is to support the concept of |#configuration value inheritance such that if the config value is not|#set in the Server context, the runtime will consult the model identified|#in the modelId property (if any) for the setting.|#</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: clusterName</xsd:documentation>
+  <xsd:documentation>Specify the cluster name if the server is part of a cluster.</xsd:documentation>
+  <xsd:documentation>ASSOCIATION END: customServices</xsd:documentation>
+  <xsd:documentation>A collection of plug-in service definitions.</xsd:documentation>
+  <xsd:documentation>ASSOCIATION END: errorStreamRedirect</xsd:documentation>
+  <xsd:documentation>Stream redirection settings for System.err</xsd:documentation>
+  <xsd:documentation>ASSOCIATION END: outputStreamRedirect</xsd:documentation>
+  <xsd:documentation>Stream redirection settings for System.out</xsd:documentation>
+  <xsd:documentation>ASSOCIATION END: processDefinition</xsd:documentation>
+  <xsd:documentation>Process execution settings for this server.</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="Server">
+    <xsd:complexContent>
+        <xsd:extension base="ServiceContext">
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="clusterName" type="xsd:string" nillable="true"/>
+            <xsd:element name="modelId" type="xsd:string" nillable="true"/>
+            <xsd:element name="customServices" type="CustomService"/>
+            <xsd:element name="components" type="Component"/>
+            <xsd:element name="errorStreamRedirect" type="StreamRedirect"/>
+            <xsd:element name="outputStreamRedirect" type="StreamRedirect"/>
+            <xsd:element name="processDefinition" type="processexec:ProcessDef"/>
+          </xsd:choice>
+          <xsd:attribute name="clusterName" type="xsd:string" use="optional"/>
+          <xsd:attribute name="modelId" type="xsd:string" use="optional"/>
+        </xsd:extension>
+    </xsd:complexContent>
+</xsd:complexType>
+
+<xsd:element name="Server" type="Server"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: ServiceContext</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="ServiceContext">
+    <xsd:complexContent>
+        <xsd:extension base="ManagedObject">
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="services" type="Service"/>
+          </xsd:choice>
+        </xsd:extension>
+    </xsd:complexContent>
+</xsd:complexType>
+
+<xsd:element name="ServiceContext" type="ServiceContext"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: ManagedObject</xsd:documentation>
+  <xsd:documentation>Represents the configuration for an object which is manageable by an agent process.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: name</xsd:documentation>
+  <xsd:documentation>A logical name for the server. Server names must be unique within a node.</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="ManagedObject">
+  <xsd:choice minOccurs="0" maxOccurs="unbounded">
+    <xsd:element name="name" type="xsd:string" nillable="true"/>
+    <xsd:element name="stateManagement" type="StateManageable"/>
+    <xsd:element name="statisticsProvider" type="StatisticsProvider"/>
+    <xsd:element ref="xmi:Extension"/>
+  </xsd:choice>
+  <xsd:attribute ref="xmi:id"/>
+  <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  <xsd:attribute name="name" type="xsd:string" use="optional"/>
+</xsd:complexType>
+
+<xsd:element name="ManagedObject" type="ManagedObject"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: ThreadPool</xsd:documentation>
+  <xsd:documentation>Configuration settings for a group of threads that the application server uses. A thread pool allows components of the server to reuse threads to eliminate the need to create new threads at runtime. Creating new threads is typically a time and resource intensive operation.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: minimumSize</xsd:documentation>
+  <xsd:documentation>The minimum number of threads to allow in the pool.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: maximumSize</xsd:documentation>
+  <xsd:documentation>The maximum number of threads to allow in the pool.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: inactivityTimeout</xsd:documentation>
+  <xsd:documentation>The period of time in milliseconds after which a thread should be reclaimed due to inactivity.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: isGrowable</xsd:documentation>
+  <xsd:documentation>Allows the number of threads to increase beyond the maximum size configured for the thread pool.</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="ThreadPool">
+  <xsd:choice minOccurs="0" maxOccurs="unbounded">
+    <xsd:element name="minimumSize" type="xsd:string" nillable="true"/>
+    <xsd:element name="maximumSize" type="xsd:string" nillable="true"/>
+    <xsd:element name="inactivityTimeout" type="xsd:string" nillable="true"/>
+    <xsd:element name="isGrowable" type="boolean" nillable="true"/>
+    <xsd:element ref="xmi:Extension"/>
+  </xsd:choice>
+  <xsd:attribute ref="xmi:id"/>
+  <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  <xsd:attribute name="minimumSize" type="xsd:string" use="optional"/>
+  <xsd:attribute name="maximumSize" type="xsd:string" use="optional"/>
+  <xsd:attribute name="inactivityTimeout" type="xsd:string" use="optional"/>
+  <xsd:attribute name="isGrowable" type="boolean" use="optional"/>
+</xsd:complexType>
+
+<xsd:element name="ThreadPool" type="ThreadPool"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: Component</xsd:documentation>
+  <xsd:documentation>Represents a process containing remotely callable components.|#|#A server represents the configuration information of a component which can execute indepedently of a parent component in its own process (like a service).  Multiple servers can execute within the JVM</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="Component">
+    <xsd:complexContent>
+        <xsd:extension base="ServiceContext">
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="parentComponent" type="Component"/>
+            <xsd:element name="server" type="Server"/>
+            <xsd:element name="properties" type="properties:Property"/>
+            <xsd:element name="components" type="Component"/>
+          </xsd:choice>
+          <xsd:attribute name="parentComponent" type="xsd:IDREFS" use="optional"/>
+          <xsd:attribute name="server" type="xsd:IDREFS" use="optional"/>
+        </xsd:extension>
+    </xsd:complexContent>
+</xsd:complexType>
+
+<xsd:element name="Component" type="Component"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: ServerComponent</xsd:documentation>
+  <xsd:documentation>Base component for all server component types, such as Application Server, MessagingServer, NameServer, etc.</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="ServerComponent">
+    <xsd:complexContent>
+        <xsd:extension base="Component">
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+          </xsd:choice>
+        </xsd:extension>
+    </xsd:complexContent>
+</xsd:complexType>
+
+<xsd:element name="ServerComponent" type="ServerComponent"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: Agent</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="Agent">
+    <xsd:complexContent>
+        <xsd:extension base="ServerComponent">
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+          </xsd:choice>
+        </xsd:extension>
+    </xsd:complexContent>
+</xsd:complexType>
+
+<xsd:element name="Agent" type="Agent"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: StateManageable</xsd:documentation>
+  <xsd:documentation>Represents configuration settings for managed objects which have a lifecycle (start, stop, etc.)</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: initialState</xsd:documentation>
+  <xsd:documentation>The desired execution state. </xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="StateManageable">
+  <xsd:choice minOccurs="0" maxOccurs="unbounded">
+    <xsd:element name="initialState" type="ExecutionState" nillable="true"/>
+    <xsd:element name="managedObject" type="ManagedObject"/>
+    <xsd:element ref="xmi:Extension"/>
+  </xsd:choice>
+  <xsd:attribute ref="xmi:id"/>
+  <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  <xsd:attribute name="initialState" type="ExecutionState" use="optional"/>
+  <xsd:attribute name="managedObject" type="xsd:IDREFS" use="optional"/>
+</xsd:complexType>
+
+<xsd:element name="StateManageable" type="StateManageable"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: StatisticsProvider</xsd:documentation>
+  <xsd:documentation>Specifies configuration settings for managed objects which provide statistical information, such as performance data.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: specification</xsd:documentation>
+  <xsd:documentation>A specification string which can be used to specify performance monitoring settings for the managed object.</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="StatisticsProvider">
+  <xsd:choice minOccurs="0" maxOccurs="unbounded">
+    <xsd:element name="specification" type="xsd:string" nillable="true"/>
+    <xsd:element name="managedObject" type="ManagedObject"/>
+    <xsd:element ref="xmi:Extension"/>
+  </xsd:choice>
+  <xsd:attribute ref="xmi:id"/>
+  <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  <xsd:attribute name="specification" type="xsd:string" use="optional"/>
+  <xsd:attribute name="managedObject" type="xsd:IDREFS" use="optional"/>
+</xsd:complexType>
+
+<xsd:element name="StatisticsProvider" type="StatisticsProvider"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: StreamRedirect</xsd:documentation>
+  <xsd:documentation>Specifies settings for redirecting standard Java IO streams.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: fileName</xsd:documentation>
+  <xsd:documentation>Specify the name of the file to which the stream should be redirected.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: rolloverType</xsd:documentation>
+  <xsd:documentation>Indicate what type of rollover algorithm is in effect.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: maxNumberOfBackupFiles</xsd:documentation>
+  <xsd:documentation>Number of archive files.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: rolloverSize</xsd:documentation>
+  <xsd:documentation>Specify the size in Megabytes for size-based rollover.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: baseHour</xsd:documentation>
+  <xsd:documentation>Specify the hours at which time-based rollover starts.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: rolloverPeriod</xsd:documentation>
+  <xsd:documentation>Specify the time-based rollover period.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: formatWrites</xsd:documentation>
+  <xsd:documentation>Specify whether writes should be formatted like Websphere log entry.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: messageFormatKind</xsd:documentation>
+  <xsd:documentation>The desired format for messages. Valid values include basic and advanced. Default is basic.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: suppressWrites</xsd:documentation>
+  <xsd:documentation>Specify whether writes to this stream should be suppressed.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: suppressStackTrace</xsd:documentation>
+  <xsd:documentation>Specify if stack traces in the messages should be replaced by the exception message only. Default is false. (no suppression)</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="StreamRedirect">
+  <xsd:choice minOccurs="0" maxOccurs="unbounded">
+    <xsd:element name="fileName" type="xsd:string" nillable="true"/>
+    <xsd:element name="rolloverType" type="RolloverType" nillable="true"/>
+    <xsd:element name="maxNumberOfBackupFiles" type="xsd:string" nillable="true"/>
+    <xsd:element name="rolloverSize" type="xsd:string" nillable="true"/>
+    <xsd:element name="baseHour" type="xsd:string" nillable="true"/>
+    <xsd:element name="rolloverPeriod" type="xsd:string" nillable="true"/>
+    <xsd:element name="formatWrites" type="boolean" nillable="true"/>
+    <xsd:element name="messageFormatKind" type="MessageFormatKind" nillable="true"/>
+    <xsd:element name="suppressWrites" type="boolean" nillable="true"/>
+    <xsd:element name="suppressStackTrace" type="boolean" nillable="true"/>
+    <xsd:element ref="xmi:Extension"/>
+  </xsd:choice>
+  <xsd:attribute ref="xmi:id"/>
+  <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  <xsd:attribute name="fileName" type="xsd:string" use="optional"/>
+  <xsd:attribute name="rolloverType" type="RolloverType" use="optional"/>
+  <xsd:attribute name="maxNumberOfBackupFiles" type="xsd:string" use="optional"/>
+  <xsd:attribute name="rolloverSize" type="xsd:string" use="optional"/>
+  <xsd:attribute name="baseHour" type="xsd:string" use="optional"/>
+  <xsd:attribute name="rolloverPeriod" type="xsd:string" use="optional"/>
+  <xsd:attribute name="formatWrites" type="boolean" use="optional"/>
+  <xsd:attribute name="messageFormatKind" type="MessageFormatKind" use="optional"/>
+  <xsd:attribute name="suppressWrites" type="boolean" use="optional"/>
+  <xsd:attribute name="suppressStackTrace" type="boolean" use="optional"/>
+</xsd:complexType>
+
+<xsd:element name="StreamRedirect" type="StreamRedirect"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: Extension</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="Extension">
+  <xsd:choice minOccurs="0" maxOccurs="unbounded">
+    <xsd:element name="name" type="xsd:string" nillable="true"/>
+    <xsd:element name="configURI" type="xsd:string" nillable="true"/>
+    <xsd:element ref="xmi:Extension"/>
+  </xsd:choice>
+  <xsd:attribute ref="xmi:id"/>
+  <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  <xsd:attribute name="name" type="xsd:string" use="optional"/>
+  <xsd:attribute name="configURI" type="xsd:string" use="optional"/>
+</xsd:complexType>
+
+<xsd:element name="Extension" type="Extension"/>
+
+<xsd:element name="process">
+  <xsd:complexType>
+    <xsd:choice minOccurs="0" maxOccurs="unbounded">
+      <xsd:element ref="Service"/>
+      <xsd:element ref="CustomService"/>
+      <xsd:element ref="Server"/>
+      <xsd:element ref="ServiceContext"/>
+      <xsd:element ref="ManagedObject"/>
+      <xsd:element ref="ThreadPool"/>
+      <xsd:element ref="Component"/>
+      <xsd:element ref="ServerComponent"/>
+      <xsd:element ref="Agent"/>
+      <xsd:element ref="StateManageable"/>
+      <xsd:element ref="StatisticsProvider"/>
+      <xsd:element ref="StreamRedirect"/>
+      <xsd:element ref="Extension"/>
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+  </xsd:complexType>
+</xsd:element>
+
+</xsd:schema>

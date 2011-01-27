@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://xframe.sf.net/sample/stress/importedImported" xmlns:xx="http://xframe.sf.net/sample/stress/importedImported"
+xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <xs:annotation>
+    <xs:documentation>This namespace is used to test imports within imported schemas.</xs:documentation>
+  </xs:annotation>
+  <xs:simpleType name="simpleImportedImported2">
+    <xs:annotation>
+      <xs:documentation>derived from xx:simpleImportedImported1</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xx:simpleImportedImported1"/>
+  </xs:simpleType>
+  <xs:simpleType name="simpleImportedImported1">
+    <xs:annotation>
+      <xs:documentation>imported from an imported schema</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+</xs:schema>
