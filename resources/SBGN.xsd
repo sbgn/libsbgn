@@ -22,7 +22,10 @@
 				- x (horizontal, from left to right)
 				- y (vertical, from top to bottom)
 				The origin is located in the top-left corner of the map.
-				There is no unit: the values are relative, and the map can be drawn at any scale.
+				There is no unit:
+				proportions must be preserved, but the maps can be drawn at any scale.
+				In the test files examples, to obtain a drawing similar to the reference *.png file,
+				values in the corresponding *.sbgn file should be read as pixels.
 			</xsd:documentation>
 		</xsd:annotation>
 		<xsd:attribute name="x" type="xsd:float" use="required"/>
@@ -38,7 +41,10 @@
 				- x (horizontal, from left to right)
 				- y (vertical, from top to bottom)
 				The origin is located in the top-left corner of the map
-				There is no unit: the values are relative, and the map can be drawn at any scale.
+				There is no unit:
+				proportions must be preserved, but the maps can be drawn at any scale.
+				In the test files examples, to obtain a drawing similar to the reference *.png file,
+				values in the corresponding *.sbgn file should be read as pixels.
 			</xsd:documentation>
 		</xsd:annotation>
 		<xsd:complexType>
