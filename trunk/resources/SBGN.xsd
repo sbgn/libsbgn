@@ -22,7 +22,7 @@
 				- x (horizontal, from left to right)
 				- y (vertical, from top to bottom)
 				The origin is located in the top-left corner of the map.
-				The unit is ...? [!] point, pixel, whatever?
+				There is no unit: the values are relative, and the map can be drawn at any scale.
 			</xsd:documentation>
 		</xsd:annotation>
 		<xsd:attribute name="x" type="xsd:float" use="required"/>
@@ -38,7 +38,7 @@
 				- x (horizontal, from left to right)
 				- y (vertical, from top to bottom)
 				The origin is located in the top-left corner of the map
-				The unit is ...? [!] point, pixel, whatever?
+				There is no unit: the values are relative, and the map can be drawn at any scale.
 			</xsd:documentation>
 		</xsd:annotation>
 		<xsd:complexType>
@@ -78,8 +78,8 @@
 			<xsd:documentation>
 				The label element describes the text accompanying a glyph.
 				The text attribute is mandatory.
-				Its position can be specified by a bbox (optional)
-				The style of the text can be described via some optional font attributes.
+				Its position can be specified by a bbox (optional).
+				Tools are free to display the text in any style (font, font-size, etc.)
 			</xsd:documentation>
 		</xsd:annotation>
 		<xsd:complexType>
@@ -88,8 +88,21 @@
 					<xsd:documentation>
 						The bbox element of a label is optional.
 						When no bbox is defined, the bbox of the parent glyph is inherited.
-						The label should be drawn centered horizontally and vertically
-						within the bbox.
+						The label should be drawn centered horizontally and vertically in the bbox.
+
+						When the bbox is inherited, the label can freely spill outside (just like it
+						can spill outside its parent glyph)
+						An explicit bbox provides a stronger hint regarding what surface the label
+						should cover. It defines an upper boundary outside of which the label should
+						(ideally) not spill. It also represents a preferred size: the surface
+						covered by the label can be smaller, but should ideally be as close as
+						possible to the bbox.
+						
+					    In most glyphs (EPNs, unit of information, etc.), the label is supposed to
+					    be centered, so the bbox is usually omitted (unless there's a specific hint
+					    to be shared concerning the area the label should ideally cover)
+					    However, labels can be drawn anywhere inside compartments or complex, so
+					    these should preferably have an explicit bbox.
 					</xsd:documentation>
 				</xsd:annotation>
 				<xsd:element ref="sbgn-pd:bbox" minOccurs="0" maxOccurs="1"/>
@@ -103,22 +116,6 @@
 					</xsd:documentation>
 				</xsd:annotation>
 			</xsd:attribute>						
-			<xsd:attribute name="font" type="xsd:string" use="optional">
-				<xsd:annotation>
-					<xsd:documentation>
-						The font attribute refers to the font family.
-						Provided for guidance only, it is optional and can be ignored.
-					</xsd:documentation>
-				</xsd:annotation>
-			</xsd:attribute>
-			<xsd:attribute name="fontsize" type="xsd:float" use="optional">
-				<xsd:annotation>
-					<xsd:documentation>
-						The fontsize attribute is expressed in ...? [!] Point, pixel, whatever?
-						Provided for guidance only, it is optional and can be ignored.						
-					</xsd:documentation>
-				</xsd:annotation>
-			</xsd:attribute>
 		</xsd:complexType>
 	</xsd:element>
 
