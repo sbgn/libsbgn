@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://xframe.sf.net/sample/stress" xmlns:inc="http://xframe.sf.net/sample/stress" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <xs:include schemaLocation="includedIncluded.xsd"/>
+  <xs:simpleType name="included1">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:simpleType name="include2">
+    <xs:restriction base="inc:includedIncluded1"/>
+  </xs:simpleType>
+  <xs:complexType name="complexTypeIncluded1">
+    <xs:choice>
+      <xs:element name="test1" type="inc:includedIncluded1"/>
+      <xs:element name="test2" type="inc:complexTypeIncluded1"/>
+      <xs:element name="test3" type="inc:complexTypeIncludedIncluded1"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:element name="includedElement" type="inc:included1"/>
+</xs:schema>

@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xmi="http://www.omg.org/XMI" xmlns="http://www.ibm.com/websphere/appserver/schemas/5.0/processexec.xmi" targetNamespace="http://www.ibm.com/websphere/appserver/schemas/5.0/processexec.xmi" xmlns:properties="http://www.ibm.com/websphere/appserver/schemas/5.0/properties.xmi">
+
+<xsd:import namespace="http://www.omg.org/XMI" schemaLocation="xmi20.xsd"/>
+<xsd:import namespace="http://www.ibm.com/websphere/appserver/schemas/5.0/properties.xmi" schemaLocation="properties.xsd"/>
+
+<xsd:simpleType name="boolean">
+  <xsd:restriction base="xsd:string">
+    <xsd:enumeration value="true"/>
+    <xsd:enumeration value="false"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="ExecutableTargetKind">
+  <xsd:restriction base="xsd:string">
+    <xsd:enumeration value="JAVA_CLASS"/>
+    <xsd:enumeration value="EXECUTABLE_JAR"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="RestartStateKind">
+  <xsd:restriction base="xsd:string">
+    <xsd:enumeration value="STOPPED"/>
+    <xsd:enumeration value="RUNNING"/>
+    <xsd:enumeration value="PREVIOUS"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:annotation>
+  <xsd:documentation>PACKAGE: processexec</xsd:documentation>
+</xsd:annotation>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: JavaVirtualMachine</xsd:documentation>
+  <xsd:documentation>Configuration for advanced Java virtual machine settings.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: classpath</xsd:documentation>
+  <xsd:documentation>The standard classpath in which the Java virtual machine looks for classes. This property can contain multiple paths separated by colons (":") or semicolons (";") depending on the operating system of the node.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: bootClasspath</xsd:documentation>
+  <xsd:documentation>Some JVMs contain an option to specify bootstrap classes and resources. This property can contain multiple paths separated by colons (":") or semicolons (";") depending on the operating system of the node.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: verboseModeClass</xsd:documentation>
+  <xsd:documentation>Enables verbose debugging output for class loading.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: verboseModeGarbageCollection</xsd:documentation>
+  <xsd:documentation>Enables verbose debug output for garbage collection.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: verboseModeJNI</xsd:documentation>
+  <xsd:documentation>Enables verbose debugging output for native method invocation.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: initialHeapSize</xsd:documentation>
+  <xsd:documentation>Specifies the initial heap size available to the JVM, in megabytes.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: maximumHeapSize</xsd:documentation>
+  <xsd:documentation>The maximum heap size available to the JVM, in megabytes.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: runHProf</xsd:documentation>
+  <xsd:documentation>Enable HProf profiler support. To use another profiler, use the command line property to specify settings for the custom profiler.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: hprofArguments</xsd:documentation>
+  <xsd:documentation>Additional profiler arguments to use when Run HProf is used.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: debugMode</xsd:documentation>
+  <xsd:documentation>Enables the JVM debug output. When the property is set, the application server will start with the java_g -debug argument, which is necessary to allow the Distributed Debugger, or any Java debugger, to attach to the application server. Selecting this setting is necessary, but not sufficient, for using the IBM Distributed Debugger to debug code running on this application server. You must also configure and enable the  Object Level Trace settings and perform some other steps. See the InfoCenter for more information.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: debugArgs</xsd:documentation>
+  <xsd:documentation>When Debug Mode for the Java virtual machine is enabled, this property allows additional debug arguments to be passed to the Java virtual machine.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: genericJvmArguments</xsd:documentation>
+  <xsd:documentation>Additional command line arguments for the JVM.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: executableJarFileName</xsd:documentation>
+  <xsd:documentation>The file path to an executable JAR file.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: disableJIT</xsd:documentation>
+  <xsd:documentation>Diables the Just In Time (JIT) compiler option of the JVM.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: osName</xsd:documentation>
+  <xsd:documentation>JVM Settings specific to a given operating system.  The process launcher will use the JVM settings for the os platform of the node.</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="JavaVirtualMachine">
+  <xsd:choice minOccurs="0" maxOccurs="unbounded">
+    <xsd:element name="classpath" type="xsd:string" nillable="true"/>
+    <xsd:element name="bootClasspath" type="xsd:string" nillable="true"/>
+    <xsd:element name="verboseModeClass" type="boolean" nillable="true"/>
+    <xsd:element name="verboseModeGarbageCollection" type="boolean" nillable="true"/>
+    <xsd:element name="verboseModeJNI" type="boolean" nillable="true"/>
+    <xsd:element name="initialHeapSize" type="xsd:string" nillable="true"/>
+    <xsd:element name="maximumHeapSize" type="xsd:string" nillable="true"/>
+    <xsd:element name="runHProf" type="boolean" nillable="true"/>
+    <xsd:element name="hprofArguments" type="xsd:string" nillable="true"/>
+    <xsd:element name="debugMode" type="boolean" nillable="true"/>
+    <xsd:element name="debugArgs" type="xsd:string" nillable="true"/>
+    <xsd:element name="genericJvmArguments" type="xsd:string" nillable="true"/>
+    <xsd:element name="executableJarFileName" type="xsd:string" nillable="true"/>
+    <xsd:element name="disableJIT" type="boolean" nillable="true"/>
+    <xsd:element name="osName" type="xsd:string" nillable="true"/>
+    <xsd:element name="systemProperties" type="properties:Property"/>
+    <xsd:element ref="xmi:Extension"/>
+  </xsd:choice>
+  <xsd:attribute ref="xmi:id"/>
+  <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  <xsd:attribute name="classpath" type="xsd:string" use="optional"/>
+  <xsd:attribute name="bootClasspath" type="xsd:string" use="optional"/>
+  <xsd:attribute name="verboseModeClass" type="boolean" use="optional"/>
+  <xsd:attribute name="verboseModeGarbageCollection" type="boolean" use="optional"/>
+  <xsd:attribute name="verboseModeJNI" type="boolean" use="optional"/>
+  <xsd:attribute name="initialHeapSize" type="xsd:string" use="optional"/>
+  <xsd:attribute name="maximumHeapSize" type="xsd:string" use="optional"/>
+  <xsd:attribute name="runHProf" type="boolean" use="optional"/>
+  <xsd:attribute name="hprofArguments" type="xsd:string" use="optional"/>
+  <xsd:attribute name="debugMode" type="boolean" use="optional"/>
+  <xsd:attribute name="debugArgs" type="xsd:string" use="optional"/>
+  <xsd:attribute name="genericJvmArguments" type="xsd:string" use="optional"/>
+  <xsd:attribute name="executableJarFileName" type="xsd:string" use="optional"/>
+  <xsd:attribute name="disableJIT" type="boolean" use="optional"/>
+  <xsd:attribute name="osName" type="xsd:string" use="optional"/>
+</xsd:complexType>
+
+<xsd:element name="JavaVirtualMachine" type="JavaVirtualMachine"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: JavaProcessDef</xsd:documentation>
+  <xsd:documentation>Configuration for Java processes that require additional information that can be passed to the Java virtual machine when spawning the processes.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: executableTargetKind</xsd:documentation>
+  <xsd:documentation>Whether a Java classname or the name of an executable JAR will be used as the executable target of this Java process.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: executableTarget</xsd:documentation>
+  <xsd:documentation>The name of the executable target. The target can be either a Java class containing a main() method, or an executable JAR file, depending on the Executable Target Type.</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="JavaProcessDef">
+    <xsd:complexContent>
+        <xsd:extension base="ProcessDef">
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="executableTargetKind" type="ExecutableTargetKind" nillable="true"/>
+            <xsd:element name="executableTarget" type="xsd:string" nillable="true"/>
+            <xsd:element name="jvmEntries" type="JavaVirtualMachine"/>
+          </xsd:choice>
+          <xsd:attribute name="executableTargetKind" type="ExecutableTargetKind" use="optional"/>
+          <xsd:attribute name="executableTarget" type="xsd:string" use="optional"/>
+        </xsd:extension>
+    </xsd:complexContent>
+</xsd:complexType>
+
+<xsd:element name="JavaProcessDef" type="JavaProcessDef"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: ProcessDef</xsd:documentation>
+  <xsd:documentation>Configuration providing the command line information necessary to start and initialize the application server process.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: executableName</xsd:documentation>
+  <xsd:documentation>The executable name of the process.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: workingDirectory</xsd:documentation>
+  <xsd:documentation>The directory of a file system within which the process will execute.</xsd:documentation>
+  <xsd:documentation>ASSOCIATION END: ioRedirect</xsd:documentation>
+  <xsd:documentation>Settings for redirecting the I/O streams of the process, such as the standard out stream.</xsd:documentation>
+  <xsd:documentation>ASSOCIATION END: environment</xsd:documentation>
+  <xsd:documentation>Environment properties to be passed to the process.</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="ProcessDef">
+  <xsd:choice minOccurs="0" maxOccurs="unbounded">
+    <xsd:element name="executableName" type="xsd:string" nillable="true"/>
+    <xsd:element name="executableArguments" type="xsd:string" nillable="true"/>
+    <xsd:element name="workingDirectory" type="xsd:string" nillable="true"/>
+    <xsd:element name="execution" type="ProcessExecution"/>
+    <xsd:element name="ioRedirect" type="OutputRedirect"/>
+    <xsd:element name="environment" type="properties:Property"/>
+    <xsd:element name="monitoringPolicy" type="MonitoringPolicy"/>
+    <xsd:element ref="xmi:Extension"/>
+  </xsd:choice>
+  <xsd:attribute ref="xmi:id"/>
+  <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  <xsd:attribute name="executableName" type="xsd:string" use="optional"/>
+  <xsd:attribute name="executableArguments" type="xsd:string" use="optional"/>
+  <xsd:attribute name="workingDirectory" type="xsd:string" use="optional"/>
+</xsd:complexType>
+
+<xsd:element name="ProcessDef" type="ProcessDef"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: ProcessExecution</xsd:documentation>
+  <xsd:documentation>Configuration for additional process execution settings used on UNIX operating systems. These values are not utilized on non-UNIX platforms.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: processPriority</xsd:documentation>
+  <xsd:documentation>Operating system priority for the process. Only root users can change this value.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: umask</xsd:documentation>
+  <xsd:documentation>The user mask that the process runs under (the file-mode permission mask).</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: runAsUser</xsd:documentation>
+  <xsd:documentation>Runs the process as a specific user.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: runAsGroup</xsd:documentation>
+  <xsd:documentation>Runs the process as a member of a specific group.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: runInProcessGroup</xsd:documentation>
+  <xsd:documentation>The process group attribute allows the assignment of a process to a specific process group.  This is useful for doing things such as processor partitioning.  The sysadmins can assign a process group to run on say 6 of 12 processors and so on.|#|#The default of 0 tells it to not assign it to any specific group.</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="ProcessExecution">
+  <xsd:choice minOccurs="0" maxOccurs="unbounded">
+    <xsd:element name="processPriority" type="xsd:string" nillable="true"/>
+    <xsd:element name="umask" type="xsd:string" nillable="true"/>
+    <xsd:element name="runAsUser" type="xsd:string" nillable="true"/>
+    <xsd:element name="runAsGroup" type="xsd:string" nillable="true"/>
+    <xsd:element name="runInProcessGroup" type="xsd:string" nillable="true"/>
+    <xsd:element ref="xmi:Extension"/>
+  </xsd:choice>
+  <xsd:attribute ref="xmi:id"/>
+  <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  <xsd:attribute name="processPriority" type="xsd:string" use="optional"/>
+  <xsd:attribute name="umask" type="xsd:string" use="optional"/>
+  <xsd:attribute name="runAsUser" type="xsd:string" use="optional"/>
+  <xsd:attribute name="runAsGroup" type="xsd:string" use="optional"/>
+  <xsd:attribute name="runInProcessGroup" type="xsd:string" use="optional"/>
+</xsd:complexType>
+
+<xsd:element name="ProcessExecution" type="ProcessExecution"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: OutputRedirect</xsd:documentation>
+  <xsd:documentation>Configuration for directing standard output ("stdout") and standard error ("stderr") streams to specified files.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: stdinFilename</xsd:documentation>
+  <xsd:documentation>The file from which the standard input stream will be read.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: stdoutFilename</xsd:documentation>
+  <xsd:documentation>The file to which the standard output stream will be directed. The file name can include a symbolic path name defined in the path map entries. Click "View..." to view the contents of the stdout file.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: stderrFilename</xsd:documentation>
+  <xsd:documentation>The file to which the standard error stream will be directed. The file name can include a symbolic path name defined in the path map entries. Click "View..." to view the contents of the stderr file.</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="OutputRedirect">
+  <xsd:choice minOccurs="0" maxOccurs="unbounded">
+    <xsd:element name="stdinFilename" type="xsd:string" nillable="true"/>
+    <xsd:element name="stdoutFilename" type="xsd:string" nillable="true"/>
+    <xsd:element name="stderrFilename" type="xsd:string" nillable="true"/>
+    <xsd:element ref="xmi:Extension"/>
+  </xsd:choice>
+  <xsd:attribute ref="xmi:id"/>
+  <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  <xsd:attribute name="stdinFilename" type="xsd:string" use="optional"/>
+  <xsd:attribute name="stdoutFilename" type="xsd:string" use="optional"/>
+  <xsd:attribute name="stderrFilename" type="xsd:string" use="optional"/>
+</xsd:complexType>
+
+<xsd:element name="OutputRedirect" type="OutputRedirect"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: MonitoringPolicy</xsd:documentation>
+  <xsd:documentation>Configuration specifying the policy settings for performance monitoring of the application server.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: maximumStartupAttempts</xsd:documentation>
+  <xsd:documentation>The number of times to try to spawn this process from another process, such as a process manager.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: pingInterval</xsd:documentation>
+  <xsd:documentation>Specifies the frequency of communication attempts between the parent process, such as the node agent, and the process it has spawned, such as an application server. Adjust this value based on your requirements for restarting failed servers. Decreasing the value detects failures sooner; increasing the value reduces the frequency of pings, reducing system overhead.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: pingTimeout</xsd:documentation>
+  <xsd:documentation>When a parent process is spawning a child process, such as when a process manager spawns a server, the parent process pings the child process to see whether the child was spawned successfully. This value specifies the number of milliseconds that the parent process should wait (after pinging the child process) before assuming that the child process failed.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: autoRestart</xsd:documentation>
+  <xsd:documentation>Whether the process will be restarted automatically on failure detection.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: nodeRestartState</xsd:documentation>
+  <xsd:documentation>The processing state that will be attained if autoRestart is enabled.</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="MonitoringPolicy">
+  <xsd:choice minOccurs="0" maxOccurs="unbounded">
+    <xsd:element name="maximumStartupAttempts" type="xsd:string" nillable="true"/>
+    <xsd:element name="pingInterval" type="xsd:string" nillable="true"/>
+    <xsd:element name="pingTimeout" type="xsd:string" nillable="true"/>
+    <xsd:element name="autoRestart" type="boolean" nillable="true"/>
+    <xsd:element name="nodeRestartState" type="RestartStateKind" nillable="true"/>
+    <xsd:element ref="xmi:Extension"/>
+  </xsd:choice>
+  <xsd:attribute ref="xmi:id"/>
+  <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  <xsd:attribute name="maximumStartupAttempts" type="xsd:string" use="optional"/>
+  <xsd:attribute name="pingInterval" type="xsd:string" use="optional"/>
+  <xsd:attribute name="pingTimeout" type="xsd:string" use="optional"/>
+  <xsd:attribute name="autoRestart" type="boolean" use="optional"/>
+  <xsd:attribute name="nodeRestartState" type="RestartStateKind" use="optional"/>
+</xsd:complexType>
+
+<xsd:element name="MonitoringPolicy" type="MonitoringPolicy"/>
+
+<xsd:element name="processexec">
+  <xsd:complexType>
+    <xsd:choice minOccurs="0" maxOccurs="unbounded">
+      <xsd:element ref="JavaVirtualMachine"/>
+      <xsd:element ref="JavaProcessDef"/>
+      <xsd:element ref="ProcessDef"/>
+      <xsd:element ref="ProcessExecution"/>
+      <xsd:element ref="OutputRedirect"/>
+      <xsd:element ref="MonitoringPolicy"/>
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+  </xsd:complexType>
+</xsd:element>
+
+</xsd:schema>

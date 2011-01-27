@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xmi="http://www.omg.org/XMI" xmlns="http://www.ibm.com/websphere/appserver/schemas/5.0/classloader.xmi" targetNamespace="http://www.ibm.com/websphere/appserver/schemas/5.0/classloader.xmi">
+
+<xsd:import namespace="http://www.omg.org/XMI" schemaLocation="xmi20.xsd"/>
+
+<xsd:simpleType name="boolean">
+  <xsd:restriction base="xsd:string">
+    <xsd:enumeration value="true"/>
+    <xsd:enumeration value="false"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="ClassLoaderPolicy">
+  <xsd:restriction base="xsd:string">
+    <xsd:enumeration value="MULTIPLE"/>
+    <xsd:enumeration value="SINGLE"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="ClassLoadingMode">
+  <xsd:restriction base="xsd:string">
+    <xsd:enumeration value="PARENT_FIRST"/>
+    <xsd:enumeration value="PARENT_LAST"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:annotation>
+  <xsd:documentation>PACKAGE: classloader</xsd:documentation>
+</xsd:annotation>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: LibraryRef</xsd:documentation>
+  <xsd:documentation>A reference to one of the libararies that has been defined for classloading.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: libraryName</xsd:documentation>
+  <xsd:documentation>The name of a shared library that has been defined in the one of the shared library configuration documents.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: sharedClassloader</xsd:documentation>
+  <xsd:documentation>Specifies whether the classloader for the library will be shared. For IBM internal use only.</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="LibraryRef">
+  <xsd:choice minOccurs="0" maxOccurs="unbounded">
+    <xsd:element name="libraryName" type="xsd:string" nillable="true"/>
+    <xsd:element name="sharedClassloader" type="boolean" nillable="true"/>
+    <xsd:element ref="xmi:Extension"/>
+  </xsd:choice>
+  <xsd:attribute ref="xmi:id"/>
+  <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  <xsd:attribute name="libraryName" type="xsd:string" use="optional"/>
+  <xsd:attribute name="sharedClassloader" type="boolean" use="optional"/>
+</xsd:complexType>
+
+<xsd:element name="LibraryRef" type="LibraryRef"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: Classloader</xsd:documentation>
+  <xsd:documentation>Classloader configuration</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: mode</xsd:documentation>
+  <xsd:documentation>Specifies whether classes are loaded via the parent classloader before this one.</xsd:documentation>
+  <xsd:documentation>ASSOCIATION END: libraries</xsd:documentation>
+  <xsd:documentation>An ordered list of library references which specify the usage of global libraries.</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="Classloader">
+  <xsd:choice minOccurs="0" maxOccurs="unbounded">
+    <xsd:element name="mode" type="ClassLoadingMode" nillable="true"/>
+    <xsd:element name="libraries" type="LibraryRef"/>
+    <xsd:element ref="xmi:Extension"/>
+  </xsd:choice>
+  <xsd:attribute ref="xmi:id"/>
+  <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  <xsd:attribute name="mode" type="ClassLoadingMode" use="optional"/>
+</xsd:complexType>
+
+<xsd:element name="Classloader" type="Classloader"/>
+
+<xsd:element name="classloader">
+  <xsd:complexType>
+    <xsd:choice minOccurs="0" maxOccurs="unbounded">
+      <xsd:element ref="LibraryRef"/>
+      <xsd:element ref="Classloader"/>
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+  </xsd:complexType>
+</xsd:element>
+
+</xsd:schema>

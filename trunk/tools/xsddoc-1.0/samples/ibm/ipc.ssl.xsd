@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xmi="http://www.omg.org/XMI" xmlns="http://www.ibm.com/websphere/appserver/schemas/5.0/ipc.ssl.xmi" targetNamespace="http://www.ibm.com/websphere/appserver/schemas/5.0/ipc.ssl.xmi" xmlns:datatype="http://www.ibm.com/websphere/appserver/schemas/5.0/datatype.xmi" xmlns:properties="http://www.ibm.com/websphere/appserver/schemas/5.0/properties.xmi">
+
+<xsd:import namespace="http://www.omg.org/XMI" schemaLocation="xmi20.xsd"/>
+<xsd:import namespace="http://www.ibm.com/websphere/appserver/schemas/5.0/datatype.xmi" schemaLocation="datatype.xsd"/>
+<xsd:import namespace="http://www.ibm.com/websphere/appserver/schemas/5.0/properties.xmi" schemaLocation="properties.xsd"/>
+
+<xsd:simpleType name="boolean">
+  <xsd:restriction base="xsd:string">
+    <xsd:enumeration value="true"/>
+    <xsd:enumeration value="false"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="KeyFileFormatKind">
+  <xsd:restriction base="xsd:string">
+    <xsd:enumeration value="JKS"/>
+    <xsd:enumeration value="PKCS12"/>
+    <xsd:enumeration value="JCEK"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="SSLSecurityLevel">
+  <xsd:restriction base="xsd:string">
+    <xsd:enumeration value="HIGH"/>
+    <xsd:enumeration value="MEDIUM"/>
+    <xsd:enumeration value="LOW"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:annotation>
+  <xsd:documentation>PACKAGE: ssl</xsd:documentation>
+</xsd:annotation>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: SecureSocketLayer</xsd:documentation>
+  <xsd:documentation>Configuration settings for using Secure Socket Layer (SSL).</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: keyFileName</xsd:documentation>
+  <xsd:documentation>The fully-qualified path to the key file which contains public keys (and perhaps private keys).</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: keyFilePassword</xsd:documentation>
+  <xsd:documentation>The password for accessing the key file.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: keyFileFormat</xsd:documentation>
+  <xsd:documentation>The format of the key file.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: clientKeyAlias</xsd:documentation>
+  <xsd:documentation>Choose an alias in key file to authenticate the client side of a secure socket connection. (Reserved by IBM for Future Use)|#</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: serverKeyAlias</xsd:documentation>
+  <xsd:documentation>Choose an alias in key file to authenticate the server side of a secure socket connection. (Reserved by IBM for Future Use)</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: trustFileName</xsd:documentation>
+  <xsd:documentation>The fully qualified path to a trust file containing the public keys.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: trustFilePassword</xsd:documentation>
+  <xsd:documentation>A password for accessing the trust file.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: trustFileFormat</xsd:documentation>
+  <xsd:documentation>The format of the trust file.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: clientAuthentication</xsd:documentation>
+  <xsd:documentation>Specifies that the server and client should prove their identities through an exchange of keys.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: securityLevel</xsd:documentation>
+  <xsd:documentation>One of a preconfigured set of cipher suites with the indicated level of encryption strength.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: enableCryptoHardwareSupport</xsd:documentation>
+  <xsd:documentation>Indicate whether cryptographic token standard interface support is enabled.</xsd:documentation>
+  <xsd:documentation>ASSOCIATION END: cryptoHardware</xsd:documentation>
+  <xsd:documentation>Specifies information about the cryptographic tokens related to SSL support.</xsd:documentation>
+  <xsd:documentation>ASSOCIATION END: properties</xsd:documentation>
+  <xsd:documentation>SecureSocketLayer attributes are represented as name-value pair at runtime.  |#A property defined with the identical name overrides the attribute value.  |#For example, the com.ibm.ssl.enabledCipherSuites can be defined to override|#the pre-configured cipher suites.</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="SecureSocketLayer">
+  <xsd:choice minOccurs="0" maxOccurs="unbounded">
+    <xsd:element name="keyFileName" type="xsd:string" nillable="true"/>
+    <xsd:element name="keyFilePassword" type="xsd:string" nillable="true"/>
+    <xsd:element name="keyFileFormat" type="KeyFileFormatKind" nillable="true"/>
+    <xsd:element name="clientKeyAlias" type="xsd:string" nillable="true"/>
+    <xsd:element name="serverKeyAlias" type="xsd:string" nillable="true"/>
+    <xsd:element name="trustFileName" type="xsd:string" nillable="true"/>
+    <xsd:element name="trustFilePassword" type="xsd:string" nillable="true"/>
+    <xsd:element name="trustFileFormat" type="KeyFileFormatKind" nillable="true"/>
+    <xsd:element name="clientAuthentication" type="boolean" nillable="true"/>
+    <xsd:element name="securityLevel" type="SSLSecurityLevel" nillable="true"/>
+    <xsd:element name="enableCryptoHardwareSupport" type="boolean" nillable="true"/>
+    <xsd:element name="cryptoHardware" type="CryptoHardwareToken"/>
+    <xsd:element name="properties" type="properties:Property"/>
+    <xsd:element ref="xmi:Extension"/>
+  </xsd:choice>
+  <xsd:attribute ref="xmi:id"/>
+  <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  <xsd:attribute name="keyFileName" type="xsd:string" use="optional"/>
+  <xsd:attribute name="keyFilePassword" type="xsd:string" use="optional"/>
+  <xsd:attribute name="keyFileFormat" type="KeyFileFormatKind" use="optional"/>
+  <xsd:attribute name="clientKeyAlias" type="xsd:string" use="optional"/>
+  <xsd:attribute name="serverKeyAlias" type="xsd:string" use="optional"/>
+  <xsd:attribute name="trustFileName" type="xsd:string" use="optional"/>
+  <xsd:attribute name="trustFilePassword" type="xsd:string" use="optional"/>
+  <xsd:attribute name="trustFileFormat" type="KeyFileFormatKind" use="optional"/>
+  <xsd:attribute name="clientAuthentication" type="boolean" use="optional"/>
+  <xsd:attribute name="securityLevel" type="SSLSecurityLevel" use="optional"/>
+  <xsd:attribute name="enableCryptoHardwareSupport" type="boolean" use="optional"/>
+</xsd:complexType>
+
+<xsd:element name="SecureSocketLayer" type="SecureSocketLayer"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: CryptoHardwareToken</xsd:documentation>
+  <xsd:documentation>Configuration for cryptographic token settings commonly used with Secure Socket Layer (SSL).</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: tokenType</xsd:documentation>
+  <xsd:documentation>Specifies the type of built-in key store that is implemented in the cryptographic token, such as PKCS#11.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: libraryFile</xsd:documentation>
+  <xsd:documentation>Specifies the DLL or shared object that implements the interface to the cryptographic token device.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: password</xsd:documentation>
+  <xsd:documentation>Specifies the password for the cryptographic token device.</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="CryptoHardwareToken">
+  <xsd:choice minOccurs="0" maxOccurs="unbounded">
+    <xsd:element name="tokenType" type="xsd:string" nillable="true"/>
+    <xsd:element name="libraryFile" type="xsd:string" nillable="true"/>
+    <xsd:element name="password" type="xsd:string" nillable="true"/>
+    <xsd:element ref="xmi:Extension"/>
+  </xsd:choice>
+  <xsd:attribute ref="xmi:id"/>
+  <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  <xsd:attribute name="tokenType" type="xsd:string" use="optional"/>
+  <xsd:attribute name="libraryFile" type="xsd:string" use="optional"/>
+  <xsd:attribute name="password" type="xsd:string" use="optional"/>
+</xsd:complexType>
+
+<xsd:element name="CryptoHardwareToken" type="CryptoHardwareToken"/>
+
+<xsd:element name="ssl">
+  <xsd:complexType>
+    <xsd:choice minOccurs="0" maxOccurs="unbounded">
+      <xsd:element ref="SecureSocketLayer"/>
+      <xsd:element ref="CryptoHardwareToken"/>
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+  </xsd:complexType>
+</xsd:element>
+
+</xsd:schema>

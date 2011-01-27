@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://xframe.sf.net/sample/stress" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://xframe.sf.net/sample/stress" elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <xsd:simpleType name="included3">
+    <xsd:restriction base="xsd:string"/>
+  </xsd:simpleType>
+  <xsd:simpleType name="include4">
+    <xsd:restriction base="included3">
+      <xsd:maxLength value="100"/>
+      <xsd:whiteSpace value="collapse"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>
