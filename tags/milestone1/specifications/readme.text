@@ -1,0 +1,3 @@
+Run makedoc to generate the HTML documentation from the latest version of the XSD.
+
+Run makeexamples.py to create examples.html: an HTML page listing the content of each *.sbgn file in ../test-files, matched against the corresponding *.png file.

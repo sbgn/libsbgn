@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xmi="http://www.omg.org/XMI" xmlns="http://www.ibm.com/websphere/appserver/schemas/5.0/jaaslogin.xmi" targetNamespace="http://www.ibm.com/websphere/appserver/schemas/5.0/jaaslogin.xmi" xmlns:properties="http://www.ibm.com/websphere/appserver/schemas/5.0/properties.xmi" xmlns:datatype="http://www.ibm.com/websphere/appserver/schemas/5.0/datatype.xmi">
+
+<xsd:import namespace="http://www.omg.org/XMI" schemaLocation="xmi20.xsd"/>
+<xsd:import namespace="http://www.ibm.com/websphere/appserver/schemas/5.0/properties.xmi" schemaLocation="properties.xsd"/>
+<xsd:import namespace="http://www.ibm.com/websphere/appserver/schemas/5.0/datatype.xmi" schemaLocation="datatype.xsd"/>
+
+<xsd:simpleType name="JAASModuleControlFlag">
+  <xsd:restriction base="xsd:string">
+    <xsd:enumeration value="REQUIRED"/>
+    <xsd:enumeration value="REQUISITE"/>
+    <xsd:enumeration value="SUFFICIENT"/>
+    <xsd:enumeration value="OPTIONAL"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:annotation>
+  <xsd:documentation>PACKAGE: jaaslogin</xsd:documentation>
+</xsd:annotation>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: JAASLoginModule</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="JAASLoginModule">
+  <xsd:choice minOccurs="0" maxOccurs="unbounded">
+    <xsd:element name="moduleClassName" type="xsd:string" nillable="true"/>
+    <xsd:element name="authenticationStrategy" type="JAASModuleControlFlag" nillable="true"/>
+    <xsd:element name="options" type="properties:Property"/>
+    <xsd:element ref="xmi:Extension"/>
+  </xsd:choice>
+  <xsd:attribute ref="xmi:id"/>
+  <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  <xsd:attribute name="moduleClassName" type="xsd:string" use="optional"/>
+  <xsd:attribute name="authenticationStrategy" type="JAASModuleControlFlag" use="optional"/>
+</xsd:complexType>
+
+<xsd:element name="JAASLoginModule" type="JAASLoginModule"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: JAASConfigurationEntry</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="JAASConfigurationEntry">
+  <xsd:choice minOccurs="0" maxOccurs="unbounded">
+    <xsd:element name="alias" type="xsd:string" nillable="true"/>
+    <xsd:element name="loginModules" type="JAASLoginModule"/>
+    <xsd:element ref="xmi:Extension"/>
+  </xsd:choice>
+  <xsd:attribute ref="xmi:id"/>
+  <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  <xsd:attribute name="alias" type="xsd:string" use="optional"/>
+</xsd:complexType>
+
+<xsd:element name="JAASConfigurationEntry" type="JAASConfigurationEntry"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: JAASConfiguration</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="JAASConfiguration">
+  <xsd:choice minOccurs="0" maxOccurs="unbounded">
+    <xsd:element name="entries" type="JAASConfigurationEntry"/>
+    <xsd:element ref="xmi:Extension"/>
+  </xsd:choice>
+  <xsd:attribute ref="xmi:id"/>
+  <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+</xsd:complexType>
+
+<xsd:element name="JAASConfiguration" type="JAASConfiguration"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: JAASAuthData</xsd:documentation>
+  <xsd:documentation>Specifies a list of userid and password for use by Java 2 Connector security.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: alias</xsd:documentation>
+  <xsd:documentation>Identifier for the auth data entry which contains a user id and password pair.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: userId</xsd:documentation>
+  <xsd:documentation>Specifies userid to use for the target Enterprise Information System.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: password</xsd:documentation>
+  <xsd:documentation>Specifies the password to use for the target Enterprise Information System.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: description</xsd:documentation>
+  <xsd:documentation>Comments may be added here to describe the intended use of the user id and password pair.</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="JAASAuthData">
+  <xsd:choice minOccurs="0" maxOccurs="unbounded">
+    <xsd:element name="alias" type="xsd:string" nillable="true"/>
+    <xsd:element name="userId" type="xsd:string" nillable="true"/>
+    <xsd:element name="password" type="xsd:string" nillable="true"/>
+    <xsd:element name="description" type="xsd:string" nillable="true"/>
+    <xsd:element ref="xmi:Extension"/>
+  </xsd:choice>
+  <xsd:attribute ref="xmi:id"/>
+  <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  <xsd:attribute name="alias" type="xsd:string" use="optional"/>
+  <xsd:attribute name="userId" type="xsd:string" use="optional"/>
+  <xsd:attribute name="password" type="xsd:string" use="optional"/>
+  <xsd:attribute name="description" type="xsd:string" use="optional"/>
+</xsd:complexType>
+
+<xsd:element name="JAASAuthData" type="JAASAuthData"/>
+
+<xsd:element name="jaaslogin">
+  <xsd:complexType>
+    <xsd:choice minOccurs="0" maxOccurs="unbounded">
+      <xsd:element ref="JAASLoginModule"/>
+      <xsd:element ref="JAASConfigurationEntry"/>
+      <xsd:element ref="JAASConfiguration"/>
+      <xsd:element ref="JAASAuthData"/>
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+  </xsd:complexType>
+</xsd:element>
+
+</xsd:schema>

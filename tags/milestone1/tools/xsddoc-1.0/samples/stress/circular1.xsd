@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://xframe.sf.net/sample/stress/circular1"
+xmlns:c1="http://xframe.sf.net/sample/stress/circular1"
+xmlns:xs="http://www.w3.org/2001/XMLSchema"
+elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <xs:annotation>
+    <xs:documentation>This namespace is used to test circular imports.</xs:documentation>
+  </xs:annotation>
+  <xs:import namespace="http://xframe.sf.net/sample/stress/circular2" schemaLocation="circular2.xsd"/>
+  <xs:element name="circular1">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element type="xs:string" name="circular">
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

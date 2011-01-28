@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+This file is part of the xframe software package
+hosted at http://xframe.sourceforge.net
+
+Copyright (c) 2003 Kurt Riede.
+
+This library is free software; you can redistribute it and/or
+modify it under the terms of the GNU Lesser General Public
+License as published by the Free Software Foundation; either
+version 2.1 of the License, or (at your option) any later version.
+
+This library is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public
+License along with this library; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+-->
+<project>
+  <pomVersion>3</pomVersion>
+  <id>xsddoc</id>
+  <name>xsddoc</name>
+  <groupId>xsddoc</groupId>
+  <currentVersion>1.0</currentVersion>
+  <organization>
+    <name>xframe</name>
+    <url>http://xframe.sourceforge.net/</url>
+    <logo>/images/project-logo.png</logo>
+  </organization>
+  <versions>
+    <version>
+      <id>0.5</id>
+      <name>0.5</name>
+      <tag>XSDDOC_0_5</tag>
+    </version>
+    <version>
+      <id>0.6</id>
+      <name>0.6</name>
+      <tag>XSDDOC_0_6</tag>
+    </version>
+    <version>
+      <id>0.7</id>
+      <name>0.7</name>
+      <tag>XSDDOC_0_7</tag>
+    </version>
+    <version>
+      <id>0.8</id>
+      <name>0.8</name>
+      <tag>XSDDOC_0_8</tag>
+    </version>
+    <version>
+      <id>1.0</id>
+      <name>1.0</name>
+      <tag>XSDDOC_1_0</tag>
+    </version>
+  </versions>
+  <inceptionYear>2004</inceptionYear>
+  <artifactId>xsddoc</artifactId>
+  <package>net.sf.xframe</package>
+  <description>
+    The xsddoc subproject is a XML Schema documentation generator
+    for W3C XML Schemas.
+  </description>
+  <shortDescription>XML schema documenation generator</shortDescription>
+  <url>http://xframe.sourceforge.net/xsddoc/index.html</url>
+  <siteDirectory>/home/groups/x/xf/xframe/htdocs</siteDirectory>
+  <issueTrackingUrl>http://sourceforge.net/tracker/?group_id=48863&amp;atid=454391</issueTrackingUrl>
+  <repository>
+    <connection>scm:cvs:pserver:anonymous@cvs.sourceforge.net:/cvsroot/xframe:xsddoc</connection>
+    <developerConnection>scm:developername@cvs.sourceforge.net:/cvsroot/xframe:xsddoc</developerConnection>
+    <url>http://cvs.sourceforge.net/viewcvs.py/xframe/xsddoc/</url>
+  </repository>
+  <siteAddress>xframe.sourceforge.net</siteAddress>
+  <siteDirectory>/home/groups/x/xf/xframe/htdocs</siteDirectory>
+  <mailingLists>
+    <mailingList>
+      <name>xframe announcement list</name>
+      <subscribe>http://lists.sourceforge.net/mailman/listinfo/xframe-announce</subscribe>
+      <unsubscribe>http://lists.sourceforge.net/mailman/listinfo/xframe-announce</unsubscribe>
+      <archive>http://sourceforge.net/mailarchive/forum.php?forum=xframe-announce</archive>
+    </mailingList>
+    <mailingList>
+      <name>xsddoc user list</name>
+      <subscribe>http://lists.sourceforge.net/mailman/listinfo/xframe-xsddoc</subscribe>
+      <unsubscribe>http://lists.sourceforge.net/mailman/listinfo/xframe-xsddoc</unsubscribe>
+      <archive>http://sourceforge.net/mailarchive/forum.php?forum=xframe-xsddoc</archive>
+    </mailingList>
+  </mailingLists>
+  <developers>
+    <developer>
+      <name>Kurt Riede</name>
+      <id>kriede</id>
+      <email>kriede@users.sourceforge.net</email>
+      <organization>xframe</organization>
+      <roles>
+        <role>Project Admin</role>
+      </roles>
+      <url>http://jroller.com/page/kriede</url>
+      <timezone>+1</timezone>
+    </developer>
+  </developers>
+  <contributors>
+    <contributor>
+      <name>Corey Tripp</name>
+      <id>trippcr</id>
+      <email>trippcr@users.sourceforge.net</email>
+      <organization/>
+      <roles>
+        <role/>
+      </roles>
+      <url/>
+      <timezone/>
+    </contributor>
+    <contributor>
+      <name>Peter Runge</name>
+      <id>prunge</id>
+      <email>prunge@users.sourceforge.net</email>
+      <organization>Private</organization>
+      <roles>
+        <role>developer</role>
+        <role>tester</role>
+      </roles>
+      <url>http://www.ozemail.com.au/~prunge/</url>
+      <timezone>10</timezone>
+    </contributor>
+  </contributors>
+  <dependencies>
+    <dependency>
+      <groupId>ant</groupId>
+      <artifactId>ant</artifactId>
+      <version>1.5.3-1</version>
+      <type>jar</type>
+      <url>http://ant.apache.org</url>
+      <properties/>
+    </dependency>
+    <dependency>
+      <groupId>maven-validator</groupId>
+      <artifactId>maven-xhtml-plugin</artifactId>
+      <version>1.2</version>
+      <type>plugin</type>
+    </dependency>
+    <dependency>
+      <groupId>xsddoc</groupId>
+      <artifactId>maven-xsddoc-plugin</artifactId>
+      <version>1.0</version>
+      <type>plugin</type>
+    </dependency>
+  </dependencies>
+  <build>
+    <nagEmailAddress>kriede@users.sourceforge.net</nagEmailAddress>
+    <sourceDirectory>/src</sourceDirectory>
+    <resources>
+      <resource>
+        <directory>${basedir}/src</directory>
+        <excludes>
+          <exclude>**/*.java</exclude>
+          <exclude>**/package.html</exclude>
+        </excludes>
+      </resource>
+    </resources>
+    <integrationUnitTest/>
+  </build>
+  <reports>
+    <report>maven-jdepend-plugin</report>
+    <report>maven-checkstyle-plugin</report>
+    <report>maven-changes-plugin</report>
+    <report>maven-changelog-plugin</report>
+    <report>maven-file-activity-plugin</report>
+    <report>maven-developer-activity-plugin</report>
+    <report>maven-javadoc-plugin</report>
+    <report>maven-jxr-plugin</report>
+    <report>maven-junit-report-plugin</report>
+    <report>maven-license-plugin</report>
+    <report>maven-tasklist-plugin</report>
+    <report>maven-simian-plugin</report>
+    <report>maven-xsddoc-plugin</report>
+    <report>maven-linkcheck-plugin</report>
+    <report>maven-xhtml-plugin</report>
+  </reports>
+</project>

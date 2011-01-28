@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://xframe.sf.net/sample/stress" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <xs:complexType name="testRedefine">
+    <xs:annotation>
+      <xs:documentation>
+        <p>This type declaration
+        should not be visible in documentation, because
+        it is redefined in the main stress schema.</p>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="test" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="testNotRedefine">
+    <xs:annotation>
+      <xs:documentation>
+        <p>This type declaration
+        must be visible in documentation, because
+        it is defined here, but not redefined in the main stress schema.</p>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="test" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:group name="selfRedefined">
+    <xs:annotation>
+      <xs:documentation>This group definition will get redefined
+        in the main schema stress.xsd to test redefined groups
+        that refer a base group with the same name.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="test" type="xs:string"/>
+    </xs:sequence>
+  </xs:group>
+</xs:schema>

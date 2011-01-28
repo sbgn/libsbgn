@@ -1,0 +1,75 @@
+#! /bin/sh
+
+# This file is part of the xframe software package
+# hosted at http://xframe.sourceforge.net
+# 
+# Copyright (c) 2003 Kurt Riede.
+#     
+# This library is free software; you can redistribute it and/or
+# modify it under the terms of the GNU Lesser General Public
+# License as published by the Free Software Foundation; either
+# version 2.1 of the License, or (at your option) any later version.
+# 
+# This library is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+# Lesser General Public License for more details.
+# 
+# You should have received a copy of the GNU Lesser General Public
+# License along with this library; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+
+# unix shell script for command line interface of xsddoc.
+#
+# author <a href="mailto:kurt.riede@web.de">Kurt Riede</a>
+
+if [ -z "$JAVACMD" ] ; then 
+  if [ -n "$JAVA_HOME"  ] ; then
+    if [ -x "$JAVA_HOME/jre/sh/java" ] ; then 
+      JAVACMD="$JAVA_HOME/jre/sh/java"
+    else
+      JAVACMD="$JAVA_HOME/bin/java"
+    fi
+  else
+    JAVACMD=`which java 2> /dev/null `
+    if [ -z "$JAVACMD" ] ; then 
+        JAVACMD=java
+    fi
+  fi
+fi
+ 
+if [ ! -x "$JAVACMD" ] ; then
+  echo "Error: JAVA_HOME is not defined correctly."
+  echo "  We cannot execute $JAVACMD"
+  exit 1
+fi
+
+if [ -n "$CLASSPATH" ] ; then
+  LOCALCLASSPATH="$CLASSPATH"
+fi
+
+XSDDOC_HOME=`dirname "$0"`
+XSDDOC_HOME=`cd "$XSDDOC_HOME"/.. && pwd`
+
+for i in $XSDDOC_HOME/lib/*.jar
+do
+  LOCALCLASSPATH=$LOCALCLASSPATH:$i
+done
+
+if [ -n "$JAVA_HOME" ] ; then
+  if [ -f "$JAVA_HOME/lib/tools.jar" ] ; then
+    LOCALCLASSPATH="$LOCALCLASSPATH:$JAVA_HOME/lib/tools.jar"
+  fi
+
+  if [ -f "$JAVA_HOME/lib/classes.zip" ] ; then
+    LOCALCLASSPATH="$LOCALCLASSPATH:$JAVA_HOME/lib/classes.zip"
+  fi
+else
+  echo "Warning: JAVA_HOME environment variable is not set (or not exported)."
+  echo "  If build fails because sun.* classes could not be found"
+  echo "  you will need to set the JAVA_HOME environment variable"
+  echo "  to the installation directory of java."
+fi
+
+"$JAVACMD" -classpath "$LOCALCLASSPATH" net.sf.xframe.xsddoc.Main "$@"
+

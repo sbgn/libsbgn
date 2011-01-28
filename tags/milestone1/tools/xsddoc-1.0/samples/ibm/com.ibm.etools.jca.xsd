@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xmi="http://www.omg.org/XMI" xmlns="http://www.ibm.com/websphere/appserver/schemas/5.0/resources.j2c.xmi" targetNamespace="http://www.ibm.com/websphere/appserver/schemas/5.0/resources.j2c.xmi" xmlns:resources="http://www.ibm.com/websphere/appserver/schemas/5.0/resources.xmi" xmlns:jaaslogin="http://www.ibm.com/websphere/appserver/schemas/5.0/jaaslogin.xmi" xmlns:com.ibm.etools.jca="jca.xmi">
+
+<xsd:import namespace="http://www.omg.org/XMI" schemaLocation="xmi20.xsd"/>
+<xsd:import namespace="http://www.ibm.com/websphere/appserver/schemas/5.0/resources.xmi" schemaLocation="resources.xsd"/>
+<xsd:import namespace="http://www.ibm.com/websphere/appserver/schemas/5.0/jaaslogin.xmi" schemaLocation="jaaslogin.xsd"/>
+<xsd:import namespace="jca.xmi" schemaLocation="com.ibm.etools.jca.xsd"/>
+
+<xsd:annotation>
+  <xsd:documentation>PACKAGE: j2c</xsd:documentation>
+</xsd:annotation>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: J2CConnectionFactory</xsd:documentation>
+  <xsd:documentation>One set of connection configuration values. Application components, such as enterprise beans, have resource-ref descriptors that refer to the connection factory, not to the resource adapter. &lt;br&gt;&lt;br&gt;You can think of the connection factory as a holder of a list of configuration properties. In addition to the arbitrary set of configuration properties defined by the vendor of the resource adapter, there are several standard configuration properties that apply to the connection factory. These standard properties are used by the J2C connection pool manager in the application server runtime and are not known by the vendor supplied resource adapter code.</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="J2CConnectionFactory">
+    <xsd:complexContent>
+        <xsd:extension base="resources:ConnectionFactory">
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+          </xsd:choice>
+        </xsd:extension>
+    </xsd:complexContent>
+</xsd:complexType>
+
+<xsd:element name="J2CConnectionFactory" type="J2CConnectionFactory"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: J2CResourceAdapter</xsd:documentation>
+  <xsd:documentation>The resource adapter represents an archive file containing code that implements a library for connecting with some EIS (Enterprise Information System) backend such as CICS, SAP, and PeopleSoft. This resource adapter can be supplied by a third party vendor other than IBM. A single resource adapter typically connects to one type of backend system (EIS) but it can support many different configurations for connections to that EIS. The resource adapter has many configuration properties that are defined in the J2EE Connector Architecture (JCA) specification and set by the vendor who supplies the code. </xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: archivePath</xsd:documentation>
+  <xsd:documentation>Path to the .rar file containing the module for this resource adapter.</xsd:documentation>
+  <xsd:documentation>ASSOCIATION END: deploymentDescriptor</xsd:documentation>
+  <xsd:documentation>During deployment, the descriptor information is copied into the resource adapter for ease of access by the runtime.</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="J2CResourceAdapter">
+    <xsd:complexContent>
+        <xsd:extension base="resources:J2EEResourceProvider">
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="archivePath" type="xsd:string" nillable="true"/>
+            <xsd:element name="jaasLoginConfiguration" type="jaaslogin:JAASConfigurationEntry"/>
+            <xsd:element name="deploymentDescriptor" type="com.ibm.etools.jca:Connector"/>
+          </xsd:choice>
+          <xsd:attribute name="archivePath" type="xsd:string" use="optional"/>
+        </xsd:extension>
+    </xsd:complexContent>
+</xsd:complexType>
+
+<xsd:element name="J2CResourceAdapter" type="J2CResourceAdapter"/>
+
+<xsd:element name="j2c">
+  <xsd:complexType>
+    <xsd:choice minOccurs="0" maxOccurs="unbounded">
+      <xsd:element ref="J2CConnectionFactory"/>
+      <xsd:element ref="J2CResourceAdapter"/>
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+  </xsd:complexType>
+</xsd:element>
+
+</xsd:schema>

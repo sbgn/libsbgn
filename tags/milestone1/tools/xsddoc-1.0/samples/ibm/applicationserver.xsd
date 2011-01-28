@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xmi="http://www.omg.org/XMI" xmlns="http://www.ibm.com/websphere/appserver/schemas/5.0/applicationserver.xmi" targetNamespace="http://www.ibm.com/websphere/appserver/schemas/5.0/applicationserver.xmi" xmlns:process="http://www.ibm.com/websphere/appserver/schemas/5.0/process.xmi" xmlns:applicationserver.webcontainer="http://www.ibm.com/websphere/appserver/schemas/5.0/applicationserver.webcontainer.xmi" xmlns:classloader="http://www.ibm.com/websphere/appserver/schemas/5.0/classloader.xmi" xmlns:orb="http://www.ibm.com/websphere/appserver/schemas/5.0/orb.xmi">
+
+<xsd:import namespace="http://www.omg.org/XMI" schemaLocation="xmi20.xsd"/>
+<xsd:import namespace="http://www.ibm.com/websphere/appserver/schemas/5.0/process.xmi" schemaLocation="process.xsd"/>
+<xsd:import namespace="http://www.ibm.com/websphere/appserver/schemas/5.0/applicationserver.webcontainer.xmi" schemaLocation="applicationserver.webcontainer.xsd"/>
+<xsd:import namespace="http://www.ibm.com/websphere/appserver/schemas/5.0/classloader.xmi" schemaLocation="classloader.xsd"/>
+<xsd:import namespace="http://www.ibm.com/websphere/appserver/schemas/5.0/orb.xmi" schemaLocation="orb.xsd"/>
+
+<xsd:simpleType name="boolean">
+  <xsd:restriction base="xsd:string">
+    <xsd:enumeration value="true"/>
+    <xsd:enumeration value="false"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="DynamicCacheReplicationKind">
+  <xsd:restriction base="xsd:string">
+    <xsd:enumeration value="NONE"/>
+    <xsd:enumeration value="PUSH"/>
+    <xsd:enumeration value="PULL"/>
+    <xsd:enumeration value="PUSH_PULL"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="ExternalCacheGroupKind">
+  <xsd:restriction base="xsd:string">
+    <xsd:enumeration value="SHARED"/>
+    <xsd:enumeration value="NOT_SHARED"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:annotation>
+  <xsd:documentation>PACKAGE: applicationserver</xsd:documentation>
+</xsd:annotation>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: TransactionService</xsd:documentation>
+  <xsd:documentation>Configuration of the transaction service.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: transactionLogDirectory</xsd:documentation>
+  <xsd:documentation>Specifies the name of a directory for this server where the transaction service stores log files for recovery.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: totalTranLifetimeTimeout</xsd:documentation>
+  <xsd:documentation>The maximum duration, in seconds, for transactions on this application server.  Any transaction that is not requested to complete before this timeout will be rolled back.|#</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: clientInactivityTimeout</xsd:documentation>
+  <xsd:documentation>The maximum duration, in seconds, between transactional requests from a remote client.  Any period of client inactivity that exceeds this timeout results in the transaction being rolled back in this application server.|#</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: enableLoggingForHeuristicReporting</xsd:documentation>
+  <xsd:documentation>Enables logging for heuristic reporting (an advanced function available in the EEx add-on package). If applications are configured to allow one-phase resources to participate in two-phase transactions, reporting of heuristic outcomes that occur at application server failure requires extra information to be written to the transaction log. If enabled, one additional log write will be perfomed for any transaction that involves both one and two-phase resources. No additional records are written for transactions that do not involve a one-phase resource. Default=false</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="TransactionService">
+    <xsd:complexContent>
+        <xsd:extension base="process:Service">
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="transactionLogDirectory" type="xsd:string" nillable="true"/>
+            <xsd:element name="totalTranLifetimeTimeout" type="xsd:string" nillable="true"/>
+            <xsd:element name="clientInactivityTimeout" type="xsd:string" nillable="true"/>
+            <xsd:element name="enableLoggingForHeuristicReporting" type="boolean" nillable="true"/>
+          </xsd:choice>
+          <xsd:attribute name="transactionLogDirectory" type="xsd:string" use="optional"/>
+          <xsd:attribute name="totalTranLifetimeTimeout" type="xsd:string" use="optional"/>
+          <xsd:attribute name="clientInactivityTimeout" type="xsd:string" use="optional"/>
+          <xsd:attribute name="enableLoggingForHeuristicReporting" type="boolean" use="optional"/>
+        </xsd:extension>
+    </xsd:complexContent>
+</xsd:complexType>
+
+<xsd:element name="TransactionService" type="TransactionService"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: DynamicCache</xsd:documentation>
+  <xsd:documentation>Dynamic Cache Service</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: cacheSize</xsd:documentation>
+  <xsd:documentation>A positive integer defining the maximum number of entries the cache will hold. Values are usually in the thousands, with no set maximum or minimum.|#</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: defaultPriority</xsd:documentation>
+  <xsd:documentation>The default priority for servlets that can be cached. It determines how long an entry will stay in a full cache. The recommended value is 1.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: pushFrequency</xsd:documentation>
+  <xsd:documentation>A time interval, specified in seconds which is used when replication type is PUSH.  Default value is 0</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: enableDiskOffload</xsd:documentation>
+  <xsd:documentation>Enables disk offloading.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: diskOffloadLocation</xsd:documentation>
+  <xsd:documentation>Specifies a directory used for disk offload.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: hashSize</xsd:documentation>
+  <xsd:documentation>Specifies a hash size when disk offload is enabled.  Valid values are powers of 2 (1, 2, 4, 8, ...)</xsd:documentation>
+  <xsd:documentation>ASSOCIATION END: cacheGroups</xsd:documentation>
+  <xsd:documentation>Define sets of external caches WebSphere should control|#</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="DynamicCache">
+    <xsd:complexContent>
+        <xsd:extension base="process:Service">
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="cacheSize" type="xsd:string" nillable="true"/>
+            <xsd:element name="defaultPriority" type="xsd:string" nillable="true"/>
+            <xsd:element name="replicationType" type="DynamicCacheReplicationKind" nillable="true"/>
+            <xsd:element name="pushFrequency" type="xsd:string" nillable="true"/>
+            <xsd:element name="enableDiskOffload" type="boolean" nillable="true"/>
+            <xsd:element name="diskOffloadLocation" type="xsd:string" nillable="true"/>
+            <xsd:element name="hashSize" type="xsd:string" nillable="true"/>
+            <xsd:element name="cacheGroups" type="ExternalCacheGroup"/>
+            <xsd:element name="cacheReplication" type="applicationserver.webcontainer:DRSSettings"/>
+          </xsd:choice>
+          <xsd:attribute name="cacheSize" type="xsd:string" use="optional"/>
+          <xsd:attribute name="defaultPriority" type="xsd:string" use="optional"/>
+          <xsd:attribute name="replicationType" type="DynamicCacheReplicationKind" use="optional"/>
+          <xsd:attribute name="pushFrequency" type="xsd:string" use="optional"/>
+          <xsd:attribute name="enableDiskOffload" type="boolean" use="optional"/>
+          <xsd:attribute name="diskOffloadLocation" type="xsd:string" use="optional"/>
+          <xsd:attribute name="hashSize" type="xsd:string" use="optional"/>
+        </xsd:extension>
+    </xsd:complexContent>
+</xsd:complexType>
+
+<xsd:element name="DynamicCache" type="DynamicCache"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: ExternalCacheGroup</xsd:documentation>
+  <xsd:documentation>Configuration for an external cache group for the application server to control.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: name</xsd:documentation>
+  <xsd:documentation>For servlets that can be cached, specifies the external groups to which their entries should be sent.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: type</xsd:documentation>
+  <xsd:documentation>Only shared external cache groups are supported at this time.|#</xsd:documentation>
+  <xsd:documentation>ASSOCIATION END: members</xsd:documentation>
+  <xsd:documentation>Members of an external cache group that WebSphere will control.</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="ExternalCacheGroup">
+  <xsd:choice minOccurs="0" maxOccurs="unbounded">
+    <xsd:element name="name" type="xsd:string" nillable="true"/>
+    <xsd:element name="type" type="ExternalCacheGroupKind" nillable="true"/>
+    <xsd:element name="members" type="ExternalCacheGroupMember"/>
+    <xsd:element ref="xmi:Extension"/>
+  </xsd:choice>
+  <xsd:attribute ref="xmi:id"/>
+  <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  <xsd:attribute name="name" type="xsd:string" use="optional"/>
+  <xsd:attribute name="type" type="ExternalCacheGroupKind" use="optional"/>
+</xsd:complexType>
+
+<xsd:element name="ExternalCacheGroup" type="ExternalCacheGroup"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: ExternalCacheGroupMember</xsd:documentation>
+  <xsd:documentation>Configuration for a single external cache that WebSphere Application Server is to control.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: address</xsd:documentation>
+  <xsd:documentation>The host name of an external cache, and possibly its port number. See the external cache documentation for more details.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: adapterBeanName</xsd:documentation>
+  <xsd:documentation>The name of a class of the adapter between WebSphere Application Server and the external cache. The class needs to be located on the WebSphere Application Server classpath.</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="ExternalCacheGroupMember">
+  <xsd:choice minOccurs="0" maxOccurs="unbounded">
+    <xsd:element name="address" type="xsd:string" nillable="true"/>
+    <xsd:element name="adapterBeanName" type="xsd:string" nillable="true"/>
+    <xsd:element ref="xmi:Extension"/>
+  </xsd:choice>
+  <xsd:attribute ref="xmi:id"/>
+  <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  <xsd:attribute name="address" type="xsd:string" use="optional"/>
+  <xsd:attribute name="adapterBeanName" type="xsd:string" use="optional"/>
+</xsd:complexType>
+
+<xsd:element name="ExternalCacheGroupMember" type="ExternalCacheGroupMember"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: ApplicationContainer</xsd:documentation>
+  <xsd:documentation>Configuration of the application container.</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="ApplicationContainer">
+    <xsd:complexContent>
+        <xsd:extension base="process:Component">
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+          </xsd:choice>
+        </xsd:extension>
+    </xsd:complexContent>
+</xsd:complexType>
+
+<xsd:element name="ApplicationContainer" type="ApplicationContainer"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: ApplicationServer</xsd:documentation>
+  <xsd:documentation>Configuration for a J2EE-compliant application server.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: id</xsd:documentation>
+  <xsd:documentation>A server can be assigned a unique identifier.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: applicationClassLoaderPolicy</xsd:documentation>
+  <xsd:documentation>Defines whether there is a single classloader (SINGLE) for all|#applications or a classloader per application (MULTIPLE).|#</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: applicationClassLoadingMode</xsd:documentation>
+  <xsd:documentation>Defines the classloading mode when the applicationClassLoadingPolicy is SINGLE only.|#</xsd:documentation>
+  <xsd:documentation>ASSOCIATION END: locationServiceDaemon</xsd:documentation>
+  <xsd:documentation>Currently not used.</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="ApplicationServer">
+    <xsd:complexContent>
+        <xsd:extension base="process:ServerComponent">
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="id" type="xsd:string" nillable="true"/>
+            <xsd:element name="applicationClassLoaderPolicy" type="classloader:ClassLoaderPolicy" nillable="true"/>
+            <xsd:element name="applicationClassLoadingMode" type="classloader:ClassLoadingMode" nillable="true"/>
+            <xsd:element name="locationServiceDaemon" type="orb:LSDConnection"/>
+            <xsd:element name="classloaders" type="classloader:Classloader"/>
+          </xsd:choice>
+          <xsd:attribute name="id" type="xsd:string" use="optional"/>
+          <xsd:attribute name="applicationClassLoaderPolicy" type="classloader:ClassLoaderPolicy" use="optional"/>
+          <xsd:attribute name="applicationClassLoadingMode" type="classloader:ClassLoadingMode" use="optional"/>
+        </xsd:extension>
+    </xsd:complexContent>
+</xsd:complexType>
+
+<xsd:element name="ApplicationServer" type="ApplicationServer"/>
+
+<xsd:element name="applicationserver">
+  <xsd:complexType>
+    <xsd:choice minOccurs="0" maxOccurs="unbounded">
+      <xsd:element ref="TransactionService"/>
+      <xsd:element ref="DynamicCache"/>
+      <xsd:element ref="ExternalCacheGroup"/>
+      <xsd:element ref="ExternalCacheGroupMember"/>
+      <xsd:element ref="ApplicationContainer"/>
+      <xsd:element ref="ApplicationServer"/>
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+  </xsd:complexType>
+</xsd:element>
+
+</xsd:schema>
