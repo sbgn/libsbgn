@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <project name="libsbgn" default="doc" basedir=".">
   
-  <property name="libsbgn.version" value="0.1"/>
+  <property name="libsbgn.version" value="milestone1"/>
   
    <macrodef name="iterate">
 		<attribute name="target"/>
@@ -35,5 +35,33 @@
   <target name="test" depends="build">
 		<iterate target="test"/>
   </target>
+  
+  
+	<target name="ziptar" depends="clean,dist,doc" description="Create a zip and tarball, including jar file">
+		<property name="zipbase" value="libsbgn-${libsbgn.version}" />
+
+		<zip destfile="${zipbase}.zip">
+			<zipfileset dir="." prefix="libsbgn-${libsbgn.version}">
+				<include name="docs" />
+				<include name="build.xml" />
+				<include name="org.sbgn" />
+				<include name="test-files/**/*" />
+				<include name="example-files/**/*" />
+				<include name="validation/**/*" />
+				<include name="tools/**/*" />
+				<include name="cpp_binding/**/*"/>
+				<include name="README.txt" />
+				<include name="COPYING.txt" />
+				<include name="licenses/*.txt" />
+				<include name="specifications/**/*" />
+			</zipfileset>
+			<zipfileset dir="dist" prefix="libsbgn-${libsbgn.version}">
+				<include name="org.sbgn.jar"/>
+			</zipfileset>
+		</zip>
+		<tar destfile="${zipbase}.tar.gz" compression="gzip">
+		  <zipfileset src="${zipbase}.zip"/>
+		</tar>
+	</target>
 
 </project>
