@@ -8,8 +8,7 @@
 			<label text="mt:DNA"/>
 			<bbox x="66" y="32" w="45" h="15"/>
 		</glyph>
-		<glyph class="state variable" id="glyph1b">
-			<state value="existence"/>
+		<glyph class="existence" id="glyph1b">
 			<bbox x="80" y="90" w="20" h="20"/>
 		</glyph>
 	</glyph>

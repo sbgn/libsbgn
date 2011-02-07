@@ -8,8 +8,7 @@
 			<label text="mt:prot"/>
 			<bbox x="67" y="222" w="46" h="15"/>
 		</glyph>
-		<glyph class="state variable" id="glyph1b">
-			<state value="location"/>
+		<glyph class="location" id="glyph1b">
 			<bbox x="52" y="160" w="20" h="20"/>
 		</glyph>
 		<glyph class="state variable" id="glyph1c">
