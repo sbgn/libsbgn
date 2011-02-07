@@ -603,7 +603,7 @@
 				</xsd:element>
 			</xsd:sequence>
 			
-			<xsd:attribute name="class">
+			<xsd:attribute name="class" use="required">
 				<xsd:annotation>
 					<xsd:documentation>
 						<p>
