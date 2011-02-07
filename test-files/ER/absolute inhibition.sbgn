@@ -5,8 +5,8 @@
 		<label text="Sense" />
 		<bbox x="-1" y="-1" w="-1" h="-1" />
 		<glyph class="unit of information" id="g1_1">
-			<bbox x="-1" y="-1" w="-1" h="-1" />
 			<label text="mt:dna" />
+			<bbox x="-1" y="-1" w="-1" h="-1" />
 		</glyph>
 	</glyph>
 
@@ -14,8 +14,8 @@
 		<label text="Antisense" />
 		<bbox x="-1" y="-1" w="-1" h="-1" />
 		<glyph class="unit of information" id="g2_1">
-			<bbox x="-1" y="-1" w="-1" h="-1" />
 			<label text="mt:dna" />
+			<bbox x="-1" y="-1" w="-1" h="-1" />
 		</glyph>
 	</glyph>
 

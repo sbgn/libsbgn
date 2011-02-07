@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbgn xmlns="http://sbgn.org/libsbgn/er/0.1">
+<map>
+	<glyph class="variable value" id="g1">
+		<label text="P" />
+		<bbox x="-1" y="-1" w="-1" h="-1" />
+	</glyph>
+
+	<glyph class="entity" id="g2">
+		<label text="CaMKII" />
+		<bbox x="-1" y="-1" w="-1" h="-1" />
+		<glyph class="state variable" id="g2_1">
+			<state value="P" variable="T286" />
+			<bbox x="-1" y="-1" w="-1" h="-1" />
+		</glyph>
+		<glyph class="state variable" id="g2_2">
+			<state variable="T306" />
+			<bbox x="-1" y="-1" w="-1" h="-1" />
+		</glyph>
+		<glyph class="unit of information" id="g2_3">
+			<label text="mt:prot" />
+			<bbox x="-1" y="-1" w="-1" h="-1" />
+		</glyph>
+	</glyph>
+
+	<glyph class="delay" id="g3">
+		<bbox x="-1" y="-1" w="-1" h="-1" />
+	</glyph>
+
+	<arc class="assignment" source="g1" target="g2_2">
+		<port x="-1" y="-1" id="g4">
+		<start x="-1" y="-1" />
+		<end x="-1" y="-1" />
+	</arc>
+
+	<arc class="logic" source="g2" target="g3">
+		<start x="-1" y="-1" />
+		<end x="-1" y="-1" />
+	</arc>
+
+	<arc class="necessary stimulation" source="g3" target="g4">
+		<start x="-1" y="-1" />
+		<end x="-1" y="-1" />
+	</arc>
+</map>
+</sbgn>
