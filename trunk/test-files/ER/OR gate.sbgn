@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbgn xmlns="http://sbgn.org/libsbgn/er/0.1">
+<map>
+	<glyph class="entity" id="g1">
+		<label text="Sense" />
+		<bbox x="-1" y="-1" w="-1" h="-1" />
+		<glyph class="unit of information" id="g1_1">
+			<label text="mt:dna" />
+			<bbox x="-1" y="-1" w="-1" h="-1" />
+		</glyph>
+	</glyph>
+
+	<glyph class="entity" id="g2">
+		<label text="Antisense" />
+		<bbox x="-1" y="-1" w="-1" h="-1" />
+		<glyph class="unit of information" id="g2_1">
+			<label text="mt:dna" />
+			<bbox x="-1" y="-1" w="-1" h="-1" />
+		</glyph>
+	</glyph>
+
+	<glyph class="entity" id="g3">
+		<label text="3' primer" />
+		<bbox x="-1" y="-1" w="-1" h="-1" />
+		<glyph class="unit of information" id="g3_1">
+			<label text="mt:dna" />
+			<bbox x="-1" y="-1" w="-1" h="-1" />
+		</glyph>
+	</glyph>
+
+	<glyph class="entity" id="g4">
+		<label text="5' primer" />
+		<bbox x="-1" y="-1" w="-1" h="-1" />
+		<glyph class="unit of information" id="g4_1">
+			<label text="mt:dna" />
+			<bbox x="-1" y="-1" w="-1" h="-1" />
+		</glyph>
+	</glyph>
+
+	<glyph class="or" id="g5">
+		<bbox x="-1" y="-1" w="-1" h="-1" />
+		<port x="-1" y="-1" id="g5_1" />
+		<port x="-1" y="-1" id="g5_2" />
+	</glyph>
+
+	<arc class="interaction" source="g1" target="g2">
+		<port x="-1" y="-1" id="g6" />
+		<start x="-1" y="-1" />
+		<end x="-1" y="-1" />
+	</arc>
+
+	<arc class="interaction" source="g1" target="g3">
+		<glyph class="outcome" id="g7" >
+			<bbox x="-1" y="-1" w="-1" h="-1" />
+		</glyph>
+		<start x="-1" y="-1" />
+		<end x="-1" y="-1" />
+	</arc>
+
+	<arc class="interaction" source="g2" target="g4">
+		<glyph class="outcome" id="g8" >
+			<bbox x="-1" y="-1" w="-1" h="-1" />
+		</glyph>
+		<start x="-1" y="-1" />
+		<end x="-1" y="-1" />
+	</arc>
+
+	<arc class="logic" source="g7" target="g5_1">
+		<start x="-1" y="-1" />
+		<end x="-1" y="-1" />
+	</arc>
+
+	<arc class="logic" source="g8" target="g5_1">
+		<start x="-1" y="-1" />
+		<end x="-1" y="-1" />
+	</arc>
+
+	<arc class="absolute inhibition" source="g5_2" target="g6">
+		<start x="-1" y="-1" />
+		<end x="-1" y="-1" />
+	</arc>
+</map>
+</sbgn>
