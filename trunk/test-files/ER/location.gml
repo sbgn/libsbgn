@@ -143,36 +143,6 @@ graph [
     zlevel -1
 
     graphics [
-      x 63.0
-      y 115.0
-      w 12.0
-      h 12.0
-      fill "#000000"
-      outline "#000000"
-      frameThickness 2.0
-      gradient 0.0
-      rounding 0.0
-      type "oval"
-    ]
-    label ""
-    labelgraphics [
-      alignment "center"
-      anchor "c"
-      color "#000000"
-      fontName "Arial"
-      fontSize 12
-      fontStyle "plain"
-      type "text"
-    ]
-    sbgn [
-      role "OUTCOME"
-    ]
-  ]
-  node [
-    id 5
-    zlevel -1
-
-    graphics [
       x 117.0
       y 80.0
       w 12.0
@@ -199,7 +169,7 @@ graph [
     ]
   ]
   node [
-    id 6
+    id 5
     zlevel -1
 
     graphics [
@@ -231,45 +201,6 @@ graph [
   edge [
     id 1
     source 1
-    target 6
-    graphics [
-      fill "#000000"
-      outline "#000000"
-      arrow "none"
-      frameThickness 1.5
-      gradient 0.0
-      rounding 5.0
-      thickness 15.0
-    ]
-    sbgn [
-      role "ASSIGNMENT"
-    ]
-  ]
-  edge [
-    id 2
-    source 4
-    target 2
-    graphics [
-      fill "#000000"
-      outline "#000000"
-      arrow "last"
-      arrowheadstyle "assignment"
-      docking [
-        target "-0.5;-5.0"
-      ]
-      frameThickness 1.5
-      gradient 0.0
-      rounding 5.0
-      type "org.graffiti.plugins.views.defaults.PolyLineEdgeShape"
-      thickness 15.0
-    ]
-    sbgn [
-      role "ASSIGNMENT"
-    ]
-  ]
-  edge [
-    id 3
-    source 3
     target 5
     graphics [
       fill "#000000"
@@ -285,8 +216,8 @@ graph [
     ]
   ]
   edge [
-    id 4
-    source 6
+    id 2
+    source 3
     target 4
     graphics [
       fill "#000000"
@@ -302,9 +233,9 @@ graph [
     ]
   ]
   edge [
-    id 5
-    source 5
-    target 6
+    id 3
+    source 4
+    target 5
     graphics [
       fill "#000000"
       outline "#000000"
@@ -320,8 +251,8 @@ graph [
     ]
   ]
   edge [
-    id 6
-    source 5
+    id 4
+    source 4
     target 2
     graphics [
       fill "#000000"
@@ -330,6 +261,27 @@ graph [
       arrowheadstyle "assignment"
       docking [
         target "0.5;-5.0"
+      ]
+      frameThickness 1.5
+      gradient 0.0
+      rounding 5.0
+      thickness 15.0
+    ]
+    sbgn [
+      role "ASSIGNMENT"
+    ]
+  ]
+  edge [
+    id 5
+    source 5
+    target 2
+    graphics [
+      fill "#000000"
+      outline "#000000"
+      arrow "last"
+      arrowheadstyle "assignment"
+      docking [
+        target "-0.5;-5.0"
       ]
       frameThickness 1.5
       gradient 0.0
