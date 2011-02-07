@@ -25,20 +25,22 @@
 
 	<glyph class="delay" id="g3">
 		<bbox x="-1" y="-1" w="-1" h="-1" />
+		<port x="-1" y="-1" id="g3_1" />
+		<port x="-1" y="-1" id="g3_2" />
 	</glyph>
 
 	<arc class="assignment" source="g1" target="g2_2">
-		<port x="-1" y="-1" id="g4">
+		<port x="-1" y="-1" id="g4" />
 		<start x="-1" y="-1" />
 		<end x="-1" y="-1" />
 	</arc>
 
-	<arc class="logic" source="g2" target="g3">
+	<arc class="logic" source="g2" target="g3_1">
 		<start x="-1" y="-1" />
 		<end x="-1" y="-1" />
 	</arc>
 
-	<arc class="necessary stimulation" source="g3" target="g4">
+	<arc class="necessary stimulation" source="g3_2" target="g4">
 		<start x="-1" y="-1" />
 		<end x="-1" y="-1" />
 	</arc>
