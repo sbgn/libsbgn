@@ -8,8 +8,8 @@ graph [
     zlevel -1
 
     graphics [
-      x 450.0
-      y 295.0
+      x 92.0
+      y 215.0
       w 42.0
       h 42.0
       fill "#FFFFFF"
@@ -38,8 +38,8 @@ graph [
     zlevel -1
 
     graphics [
-      x 635.0
-      y 140.0
+      x 277.0
+      y 60.0
       w 20.0
       h 20.0
       fill "#FFFFFF"
@@ -68,8 +68,8 @@ graph [
     zlevel -1
 
     graphics [
-      x 590.0
-      y 320.0
+      x 232.0
+      y 240.0
       w 180.0
       h 60.0
       fill "#FFFFFF"
@@ -143,8 +143,8 @@ graph [
     zlevel -1
 
     graphics [
-      x 635.0
-      y 200.0
+      x 277.0
+      y 120.0
       w 1.0
       h 1.0
       fill "#000000"
@@ -173,14 +173,14 @@ graph [
     source 3
     target 1
     SBGN [
-      BendIn "492.0;295.0"
+      BendIn "134.0;215.0"
     ]
     graphics [
       fill "#000000"
       outline "#000000"
       Line [
         point [ x 0.0 y 0.0 ]
-        point [ x 492.0 y 295.0 ]
+        point [ x 134.0 y 215.0 ]
         point [ x 0.0 y 0.0 ]
       ]
       arrow "none"
@@ -240,15 +240,15 @@ graph [
     source 1
     target 4
     SBGN [
-      BendOut "408.0;295.0"
+      BendOut "50.0;215.0"
     ]
     graphics [
       fill "#000000"
       outline "#000000"
       Line [
         point [ x 0.0 y 0.0 ]
-        point [ x 408.0 y 295.0 ]
-        point [ x 410.0 y 200.0 ]
+        point [ x 50.0 y 215.0 ]
+        point [ x 52.0 y 120.0 ]
         point [ x 0.0 y 0.0 ]
       ]
       arrow "last"
