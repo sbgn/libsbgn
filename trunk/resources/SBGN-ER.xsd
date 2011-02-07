@@ -480,11 +480,6 @@
 						<!-- horizontal / vertical are for process nodes -->
 						<xsd:enumeration value="horizontal"/>
 						<xsd:enumeration value="vertical"/>
-						<!-- left / right / up / down are for tags and terminals -->
-						<xsd:enumeration value="left"/>
-						<xsd:enumeration value="right"/>
-						<xsd:enumeration value="up"/>
-						<xsd:enumeration value="down"/>
 					</xsd:restriction>
 				</xsd:simpleType>
 			</xsd:attribute>
