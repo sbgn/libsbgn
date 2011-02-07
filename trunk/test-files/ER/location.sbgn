@@ -25,9 +25,7 @@
 		<bbox x="107" y="30" w="20" h="20"/>
 	</glyph>
 	<arc class="assignment" source="glyph2" target="glyph1b">
-		<glyph class="influence target" id="glyph5">
-			<bbox x="63" y="80" w="0" h="0"/>
-		</glyph>
+		<port x="63" y="80" id="glyph5"/>
 		<start x="63" y="50"/>
 		<end x="63" y="160"/>
 	</arc>
