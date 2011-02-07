@@ -24,7 +24,7 @@
 	</glyph>
 
 	<arc class="assignment" source="g1" target="g2_1">
-		<port x="-1" y="-1" id="g4">
+		<port x="-1" y="-1" id="g4" />
 		<start x="-1" y="-1" />
 		<end x="-1" y="-1" />
 	</arc>
