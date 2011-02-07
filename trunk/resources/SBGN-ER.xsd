@@ -254,10 +254,15 @@
 									It replaces the label element used for other glyphs.
 									It describes the text to be drawn inside the state variable.
 								</p>
+								<p>
+									A state must have a value, a variable, or both. 
+									If it has both, they are rendered as a concatenated string with 
+									@ in between.
+								</p>
 							</xsd:documentation>
 						</xsd:annotation>
 						<xsd:complexType>
-							<xsd:attribute name="value" type="xsd:string" use="required">
+							<xsd:attribute name="value" type="xsd:string" use="optional">
 								<xsd:annotation>
 									<xsd:documentation>
 										<p>
