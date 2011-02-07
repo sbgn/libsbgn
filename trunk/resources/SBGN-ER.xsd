@@ -430,10 +430,12 @@
 						<xsd:enumeration value="outcome"/>
 						<xsd:enumeration value="perturbing agent"/>
 						<!-- Other -->
-						<xsd:enumeration value="phenotype"/>
+						<xsd:enumeration value="observable"/>
 						<xsd:enumeration value="interaction"/>
-						<xsd:enumeration value="invisible"/>
+						<xsd:enumeration value="influence target"/>
 						<xsd:enumeration value="annotation"/>
+						<xsd:enumeration value="variable value"/>
+						<xsd:enumeration value="implicit xor"/>
 						<!-- Logical Operator classes -->
 						<xsd:enumeration value="and"/>
 						<xsd:enumeration value="or"/>
@@ -629,6 +631,7 @@
 				<xsd:simpleType>
 					<xsd:restriction base="xsd:string">
 						<xsd:enumeration value="assignment"/>
+						<xsd:enumeration value="interaction"/>
 						<xsd:enumeration value="modulation"/>
 						<xsd:enumeration value="stimulation"/>
 						<xsd:enumeration value="inhibition"/>
