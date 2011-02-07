@@ -2,16 +2,19 @@
 <sbgn xmlns="http://sbgn.org/libsbgn/er/0.1">
 <map>
 	<glyph id="id1" class="entity">
+		<label text="CaMKII"/>
 		<bbox x="30" y="30" w="240" h="60"/>
 		<glyph id="id2" class="unit of information">
+			<label text="mt:prot"/>
 			<bbox x="125" y="80" w="47" h="15"/>
 		</glyph>
 	</glyph>
-	<arc source="id1" target="id1">
+	<arc source="id1" target="id1" class="interaction">
 		<glyph id="id3" class="outcome">
 			<bbox x="202" y="132" w="16" h="16"/>
 		</glyph>
 		<glyph id="id4" class="cardinality">
+			<label text="cis"/>
 			<bbox x="114" y="160" w="30" h="18"/>
 		</glyph>
 		<start x="88" y="90"/>
