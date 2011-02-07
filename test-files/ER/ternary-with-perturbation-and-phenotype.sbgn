@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbgn xmlns="http://sbgn.org/libsbgn/er/0.1">
+<map>
+	<glyph class="entity" id="g1">
+		<label text="A" />
+		<bbox x="-1" y="-1" w="-1" h="-1" />
+	</glyph>
+
+	<glyph class="entity" id="g2">
+		<label text="B" />
+		<bbox x="-1" y="-1" w="-1" h="-1" />
+	</glyph>
+
+	<glyph class="entity" id="g3">
+		<label text="C" />
+		<bbox x="-1" y="-1" w="-1" h="-1" />
+	</glyph>
+
+	<glyph class="interaction" id="g4">
+		<bbox x="-1" y="-1" w="-1" h="-1" />
+		<glyph class="outcome" id="g4_1">
+			<bbox x="-1" y="-1" w="-1" h="-1" />
+		</glyph>
+		<port x="-1" y="-1" id="g4_2" />
+	</glyph>
+
+	<glyph class="perturbing agent" id="g5">
+		<label text="Heat" />
+		<bbox x="-1" y="-1" w="-1" h="-1" />
+	</glyph>
+
+	<glyph class="observable" id="g6">
+		<label text="phenotype X" />
+		<bbox x="-1" y="-1" w="-1" h="-1" />
+	</glyph>
+
+	<arc class="interaction" source="g4" target="g1">
+		<start x="-1" y="-1" />
+		<end x="-1" y="-1" />
+	</arc>
+
+	<arc class="interaction" source="g4" target="g2">
+		<start x="-1" y="-1" />
+		<end x="-1" y="-1" />
+	</arc>
+
+	<arc class="interaction" source="g4" target="g3">
+		<start x="-1" y="-1" />
+		<end x="-1" y="-1" />
+	</arc>
+
+	<arc class="stimulation" source="g5" target="g3_2">
+		<start x="-1" y="-1" />
+		<end x="-1" y="-1" />
+	</arc>	
+	
+	<arc class="stimulation" source="g3_1" target="g6">
+		<start x="-1" y="-1" />
+		<end x="-1" y="-1" />
+	</arc>	
+</map>
+</sbgn>
