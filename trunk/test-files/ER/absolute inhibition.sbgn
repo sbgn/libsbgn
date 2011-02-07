@@ -25,7 +25,7 @@
 	</glyph>
 
 	<arc class="interaction" source="g1" target="g2">
-		<port x="-1" y="-1" id="g4">
+		<port x="-1" y="-1" id="g4" />
 		<start x="-1" y="-1" />
 		<end x="-1" y="-1" />
 	</arc>
