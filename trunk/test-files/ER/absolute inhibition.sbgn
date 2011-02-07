@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbgn xmlns="http://sbgn.org/libsbgn/er/0.1">
+<map>
+	<glyph class="entity" id="g1">
+		<label text="Sense" />
+		<bbox x="-1" y="-1" w="-1" h="-1" />
+		<glyph class="unit of information" id="g1_1">
+			<bbox x="-1" y="-1" w="-1" h="-1" />
+			<label text="mt:dna" />
+		</glyph>
+	</glyph>
+
+	<glyph class="entity" id="g2">
+		<label text="Antisense" />
+		<bbox x="-1" y="-1" w="-1" h="-1" />
+		<glyph class="unit of information" id="g2_1">
+			<bbox x="-1" y="-1" w="-1" h="-1" />
+			<label text="mt:dna" />
+		</glyph>
+	</glyph>
+
+	<glyph class="perturbing agent" id="g3">
+		<label text="Heat" />
+		<bbox x="-1" y="-1" w="-1" h="-1" />
+	</glyph>
+
+	<arc class="interaction" source="g1" target="g2">
+		<glyph class="invisible" id="g4">
+			<bbox x="-1" y="-1" /> <!-- no width or height [!] Make optional in bbox? Default = 0 -->
+		</glyph>
+		<start x="-1" y="-1" />
+		<end x="-1" y="-1" />
+	</arc>
+
+	<arc class="absolute inhibition" source="g4" target="g4">
+		<start x="-1" y="-1" />
+		<end x="-1" y="-1" />
+	</arc>
+</map>
+</sbgn>
