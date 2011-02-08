@@ -3,26 +3,26 @@
 <map>
 	<glyph class="entity" id="g1">
 		<label text="A" />
-		<bbox x="-1" y="-1" w="-1" h="-1" />
+		<bbox x="16" y="20" w="108" h="60" />
 	</glyph>
 
 	<glyph class="entity" id="g2">
 		<label text="B" />
-		<bbox x="-1" y="-1" w="-1" h="-1" />
+		<bbox x="296" y="20" w="108" h="60" />
 	</glyph>
 
 	<glyph class="interaction" id="g3">
-		<bbox x="-1" y="-1" w="-1" h="-1" />
+		<bbox x="189" y="29" w="42" h="42" />
 	</glyph>
 
 	<arc class="interaction" source="g3" target="g1">
-		<start x="-1" y="-1" />
-		<end x="-1" y="-1" />
+		<start x="189" y="50" />
+		<end x="124" y="50" />
 	</arc>
 
 	<arc class="interaction" source="g3" target="g2">
-		<start x="-1" y="-1" />
-		<end x="-1" y="-1" />
+		<start x="231" y="50" />
+		<end x="296" y="50" />
 	</arc>
 </map>
 </sbgn>
