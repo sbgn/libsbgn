@@ -3,43 +3,43 @@
 <map>
 	<glyph class="entity" id="g1">
 		<label text="A" />
-		<bbox x="-1" y="-1" w="-1" h="-1" />
+		<bbox x="16" y="150" w="108" h="60" />
 	</glyph>
 
 	<glyph class="entity" id="g2">
 		<label text="B" />
-		<bbox x="-1" y="-1" w="-1" h="-1" />
+		<bbox x="296" y="150" w="108" h="60" />
 	</glyph>
 
 	<glyph class="interaction" id="g3">
-		<bbox x="-1" y="-1" w="-1" h="-1" />
+		<bbox x="209" y="159" w="42" h="42" />
 		<glyph class="outcome" id="g3_1">
-			<bbox x="-1" y="-1" w="-1" h="-1" />
+			<bbox x="224" y="195" w="12" h="12" />
 		</glyph>
 	</glyph>
 
 	<glyph class="observable" id="g4">
 		<label text="phenotype X" />
-		<bbox x="-1" y="-1" w="-1" h="-1" />
+		<bbox x="176" y="250" w="108" h="60" />
 	</glyph>
 
 	<arc class="interaction" source="g3" target="g1">
 		<glyph class="cardinality" id="g5">
 			<label text="2" />
-			<bbox x="-1" y="-1" w="-1" h="-1" />
+			<bbox x="162" y="172" w="20" h="15" />
 		</glyph>
-		<start x="-1" y="-1" />
-		<end x="-1" y="-1" />
+		<start x="209" y="180" />
+		<end x="124" y="180" />
 	</arc>
 
 	<arc class="interaction" source="g3" target="g2">
-		<start x="-1" y="-1" />
-		<end x="-1" y="-1" />
+		<start x="251" y="180" />
+		<end x="296" y="180" />
 	</arc>
 	
 	<arc class="stimulation" source="g3_1" target="g4">
-		<start x="-1" y="-1" />
-		<end x="-1" y="-1" />
+		<start x="230" y="207" />
+		<end x="230" y="250" />
 	</arc>	
 </map>
 </sbgn>
