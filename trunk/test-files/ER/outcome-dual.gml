@@ -149,7 +149,7 @@ graph [
       rounding 0.0
       type "de.ipk_gatersleben.ag_nw.graffiti.plugins.shapes.ObservableShape"
     ]
-    label "Phenotype A"
+    label "Observable A"
     labelgraphics [
       alignment "center"
       anchor "c"
@@ -179,7 +179,7 @@ graph [
       rounding 0.0
       type "de.ipk_gatersleben.ag_nw.graffiti.plugins.shapes.ObservableShape"
     ]
-    label "Phenotype B"
+    label "Observable B"
     labelgraphics [
       alignment "center"
       anchor "c"
