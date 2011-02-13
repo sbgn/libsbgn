@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<project name="libsbgn" default="doc" basedir=".">
+<project name="libsbgn" default="dist" basedir=".">
   
   <property name="libsbgn.version" value="milestone1"/>
   
