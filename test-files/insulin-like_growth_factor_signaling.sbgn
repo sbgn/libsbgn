@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<sbgn xmlns="http://sbgn.org/libsbgn/pd/0.1">
-    <map>
+<sbgn xmlns="http://sbgn.org/libsbgn/0.2">
+    <map language="process description">
         <glyph id="glyph1" class="compartment">
             <label text="cytosol">
                 <bbox y="195.0" x="623.5" h="23.0" w="73.0"/>

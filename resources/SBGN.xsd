@@ -1,7 +1,7 @@
 <xsd:schema 
-	targetNamespace="http://sbgn.org/libsbgn/pd/0.1"
-	xmlns:xsd="http://www.w3.org/2001/XMLSchema" 	
-	xmlns:sbgn-pd="http://sbgn.org/libsbgn/pd/0.1"
+	targetNamespace="http://sbgn.org/libsbgn/0.2"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:sbgn="http://sbgn.org/libsbgn/0.2"
 	elementFormDefault="qualified">
 	<xsd:annotation>
 		<xsd:documentation>
@@ -11,7 +11,7 @@
 				<a href="http://libsbgn.sourceforge.net">http://libsbgn.sourceforge.net</a>.
 			</p>
 			<p>
-				Version: LibSBGN_PD_0.1 (cf. targetNamespace attribute - as recommended by the W3C)
+				Version: LibSBGN Milestone 2 (cf. targetNamespace attribute - as recommended by the W3C)
 			</p>
 		</xsd:documentation>
 	</xsd:annotation>
@@ -64,7 +64,7 @@
 			</xsd:documentation>
 		</xsd:annotation>
 		<xsd:complexType>
-			<xsd:attributeGroup ref="sbgn-pd:PointAttributes"/>
+			<xsd:attributeGroup ref="sbgn:PointAttributes"/>
 		</xsd:complexType>
 	</xsd:element>
 
@@ -99,7 +99,7 @@
 			</xsd:documentation>
 		</xsd:annotation>
 		<xsd:complexType>
-			<xsd:attributeGroup ref="sbgn-pd:PointAttributes"/>
+			<xsd:attributeGroup ref="sbgn:PointAttributes"/>
 			<xsd:attribute name="w" type="xsd:float" use="required"/>					
 			<xsd:attribute name="h" type="xsd:float" use="required"/>					
 		</xsd:complexType>
@@ -148,7 +148,7 @@
 						</p>
 					</xsd:documentation>
 				</xsd:annotation>
-				<xsd:element ref="sbgn-pd:bbox" minOccurs="0" maxOccurs="1"/>
+				<xsd:element ref="sbgn:bbox" minOccurs="0" maxOccurs="1"/>
 			</xsd:sequence>
 			<xsd:attribute name="text" type="xsd:string" use="required">
 				<xsd:annotation>
@@ -179,7 +179,7 @@
 		</xsd:annotation>
 		<xsd:complexType>
 			<xsd:sequence>
-				<xsd:element ref="sbgn-pd:map" minOccurs="1" maxOccurs="1"/>
+				<xsd:element ref="sbgn:map" minOccurs="1" maxOccurs="1"/>
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>
@@ -198,9 +198,27 @@
 		</xsd:annotation>
 		<xsd:complexType>
 			<xsd:sequence>
-				<xsd:element ref="sbgn-pd:glyph" minOccurs="0" maxOccurs="unbounded"/>
-				<xsd:element ref="sbgn-pd:arc" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="sbgn:glyph" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="sbgn:arc" minOccurs="0" maxOccurs="unbounded"/>
 			</xsd:sequence>
+			<xsd:attribute name="language" use="required">
+				<xsd:annotation>
+					<xsd:documentation>
+						<p>
+							Language of the map: one of three sublanguages defined by SBGN.
+							Different languages have different restrictions on the usage of sub-elements (that are not encoded in this schema 
+							but must be validated with an external validator)
+						</p>
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:enumeration value="entity relationship"/>
+						<xsd:enumeration value="process description"/>
+						<xsd:enumeration value="activity flow"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:attribute>						
 		</xsd:complexType>
 	</xsd:element>
 
@@ -226,7 +244,7 @@
 			</xsd:documentation>
 		</xsd:annotation>
 		<xsd:complexType>
-			<xsd:attributeGroup ref="sbgn-pd:PointAttributes"/>
+			<xsd:attributeGroup ref="sbgn:PointAttributes"/>
 			<xsd:attribute name="id" type="xsd:ID" use="required">	
 				<xsd:annotation>
 					<xsd:documentation>
@@ -285,7 +303,7 @@
 							</p>
 						</xsd:documentation>
 					</xsd:annotation>
-					<xsd:element ref="sbgn-pd:label" minOccurs="0" maxOccurs="1"/>
+					<xsd:element ref="sbgn:label" minOccurs="0" maxOccurs="1"/>
 					<xsd:element name="state" minOccurs="0" maxOccurs="1">
 						<xsd:annotation>
 							<xsd:documentation>
@@ -358,12 +376,12 @@
 					</xsd:annotation>
 					<xsd:complexType>
 						<xsd:sequence>
-							<xsd:element ref="sbgn-pd:label" minOccurs="0" maxOccurs="1"/>
+							<xsd:element ref="sbgn:label" minOccurs="0" maxOccurs="1"/>
 						</xsd:sequence>
 					</xsd:complexType>
 				</xsd:element>
 								
-				<xsd:element ref="sbgn-pd:bbox" minOccurs="1" maxOccurs="1">
+				<xsd:element ref="sbgn:bbox" minOccurs="1" maxOccurs="1">
 					<xsd:annotation>
 						<xsd:documentation>
 							<p>
@@ -383,7 +401,7 @@
 					</xsd:annotation>
 				</xsd:element>
 
-				<xsd:element ref="sbgn-pd:glyph" minOccurs="0" maxOccurs="unbounded">
+				<xsd:element ref="sbgn:glyph" minOccurs="0" maxOccurs="unbounded">
 					<xsd:annotation>
 						<xsd:documentation>
 							<p>
@@ -405,10 +423,10 @@
 						</xsd:documentation>
 					</xsd:annotation>
 				</xsd:element>
-				<xsd:element ref="sbgn-pd:port" minOccurs="0" maxOccurs="unbounded"/>				
+				<xsd:element ref="sbgn:port" minOccurs="0" maxOccurs="unbounded"/>				
 			</xsd:sequence>
 
-			<xsd:attribute name="class" default="unspecified entity">
+			<xsd:attribute name="class" use="required">
 				<xsd:annotation>
 					<xsd:documentation>
 						<p>
@@ -419,7 +437,7 @@
 							</ul>
 						</p>
 						<p>
-							The various classes encompass the following SBGN elements:
+							The various classes encompass the following PD SBGN elements:
 							<ul>
 								<li>Entity Pool Nodes (EPN),</li>
 								<li>Process Nodes (PN),</li>
@@ -428,12 +446,21 @@
 								<li>Sub-glyphs on Arcs (Stoichiometry Label),</li>
 								<li>Other glyphs (Compartment, Submap, Tag, Terminal).</li>
 							</ul>
+							And the following ER SBGN elements
+							<ul>
+								<li>Entities (Entity, Outcome)</li>
+								<li>Other (Annotation, Observable)</li>
+								<li>Auxiliary on glyps (Existence, Location)</li>
+								<li>Auxiliary on arcs (Cardinality)</li>
+								<li>Delay operator</li>
+								<li>implicit xor</li>
+							</ul>
 						</p>
 					</xsd:documentation>
 				</xsd:annotation>
 				<xsd:simpleType>
 					<xsd:restriction base="xsd:string">
-						<!-- Entity Pool Node classes -->
+						<!-- Entity Pool Node classes (PD only) -->
 						<xsd:enumeration value="unspecified entity"/>
 						<xsd:enumeration value="simple chemical"/>
 						<xsd:enumeration value="macromolecule"/>
@@ -444,28 +471,47 @@
 						<xsd:enumeration value="complex"/>
 						<xsd:enumeration value="complex multimer"/>
 						<xsd:enumeration value="source and sink"/>
+						<!-- Entities (both PD and ER) -->
 						<xsd:enumeration value="perturbing agent"/>
-						<!-- Other -->
+						<!-- Other (PD only) -->
 						<xsd:enumeration value="compartment"/>
 						<xsd:enumeration value="submap"/>
 						<xsd:enumeration value="tag"/>
 						<xsd:enumeration value="terminal"/>
-						<!-- Process Node classes -->
+						<!-- Process Node classes (PD only) -->
 						<xsd:enumeration value="process"/>
 						<xsd:enumeration value="omitted process"/>
 						<xsd:enumeration value="uncertain process"/>
 						<xsd:enumeration value="association"/>
 						<xsd:enumeration value="dissociation"/>
 						<xsd:enumeration value="phenotype"/>
-						<!-- Logical Operator classes -->
+						<!-- Logical Operator classes (both PD and ER) -->
 						<xsd:enumeration value="and"/>
 						<xsd:enumeration value="or"/>
 						<xsd:enumeration value="not"/>
-						<!-- Subglyph on glyph classes -->
+						<!-- Subglyph on glyph classes (both PD and ER) -->
 						<xsd:enumeration value="state variable"/>
 						<xsd:enumeration value="unit of information"/>
-						<!-- Subglyph on arc classes -->
+						<!-- Subglyph on arc classes (PD only) -->
 						<xsd:enumeration value="stoichiometry"/>
+						
+						<!-- Entities classes (ER) -->
+						<xsd:enumeration value="entity"/>
+						<xsd:enumeration value="outcome"/>
+						<!-- Other (ER) -->
+						<xsd:enumeration value="observable"/>
+						<xsd:enumeration value="interaction"/>
+						<xsd:enumeration value="influence target"/>
+						<xsd:enumeration value="annotation"/>
+						<xsd:enumeration value="variable value"/>
+						<xsd:enumeration value="implicit xor"/>
+						<!-- Logical Operator classes (ER only) -->
+						<xsd:enumeration value="delay"/>
+						<!-- Auxiliary on glyph classes -->
+						<xsd:enumeration value="existence"/>
+						<xsd:enumeration value="location"/>
+						<!-- Auxiliary on arc classes -->
+						<xsd:enumeration value="cardinality"/> <!-- used for cis / trans and stoichiometry -->
 						<!-- NB Arc classes are in a separate enumeration -->
 					</xsd:restriction>
 				</xsd:simpleType>
@@ -476,10 +522,10 @@
 						<p>
 							The orientation attribute is used to express how to draw asymmetric
 							glyphs.
-							The orientation of Process Nodes is either horizontal or vertical.
+							In PD, the orientation of Process Nodes is either horizontal or vertical.
 							It refers to an (imaginary) line connecting the two in/out sides of the
 							PN.
-							The orientation of Tags and Terminals can be left, right, up or down.
+							In PD, the orientation of Tags and Terminals can be left, right, up or down.
 							It refers to the direction the arrow side of the glyph is pointing
 							at.
 						</p>
@@ -521,7 +567,9 @@
 				<p>
 					The arc element describes an SBGN arc between two SBGN nodes. It contains:
 					<ul>
-						<li>an optional stoichiometry marker,</li>
+						<li>For PD: an optional stoichiometry marker,</li>
+						<li>For ER: an optional cardinality marker, 
+						zero or more ports (influence targets), and zero or more outcomes,</li>
 						<li>a mandatory source and target (glyph or port),</li>
 						<li>a geometric description of its whole path, from start to end.</li>
 					</ul>
@@ -534,13 +582,28 @@
 		</xsd:annotation>
 		<xsd:complexType>
 			<xsd:sequence>
-				<xsd:element ref="sbgn-pd:glyph" minOccurs="0" maxOccurs="1">
+				<xsd:element ref="sbgn:glyph" minOccurs="0" maxOccurs="unbounded">
 					<xsd:annotation>
 						<xsd:documentation>
 							<p>
-								An arc can contain a single optional sub-glyph.
+								In PD, an arc can contain a single optional sub-glyph.
 								This glyph must be a stoichiometry marker
 								(square with a numeric label)
+							</p>
+							<p>
+								In ER, an arc can contain several sub-glyphs.
+								This can be zero or one cardinality glyphs
+								(e.g. cis or trans), plus zero to many 
+								outcome glyphs (black dot)
+							</p>
+						</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+				<xsd:element ref="sbgn:port" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>
+							<p>
+								Ports are only allowed in ER.
 							</p>
 						</xsd:documentation>
 					</xsd:annotation>
@@ -555,7 +618,7 @@
 						</xsd:documentation>
 					</xsd:annotation>
 					<xsd:complexType>
-						<xsd:attributeGroup ref="sbgn-pd:PointAttributes"/>
+						<xsd:attributeGroup ref="sbgn:PointAttributes"/>
 					</xsd:complexType>
 				</xsd:element>
 				<xsd:element name="next" minOccurs="0" maxOccurs="unbounded">
@@ -585,9 +648,9 @@
 									</p>
 								</xsd:documentation>
 							</xsd:annotation>
-							<xsd:element ref="sbgn-pd:point" minOccurs="0" maxOccurs="2"/>
+							<xsd:element ref="sbgn:point" minOccurs="0" maxOccurs="2"/>
 						</xsd:sequence>
-						<xsd:attributeGroup ref="sbgn-pd:PointAttributes"/>
+						<xsd:attributeGroup ref="sbgn:PointAttributes"/>
 					</xsd:complexType>
 				</xsd:element>
 				<xsd:element name="end" minOccurs="1" maxOccurs="1">
@@ -615,9 +678,9 @@
 									</p>
 								</xsd:documentation>
 							</xsd:annotation>
-							<xsd:element ref="sbgn-pd:point" minOccurs="0" maxOccurs="2"/>
+							<xsd:element ref="sbgn:point" minOccurs="0" maxOccurs="2"/>
 						</xsd:sequence>
-						<xsd:attributeGroup ref="sbgn-pd:PointAttributes"/>
+						<xsd:attributeGroup ref="sbgn:PointAttributes"/>
 					</xsd:complexType>
 				</xsd:element>
 			</xsd:sequence>
@@ -647,16 +710,23 @@
 				</xsd:annotation>
 				<xsd:simpleType>
 					<xsd:restriction base="xsd:string">
+					<!-- PD only -->
 						<xsd:enumeration value="production"/>
 						<xsd:enumeration value="consumption"/>
+						<xsd:enumeration value="catalysis"/>
+						<xsd:enumeration value="equivalence arc"/>
+					<!-- PD and ER -->
 						<xsd:enumeration value="modulation"/>
 						<xsd:enumeration value="stimulation"/>
-						<xsd:enumeration value="catalysis"/>
-						<xsd:enumeration value="inhibition"/>
 						<xsd:enumeration value="necessary stimulation"/>
 						<xsd:enumeration value="logic arc"/>
-						<xsd:enumeration value="equivalence arc"/>
-						<!-- NB Process- and Entity Pool node classes are in a separate enumeration -->
+						<xsd:enumeration value="inhibition"/>
+					<!-- ER only -->
+						<xsd:enumeration value="assignment"/>
+						<xsd:enumeration value="interaction"/>
+						<xsd:enumeration value="absolute inhibition"/>
+						<xsd:enumeration value="absolute stimulation"/>
+						<!-- NB Glyph classes are in a separate enumeration -->
 					</xsd:restriction>
 				</xsd:simpleType>
 			</xsd:attribute>
