@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<sbgn xmlns="http://sbgn.org/libsbgn/er/0.1">
-<map>
+<sbgn xmlns="http://sbgn.org/libsbgn/0.2">
+<map language="entity relationship">
 	<glyph id="id1" class="entity">
 		<label text="CaMKII"/>
 		<bbox x="30" y="30" w="240" h="60"/>
