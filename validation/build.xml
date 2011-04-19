@@ -18,7 +18,7 @@ Ant script to validate the SBGNML test files
 		
 	<target name="schema-validate"> 
 		<schemavalidate>
-			<schema namespace="http://sbgn.org/libsbgn/pd/0.1" file="${schema.dir}SBGN.xsd"/>
+			<schema namespace="http://sbgn.org/libsbgn/0.2" file="${schema.dir}SBGN.xsd"/>
 			<fileset dir="${test-files.dir}" includes="*.sbgn"/>
 		</schemavalidate>
 	</target>
