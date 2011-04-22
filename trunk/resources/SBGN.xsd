@@ -380,7 +380,34 @@
 						</xsd:sequence>
 					</xsd:complexType>
 				</xsd:element>
-								
+
+				<xsd:element name="unitOfInformation" minOccurs="0" maxOccurs="1">
+					<xsd:annotation>
+						<xsd:documentation>
+							<p>
+								The unitOfInformation is only used in 
+								activity flow diagrams. It can only be used
+								on a unit-of-information glyph on a biological activity glyph,
+								where it is compulsory. It is used to indicate 
+								the shape of this unit of information.
+							</p>
+						</xsd:documentation>
+					</xsd:annotation>
+					<xsd:complexType>
+						<xsd:attribute name="entity" use="required">
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:enumeration value="unspecified entity"/>
+									<xsd:enumeration value="simple chemical"/>
+									<xsd:enumeration value="macromolecule"/>
+									<xsd:enumeration value="nucleic acid feature"/>
+									<xsd:enumeration value="complex"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:attribute>
+					</xsd:complexType>
+				</xsd:element>
+
 				<xsd:element ref="sbgn:bbox" minOccurs="1" maxOccurs="1">
 					<xsd:annotation>
 						<xsd:documentation>
@@ -471,6 +498,9 @@
 						<xsd:enumeration value="complex"/>
 						<xsd:enumeration value="complex multimer"/>
 						<xsd:enumeration value="source and sink"/>
+						<!-- Activities (AF) -->
+						<xsd:enumeration value="perturbation"/>
+						<xsd:enumeration value="biological activity"/>
 						<!-- Entities (both PD and ER) -->
 						<xsd:enumeration value="perturbing agent"/>
 						<!-- Other (PD only) -->
@@ -484,8 +514,9 @@
 						<xsd:enumeration value="uncertain process"/>
 						<xsd:enumeration value="association"/>
 						<xsd:enumeration value="dissociation"/>
+						<!-- both PD and AF -->
 						<xsd:enumeration value="phenotype"/>
-						<!-- Logical Operator classes (both PD and ER) -->
+						<!-- Logical Operator classes (PD, ER and AF) -->
 						<xsd:enumeration value="and"/>
 						<xsd:enumeration value="or"/>
 						<xsd:enumeration value="not"/>
@@ -505,7 +536,7 @@
 						<xsd:enumeration value="annotation"/>
 						<xsd:enumeration value="variable value"/>
 						<xsd:enumeration value="implicit xor"/>
-						<!-- Logical Operator classes (ER only) -->
+						<!-- Logical Operator classes (ER and AF) -->
 						<xsd:enumeration value="delay"/>
 						<!-- Auxiliary on glyph classes -->
 						<xsd:enumeration value="existence"/>
@@ -714,18 +745,24 @@
 						<xsd:enumeration value="production"/>
 						<xsd:enumeration value="consumption"/>
 						<xsd:enumeration value="catalysis"/>
-						<xsd:enumeration value="equivalence arc"/>
 					<!-- PD and ER -->
 						<xsd:enumeration value="modulation"/>
 						<xsd:enumeration value="stimulation"/>
-						<xsd:enumeration value="necessary stimulation"/>
-						<xsd:enumeration value="logic arc"/>
 						<xsd:enumeration value="inhibition"/>
 					<!-- ER only -->
 						<xsd:enumeration value="assignment"/>
 						<xsd:enumeration value="interaction"/>
 						<xsd:enumeration value="absolute inhibition"/>
 						<xsd:enumeration value="absolute stimulation"/>
+					<!-- AF only -->
+						<xsd:enumeration value="positive influence"/>
+						<xsd:enumeration value="negative influence"/>
+						<xsd:enumeration value="unknown influence"/>
+					<!-- PD and AF -->
+						<xsd:enumeration value="equivalence arc"/>
+					<!-- PD, ER and AF -->
+						<xsd:enumeration value="necessary stimulation"/>
+						<xsd:enumeration value="logic arc"/>
 						<!-- NB Glyph classes are in a separate enumeration -->
 					</xsd:restriction>
 				</xsd:simpleType>
