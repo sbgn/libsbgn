@@ -12,7 +12,7 @@
 	<bbox x="34" y="230" w="110" h="72"/>
 	<glyph class="unit of information" id="g2.1">
 		<label text="sodium&#xA;channel"/>
-		<unitOfInformation entity="macromolecule"/>
+		<entity name="macromolecule"/>
 		<bbox x="37" y="217" w="50" h="30"/>
 	</glyph>
 </glyph>

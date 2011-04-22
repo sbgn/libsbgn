@@ -381,20 +381,19 @@
 					</xsd:complexType>
 				</xsd:element>
 
-				<xsd:element name="unitOfInformation" minOccurs="0" maxOccurs="1">
+				<xsd:element name="entity" minOccurs="0" maxOccurs="1">
 					<xsd:annotation>
 						<xsd:documentation>
 							<p>
-								The unitOfInformation is only used in 
-								activity flow diagrams. It can only be used
-								on a unit-of-information glyph on a biological activity glyph,
-								where it is compulsory. It is used to indicate 
-								the shape of this unit of information.
+								The entity is only used in activity flow diagrams.
+								It can only be used on a unit of information glyph
+								on a biological activity glyph, where it is compulsory.
+								It is used to indicate the shape of this unit of information.
 							</p>
 						</xsd:documentation>
 					</xsd:annotation>
 					<xsd:complexType>
-						<xsd:attribute name="entity" use="required">
+						<xsd:attribute name="name" use="required">
 							<xsd:simpleType>
 								<xsd:restriction base="xsd:string">
 									<xsd:enumeration value="unspecified entity"/>
