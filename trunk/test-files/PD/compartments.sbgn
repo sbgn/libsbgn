@@ -10,26 +10,26 @@
 		<bbox x="90" y="230" w="440" h="260"/>
 	</glyph>
 	
-	<glyph class="complex" id="glyph2">
+	<glyph class="complex" id="glyph2" compartmentRef="glyph1">
 		<bbox x="360" y="150" w="140" h="160"/>
+		<glyph class="macromolecule" id="glyph3">
+			<label text="IGF"/>
+			<bbox x="380" y="171" w="100" h="60"/>
+		</glyph>
+		<glyph class="macromolecule" id="glyph6">
+			<label text="IGFR"/>
+			<bbox x="380" y="232" w="100" h="60"/>
+		</glyph>
 	</glyph>
 	
-	<glyph class="macromolecule" id="glyph3">
-		<label text="IGF"/>
-		<bbox x="380" y="171" w="100" h="60"/>
-	</glyph>
-	<glyph class="macromolecule" id="glyph4">
+	<glyph class="macromolecule" id="glyph4" compartmentRef="glyph8">
 		<label text="IGFR"/>
 		<bbox x="120" y="250" w="100" h="60"/>
 	</glyph>
 	
-	<glyph class="macromolecule" id="glyph5">
+	<glyph class="macromolecule" id="glyph5" compartmentRef="glyph1">
 		<label text="IGF"/>
 		<bbox x="170" y="130" w="100" h="60"/>
-	</glyph>
-	<glyph class="macromolecule" id="glyph6">
-		<label text="IGFR"/>
-		<bbox x="380" y="232" w="100" h="60"/>
 	</glyph>
 
 	<glyph class="association" id="pn1">

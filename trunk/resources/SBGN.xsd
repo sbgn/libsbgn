@@ -586,6 +586,26 @@
 					</xsd:documentation>
 				</xsd:annotation>
 			</xsd:attribute>
+			<xsd:attribute name="compartmentRef" type="xsd:IDREF" use="optional">
+				<xsd:annotation>
+					<xsd:documentation>
+						<p>
+							Reference to the ID of the compartment that this glyph 
+							is part of. Only use
+							this if there is at least one explicit compartment
+							present in the diagram. Compartments are 
+							only used in PD and AF, and thus this attribute as well.
+							For PD, this should be used only for EPN's.
+						</p><p>
+							In case there are no compartments, entities that 
+							can have a location, such as EPN's, are implicit
+							member of an invisible compartment that 
+							encompasses the whole map. In that case, this
+							attribute must be omitted.
+						</p>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:attribute>
 		</xsd:complexType>
 	</xsd:element>
 
