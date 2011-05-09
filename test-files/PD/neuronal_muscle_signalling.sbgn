@@ -223,7 +223,7 @@
                 <bbox y="1100.0" x="300.0" h="60.0" w="120.0"/>
             </glyph>
         </glyph>
-        <glyph id="glyph32" class="phenotype" compartmentRef="glyph2">
+        <glyph id="glyph32" class="phenotype">
             <label text="muscle&#xA;contraction"/>
             <bbox y="1250.0" x="150.0" h="60.0" w="160.0"/>
         </glyph>

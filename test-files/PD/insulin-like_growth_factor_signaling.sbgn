@@ -132,7 +132,7 @@
                 <bbox y="979.0" x="1237.5" h="22.0" w="25.0"/>
             </glyph>
         </glyph>
-        <glyph id="glyph36" class="phenotype" compartmentRef="glyph1">
+        <glyph id="glyph36" class="phenotype">
             <label text="gene&#xA;transcription"/>
             <bbox y="1080.0" x="1130.0" h="60.0" w="140.0"/>
         </glyph>
