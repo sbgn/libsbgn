@@ -13,11 +13,11 @@
             </label>
             <bbox y="40.0" x="40.0" h="120.0" w="1240.0"/>
         </glyph>
-        <glyph id="glyph2" class="macromolecule">
+        <glyph id="glyph2" class="macromolecule" compartmentRef="glyph1">
             <label text="IGFR"/>
             <bbox y="200.0" x="70.0" h="60.0" w="100.0"/>
         </glyph>
-        <glyph id="glyph0" class="macromolecule">
+        <glyph id="glyph0" class="macromolecule" compartmentRef="glyph40">
             <label text="IGF"/>
             <bbox y="80.0" x="120.0" h="60.0" w="100.0"/>
         </glyph>
@@ -26,7 +26,7 @@
             <port id="glyph6.1" y="230.0" x="220.0"/>
             <port id="glyph6.2" y="230.0" x="260.0"/>
         </glyph>
-        <glyph id="glyph5" class="complex">
+        <glyph id="glyph5" class="complex" compartmentRef="glyph1">
             <bbox y="100.0" x="310.0" h="160.0" w="140.0"/>
             <glyph id="glyph3" class="macromolecule">
                 <label text="IGF"/>
@@ -37,17 +37,17 @@
                 <bbox y="182.0" x="330.0" h="60.0" w="100.0"/>
             </glyph>
         </glyph>
-        <glyph id="glyph9" class="simple chemical">
+        <glyph id="glyph9" class="simple chemical" compartmentRef="glyph1">
             <label text="ATP"/>
             <clone/>
             <bbox y="290.0" x="270.0" h="60.0" w="60.0"/>
         </glyph>
-        <glyph id="glyph10" class="simple chemical">
+        <glyph id="glyph10" class="simple chemical" compartmentRef="glyph1">
             <label text="ADP"/>
             <clone/>
             <bbox y="290.0" x="420.0" h="60.0" w="60.0"/>
         </glyph>
-        <glyph id="glyph12" class="macromolecule">
+        <glyph id="glyph12" class="macromolecule" compartmentRef="glyph1">
             <label text="Grb2"/>
             <bbox y="510.0" x="590.0" h="60.0" w="100.0"/>
             <glyph id="glyph12a" class="state variable">
@@ -60,7 +60,7 @@
             <port id="glyph13.2" y="540.0" x="540.0"/>
             <port id="glyph13.1" y="540.0" x="500.0"/>
         </glyph>
-        <glyph id="glyph20" class="macromolecule">
+        <glyph id="glyph20" class="macromolecule" compartmentRef="glyph1">
             <label text="RAS"/>
             <bbox y="880.0" x="100.0" h="60.0" w="100.0"/>
             <glyph id="glyph20a" class="state variable">
@@ -68,7 +68,7 @@
                 <bbox y="926.0" x="120.0" h="28.0" w="60.0"/>
             </glyph>
         </glyph>
-        <glyph id="glyph18" class="complex">
+        <glyph id="glyph18" class="complex" compartmentRef="glyph1">
             <bbox y="710.0" x="150.0" h="100.0" w="260.0"/>
             <glyph id="glyph16" class="macromolecule">
                 <label text="SOS"/>
@@ -83,7 +83,7 @@
                 </glyph>
             </glyph>
         </glyph>
-        <glyph id="glyph22" class="simple chemical">
+        <glyph id="glyph22" class="simple chemical" compartmentRef="glyph1">
             <label text="GTP"/>
             <bbox y="1000.0" x="170.0" h="60.0" w="60.0"/>
         </glyph>
@@ -92,31 +92,31 @@
             <port id="glyph19.1" y="910.0" x="260.0"/>
             <port id="glyph19.2" y="910.0" x="300.0"/>
         </glyph>
-        <glyph id="glyph23" class="simple chemical">
+        <glyph id="glyph23" class="simple chemical" compartmentRef="glyph1">
             <label text="GDP"/>
             <bbox y="1000.0" x="340.0" h="60.0" w="60.0"/>
         </glyph>
-        <glyph id="glyph29" class="simple chemical">
+        <glyph id="glyph29" class="simple chemical" compartmentRef="glyph1">
             <label text="ADP"/>
             <clone/>
             <bbox y="630.0" x="940.0" h="60.0" w="60.0"/>
         </glyph>
-        <glyph id="glyph28" class="simple chemical">
+        <glyph id="glyph28" class="simple chemical" compartmentRef="glyph1">
             <label text="ATP"/>
             <clone/>
             <bbox y="630.0" x="800.0" h="60.0" w="60.0"/>
         </glyph>
-        <glyph id="glyph33" class="simple chemical">
+        <glyph id="glyph33" class="simple chemical" compartmentRef="glyph1">
             <label text="ADP"/>
             <clone/>
             <bbox y="860.0" x="1080.0" h="60.0" w="60.0"/>
         </glyph>
-        <glyph id="glyph34" class="simple chemical">
+        <glyph id="glyph34" class="simple chemical" compartmentRef="glyph1">
             <label text="ATP"/>
             <clone/>
             <bbox y="860.0" x="950.0" h="60.0" w="60.0"/>
         </glyph>
-        <glyph id="glyph30" class="macromolecule">
+        <glyph id="glyph30" class="macromolecule" compartmentRef="glyph1">
             <label text="RSK"/>
             <bbox y="730.0" x="1000.0" h="60.0" w="100.0"/>
             <glyph id="glyph30a" class="state variable">
@@ -124,7 +124,7 @@
                 <bbox y="749.0" x="1087.5" h="22.0" w="25.0"/>
             </glyph>
         </glyph>
-        <glyph id="glyph35" class="macromolecule">
+        <glyph id="glyph35" class="macromolecule" compartmentRef="glyph1">
             <label text="c-Fos"/>
             <bbox y="960.0" x="1150.0" h="60.0" w="100.0"/>
             <glyph id="glyph35a" class="state variable">
@@ -132,11 +132,11 @@
                 <bbox y="979.0" x="1237.5" h="22.0" w="25.0"/>
             </glyph>
         </glyph>
-        <glyph id="glyph36" class="phenotype">
+        <glyph id="glyph36" class="phenotype" compartmentRef="glyph1">
             <label text="gene&#xA;transcription"/>
             <bbox y="1080.0" x="1130.0" h="60.0" w="140.0"/>
         </glyph>
-        <glyph id="glyph7" class="macromolecule">
+        <glyph id="glyph7" class="macromolecule" compartmentRef="glyph1">
             <label text="IRS1-4"/>
             <bbox y="380.0" x="470.0" h="60.0" w="100.0"/>
             <glyph id="glyph7a" class="state variable">
@@ -144,7 +144,7 @@
                 <bbox y="399.0" x="557.5" h="22.0" w="25.0"/>
             </glyph>
         </glyph>
-        <glyph id="glyph31" class="macromolecule">
+        <glyph id="glyph31" class="macromolecule" compartmentRef="glyph1">
             <label text="ERK"/>
             <bbox y="880.0" x="820.0" h="60.0" w="100.0"/>
             <glyph id="glyph31a" class="state variable">
@@ -152,7 +152,7 @@
                 <bbox y="929.0" x="829.0" h="22.0" w="32.0"/>
             </glyph>
         </glyph>
-        <glyph id="glyph21" class="macromolecule">
+        <glyph id="glyph21" class="macromolecule" compartmentRef="glyph1">
             <label text="RAS"/>
             <bbox y="880.0" x="370.0" h="60.0" w="100.0"/>
             <glyph id="glyph21a" class="state variable">
@@ -172,7 +172,7 @@
 				<bbox y="887.0" x="660.0" h="45.0" w="80.0"/>
 			</glyph>	
         </glyph>
-        <glyph id="glyph37" class="macromolecule">
+        <glyph id="glyph37" class="macromolecule" compartmentRef="glyph1">
             <label text="c-Fos"/>
             <bbox y="960.0" x="850.0" h="60.0" w="100.0"/>
             <glyph id="glyph37a" class="state variable">
@@ -184,7 +184,7 @@
             <port id="glyph32.2" y="990.0" x="1070.0"/>
             <port id="glyph32.1" y="990.0" x="1030.0"/>
         </glyph>
-        <glyph id="glyph38" class="macromolecule">
+        <glyph id="glyph38" class="macromolecule" compartmentRef="glyph1">
             <label text="IRS1-4"/>
             <bbox y="380.0" x="190.0" h="60.0" w="100.0"/>
             <glyph id="glyph38a" class="state variable">
@@ -196,7 +196,7 @@
             <port id="glyph8.1" y="410.0" x="360.0"/>
             <port id="glyph8.2" y="410.0" x="400.0"/>
         </glyph>
-        <glyph id="glyph39" class="macromolecule">
+        <glyph id="glyph39" class="macromolecule" compartmentRef="glyph1">
             <label text="RSK"/>
             <bbox y="730.0" x="700.0" h="60.0" w="100.0"/>
             <glyph id="glyph39a" class="state variable">
@@ -208,11 +208,11 @@
             <port id="glyph27.2" y="760.0" x="920.0"/>
             <port id="glyph27.1" y="760.0" x="880.0"/>
         </glyph>
-        <glyph id="glyph14" class="macromolecule">
+        <glyph id="glyph14" class="macromolecule" compartmentRef="glyph1">
             <label text="SOS"/>
             <bbox y="510.0" x="120.0" h="60.0" w="100.0"/>
         </glyph>
-        <glyph id="glyph11" class="macromolecule">
+        <glyph id="glyph11" class="macromolecule" compartmentRef="glyph1">
             <label text="Grb2"/>
             <bbox y="510.0" x="340.0" h="60.0" w="100.0"/>
             <glyph id="glyph11a" class="state variable">
