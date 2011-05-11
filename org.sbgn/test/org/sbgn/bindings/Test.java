@@ -10,7 +10,7 @@ import junit.framework.TestCase;
 
 public class Test extends TestCase
 {
-	static File file1 = new File ("test-files/adh.sbgn");
+	static File file1 = new File ("test-files/PD/adh.sbgn");
 	
 	public static void test1() throws JAXBException
 	{
