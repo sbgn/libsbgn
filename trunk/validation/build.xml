@@ -4,36 +4,38 @@
 Ant script to validate the SBGNML test files 
 
 @author Augustin Luna
-@version 9 October 2010
+@version 21 May 2011
 --> 
 	
 <project name="SBGNSchematron" default="schematron-validate" basedir="..">
+	<echo message="Ant version: ${ant.version}"/>
+	
 	<property name="project.dir" value="${basedir}${file.separator}validation${file.separator}" />
 	<property name="output.dir" value="${project.dir}" />
 	<property name="lib.dir" value="${project.dir}lib${file.separator}" />
 	<property name="schema.dir" value="${basedir}${file.separator}resources${file.separator}" />
-	<property name="test-files.dir" value="${basedir}${file.separator}test-files${file.separator}" />
+	<property name="pd.test-files.dir" value="${basedir}${file.separator}test-files${file.separator}PD${file.separator}" />
 		
-	<taskdef name="schematron" classname="com.schematron.ant.SchematronTask" classpath="${lib.dir}ant-schematron.jar:${lib.dir}saxon9he.jar"/>
-		
+    <taskdef name="schematron" classname="com.schematron.ant.SchematronTask" classpath="${lib.dir}saxon9he.jar:${lib.dir}ant-schematron.jar"/>
+	
 	<target name="schema-validate"> 
 		<schemavalidate>
 			<schema namespace="http://sbgn.org/libsbgn/0.2" file="${schema.dir}SBGN.xsd"/>
-			<fileset dir="${test-files.dir}" includes="*.sbgn"/>
+			<fileset dir="${pd.test-files.dir}" includes="*.sbgn"/>
 		</schemavalidate>
 	</target>
 	
-	<target name="schematron-validate" depends="schema-validate"> 
+	<target name="schematron-validate"> 
 		<schematron 
-			schema="${project.dir}rules${file.separator}sbgn_pd.sch" 
+			schema="${project.dir}rules${file.separator}sbgn_pd.sch"
 			format="svrl" 
 			failonerror="false"
 			diagnose="yes"
-			generate_paths="true"
-			queryLanguageBinding="xslt1"
+			generate_paths="false"
+			queryLanguageBinding="xslt2"
 			outputFilename="${output.dir}results.xml"
 		>
-			<fileset dir="${test-files.dir}" includes="*.sbgn"/>
+			<fileset dir="${pd.test-files.dir}" includes="*.sbgn"/>
 		</schematron>
 	</target>
 </project>
