@@ -3,12 +3,16 @@
 	<map language="activity flow">
 	
 		<glyph class="compartment" id="g1">
-			<label text="membrane"/>
+			<label text="membrane">
+				<bbox x="244" y="493" w="72" h="18"/>
+			</label>
 			<bbox x="35" y="140" w="490" h="380"/>
 		</glyph>
 
 		<glyph class="compartment" id="g2">
-			<label text="cytosol"/>
+			<label text="cytosol">
+				<bbox x="254" y="452" w="50" h="18"/>
+			</label>
 			<bbox x="45" y="160" w="470" h="320"/>
 		</glyph>
 		
@@ -68,44 +72,44 @@
 		</arc>
 
 		<arc class="positive influence" source="g3" target="g5">
-			<start x="280" y="190" />
+			<start x="280" y="190"/>
 			<end x="332" y="270" />
 		</arc>
 
 		<arc class="positive influence" source="g5" target="g6">
-			<start x="350" y="330" />
+			<start x="350" y="330"/>
 			<next x="350" y="360"/>
-			<end x="436" y="360" />
+			<end x="436" y="360"/>
 		</arc>
 
-		<arc class="negative influence" source="g4 target="g7">
-			<start x="190" y="330" />
-			<end x="190" y="410" />
+		<arc class="negative influence" source="g4" target="g7">
+			<start x="190" y="330"/>
+			<end x="190" y="410"/>
 		</arc>
 
 		<arc class="equivalence arc" source="g3" target="g8">
-			<start x="260" y="130" />
-			<end x="260" y="70" />
+			<start x="260" y="130"/>
+			<end x="260" y="70"/>
 		</arc>
 
 		<arc class="equivalence arc" source="g7" target="g9">
-			<start x="190" y="470" />
-			<end x="190" y="540" />
+			<start x="190" y="470"/>
+			<end x="190" y="540"/>
 		</arc>
 
 		<arc class="equivalence arc" source="g6" target="g10">
-			<start x="544" y="360" />
-			<end x="600" y="360" />
+			<start x="544" y="360"/>
+			<end x="600" y="360"/>
 		</arc>
 		
 		<arc class="equivalence arc" source="g2" target="g11">
-			<start x="515" y="270" />
-			<end x="600" y="270" />
+			<start x="515" y="270"/>
+			<end x="600" y="270"/>
 		</arc>
 		
 		<arc class="equivalence arc" source="g1" target="g12">
-			<start x="525" y="300" />
-			<end x="600" y="300" />
+			<start x="525" y="300"/>
+			<end x="600" y="300"/>
 		</arc>
 
 	</map>

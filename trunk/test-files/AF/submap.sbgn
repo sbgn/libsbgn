@@ -3,12 +3,16 @@
 	<map language="activity flow">
 	
 		<glyph class="compartment" id="g1">
-			<label text="membrane"/>
+			<label text="membrane">
+				<bbox x="234" y="542" w="72" h="18"/>
+			</label>
 			<bbox x="25" y="190" w="490" h="380"/>
 		</glyph>
 
 		<glyph class="compartment" id="g2">
-			<label text="cytosol"/>
+			<label text="cytosol">
+				<bbox x="245" y="502" w="50" h="18"/>
+			</label>
 			<bbox x="35" y="210" w="470" h="320"/>
 		</glyph>
 		

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbgn xmlns="http://sbgn.org/libsbgn/0.2">
+	<map language="activity flow">
+
+		<glyph class="biological activity" id="g1">
+			<label text="tumor&#xA;antigen"/>
+			<bbox x="26" y="30" w="108" h="60"/>
+			<glyph class="unit of information" id="g1.1">
+				<label text="TP53"/>
+				<entity name="macromolecule"/>
+				<bbox x="32" y="22" w="40" h="15"/>
+			</glyph>
+		</glyph>
+
+		<glyph class="biological activity" id="g2">
+			<label text=""/>
+			<bbox x="166" y="30" w="108" h="60"/>
+			<glyph class="unit of information" id="g2.1">
+				<label text="tp53"/>
+				<entity name="nucleic acid feature"/>
+				<bbox x="175" y="22" w="35" h="15"/>
+			</glyph>
+		</glyph>
+		
+		<glyph class="biological activity" id="g3">
+			<bbox x="26" y="120" w="108" h="60"/>
+			<glyph class="unit of information" id="g3.1">
+				<label text="lactose"/>
+				<entity name="simple chemical"/>
+				<bbox x="32" y="99" w="41" h="41"/>
+			</glyph>
+		</glyph>
+		
+		<glyph class="biological activity" id="g4">
+			<bbox x="166" y="120" w="108" h="60"/>
+			<glyph class="unit of information" id="g4.1">
+				<entity name="unspecified entity"/>
+				<bbox x="177" y="110" w="30" h="19"/>
+			</glyph>
+		</glyph>
+		
+		<glyph class="biological activity" id="g5">
+			<label text="ribosome&#xA;activity"/>
+			<bbox x="26" y="210" w="108" h="60"/>
+			<glyph class="unit of information" id="g5.1">
+				<label text="Ribosome"/>
+				<entity name="complex"/>
+				<bbox x="22" y="202" w="61" h="15"/>
+			</glyph>
+		</glyph>
+		
+	</map>
+</sbgn>
