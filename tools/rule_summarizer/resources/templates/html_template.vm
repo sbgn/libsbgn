@@ -1,0 +1,30 @@
+<html>
+	<head>
+		<title>Rules</title> 
+	</head>
+	<body>		
+		<p>Rule count: ${elementList.size()}</p>
+		<table border="1">
+			<tr>
+				<th>Pattern ID</th>
+				<th>Pattern Name</th>
+				<th>Rule ID</th>
+				<th>Role</th>
+				<th>See</th>
+				<th>Diagnostics</th>
+				<th>Rule Text</th>
+			</tr>			
+			#foreach($element in $elementList)
+<tr>
+				<td>${element.getParentNode().getParentNode().getAttribute("id")}</td>
+				<td>${element.getParentNode().getParentNode().getAttribute("name")}</td>
+				<td>${element.getAttribute("id")}</td>
+				<td>${element.getAttribute("role")}</td>
+				<td>${element.getAttribute("see")}</td>
+				<td>${element.getAttribute("diagnostics")}</td>
+				<td>${element.getTextContent()}</td>
+			</tr>
+			#end
+</table>		
+	</body>
+</html>
