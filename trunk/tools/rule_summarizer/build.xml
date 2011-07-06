@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<!-- 
+
+Ant script to summarize Schematron rules in a MediaWiki or HTML format
+
+@author Augustin Luna
+@version 6 July 2011
+-->
+
+<project name="RuleSummarizer" default="summarize-rules-html" basedir=".">
+	<echo message="Ant version: ${ant.version}" />
+
+	<property name="project.dir" value="${basedir}" />
+	<property name="output.dir" value="output/" />
+	<property name="lib.dir" value="lib/" />
+	<property name="ruleset.file" value="../../validation/rules/sbgn_pd.sch" />
+
+	<path id="project.class.path">
+		<pathelement location="build" />
+		<fileset dir="${lib.dir}">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+
+	<target name="clean">
+		<delete dir="build" />
+	</target>
+
+	<target name="prepare" depends="clean">
+		<mkdir dir="build" />
+		<mkdir dir="output" />
+	</target>
+
+	<target name="compile" depends="prepare">
+		<javac srcdir="src" destdir="build" debug="on" includeantruntime="false">
+			<classpath refid="project.class.path" />
+			<compilerarg value="-Xlint" />
+		</javac>
+	</target>
+
+	<target name="summarize-rules-html" depends="compile">
+		<java failonerror="yes" classname="org.sbgn.RuleSummarizer">
+			<classpath>
+				<path refid="project.class.path" />
+			</classpath>
+			<arg value="${ruleset.file}" />
+			<arg value="resources/templates/html_template.vm" />
+			<arg value="${output.dir}/sbgn_pd.html" />
+		</java>
+	</target>
+
+	<target name="summarize-rules-wiki" depends="compile">
+		<java failonerror="yes" classname="org.sbgn.RuleSummarizer">
+			<classpath>
+				<path refid="project.class.path" />
+			</classpath>
+			<arg value="${ruleset.file}" />
+			<arg value="resources/templates/wiki_template.vm" />
+			<arg value="${output.dir}/sbgn_pd.txt" />
+		</java>
+	</target>
+</project>
