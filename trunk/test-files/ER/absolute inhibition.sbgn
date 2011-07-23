@@ -30,7 +30,7 @@
 		<end x="386" y="190" />
 	</arc>
 
-	<arc class="absolute inhibition" source="g4" target="g4">
+	<arc class="absolute inhibition" source="g3" target="g4">
 		<start x="290" y="90" />
 		<end x="290" y="186" />
 	</arc>
