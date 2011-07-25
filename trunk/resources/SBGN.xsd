@@ -250,6 +250,7 @@
           <xsd:sequence>
             <xsd:element ref="sbgn:glyph" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element ref="sbgn:arc" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element ref="sbgn:arcgroup" minOccurs="0" maxOccurs="unbounded"/>
           </xsd:sequence>
           <xsd:attribute name="language" use="required">
             <xsd:annotation>
@@ -665,6 +666,65 @@
                 </p>
               </xsd:documentation>
             </xsd:annotation>
+          </xsd:attribute>
+        </xsd:extension>
+      </xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+
+<!-- ARCGROUP ARCGROUP ARCGROUP ARCGROUP ARCGROUP ARCGROUP ARCGROUP ARCGROUP ARCGROUP ARCGROUP ARCGROUP -->
+
+	<xsd:element name="arcgroup">
+		<xsd:annotation>
+			<xsd:documentation>
+				<p>
+					The arc group describes a set of arcs and glyphs that together have a relation.
+					For example
+					<ul>
+						<li>For ER: interaction arcs around an interaction glyph,</li>
+						<li>...</li>
+					</ul>
+					Note that, in spite of the name, an arcgroup contains both arcs and glyphs.
+				</p>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+      <xsd:complexContent>
+        <xsd:extension base="SBGNBase">
+          <xsd:sequence>
+            <xsd:element ref="sbgn:glyph" minOccurs="0" maxOccurs="unbounded">
+              <xsd:annotation>
+                <xsd:documentation>
+                  <p>
+                    An arcgroup can contain glyphs. For example, in an interaction arcgroup, there must be one interaction glyph.
+                  </p>
+                </xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element ref="sbgn:arc" minOccurs="0" maxOccurs="unbounded">
+              <xsd:annotation>
+                <xsd:documentation>
+                  <p>
+				  An arcgroup can have multiple arcs. They are all assumed to form a single hyperarc-like structure.
+                  </p>
+                </xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+          </xsd:sequence>
+          <xsd:attribute name="class" use="required">
+            <xsd:annotation>
+              <xsd:documentation>
+                <p>
+                  The class attribute defines the semantic of the arcgroup.
+                </p>
+              </xsd:documentation>
+            </xsd:annotation>
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <!-- ER only -->
+                <xsd:enumeration value="interaction"/>
+              </xsd:restriction>
+            </xsd:simpleType>
           </xsd:attribute>
         </xsd:extension>
       </xsd:complexContent>
