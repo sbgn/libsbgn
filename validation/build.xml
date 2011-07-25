@@ -10,24 +10,24 @@ Ant script to validate the SBGNML test files
 <project name="SBGNSchematron" default="schematron-validate" basedir="..">
 	<echo message="Ant version: ${ant.version}"/>
 	
-	<property name="project.dir" value="${basedir}${file.separator}validation${file.separator}" />
+	<property name="project.dir" value="${basedir}/validation/" />
 	<property name="output.dir" value="${project.dir}" />
-	<property name="lib.dir" value="${project.dir}lib${file.separator}" />
-	<property name="schema.dir" value="${basedir}${file.separator}resources${file.separator}" />
-	<property name="pd.test-files.dir" value="${basedir}${file.separator}test-files${file.separator}PD${file.separator}" />
+	<property name="lib.dir" value="${project.dir}lib/" />
+	<property name="schema.dir" value="${basedir}/resources/" />
+	<property name="test-files.dir" value="${basedir}/test-files/" />
 		
     <taskdef name="schematron" classname="com.schematron.ant.SchematronTask" classpath="${lib.dir}saxon9he.jar:${lib.dir}ant-schematron.jar"/>
 	
 	<target name="schema-validate"> 
 		<schemavalidate>
 			<schema namespace="http://sbgn.org/libsbgn/0.2" file="${schema.dir}SBGN.xsd"/>
-			<fileset dir="${pd.test-files.dir}" includes="*.sbgn"/>
+			<fileset dir="${test-files.dir}" includes="*.sbgn"/>
 		</schemavalidate>
 	</target>
-	
-	<target name="schematron-validate"> 
+
+	<target name="schematron-validate-pd">
 		<schematron 
-			schema="${project.dir}rules${file.separator}sbgn_pd.sch"
+			schema="${project.dir}rules/sbgn_pd.sch"
 			format="svrl" 
 			failonerror="false"
 			diagnose="yes"
@@ -35,7 +35,24 @@ Ant script to validate the SBGNML test files
 			queryLanguageBinding="xslt2"
 			outputFilename="${output.dir}results.xml"
 		>
-			<fileset dir="${pd.test-files.dir}" includes="*.sbgn"/>
+			<fileset dir="${test-files.dir}/PD" includes="*.sbgn"/>
 		</schematron>
+	</target>
+	
+	<target name="schematron-validate-er"> 
+		<schematron 
+			schema="${project.dir}rules/sbgn_er.sch"
+			format="svrl" 
+			failonerror="false"
+			diagnose="yes"
+			generate_paths="false"
+			queryLanguageBinding="xslt2"
+			outputFilename="${output.dir}results.xml"
+		>
+			<fileset dir="${test-files.dir}/ER" includes="*.sbgn"/>
+		</schematron>	
+	</target>
+	
+	<target name="schematron-validate" depends="schematron-validate-er, schematron-validate-pd"> 
 	</target>
 </project>
