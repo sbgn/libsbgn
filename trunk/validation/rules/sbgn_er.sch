@@ -54,10 +54,11 @@ Schematron validation for SBGN ER
 	<iso:pattern name="check-arcgroup" id="er20001">
 		<iso:rule context="sbgn:glyph[@class='interaction']">
 			<iso:let name="id" value="@id"/>
+			<iso:let name="parent-tag-name" value="../local-name()"/>
 			<iso:assert 
 				id="check-arcgroup"
 				role="error"
-				test="parent::arcgroup" diagnostics="id">Parent of glyph with type interaction must be arcgroup
+				test="$parent-tag-name='arcgroup'" diagnostics="id">Parent of glyph with type interaction must be arcgroup.
 			</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
