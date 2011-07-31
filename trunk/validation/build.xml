@@ -5,6 +5,11 @@ Ant script to validate the SBGNML test files
 
 @author Augustin Luna
 @version 21 May 2011
+
+To validate a specific directory of files 
+with a specific schematron ruleset:
+
+ant -Ddir=/my/directory -Dschema=/my/rules.sch schematron-validate-dir
 --> 
 	
 <project name="SBGNSchematron" default="schematron-validate" basedir="..">
@@ -25,9 +30,9 @@ Ant script to validate the SBGNML test files
 		</schemavalidate>
 	</target>
 
-	<target name="schematron-validate-pd">
+	<target name="schematron-validate-dir">
 		<schematron 
-			schema="${project.dir}rules/sbgn_pd.sch"
+			schema="${schema}"
 			format="svrl" 
 			failonerror="false"
 			diagnose="yes"
@@ -35,22 +40,22 @@ Ant script to validate the SBGNML test files
 			queryLanguageBinding="xslt2"
 			outputFilename="${output.dir}results.xml"
 		>
-			<fileset dir="${test-files.dir}/PD" includes="*.sbgn"/>
+			<fileset dir="${dir}" includes="*.sbgn"/>
 		</schematron>
 	</target>
+
+	<target name="schematron-validate-pd">
+		<antcall target="schematron-validate-dir">
+			<param name="schema" value="${project.dir}rules/sbgn_pd.sch"/>
+			<param name="dir" value="${test-files.dir}/PD"/>
+		</antcall>
+	</target>
 	
-	<target name="schematron-validate-er"> 
-		<schematron 
-			schema="${project.dir}rules/sbgn_er.sch"
-			format="svrl" 
-			failonerror="false"
-			diagnose="yes"
-			generate_paths="false"
-			queryLanguageBinding="xslt2"
-			outputFilename="${output.dir}results.xml"
-		>
-			<fileset dir="${test-files.dir}/ER" includes="*.sbgn"/>
-		</schematron>	
+	<target name="schematron-validate-er">
+		<antcall target="schematron-validate-dir">
+			<param name="schema" value="${project.dir}rules/sbgn_er.sch"/>
+			<param name="dir" value="${test-files.dir}/ER"/>
+		</antcall>
 	</target>
 	
 	<target name="schematron-validate" depends="schematron-validate-er, schematron-validate-pd"> 
