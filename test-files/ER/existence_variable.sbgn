@@ -16,7 +16,7 @@
 		<label text="T"/>
 		<bbox x="80" y="170" w="20" h="20"/>
 	</glyph>
-	<arc class="assignment" source="glyph2" target="glyph1b">
+	<arc class="assignment" source="glyph2" target="glyph1b" id="a1">
 		<start x="90" y="170" />
 		<end x="90" y="110" />
 	</arc>

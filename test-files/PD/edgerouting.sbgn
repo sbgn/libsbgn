@@ -23,21 +23,21 @@
 		<port x="184" y="180" id="pn1.2"/>
 	</glyph>
 
-	<arc class="consumption" source="glyph1" target="pn1.1">
+	<arc class="consumption" source="glyph1" target="pn1.1" id="a01">
 		<start x="90" y="270" />
 		<next x="70" y="270"/>
 		<next x="70" y="180"/>
 		<end x="136" y="180" />
 	</arc>
 
-	<arc class="catalysis" source="glyph3" target="pn1">
+	<arc class="catalysis" source="glyph3" target="pn1" id="a02">
 		<start x="250" y="80" />
 		<next x="250" y="50"/>
 		<next x="160" y="50"/>
 		<end x="160" y="168" />		
 	</arc>
 
-	<arc class="production" source="pn1.2" target="glyph2">
+	<arc class="production" source="pn1.2" target="glyph2" id="a03">
 		<start x="184" y="180" />
 		<next x="190" y="180"/>
 		<next x="190" y="240"/>

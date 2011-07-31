@@ -17,7 +17,7 @@
 		<bbox x="176" y="250" w="108" h="60" />
 	</glyph>
 	
-	<arc class="stimulation" source="g3_1" target="g4">
+	<arc class="stimulation" source="g3_1" target="g4" id="a1">
 		<start x="230" y="207" />
 		<end x="230" y="250" />
 	</arc>	
@@ -31,7 +31,7 @@
 			</glyph>
 		</glyph>
 
-		<arc class="interaction" source="g3" target="g1">
+		<arc class="interaction" source="g3" target="g1" id="a2">
 			<glyph class="cardinality" id="g5">
 				<label text="2" />
 				<bbox x="162" y="172" w="20" h="15" />
@@ -40,7 +40,7 @@
 			<end x="124" y="180" />
 		</arc>
 
-		<arc class="interaction" source="g3" target="g2">
+		<arc class="interaction" source="g3" target="g2" id="a3">
 			<start x="251" y="180" />
 			<end x="296" y="180" />
 		</arc>

@@ -60,32 +60,32 @@
 			<bbox x="126" y="460" w="108" h="60"/>
 		</glyph>
 		
-		<arc class="positive influence" source="g4" target="g5">
+		<arc class="positive influence" source="g4" target="g5" id="a1">
 			<start x="250" y="80" />
 			<end x="250" y="180" />
 		</arc>
 
-		<arc class="equivalence arc" source="g5" target="g3.1">
+		<arc class="equivalence arc" source="g5" target="g3.1" id="a2">
 			<start x="250" y="240" />
 			<end x="250" y="300" />
 		</arc>
 
-		<arc class="equivalence arc" source="g7" target="g3.2">
+		<arc class="equivalence arc" source="g7" target="g3.2" id="a3">
 			<start x="180" y="460" />
 			<end x="180" y="420" />
 		</arc>
 
-		<arc class="equivalence arc" source="g6" target="g3.3">
+		<arc class="equivalence arc" source="g6" target="g3.3" id="a4">
 			<start x="426" y="390" />
 			<end x="360" y="390" />
 		</arc>
 		
-		<arc class="equivalence arc" source="g2" target="g3.4">
+		<arc class="equivalence arc" source="g2" target="g3.4" id="a5">
 			<start x="505" y="320" />
 			<end x="360" y="320" />
 		</arc>
 		
-		<arc class="equivalence arc" source="g1" target="g3.5">
+		<arc class="equivalence arc" source="g1" target="g3.5" id="a6">
 			<start x="515" y="350" />
 			<end x="360" y="350" />
 		</arc>

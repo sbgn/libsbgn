@@ -29,18 +29,18 @@
 		<port x="61" y="215" id="g3_2" />
 	</glyph>
 
-	<arc class="assignment" source="g1" target="g2_2">
+	<arc class="assignment" source="g1" target="g2_2" id="a1">
 		<port x="277" y="120" id="g4" />
 		<start x="277" y="70" />
 		<end x="277" y="202" />
 	</arc>
 
-	<arc class="logic arc" source="g2" target="g3_1">
+	<arc class="logic arc" source="g2" target="g3_1" id="a2">
 		<start x="142" y="215" />
 		<end x="123" y="215" />
 	</arc>
 
-	<arc class="necessary stimulation" source="g3_2" target="g4">
+	<arc class="necessary stimulation" source="g3_2" target="g4" id="a3">
 		<start x="61" y="215" />
 		<next x="50" y="215"/>
 		<next x="50" y="120"/>

@@ -9,7 +9,7 @@
 			<bbox x="125" y="80" w="47" h="15"/>
 		</glyph>
 	</glyph>
-	<arc source="id1" target="id1" class="interaction">
+	<arc source="id1" target="id1" class="interaction" id="a1">
 		<glyph id="id3" class="outcome">
 			<bbox x="202" y="132" w="16" h="16"/>
 		</glyph>

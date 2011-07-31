@@ -22,11 +22,11 @@
 		<port x="304" y="60" id="pn1.2"/>
 	</glyph>
 
-	<arc class="consumption" source="glyph1" target="pn1.2">
+	<arc class="consumption" source="glyph1" target="pn1.2" id="a1">
 		<start x="326" y="60" />
 		<end x="304" y="60" />			
 	</arc>
-	<arc class="production" source="pn1.1" target="glyph2">
+	<arc class="production" source="pn1.1" target="glyph2" id="a2">
 		<start x="256" y="60" />			
 		<end x="226" y="60" />
 	</arc>

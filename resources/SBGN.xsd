@@ -910,6 +910,16 @@
               </xsd:restriction>
             </xsd:simpleType>
           </xsd:attribute>
+          <xsd:attribute name="id" type="xsd:ID" use="required">
+            <xsd:annotation>
+              <xsd:documentation>
+                <p>
+                  The xsd:ID type is an alphanumeric identifier,
+                  starting with a letter.
+                </p>
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
           <xsd:attribute name="source" type="xsd:IDREF" use="required">
             <xsd:annotation>
               <xsd:documentation>

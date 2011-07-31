@@ -17,12 +17,12 @@
 			<bbox x="189" y="29" w="42" h="42" />
 		</glyph>
 
-		<arc class="interaction" source="g3" target="g1">
+		<arc class="interaction" source="g3" target="g1" id="a1">
 			<start x="189" y="50" />
 			<end x="124" y="50" />
 		</arc>
 
-		<arc class="interaction" source="g3" target="g2">
+		<arc class="interaction" source="g3" target="g2" id="a2">
 			<start x="231" y="50" />
 			<end x="296" y="50" />
 		</arc>
