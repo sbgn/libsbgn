@@ -24,19 +24,19 @@
 		<label text="T"/>
 		<bbox x="107" y="30" w="20" h="20"/>
 	</glyph>
-	<arc class="assignment" source="glyph2" target="glyph1b">
+	<arc class="assignment" source="glyph2" target="glyph1b" id="a1">
 		<port x="63" y="80" id="glyph5"/>
 		<start x="63" y="50"/>
 		<end x="63" y="160"/>
 	</arc>
-	<arc class="assignment" source="glyph3" target="glyph1c">
+	<arc class="assignment" source="glyph3" target="glyph1c" id="a2">
 		<glyph class="outcome" id="glyph4">
 			<bbox x="111" y="74" w="12" h="12"/>
 		</glyph>
 		<start x="117" y="50"/>
 		<end x="117" y="162"/>
 	</arc>
-	<arc class="stimulation" source="glyph4" target="glyph5">
+	<arc class="stimulation" source="glyph4" target="glyph5" id="a3">
 		<start x="111" y="80"/>
 		<end x="63" y="80"/>
 	</arc>

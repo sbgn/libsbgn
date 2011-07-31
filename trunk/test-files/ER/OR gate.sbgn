@@ -43,13 +43,13 @@
 		<port x="217" y="188" id="g5_2" />
 	</glyph>
 
-	<arc class="interaction" source="g1" target="g2">
+	<arc class="interaction" source="g1" target="g2" id="a1">
 		<port x="217" y="83" id="g6" />
 		<start x="120" y="83" />
 		<end x="315" y="83" />
 	</arc>
 
-	<arc class="interaction" source="g1" target="g3">
+	<arc class="interaction" source="g1" target="g3" id="a2">
 		<glyph class="outcome" id="g7" >
 			<bbox x="60" y="255" w="16" h="16" />
 		</glyph>
@@ -57,7 +57,7 @@
 		<end x="65" y="353" />
 	</arc>
 
-	<arc class="interaction" source="g2" target="g4">
+	<arc class="interaction" source="g2" target="g4" id="a3">
 		<glyph class="outcome" id="g8" >
 			<bbox x="360" y="255" w="16" h="16" />
 		</glyph>
@@ -65,17 +65,17 @@
 		<end x="367" y="353" />
 	</arc>
 
-	<arc class="logic arc" source="g7" target="g5_1">
+	<arc class="logic arc" source="g7" target="g5_1" id="a4">
 		<start x="75" y="263" />
 		<end x="217" y="263" />
 	</arc>
 
-	<arc class="logic arc" source="g8" target="g5_1">
+	<arc class="logic arc" source="g8" target="g5_1" id="a5">
 		<start x="362" y="263" />
 		<end x="217" y="263" />
 	</arc>
 
-	<arc class="absolute inhibition" source="g5_2" target="g6">
+	<arc class="absolute inhibition" source="g5_2" target="g6" id="a6">
 		<start x="217" y="188" />
 		<end x="217" y="83" />
 	</arc>

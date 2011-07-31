@@ -26,22 +26,22 @@
 			<bbox x="86" y="230" w="108" h="40"/>
 		</glyph>
 
-		<arc class="positive influence" source="g1" target="g2">
+		<arc class="positive influence" source="g1" target="g2" id="a1">
 			<start x="97" y="60" />
 			<end x="69" y="126" />
 		</arc>
 
-		<arc class="positive influence" source="g1" target="g3">
+		<arc class="positive influence" source="g1" target="g3" id="a2">
 			<start x="152" y="60" />
 			<end x="216" y="126" />
 		</arc>
 
-		<arc class="negative influence" source="g2" target="g1">
+		<arc class="negative influence" source="g2" target="g1" id="a3">
 			<start x="80" y="126" />
 			<end x="115" y="60" />
 		</arc>
 
-		<arc class="positive influence" source="g3" target="g4">
+		<arc class="positive influence" source="g3" target="g4" id="a4">
 			<start x="219" y="166" />
 			<end x="159" y="230" />
 		</arc>

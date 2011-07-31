@@ -33,30 +33,30 @@
 		<port x="184" y="180" id="pn1.2"/>
 	</glyph>
 
-	<arc class="consumption" source="glyph1" target="pn1.1">
+	<arc class="consumption" source="glyph1" target="pn1.1" id="a01">
 		<start x="98" y="160" />
 		<end x="136" y="180" />
 	</arc>
 	
-	<arc class="production" source="pn1.2" target="glyph_nadh">
+	<arc class="production" source="pn1.2" target="glyph_nadh" id="a02">
 		<start x="184" y="180" />			
 		<end x="300" y="180" />
 	</arc>
 	
-	<arc class="catalysis" source="glyph_adh1" target="pn1">
+	<arc class="catalysis" source="glyph_adh1" target="pn1" id="a03">
 		<start x="160" y="80" />
 		<end x="160" y="168" />		
 	</arc>
 
-	<arc class="production" source="pn1.2" target="glyph_h">
+	<arc class="production" source="pn1.2" target="glyph_h" id="a04">
 		<start x="184" y="180" />			
 		<end x="224" y="202" />
 	</arc>
-	<arc class="production" source="pn1.2" target="glyph_ethanal">
+	<arc class="production" source="pn1.2" target="glyph_ethanal" id="a05">
 		<start x="184" y="180" />			
 		<end x="224" y="154" />
 	</arc>
-	<arc class="consumption" source="glyph_nad" target="pn1.1">
+	<arc class="consumption" source="glyph_nad" target="pn1.1" id="a06">
 		<start x="95" y="202" />
 		<end x="136" y="180" />			
 	</arc>

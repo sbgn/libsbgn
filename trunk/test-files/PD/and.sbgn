@@ -72,27 +72,27 @@
         </glyph>
     </glyph>
 	
-    <arc class="necessary stimulation" source="glyph1.2" target="glyph2">
+    <arc class="necessary stimulation" source="glyph1.2" target="glyph2" id="a01">
         <start x="370" y="290" />
         <end x="370" y="350" />
     </arc>
 	
-    <arc class="consumption" source="glyph3" target="glyph2.1">
+    <arc class="consumption" source="glyph3" target="glyph2.1" id="a02">
         <start x="310" y="360" />
         <end x="350" y="360" />
     </arc>
 	
-    <arc class="production" source="glyph2.2" target="glyph0">
+    <arc class="production" source="glyph2.2" target="glyph0" id="a03">
         <start x="390" y="360" />
         <end x="440" y="360" />
     </arc>
 	
-    <arc class="logic arc" source="glyph8" target="glyph1.1">
+    <arc class="logic arc" source="glyph8" target="glyph1.1" id="a04">
         <start x="430" y="189" />
         <end x="370" y="210" />
     </arc>
 	
-    <arc class="logic arc" source="glyph7" target="glyph1.1">
+    <arc class="logic arc" source="glyph7" target="glyph1.1" id="a05">
         <start x="260" y="188" />
         <end x="370" y="210" />
     </arc>

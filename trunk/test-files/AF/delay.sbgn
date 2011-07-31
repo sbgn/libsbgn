@@ -18,12 +18,12 @@
 			<bbox x="46" y="10" w="108" h="60"/>
 		</glyph>
 
-		<arc class="logic arc" source="g1" target="g2.1">
+		<arc class="logic arc" source="g1" target="g2.1" id="a1">
 			<start x="100" y="172" />
 			<end x="100" y="151" />
 		</arc>
 
-		<arc class="positive influence" source="g2.2" target="g3">
+		<arc class="positive influence" source="g2.2" target="g3" id="a2">
 			<start x="100" y="88" />
 			<end x="100" y="70" />
 		</arc>

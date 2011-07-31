@@ -12,7 +12,7 @@
 			<bbox x="16" y="130" w="108" h="40"/>
 		</glyph>
 		
-		<arc class="unknown influence" source="g1" target="g2">
+		<arc class="unknown influence" source="g1" target="g2" id="a1">
 			<start x="70" y="60" />
 			<end x="70" y="130" />
 		</arc>

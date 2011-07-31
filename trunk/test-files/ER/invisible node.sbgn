@@ -23,13 +23,13 @@
 		<bbox x="105" y="60" w="110" h="60" />
 	</glyph>
 
-	<arc class="assignment" source="g1" target="g2_1">
+	<arc class="assignment" source="g1" target="g2_1" id="a1">
 		<port x="64" y="88" id="g4" />
 		<start x="64" y="50" />
 		<end x="64" y="150" />
 	</arc>
 
-	<arc class="stimulation" source="g3" target="g4">
+	<arc class="stimulation" source="g3" target="g4" id="a2">
 		<start x="130" y="88" />
 		<end x="64" y="88" />
 	</arc>

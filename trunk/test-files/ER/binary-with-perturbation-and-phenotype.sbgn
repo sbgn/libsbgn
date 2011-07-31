@@ -21,7 +21,7 @@
 		<bbox x="126" y="190" w="108" h="60" />
 	</glyph>
 
-	<arc class="interaction" source="g1" target="g2">
+	<arc class="interaction" source="g1" target="g2" id="a1">
 		<glyph class="outcome" id="g5">
 			<bbox x="174" y="124" w="12" h="12" />
 		</glyph>
@@ -30,12 +30,12 @@
 		<end x="296" y="130" />
 	</arc>
 
-	<arc class="absolute inhibition" source="g3" target="g6">
+	<arc class="absolute inhibition" source="g3" target="g6" id="a2">
 		<start x="240" y="70" />
 		<end x="240" y="130" />
 	</arc>
 
-	<arc class="stimulation" source="g5" target="g4">
+	<arc class="stimulation" source="g5" target="g4" id="a3">
 		<start x="180" y="136" />
 		<end x="180" y="190" />
 	</arc>

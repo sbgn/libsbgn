@@ -18,7 +18,7 @@
 	<port x="200" y="80" id="pn1.2"/>
 </glyph>
 
-<arc class="consumption" source="glyph1" target="pn1.1">
+<arc class="consumption" source="glyph1" target="pn1.1" id="a1">
 	<glyph class="stoichiometry" id="glyph10">
 		<label text="2"/>
 		<bbox x="140" y="60" w="20" h="16"/>
@@ -27,7 +27,7 @@
 	<end x="160" y="80" />
 </arc>
 
-<arc class="production" source="pn1.2" target="glyph2">
+<arc class="production" source="pn1.2" target="glyph2" id="a2">
 	<glyph class="stoichiometry" id="glyph11">
 		<label text="1"/>
 		<bbox x="200" y="60" w="20" h="16"/>
