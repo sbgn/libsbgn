@@ -42,6 +42,7 @@
 		   includes="**"
 		   debug="true"
 		   destdir="build">
+		   <classpath refid="project.classpath"/>
 	</javac>
   </target>
   
