@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <sbgn xmlns="http://sbgn.org/libsbgn/0.2">
     <map language="process description">
-        <glyph id="glyph1" class="compartment">
+        <glyph id="glyph1" class="compartment" compartmentOrder="1.0">
             <label text="synaptic cleft">
                 <bbox y="478.5" x="487.0" h="23.0" w="126.0"/>
             </label>
             <bbox y="320.0" x="50.0" h="340.0" w="1000.0"/>
         </glyph>
-        <glyph id="glyph0" class="compartment">
+        <glyph id="glyph0" class="compartment" compartmentOrder="2.0">
             <label text="synaptic button">
                 <bbox y="58.0" x="478.0" h="23.0" w="144.0"/>
             </label>
             <bbox y="50.0" x="90.0" h="320.0" w="920.0"/>
         </glyph>
-        <glyph id="glyph2" class="compartment">
+        <glyph id="glyph2" class="compartment" compartmentOrder="2.0">
             <label text="muscle cytosol">
                 <bbox y="1299.0" x="479.0" h="23.0" w="142.0"/>
             </label>
             <bbox y="610.0" x="90.0" h="720.0" w="920.0"/>
         </glyph>
-        <glyph id="glyph14" class="compartment">
+        <glyph id="glyph14" class="compartment" compartmentOrder="3.0">
             <label text="synaptic vesicle">
                 <bbox y="188.0" x="674.5" h="23.0" w="151.0"/>
             </label>
             <bbox y="180.0" x="650.0" h="120.0" w="200.0"/>
         </glyph>
-        <glyph id="glyph34" class="compartment">
+        <glyph id="glyph34" class="compartment" compartmentOrder="3.0">
             <label text="ER">
                 <bbox y="628.0" x="923.0" h="23.0" w="34.0"/>
             </label>
