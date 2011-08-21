@@ -606,6 +606,7 @@
               </xsd:restriction>
             </xsd:simpleType>
           </xsd:attribute>
+		  
           <xsd:attribute name="orientation" default="horizontal">
             <xsd:annotation>
               <xsd:documentation>
@@ -634,6 +635,7 @@
               </xsd:restriction>
             </xsd:simpleType>
           </xsd:attribute>
+		  
           <xsd:attribute name="id" type="xsd:ID" use="required">
             <xsd:annotation>
               <xsd:documentation>
@@ -646,6 +648,7 @@
               </xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
+		  
           <xsd:attribute name="compartmentRef" type="xsd:IDREF" use="optional">
             <xsd:annotation>
               <xsd:documentation>
@@ -667,6 +670,28 @@
               </xsd:documentation>
             </xsd:annotation>
           </xsd:attribute>
+		  
+  		  <xsd:attribute name="compartmentOrder" type="xsd:float" use="optional">
+            <xsd:annotation>
+              <xsd:documentation>
+                <p>
+                  The compartment order attribute can be used to define
+				  a drawing order for compartments. It enables tools to
+				  draw compartments in the correct order especially in
+				  the case of overlapping compartments.
+				  Compartments are only used in PD and AF, and thus
+				  this attribute as well.
+                </p>
+                <p>
+                  The attribute is of type float, the attribute value
+				  has not to be unique. Compartments with higher compartment
+				  order are drawn on top. The attribute is optional and should
+				  only be used for compartments.
+                </p>
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+		  
         </xsd:extension>
       </xsd:complexContent>
 		</xsd:complexType>
