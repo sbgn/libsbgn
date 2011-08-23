@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import org.xml.sax.Attributes;
+import org.xml.sax.EntityResolver;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
@@ -52,6 +53,7 @@ public class SbgnVersionFinder
 
 		VersionHandler versionHandler = new VersionHandler();
 
+		xr.setEntityResolver(null);		
 		xr.setContentHandler(versionHandler);
 		xr.setErrorHandler(versionHandler);
 		xr.parse(new InputSource(
