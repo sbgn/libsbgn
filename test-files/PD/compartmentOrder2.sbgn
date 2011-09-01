@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<sbgn xmlns="http://sbgn.org/libsbgn/0.2">
+    <map language="process description">
+        <glyph compartmentOrder="-2.0" id="d28f4" class="compartment">
+            <label text="at the bottom"/>
+            <bbox y="30.0" x="21.5" h="71.0" w="118.0"/>
+        </glyph>
+        <glyph compartmentOrder="65537.0" id="e7e5f" class="compartment">
+            <label text="in between"/>
+            <bbox y="80.0" x="57.5" h="71.0" w="118.0"/>
+        </glyph>
+        <glyph compartmentOrder="65538.0" id="be96d" class="compartment">
+            <label text="on top"/>
+            <bbox y="130.0" x="89.0" h="71.0" w="118.0"/>
+        </glyph>
+    </map>
+</sbgn>
