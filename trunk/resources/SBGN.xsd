@@ -248,6 +248,22 @@
       <xsd:complexContent>
         <xsd:extension base="SBGNBase">
           <xsd:sequence>
+            <xsd:element ref="sbgn:bbox" minOccurs="0" maxOccurs="1">
+              <xsd:annotation>
+                <xsd:documentation>
+                  <p>
+                    The bbox element on a map is not mandatory, it allows the 
+					application to define a canvas, and at the same time 
+					define a whitespace margin around the glyphs.
+				</p>
+				<p>
+					If a bbox is defined on a map, all glyphs and arcs must be 
+					inside this bbox, otherwise they could be
+					clipped off by applications.
+				</p>
+                </xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
             <xsd:element ref="sbgn:glyph" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element ref="sbgn:arc" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element ref="sbgn:arcgroup" minOccurs="0" maxOccurs="unbounded"/>
