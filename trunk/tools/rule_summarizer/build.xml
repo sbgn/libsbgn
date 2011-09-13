@@ -49,14 +49,25 @@ Ant script to summarize Schematron rules in a MediaWiki or HTML format
 		</java>
 	</target>
 
-	<target name="summarize-rules-wiki" depends="compile">
+	<target name="summarize-rules-media-wiki" depends="compile">
 		<java failonerror="yes" classname="org.sbgn.RuleSummarizer">
 			<classpath>
 				<path refid="project.class.path" />
 			</classpath>
 			<arg value="${ruleset.file}" />
-			<arg value="resources/templates/wiki_template.vm" />
-			<arg value="${output.dir}/sbgn_pd.txt" />
+			<arg value="resources/templates/media_wiki_template.vm" />
+			<arg value="${output.dir}/sbgn_pd_media_wiki.txt" />
+		</java>
+	</target>
+	
+	<target name="summarize-rules-trac-wiki" depends="compile">
+		<java failonerror="yes" classname="org.sbgn.RuleSummarizer">
+			<classpath>
+				<path refid="project.class.path" />
+			</classpath>
+			<arg value="${ruleset.file}" />
+			<arg value="resources/templates/trac_wiki_template.vm" />
+			<arg value="${output.dir}/sbgn_pd_trac_wiki.txt" />
 		</java>
 	</target>
 </project>

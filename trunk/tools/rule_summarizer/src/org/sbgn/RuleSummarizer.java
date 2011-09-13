@@ -52,8 +52,10 @@ public class RuleSummarizer {
 			SAXException, IOException, XPathExpressionException, Exception {
 
 		String ruleFileName = args[0];
-		//Two templates provided: MediaWiki and HTML
-		//String templateFileName = "resources/templates/wiki_template.vm";
+		//Three templates provided: MediaWiki, Trac Wiki, and HTML
+		//String templateFileName = "resources/templates/trac_wiki_template.vm";
+		//String templateFileName = "resources/templates/media_wiki_template.vm";
+		//String templateFileName = "resources/templates/html_template.vm";
 		String templateFileName = args[1];
 		String outputFileName = args[2];
 		
