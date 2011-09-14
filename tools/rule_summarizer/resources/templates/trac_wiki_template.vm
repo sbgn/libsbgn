@@ -1,6 +1,5 @@
 ## The text in the foreach must appear on a single line.
-
-||Pattern ID||Pattern Name||Rule ID||Role||See||Diagnostics||Rule Text ||
+|| Pattern ID || Pattern Name || Rule ID || Role || See || Diagnostics || Rule Text ||
 #foreach($element in $elementList)
 || ${element.getParentNode().getParentNode().getAttribute("id")} || ${element.getParentNode().getParentNode().getAttribute("name")} || ${element.getAttribute("id")} || ${element.getAttribute("role")} || ${element.getAttribute("see").replace("#","!#")} || ${element.getAttribute("diagnostics")} || ${element.getTextContent().trim()} ||
 #end
