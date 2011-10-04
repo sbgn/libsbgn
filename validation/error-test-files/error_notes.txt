@@ -1,0 +1,8 @@
+NOTE: These "notes" should be put into the the error test files when there is more support for Milestone 2. 
+
+pd10102-3_fail-1_1: Two production nodes coming from one association glyph. 
+pd10105-1_fail-1_1: Process node cannot be the source of a catalysis arc. 
+pd10101-1_fail-1_1: "INVALID" cannot be the source of a consumption arc. 
+pd10105-1_fail-1_2: Sink node cannot be the source of a catalysis arc. 
+pd10101-1_fail-3_2: Consumption and production are reversed. No ports exist for the process node.
+ 
