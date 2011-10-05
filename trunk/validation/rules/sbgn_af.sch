@@ -30,9 +30,8 @@ Schematron validation for SBGN AF
 	</iso:phase>
 
 	<iso:pattern name="sanity-check" id="00000">
-		<iso:rule context="//*">
-			<iso:let name="id" value="@id"/>
-			<iso:assert test="false()" diagnostics="id">This assertion should always fail.</iso:assert>
+		<iso:rule context="/*">
+			<iso:assert id="sanity-check" test="false()">This assertion should always fail.</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
 	
@@ -202,7 +201,6 @@ Schematron validation for SBGN AF
 		<iso:rule context="sbgn:arc[@class='logic arc']">
 			<iso:let name="target" value="@target"/>			
 			<iso:let name="port-class" value="//sbgn:port[@id=$target]/../@class"/>	
-			<!-- FIX: Not O(1) -->
 			<iso:assert 
 				id="check-logic-arc-target-class"
 				role="error"
@@ -215,6 +213,19 @@ Schematron validation for SBGN AF
 				diagnostics="target port-class">Incorrect target reference for arc with class "logic arc"
 			</iso:assert>
 		</iso:rule> 
+		<!-- Limited Number Rules -->
+		<iso:rule context="sbgn:glyph[@class='not']">
+			<iso:let name="id" value="@id"/>
+			<iso:let name="port-id" value="./sbgn:port/@id"/>				
+			<iso:let name="count" value="count(//sbgn:arc[(./@class = 'logic arc') and (./@target = current()/sbgn:port/@id)])"/>				
+			<iso:assert 
+				id="check-logic_arc-not-target-count-equals-1"
+				role="error"
+				see="sbgn-pd-L1V1.3-3.4.1"				
+				test="$count = 1"
+				diagnostics="id port-id count">'not' glyph can only be connected to one logic arc glyph. 
+			</iso:assert>	
+		</iso:rule>	
 	</iso:pattern> 
 	
 	<iso:pattern name="check-equivalence-arc" id="af10105">
@@ -252,6 +263,7 @@ Schematron validation for SBGN AF
 		<iso:diagnostic id="source"><iso:value-of select="$source"/></iso:diagnostic> 		
 		<iso:diagnostic id="class"><iso:value-of select="$class"/></iso:diagnostic> 
 		<iso:diagnostic id="port-class"><iso:value-of select="$port-class"/></iso:diagnostic> 
-		<iso:diagnostic id="arc-count"><iso:value-of select="$arc-count"/></iso:diagnostic> 		
+		<iso:diagnostic id="arc-count"><iso:value-of select="$arc-count"/></iso:diagnostic>
+		<iso:diagnostic id="count"><iso:value-of select="$count"/></iso:diagnostic> 		
 	</iso:diagnostics> 
 </iso:schema>
