@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<sbgn xmlns="http://sbgn.org/libsbgn/0.2">
+    <map language="activity flow">
+        <glyph id="glyph0" class="biological activity">
+            <label text="A"/>
+            <bbox y="70.0" x="56.0" h="60.0" w="108.0"/>
+        </glyph>
+        <glyph id="glyph2" class="biological activity">
+            <label text="B"/>
+            <bbox y="10.0" x="386.0" h="60.0" w="108.0"/>
+        </glyph>
+        <glyph id="glyph3" class="and">
+            <bbox y="79.0" x="249.0" h="42.0" w="42.0"/>
+            <port y="100.0" x="312.0" id="glyph3.2"/>
+        </glyph>
+        <glyph id="glyph1" class="biological activity">
+            <label text="C"/>
+            <bbox y="130.0" x="386.0" h="60.0" w="108.0"/>
+        </glyph>
+        <arc target="glyph3" source="glyph0" id="arc0" class="positive influence">
+            <start y="100.0" x="164.0"/>
+            <end y="100.0" x="249.0"/>
+        </arc>
+        <arc target="glyph2" source="glyph3.2" id="arc1" class="logic arc">
+            <start y="100.0" x="312.0"/>
+            <end y="59.058823" x="386.0"/>
+        </arc>
+        <arc target="glyph1" source="glyph3.2" id="arc2" class="logic arc">
+            <start y="100.0" x="312.0"/>
+            <end y="140.94118" x="386.0"/>
+        </arc>
+    </map>
+</sbgn>
