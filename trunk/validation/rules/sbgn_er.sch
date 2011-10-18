@@ -532,5 +532,8 @@ Schematron validation for SBGN ER
 		<iso:diagnostic id="class"><iso:value-of select="$class"/></iso:diagnostic> 
 		<iso:diagnostic id="source-count"><iso:value-of select="$source-count"/></iso:diagnostic> 
 		<iso:diagnostic id="target-count"><iso:value-of select="$target-count"/></iso:diagnostic> 
+		<iso:diagnostic id="target"><iso:value-of select="$target-count"/></iso:diagnostic> 
+		<iso:diagnostic id="port-id"><iso:value-of select="$target-count"/></iso:diagnostic> 
+		<iso:diagnostic id="port-class"><iso:value-of select="$target-count"/></iso:diagnostic> 
 	</iso:diagnostics> 
 </iso:schema>
