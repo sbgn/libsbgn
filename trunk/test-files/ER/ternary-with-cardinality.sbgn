@@ -12,7 +12,7 @@
 		<bbox x="296" y="150" w="108" h="60" />
 	</glyph>
 
-	<glyph class="observable" id="g4">
+	<glyph class="phenotype" id="g4">
 		<label text="phenotype X" />
 		<bbox x="176" y="250" w="108" h="60" />
 	</glyph>
