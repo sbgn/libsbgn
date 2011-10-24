@@ -19,7 +19,7 @@
 		</glyph>
 	</glyph>
 
-	<glyph id="id3" class="observable">
+	<glyph id="id3" class="phenotype">
 		<label text="Phenotype X"/>
 		<bbox x="176" y="130" w="108" h="60"/>
 	</glyph>

@@ -17,7 +17,7 @@
 	</glyph>
 
 
-	<glyph class="observable" id="g5">
+	<glyph class="phenotype" id="g5">
 		<label text="phenotype X" />
 		<bbox x="176" y="250" w="108" h="60" />
 	</glyph>

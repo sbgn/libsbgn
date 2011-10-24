@@ -550,7 +550,7 @@
                   And the following ER SBGN elements
                   <ul>
                     <li>Entities (Entity, Outcome)</li>
-                    <li>Other (Annotation, Observable)</li>
+                    <li>Other (Annotation, Phenotype)</li>
                     <li>Auxiliary on glyps (Existence, Location)</li>
                     <li>Auxiliary on arcs (Cardinality)</li>
                     <li>Delay operator</li>
@@ -588,7 +588,7 @@
                 <xsd:enumeration value="uncertain process"/>
                 <xsd:enumeration value="association"/>
                 <xsd:enumeration value="dissociation"/>
-                <!-- both PD and AF -->
+				<!-- PD, ER and AF -->
                 <xsd:enumeration value="phenotype"/>
                 <!-- Logical Operator classes (PD, ER and AF) -->
                 <xsd:enumeration value="and"/>
@@ -597,15 +597,13 @@
                 <!-- Subglyph on glyph classes (both PD and ER) -->
                 <xsd:enumeration value="state variable"/>
                 <xsd:enumeration value="unit of information"/>
-                <!-- Subglyph on arc classes (PD only) -->
-                <xsd:enumeration value="stoichiometry"/>
 
                 <!-- Entities classes (ER) -->
                 <xsd:enumeration value="entity"/>
                 <xsd:enumeration value="outcome"/>
                 <!-- Other (ER) -->
-                <xsd:enumeration value="observable"/>
-                <xsd:enumeration value="interaction"/>
+				                
+				<xsd:enumeration value="interaction"/>
                 <xsd:enumeration value="influence target"/>
                 <xsd:enumeration value="annotation"/>
                 <xsd:enumeration value="variable value"/>
@@ -619,6 +617,12 @@
                 <xsd:enumeration value="cardinality"/>
                 <!-- used for cis / trans and stoichiometry -->
                 <!-- NB Arc classes are in a separate enumeration -->
+				
+				<!-- The use of observable is deprecated in newer versions of SBGN.
+				Because it occurs in older versions of the SBGN spec, 
+				we will keep it around indefinitely.
+				!-->
+                <xsd:enumeration value="observable"/>
               </xsd:restriction>
             </xsd:simpleType>
           </xsd:attribute>

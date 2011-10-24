@@ -41,12 +41,22 @@ public enum GlyphClazz
 	NOT ("not"),
 	STATE_VARIABLE ("state variable"),
 	UNIT_OF_INFORMATION ("unit of information"),
+	/** 
+	 * @deprecated
+	 * By mistake, we used STOICHIOMETRY in instead of {@link CARDINALITY} in LibSBGN M1.
+	 * We keep this constant here to support reading old documents.
+	 * This constant will be removed in LibSBGN M3.
+	 */
 	STOICHIOMETRY ("stoichiometry"),
 	ENTITY ("entity"),
 	OUTCOME ("outcome"),
+	/** 
+	 * @deprecated
+	 * Observable was used in old versions of SBGN, but has been replaced with {@link PHENOTYPE}. 
+	 * However, because older versions of SBGN are supported by LibSBGN, this constant will never be removed.
+	 */
 	OBSERVABLE ("observable"),
 	INTERACTION ("interaction"),
-	INFLUENCE_TARGET ("influence target"),
 	ANNOTATION ("annotation"),
 	VARIABLE_VALUE ("variable value"),
 	IMPLICIT_XOR ("implicit xor"),

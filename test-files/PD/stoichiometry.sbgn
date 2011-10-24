@@ -19,7 +19,7 @@
 </glyph>
 
 <arc class="consumption" source="glyph1" target="pn1.1" id="a1">
-	<glyph class="stoichiometry" id="glyph10">
+	<glyph class="cardinality" id="glyph10">
 		<label text="2"/>
 		<bbox x="140" y="60" w="20" h="16"/>
 	</glyph>

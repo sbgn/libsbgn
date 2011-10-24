@@ -19,13 +19,13 @@
 		</glyph>
 	</glyph>
 
-	<glyph id="id3" class="observable">
-		<label text="Observable A"/>
+	<glyph id="id3" class="phenotype">
+		<label text="Phenotype A"/>
 		<bbox x="275" y="100" w="110" h="60"/>
 	</glyph>
 
-	<glyph id="id4" class="observable">
-		<label text="Observable B"/>
+	<glyph id="id4" class="phenotype">
+		<label text="Phenotype B"/>
 		<bbox x="5" y="140" w="110" h="60"/>
 	</glyph>
 
