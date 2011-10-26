@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <!-- 
 
 Schematron validation for SBGN AF 
@@ -16,27 +15,27 @@ Schematron validation for SBGN AF
 	<iso:title>sbgn_af_validation</iso:title>
 	
 	<iso:phase id="sanity">
-		<iso:active pattern="00000"/>	
+		<iso:active pattern="sanity-check"/>	
 	</iso:phase>
 	
 	<iso:phase id="basic"> 
-		<iso:active pattern="00001"/>
-		<iso:active pattern="00002"/>
-		<iso:active pattern="af10101"/>
-		<iso:active pattern="af10102"/>
-		<iso:active pattern="af10103"/>
-		<iso:active pattern="af10104"/>
-		<iso:active pattern="af10105"/>
-		<iso:active pattern="af10106"/>		
+		<iso:active pattern="check-id"/>
+		<iso:active pattern="check-idref"/>
+		<iso:active pattern="check-positive-influence"/>
+		<iso:active pattern="check-negative-influence"/>
+		<iso:active pattern="check-unknown-influence"/>
+		<iso:active pattern="check-necessary-stimulation"/>
+		<iso:active pattern="check-logic-arc"/>
+		<iso:active pattern="check-equivalence-arc"/>		
 	</iso:phase>
 
-	<iso:pattern name="sanity-check" id="00000">
+	<iso:pattern id="sanity-check"> <!-- old id: 00000 -->
 		<iso:rule context="/*">
 			<iso:assert id="sanity-check" test="false()">This assertion should always fail.</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
 	
-	<iso:pattern name="check-id" id="00001">
+	<iso:pattern id="check-id"> <!-- old id: 00001 -->
 		<iso:rule context="//*[@id]">
 			<iso:let name="id" value="@id"/>
 			<iso:assert 
@@ -45,7 +44,7 @@ Schematron validation for SBGN AF
 		</iso:rule> 
 	</iso:pattern> 
 	
-	<iso:pattern name="check-idref" id="00002">
+	<iso:pattern id="check-idref"> <!-- old id: 00002 -->
 		<iso:rule context="sbgn:arc">
 			<iso:let name="target" value="@target"/>
 			<iso:assert
@@ -54,7 +53,7 @@ Schematron validation for SBGN AF
 		</iso:rule> 
 	</iso:pattern> 
 
-	<iso:pattern name="check-positive-influence" id="af10101">
+	<iso:pattern id="check-positive-influence"> <!-- old id: af10101 -->
 		<iso:rule context="sbgn:arc[@class='positive influence']">
 			<iso:let name="source" value="@source"/>			
 			<iso:let name="source-class" value="//sbgn:glyph[@id=$source]/@class"/>			
@@ -86,7 +85,7 @@ Schematron validation for SBGN AF
 		</iso:rule> 
 	</iso:pattern> 
 
-	<iso:pattern name="check-negative-influence" id="af10102">
+	<iso:pattern id="check-negative-influence"> <!-- old id: af10102 -->
 		<iso:rule context="sbgn:arc[@class='negative influence']">
 			<iso:let name="source" value="@source"/>			
 			<iso:let name="source-class" value="//sbgn:glyph[@id=$source]/@class"/>
@@ -118,7 +117,7 @@ Schematron validation for SBGN AF
 		</iso:rule> 
 	</iso:pattern> 
 	
-	<iso:pattern name="check-unknown-influence" id="af10103">
+	<iso:pattern id="check-unknown-influence"> <!-- old id: af10103 -->
 		<iso:rule context="sbgn:arc[@class='unknown influence']">
 			<iso:let name="source" value="@source"/>			
 			<iso:let name="source-class" value="//sbgn:glyph[@id=$source]/@class"/>	
@@ -150,7 +149,7 @@ Schematron validation for SBGN AF
 		</iso:rule> 
 	</iso:pattern> 
 	
-	<iso:pattern name="check-necessary-stimulation" id="af10104">
+	<iso:pattern id="check-necessary-stimulation"> <!-- old id: af10104 -->
 		<iso:rule context="sbgn:arc[@class='necessary stimulation']">
 			<iso:let name="source" value="@source"/>			
 			<iso:let name="source-class" value="//sbgn:glyph[@id=$source]/@class"/>	
@@ -182,7 +181,7 @@ Schematron validation for SBGN AF
 		</iso:rule> 
 	</iso:pattern> 
 	
-	<iso:pattern name="check-logic-arc" id="af10105">
+	<iso:pattern id="check-logic-arc"> <!-- old id: af10105 -->
 		<iso:rule context="sbgn:arc[@class='logic arc']">
 			<iso:let name="source" value="@source"/>			
 			<iso:let name="source-class" value="//sbgn:glyph[@id=$source]/@class"/>	
@@ -224,7 +223,7 @@ Schematron validation for SBGN AF
 		</iso:rule>	
 	</iso:pattern> 
 	
-	<iso:pattern name="check-equivalence-arc" id="af10106">
+	<iso:pattern id="check-equivalence-arc"> <!-- old id: af10106 -->
 		<iso:rule context="sbgn:arc[@class='equivalence arc']">
 			<iso:let name="source" value="@source"/>			
 			<iso:let name="source-class" value="//sbgn:glyph[@id=$source]/@class"/>	

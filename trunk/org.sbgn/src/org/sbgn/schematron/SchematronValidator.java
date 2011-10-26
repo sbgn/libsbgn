@@ -53,7 +53,7 @@ public class SchematronValidator
 		TransformerFactory factory = new net.sf.saxon.TransformerFactoryImpl();
 		Transformer transformer1 = factory
 				.newTransformer(new StreamSource(getClass().getResource("/iso_svrl_for_xslt2.xsl").toString()));
-
+		
 		Source schemaSource = new StreamSource(schemaFile);
 		Source inputSource = new StreamSource(inputFile);
 
@@ -61,7 +61,7 @@ public class SchematronValidator
 		Result result1 = new StreamResult(sw1);
 
 		transformer1.transform(schemaSource, result1);
-		System.out.println("xsl cretaed");
+		System.out.println("xsl created");
 
 		Transformer transformer2 = factory.newTransformer(new StreamSource(
 				new StringReader(sw1.toString())));

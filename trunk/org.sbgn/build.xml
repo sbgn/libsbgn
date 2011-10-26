@@ -79,6 +79,7 @@
 			 
 	<target name="test" depends="build">
 		<path id="test.classpath">
+			<path refid="project.classpath"/>
 			<pathelement location="build"/>
 			<pathelement location="buildlib/junit.jar"/>
 			<pathelement location="buildlib/measure.jar"/>

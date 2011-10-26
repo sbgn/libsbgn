@@ -18,30 +18,30 @@ Schematron validation for SBGN ER
 	<!--TODO: Syntax rule: state-variable/assignment -->
 	
 	<iso:phase id="sanity">
-		<iso:active pattern="00000"/>	
+		<iso:active pattern="sanity-check"/>	
 	</iso:phase>
 	
 	<iso:phase id="basic"> 
-		<iso:active pattern="00001"/>
-		<iso:active pattern="00002"/>
-		<iso:active pattern="er20001"/>
-		<iso:active pattern="er10101"/>
-		<iso:active pattern="er10102"/>
-		<iso:active pattern="er10103"/>
-		<iso:active pattern="er10104"/>
-		<iso:active pattern="er10105"/>
-		<iso:active pattern="er10106"/>
-		<iso:active pattern="er10107"/>
-		<iso:active pattern="er10108"/>
+		<iso:active pattern="check-id"/>
+		<iso:active pattern="check-idref"/>
+		<iso:active pattern="check-arcgroup"/>
+		<iso:active pattern="check-assignment-arc"/>
+		<iso:active pattern="check-interaction"/>
+		<iso:active pattern="check-modulation"/>
+		<iso:active pattern="check-stimulation"/>
+		<iso:active pattern="check-inhibition"/>
+		<iso:active pattern="check-necessary-stimulation"/>
+		<iso:active pattern="check-absolute-stimulation"/>
+		<iso:active pattern="check-logic-arc"/>
 	</iso:phase>
 
-	<iso:pattern name="sanity-check" id="00000">
+	<iso:pattern id="sanity-check"> <!-- old id: 00000 -->
 		<iso:rule context="/*">
 			<iso:assert id="sanity-check" test="false()">This assertion should always fail.</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
 	
-	<iso:pattern name="check-id" id="00001">
+	<iso:pattern id="check-id"> <!-- old id: 00001 -->
 		<iso:rule context="//*[@id]">
 			<iso:let name="id" value="@id"/>
 			<iso:assert 
@@ -50,7 +50,7 @@ Schematron validation for SBGN ER
 		</iso:rule> 
 	</iso:pattern> 
 	
-	<iso:pattern name="check-idref" id="00002">
+	<iso:pattern id="check-idref"> <!-- old id: 00002 -->
 		<iso:rule context="sbgn:arc">
 			<iso:let name="target" value="@target"/>
 			<iso:assert
@@ -59,7 +59,7 @@ Schematron validation for SBGN ER
 		</iso:rule> 
 	</iso:pattern> 
 
-	<iso:pattern name="check-arcgroup" id="er20001">
+	<iso:pattern id="check-arcgroup"> <!-- old id: er20001 -->
 		<iso:rule context="sbgn:glyph[@class='interaction']">
 			<iso:let name="id" value="@id"/>
 			<iso:let name="parent-tag-name" value="../local-name()"/>
@@ -72,7 +72,7 @@ Schematron validation for SBGN ER
 	</iso:pattern> 
 	
 	<!-- START: Syntax Rules -->
-	<iso:pattern name="check-assignment-arc" id="er10101">
+	<iso:pattern id="check-assignment-arc"> <!-- old id: er10101 -->
 		<iso:rule context="sbgn:arc[@class='assignment']">
 			<iso:let name="source" value="@source"/>			
 			<iso:let name="class" value="//sbgn:glyph[@id=$source]/@class"/>	
@@ -100,7 +100,7 @@ Schematron validation for SBGN ER
 		</iso:rule> 	
 	</iso:pattern> 
 	
-	<iso:pattern name="check-interaction" id="er10102">
+	<iso:pattern id="check-interaction"> <!-- old id: er10102 -->
 		<iso:rule context="sbgn:arc[@class='interaction']">
 			<iso:let name="source" value="@source"/>			
 			<iso:let name="class" value="//sbgn:glyph[@id=$source]/@class"/>	
@@ -145,7 +145,7 @@ Schematron validation for SBGN ER
 		</iso:rule> 			
 	</iso:pattern> 
 	
-	<iso:pattern name="check-modulation" id="er10103">
+	<iso:pattern id="check-modulation"> <!-- old id: er10103 -->
 		<iso:rule context="sbgn:arc[@class='modulation']">
 			<iso:let name="source" value="@source"/>			
 			<iso:let name="class" value="//sbgn:glyph[@id=$source]/@class"/>	
@@ -193,7 +193,7 @@ Schematron validation for SBGN ER
 		</iso:rule> 			
 	</iso:pattern> 
 		
-	<iso:pattern name="check-stimulation" id="er10104">
+	<iso:pattern id="check-stimulation"> <!-- old id: er10104 -->
 		<iso:rule context="sbgn:arc[@class='stimulation']">
 			<iso:let name="source" value="@source"/>			
 			<iso:let name="class" value="//sbgn:glyph[@id=$source]/@class"/>	
@@ -247,7 +247,7 @@ Schematron validation for SBGN ER
 		</iso:rule> 		
 	</iso:pattern> 
 	
-	<iso:pattern name="check-inhibition" id="er10105">
+	<iso:pattern id="check-inhibition"> <!-- old id: er10105 -->
 		<iso:rule context="sbgn:arc[@class='inhibition']">
 			<iso:let name="source" value="@source"/>			
 			<iso:let name="class" value="//sbgn:glyph[@id=$source]/@class"/>	
@@ -301,7 +301,7 @@ Schematron validation for SBGN ER
 		</iso:rule> 		
 	</iso:pattern> 
 	
-	<iso:pattern name="check-necessary-stimulation" id="er10106">
+	<iso:pattern id="check-necessary-stimulation"> <!-- old id: er10106 -->
 		<iso:rule context="sbgn:arc[@class='necessary stimulation']">
 			<iso:let name="source" value="@source"/>			
 			<iso:let name="class" value="//sbgn:glyph[@id=$source]/@class"/>	
@@ -355,7 +355,7 @@ Schematron validation for SBGN ER
 		</iso:rule> 		
 	</iso:pattern> 
 	
-	<iso:pattern name="check-absolute-stimulation" id="er10107">
+	<iso:pattern id="check-absolute-stimulation"> <!-- old id: er10107 -->
 		<iso:rule context="sbgn:arc[@class='absolute stimulation']">
 			<iso:let name="source" value="@source"/>			
 			<iso:let name="class" value="//sbgn:glyph[@id=$source]/@class"/>	
@@ -408,7 +408,7 @@ Schematron validation for SBGN ER
 		</iso:rule>		
 	</iso:pattern> 	
 	
-	<iso:pattern name="check-absolute-inhibition" id="er10108">
+	<iso:pattern id="check-absolute-inhibition"> <!-- old id: er10108 -->
 		<iso:rule context="sbgn:arc[@class='absolute inhibition']">
 			<iso:let name="source" value="@source"/>			
 			<iso:let name="class" value="//sbgn:glyph[@id=$source]/@class"/>	
@@ -462,7 +462,7 @@ Schematron validation for SBGN ER
 		</iso:rule>				
 	</iso:pattern> 		
 	
-	<iso:pattern name="check-logic-arc" id="er10108">
+	<iso:pattern id="check-logic-arc"> <!-- old id: er10108 -->
 		<iso:rule context="sbgn:arc[@class='logic arc']">
 			<iso:let name="source" value="@source"/>			
 			<iso:let name="class" value="//sbgn:glyph[@id=$source]/@class"/>	

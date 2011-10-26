@@ -20,7 +20,7 @@ final class SVRLHandler extends DefaultHandler
 	private String diagnosticAttribute;
 	private String diagnosticId;
 	private String message;
-	
+	private String ruleId;
 	/**
 	 * Static name for failed assertions.
 	 */ 
@@ -63,6 +63,7 @@ final class SVRLHandler extends DefaultHandler
 		if (rawName.equals(FAILED_ASSERT_ELT)) 
 		{	
 			this.roleAttribute = attributes.getValue("role");
+			this.ruleId = attributes.getValue("id");
 			//if the role atrribute is not set, then consider the default as error
 			if(this.roleAttribute == null) 
 			{
@@ -93,7 +94,7 @@ final class SVRLHandler extends DefaultHandler
 		}
 		else if (rawName.equals (FAILED_ASSERT_ELT))
 		{
-			this.issues.add (new Issue(roleAttribute, diagnosticId, message));
+			this.issues.add (new Issue(roleAttribute, ruleId, diagnosticId, message));
 		}		
 		else if(rawName.equals(DIAGNOSTIC_REFERENCE_ELT))
 		{
