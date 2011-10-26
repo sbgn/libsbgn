@@ -11,11 +11,13 @@ public class Issue
 	private final Severity severity;
 	private final String message;
 	private final String diagnosticId;
-
-	Issue (String role, String diagnosticId, String message)
+	private final String ruleId;
+	
+	Issue (String role, String ruleId, String diagnosticId, String message)
 	{
 		this.message = message.trim();
 		this.diagnosticId = diagnosticId;
+		this.ruleId = ruleId;
 		severity = (role.equalsIgnoreCase("error") ? Severity.ERROR : Severity.WARNING); 
 	}
 	
@@ -23,10 +25,13 @@ public class Issue
 	public Severity getSeverity() { return severity; }
 	
 	/** Human readable description of the issue */
-	public String getMessage() { return message; }
+	public String getRuleDescription() { return message; }
 
 	/** identifier of the element that this issue is about */
 	public String getAboutId() { return diagnosticId; }
+	
+	/** identifier of the issue */
+	public String getRuleId() { return ruleId; }
 	
 	@Override
 	public String toString() { return severity + " at id=" + diagnosticId + ": " + message; }

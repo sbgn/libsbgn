@@ -18,37 +18,36 @@ Schematron validation for SBGN PD
 	<iso:p>p test 1</iso:p>
 	
 	<iso:phase id="sanity">
-		<iso:active pattern="00000"/>	
+		<iso:active pattern="sanity-check"/>	
 	</iso:phase>
 	
 	<iso:phase id="basic"> 
-		<iso:active pattern="00000"/>
-		<iso:active pattern="00001"/>
-		<iso:active pattern="00002"/>
-		<iso:active pattern="pd10101"/>
-		<iso:active pattern="pd10102"/>
-		<iso:active pattern="pd10103"/>
-		<iso:active pattern="pd10104"/>
-		<iso:active pattern="pd10105"/>
-		<iso:active pattern="pd10106"/>
-		<iso:active pattern="pd10107"/>
-		<iso:active pattern="pd10108"/>
-		<iso:active pattern="pd10109"/>
-		<iso:active pattern="pd10131"/>
-		<iso:active pattern="pd101XX"/>
-		<iso:active pattern="pd10133"/>
-		<iso:active pattern="pd10135"/>
-		<iso:active pattern="pd10136"/>
-		<iso:active pattern="pd99999"/>
+		<iso:active pattern="check-id"/>
+		<iso:active pattern="check-idref"/>
+		<iso:active pattern="check-consumption"/>
+		<iso:active pattern="check-production"/>
+		<iso:active pattern="check-modulation"/>
+		<iso:active pattern="check-stimulation"/>
+		<iso:active pattern="check-catalysis"/>
+		<iso:active pattern="check-inhibition"/>
+		<iso:active pattern="check-necessary-stimulation"/>
+		<iso:active pattern="check-logic-arc"/>
+		<iso:active pattern="check-equivalence-arc"/>
+		<iso:active pattern="state-var-unique"/>
+		<iso:active pattern="subunit-mod-arc"/>
+		<iso:active pattern="epns-must-connect"/>
+		<iso:active pattern="pns-lhs-rhs-existence"/>
+		<iso:active pattern="different-pn-substrates"/>
+		<iso:active pattern="unimplemented-untestable-rules"/>
 	</iso:phase>
 
-	<iso:pattern name="sanity-check" id="00000">
+	<iso:pattern id="sanity-check"> <!-- old id: 00000 -->
 		<iso:rule context="/*">
 			<iso:assert id="sanity-check" test="false()">This assertion should always fail. Timestamp: <iso:value-of select="current-time()"/> Namespace: <iso:value-of select="namespace-uri()"/></iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
 	
-	<iso:pattern name="check-id" id="00001">
+	<iso:pattern id="check-id"> <!-- old id: 00001 -->
 		<iso:rule context="//*[@id]">
 			<iso:let name="id" value="@id"/>
 			<iso:assert 
@@ -58,7 +57,7 @@ Schematron validation for SBGN PD
 		</iso:rule> 
 	</iso:pattern> 
 	
-	<iso:pattern name="check-idref" id="00002">
+	<iso:pattern id="check-idref"> <!-- old id: 00002 -->
 		<iso:rule context="sbgn:arc">
 			<iso:let name="target" value="@target"/>
 			<iso:assert
@@ -68,7 +67,7 @@ Schematron validation for SBGN PD
 		</iso:rule> 
 	</iso:pattern> 
 
-	<iso:pattern name="check-consumption" id="pd10101">
+	<iso:pattern id="check-consumption"> <!-- old id: pd10101 -->
 		<iso:rule context="sbgn:arc[@class='consumption']">
 			<iso:let name="source" value="@source"/>			
 			<iso:let name="class" value="//sbgn:glyph[@id=$source]/@class"/>	
@@ -133,7 +132,7 @@ Schematron validation for SBGN PD
 		</iso:rule> 
 	</iso:pattern> 
 
-	<iso:pattern name="check-production" id="pd10102">
+	<iso:pattern id="check-production"> <!-- old id: pd10102 -->
 		<iso:rule context="sbgn:arc[@class='production']">
 			<iso:let name="source" value="@source"/>			
 			<iso:let name="port-class" value="//sbgn:port[@id=$source]/../@class"/>
@@ -199,7 +198,7 @@ Schematron validation for SBGN PD
 		</iso:rule> 
 	</iso:pattern> 
 
-	<iso:pattern name="check-modulation" id="pd10103">
+	<iso:pattern id="check-modulation"> <!-- old id: pd10103 -->
 		<iso:rule context="sbgn:arc[@class='modulation']">
 			<iso:let name="source" value="@source"/>			
 			<iso:let name="class" value="//sbgn:glyph[@id=$source]/@class"/>	
@@ -254,7 +253,7 @@ Schematron validation for SBGN PD
 		</iso:rule> 		
 	</iso:pattern> 
 
-	<iso:pattern name="check-stimulation" id="pd10104">
+	<iso:pattern id="check-stimulation"> <!-- old id: pd10104 -->
 		<iso:rule context="sbgn:arc[@class='stimulation']">
 			<iso:let name="source" value="@source"/>			
 			<iso:let name="class" value="//sbgn:glyph[@id=$source]/@class"/>	
@@ -311,7 +310,7 @@ Schematron validation for SBGN PD
 		</iso:rule> 				
 	</iso:pattern> 
 
-	<iso:pattern name="check-catalysis" id="pd10105">
+	<iso:pattern id="check-catalysis"> <!-- old id: pd10105 -->
 		<iso:rule context="sbgn:arc[@class='catalysis']">
 			<iso:let name="source" value="@source"/>			
 			<iso:let name="class" value="//sbgn:glyph[@id=$source]/@class"/>	
@@ -365,7 +364,7 @@ Schematron validation for SBGN PD
 		</iso:rule> 
 	</iso:pattern> 
 
-	<iso:pattern name="check-inhibition" id="pd10106">
+	<iso:pattern id="check-inhibition"> <!-- old id: pd10106 -->
 		<iso:rule context="sbgn:arc[@class='inhibition']">
 			<iso:let name="source" value="@source"/>			
 			<iso:let name="class" value="//sbgn:glyph[@id=$source]/@class"/>
@@ -422,7 +421,7 @@ Schematron validation for SBGN PD
 		</iso:rule> 		
 	</iso:pattern> 
 
-	<iso:pattern name="check-necessary-stimulation" id="pd10107">
+	<iso:pattern id="check-necessary-stimulation"> <!-- old id: pd10107 -->
 		<iso:rule context="sbgn:arc[@class='necessary stimulation']">
 			<iso:let name="source" value="@source"/>			
 			<iso:let name="class" value="//sbgn:glyph[@id=$source]/@class"/>	
@@ -479,7 +478,7 @@ Schematron validation for SBGN PD
 		</iso:rule> 				
 	</iso:pattern> 
 
-	<iso:pattern name="check-logic-arc" id="pd10108">
+	<iso:pattern id="check-logic-arc"> <!-- old id: pd10108 -->
 		<iso:rule context="sbgn:arc[@class='logic arc']">
 			<iso:let name="source" value="@source"/>			
 			<iso:let name="class" value="//sbgn:glyph[@id=$source]/@class"/>	
@@ -534,7 +533,7 @@ Schematron validation for SBGN PD
 		</iso:rule> 						
 	</iso:pattern> 
 		
-	<iso:pattern name="check-equivalence-arc" id="pd10109">
+	<iso:pattern id="check-equivalence-arc"> <!-- old id: pd10109 -->
 		<iso:rule context="sbgn:arc[@class='equivalence arc']">
 			<iso:let name="source" value="@source"/>			
 			<iso:let name="class" value="//sbgn:glyph[@id=$source]/@class"/>	
@@ -578,7 +577,7 @@ Schematron validation for SBGN PD
 		</iso:rule> 
 	</iso:pattern> 
 
-	<iso:pattern name="state-var-unique" id="pd10131">
+	<iso:pattern id="state-var-unique"> <!-- old id: pd10131 -->
 		<iso:rule context="sbgn:glyph[@class='and']/sbgn:port/sbgn:state">
 			<iso:let name="id" value="@id"/>	
 			<iso:assert
@@ -591,7 +590,7 @@ Schematron validation for SBGN PD
 		</iso:rule> 
 	</iso:pattern> 
 
-	<iso:pattern name="subunit-mod-arc" id="pd101XX">
+	<iso:pattern id="subunit-mod-arc"> <!-- old id: pd101XX -->
 		<iso:rule context="sbgn:arc[@source = //sbgn:glyph[@class='complex']/sbgn:glyph/@id]">
 			<iso:let name="id" value="//sbgn:glyph[@class='complex']/sbgn:glyph[not(@class='complex')]/@id"/>
 			<iso:let name="class" value="@class"/>
@@ -604,7 +603,7 @@ Schematron validation for SBGN PD
 		</iso:rule> 
 	</iso:pattern> 
 	
-	<iso:pattern name="epns-must-connect" id="pd10133">
+	<iso:pattern id="epns-must-connect"> <!-- old id: pd10133 -->
 		<iso:rule context="/sbgn:sbgn/sbgn:map/sbgn:glyph[
 				@class = 'unspecified entity' or 
 				@class = 'simple chemical' or 
@@ -640,7 +639,7 @@ Schematron validation for SBGN PD
 		</iso:rule> 
 	</iso:pattern> 
 
-	<iso:pattern name="pns-lhs-rhs-existence" id="pd10135">
+	<iso:pattern id="pns-lhs-rhs-existence"> <!-- old id: pd10135 -->
 		<iso:rule context="sbgn:glyph[			
 			@class='process' or 
 			@class='omitted process' or
@@ -660,7 +659,7 @@ Schematron validation for SBGN PD
 		</iso:rule> 
 	</iso:pattern> 
 	
-	<iso:pattern name="different-pn-substrates" id="pd10136">
+	<iso:pattern id="different-pn-substrates"> <!-- old id: pd10136 -->
 		<iso:rule context="sbgn:glyph[			
 			@class='process' or 
 			@class='omitted process' or
@@ -685,7 +684,7 @@ Schematron validation for SBGN PD
 		</iso:rule> 
 	</iso:pattern> 
 	
-	<iso:pattern name="unimplemented-untestable-rules" id="pd99999">
+	<iso:pattern id="unimplemented-untestable-rules"> <!-- old id: pd99999 -->
 		<iso:rule context="/*">
 			<iso:assert 
 				id="multiple-stoichiometries"
