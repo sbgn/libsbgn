@@ -35,8 +35,6 @@ public class SchematronValidator
 		SchematronValidator stf = new SchematronValidator();
 		stf.doValidation(exportedPwFile);
 		
-		System.out.println("after produce and parsing SVRL");
-		
 		List<Issue> result = stf.getIssues();
 		return result;
 	}
@@ -69,15 +67,12 @@ public class SchematronValidator
 		Result result1 = new StreamResult(sw1);
 
 		transformer1.transform(schemaSource, result1);
-		System.out.println("xsl created");
 
 		Transformer transformer2 = factory.newTransformer(new StreamSource(
 				new StringReader(sw1.toString())));
 		StringWriter sw2 = new StringWriter();
 		Result result2 = new StreamResult(sw2);
 		transformer2.transform(inputSource, result2);
-		System.out.println("svrl created");
-		System.out.println (sw2.toString());
 		parseSVRL(removeXMLheader(sw2.toString()));
 	}
 
