@@ -100,4 +100,24 @@ public class ConvertMilestone1to2
 			recursivelyChangeNamespace((Element)o);
 		}
 	}
+	
+	/**
+	 * Class can be used as utility to convert a single file
+	 * @throws IOException 
+	 * @throws JDOMException 
+	 */
+	public static void main(String [] args) throws JDOMException, IOException
+	{
+		if (args.length != 2)
+		{
+			System.err.println ("Expected two arguments: in-file and out-file.");
+			System.exit(1);
+		}
+		else
+		{
+			File fin = new File (args[0]);
+			File fout = new File (args[1]);
+			convert (fin, fout);
+		}
+	}
 }
