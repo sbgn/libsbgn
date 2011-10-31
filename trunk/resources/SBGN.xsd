@@ -456,6 +456,24 @@
               </xsd:complexType>
             </xsd:element>
 
+            <xsd:element name="callout" minOccurs="0" maxOccurs="1">
+              <xsd:annotation>
+                <xsd:documentation>
+                  <p>
+                    The callout element is only used for glyphs with class annotation.
+                    It contains the coordinate of the point where the annotation points to,
+					as well as a reference to the element that is pointed to.
+                  </p>
+                </xsd:documentation>
+              </xsd:annotation>
+              <xsd:complexType>
+                <xsd:sequence>
+				  <xsd:element ref="sbgn:point" minOccurs="1" maxOccurs="1"/>
+                </xsd:sequence>
+			    <xsd:attribute name="target" type="xsd:IDREF" use="optional"/>
+              </xsd:complexType>
+            </xsd:element>
+
             <xsd:element name="entity" minOccurs="0" maxOccurs="1">
               <xsd:annotation>
                 <xsd:documentation>
