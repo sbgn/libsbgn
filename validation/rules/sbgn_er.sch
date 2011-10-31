@@ -37,14 +37,18 @@ Schematron validation for SBGN ER
 
 	<iso:pattern id="sanity-check"> <!-- old id: 00000 -->
 		<iso:rule context="/*">
-			<iso:assert id="sanity-check" test="false()">This assertion should always fail.</iso:assert>
+			<iso:assert 
+				id="00000" 
+				name="sanity-check" 
+				test="false()">This assertion should always fail.</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
 	
 	<iso:pattern id="check-id"> <!-- old id: 00001 -->
 		<iso:rule context="//*[@id]">
 			<iso:let name="id" value="@id"/>
-			<iso:assert 
+			<iso:assert
+			id="00001"
 			role="error"
 			test="count(//@id[. = current()/@id]) = 1" diagnostics="id">ID needs to be unique.</iso:assert>
 		</iso:rule> 
@@ -54,6 +58,7 @@ Schematron validation for SBGN ER
 		<iso:rule context="sbgn:arc">
 			<iso:let name="target" value="@target"/>
 			<iso:assert
+			id="00002"
 			role="error"
 			test="//*/@id[. = $target]">An arc target should be a glyph defined in the diagram.</iso:assert>
 		</iso:rule> 
@@ -64,7 +69,8 @@ Schematron validation for SBGN ER
 			<iso:let name="id" value="@id"/>
 			<iso:let name="parent-tag-name" value="../local-name()"/>
 			<iso:assert 
-				id="check-arcgroup"
+				id="er20001"
+				name="check-arcgroup"
 				role="error"
 				test="$parent-tag-name='arcgroup'" diagnostics="id">Parent of glyph with type interaction must be arcgroup.
 			</iso:assert>
@@ -78,7 +84,8 @@ Schematron validation for SBGN ER
 			<iso:let name="class" value="//sbgn:glyph[@id=$source]/@class"/>	
 			<!-- FIX: state variable I(1)O(1) -->
 			<iso:assert 
-				id="check-assignment-source-class"
+				id="er10101"
+				name="check-assignment-source-class"
 				role="error"
 				see="sbgn-er-L1V1.2-3.3.1"				
 				test="
@@ -90,7 +97,8 @@ Schematron validation for SBGN ER
 			<iso:let name="target" value="@target"/>			
 			<iso:let name="port-class" value="//sbgn:port[@id=$target]/../@class"/>	
 			<iso:assert 
-				id="check-assignment-target-class"
+				id="er10102"
+				name="check-assignment-target-class"
 				role="error"
 				see="sbgn-er-L1V1.2-3.3.1"				
 				test="
@@ -105,7 +113,8 @@ Schematron validation for SBGN ER
 			<iso:let name="source" value="@source"/>			
 			<iso:let name="class" value="//sbgn:glyph[@id=$source]/@class"/>	
 			<iso:assert 
-				id="check-interaction-source-class"
+				id="er10103"
+				name="check-interaction-source-class"
 				role="error"
 				see="sbgn-er-L1V1.2-3.3.1"				
 				test="
@@ -119,7 +128,8 @@ Schematron validation for SBGN ER
 			<iso:let name="target" value="@target"/>			
 			<iso:let name="port-class" value="//sbgn:port[@id=$target]/../@class"/>	
 			<iso:assert 
-				id="check-interaction-target-class"
+				id="er10104"
+				name="check-interaction-target-class"
 				role="error"
 				see="sbgn-er-L1V1.2-3.3.1"				
 				test="
@@ -136,7 +146,8 @@ Schematron validation for SBGN ER
 			<iso:let name="source-count" value="count(//sbgn:arc[(./@class = 'interaction') and (./@source = current()/sbgn:port/@id)])"/>				
 			<iso:let name="target-count" value="count(//sbgn:arc[(./@class = 'interaction') and (./@target = current()/sbgn:port/@id)])"/>							
 			<iso:assert 
-				id="check-interaction-outcome-source_target-count-equals-1"
+				id="er10105"
+				name="check-interaction-outcome-source_target-count-equals-1"
 				role="error"
 				see="sbgn-pd-L1V1.3-3.4.1"				
 				test="($source-count = 1) and ($target-count = 1)"
@@ -151,7 +162,8 @@ Schematron validation for SBGN ER
 			<iso:let name="class" value="//sbgn:glyph[@id=$source]/@class"/>	
 			<!-- TODO: and or not delay I(1) -->
 			<iso:assert 
-				id="check-modulation-source-class"
+				id="er10106"
+				name="check-modulation-source-class"
 				role="error"
 				see="sbgn-er-L1V1.2-3.3.1"				
 				test="
@@ -170,7 +182,8 @@ Schematron validation for SBGN ER
 			<iso:let name="port-class" value="//sbgn:port[@id=$target]/../@class"/>	
 			<!-- TODO: This is probably wrong in the specification -->
 			<iso:assert 
-				id="check-modulation-target-class"
+				id="er10107"
+				name="check-modulation-target-class"
 				role="error"
 				see="sbgn-er-L1V1.2-3.3.1"				
 				test="
@@ -184,7 +197,8 @@ Schematron validation for SBGN ER
 			<iso:let name="port-id" value="./sbgn:port/@id"/>				
 			<iso:let name="source-count" value="count(//sbgn:arc[(./@class = 'modulation') and (./@source = current()/sbgn:port/@id)])"/>										
 			<iso:assert 
-				id="check-modulation-outcome_and_or_not_delay-source-count-equals-1"
+				id="er10108"
+				name="check-modulation-outcome_and_or_not_delay-source-count-equals-1"
 				role="error"
 				see="sbgn-pd-L1V1.3-3.4.1"				
 				test="$source-count = 1"
@@ -199,7 +213,8 @@ Schematron validation for SBGN ER
 			<iso:let name="class" value="//sbgn:glyph[@id=$source]/@class"/>	
 			<!-- FIX: and or not delay I(1) -->
 			<iso:assert 
-				id="check-stimulation-source-class"
+				id="er10109"
+				name="check-stimulation-source-class"
 				role="error"
 				see="sbgn-er-L1V1.2-3.3.1"				
 				test="
@@ -217,7 +232,8 @@ Schematron validation for SBGN ER
 			<iso:let name="target" value="@target"/>			
 			<iso:let name="port-class" value="//sbgn:port[@id=$target]/../@class"/>	
 			<iso:assert 
-				id="check-stimulation-target-class"
+				id="er10110"
+				name="check-stimulation-target-class"
 				role="error"
 				see="sbgn-er-L1V1.2-3.3.1"				
 				test="
@@ -238,7 +254,8 @@ Schematron validation for SBGN ER
 			<iso:let name="port-id" value="./sbgn:port/@id"/>				
 			<iso:let name="source-count" value="count(//sbgn:arc[(./@class = 'stimulation') and (./@source = current()/sbgn:port/@id)])"/>										
 			<iso:assert 
-				id="check-stimulation-outcome_and_or_not_delay-source-count-equals-1"
+				id="er10111"
+				name="check-stimulation-outcome_and_or_not_delay-source-count-equals-1"
 				role="error"
 				see="sbgn-pd-L1V1.3-3.4.1"				
 				test="$source-count = 1"
@@ -253,7 +270,8 @@ Schematron validation for SBGN ER
 			<iso:let name="class" value="//sbgn:glyph[@id=$source]/@class"/>	
 			<!-- FIX: and or not delay I(1) -->
 			<iso:assert 
-				id="check-inhibition-source-class"
+				id="er10112"
+				name="check-inhibition-source-class"
 				role="error"
 				see="sbgn-er-L1V1.2-3.3.1"				
 				test="
@@ -271,7 +289,8 @@ Schematron validation for SBGN ER
 			<iso:let name="target" value="@target"/>			
 			<iso:let name="port-class" value="//sbgn:port[@id=$target]/../@class"/>	
 			<iso:assert 
-				id="check-inhibition-target-class"
+				id="er10113"
+				name="check-inhibition-target-class"
 				role="error"
 				see="sbgn-er-L1V1.2-3.3.1"				
 				test="
@@ -292,7 +311,8 @@ Schematron validation for SBGN ER
 			<iso:let name="port-id" value="./sbgn:port/@id"/>				
 			<iso:let name="source-count" value="count(//sbgn:arc[(./@class = 'inhibition') and (./@source = current()/sbgn:port/@id)])"/>										
 			<iso:assert 
-				id="check-inhibition-outcome_and_or_not_delay-source-count-equals-1"
+				id="er10114"
+				name="check-inhibition-outcome_and_or_not_delay-source-count-equals-1"
 				role="error"
 				see="sbgn-pd-L1V1.3-3.4.1"				
 				test="$source-count = 1"
@@ -307,7 +327,8 @@ Schematron validation for SBGN ER
 			<iso:let name="class" value="//sbgn:glyph[@id=$source]/@class"/>	
 			<!-- FIX: and or not delay I(1) -->
 			<iso:assert 
-				id="check-necessary-stimulation-source-class"
+				id="er10115"
+				name="check-necessary-stimulation-source-class"
 				role="error"
 				see="sbgn-er-L1V1.2-3.3.1"				
 				test="
@@ -325,7 +346,8 @@ Schematron validation for SBGN ER
 			<iso:let name="target" value="@target"/>			
 			<iso:let name="port-class" value="//sbgn:port[@id=$target]/../@class"/>	
 			<iso:assert 
-				id="check-necessary-stimulation-target-class"
+				id="er10116"
+				name="check-necessary-stimulation-target-class"
 				role="error"
 				see="sbgn-er-L1V1.2-3.3.1"				
 				test="
@@ -346,7 +368,8 @@ Schematron validation for SBGN ER
 			<iso:let name="port-id" value="./sbgn:port/@id"/>				
 			<iso:let name="source-count" value="count(//sbgn:arc[(./@class = 'necessary stimulation') and (./@source = current()/sbgn:port/@id)])"/>										
 			<iso:assert 
-				id="check-necessary_stimulation-outcome_and_or_not_delay-source-count-equals-1"
+				id="er10117"
+				name="check-necessary_stimulation-outcome_and_or_not_delay-source-count-equals-1"
 				role="error"
 				see="sbgn-pd-L1V1.3-3.4.1"				
 				test="$source-count = 1"
@@ -360,7 +383,8 @@ Schematron validation for SBGN ER
 			<iso:let name="source" value="@source"/>			
 			<iso:let name="class" value="//sbgn:glyph[@id=$source]/@class"/>	
 			<iso:assert 
-				id="check-absolute-stimulation-source-class"
+				id="er10118"
+				name="check-absolute-stimulation-source-class"
 				role="error"
 				see="sbgn-er-L1V1.2-3.3.1"				
 				test="
@@ -378,7 +402,8 @@ Schematron validation for SBGN ER
 			<iso:let name="target" value="@target"/>			
 			<iso:let name="port-class" value="//sbgn:port[@id=$target]/../@class"/>	
 			<iso:assert 
-				id="check-absolute-stimulation-target-class"
+				id="er10119"
+				name="check-absolute-stimulation-target-class"
 				role="error"
 				see="sbgn-er-L1V1.2-3.3.1"				
 				test="
@@ -399,7 +424,8 @@ Schematron validation for SBGN ER
 			<iso:let name="port-id" value="./sbgn:port/@id"/>				
 			<iso:let name="source-count" value="count(//sbgn:arc[(./@class = 'absolute stimulation') and (./@source = current()/sbgn:port/@id)])"/>										
 			<iso:assert 
-				id="check-absolute_stimulation-outcome_and_or_not_delay-source-count-equals-1"
+				id="er10120"
+				name="check-absolute_stimulation-outcome_and_or_not_delay-source-count-equals-1"
 				role="error"
 				see="sbgn-pd-L1V1.3-3.4.1"				
 				test="$source-count = 1"
@@ -414,7 +440,8 @@ Schematron validation for SBGN ER
 			<iso:let name="class" value="//sbgn:glyph[@id=$source]/@class"/>	
 			<!-- FIX: and or not delay I(1) -->
 			<iso:assert 
-				id="check-absolute-inhibition-source-class"
+				id="er10121"
+				name="check-absolute-inhibition-source-class"
 				role="error"
 				see="sbgn-er-L1V1.2-3.3.1"				
 				test="
@@ -432,7 +459,8 @@ Schematron validation for SBGN ER
 			<iso:let name="target" value="@target"/>			
 			<iso:let name="port-class" value="//sbgn:port[@id=$target]/../@class"/>	
 			<iso:assert 
-				id="check-absolute-inhibition-target-class"
+				id="er10122"
+				name="check-absolute-inhibition-target-class"
 				role="error"
 				see="sbgn-er-L1V1.2-3.3.1"				
 				test="
@@ -453,7 +481,8 @@ Schematron validation for SBGN ER
 			<iso:let name="port-id" value="./sbgn:port/@id"/>				
 			<iso:let name="source-count" value="count(//sbgn:arc[(./@class = 'absolute inhibition') and (./@source = current()/sbgn:port/@id)])"/>										
 			<iso:assert 
-				id="check-absolute_inhibition-outcome_and_or_not_delay-source-count-equals-1"
+				id="er10123"
+				name="check-absolute_inhibition-outcome_and_or_not_delay-source-count-equals-1"
 				role="error"
 				see="sbgn-pd-L1V1.3-3.4.1"				
 				test="$source-count = 1"
@@ -468,7 +497,8 @@ Schematron validation for SBGN ER
 			<iso:let name="class" value="//sbgn:glyph[@id=$source]/@class"/>	
 			<!-- FIX: and or not delay I(1)O(1) -->
 			<iso:assert 
-				id="check-logic-arc-source-class"
+				id="er10124"
+				name="check-logic-arc-source-class"
 				role="error"
 				see="sbgn-er-L1V1.2-3.3.1"				
 				test="
@@ -486,7 +516,8 @@ Schematron validation for SBGN ER
 			<iso:let name="target" value="@target"/>			
 			<iso:let name="port-class" value="//sbgn:port[@id=$target]/../@class"/>	
 			<iso:assert 
-				id="check-logic-arc-target-class"
+				id="er10125"
+				name="check-logic-arc-target-class"
 				role="error"
 				see="sbgn-er-L1V1.2-3.3.1"				
 				test="
@@ -503,7 +534,8 @@ Schematron validation for SBGN ER
 			<iso:let name="port-id" value="./sbgn:port/@id"/>				
 			<iso:let name="source-count" value="count(//sbgn:arc[(./@class = 'logic arc') and (./@source = current()/sbgn:port/@id)])"/>										
 			<iso:assert 
-				id="check-logic_arc-outcome_and_or_not_delay-source-count-equals-1"
+				id="er10126"
+				name="check-logic_arc-outcome_and_or_not_delay-source-count-equals-1"
 				role="error"
 				see="sbgn-pd-L1V1.3-3.4.1"				
 				test="$source-count = 1"
@@ -515,7 +547,8 @@ Schematron validation for SBGN ER
 			<iso:let name="port-id" value="./sbgn:port/@id"/>				
 			<iso:let name="target-count" value="count(//sbgn:arc[(./@class = 'logic arc') and (./@target = current()/sbgn:port/@id)])"/>										
 			<iso:assert 
-				id="check-logic_arc-not_delay-target-count-equals-1"
+				id="er10127"
+				name="check-logic_arc-not_delay-target-count-equals-1"
 				role="error"
 				see="sbgn-pd-L1V1.3-3.4.1"				
 				test="$target-count = 1"
