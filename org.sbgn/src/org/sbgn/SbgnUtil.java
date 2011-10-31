@@ -1,6 +1,8 @@
 package org.sbgn;
 
 import java.io.File;
+import java.io.IOException;
+import java.net.URL;
 
 import javax.xml.XMLConstants;
 import javax.xml.bind.JAXBContext;
@@ -8,6 +10,7 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.UnmarshalException;
 import javax.xml.bind.Unmarshaller;
+import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.SchemaFactory;
 import javax.xml.validation.Schema;
 
@@ -22,7 +25,7 @@ public class SbgnUtil
 	 * @returns Sbgn data structure
 	 * @throws JAXBException if there is an IO error, or the file is not SBGNML.
 	 */
-	public static Sbgn readFromFile (File f) throws JAXBException
+	static Sbgn readFromFile (File f) throws JAXBException
 	{
 		JAXBContext context = JAXBContext.newInstance("org.sbgn.bindings");
 		Unmarshaller unmarshaller = context.createUnmarshaller();
@@ -31,7 +34,14 @@ public class SbgnUtil
 		Sbgn result = (Sbgn)unmarshaller.unmarshal (f);
 		return result;
 	}
-	
+
+	public static String getResource(String res) throws IOException
+	{
+		URL url = SbgnUtil.class.getResource(res);
+		if (url == null) throw new IOException("Could not find resource '" + res + "' in classpath");
+		return url.toString();
+	}
+
 	/**
 	 * Check if a given file validates against the given xsd. If validation fails,
 	 * an error message is printed to System.err.
@@ -41,12 +51,14 @@ public class SbgnUtil
 	 * @throws SAXException if there are problems reading xsd
 	 * @throws JAXBException if there are problems reading f that are not due 
 	 *  to validation problems (for example, disk error or file not found) 
+	 * @throws IOException when the resource SBGN.xsd could not be loaded
 	 */
-	public static boolean isValid (File f, File xsd) throws JAXBException, SAXException
+	public static boolean isValid (File f) throws JAXBException, SAXException, IOException
 	{
 		boolean result = true;
 		try
-		{			
+		{
+			
 			// create a JAXB context and unmarshaller like usual
 			JAXBContext context = JAXBContext.newInstance("org.sbgn.bindings");
 			Unmarshaller unmarshaller = context.createUnmarshaller();
@@ -56,7 +68,7 @@ public class SbgnUtil
 			// it would be more efficient to do this step once of course.
 			Schema schema;
 			SchemaFactory schemaFactory = SchemaFactory.newInstance( XMLConstants.W3C_XML_SCHEMA_NS_URI );
-			schema = schemaFactory.newSchema(xsd);
+			schema = schemaFactory.newSchema(new StreamSource(getResource("/SBGN.xsd")));
 
 			// add the schema to the unmarshaller
 			unmarshaller.setSchema(schema);

@@ -23,11 +23,11 @@ public class ValidationExample
 	 * This will check if the XML is properly structured.
 	 * @throws SAXException 
 	 * @throws JAXBException 
+	 * @throws IOException 
 	 */
-	public static void lowLevelExample(File f) throws JAXBException, SAXException
+	public static void lowLevelExample(File f) throws JAXBException, SAXException, IOException
 	{
-		File xsd = new File ("../resources/SBGN.xsd");
-		boolean isValid = SbgnUtil.isValid(f, xsd);
+		boolean isValid = SbgnUtil.isValid(f);
 		
 		if (isValid)
 			System.out.println ("Validation succeeded");
@@ -45,10 +45,8 @@ public class ValidationExample
 	 */
 	public static void highLevelExample(File f) throws IOException, ParserConfigurationException, TransformerException, SAXException
 	{
-		File schematron = new File ("../validation/rules/sbgn_pd.sch");		
-
 		// validation will result in a list of issues
-		List<Issue> issues = SchematronValidator.validate(f, schematron);
+		List<Issue> issues = SchematronValidator.validate(f);
 
 		// print each issue individually.
 		System.out.println ("There are " + issues.size() + " validation problems"); 

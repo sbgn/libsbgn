@@ -30,7 +30,7 @@ public class ExtensionDemo
 		File f = File.createTempFile("extension-demo", ".sbgn");
 		demo.testWrite(f);
 		System.out.println (f);
-		System.out.println ("Demo file " + (SbgnUtil.isValid(f, new File("../resources/SBGN.xsd")) ? "validates" : "does not validate"));
+		System.out.println ("Demo file " + (SbgnUtil.isValid(f) ? "validates" : "does not validate"));
 		demo.testRead(f);
 	}
 

@@ -16,4 +16,12 @@ public enum Language
 	public String getName() { return name; }
 	
 	public String toString() { return name; }
+
+	public static Language fromString(String l)
+	{
+		for (Language lang : Language.values())
+			if (l.equals(lang.name)) return lang;
+		return null;
+	}
+
 }

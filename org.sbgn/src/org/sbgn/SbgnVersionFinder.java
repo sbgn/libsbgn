@@ -18,10 +18,11 @@ import org.xml.sax.helpers.XMLReaderFactory;
 // the start.
 public class SbgnVersionFinder
 {
-	private static class VersionHandler extends DefaultHandler
+	static class VersionHandler extends DefaultHandler
 	{
 		private int version = -1;
-		
+		private Language lang = null;
+
 		@Override
 		public void startElement (String uri, String localName, String qName, Attributes attributes) throws SAXException
 		{
@@ -41,12 +42,18 @@ public class SbgnVersionFinder
 					version = -1;
 				}
 			}
+			else if ("map".equals (qName))
+			{
+				String l = attributes.getValue("language");
+				if (l != null) lang = Language.fromString(l); 
+			}
 		}
 		
 		public int getVersion() { return version; }
+		public Language getLanguage() { return lang; }
 	};
-	
-	public static int getVersion(File file) throws SAXException, FileNotFoundException, IOException
+
+	private static VersionHandler parse(File file) throws FileNotFoundException, IOException, SAXException
 	{
 		XMLReader xr;	
 		xr = XMLReaderFactory.createXMLReader();
@@ -59,7 +66,20 @@ public class SbgnVersionFinder
 		xr.parse(new InputSource(
 			InputStreamToReader.inputStreamToReader(
 				new FileInputStream (file))));
+		
+		return versionHandler;
+	}
 	
+	public static int getVersion(File file) throws SAXException, FileNotFoundException, IOException
+	{
+		VersionHandler versionHandler = parse(file);
 		return versionHandler.getVersion();
-	}	
+	}
+	
+	public static Language getLanguage(File file) throws FileNotFoundException, IOException, SAXException
+	{
+		VersionHandler versionHandler = parse(file);
+		return versionHandler.getLanguage();
+	}
+
 }

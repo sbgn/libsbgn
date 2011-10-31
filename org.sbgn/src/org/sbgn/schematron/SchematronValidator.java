@@ -1,9 +1,11 @@
 package org.sbgn.schematron;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.StringReader;
 import java.io.StringWriter;
+import java.net.URL;
 import java.util.List;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -17,6 +19,9 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 
+import org.sbgn.Language;
+import org.sbgn.SbgnUtil;
+import org.sbgn.SbgnVersionFinder;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
@@ -24,11 +29,11 @@ public class SchematronValidator
 {
 	private SchematronValidator() {} // private to prevent external instantiation
 	
-	public static List<Issue> validate(File exportedPwFile, File schemaFile) 
+	public static List<Issue> validate(File exportedPwFile) 
 		throws IOException, ParserConfigurationException, TransformerException, SAXException
 	{				
 		SchematronValidator stf = new SchematronValidator();
-		stf.doValidation(schemaFile, exportedPwFile);
+		stf.doValidation(exportedPwFile);
 		
 		System.out.println("after produce and parsing SVRL");
 		
@@ -45,16 +50,19 @@ public class SchematronValidator
 	 * this does the XSL Transformations on the ruleset and the exported Pathway Object
 	 * and then invokes the SAX parser through "parseSVRL" method on the transformation's result.
 	 */
-	private void doValidation(File schemaFile, File inputFile) throws 
+	private void doValidation(File inputFile) throws 
 			ParserConfigurationException, TransformerException, IOException, SAXException {
 		
 		System.setProperty("javax.xml.transform.TransformerFactory",
 		"net.sf.saxon.TransformerFactoryImpl");
 		TransformerFactory factory = new net.sf.saxon.TransformerFactoryImpl();
-		Transformer transformer1 = factory
-				.newTransformer(new StreamSource(getClass().getResource("/iso_svrl_for_xslt2.xsl").toString()));
 		
-		Source schemaSource = new StreamSource(schemaFile);
+		String res = SbgnUtil.getResource("/iso_svrl_for_xslt2.xsl");
+		Transformer transformer1 = factory.newTransformer(new StreamSource(res));
+		
+		Language lang = SbgnVersionFinder.getLanguage(inputFile);
+		String schema = SbgnUtil.getResource("/sbgn_" + lang.name().toLowerCase() + ".sch");
+		Source schemaSource = new StreamSource(schema);
 		Source inputSource = new StreamSource(inputFile);
 
 		StringWriter sw1 = new StringWriter();
