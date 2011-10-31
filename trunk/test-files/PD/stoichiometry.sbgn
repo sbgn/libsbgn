@@ -28,7 +28,7 @@
 </arc>
 
 <arc class="production" source="pn1.2" target="glyph2" id="a2">
-	<glyph class="stoichiometry" id="glyph11">
+	<glyph class="cardinality" id="glyph11">
 		<label text="1"/>
 		<bbox x="200" y="60" w="20" h="16"/>
 	</glyph>
