@@ -6,9 +6,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.xml.bind.JAXBException;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 
+import org.sbgn.SbgnUtil;
 import org.xml.sax.SAXException;
 
 import junit.framework.TestCase;
@@ -54,7 +56,7 @@ public class TestSchematronValidation extends TestCase
 		}		
 	}
 
-	public void testNegativeTestCases() throws IOException, ParserConfigurationException, TransformerException, SAXException
+	public void testNegativeTestCases() throws IOException, ParserConfigurationException, TransformerException, SAXException, JAXBException
 	{
 		for (String lang : new String[] { "AF", "PD"})
 		{
@@ -64,6 +66,10 @@ public class TestSchematronValidation extends TestCase
 
 			for (File f : testFilesDir.listFiles())
 			{
+				System.out.println ("@@@@@@@@@@@@@@");
+				System.out.println (f);
+				assertTrue (f + " does not validate. All schematron test cases must pass low-level XSD validation", SbgnUtil.isValid(f));
+				
 				String name = f.getName();
 				if (!name.endsWith(".sbgn")) continue;
 				
@@ -73,8 +79,6 @@ public class TestSchematronValidation extends TestCase
 				
 				boolean failedExpectedRule = false;
 				List<Issue> issues = SchematronValidator.validate(f);
-				System.out.println ("@@@@@@@@@@@@@@");
-				System.out.println (f);
 				for (Issue issue : issues)
 				{
 					System.out.println (issue.getAboutId() + " " + issue.getRuleId() + " " + issue.getRuleDescription());

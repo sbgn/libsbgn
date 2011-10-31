@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <sbgn xmlns="http://sbgn.org/libsbgn/0.2">
-    <map>
+    <map language="process description">
         <glyph id="glyph4" class="association">
             <bbox y="178.0" x="158.0" h="24.0" w="24.0"/>
             <port y="190.0" x="146.0" id="glyph4.1"/>
@@ -27,27 +27,27 @@
             <label text="A"/>
             <bbox y="260.0" x="250.0" h="60.0" w="60.0"/>
         </glyph>
-        <arc target="glyph4.1" source="glyph2" class="consumption">
+        <arc id="a1" target="glyph4.1" source="glyph2" class="consumption">
             <start y="168.16968" x="68.86618"/>
             <end y="190.0" x="146.0"/>
         </arc>
-        <arc target="glyph4.1" source="glyph1" class="consumption">
+        <arc id="a2" target="glyph4.1" source="glyph1" class="consumption">
             <start y="296.74945" x="58.95815"/>
             <end y="190.0" x="146.0"/>
         </arc>
-        <arc target="glyph3" source="glyph4.2" class="production">
+        <arc id="a3" target="glyph3" source="glyph4.2" class="production">
             <start y="190.0" x="194.0"/>
             <end y="190.0" x="250.0"/>
         </arc>
-        <arc target="glyph5.1" source="glyph2" class="consumption">
+        <arc id="a4" target="glyph5.1" source="glyph2" class="consumption">
             <start y="183.25056" x="58.95815"/>
             <end y="290.0" x="146.0"/>
         </arc>
-        <arc target="glyph5.1" source="glyph1" class="consumption">
+        <arc id="a5" target="glyph5.1" source="glyph1" class="consumption">
             <start y="311.83032" x="68.86618"/>
             <end y="290.0" x="146.0"/>
         </arc>
-        <arc target="glyph0" source="glyph5.2" class="production">
+        <arc id="a6" target="glyph0" source="glyph5.2" class="production">
             <start y="290.0" x="194.0"/>
             <end y="290.0" x="250.0"/>
         </arc>
