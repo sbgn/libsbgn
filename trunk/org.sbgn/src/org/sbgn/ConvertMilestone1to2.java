@@ -36,6 +36,9 @@ public class ConvertMilestone1to2
 		converter.buildIdList(elt);
 		converter.addArcIds(elt);
 		
+		// fix 4: convert class stoichiometry to cardinality
+		recursivelyChangeStoichiometry(elt);
+
 		// done, store result.
 		XMLOutputter xo = new XMLOutputter();
 		xo.output(doc, new FileWriter(out));
@@ -100,7 +103,18 @@ public class ConvertMilestone1to2
 			recursivelyChangeNamespace((Element)o);
 		}
 	}
-	
+
+	private static void recursivelyChangeStoichiometry(Element elt)
+	{
+		if ("stoichiometry".equals (elt.getAttributeValue("class")))
+			elt.setAttribute("class", "cardinality");
+
+		for (Object o : elt.getChildren())
+		{
+			recursivelyChangeStoichiometry((Element)o);
+		}
+	}
+
 	/**
 	 * Class can be used as utility to convert a single file
 	 * @throws IOException 
