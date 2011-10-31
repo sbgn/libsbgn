@@ -21,6 +21,7 @@
 		<fileset dir="lib">
 			<include name="*.jar"/>
 		</fileset>
+		<pathelement location="resources"/>
 	</path>
 
 	<!-- JAXB compiler task definition -->
@@ -44,11 +45,18 @@
 		   destdir="build">
 		   <classpath refid="project.classpath"/>
 	</javac>
+	<copy toDir="build">
+		<fileset dir="../validation/rules" includes="*.sch"/>
+	</copy>
   </target>
   
   <target name="jar" depends="build">
 	<jar jarfile="${jar.name}">
-	  <fileset dir="build" includes="**/*.class"/>
+	  <fileset dir="build">
+		<include name="**/*.class"/>
+		<include name="**/*.xsl"/>
+		<include name="**/*.sch"/>
+	  </fileset>
 	  <fileset dir="src" includes="**/*.properties"/>
 	  <fileset dir="../resources" includes="SBGN.xsd"/>
 	</jar>
