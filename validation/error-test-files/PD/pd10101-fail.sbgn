@@ -13,7 +13,7 @@
             </label>
             <bbox y="40.0" x="40.0" h="120.0" w="1240.0"/>
         </glyph>
-        <glyph id="glyph2" class="INVALID" compartmentRef="glyph1">
+        <glyph id="glyph2" class="process" compartmentRef="glyph1">
             <label text="IGFR"/>
             <bbox y="200.0" x="70.0" h="60.0" w="100.0"/>
         </glyph>

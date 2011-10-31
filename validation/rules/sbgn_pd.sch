@@ -41,38 +41,41 @@ Schematron validation for SBGN PD
 		<iso:active pattern="unimplemented-untestable-rules"/>
 	</iso:phase>
 
-	<iso:pattern id="sanity-check"> <!-- old id: 00000 -->
+	<iso:pattern id="sanity-check">
 		<iso:rule context="/*">
-			<iso:assert id="sanity-check" test="false()">This assertion should always fail. Timestamp: <iso:value-of select="current-time()"/> Namespace: <iso:value-of select="namespace-uri()"/></iso:assert>
+			<iso:assert id="00000" name="sanity-check" test="false()">This assertion should always fail. Timestamp: <iso:value-of select="current-time()"/> Namespace: <iso:value-of select="namespace-uri()"/></iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
 	
-	<iso:pattern id="check-id"> <!-- old id: 00001 -->
+	<iso:pattern id="check-id">
 		<iso:rule context="//*[@id]">
 			<iso:let name="id" value="@id"/>
 			<iso:assert 
-			id="check-id"
+			name="check-id"
+			id="00001"
 			role="error"
 			test="count(//@id[. = current()/@id]) = 1" diagnostics="id">ID needs to be unique.</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
 	
-	<iso:pattern id="check-idref"> <!-- old id: 00002 -->
+	<iso:pattern id="check-idref">
 		<iso:rule context="sbgn:arc">
 			<iso:let name="target" value="@target"/>
 			<iso:assert
-			id="check-idref"
+			name="check-idref"
+			id="00002"
 			role="error"
 			test="//*/@id[. = $target]" diagnostics="target">An arc target should be a glyph defined in the diagram.</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
 
-	<iso:pattern id="check-consumption"> <!-- old id: pd10101 -->
+	<iso:pattern id="check-consumption">
 		<iso:rule context="sbgn:arc[@class='consumption']">
 			<iso:let name="source" value="@source"/>			
 			<iso:let name="class" value="//sbgn:glyph[@id=$source]/@class"/>	
 			<iso:assert 
-				id="check-consumption-source-class"
+				name="check-consumption-source-class"
+				id="pd10101"
 				role="error"
 				see="sbgn-pd-L1V1.3-3.4.1"				
 				test="
@@ -92,7 +95,8 @@ Schematron validation for SBGN PD
 			<iso:let name="target" value="@target"/>			
 			<iso:let name="port-class" value="//sbgn:port[@id=$target]/../@class"/>	
 			<iso:assert 
-				id="check-consumption-target-class"
+				name="check-consumption-target-class"
+				id="pd10102"
 				role="error"
 				see="sbgn-pd-L1V1.3-3.4.1"				
 				test="
@@ -111,7 +115,8 @@ Schematron validation for SBGN PD
 			<iso:let name="port-id" value="./sbgn:port/@id"/>				
 			<iso:let name="count" value="count(//sbgn:arc[(./@class = 'consumption') and (./@source = current()/sbgn:port/@id)])"/>				
 			<iso:assert 
-				id="check-consumption-source_and_sink-source-count-equals-1"
+				id="pd10103"
+				name="check-consumption-source_and_sink-source-count-equals-1"
 				role="error"
 				see="sbgn-pd-L1V1.3-3.4.1"				
 				test="$count = 1"
@@ -123,7 +128,8 @@ Schematron validation for SBGN PD
 			<iso:let name="port-id" value="./sbgn:port/@id"/>				
 			<iso:let name="count" value="count(//sbgn:arc[(./@class = 'consumption') and (./@target = current()/sbgn:port/@id)])"/>				
 			<iso:assert 
-				id="check-consumption-dissociation-target-count-equals-1"
+			    id="pd10104"
+				name="check-consumption-dissociation-target-count-equals-1"
 				role="error"
 				see="sbgn-pd-L1V1.3-3.4.1"				
 				test="$count = 1"
@@ -132,12 +138,13 @@ Schematron validation for SBGN PD
 		</iso:rule> 
 	</iso:pattern> 
 
-	<iso:pattern id="check-production"> <!-- old id: pd10102 -->
+	<iso:pattern id="check-production">
 		<iso:rule context="sbgn:arc[@class='production']">
 			<iso:let name="source" value="@source"/>			
 			<iso:let name="port-class" value="//sbgn:port[@id=$source]/../@class"/>
 			<iso:assert 
-				id="check-production-source-class"
+				id="pd10105"
+				name="check-production-source-class"
 				see="sbgn-pd-L1V1.3-3.4.1"
 				role="error"				
 				test="
@@ -154,7 +161,8 @@ Schematron validation for SBGN PD
 			<iso:let name="target" value="@target"/>			
 			<iso:let name="class" value="//sbgn:glyph[@id=$target]/@class"/>	
 			<iso:assert 
-				id="check-production-target-class"
+			    id="pd10106"
+				name="check-production-target-class"
 				role="error"
 				see="sbgn-pd-L1V1.3-3.4.1"				
 				test="
@@ -177,7 +185,8 @@ Schematron validation for SBGN PD
 			<iso:let name="port-id" value="./sbgn:port/@id"/>				
 			<iso:let name="count" value="count(//sbgn:arc[(./@class = 'production') and (./@target = current()/sbgn:port/@id)])"/>				
 			<iso:assert 
-				id="check-production-source_and_sink-target-count-equals-1"
+				id="pd10107"
+				name="check-production-source_and_sink-target-count-equals-1"
 				role="error"
 				see="sbgn-pd-L1V1.3-3.4.1"				
 				test="$count = 1"
@@ -189,7 +198,8 @@ Schematron validation for SBGN PD
 			<iso:let name="port-id" value="./sbgn:port/@id"/>				
 			<iso:let name="count" value="count(//sbgn:arc[(./@class = 'production') and (./@source = current()/sbgn:port/@id)])"/>				
 			<iso:assert 
-				id="check-production-association-source-count-equals-1"
+				id="pd10108"
+				name="check-production-association-source-count-equals-1"
 				role="error"
 				see="sbgn-pd-L1V1.3-3.4.1"				
 				test="$count = 1"
@@ -198,13 +208,14 @@ Schematron validation for SBGN PD
 		</iso:rule> 
 	</iso:pattern> 
 
-	<iso:pattern id="check-modulation"> <!-- old id: pd10103 -->
+	<iso:pattern id="check-modulation">
 		<iso:rule context="sbgn:arc[@class='modulation']">
 			<iso:let name="source" value="@source"/>			
 			<iso:let name="class" value="//sbgn:glyph[@id=$source]/@class"/>	
 			<iso:let name="port-class" value="//sbgn:port[@id=$source]/../@class"/>	
 			<iso:assert 
-				id="check-modulation-source-class"
+				id="pd10109"
+				name="check-modulation-source-class"
 				role="error"
 				see="sbgn-pd-L1V1.3-3.4.1"				
 				test="(
@@ -227,7 +238,8 @@ Schematron validation for SBGN PD
 			<iso:let name="target" value="@target"/>			
 			<iso:let name="port-class" value="//sbgn:port[@id=$target]/../@class"/>	
 			<iso:assert 
-				id="check-modulation-target-class"
+				id="pd10110"
+				name="check-modulation-target-class"
 				role="error"
 				see="sbgn-pd-L1V1.3-3.4.1"				
 				test="
@@ -244,7 +256,8 @@ Schematron validation for SBGN PD
 			<iso:let name="port-id" value="./sbgn:port/@id"/>				
 			<iso:let name="count" value="count(//sbgn:arc[(./@class = 'modulation') and (./@source = current()/sbgn:port/@id)])"/>				
 			<iso:assert 
-				id="check-modulation-and_or_not-source-count-equals-1"
+				id="pd10111"
+				name="check-modulation-and_or_not-source-count-equals-1"
 				role="error"
 				see="sbgn-pd-L1V1.3-3.4.1"				
 				test="$count = 1"
@@ -253,13 +266,14 @@ Schematron validation for SBGN PD
 		</iso:rule> 		
 	</iso:pattern> 
 
-	<iso:pattern id="check-stimulation"> <!-- old id: pd10104 -->
+	<iso:pattern id="check-stimulation">
 		<iso:rule context="sbgn:arc[@class='stimulation']">
 			<iso:let name="source" value="@source"/>			
 			<iso:let name="class" value="//sbgn:glyph[@id=$source]/@class"/>	
 			<iso:let name="port-class" value="//sbgn:port[@id=$source]/../@class"/>	
 			<iso:assert 
-				id="check-stimulation-source-class"
+				id="pd10112"
+				name="check-stimulation-source-class"
 				role="error"
 				see="sbgn-pd-L1V1.3-3.4.1"				
 				test="(
@@ -282,7 +296,8 @@ Schematron validation for SBGN PD
 			<iso:let name="target" value="@target"/>			
 			<iso:let name="port-class" value="//sbgn:port[@id=$target]/../@class"/>	
 			<iso:assert 
-				id="check-stimulation-target-class"
+				id="pd10113"
+				name="check-stimulation-target-class"
 				role="error"
 				see="sbgn-pd-L1V1.3-3.4.1"				
 				test="
@@ -301,7 +316,8 @@ Schematron validation for SBGN PD
 			<iso:let name="port-id" value="./sbgn:port/@id"/>				
 			<iso:let name="count" value="count(//sbgn:arc[(./@class = 'stimulation') and (./@source = current()/sbgn:port/@id)])"/>				
 			<iso:assert 
-				id="check-stimulation-and_or_not-source-count-equals-1"
+				id="pd10114"
+				name="check-stimulation-and_or_not-source-count-equals-1"
 				role="error"
 				see="sbgn-pd-L1V1.3-3.4.1"				
 				test="$count = 1"
@@ -310,13 +326,14 @@ Schematron validation for SBGN PD
 		</iso:rule> 				
 	</iso:pattern> 
 
-	<iso:pattern id="check-catalysis"> <!-- old id: pd10105 -->
+	<iso:pattern id="check-catalysis">
 		<iso:rule context="sbgn:arc[@class='catalysis']">
 			<iso:let name="source" value="@source"/>			
 			<iso:let name="class" value="//sbgn:glyph[@id=$source]/@class"/>	
 			<iso:let name="port-class" value="//sbgn:port[@id=$source]/../@class"/>				
 			<iso:assert 
-				id="check-catalysis-source-class"
+				id="pd10115"
+				name="check-catalysis-source-class"
 				role="error"
 				see="sbgn-pd-L1V1.3-3.4.1"				
 				test="(
@@ -336,7 +353,8 @@ Schematron validation for SBGN PD
 			<iso:let name="target" value="@target"/>			
 			<iso:let name="port-class" value="//sbgn:port[@id=$target]/../@class"/>				
 			<iso:assert 
-				id="check-catalysis-target-class"
+				id="pd10116"
+				name="check-catalysis-target-class"
 				role="error"
 				see="sbgn-pd-L1V1.3-3.4.1"				
 				test="
@@ -355,7 +373,8 @@ Schematron validation for SBGN PD
 			<iso:let name="port-id" value="./sbgn:port/@id"/>				
 			<iso:let name="count" value="count(//sbgn:arc[(./@class = 'catalysis') and (./@source = current()/sbgn:port/@id)])"/>				
 			<iso:assert 
-				id="check-catalysis-and_or_not-source-count-equals-1"
+				id="pd10117"
+				name="check-catalysis-and_or_not-source-count-equals-1"
 				role="error"
 				see="sbgn-pd-L1V1.3-3.4.1"				
 				test="$count = 1"
@@ -364,13 +383,14 @@ Schematron validation for SBGN PD
 		</iso:rule> 
 	</iso:pattern> 
 
-	<iso:pattern id="check-inhibition"> <!-- old id: pd10106 -->
+	<iso:pattern id="check-inhibition">
 		<iso:rule context="sbgn:arc[@class='inhibition']">
 			<iso:let name="source" value="@source"/>			
 			<iso:let name="class" value="//sbgn:glyph[@id=$source]/@class"/>
 			<iso:let name="port-class" value="//sbgn:port[@id=$source]/../@class"/>				
 			<iso:assert 
-				id="check-inhibition-source-class"
+				id="pd10118"
+				name="check-inhibition-source-class"
 				role="error"
 				see="sbgn-pd-L1V1.3-3.4.1"				
 				test="(
@@ -393,7 +413,8 @@ Schematron validation for SBGN PD
 			<iso:let name="target" value="@target"/>			
 			<iso:let name="port-class" value="//sbgn:port[@id=$target]/../@class"/>	
 			<iso:assert 
-				id="check-inhibition-target-class"
+				id="pd10119"
+				name="check-inhibition-target-class"
 				role="error"
 				see="sbgn-pd-L1V1.3-3.4.1"				
 				test="
@@ -412,7 +433,8 @@ Schematron validation for SBGN PD
 			<iso:let name="port-id" value="./sbgn:port/@id"/>				
 			<iso:let name="count" value="count(//sbgn:arc[(./@class = 'inhibition') and (./@source = current()/sbgn:port/@id)])"/>				
 			<iso:assert 
-				id="check-inhibition-and_or_not-source-count-equals-1"
+				id="pd10120"
+				name="check-inhibition-and_or_not-source-count-equals-1"
 				role="error"
 				see="sbgn-pd-L1V1.3-3.4.1"				
 				test="$count = 1"
@@ -421,13 +443,14 @@ Schematron validation for SBGN PD
 		</iso:rule> 		
 	</iso:pattern> 
 
-	<iso:pattern id="check-necessary-stimulation"> <!-- old id: pd10107 -->
+	<iso:pattern id="check-necessary-stimulation">
 		<iso:rule context="sbgn:arc[@class='necessary stimulation']">
 			<iso:let name="source" value="@source"/>			
 			<iso:let name="class" value="//sbgn:glyph[@id=$source]/@class"/>	
 			<iso:let name="port-class" value="//sbgn:port[@id=$source]/../@class"/>				
 			<iso:assert 
-				id="check-necessary-stimulation-source-class"
+				id="pd10121"
+				name="check-necessary-stimulation-source-class"
 				role="error"
 				see="sbgn-pd-L1V1.3-3.4.1"				
 				test="(
@@ -450,7 +473,8 @@ Schematron validation for SBGN PD
 			<iso:let name="target" value="@target"/>			
 			<iso:let name="port-class" value="//sbgn:port[@id=$target]/../@class"/>	
 			<iso:assert 
-				id="check-necessary-stimulation-target-class"
+				id="pd10122"
+				name="check-necessary-stimulation-target-class"
 				role="error"
 				see="sbgn-pd-L1V1.3-3.4.1"				
 				test="
@@ -469,7 +493,8 @@ Schematron validation for SBGN PD
 			<iso:let name="port-id" value="./sbgn:port/@id"/>				
 			<iso:let name="count" value="count(//sbgn:arc[(./@class = 'necessary stimulation') and (./@source = current()/sbgn:port/@id)])"/>				
 			<iso:assert 
-				id="check-necessary_stimulation-and_or_not-source-count-equals-1"
+				id="pd10123"
+				name="check-necessary_stimulation-and_or_not-source-count-equals-1"
 				role="error"
 				see="sbgn-pd-L1V1.3-3.4.1"				
 				test="$count = 1"
@@ -478,12 +503,13 @@ Schematron validation for SBGN PD
 		</iso:rule> 				
 	</iso:pattern> 
 
-	<iso:pattern id="check-logic-arc"> <!-- old id: pd10108 -->
+	<iso:pattern id="check-logic-arc">
 		<iso:rule context="sbgn:arc[@class='logic arc']">
 			<iso:let name="source" value="@source"/>			
 			<iso:let name="class" value="//sbgn:glyph[@id=$source]/@class"/>	
 			<iso:assert 
-				id="check-logic-arc-source-class"
+				id="pd10124"
+				name="check-logic-arc-source-class"
 				role="error"
 				see="sbgn-pd-L1V1.3-3.4.1"				
 				test="
@@ -502,7 +528,8 @@ Schematron validation for SBGN PD
 			<iso:let name="target" value="@target"/>			
 			<iso:let name="port-class" value="//sbgn:port[@id=$target]/../@class"/>	
 			<iso:assert 
-				id="check-logic-arc-target-class"
+				id="pd1025"
+				name="check-logic-arc-target-class"
 				role="error"
 				see="sbgn-pd-L1V1.3-3.4.1"				
 				test="
@@ -524,7 +551,8 @@ Schematron validation for SBGN PD
 			<iso:let name="port-id" value="./sbgn:port/@id"/>				
 			<iso:let name="count" value="count(//sbgn:arc[(./@class = 'logic arc') and (./@target = current()/sbgn:port/@id)])"/>				
 			<iso:assert 
-				id="check-logic_arc-not-target-count-equals-1"
+				id="pd10126"
+				name="check-logic_arc-not-target-count-equals-1"
 				role="error"
 				see="sbgn-pd-L1V1.3-3.4.1"				
 				test="$count = 1"
@@ -533,12 +561,13 @@ Schematron validation for SBGN PD
 		</iso:rule> 						
 	</iso:pattern> 
 		
-	<iso:pattern id="check-equivalence-arc"> <!-- old id: pd10109 -->
+	<iso:pattern id="check-equivalence-arc">
 		<iso:rule context="sbgn:arc[@class='equivalence arc']">
 			<iso:let name="source" value="@source"/>			
 			<iso:let name="class" value="//sbgn:glyph[@id=$source]/@class"/>	
 			<iso:assert 
-				id="check-equivalence-arc-source-class"
+				id="pd10127"
+				name="check-equivalence-arc-source-class"
 				role="error"
 				see="sbgn-pd-L1V1.3-3.4.1"				
 				test="
@@ -560,7 +589,8 @@ Schematron validation for SBGN PD
 			<iso:let name="class" value="//sbgn:glyph[@id=$target]/@class"/>	
 			<iso:let name="port-class" value="//sbgn:port[@id=$target]/../@class"/>	
 			<iso:assert 
-				id="check-equivalence-arc-target-class"
+				id="pd10128"
+				name="check-equivalence-arc-target-class"
 				role="error"
 				see="sbgn-pd-L1V1.3-3.4.1"				
 				test="(
@@ -577,11 +607,12 @@ Schematron validation for SBGN PD
 		</iso:rule> 
 	</iso:pattern> 
 
-	<iso:pattern id="state-var-unique"> <!-- old id: pd10131 -->
+	<iso:pattern id="state-var-unique">
 		<iso:rule context="sbgn:glyph[@class='and']/sbgn:port/sbgn:state">
 			<iso:let name="id" value="@id"/>	
 			<iso:assert
-				id="state-var-unique"
+				id="pd10129"
+				name="state-var-unique"
 				see="sbgn-pd-L1V1.3-3.5.1-1"
 				role="error"
 				test="count(../../sbgn:port/sbgn:state[@variable = current()/@variable]) &lt;= 2"
@@ -590,12 +621,13 @@ Schematron validation for SBGN PD
 		</iso:rule> 
 	</iso:pattern> 
 
-	<iso:pattern id="subunit-mod-arc"> <!-- old id: pd101XX -->
+	<iso:pattern id="subunit-mod-arc">
 		<iso:rule context="sbgn:arc[@source = //sbgn:glyph[@class='complex']/sbgn:glyph/@id]">
 			<iso:let name="id" value="//sbgn:glyph[@class='complex']/sbgn:glyph[not(@class='complex')]/@id"/>
 			<iso:let name="class" value="@class"/>
 			<iso:assert 
-				id="subunit-mod-arc-source"
+				id="pd10130"
+				name="subunit-mod-arc-source"
 				role="error"
 				test="@class = 'modulation'"
 				diagnostics="id class">[NOT SURE]
@@ -603,7 +635,7 @@ Schematron validation for SBGN PD
 		</iso:rule> 
 	</iso:pattern> 
 	
-	<iso:pattern id="epns-must-connect"> <!-- old id: pd10133 -->
+	<iso:pattern id="epns-must-connect">
 		<iso:rule context="/sbgn:sbgn/sbgn:map/sbgn:glyph[
 				@class = 'unspecified entity' or 
 				@class = 'simple chemical' or 
@@ -620,7 +652,8 @@ Schematron validation for SBGN PD
 			<iso:let name="id" value="@id"/>
 			<iso:let name="class" value="//sbgn:arc[@source = $id or @target = $id]/@class"/>
 			<iso:assert 
-				id="epns-must-connect"
+				id="pd10130"
+				name="epns-must-connect"
 				see="sbgn-pd-L1V1.3-3.5.1-3"
 				role="error"
 				test="//sbgn:arc[(
@@ -639,7 +672,7 @@ Schematron validation for SBGN PD
 		</iso:rule> 
 	</iso:pattern> 
 
-	<iso:pattern id="pns-lhs-rhs-existence"> <!-- old id: pd10135 -->
+	<iso:pattern id="pns-lhs-rhs-existence">
 		<iso:rule context="sbgn:glyph[			
 			@class='process' or 
 			@class='omitted process' or
@@ -650,7 +683,8 @@ Schematron validation for SBGN PD
 			<iso:let name="id" value="@id"/>
 			<iso:let name="port-count" value="count(sbgn:port)"/>
 			<iso:assert 
-				id="pns-port-count-eq-2"
+				id="pd10131"
+				name="pns-port-count-eq-2"
 				see="sbgn-pd-L1V1.3-3.5.2.1-1"
 				role="error"
 				test="$port-count = 2"
@@ -659,7 +693,7 @@ Schematron validation for SBGN PD
 		</iso:rule> 
 	</iso:pattern> 
 	
-	<iso:pattern id="different-pn-substrates"> <!-- old id: pd10136 -->
+	<iso:pattern id="different-pn-substrates">
 		<iso:rule context="sbgn:glyph[			
 			@class='process' or 
 			@class='omitted process' or
@@ -675,7 +709,8 @@ Schematron validation for SBGN PD
 			<iso:let name="arc-count-2" value="count(//sbgn:arc[@source = $port-id-2])"/>
 			<iso:let name="arc-count-distinct-2" value="count(distinct-values(//sbgn:arc[@source = $port-id-2]/@target))"/>
 			<iso:assert 
-				id="pns-arc-count-eq-2"
+				id="pd10132"
+				name="pns-arc-count-eq-2"
 				see="sbgn-pd-L1V1.3-3.5.2.1-2,3"
 				role="error"
 				test="($arc-count-2 = $arc-count-distinct-2) and ($arc-count-1 = $arc-count-distinct-1)"
@@ -684,15 +719,17 @@ Schematron validation for SBGN PD
 		</iso:rule> 
 	</iso:pattern> 
 	
-	<iso:pattern id="unimplemented-untestable-rules"> <!-- old id: pd99999 -->
+	<iso:pattern id="unimplemented-untestable-rules">
 		<iso:rule context="/*">
 			<iso:assert 
-				id="multiple-stoichiometries"
+				id="pd10133"
+				name="multiple-stoichiometries"
 				see="sbgn-pd-L1V1.3-3.5.2.1-8"
 				role="untestable"
 				test="true()">If more than one set of stoichiometries can be applied to the flux arcs of the process then the stoichiometry of the flux arcs must be displayed.</iso:assert>
 			<iso:assert 
-				id="undefined-unknown-stochiometry"
+				id="pd10134"
+				name="undefined-unknown-stochiometry"
 				see="sbgn-pd-L1V1.3-3.5.2.1-7"				
 				role="unimplemented" 
 				test="true()">If the stoichiometry is undefined or unknown this should be indicated by the use of a question mark ("?").</iso:assert>
