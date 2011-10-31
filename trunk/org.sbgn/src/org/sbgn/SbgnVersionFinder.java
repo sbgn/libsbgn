@@ -28,7 +28,6 @@ public class SbgnVersionFinder
 		{
 			if ("sbgn".equals (qName))
 			{
-				System.out.println (uri);
 				if ("http://sbgn.org/libsbgn/0.2".equals(uri))
 				{
 					version = 2;
