@@ -29,31 +29,33 @@ Schematron validation for SBGN AF
 		<iso:active pattern="check-equivalence-arc"/>		
 	</iso:phase>
 
-	<iso:pattern id="sanity-check"> <!-- old id: 00000 -->
+	<iso:pattern id="sanity-check">
 		<iso:rule context="/*">
-			<iso:assert id="sanity-check" test="false()">This assertion should always fail.</iso:assert>
+			<iso:assert id="00000" name="sanity-check" test="false()">This assertion should always fail.</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
 	
-	<iso:pattern id="check-id"> <!-- old id: 00001 -->
+	<iso:pattern id="check-id">
 		<iso:rule context="//*[@id]">
 			<iso:let name="id" value="@id"/>
 			<iso:assert 
+			id="00001"
 			role="error"
 			test="count(//@id[. = current()/@id]) = 1" diagnostics="id">ID needs to be unique.</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
 	
-	<iso:pattern id="check-idref"> <!-- old id: 00002 -->
+	<iso:pattern id="check-idref">
 		<iso:rule context="sbgn:arc">
 			<iso:let name="target" value="@target"/>
 			<iso:assert
+			id="00002"
 			role="error"
 			test="//*/@id[. = $target]" diagnostics="target">An arc target should be a glyph defined in the diagram.</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
 
-	<iso:pattern id="check-positive-influence"> <!-- old id: af10101 -->
+	<iso:pattern id="check-positive-influence">
 		<iso:rule context="sbgn:arc[@class='positive influence']">
 			<iso:let name="source" value="@source"/>			
 			<iso:let name="source-class" value="//sbgn:glyph[@id=$source]/@class"/>			
@@ -61,7 +63,8 @@ Schematron validation for SBGN AF
 			<iso:let name="target-class" value="//sbgn:glyph[@id=$target]/@class"/>				
 			<iso:let name="port-class" value="//sbgn:port[@id=$source]/../@class"/>				
 			<iso:assert 
-				id="check-positive-influence-source-class-activity-nodes"
+				id="af10101"
+				name="check-positive-influence-source-class-activity-nodes"
 				role="error"
 				see="sbgn-af-L1V1.0-3.3.1"				
 				test="
@@ -73,8 +76,9 @@ Schematron validation for SBGN AF
 				$port-class='delay'"
 				diagnostics="source source-class port-class">Incorrect source reference for arc with class "positive influence"
 			</iso:assert>
-			<iso:assert 
-				id="check-positive-influence-target-class"
+			<iso:assert
+				id="af10102"
+				name="check-positive-influence-target-class"
 				role="error"
 				see="sbgn-af-L1V1.0-3.3.1"				
 				test="
@@ -85,7 +89,7 @@ Schematron validation for SBGN AF
 		</iso:rule> 
 	</iso:pattern> 
 
-	<iso:pattern id="check-negative-influence"> <!-- old id: af10102 -->
+	<iso:pattern id="check-negative-influence">
 		<iso:rule context="sbgn:arc[@class='negative influence']">
 			<iso:let name="source" value="@source"/>			
 			<iso:let name="source-class" value="//sbgn:glyph[@id=$source]/@class"/>
@@ -93,7 +97,8 @@ Schematron validation for SBGN AF
 			<iso:let name="target-class" value="//sbgn:glyph[@id=$target]/@class"/>				
 			<iso:let name="port-class" value="//sbgn:port[@id=$source]/../@class"/>				
 			<iso:assert 
-				id="check-negative-influence-source-class"
+				id="af10103"
+				name="check-negative-influence-source-class"
 				role="error"
 				see="sbgn-af-L1V1.0-3.3.1"				
 				test="
@@ -106,7 +111,8 @@ Schematron validation for SBGN AF
 				diagnostics="source source-class port-class">Incorrect source reference for arc with class "negative influence"
 			</iso:assert>
 			<iso:assert 
-				id="check-negative-influence-target-class"
+				id="af10104"
+				name="check-negative-influence-target-class"
 				role="error"
 				see="sbgn-af-L1V1.0-3.3.1"				
 				test="
@@ -117,7 +123,7 @@ Schematron validation for SBGN AF
 		</iso:rule> 
 	</iso:pattern> 
 	
-	<iso:pattern id="check-unknown-influence"> <!-- old id: af10103 -->
+	<iso:pattern id="check-unknown-influence">
 		<iso:rule context="sbgn:arc[@class='unknown influence']">
 			<iso:let name="source" value="@source"/>			
 			<iso:let name="source-class" value="//sbgn:glyph[@id=$source]/@class"/>	
@@ -125,7 +131,8 @@ Schematron validation for SBGN AF
 			<iso:let name="target-class" value="//sbgn:glyph[@id=$target]/@class"/>				
 			<iso:let name="port-class" value="//sbgn:port[@id=$source]/../@class"/>		
 			<iso:assert 
-				id="check-unknown-influence-source-class"
+				id="af10105"
+				name="check-unknown-influence-source-class"
 				role="error"
 				see="sbgn-af-L1V1.0-3.3.1"				
 				test="
@@ -138,7 +145,8 @@ Schematron validation for SBGN AF
 				diagnostics="source source-class port-class">Incorrect source reference for arc with class "unknown influence"
 			</iso:assert>
 			<iso:assert 
-				id="check-unknown-influence-target-class"
+				id="af10106"
+				name="check-unknown-influence-target-class"
 				role="error"
 				see="sbgn-af-L1V1.0-3.3.1"				
 				test="
@@ -149,7 +157,7 @@ Schematron validation for SBGN AF
 		</iso:rule> 
 	</iso:pattern> 
 	
-	<iso:pattern id="check-necessary-stimulation"> <!-- old id: af10104 -->
+	<iso:pattern id="check-necessary-stimulation">
 		<iso:rule context="sbgn:arc[@class='necessary stimulation']">
 			<iso:let name="source" value="@source"/>			
 			<iso:let name="source-class" value="//sbgn:glyph[@id=$source]/@class"/>	
@@ -157,7 +165,8 @@ Schematron validation for SBGN AF
 			<iso:let name="target-class" value="//sbgn:glyph[@id=$target]/@class"/>	
 			<iso:let name="port-class" value="//sbgn:port[@id=$source]/../@class"/>					
 			<iso:assert 
-				id="check-necessary-stimulation-source-class"
+				id="af10107"
+				name="check-necessary-stimulation-source-class"
 				role="error"
 				see="sbgn-af-L1V1.0-3.3.1"				
 				test="
@@ -170,7 +179,8 @@ Schematron validation for SBGN AF
 				diagnostics="source source-class port-class">Incorrect source reference for arc with class "necessary stimulation"
 			</iso:assert>
 			<iso:assert 
-				id="check-necessary-stimulation-target-class"
+				id="af10108"
+				name="check-necessary-stimulation-target-class"
 				role="error"
 				see="sbgn-af-L1V1.0-3.3.1"				
 				test="
@@ -181,7 +191,7 @@ Schematron validation for SBGN AF
 		</iso:rule> 
 	</iso:pattern> 
 	
-	<iso:pattern id="check-logic-arc"> <!-- old id: af10105 -->
+	<iso:pattern id="check-logic-arc">
 		<iso:rule context="sbgn:arc[@class='logic arc']">
 			<iso:let name="source" value="@source"/>			
 			<iso:let name="source-class" value="//sbgn:glyph[@id=$source]/@class"/>	
@@ -189,7 +199,8 @@ Schematron validation for SBGN AF
 			<iso:let name="target-class" value="//sbgn:glyph[@id=$target]/@class"/>	
 			<iso:let name="port-class" value="//sbgn:port[@id=$target]/../@class"/>		
 			<iso:assert 
-				id="check-logic-arc-source-class"
+				id="af10109"
+				name="check-logic-arc-source-class"
 				role="error"
 				see="sbgn-af-L1V1.0-3.3.1"				
 				test="
@@ -197,7 +208,8 @@ Schematron validation for SBGN AF
 				diagnostics="source source-class">Incorrect source reference for arc with class "logic arc"
 			</iso:assert>
 			<iso:assert 
-				id="check-logic-arc-target-class"
+				id="af10110"
+				name="check-logic-arc-target-class"
 				role="error"
 				see="sbgn-af-L1V1.0-3.3.1"				
 				test="
@@ -214,7 +226,8 @@ Schematron validation for SBGN AF
 			<iso:let name="port-id" value="./sbgn:port/@id"/>				
 			<iso:let name="count" value="count(//sbgn:arc[(./@class = 'logic arc') and (./@target = current()/sbgn:port/@id)])"/>				
 			<iso:assert 
-				id="check-logic_arc-not-target-count-equals-1"
+				id="af10111"
+				name="check-logic_arc-not-target-count-equals-1"
 				role="error"
 				see="sbgn-pd-L1V1.3-3.4.1"				
 				test="$count = 1"
@@ -223,14 +236,15 @@ Schematron validation for SBGN AF
 		</iso:rule>	
 	</iso:pattern> 
 	
-	<iso:pattern id="check-equivalence-arc"> <!-- old id: af10106 -->
+	<iso:pattern id="check-equivalence-arc">
 		<iso:rule context="sbgn:arc[@class='equivalence arc']">
 			<iso:let name="source" value="@source"/>			
 			<iso:let name="source-class" value="//sbgn:glyph[@id=$source]/@class"/>	
 			<iso:let name="target" value="@target"/>			
 			<iso:let name="target-class" value="//sbgn:glyph[@id=$target]/@class"/>	
 			<iso:assert 
-				id="check-equivalence-arc-source-class"
+				id="af10112"
+				name="check-equivalence-arc-source-class"
 				role="error"
 				see="sbgn-af-L1V1.0-3.3.1"				
 				test="
@@ -238,7 +252,8 @@ Schematron validation for SBGN AF
 				diagnostics="source source-class">Incorrect source reference for arc with class "equivalence arc"
 			</iso:assert>
 			<iso:assert 
-				id="check-equivalence-arc-target-class"
+				id="af10113"
+				name="check-equivalence-arc-target-class"
 				role="error"
 				see="sbgn-af-L1V1.0-3.3.1"				
 				test="
