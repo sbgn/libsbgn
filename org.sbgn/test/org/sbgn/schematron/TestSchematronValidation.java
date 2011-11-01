@@ -2,6 +2,7 @@ package org.sbgn.schematron;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -39,7 +40,15 @@ public class TestSchematronValidation extends TestCase
 			{
 				if (!f.getName().endsWith(".sbgn")) continue;
 
-				List<Issue> issues = SchematronValidator.validate(f);
+				List<Issue> issues = new ArrayList<Issue>();
+				for (Issue i : SchematronValidator.validate(f))
+				{
+					/* ignore rule pd10130: "EPNs should not be orphaned", 
+					 * because we violate it to keep test-cases simple. */
+					if (!"pd10130".equals(i.getRuleId()))
+						issues.add(i);
+				}
+				
 				if (issues.size() > 0)
 				{
 					System.out.println ("===============");
@@ -66,6 +75,7 @@ public class TestSchematronValidation extends TestCase
 
 			for (File f : testFilesDir.listFiles())
 			{
+				if (!f.getName().endsWith(".sbgn")) continue;
 				System.out.println ("@@@@@@@@@@@@@@");
 				System.out.println (f);
 				assertTrue (f + " does not validate. All schematron test cases must pass low-level XSD validation", SbgnUtil.isValid(f));
