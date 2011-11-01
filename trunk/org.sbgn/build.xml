@@ -47,6 +47,7 @@
 	</javac>
 	<copy toDir="build">
 		<fileset dir="../validation/rules" includes="*.sch"/>
+		<fileset dir="../resources" includes="SBGN.xsd"/>
 	</copy>
   </target>
   
