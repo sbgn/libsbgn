@@ -581,28 +581,21 @@ Schematron validation for SBGN PD
 				$class='complex multimer' or 				
 				$class='source and sink' or 
 				$class='perturbing agent'" 
-				diagnostics="source class">Arc with class equivalence arc must have source reference to glyph of EPN classes and target reference to port on glyph of PN classes
+				diagnostics="source class">Arc with class equivalence arc must have source reference to glyph of EPN classes
 			</iso:assert>
 		</iso:rule> 
 		<iso:rule context="sbgn:arc[@class='equivalence arc']">
 			<iso:let name="target" value="@target"/>			
 			<iso:let name="class" value="//sbgn:glyph[@id=$target]/@class"/>	
-			<iso:let name="port-class" value="//sbgn:port[@id=$target]/../@class"/>	
 			<iso:assert 
 				id="pd10128"
 				name="check-equivalence-arc-target-class"
 				role="error"
 				see="sbgn-pd-L1V1.3-3.4.1"				
-				test="(
-				$port-class='tag') or (
-				$class='submap' or
-				$class='process' or 
-				$class='omitted process' or
-				$class='uncertain process' or
-				$class='association' or
-				$class='dissociation' or
-				$class='phenotype')" 
-				diagnostics="target port-class class">Arc with class logic arc must have target reference to port on glyph with PN classes or 'tag' or 'submap' EPN classes and source reference to glyph of EPN classes
+				test="
+				$class='tag' or
+				$class='submap'" 
+				diagnostics="target class">Arc with class equivalence arc must have target reference to glyph of classes 'tag' or 'submap'
 			</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 

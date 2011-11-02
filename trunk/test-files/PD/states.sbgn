@@ -38,9 +38,9 @@
 		<port x="344" y="180" id="glyph5b"/>
 	</glyph>
 
-	<arc class="equivalence arc" source="glyph1" target="glyph2" id="a1">
-		<start x="200" y="50" />
-		<end x="270" y="50" />			
+	<arc class="equivalence arc" source="glyph2" target="glyph1" id="a1">
+		<start x="270" y="50" />
+		<end x="200" y="50" />			
 	</arc>
 	
 	<arc class="catalysis" source="glyph2" target="glyph5" id="a2">

@@ -27,6 +27,12 @@ public class SchematronValidator
 {
 	private SchematronValidator() {} // private to prevent external instantiation
 	
+	private static boolean fSvrlDump = false;
+	public static void setSvrlDump(boolean value)
+	{
+		fSvrlDump = value;
+	}
+	
 	public static List<Issue> validate(File exportedPwFile) 
 		throws IOException, ParserConfigurationException, TransformerException, SAXException
 	{				
@@ -71,6 +77,8 @@ public class SchematronValidator
 		StringWriter sw2 = new StringWriter();
 		Result result2 = new StreamResult(sw2);
 		transformer2.transform(inputSource, result2);
+		
+		if (fSvrlDump) { System.out.println (sw2.toString()); }
 		parseSVRL(removeXMLheader(sw2.toString()));
 	}
 
