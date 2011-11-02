@@ -114,8 +114,16 @@ public class Main {
 	 */
 	private void validate(String[] args) 
 	{
-		if (args.length != 2) throw new IllegalArgumentException("You have to specify an input file to validate");
-		File fin = new File (args[1]);
+		int pos = 1;
+		// secret argument: add -svrldump to see svrl
+		if (args.length > pos && args[pos].equals ("-svrldump")) 
+		{
+			pos++;
+			SchematronValidator.setSvrlDump(true);
+		}
+		
+		if (args.length == pos) throw new IllegalArgumentException("Missing argument: input file");
+		File fin = new File (args[pos]);
 		try
 		{
 			if (!SbgnUtil.isValid(fin))
