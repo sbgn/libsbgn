@@ -119,8 +119,8 @@ Schematron validation for SBGN PD
 				name="check-consumption-source_and_sink-source-count-equals-1"
 				role="error"
 				see="sbgn-pd-L1V1.3-3.4.1"				
-				test="$count = 1"
-				diagnostics="id port-id count">The 'source and sink' glyph can only be connected to one consumption glyph. 
+				test="$count &lt;= 1"
+				diagnostics="id port-id count">The 'source and sink' glyph can be connected to at most one consumption glyph. 
 			</iso:assert>
 		</iso:rule> 
 		<iso:rule context="sbgn:glyph[@class='dissociation']">
@@ -189,8 +189,8 @@ Schematron validation for SBGN PD
 				name="check-production-source_and_sink-target-count-equals-1"
 				role="error"
 				see="sbgn-pd-L1V1.3-3.4.1"				
-				test="$count = 1"
-				diagnostics="id port-id count">The 'source and sink' glyph can only be connected to one production glyph. 
+				test="$count &lt;= 1"
+				diagnostics="id port-id count">The 'source and sink' glyph can be connected to at most one production glyph. 
 			</iso:assert>
 		</iso:rule> 
 		<iso:rule context="sbgn:glyph[@class='association']">
