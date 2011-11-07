@@ -248,7 +248,8 @@ Schematron validation for SBGN AF
 				role="error"
 				see="sbgn-af-L1V1.0-3.3.1"				
 				test="
-				$source-class='biological activity'" 
+				$source-class='biological activity' or
+				$source-class='compartment'" 
 				diagnostics="source source-class">Incorrect source reference for arc with class "equivalence arc"
 			</iso:assert>
 			<iso:assert 
@@ -258,7 +259,8 @@ Schematron validation for SBGN AF
 				see="sbgn-af-L1V1.0-3.3.1"				
 				test="
 				$target-class='tag' or
-				$target-class='submap'" 
+				$target-class='submap' or
+				$target-class='terminal'" 
 				diagnostics="target target-class">Incorrect target reference for arc with class "equivalence arc"
 			</iso:assert>
 		</iso:rule> 
