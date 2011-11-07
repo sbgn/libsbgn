@@ -26,8 +26,6 @@ public class TestSchematronValidation extends TestCase
 	
 	public void testAllTestCases() throws IOException, ParserConfigurationException, TransformerException, SAXException
 	{
-		Map<File, List<Issue>> issuePerFile = new HashMap<File, List<Issue>>();
-		
 		for (String lang : langShortNames)
 		{
 			File testFilesDir = new File (testFilesBase, lang);
@@ -40,24 +38,21 @@ public class TestSchematronValidation extends TestCase
 			{
 				if (!f.getName().endsWith(".sbgn")) continue;
 
-				List<Issue> issues = new ArrayList<Issue>();
+				boolean first = true;
 				for (Issue i : SchematronValidator.validate(f))
 				{
 					/* ignore rule pd10130: "EPNs should not be orphaned", 
-					 * because we violate it to keep test-cases simple. */
-					if (!"pd10130".equals(i.getRuleId()))
-						issues.add(i);
-				}
-				
-				if (issues.size() > 0)
-				{
-					System.out.println ("===============");
-					System.out.println (f);
-					for (Issue i : issues)
+					 * We violate it in our test-cases to keep it simple. */
+					if ("pd10130".equals(i.getRuleId())) continue;
+					
+					if (first)
 					{
-						issueNum++;
-						System.out.println (i.getAboutId() + " " + i.getRuleId() + " " + i.getRuleDescription());
+						System.out.println ("===============");
+						System.out.println (f);
+						first = false;
 					}
+					issueNum++;
+					System.out.println (i.getAboutId() + " " + i.getRuleId() + " " + i.getRuleDescription());
 				}
 			}
 			assertEquals ("Expected zero validation issues", 0, issueNum);
@@ -91,6 +86,11 @@ public class TestSchematronValidation extends TestCase
 				List<Issue> issues = SchematronValidator.validate(f);
 				for (Issue issue : issues)
 				{
+					assertNotNull (issue.getRuleId());
+					assertNotNull ("About id of " + issue.getRuleId() + " must not be null", issue.getAboutId());
+					assertNotNull ("Rule description of " + issue.getRuleId() + " must not be null", issue.getRuleDescription());
+					assertNotNull ("Issue severity of " + issue.getRuleId() + " must not be null", issue.getSeverity());
+
 					System.out.println (issue.getAboutId() + " " + issue.getRuleId() + " " + issue.getRuleDescription());
 					if (issue.getRuleId().equals(expectedRuleId))
 						failedExpectedRule = true;
