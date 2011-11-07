@@ -57,6 +57,7 @@ Schematron validation for SBGN AF
 
 	<iso:pattern id="check-positive-influence">
 		<iso:rule context="sbgn:arc[@class='positive influence']">
+			<iso:let name="id" value="@id"/>
 			<iso:let name="source" value="@source"/>			
 			<iso:let name="source-class" value="//sbgn:glyph[@id=$source]/@class"/>			
 			<iso:let name="target" value="@target"/>			
@@ -74,7 +75,7 @@ Schematron validation for SBGN AF
 				$port-class='or' or 	
 				$port-class='not' or 
 				$port-class='delay'"
-				diagnostics="source source-class port-class">Incorrect source reference for arc with class "positive influence"
+				diagnostics="id source source-class port-class">Incorrect source reference for arc with class "positive influence"
 			</iso:assert>
 			<iso:assert
 				id="af10102"
@@ -84,13 +85,14 @@ Schematron validation for SBGN AF
 				test="
 				$target-class='biological activity' or 
 				$target-class='phenotype'" 
-				diagnostics="target target-class port-class">Incorrect target reference for arc with class "positive influence"
+				diagnostics="id target target-class port-class">Incorrect target reference for arc with class "positive influence"
 			</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
 
 	<iso:pattern id="check-negative-influence">
 		<iso:rule context="sbgn:arc[@class='negative influence']">
+			<iso:let name="id" value="@id"/>
 			<iso:let name="source" value="@source"/>			
 			<iso:let name="source-class" value="//sbgn:glyph[@id=$source]/@class"/>
 			<iso:let name="target" value="@target"/>			
@@ -108,7 +110,7 @@ Schematron validation for SBGN AF
 				$port-class='or' or 	
 				$port-class='not' or 
 				$port-class='delay'" 
-				diagnostics="source source-class port-class">Incorrect source reference for arc with class "negative influence"
+				diagnostics="id source source-class port-class">Incorrect source reference for arc with class "negative influence"
 			</iso:assert>
 			<iso:assert 
 				id="af10104"
@@ -118,13 +120,14 @@ Schematron validation for SBGN AF
 				test="
 				$target-class='biological activity' or 
 				$target-class='phenotype'" 
-				diagnostics="target target-class port-class">Incorrect target reference for arc with class "negative influence"
+				diagnostics="id target target-class port-class">Incorrect target reference for arc with class "negative influence"
 			</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
 	
 	<iso:pattern id="check-unknown-influence">
 		<iso:rule context="sbgn:arc[@class='unknown influence']">
+			<iso:let name="id" value="@id"/>
 			<iso:let name="source" value="@source"/>			
 			<iso:let name="source-class" value="//sbgn:glyph[@id=$source]/@class"/>	
 			<iso:let name="target" value="@target"/>			
@@ -142,7 +145,7 @@ Schematron validation for SBGN AF
 				$port-class='or' or 	
 				$port-class='not' or 
 				$port-class='delay'" 
-				diagnostics="source source-class port-class">Incorrect source reference for arc with class "unknown influence"
+				diagnostics="id source source-class port-class">Incorrect source reference for arc with class "unknown influence"
 			</iso:assert>
 			<iso:assert 
 				id="af10106"
@@ -152,13 +155,14 @@ Schematron validation for SBGN AF
 				test="
 				$target-class='biological activity' or 
 				$target-class='phenotype'" 
-				diagnostics="target target-class">Incorrect target reference for arc with class "unknown influence"
+				diagnostics="id target target-class">Incorrect target reference for arc with class "unknown influence"
 			</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
 	
 	<iso:pattern id="check-necessary-stimulation">
 		<iso:rule context="sbgn:arc[@class='necessary stimulation']">
+			<iso:let name="id" value="@id"/>
 			<iso:let name="source" value="@source"/>			
 			<iso:let name="source-class" value="//sbgn:glyph[@id=$source]/@class"/>	
 			<iso:let name="target" value="@target"/>			
@@ -176,7 +180,7 @@ Schematron validation for SBGN AF
 				$port-class='or' or 	
 				$port-class='not' or 
 				$port-class='delay'" 
-				diagnostics="source source-class port-class">Incorrect source reference for arc with class "necessary stimulation"
+				diagnostics="id source source-class port-class">Incorrect source reference for arc with class "necessary stimulation"
 			</iso:assert>
 			<iso:assert 
 				id="af10108"
@@ -186,13 +190,14 @@ Schematron validation for SBGN AF
 				test="
 				$target-class='biological activity' or 
 				$target-class='phenotype'" 
-				diagnostics="target target-class">Incorrect target reference for arc with class "necessary stimulation"
+				diagnostics="id target target-class">Incorrect target reference for arc with class "necessary stimulation"
 			</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
 	
 	<iso:pattern id="check-logic-arc">
 		<iso:rule context="sbgn:arc[@class='logic arc']">
+			<iso:let name="id" value="@id"/>
 			<iso:let name="source" value="@source"/>			
 			<iso:let name="source-class" value="//sbgn:glyph[@id=$source]/@class"/>	
 			<iso:let name="target" value="@target"/>			
@@ -205,7 +210,7 @@ Schematron validation for SBGN AF
 				see="sbgn-af-L1V1.0-3.3.1"				
 				test="
 				$source-class='biological activity'" 
-				diagnostics="source source-class">Incorrect source reference for arc with class "logic arc"
+				diagnostics="id source source-class">Incorrect source reference for arc with class "logic arc"
 			</iso:assert>
 			<iso:assert 
 				id="af10110"
@@ -217,7 +222,7 @@ Schematron validation for SBGN AF
 				$port-class='or' or
 				$port-class='not' or
 				$port-class='delay'" 
-				diagnostics="target target-class port-class">Incorrect target reference for arc with class "logic arc"
+				diagnostics="id target target-class port-class">Incorrect target reference for arc with class "logic arc"
 			</iso:assert>
 		</iso:rule> 
 		<!-- Limited Number Rules -->
@@ -238,6 +243,7 @@ Schematron validation for SBGN AF
 	
 	<iso:pattern id="check-equivalence-arc">
 		<iso:rule context="sbgn:arc[@class='equivalence arc']">
+			<iso:let name="id" value="@id"/>
 			<iso:let name="source" value="@source"/>			
 			<iso:let name="source-class" value="//sbgn:glyph[@id=$source]/@class"/>	
 			<iso:let name="target" value="@target"/>			
@@ -250,7 +256,7 @@ Schematron validation for SBGN AF
 				test="
 				$source-class='biological activity' or
 				$source-class='compartment'" 
-				diagnostics="source source-class">Incorrect source reference for arc with class "equivalence arc"
+				diagnostics="id source source-class">Incorrect source reference for arc with class "equivalence arc"
 			</iso:assert>
 			<iso:assert 
 				id="af10113"
@@ -261,7 +267,7 @@ Schematron validation for SBGN AF
 				$target-class='tag' or
 				$target-class='submap' or
 				$target-class='terminal'" 
-				diagnostics="target target-class">Incorrect target reference for arc with class "equivalence arc"
+				diagnostics="id target target-class">Incorrect target reference for arc with class "equivalence arc"
 			</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
