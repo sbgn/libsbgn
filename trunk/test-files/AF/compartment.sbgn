@@ -30,17 +30,17 @@
 			<bbox x="156" y="210" w="108" h="60"/>
 		</glyph>
 		
-		<arc class="logic arc" source="g2" target="g4" id="a1">
+		<arc class="logic arc" source="g2" target="g4.1" id="a1">
 			<start x="174" y="90" />
 			<end x="210" y="98" />
 		</arc>
 
-		<arc class="logic arc" source="g3" target="g4" id="a2">
+		<arc class="logic arc" source="g3" target="g4.1" id="a2">
 			<start x="246" y="90" />
 			<end x="210" y="98" />
 		</arc>
 
-		<arc class="necessary stimulation" source="g4" target="g5" id="a3">
+		<arc class="necessary stimulation" source="g4.2" target="g5" id="a3">
 			<start x="210" y="182" />
 			<end x="210" y="210" />
 		</arc>
