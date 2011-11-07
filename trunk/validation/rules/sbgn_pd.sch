@@ -260,7 +260,7 @@ Schematron validation for SBGN PD
 				name="check-modulation-and_or_not-source-count-equals-1"
 				role="error"
 				see="sbgn-pd-L1V1.3-3.4.1"				
-				test="$count = 1"
+				test="$count &lt;= 1"
 				diagnostics="id port-id count">'and', 'or', and 'not' glyphs can only be connected to one modulation glyph. 
 			</iso:assert>
 		</iso:rule> 		
@@ -320,7 +320,7 @@ Schematron validation for SBGN PD
 				name="check-stimulation-and_or_not-source-count-equals-1"
 				role="error"
 				see="sbgn-pd-L1V1.3-3.4.1"				
-				test="$count = 1"
+				test="$count &lt;= 1"
 				diagnostics="id port-id count">'and', 'or', and 'not' glyphs can only be connected to one stimulation glyph. 
 			</iso:assert>
 		</iso:rule> 				
@@ -377,7 +377,7 @@ Schematron validation for SBGN PD
 				name="check-catalysis-and_or_not-source-count-equals-1"
 				role="error"
 				see="sbgn-pd-L1V1.3-3.4.1"				
-				test="$count = 1"
+				test="$count &lt;= 1"
 				diagnostics="id port-id count">'and', 'or', and 'not' glyphs can only be connected to one catalysis glyph. 
 			</iso:assert>
 		</iso:rule> 
@@ -437,7 +437,7 @@ Schematron validation for SBGN PD
 				name="check-inhibition-and_or_not-source-count-equals-1"
 				role="error"
 				see="sbgn-pd-L1V1.3-3.4.1"				
-				test="$count = 1"
+				test="$count &lt;= 1"
 				diagnostics="id port-id count">'and', 'or', and 'not' glyphs can only be connected to one inhibition glyph. 
 			</iso:assert>
 		</iso:rule> 		
@@ -497,7 +497,7 @@ Schematron validation for SBGN PD
 				name="check-necessary_stimulation-and_or_not-source-count-equals-1"
 				role="error"
 				see="sbgn-pd-L1V1.3-3.4.1"				
-				test="$count = 1"
+				test="$count &lt;= 1"
 				diagnostics="id port-id count">'and', 'or', and 'not' glyphs can only be connected to one necessary stimulation glyph. 
 			</iso:assert>
 		</iso:rule> 				
