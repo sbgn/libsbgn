@@ -41,9 +41,9 @@ public class TestSchematronValidation extends TestCase
 				boolean first = true;
 				for (Issue i : SchematronValidator.validate(f))
 				{
-					/* ignore rule pd10130: "EPNs should not be orphaned", 
+					/* ignore rule pd10131: "EPNs should not be orphaned", 
 					 * We violate it in our test-cases to keep it simple. */
-					if ("pd10130".equals(i.getRuleId())) continue;
+					if ("pd10131".equals(i.getRuleId())) continue;
 					
 					if (first)
 					{
