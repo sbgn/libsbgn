@@ -37,16 +37,16 @@ Schematron validation for SBGN PD
 		<iso:active pattern="pd10111"/>
 		<iso:active pattern="pd10112"/>
 		<iso:active pattern="pd10113"/>
-		<iso:active pattern="pd10114"/>
+
 		<iso:active pattern="pd10115"/>
 		<iso:active pattern="pd10116"/>
-		<iso:active pattern="pd10117"/>
+
 		<iso:active pattern="pd10118"/>
 		<iso:active pattern="pd10119"/>
-		<iso:active pattern="pd10120"/>
+
 		<iso:active pattern="pd10121"/>
 		<iso:active pattern="pd10122"/>
-		<iso:active pattern="pd10123"/>
+
 		<iso:active pattern="pd10124"/>
 		<iso:active pattern="pd10125"/>
 		<iso:active pattern="pd10126"/>
@@ -267,7 +267,7 @@ Schematron validation for SBGN PD
 				$port-class='and' or 
 				$port-class='or' or 
 				$port-class='not')" 
-				diagnostics="id source port-class class">Arc with class modulation must have source reference to glyph of EPN classes or a logical operator and target reference to port on glyph of PN classes
+				diagnostics="id source port-class class">Arc with class modulation must have source reference to glyph of EPN classes or a logical operator
 			</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
@@ -275,18 +275,18 @@ Schematron validation for SBGN PD
 		<iso:rule context="sbgn:arc[@class='modulation']">
 			<iso:let name="id" value="@id"/>			
 			<iso:let name="target" value="@target"/>			
-			<iso:let name="port-class" value="//sbgn:port[@id=$target]/../@class"/>	
+			<iso:let name="target-class" value="//sbgn:glyph[@id=$target]/@class"/>	
 			<iso:assert 
 				id="pd10110"
 				name="check-modulation-target-class"
 				role="error"
 				see="sbgn-pd-L1V1.3-3.4.1"				
 				test="
-				$port-class='process' or 
-				$port-class='omitted process' or
-				$port-class='uncertain process' or
-				$port-class='phenotype'" 
-				diagnostics="id target port-class">Arc with class modulation must have target reference to port on glyph with PN classes and source reference to glyph of EPN classes
+				$target-class='process' or 
+				$target-class='omitted process' or
+				$target-class='uncertain process' or
+				$target-class='phenotype'" 
+				diagnostics="id target target-class">Arc with class modulation must have target reference to PN classes
 			</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
@@ -295,16 +295,16 @@ Schematron validation for SBGN PD
 		<iso:rule context="sbgn:glyph[(@class='and') or (@class='or') or (@class='not')]">
 			<iso:let name="id" value="@id"/>
 			<iso:let name="port-id" value="./sbgn:port/@id"/>				
-			<iso:let name="count" value="count(//sbgn:arc[(./@class = 'modulation') and (./@source = current()/sbgn:port/@id)])"/>				
+			<iso:let name="count" value="count(//sbgn:arc[./@source = current()/sbgn:port/@id])"/>				
 			<iso:assert 
 				id="pd10111"
-				name="check-modulation-and_or_not-source-count-equals-1"
+				name="check-and_or_not-source-count-equals-1"
 				role="error"
 				see="sbgn-pd-L1V1.3-3.4.1"				
-				test="$count &lt;= 1"
-				diagnostics="id port-id count">'and', 'or', and 'not' glyphs can only be connected to one modulation glyph. 
+				test="$count = 1"
+				diagnostics="id port-id count">'and', 'or', and 'not' glyphs must be the source for exactly one arc. 
 			</iso:assert>
-		</iso:rule> 		
+		</iso:rule>
 	</iso:pattern> 
 
 	<iso:pattern id="pd10112">
@@ -353,25 +353,9 @@ Schematron validation for SBGN PD
 				$target-class='association' or
 				$target-class='dissociation' or
 				$target-class='phenotype'" 
-				diagnostics="id target">Arc with class stimulation must have target reference to glyph with PN classes
+				diagnostics="id target target-class">Arc with class stimulation must have target reference to glyph with PN classes
 			</iso:assert>
 		</iso:rule> 
-	</iso:pattern> 
-	<iso:pattern id="pd10114">
-		<!-- Limited Number Rules -->
-		<iso:rule context="sbgn:glyph[(@class='and') or (@class='or') or (@class='not')]">
-			<iso:let name="id" value="@id"/>
-			<iso:let name="port-id" value="./sbgn:port/@id"/>				
-			<iso:let name="count" value="count(//sbgn:arc[(./@class = 'stimulation') and (./@source = current()/sbgn:port/@id)])"/>				
-			<iso:assert 
-				id="pd10114"
-				name="check-stimulation-and_or_not-source-count-equals-1"
-				role="error"
-				see="sbgn-pd-L1V1.3-3.4.1"				
-				test="$count &lt;= 1"
-				diagnostics="id port-id count">'and', 'or', and 'not' glyphs can only be connected to one stimulation glyph. 
-			</iso:assert>
-		</iso:rule> 				
 	</iso:pattern> 
 
 	<iso:pattern id="pd10115">
@@ -418,22 +402,6 @@ Schematron validation for SBGN PD
 				$target-class='dissociation' or
 				$target-class='phenotype'" 
 				diagnostics="id target">Arc with class catalysis must have target reference to glyph with PN classes
-			</iso:assert>
-		</iso:rule> 
-	</iso:pattern> 
-	<iso:pattern id="pd10117">
-		<!-- Limited Number Rules -->
-		<iso:rule context="sbgn:glyph[(@class='and') or (@class='or') or (@class='not')]">
-			<iso:let name="id" value="@id"/>
-			<iso:let name="port-id" value="./sbgn:port/@id"/>				
-			<iso:let name="count" value="count(//sbgn:arc[(./@class = 'catalysis') and (./@source = current()/sbgn:port/@id)])"/>				
-			<iso:assert 
-				id="pd10117"
-				name="check-catalysis-and_or_not-source-count-equals-1"
-				role="error"
-				see="sbgn-pd-L1V1.3-3.4.1"				
-				test="$count &lt;= 1"
-				diagnostics="id port-id count">'and', 'or', and 'not' glyphs can only be connected to one catalysis glyph. 
 			</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
@@ -488,22 +456,6 @@ Schematron validation for SBGN PD
 			</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
-	<iso:pattern id="pd10120">
-		<!-- Limited Number Rules -->
-		<iso:rule context="sbgn:glyph[(@class='and') or (@class='or') or (@class='not')]">
-			<iso:let name="id" value="@id"/>
-			<iso:let name="port-id" value="./sbgn:port/@id"/>				
-			<iso:let name="count" value="count(//sbgn:arc[(./@class = 'inhibition') and (./@source = current()/sbgn:port/@id)])"/>				
-			<iso:assert 
-				id="pd10120"
-				name="check-inhibition-and_or_not-source-count-equals-1"
-				role="error"
-				see="sbgn-pd-L1V1.3-3.4.1"				
-				test="$count &lt;= 1"
-				diagnostics="id port-id count">'and', 'or', and 'not' glyphs can only be connected to one inhibition glyph. 
-			</iso:assert>
-		</iso:rule> 		
-	</iso:pattern> 
 
 	<iso:pattern id="pd10121">
 		<iso:rule context="sbgn:arc[@class='necessary stimulation']">
@@ -554,22 +506,6 @@ Schematron validation for SBGN PD
 				diagnostics="id target">Arc with class necessary stimulation must have target reference to glyph with PN classes
 			</iso:assert>
 		</iso:rule> 
-	</iso:pattern> 
-	<iso:pattern id="pd10123">
-		<!-- Limited Number Rules -->
-		<iso:rule context="sbgn:glyph[(@class='and') or (@class='or') or (@class='not')]">
-			<iso:let name="id" value="@id"/>
-			<iso:let name="port-id" value="./sbgn:port/@id"/>				
-			<iso:let name="count" value="count(//sbgn:arc[(./@class = 'necessary stimulation') and (./@source = current()/sbgn:port/@id)])"/>				
-			<iso:assert 
-				id="pd10123"
-				name="check-necessary_stimulation-and_or_not-source-count-equals-1"
-				role="error"
-				see="sbgn-pd-L1V1.3-3.4.1"				
-				test="$count &lt;= 1"
-				diagnostics="id port-id count">'and', 'or', and 'not' glyphs can only be connected to one necessary stimulation glyph. 
-			</iso:assert>
-		</iso:rule> 				
 	</iso:pattern> 
 
 	<iso:pattern id="pd10124">
