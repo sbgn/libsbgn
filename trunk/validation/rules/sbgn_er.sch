@@ -116,16 +116,19 @@ Schematron validation for SBGN ER
 	</iso:pattern> 
 	<iso:pattern id="er10102">
 		<iso:rule context="sbgn:arc[@class='assignment']">
+			<iso:let name="id" value="@id"/>			
 			<iso:let name="target" value="@target"/>			
-			<iso:let name="port-class" value="//sbgn:port[@id=$target]/../@class"/>	
+			<iso:let name="target-class" value="//sbgn:glyph[@id=$target]/@class"/>	
 			<iso:assert 
 				id="er10102"
 				name="check-assignment-target-class"
 				role="error"
 				see="sbgn-er-L1V1.2-3.3.1"				
 				test="
-				$port-class='state variable'" 
-				diagnostics="target port-class">Incorrect target reference for arc with class "assignment"
+				$target-class='state variable' or
+				$target-class='existence' or
+				$target-class='location'"
+				diagnostics="id target target-class">Incorrect target reference for arc with class "assignment"
 			</iso:assert>
 		</iso:rule> 	
 	</iso:pattern> 
@@ -151,17 +154,17 @@ Schematron validation for SBGN ER
 	<iso:pattern id="er10104">
 		<iso:rule context="sbgn:arc[@class='interaction']">
 			<iso:let name="target" value="@target"/>			
-			<iso:let name="port-class" value="//sbgn:port[@id=$target]/../@class"/>	
+			<iso:let name="target-class" value="//sbgn:glyph[@id=$target]/@class"/>	
 			<iso:assert 
 				id="er10104"
 				name="check-interaction-target-class"
 				role="error"
 				see="sbgn-er-L1V1.2-3.3.1"				
 				test="
-				$port-class='entity' or 
-				$port-class='outcome' or 
-				$port-class='unit of information'" 
-				diagnostics="target port-class">Incorrect target reference for arc with class "interaction"
+				$target-class='entity' or 
+				$target-class='outcome' or 
+				$target-class='unit of information'" 
+				diagnostics="target target-class">Incorrect target reference for arc with class "interaction"
 			</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
@@ -624,6 +627,7 @@ Schematron validation for SBGN ER
 		<iso:diagnostic id="source-count"><iso:value-of select="$source-count"/></iso:diagnostic> 
 		<iso:diagnostic id="target-count"><iso:value-of select="$target-count"/></iso:diagnostic> 
 		<iso:diagnostic id="target"><iso:value-of select="$target"/></iso:diagnostic> 
+		<iso:diagnostic id="target-class"><iso:value-of select="$target-class"/></iso:diagnostic> 
 		<iso:diagnostic id="port-id"><iso:value-of select="$port-id"/></iso:diagnostic> 
 		<iso:diagnostic id="port-class"><iso:value-of select="$port-class"/></iso:diagnostic> 
 	</iso:diagnostics> 
