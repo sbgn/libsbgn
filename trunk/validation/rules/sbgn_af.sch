@@ -15,27 +15,28 @@ Schematron validation for SBGN AF
 	<iso:title>sbgn_af_validation</iso:title>
 	
 	<iso:phase id="sanity">
-		<iso:active pattern="sanity-check"/>	
+		<iso:active pattern="00000"/>	
 	</iso:phase>
 	
 	<iso:phase id="basic"> 
-		<iso:active pattern="check-id"/>
-		<iso:active pattern="check-idref"/>
-		<iso:active pattern="check-positive-influence"/>
-		<iso:active pattern="check-negative-influence"/>
-		<iso:active pattern="check-unknown-influence"/>
-		<iso:active pattern="check-necessary-stimulation"/>
-		<iso:active pattern="check-logic-arc"/>
-		<iso:active pattern="check-equivalence-arc"/>		
+		<iso:active pattern="00001"/>
+		<iso:active pattern="00002"/>
+		<iso:active pattern="af10101"/>
+		<iso:active pattern="af10103"/>
+		<iso:active pattern="af10105"/>
+		<iso:active pattern="af10107"/>
+		<iso:active pattern="af10109"/>
+		<iso:active pattern="af10111"/>
+		<iso:active pattern="af10112"/>
 	</iso:phase>
 
-	<iso:pattern id="sanity-check">
+	<iso:pattern id="00000">
 		<iso:rule context="/*">
 			<iso:assert id="00000" name="sanity-check" test="false()">This assertion should always fail.</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
 	
-	<iso:pattern id="check-id">
+	<iso:pattern id="00001">
 		<iso:rule context="//*[@id]">
 			<iso:let name="id" value="@id"/>
 			<iso:assert 
@@ -45,7 +46,7 @@ Schematron validation for SBGN AF
 		</iso:rule> 
 	</iso:pattern> 
 	
-	<iso:pattern id="check-idref">
+	<iso:pattern id="00002">
 		<iso:rule context="sbgn:arc">
 			<iso:let name="target" value="@target"/>
 			<iso:assert
@@ -55,7 +56,7 @@ Schematron validation for SBGN AF
 		</iso:rule> 
 	</iso:pattern> 
 
-	<iso:pattern id="check-positive-influence">
+	<iso:pattern id="af10101">
 		<iso:rule context="sbgn:arc[@class='positive influence']">
 			<iso:let name="id" value="@id"/>
 			<iso:let name="source" value="@source"/>			
@@ -90,7 +91,7 @@ Schematron validation for SBGN AF
 		</iso:rule> 
 	</iso:pattern> 
 
-	<iso:pattern id="check-negative-influence">
+	<iso:pattern id="af10103">
 		<iso:rule context="sbgn:arc[@class='negative influence']">
 			<iso:let name="id" value="@id"/>
 			<iso:let name="source" value="@source"/>			
@@ -125,7 +126,7 @@ Schematron validation for SBGN AF
 		</iso:rule> 
 	</iso:pattern> 
 	
-	<iso:pattern id="check-unknown-influence">
+	<iso:pattern id="af10105">
 		<iso:rule context="sbgn:arc[@class='unknown influence']">
 			<iso:let name="id" value="@id"/>
 			<iso:let name="source" value="@source"/>			
@@ -160,7 +161,7 @@ Schematron validation for SBGN AF
 		</iso:rule> 
 	</iso:pattern> 
 	
-	<iso:pattern id="check-necessary-stimulation">
+	<iso:pattern id="af10107">
 		<iso:rule context="sbgn:arc[@class='necessary stimulation']">
 			<iso:let name="id" value="@id"/>
 			<iso:let name="source" value="@source"/>			
@@ -195,7 +196,7 @@ Schematron validation for SBGN AF
 		</iso:rule> 
 	</iso:pattern> 
 	
-	<iso:pattern id="check-logic-arc">
+	<iso:pattern id="af10109">
 		<iso:rule context="sbgn:arc[@class='logic arc']">
 			<iso:let name="id" value="@id"/>
 			<iso:let name="source" value="@source"/>			
@@ -225,7 +226,9 @@ Schematron validation for SBGN AF
 				diagnostics="id target target-class port-class">Incorrect target reference for arc with class "logic arc"
 			</iso:assert>
 		</iso:rule> 
-		<!-- Limited Number Rules -->
+	</iso:pattern> 
+	<!-- Limited Number Rules -->
+	<iso:pattern id="af10111">
 		<iso:rule context="sbgn:glyph[@class='not']">
 			<iso:let name="id" value="@id"/>
 			<iso:let name="port-id" value="./sbgn:port/@id"/>				
@@ -241,7 +244,7 @@ Schematron validation for SBGN AF
 		</iso:rule>	
 	</iso:pattern> 
 	
-	<iso:pattern id="check-equivalence-arc">
+	<iso:pattern id="af10112">
 		<iso:rule context="sbgn:arc[@class='equivalence arc']">
 			<iso:let name="id" value="@id"/>
 			<iso:let name="source" value="@source"/>			

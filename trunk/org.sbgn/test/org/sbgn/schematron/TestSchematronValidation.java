@@ -62,7 +62,7 @@ public class TestSchematronValidation extends TestCase
 
 	public void testNegativeTestCases() throws IOException, ParserConfigurationException, TransformerException, SAXException, JAXBException
 	{
-		for (String lang : new String[] { "AF", "PD"})
+		for (String lang : langShortNames)
 		{
 			File testFilesDir = new File (negTestFilesDir, lang);
 			assertTrue ("Could not find directory " + testFilesDir, testFilesDir.exists());
