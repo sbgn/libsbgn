@@ -28,6 +28,8 @@
 
 		<arc class="positive influence" source="g1" target="g2" id="a1">
 			<start x="97" y="60" />
+			<next x="77" y="75" />
+			<next x="66" y="100" />
 			<end x="69" y="126" />
 		</arc>
 
