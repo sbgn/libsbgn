@@ -40,7 +40,7 @@
 
 		<arc class="negative influence" source="g2" target="g1" id="a3">
 			<start x="80" y="126" />
-			<end x="115" y="60" />
+			<end x="115" y="65" />
 		</arc>
 
 		<arc class="positive influence" source="g3" target="g4" id="a4">
