@@ -47,7 +47,7 @@
 
 	<arc source="id6" target="id4" class="inhibition" id="a3">
 		<start x="180" y="168"/>
-		<end x="115" y="168"/>
+		<end x="120" y="168"/>
 	</arc>
 </map>
 </sbgn>
