@@ -32,7 +32,7 @@
 
 	<arc class="absolute inhibition" source="g3" target="g6" id="a2">
 		<start x="240" y="70" />
-		<end x="240" y="130" />
+		<end x="240" y="125" />
 	</arc>
 
 	<arc class="stimulation" source="g5" target="g4" id="a3">
