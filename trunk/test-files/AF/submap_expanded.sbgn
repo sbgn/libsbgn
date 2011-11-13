@@ -84,7 +84,7 @@
 
 		<arc class="negative influence" source="g4" target="g7" id="a4">
 			<start x="190" y="330"/>
-			<end x="190" y="410"/>
+			<end x="190" y="405"/>
 		</arc>
 
 		<arc class="equivalence arc" source="g3" target="g8" id="a5">
