@@ -77,7 +77,7 @@
 
 	<arc class="absolute inhibition" source="g5_2" target="g6" id="a6">
 		<start x="217" y="188" />
-		<end x="217" y="83" />
+		<end x="217" y="93" />
 	</arc>
 </map>
 </sbgn>
