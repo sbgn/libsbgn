@@ -28,7 +28,7 @@
 
 	<arc class="absolute inhibition" source="g5" target="g4_2" id="a1">
 		<start x="210" y="70" />
-		<end x="210" y="109" />
+		<end x="210" y="104" />
 	</arc>	
 	
 	<arc class="stimulation" source="g4_1" target="g6" id="a2">
