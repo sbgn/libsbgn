@@ -28,9 +28,10 @@
 
 		<arc class="positive influence" source="g1" target="g2" id="a1">
 			<start x="97" y="60" />
-			<next x="77" y="75" />
-			<next x="66" y="100" />
-			<end x="69" y="126" />
+			<end x="69" y="126">
+			<control x="77" y="75" />
+			<control x="66" y="100" />
+			</end>
 		</arc>
 
 		<arc class="positive influence" source="g1" target="g3" id="a2">
