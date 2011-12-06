@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<sbgn xmlns="http://sbgn.org/libsbgn/0.2">
+    <map language="entity relationship">
+        <glyph id="ee27d" class="phenotype">
+            <label text="C"/>
+            <bbox y="69.0" x="255.0" h="20.0" w="80.0"/>
+        </glyph>
+        <glyph id="f5e86" class="or">
+            <label text="OR"/>
+            <bbox y="125.0" x="168.0" h="20.0" w="20.0"/>
+            <port y="135.0" x="153.0" id="f5e86.1"/>
+            <port y="135.0" x="203.0" id="f5e86.2"/>
+        </glyph>
+        <glyph id="af0b8" class="macromolecule">
+            <label text="A"/>
+            <bbox y="69.0" x="27.0" h="20.0" w="80.0"/>
+        </glyph>
+        <glyph id="bd270" class="macromolecule">
+            <label text="B"/>
+            <bbox y="160.0" x="26.0" h="20.0" w="80.0"/>
+        </glyph>
+        <arc target="f5e86.1" source="af0b8" id="ca8cc" class="consumption">
+            <start y="79.0" x="107.0"/>
+            <end y="135.0" x="153.0"/>
+        </arc>
+        <arc target="f5e86.1" source="bd270" id="a7ede" class="consumption">
+            <start y="170.0" x="106.0"/>
+            <end y="135.0" x="153.0"/>
+        </arc>
+        <arc target="ee27d" source="f5e86.2" id="f61cd" class="modulation">
+            <start y="135.0" x="203.0"/>
+            <end y="79.0" x="255.0"/>
+        </arc>
+    </map>
+</sbgn>
