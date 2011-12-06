@@ -33,22 +33,17 @@ Schematron validation for SBGN ER
 		<iso:active pattern="er10106"/>
 		<iso:active pattern="er10107"/>
 		<iso:active pattern="er10108"/>
-		<iso:active pattern="er10109"/>
-		<iso:active pattern="er10110"/>
+		
 		<iso:active pattern="er10111"/>
-		<iso:active pattern="er10112"/>
-		<iso:active pattern="er10113"/>
+		
 		<iso:active pattern="er10114"/>
-		<iso:active pattern="er10115"/>
-		<iso:active pattern="er10116"/>
+		
 		<iso:active pattern="er10117"/>
-		<iso:active pattern="er10118"/>
-		<iso:active pattern="er10119"/>
+		
 		<iso:active pattern="er10120"/>
-		<iso:active pattern="er10121"/>
-		<iso:active pattern="er10122"/>
+		
 		<iso:active pattern="er10123"/>
-		<iso:active pattern="er10124"/>
+
 		<iso:active pattern="er10125"/>
 		<iso:active pattern="er10126"/>
 		<iso:active pattern="er10127"/>
@@ -127,7 +122,8 @@ Schematron validation for SBGN ER
 				test="
 				$target-class='state variable' or
 				$target-class='existence' or
-				$target-class='location'"
+				$target-class='location' or
+				$target-class='implicit xor'"
 				diagnostics="id target target-class">Incorrect target reference for arc with class "assignment"
 			</iso:assert>
 		</iso:rule> 	
@@ -187,43 +183,53 @@ Schematron validation for SBGN ER
 	</iso:pattern> 
 	
 	<iso:pattern id="er10106">
-		<iso:rule context="sbgn:arc[@class='modulation']">
+		<iso:rule context="sbgn:arc[(@class='modulation') or (@class='stimulation') or (@class='inhibition') or (@class='necessary stimulation') or (@class='absolute inhibition') or (@class='absolute stimulation')]">
+			<iso:let name="id" value="@id"/>
 			<iso:let name="source" value="@source"/>			
+			<iso:let name="port-class" value="//sbgn:port[@id=$source]/../@class"/>	
 			<iso:let name="class" value="//sbgn:glyph[@id=$source]/@class"/>	
-			<!-- TODO: and or not delay I(1) -->
 			<iso:assert 
 				id="er10106"
-				name="check-modulation-source-class"
+				name="check-influence-source-class"
 				role="error"
-				see="sbgn-er-L1V1.2-3.3.1"				
+				see="sbgn-er-L1V1.2-3.3.1"
 				test="
 				$class='entity' or 
 				$class='outcome' or 
-				$class='and' or
-				$class='or' or
-				$class='not' or 	
-				$class='delay' or 				
+				$port-class='and' or
+				$port-class='or' or
+				$port-class='not' or 	
+				$port-class='delay' or 				
 				$class='perturbing agent'" 
-				diagnostics="source class">Incorrect source reference for arc with class "modulation"
+				diagnostics="id source port-class class">Incorrect source reference for influence arc
 			</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
 	<iso:pattern id="er10107">
-		<iso:rule context="sbgn:arc[@class='modulation']">
+		<iso:rule context="sbgn:arc[(@class='modulation') or (@class='stimulation') or (@class='inhibition') or (@class='necessary stimulation') or (@class='absolute inhibition') or (@class='absolute stimulation')]">
+			<iso:let name="id" value="@id"/>
 			<iso:let name="target" value="@target"/>			
+			<iso:let name="class" value="//sbgn:glyph[@id=$target]/@class"/>	
 			<iso:let name="port-class" value="//sbgn:port[@id=$target]/../@class"/>	
-			<!-- TODO: This is probably wrong in the specification -->
 			<iso:assert 
 				id="er10107"
-				name="check-modulation-target-class"
+				name="check-influence-target-class"
 				role="error"
 				see="sbgn-er-L1V1.2-3.3.1"				
 				test="
-				$port-class=''" 
-				diagnostics="target port-class">Incorrect target reference for arc with class "modulation"
+				$port-class='modulation' or
+				$port-class='stimulation' or
+				$port-class='inhibition' or
+				$port-class='necessary stimulation' or
+				$port-class='absolute stimulation' or
+				$port-class='assignment' or
+				$port-class='interaction' or
+				$class='phenotype'" 
+				diagnostics="id target port-class class">Incorrect target reference for influence arc
 			</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
+
 	<iso:pattern id="er10108">
 		<!-- Number Limited Rules --> 
 		<iso:rule context="sbgn:glyph[(@class='outcome') or (@class='and') or (@class='or') or (@class='not') or (@class='delay')]">
@@ -241,50 +247,6 @@ Schematron validation for SBGN ER
 		</iso:rule> 			
 	</iso:pattern> 
 		
-	<iso:pattern id="er10109">
-		<iso:rule context="sbgn:arc[@class='stimulation']">
-			<iso:let name="source" value="@source"/>			
-			<iso:let name="class" value="//sbgn:glyph[@id=$source]/@class"/>	
-			<!-- FIX: and or not delay I(1) -->
-			<iso:assert 
-				id="er10109"
-				name="check-stimulation-source-class"
-				role="error"
-				see="sbgn-er-L1V1.2-3.3.1"				
-				test="
-				$class='entity' or 
-				$class='outcome' or 
-				$class='and' or
-				$class='or' or
-				$class='not' or 	
-				$class='delay' or 				
-				$class='perturbing agent'" 
-				diagnostics="source class">Incorrect source reference for arc with class "stimulation"
-			</iso:assert>
-		</iso:rule> 
-	</iso:pattern> 
-	<iso:pattern id="er10110">
-		<iso:rule context="sbgn:arc[@class='stimulation']">
-			<iso:let name="target" value="@target"/>			
-			<iso:let name="port-class" value="//sbgn:port[@id=$target]/../@class"/>	
-			<iso:assert 
-				id="er10110"
-				name="check-stimulation-target-class"
-				role="error"
-				see="sbgn-er-L1V1.2-3.3.1"				
-				test="
-				$port-class='modulation' or
-				$port-class='stimulation' or
-				$port-class='inhibition' or
-				$port-class='necessary stimulation' or
-				$port-class='absolute stimulation' or
-				$port-class='assignment' or
-				$port-class='interaction' or
-				$port-class='phenotype'" 
-				diagnostics="target port-class">Incorrect target reference for arc with class "stimulation"
-			</iso:assert>
-		</iso:rule> 
-	</iso:pattern> 
 	<iso:pattern id="er10111">
 		<!-- Number Limited Rules --> 
 		<iso:rule context="sbgn:glyph[(@class='outcome') or (@class='and') or (@class='or') or (@class='not') or (@class='delay')]">
@@ -302,50 +264,6 @@ Schematron validation for SBGN ER
 		</iso:rule> 		
 	</iso:pattern> 
 	
-	<iso:pattern id="er10112">
-		<iso:rule context="sbgn:arc[@class='inhibition']">
-			<iso:let name="source" value="@source"/>			
-			<iso:let name="class" value="//sbgn:glyph[@id=$source]/@class"/>	
-			<!-- FIX: and or not delay I(1) -->
-			<iso:assert 
-				id="er10112"
-				name="check-inhibition-source-class"
-				role="error"
-				see="sbgn-er-L1V1.2-3.3.1"				
-				test="
-				$class='entity' or 
-				$class='outcome' or 
-				$class='and' or
-				$class='or' or
-				$class='not' or 	
-				$class='delay' or 				
-				$class='perturbing agent'" 
-				diagnostics="source class">Incorrect source reference for arc with class "inhibition"
-			</iso:assert>
-		</iso:rule> 
-	</iso:pattern> 
-	<iso:pattern id="er10113">
-		<iso:rule context="sbgn:arc[@class='inhibition']">
-			<iso:let name="target" value="@target"/>			
-			<iso:let name="port-class" value="//sbgn:port[@id=$target]/../@class"/>	
-			<iso:assert 
-				id="er10113"
-				name="check-inhibition-target-class"
-				role="error"
-				see="sbgn-er-L1V1.2-3.3.1"				
-				test="
-				$port-class='modulation' or
-				$port-class='stimulation' or
-				$port-class='inhibition' or
-				$port-class='necessary stimulation' or
-				$port-class='absolute stimulation' or
-				$port-class='assignment' or
-				$port-class='interaction' or
-				$port-class='phenotype'" 
-				diagnostics="target port-class">Incorrect target reference for arc with class "inhibition"
-			</iso:assert>
-		</iso:rule> 
-	</iso:pattern> 
 	<iso:pattern id="er10114">
 		<!-- Number Limited Rules --> 
 		<iso:rule context="sbgn:glyph[(@class='outcome') or (@class='and') or (@class='or') or (@class='not') or (@class='delay')]">
@@ -363,51 +281,6 @@ Schematron validation for SBGN ER
 		</iso:rule> 		
 	</iso:pattern> 
 	
-	<iso:pattern id="er10115">
-		<iso:rule context="sbgn:arc[@class='necessary stimulation']">
-			<iso:let name="source" value="@source"/>			
-			<iso:let name="class" value="//sbgn:glyph[@id=$source]/@class"/>	
-			<iso:let name="port-class" value="//sbgn:port[@id=$source]/../@class"/>	
-			<!-- FIX: and or not delay I(1) -->
-			<iso:assert 
-				id="er10115"
-				name="check-necessary-stimulation-source-class"
-				role="error"
-				see="sbgn-er-L1V1.2-3.3.1"				
-				test="
-				$class='entity' or 
-				$class='outcome' or 
-				$port-class='and' or
-				$port-class='or' or
-				$port-class='not' or 	
-				$port-class='delay' or 				
-				$class='perturbing agent'" 
-				diagnostics="source class">Incorrect source reference for arc with class "necessary stimulation"
-			</iso:assert>
-		</iso:rule> 
-	</iso:pattern> 
-	<iso:pattern id="er10116">
-		<iso:rule context="sbgn:arc[@class='necessary stimulation']">
-			<iso:let name="target" value="@target"/>			
-			<iso:let name="port-class" value="//sbgn:port[@id=$target]/../@class"/>	
-			<iso:assert 
-				id="er10116"
-				name="check-necessary-stimulation-target-class"
-				role="error"
-				see="sbgn-er-L1V1.2-3.3.1"				
-				test="
-				$port-class='modulation' or
-				$port-class='stimulation' or
-				$port-class='inhibition' or
-				$port-class='necessary stimulation' or
-				$port-class='absolute stimulation' or
-				$port-class='assignment' or
-				$port-class='interaction' or
-				$port-class='phenotype'" 
-				diagnostics="target port-class">Incorrect target reference for arc with class "necessary stimulation"
-			</iso:assert>
-		</iso:rule> 
-	</iso:pattern> 
 	<iso:pattern id="er10117">
 		<!-- Number Limited Rules --> 
 		<iso:rule context="sbgn:glyph[(@class='outcome') or (@class='and') or (@class='or') or (@class='not') or (@class='delay')]">
@@ -425,49 +298,6 @@ Schematron validation for SBGN ER
 		</iso:rule> 		
 	</iso:pattern> 
 	
-	<iso:pattern id="er10118">
-		<iso:rule context="sbgn:arc[@class='absolute stimulation']">
-			<iso:let name="source" value="@source"/>			
-			<iso:let name="class" value="//sbgn:glyph[@id=$source]/@class"/>	
-			<iso:assert 
-				id="er10118"
-				name="check-absolute-stimulation-source-class"
-				role="error"
-				see="sbgn-er-L1V1.2-3.3.1"				
-				test="
-				$class='entity' or 
-				$class='outcome' or 
-				$class='and' or
-				$class='or' or
-				$class='not' or 	
-				$class='delay' or 				
-				$class='perturbing agent'" 
-				diagnostics="source class">Incorrect source reference for arc with class "absolute stimulation"
-			</iso:assert>
-		</iso:rule> 
-	</iso:pattern> 
-	<iso:pattern id="er10119">
-		<iso:rule context="sbgn:arc[@class='absolute stimulation']">
-			<iso:let name="target" value="@target"/>			
-			<iso:let name="port-class" value="//sbgn:port[@id=$target]/../@class"/>	
-			<iso:assert 
-				id="er10119"
-				name="check-absolute-stimulation-target-class"
-				role="error"
-				see="sbgn-er-L1V1.2-3.3.1"				
-				test="
-				$port-class='modulation' or
-				$port-class='stimulation' or
-				$port-class='inhibition' or
-				$port-class='necessary stimulation' or
-				$port-class='absolute stimulation' or
-				$port-class='assignment' or
-				$port-class='interaction' or
-				$port-class='phenotype'" 
-				diagnostics="target port-class">Incorrect target reference for arc with class "absolute stimulation"
-			</iso:assert>
-		</iso:rule> 
-	</iso:pattern> 
 	<iso:pattern id="er10120">
 		<!-- Number Limited Rules --> 
 		<iso:rule context="sbgn:glyph[(@class='outcome') or (@class='and') or (@class='or') or (@class='not') or (@class='delay')]">
@@ -485,50 +315,6 @@ Schematron validation for SBGN ER
 		</iso:rule>		
 	</iso:pattern> 	
 	
-	<iso:pattern id="er10121">
-		<iso:rule context="sbgn:arc[@class='absolute inhibition']">
-			<iso:let name="source" value="@source"/>			
-			<iso:let name="class" value="//sbgn:glyph[@id=$source]/@class"/>	
-			<!-- FIX: and or not delay I(1) -->
-			<iso:assert 
-				id="er10121"
-				name="check-absolute-inhibition-source-class"
-				role="error"
-				see="sbgn-er-L1V1.2-3.3.1"				
-				test="
-				$class='entity' or 
-				$class='outcome' or 
-				$class='and' or
-				$class='or' or
-				$class='not' or 	
-				$class='delay' or 				
-				$class='perturbing agent'" 
-				diagnostics="source class">Incorrect source reference for arc with class "absolute inhibition"
-			</iso:assert>
-		</iso:rule> 
-	</iso:pattern> 
-	<iso:pattern id="er10122">
-		<iso:rule context="sbgn:arc[@class='absolute inhibition']">
-			<iso:let name="target" value="@target"/>			
-			<iso:let name="port-class" value="//sbgn:port[@id=$target]/../@class"/>	
-			<iso:assert 
-				id="er10122"
-				name="check-absolute-inhibition-target-class"
-				role="error"
-				see="sbgn-er-L1V1.2-3.3.1"				
-				test="
-				$port-class='modulation' or
-				$port-class='stimulation' or
-				$port-class='inhibition' or
-				$port-class='necessary stimulation' or
-				$port-class='absolute stimulation' or
-				$port-class='assignment' or
-				$port-class='interaction' or
-				$port-class='phenotype'" 
-				diagnostics="target port-class">Incorrect target reference for arc with class "absolute inhibition"
-			</iso:assert>
-		</iso:rule> 
-	</iso:pattern> 
 	<iso:pattern id="er10123">
 		<!-- Number Limited Rules --> 
 		<iso:rule context="sbgn:glyph[(@class='outcome') or (@class='and') or (@class='or') or (@class='not') or (@class='delay')]">
@@ -546,28 +332,6 @@ Schematron validation for SBGN ER
 		</iso:rule>				
 	</iso:pattern> 		
 	
-	<iso:pattern id="er10124">
-		<iso:rule context="sbgn:arc[@class='logic arc']">
-			<iso:let name="source" value="@source"/>			
-			<iso:let name="class" value="//sbgn:glyph[@id=$source]/@class"/>	
-			<!-- FIX: and or not delay I(1)O(1) -->
-			<iso:assert 
-				id="er10124"
-				name="check-logic-arc-source-class"
-				role="error"
-				see="sbgn-er-L1V1.2-3.3.1"				
-				test="
-				$class='entity' or 
-				$class='outcome' or 
-				$class='and' or
-				$class='or' or
-				$class='not' or 	
-				$class='delay' or 				
-				$class='perturbing agent'" 
-				diagnostics="source class">Incorrect source reference for arc with class "absolute inhibition"
-			</iso:assert>
-		</iso:rule> 
-	</iso:pattern> 
 	<iso:pattern id="er10125">
 		<iso:rule context="sbgn:arc[@class='logic arc']">
 			<iso:let name="target" value="@target"/>			
