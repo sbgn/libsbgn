@@ -33,20 +33,9 @@ Schematron validation for SBGN ER
 		<iso:active pattern="er10106"/>
 		<iso:active pattern="er10107"/>
 		<iso:active pattern="er10108"/>
-		
+		<iso:active pattern="er10109"/>
+		<iso:active pattern="er10110"/>
 		<iso:active pattern="er10111"/>
-		
-		<iso:active pattern="er10114"/>
-		
-		<iso:active pattern="er10117"/>
-		
-		<iso:active pattern="er10120"/>
-		
-		<iso:active pattern="er10123"/>
-
-		<iso:active pattern="er10125"/>
-		<iso:active pattern="er10126"/>
-		<iso:active pattern="er10127"/>
 	</iso:phase>
 
 	<iso:pattern id="00000">
@@ -235,104 +224,19 @@ Schematron validation for SBGN ER
 		<iso:rule context="sbgn:glyph[(@class='outcome') or (@class='and') or (@class='or') or (@class='not') or (@class='delay')]">
 			<iso:let name="id" value="@id"/>
 			<iso:let name="port-id" value="./sbgn:port/@id"/>				
-			<iso:let name="source-count" value="count(//sbgn:arc[(./@class = 'modulation') and (./@source = current()/sbgn:port/@id)])"/>										
+			<iso:let name="source-count" value="count(//sbgn:arc[./@source = current()/sbgn:port/@id])"/>										
 			<iso:assert 
 				id="er10108"
 				name="check-modulation-outcome_and_or_not_delay-source-count-equals-1"
 				role="error"
 				see="sbgn-pd-L1V1.3-3.4.1"				
 				test="$source-count &lt;= 1"
-				diagnostics="id port-id source-count">The 'outcome', 'and', 'or', 'not', and 'delay' glyphs can only be connected to one modulation glyph at the input. 
+				diagnostics="id port-id source-count">The 'outcome', 'and', 'or', 'not', and 'delay' glyphs can only be connected to one arc at the input. 
 			</iso:assert>
 		</iso:rule> 			
 	</iso:pattern> 
-		
-	<iso:pattern id="er10111">
-		<!-- Number Limited Rules --> 
-		<iso:rule context="sbgn:glyph[(@class='outcome') or (@class='and') or (@class='or') or (@class='not') or (@class='delay')]">
-			<iso:let name="id" value="@id"/>
-			<iso:let name="port-id" value="./sbgn:port/@id"/>				
-			<iso:let name="source-count" value="count(//sbgn:arc[(./@class = 'stimulation') and (./@source = current()/sbgn:port/@id)])"/>										
-			<iso:assert 
-				id="er10111"
-				name="check-stimulation-outcome_and_or_not_delay-source-count-equals-1"
-				role="error"
-				see="sbgn-pd-L1V1.3-3.4.1"				
-				test="$source-count &lt;= 1"
-				diagnostics="id port-id source-count">The 'outcome', 'and', 'or', 'not', and 'delay' glyphs can only be connected to one stimulation glyph at the input.
-			</iso:assert>
-		</iso:rule> 		
-	</iso:pattern> 
-	
-	<iso:pattern id="er10114">
-		<!-- Number Limited Rules --> 
-		<iso:rule context="sbgn:glyph[(@class='outcome') or (@class='and') or (@class='or') or (@class='not') or (@class='delay')]">
-			<iso:let name="id" value="@id"/>
-			<iso:let name="port-id" value="./sbgn:port/@id"/>				
-			<iso:let name="source-count" value="count(//sbgn:arc[(./@class = 'inhibition') and (./@source = current()/sbgn:port/@id)])"/>										
-			<iso:assert 
-				id="er10114"
-				name="check-inhibition-outcome_and_or_not_delay-source-count-equals-1"
-				role="error"
-				see="sbgn-pd-L1V1.3-3.4.1"				
-				test="$source-count &lt;= 1"
-				diagnostics="id port-id source-count">The 'outcome', 'and', 'or', 'not', and 'delay' glyphs can only be connected to one inhibition glyph at the input.
-			</iso:assert>
-		</iso:rule> 		
-	</iso:pattern> 
-	
-	<iso:pattern id="er10117">
-		<!-- Number Limited Rules --> 
-		<iso:rule context="sbgn:glyph[(@class='outcome') or (@class='and') or (@class='or') or (@class='not') or (@class='delay')]">
-			<iso:let name="id" value="@id"/>
-			<iso:let name="port-id" value="./sbgn:port/@id"/>				
-			<iso:let name="source-count" value="count(//sbgn:arc[(./@class = 'necessary stimulation') and (./@source = current()/sbgn:port/@id)])"/>										
-			<iso:assert 
-				id="er10117"
-				name="check-necessary_stimulation-outcome_and_or_not_delay-source-count-equals-1"
-				role="error"
-				see="sbgn-pd-L1V1.3-3.4.1"				
-				test="$source-count &lt;= 1"
-				diagnostics="id port-id source-count">The 'outcome', 'and', 'or', 'not', and 'delay' glyphs can only be connected to one necessary stimulation glyph at the input.
-			</iso:assert>
-		</iso:rule> 		
-	</iso:pattern> 
-	
-	<iso:pattern id="er10120">
-		<!-- Number Limited Rules --> 
-		<iso:rule context="sbgn:glyph[(@class='outcome') or (@class='and') or (@class='or') or (@class='not') or (@class='delay')]">
-			<iso:let name="id" value="@id"/>
-			<iso:let name="port-id" value="./sbgn:port/@id"/>				
-			<iso:let name="source-count" value="count(//sbgn:arc[(./@class = 'absolute stimulation') and (./@source = current()/sbgn:port/@id)])"/>										
-			<iso:assert 
-				id="er10120"
-				name="check-absolute_stimulation-outcome_and_or_not_delay-source-count-equals-1"
-				role="error"
-				see="sbgn-pd-L1V1.3-3.4.1"				
-				test="$source-count &lt;= 1"
-				diagnostics="id port-id source-count">The 'outcome', 'and', 'or', 'not', and 'delay' glyphs can only be connected to one absolute stimulation glyph at the input.
-			</iso:assert>
-		</iso:rule>		
-	</iso:pattern> 	
-	
-	<iso:pattern id="er10123">
-		<!-- Number Limited Rules --> 
-		<iso:rule context="sbgn:glyph[(@class='outcome') or (@class='and') or (@class='or') or (@class='not') or (@class='delay')]">
-			<iso:let name="id" value="@id"/>
-			<iso:let name="port-id" value="./sbgn:port/@id"/>				
-			<iso:let name="source-count" value="count(//sbgn:arc[(./@class = 'absolute inhibition') and (./@source = current()/sbgn:port/@id)])"/>										
-			<iso:assert 
-				id="er10123"
-				name="check-absolute_inhibition-outcome_and_or_not_delay-source-count-equals-1"
-				role="error"
-				see="sbgn-pd-L1V1.3-3.4.1"				
-				test="$source-count &lt;= 1"
-				diagnostics="id port-id source-count">The 'outcome', 'and', 'or', 'not', and 'delay' glyphs can only be connected to one absolute inhibition glyph at the input.
-			</iso:assert>
-		</iso:rule>				
-	</iso:pattern> 		
-	
-	<iso:pattern id="er10125">
+			
+	<iso:pattern id="er10109">
 		<iso:rule context="sbgn:arc[@class='logic arc']">
 			<iso:let name="target" value="@target"/>			
 			<iso:let name="port-class" value="//sbgn:port[@id=$target]/../@class"/>	
@@ -350,7 +254,7 @@ Schematron validation for SBGN ER
 			</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
-	<iso:pattern id="er10126">
+	<iso:pattern id="er10110">
 		<!-- Number Limited Rules --> 
 		<iso:rule context="sbgn:glyph[(@class='outcome') or (@class='and') or (@class='or') or (@class='not') or (@class='delay')]">
 			<iso:let name="id" value="@id"/>
@@ -366,7 +270,7 @@ Schematron validation for SBGN ER
 			</iso:assert>
 		</iso:rule>		
 	</iso:pattern> 
-	<iso:pattern id="er10127">
+	<iso:pattern id="er10111">
 		<iso:rule context="sbgn:glyph[(@class='not') or (@class='delay')]">
 			<iso:let name="id" value="@id"/>
 			<iso:let name="port-id" value="./sbgn:port/@id"/>				
