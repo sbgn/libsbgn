@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <project name="libsbgn" default="dist" basedir=".">
   
-  <property name="libsbgn.version" value="milestone1"/>
+  <property name="libsbgn.version" value="milestone2"/>
   
    <macrodef name="iterate">
 		<attribute name="target"/>
@@ -42,9 +42,9 @@
 
 		<zip destfile="${zipbase}.zip">
 			<zipfileset dir="." prefix="libsbgn-${libsbgn.version}">
-				<include name="docs" />
+				<include name="docs/**/*" />
 				<include name="build.xml" />
-				<include name="org.sbgn" />
+				<include name="org.sbgn/**/*" />
 				<include name="test-files/**/*" />
 				<include name="example-files/**/*" />
 				<include name="validation/**/*" />
@@ -54,6 +54,7 @@
 				<include name="COPYING.txt" />
 				<include name="licenses/*.txt" />
 				<include name="specifications/**/*" />
+				<include name="sbgnutil.sh" />
 			</zipfileset>
 			<zipfileset dir="dist" prefix="libsbgn-${libsbgn.version}">
 				<include name="org.sbgn.jar"/>

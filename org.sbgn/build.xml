@@ -55,7 +55,7 @@
     <manifestclasspath property="manifest.cp" jarfile="${jar.name}">
 	  <classpath refid="project.classpath"/>
     </manifestclasspath>
-	<jar jarfile="${jar.name}">
+	<jar jarfile="${jar.name}" manifest="META-INF/MANIFEST.MF">
 	  <fileset dir="build">
 		<include name="**/*.class"/>
 		<include name="**/*.xsl"/>
