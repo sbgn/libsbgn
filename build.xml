@@ -45,6 +45,7 @@
 				<include name="docs/**/*" />
 				<include name="build.xml" />
 				<include name="org.sbgn/**/*" />
+				<include name="resources/SBGN.xsd" />
 				<include name="test-files/**/*" />
 				<include name="example-files/**/*" />
 				<include name="validation/**/*" />
