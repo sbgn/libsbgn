@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.sbgn
+Bundle-SymbolicName: org.sbgn
+Bundle-Version: 0.2
+Bundle-ClassPath: lib/saxon9-dom.jar,
+ lib/saxon9.jar,
+ buildlib/junit.jar
+Export-Package: org.sbgn,
+ org.sbgn.bindings
+Import-Package: org.jdom;version="1.1.0",
+ org.jdom.input;version="1.1.0",
+ org.jdom.output;version="1.1.0"
