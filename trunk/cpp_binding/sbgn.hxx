@@ -556,24 +556,33 @@ namespace xml_schema
 //
 namespace libsbgn
 {
-  namespace pd_0_1
+  namespace sn_0_2
   {
-    class bbox;
-    class map;
-    class sbgn;
-    class glyph;
-    class arc;
+    class SBGNBase;
+    class notes;
+    class extension;
     class point;
+    class bbox;
     class label;
+    class sbgn;
+    class map;
+    class port;
+    class glyph;
+    class arcgroup;
+    class arc;
+    class language;
     class state;
     class clone;
-    class port;
+    class callout;
+    class entity;
     class class_;
     class orientation;
+    class class1;
     class start;
     class next;
     class end;
-    class class1;
+    class class2;
+    class name;
   }
 }
 
@@ -594,17 +603,600 @@ namespace libsbgn
 namespace libsbgn
 {
   /**
-   * @brief C++ namespace for the %http://sbgn.org/libsbgn/pd/0.1
+   * @brief C++ namespace for the %http://sbgn.org/libsbgn/0.2
    * schema namespace.
    */
-  namespace pd_0_1
+  namespace sn_0_2
   {
+    /**
+     * @brief Class corresponding to the %SBGNBase schema type.
+     *
+     * The SBGNBase type is the base type of all main
+     * components in SBGN.  It supports attaching metadata, notes and
+     * annotations to components.
+     *
+     * @nosubgrouping
+     */
+    class SBGNBase: public ::xml_schema::type
+    {
+      public:
+      /**
+       * @name notes
+       *
+       * @brief Accessor and modifier functions for the %notes
+       * optional element.
+       */
+      //@{
+
+      /**
+       * @brief Element type.
+       */
+      typedef ::libsbgn::sn_0_2::notes notes_type;
+
+      /**
+       * @brief Element optional container type.
+       */
+      typedef ::xsd::cxx::tree::optional< notes_type > notes_optional;
+
+      /**
+       * @brief Element traits type.
+       */
+      typedef ::xsd::cxx::tree::traits< notes_type, char > notes_traits;
+
+      /**
+       * @brief Return a read-only (constant) reference to the element
+       * container.
+       *
+       * @return A constant reference to the optional container.
+       */
+      const notes_optional&
+      notes () const;
+
+      /**
+       * @brief Return a read-write reference to the element container.
+       *
+       * @return A reference to the optional container.
+       */
+      notes_optional&
+      notes ();
+
+      /**
+       * @brief Set the element value.
+       *
+       * @param x A new value to set.
+       *
+       * This function makes a copy of its argument and sets it as
+       * the new value of the element.
+       */
+      void
+      notes (const notes_type& x);
+
+      /**
+       * @brief Set the element value.
+       *
+       * @param x An optional container with the new value to set.
+       *
+       * If the value is present in @a x then this function makes a copy 
+       * of this value and sets it as the new value of the element.
+       * Otherwise the element container is set the 'not present' state.
+       */
+      void
+      notes (const notes_optional& x);
+
+      /**
+       * @brief Set the element value without copying.
+       *
+       * @param p A new value to use.
+       *
+       * This function will try to use the passed value directly instead
+       * of making a copy.
+       */
+      void
+      notes (::std::auto_ptr< notes_type > p);
+
+      //@}
+
+      /**
+       * @name extension
+       *
+       * @brief Accessor and modifier functions for the %extension
+       * optional element.
+       */
+      //@{
+
+      /**
+       * @brief Element type.
+       */
+      typedef ::libsbgn::sn_0_2::extension extension_type;
+
+      /**
+       * @brief Element optional container type.
+       */
+      typedef ::xsd::cxx::tree::optional< extension_type > extension_optional;
+
+      /**
+       * @brief Element traits type.
+       */
+      typedef ::xsd::cxx::tree::traits< extension_type, char > extension_traits;
+
+      /**
+       * @brief Return a read-only (constant) reference to the element
+       * container.
+       *
+       * @return A constant reference to the optional container.
+       */
+      const extension_optional&
+      extension () const;
+
+      /**
+       * @brief Return a read-write reference to the element container.
+       *
+       * @return A reference to the optional container.
+       */
+      extension_optional&
+      extension ();
+
+      /**
+       * @brief Set the element value.
+       *
+       * @param x A new value to set.
+       *
+       * This function makes a copy of its argument and sets it as
+       * the new value of the element.
+       */
+      void
+      extension (const extension_type& x);
+
+      /**
+       * @brief Set the element value.
+       *
+       * @param x An optional container with the new value to set.
+       *
+       * If the value is present in @a x then this function makes a copy 
+       * of this value and sets it as the new value of the element.
+       * Otherwise the element container is set the 'not present' state.
+       */
+      void
+      extension (const extension_optional& x);
+
+      /**
+       * @brief Set the element value without copying.
+       *
+       * @param p A new value to use.
+       *
+       * This function will try to use the passed value directly instead
+       * of making a copy.
+       */
+      void
+      extension (::std::auto_ptr< extension_type > p);
+
+      //@}
+
+      /**
+       * @name Constructors
+       */
+      //@{
+
+      /**
+       * @brief Create an instance from the ultimate base and
+       * initializers for required elements and attributes.
+       */
+      SBGNBase ();
+
+      /**
+       * @brief Create an instance from a DOM element.
+       *
+       * @param e A DOM element to extract the data from.
+       * @param f Flags to create the new instance with.
+       * @param c A pointer to the object that will contain the new
+       * instance.
+       */
+      SBGNBase (const ::xercesc::DOMElement& e,
+                ::xml_schema::flags f = 0,
+                ::xml_schema::container* c = 0);
+
+      /**
+       * @brief Copy constructor.
+       *
+       * @param x An instance to make a copy of.
+       * @param f Flags to create the copy with.
+       * @param c A pointer to the object that will contain the copy.
+       *
+       * For polymorphic object models use the @c _clone function instead.
+       */
+      SBGNBase (const SBGNBase& x,
+                ::xml_schema::flags f = 0,
+                ::xml_schema::container* c = 0);
+
+      /**
+       * @brief Copy the instance polymorphically.
+       *
+       * @param f Flags to create the copy with.
+       * @param c A pointer to the object that will contain the copy.
+       * @return A pointer to the dynamically allocated copy.
+       *
+       * This function ensures that the dynamic type of the instance is
+       * used for copying and should be used for polymorphic object
+       * models instead of the copy constructor.
+       */
+      virtual SBGNBase*
+      _clone (::xml_schema::flags f = 0,
+              ::xml_schema::container* c = 0) const;
+
+      //@}
+
+      /**
+       * @brief Destructor.
+       */
+      virtual 
+      ~SBGNBase ();
+
+      // Implementation.
+      //
+
+      //@cond
+
+      protected:
+      void
+      parse (::xsd::cxx::xml::dom::parser< char >&,
+             ::xml_schema::flags);
+
+      protected:
+      notes_optional notes_;
+      extension_optional extension_;
+
+      //@endcond
+    };
+
+    /**
+     * @brief Class corresponding to the %notes schema type.
+     *
+     * @nosubgrouping
+     */
+    class notes: public ::xml_schema::type
+    {
+      public:
+      /**
+       * @name Constructors
+       */
+      //@{
+
+      /**
+       * @brief Create an instance from the ultimate base and
+       * initializers for required elements and attributes.
+       */
+      notes ();
+
+      /**
+       * @brief Create an instance from a DOM element.
+       *
+       * @param e A DOM element to extract the data from.
+       * @param f Flags to create the new instance with.
+       * @param c A pointer to the object that will contain the new
+       * instance.
+       */
+      notes (const ::xercesc::DOMElement& e,
+             ::xml_schema::flags f = 0,
+             ::xml_schema::container* c = 0);
+
+      /**
+       * @brief Copy constructor.
+       *
+       * @param x An instance to make a copy of.
+       * @param f Flags to create the copy with.
+       * @param c A pointer to the object that will contain the copy.
+       *
+       * For polymorphic object models use the @c _clone function instead.
+       */
+      notes (const notes& x,
+             ::xml_schema::flags f = 0,
+             ::xml_schema::container* c = 0);
+
+      /**
+       * @brief Copy the instance polymorphically.
+       *
+       * @param f Flags to create the copy with.
+       * @param c A pointer to the object that will contain the copy.
+       * @return A pointer to the dynamically allocated copy.
+       *
+       * This function ensures that the dynamic type of the instance is
+       * used for copying and should be used for polymorphic object
+       * models instead of the copy constructor.
+       */
+      virtual notes*
+      _clone (::xml_schema::flags f = 0,
+              ::xml_schema::container* c = 0) const;
+
+      //@}
+
+      /**
+       * @brief Destructor.
+       */
+      virtual 
+      ~notes ();
+
+      // Implementation.
+      //
+
+      //@cond
+
+      protected:
+      void
+      parse (::xsd::cxx::xml::dom::parser< char >&,
+             ::xml_schema::flags);
+
+      protected:
+
+      //@endcond
+    };
+
+    /**
+     * @brief Class corresponding to the %extension schema type.
+     *
+     * @nosubgrouping
+     */
+    class extension: public ::xml_schema::type
+    {
+      public:
+      /**
+       * @name Constructors
+       */
+      //@{
+
+      /**
+       * @brief Create an instance from the ultimate base and
+       * initializers for required elements and attributes.
+       */
+      extension ();
+
+      /**
+       * @brief Create an instance from a DOM element.
+       *
+       * @param e A DOM element to extract the data from.
+       * @param f Flags to create the new instance with.
+       * @param c A pointer to the object that will contain the new
+       * instance.
+       */
+      extension (const ::xercesc::DOMElement& e,
+                 ::xml_schema::flags f = 0,
+                 ::xml_schema::container* c = 0);
+
+      /**
+       * @brief Copy constructor.
+       *
+       * @param x An instance to make a copy of.
+       * @param f Flags to create the copy with.
+       * @param c A pointer to the object that will contain the copy.
+       *
+       * For polymorphic object models use the @c _clone function instead.
+       */
+      extension (const extension& x,
+                 ::xml_schema::flags f = 0,
+                 ::xml_schema::container* c = 0);
+
+      /**
+       * @brief Copy the instance polymorphically.
+       *
+       * @param f Flags to create the copy with.
+       * @param c A pointer to the object that will contain the copy.
+       * @return A pointer to the dynamically allocated copy.
+       *
+       * This function ensures that the dynamic type of the instance is
+       * used for copying and should be used for polymorphic object
+       * models instead of the copy constructor.
+       */
+      virtual extension*
+      _clone (::xml_schema::flags f = 0,
+              ::xml_schema::container* c = 0) const;
+
+      //@}
+
+      /**
+       * @brief Destructor.
+       */
+      virtual 
+      ~extension ();
+
+      // Implementation.
+      //
+
+      //@cond
+
+      protected:
+      void
+      parse (::xsd::cxx::xml::dom::parser< char >&,
+             ::xml_schema::flags);
+
+      protected:
+
+      //@endcond
+    };
+
+    /**
+     * @brief Class corresponding to the %point schema type.
+     *
+     * @nosubgrouping
+     */
+    class point: public ::libsbgn::sn_0_2::SBGNBase
+    {
+      public:
+      /**
+       * @name x
+       *
+       * @brief Accessor and modifier functions for the %x
+       * required attribute.
+       */
+      //@{
+
+      /**
+       * @brief Attribute type.
+       */
+      typedef ::xml_schema::float_ x_type;
+
+      /**
+       * @brief Attribute traits type.
+       */
+      typedef ::xsd::cxx::tree::traits< x_type, char > x_traits;
+
+      /**
+       * @brief Return a read-only (constant) reference to the attribute.
+       *
+       * @return A constant reference to the attribute.
+       */
+      const x_type&
+      x () const;
+
+      /**
+       * @brief Return a read-write reference to the attribute.
+       *
+       * @return A reference to the attribute.
+       */
+      x_type&
+      x ();
+
+      /**
+       * @brief Set the attribute value.
+       *
+       * @param x A new value to set.
+       *
+       * This function makes a copy of its argument and sets it as
+       * the new value of the attribute.
+       */
+      void
+      x (const x_type& x);
+
+      //@}
+
+      /**
+       * @name y
+       *
+       * @brief Accessor and modifier functions for the %y
+       * required attribute.
+       */
+      //@{
+
+      /**
+       * @brief Attribute type.
+       */
+      typedef ::xml_schema::float_ y_type;
+
+      /**
+       * @brief Attribute traits type.
+       */
+      typedef ::xsd::cxx::tree::traits< y_type, char > y_traits;
+
+      /**
+       * @brief Return a read-only (constant) reference to the attribute.
+       *
+       * @return A constant reference to the attribute.
+       */
+      const y_type&
+      y () const;
+
+      /**
+       * @brief Return a read-write reference to the attribute.
+       *
+       * @return A reference to the attribute.
+       */
+      y_type&
+      y ();
+
+      /**
+       * @brief Set the attribute value.
+       *
+       * @param x A new value to set.
+       *
+       * This function makes a copy of its argument and sets it as
+       * the new value of the attribute.
+       */
+      void
+      y (const y_type& x);
+
+      //@}
+
+      /**
+       * @name Constructors
+       */
+      //@{
+
+      /**
+       * @brief Create an instance from the ultimate base and
+       * initializers for required elements and attributes.
+       */
+      point (const x_type&,
+             const y_type&);
+
+      /**
+       * @brief Create an instance from a DOM element.
+       *
+       * @param e A DOM element to extract the data from.
+       * @param f Flags to create the new instance with.
+       * @param c A pointer to the object that will contain the new
+       * instance.
+       */
+      point (const ::xercesc::DOMElement& e,
+             ::xml_schema::flags f = 0,
+             ::xml_schema::container* c = 0);
+
+      /**
+       * @brief Copy constructor.
+       *
+       * @param x An instance to make a copy of.
+       * @param f Flags to create the copy with.
+       * @param c A pointer to the object that will contain the copy.
+       *
+       * For polymorphic object models use the @c _clone function instead.
+       */
+      point (const point& x,
+             ::xml_schema::flags f = 0,
+             ::xml_schema::container* c = 0);
+
+      /**
+       * @brief Copy the instance polymorphically.
+       *
+       * @param f Flags to create the copy with.
+       * @param c A pointer to the object that will contain the copy.
+       * @return A pointer to the dynamically allocated copy.
+       *
+       * This function ensures that the dynamic type of the instance is
+       * used for copying and should be used for polymorphic object
+       * models instead of the copy constructor.
+       */
+      virtual point*
+      _clone (::xml_schema::flags f = 0,
+              ::xml_schema::container* c = 0) const;
+
+      //@}
+
+      /**
+       * @brief Destructor.
+       */
+      virtual 
+      ~point ();
+
+      // Implementation.
+      //
+
+      //@cond
+
+      protected:
+      void
+      parse (::xsd::cxx::xml::dom::parser< char >&,
+             ::xml_schema::flags);
+
+      protected:
+      ::xsd::cxx::tree::one< x_type > x_;
+      ::xsd::cxx::tree::one< y_type > y_;
+
+      //@endcond
+    };
+
     /**
      * @brief Class corresponding to the %bbox schema type.
      *
      * @nosubgrouping
      */
-    class bbox: public ::xml_schema::type
+    class bbox: public ::libsbgn::sn_0_2::SBGNBase
     {
       public:
       /**
@@ -877,13 +1469,458 @@ namespace libsbgn
     };
 
     /**
+     * @brief Class corresponding to the %label schema type.
+     *
+     * @nosubgrouping
+     */
+    class label: public ::libsbgn::sn_0_2::SBGNBase
+    {
+      public:
+      /**
+       * @name bbox
+       *
+       * @brief Accessor and modifier functions for the %bbox
+       * optional element.
+       */
+      //@{
+
+      /**
+       * @brief Element type.
+       */
+      typedef ::libsbgn::sn_0_2::bbox bbox_type;
+
+      /**
+       * @brief Element optional container type.
+       */
+      typedef ::xsd::cxx::tree::optional< bbox_type > bbox_optional;
+
+      /**
+       * @brief Element traits type.
+       */
+      typedef ::xsd::cxx::tree::traits< bbox_type, char > bbox_traits;
+
+      /**
+       * @brief Return a read-only (constant) reference to the element
+       * container.
+       *
+       * @return A constant reference to the optional container.
+       */
+      const bbox_optional&
+      bbox () const;
+
+      /**
+       * @brief Return a read-write reference to the element container.
+       *
+       * @return A reference to the optional container.
+       */
+      bbox_optional&
+      bbox ();
+
+      /**
+       * @brief Set the element value.
+       *
+       * @param x A new value to set.
+       *
+       * This function makes a copy of its argument and sets it as
+       * the new value of the element.
+       */
+      void
+      bbox (const bbox_type& x);
+
+      /**
+       * @brief Set the element value.
+       *
+       * @param x An optional container with the new value to set.
+       *
+       * If the value is present in @a x then this function makes a copy 
+       * of this value and sets it as the new value of the element.
+       * Otherwise the element container is set the 'not present' state.
+       */
+      void
+      bbox (const bbox_optional& x);
+
+      /**
+       * @brief Set the element value without copying.
+       *
+       * @param p A new value to use.
+       *
+       * This function will try to use the passed value directly instead
+       * of making a copy.
+       */
+      void
+      bbox (::std::auto_ptr< bbox_type > p);
+
+      //@}
+
+      /**
+       * @name text
+       *
+       * @brief Accessor and modifier functions for the %text
+       * required attribute.
+       */
+      //@{
+
+      /**
+       * @brief Attribute type.
+       */
+      typedef ::xml_schema::string text_type;
+
+      /**
+       * @brief Attribute traits type.
+       */
+      typedef ::xsd::cxx::tree::traits< text_type, char > text_traits;
+
+      /**
+       * @brief Return a read-only (constant) reference to the attribute.
+       *
+       * @return A constant reference to the attribute.
+       */
+      const text_type&
+      text () const;
+
+      /**
+       * @brief Return a read-write reference to the attribute.
+       *
+       * @return A reference to the attribute.
+       */
+      text_type&
+      text ();
+
+      /**
+       * @brief Set the attribute value.
+       *
+       * @param x A new value to set.
+       *
+       * This function makes a copy of its argument and sets it as
+       * the new value of the attribute.
+       */
+      void
+      text (const text_type& x);
+
+      /**
+       * @brief Set the attribute value without copying.
+       *
+       * @param p A new value to use.
+       *
+       * This function will try to use the passed value directly
+       * instead of making a copy.
+       */
+      void
+      text (::std::auto_ptr< text_type > p);
+
+      //@}
+
+      /**
+       * @name Constructors
+       */
+      //@{
+
+      /**
+       * @brief Create an instance from the ultimate base and
+       * initializers for required elements and attributes.
+       */
+      label (const text_type&);
+
+      /**
+       * @brief Create an instance from a DOM element.
+       *
+       * @param e A DOM element to extract the data from.
+       * @param f Flags to create the new instance with.
+       * @param c A pointer to the object that will contain the new
+       * instance.
+       */
+      label (const ::xercesc::DOMElement& e,
+             ::xml_schema::flags f = 0,
+             ::xml_schema::container* c = 0);
+
+      /**
+       * @brief Copy constructor.
+       *
+       * @param x An instance to make a copy of.
+       * @param f Flags to create the copy with.
+       * @param c A pointer to the object that will contain the copy.
+       *
+       * For polymorphic object models use the @c _clone function instead.
+       */
+      label (const label& x,
+             ::xml_schema::flags f = 0,
+             ::xml_schema::container* c = 0);
+
+      /**
+       * @brief Copy the instance polymorphically.
+       *
+       * @param f Flags to create the copy with.
+       * @param c A pointer to the object that will contain the copy.
+       * @return A pointer to the dynamically allocated copy.
+       *
+       * This function ensures that the dynamic type of the instance is
+       * used for copying and should be used for polymorphic object
+       * models instead of the copy constructor.
+       */
+      virtual label*
+      _clone (::xml_schema::flags f = 0,
+              ::xml_schema::container* c = 0) const;
+
+      //@}
+
+      /**
+       * @brief Destructor.
+       */
+      virtual 
+      ~label ();
+
+      // Implementation.
+      //
+
+      //@cond
+
+      protected:
+      void
+      parse (::xsd::cxx::xml::dom::parser< char >&,
+             ::xml_schema::flags);
+
+      protected:
+      bbox_optional bbox_;
+      ::xsd::cxx::tree::one< text_type > text_;
+
+      //@endcond
+    };
+
+    /**
+     * @brief Class corresponding to the %sbgn schema type.
+     *
+     * @nosubgrouping
+     */
+    class sbgn: public ::libsbgn::sn_0_2::SBGNBase
+    {
+      public:
+      /**
+       * @name map
+       *
+       * @brief Accessor and modifier functions for the %map
+       * required element.
+       */
+      //@{
+
+      /**
+       * @brief Element type.
+       */
+      typedef ::libsbgn::sn_0_2::map map_type;
+
+      /**
+       * @brief Element traits type.
+       */
+      typedef ::xsd::cxx::tree::traits< map_type, char > map_traits;
+
+      /**
+       * @brief Return a read-only (constant) reference to the element.
+       *
+       * @return A constant reference to the element.
+       */
+      const map_type&
+      map () const;
+
+      /**
+       * @brief Return a read-write reference to the element.
+       *
+       * @return A reference to the element.
+       */
+      map_type&
+      map ();
+
+      /**
+       * @brief Set the element value.
+       *
+       * @param x A new value to set.
+       *
+       * This function makes a copy of its argument and sets it as
+       * the new value of the element.
+       */
+      void
+      map (const map_type& x);
+
+      /**
+       * @brief Set the element value without copying.
+       *
+       * @param p A new value to use.
+       *
+       * This function will try to use the passed value directly
+       * instead of making a copy.
+       */
+      void
+      map (::std::auto_ptr< map_type > p);
+
+      //@}
+
+      /**
+       * @name Constructors
+       */
+      //@{
+
+      /**
+       * @brief Create an instance from the ultimate base and
+       * initializers for required elements and attributes.
+       */
+      sbgn (const map_type&);
+
+      /**
+       * @brief Create an instance from the ultimate base and
+       * initializers for required elements and attributes
+       * (auto_ptr version).
+       *
+       * This constructor will try to use the passed values directly
+       * instead of making copies.
+       */
+      sbgn (::std::auto_ptr< map_type >&);
+
+      /**
+       * @brief Create an instance from a DOM element.
+       *
+       * @param e A DOM element to extract the data from.
+       * @param f Flags to create the new instance with.
+       * @param c A pointer to the object that will contain the new
+       * instance.
+       */
+      sbgn (const ::xercesc::DOMElement& e,
+            ::xml_schema::flags f = 0,
+            ::xml_schema::container* c = 0);
+
+      /**
+       * @brief Copy constructor.
+       *
+       * @param x An instance to make a copy of.
+       * @param f Flags to create the copy with.
+       * @param c A pointer to the object that will contain the copy.
+       *
+       * For polymorphic object models use the @c _clone function instead.
+       */
+      sbgn (const sbgn& x,
+            ::xml_schema::flags f = 0,
+            ::xml_schema::container* c = 0);
+
+      /**
+       * @brief Copy the instance polymorphically.
+       *
+       * @param f Flags to create the copy with.
+       * @param c A pointer to the object that will contain the copy.
+       * @return A pointer to the dynamically allocated copy.
+       *
+       * This function ensures that the dynamic type of the instance is
+       * used for copying and should be used for polymorphic object
+       * models instead of the copy constructor.
+       */
+      virtual sbgn*
+      _clone (::xml_schema::flags f = 0,
+              ::xml_schema::container* c = 0) const;
+
+      //@}
+
+      /**
+       * @brief Destructor.
+       */
+      virtual 
+      ~sbgn ();
+
+      // Implementation.
+      //
+
+      //@cond
+
+      protected:
+      void
+      parse (::xsd::cxx::xml::dom::parser< char >&,
+             ::xml_schema::flags);
+
+      protected:
+      ::xsd::cxx::tree::one< map_type > map_;
+
+      //@endcond
+    };
+
+    /**
      * @brief Class corresponding to the %map schema type.
      *
      * @nosubgrouping
      */
-    class map: public ::xml_schema::type
+    class map: public ::libsbgn::sn_0_2::SBGNBase
     {
       public:
+      /**
+       * @name bbox
+       *
+       * @brief Accessor and modifier functions for the %bbox
+       * optional element.
+       */
+      //@{
+
+      /**
+       * @brief Element type.
+       */
+      typedef ::libsbgn::sn_0_2::bbox bbox_type;
+
+      /**
+       * @brief Element optional container type.
+       */
+      typedef ::xsd::cxx::tree::optional< bbox_type > bbox_optional;
+
+      /**
+       * @brief Element traits type.
+       */
+      typedef ::xsd::cxx::tree::traits< bbox_type, char > bbox_traits;
+
+      /**
+       * @brief Return a read-only (constant) reference to the element
+       * container.
+       *
+       * @return A constant reference to the optional container.
+       */
+      const bbox_optional&
+      bbox () const;
+
+      /**
+       * @brief Return a read-write reference to the element container.
+       *
+       * @return A reference to the optional container.
+       */
+      bbox_optional&
+      bbox ();
+
+      /**
+       * @brief Set the element value.
+       *
+       * @param x A new value to set.
+       *
+       * This function makes a copy of its argument and sets it as
+       * the new value of the element.
+       */
+      void
+      bbox (const bbox_type& x);
+
+      /**
+       * @brief Set the element value.
+       *
+       * @param x An optional container with the new value to set.
+       *
+       * If the value is present in @a x then this function makes a copy 
+       * of this value and sets it as the new value of the element.
+       * Otherwise the element container is set the 'not present' state.
+       */
+      void
+      bbox (const bbox_optional& x);
+
+      /**
+       * @brief Set the element value without copying.
+       *
+       * @param p A new value to use.
+       *
+       * This function will try to use the passed value directly instead
+       * of making a copy.
+       */
+      void
+      bbox (::std::auto_ptr< bbox_type > p);
+
+      //@}
+
       /**
        * @name glyph
        *
@@ -895,7 +1932,7 @@ namespace libsbgn
       /**
        * @brief Element type.
        */
-      typedef ::libsbgn::pd_0_1::glyph glyph_type;
+      typedef ::libsbgn::sn_0_2::glyph glyph_type;
 
       /**
        * @brief Element sequence container type.
@@ -959,7 +1996,7 @@ namespace libsbgn
       /**
        * @brief Element type.
        */
-      typedef ::libsbgn::pd_0_1::arc arc_type;
+      typedef ::libsbgn::sn_0_2::arc arc_type;
 
       /**
        * @brief Element sequence container type.
@@ -1013,6 +2050,128 @@ namespace libsbgn
       //@}
 
       /**
+       * @name arcgroup
+       *
+       * @brief Accessor and modifier functions for the %arcgroup
+       * sequence element.
+       */
+      //@{
+
+      /**
+       * @brief Element type.
+       */
+      typedef ::libsbgn::sn_0_2::arcgroup arcgroup_type;
+
+      /**
+       * @brief Element sequence container type.
+       */
+      typedef ::xsd::cxx::tree::sequence< arcgroup_type > arcgroup_sequence;
+
+      /**
+       * @brief Element iterator type.
+       */
+      typedef arcgroup_sequence::iterator arcgroup_iterator;
+
+      /**
+       * @brief Element constant iterator type.
+       */
+      typedef arcgroup_sequence::const_iterator arcgroup_const_iterator;
+
+      /**
+       * @brief Element traits type.
+       */
+      typedef ::xsd::cxx::tree::traits< arcgroup_type, char > arcgroup_traits;
+
+      /**
+       * @brief Return a read-only (constant) reference to the element
+       * sequence.
+       *
+       * @return A constant reference to the sequence container.
+       */
+      const arcgroup_sequence&
+      arcgroup () const;
+
+      /**
+       * @brief Return a read-write reference to the element sequence.
+       *
+       * @return A reference to the sequence container.
+       */
+      arcgroup_sequence&
+      arcgroup ();
+
+      /**
+       * @brief Copy elements from a given sequence.
+       *
+       * @param s A sequence to copy elements from.
+       *
+       * For each element in @a s this function makes a copy and adds it 
+       * to the sequence. Note that this operation completely changes the 
+       * sequence and all old elements will be lost.
+       */
+      void
+      arcgroup (const arcgroup_sequence& s);
+
+      //@}
+
+      /**
+       * @name language
+       *
+       * @brief Accessor and modifier functions for the %language
+       * required attribute.
+       */
+      //@{
+
+      /**
+       * @brief Attribute type.
+       */
+      typedef ::libsbgn::sn_0_2::language language_type;
+
+      /**
+       * @brief Attribute traits type.
+       */
+      typedef ::xsd::cxx::tree::traits< language_type, char > language_traits;
+
+      /**
+       * @brief Return a read-only (constant) reference to the attribute.
+       *
+       * @return A constant reference to the attribute.
+       */
+      const language_type&
+      language () const;
+
+      /**
+       * @brief Return a read-write reference to the attribute.
+       *
+       * @return A reference to the attribute.
+       */
+      language_type&
+      language ();
+
+      /**
+       * @brief Set the attribute value.
+       *
+       * @param x A new value to set.
+       *
+       * This function makes a copy of its argument and sets it as
+       * the new value of the attribute.
+       */
+      void
+      language (const language_type& x);
+
+      /**
+       * @brief Set the attribute value without copying.
+       *
+       * @param p A new value to use.
+       *
+       * This function will try to use the passed value directly
+       * instead of making a copy.
+       */
+      void
+      language (::std::auto_ptr< language_type > p);
+
+      //@}
+
+      /**
        * @name Constructors
        */
       //@{
@@ -1021,7 +2180,7 @@ namespace libsbgn
        * @brief Create an instance from the ultimate base and
        * initializers for required elements and attributes.
        */
-      map ();
+      map (const language_type&);
 
       /**
        * @brief Create an instance from a DOM element.
@@ -1082,81 +2241,172 @@ namespace libsbgn
              ::xml_schema::flags);
 
       protected:
+      bbox_optional bbox_;
       glyph_sequence glyph_;
       arc_sequence arc_;
+      arcgroup_sequence arcgroup_;
+      ::xsd::cxx::tree::one< language_type > language_;
 
       //@endcond
     };
 
     /**
-     * @brief Class corresponding to the %sbgn schema type.
+     * @brief Class corresponding to the %port schema type.
      *
      * @nosubgrouping
      */
-    class sbgn: public ::xml_schema::type
+    class port: public ::libsbgn::sn_0_2::SBGNBase
     {
       public:
       /**
-       * @name map
+       * @name x
        *
-       * @brief Accessor and modifier functions for the %map
-       * sequence element.
+       * @brief Accessor and modifier functions for the %x
+       * required attribute.
        */
       //@{
 
       /**
-       * @brief Element type.
+       * @brief Attribute type.
        */
-      typedef ::libsbgn::pd_0_1::map map_type;
+      typedef ::xml_schema::float_ x_type;
 
       /**
-       * @brief Element sequence container type.
+       * @brief Attribute traits type.
        */
-      typedef ::xsd::cxx::tree::sequence< map_type > map_sequence;
+      typedef ::xsd::cxx::tree::traits< x_type, char > x_traits;
 
       /**
-       * @brief Element iterator type.
-       */
-      typedef map_sequence::iterator map_iterator;
-
-      /**
-       * @brief Element constant iterator type.
-       */
-      typedef map_sequence::const_iterator map_const_iterator;
-
-      /**
-       * @brief Element traits type.
-       */
-      typedef ::xsd::cxx::tree::traits< map_type, char > map_traits;
-
-      /**
-       * @brief Return a read-only (constant) reference to the element
-       * sequence.
+       * @brief Return a read-only (constant) reference to the attribute.
        *
-       * @return A constant reference to the sequence container.
+       * @return A constant reference to the attribute.
        */
-      const map_sequence&
-      map () const;
+      const x_type&
+      x () const;
 
       /**
-       * @brief Return a read-write reference to the element sequence.
+       * @brief Return a read-write reference to the attribute.
        *
-       * @return A reference to the sequence container.
+       * @return A reference to the attribute.
        */
-      map_sequence&
-      map ();
+      x_type&
+      x ();
 
       /**
-       * @brief Copy elements from a given sequence.
+       * @brief Set the attribute value.
        *
-       * @param s A sequence to copy elements from.
+       * @param x A new value to set.
        *
-       * For each element in @a s this function makes a copy and adds it 
-       * to the sequence. Note that this operation completely changes the 
-       * sequence and all old elements will be lost.
+       * This function makes a copy of its argument and sets it as
+       * the new value of the attribute.
        */
       void
-      map (const map_sequence& s);
+      x (const x_type& x);
+
+      //@}
+
+      /**
+       * @name y
+       *
+       * @brief Accessor and modifier functions for the %y
+       * required attribute.
+       */
+      //@{
+
+      /**
+       * @brief Attribute type.
+       */
+      typedef ::xml_schema::float_ y_type;
+
+      /**
+       * @brief Attribute traits type.
+       */
+      typedef ::xsd::cxx::tree::traits< y_type, char > y_traits;
+
+      /**
+       * @brief Return a read-only (constant) reference to the attribute.
+       *
+       * @return A constant reference to the attribute.
+       */
+      const y_type&
+      y () const;
+
+      /**
+       * @brief Return a read-write reference to the attribute.
+       *
+       * @return A reference to the attribute.
+       */
+      y_type&
+      y ();
+
+      /**
+       * @brief Set the attribute value.
+       *
+       * @param x A new value to set.
+       *
+       * This function makes a copy of its argument and sets it as
+       * the new value of the attribute.
+       */
+      void
+      y (const y_type& x);
+
+      //@}
+
+      /**
+       * @name id
+       *
+       * @brief Accessor and modifier functions for the %id
+       * required attribute.
+       */
+      //@{
+
+      /**
+       * @brief Attribute type.
+       */
+      typedef ::xml_schema::id id_type;
+
+      /**
+       * @brief Attribute traits type.
+       */
+      typedef ::xsd::cxx::tree::traits< id_type, char > id_traits;
+
+      /**
+       * @brief Return a read-only (constant) reference to the attribute.
+       *
+       * @return A constant reference to the attribute.
+       */
+      const id_type&
+      id () const;
+
+      /**
+       * @brief Return a read-write reference to the attribute.
+       *
+       * @return A reference to the attribute.
+       */
+      id_type&
+      id ();
+
+      /**
+       * @brief Set the attribute value.
+       *
+       * @param x A new value to set.
+       *
+       * This function makes a copy of its argument and sets it as
+       * the new value of the attribute.
+       */
+      void
+      id (const id_type& x);
+
+      /**
+       * @brief Set the attribute value without copying.
+       *
+       * @param p A new value to use.
+       *
+       * This function will try to use the passed value directly
+       * instead of making a copy.
+       */
+      void
+      id (::std::auto_ptr< id_type > p);
 
       //@}
 
@@ -1169,7 +2419,9 @@ namespace libsbgn
        * @brief Create an instance from the ultimate base and
        * initializers for required elements and attributes.
        */
-      sbgn ();
+      port (const x_type&,
+            const y_type&,
+            const id_type&);
 
       /**
        * @brief Create an instance from a DOM element.
@@ -1179,7 +2431,7 @@ namespace libsbgn
        * @param c A pointer to the object that will contain the new
        * instance.
        */
-      sbgn (const ::xercesc::DOMElement& e,
+      port (const ::xercesc::DOMElement& e,
             ::xml_schema::flags f = 0,
             ::xml_schema::container* c = 0);
 
@@ -1192,7 +2444,7 @@ namespace libsbgn
        *
        * For polymorphic object models use the @c _clone function instead.
        */
-      sbgn (const sbgn& x,
+      port (const port& x,
             ::xml_schema::flags f = 0,
             ::xml_schema::container* c = 0);
 
@@ -1207,7 +2459,7 @@ namespace libsbgn
        * used for copying and should be used for polymorphic object
        * models instead of the copy constructor.
        */
-      virtual sbgn*
+      virtual port*
       _clone (::xml_schema::flags f = 0,
               ::xml_schema::container* c = 0) const;
 
@@ -1217,7 +2469,7 @@ namespace libsbgn
        * @brief Destructor.
        */
       virtual 
-      ~sbgn ();
+      ~port ();
 
       // Implementation.
       //
@@ -1230,7 +2482,9 @@ namespace libsbgn
              ::xml_schema::flags);
 
       protected:
-      map_sequence map_;
+      ::xsd::cxx::tree::one< x_type > x_;
+      ::xsd::cxx::tree::one< y_type > y_;
+      ::xsd::cxx::tree::one< id_type > id_;
 
       //@endcond
     };
@@ -1240,7 +2494,7 @@ namespace libsbgn
      *
      * @nosubgrouping
      */
-    class glyph: public ::xml_schema::type
+    class glyph: public ::libsbgn::sn_0_2::SBGNBase
     {
       public:
       /**
@@ -1254,7 +2508,7 @@ namespace libsbgn
       /**
        * @brief Element type.
        */
-      typedef ::libsbgn::pd_0_1::label label_type;
+      typedef ::libsbgn::sn_0_2::label label_type;
 
       /**
        * @brief Element optional container type.
@@ -1324,16 +2578,13 @@ namespace libsbgn
        *
        * @brief Accessor and modifier functions for the %state
        * optional element.
-       *
-       * State should only be used for state variables. It then replaces the
-       * label
        */
       //@{
 
       /**
        * @brief Element type.
        */
-      typedef ::libsbgn::pd_0_1::state state_type;
+      typedef ::libsbgn::sn_0_2::state state_type;
 
       /**
        * @brief Element optional container type.
@@ -1403,15 +2654,13 @@ namespace libsbgn
        *
        * @brief Accessor and modifier functions for the %clone
        * optional element.
-       *
-       * Clone should only be used for clone marker.
        */
       //@{
 
       /**
        * @brief Element type.
        */
-      typedef ::libsbgn::pd_0_1::clone clone_type;
+      typedef ::libsbgn::sn_0_2::clone clone_type;
 
       /**
        * @brief Element optional container type.
@@ -1477,19 +2726,169 @@ namespace libsbgn
       //@}
 
       /**
-       * @name bbox
+       * @name callout
        *
-       * @brief Accessor and modifier functions for the %bbox
-       * required element.
-       *
-       * Bounding box is mandatory and unique: exactly one per glyph
+       * @brief Accessor and modifier functions for the %callout
+       * optional element.
        */
       //@{
 
       /**
        * @brief Element type.
        */
-      typedef ::libsbgn::pd_0_1::bbox bbox_type;
+      typedef ::libsbgn::sn_0_2::callout callout_type;
+
+      /**
+       * @brief Element optional container type.
+       */
+      typedef ::xsd::cxx::tree::optional< callout_type > callout_optional;
+
+      /**
+       * @brief Element traits type.
+       */
+      typedef ::xsd::cxx::tree::traits< callout_type, char > callout_traits;
+
+      /**
+       * @brief Return a read-only (constant) reference to the element
+       * container.
+       *
+       * @return A constant reference to the optional container.
+       */
+      const callout_optional&
+      callout () const;
+
+      /**
+       * @brief Return a read-write reference to the element container.
+       *
+       * @return A reference to the optional container.
+       */
+      callout_optional&
+      callout ();
+
+      /**
+       * @brief Set the element value.
+       *
+       * @param x A new value to set.
+       *
+       * This function makes a copy of its argument and sets it as
+       * the new value of the element.
+       */
+      void
+      callout (const callout_type& x);
+
+      /**
+       * @brief Set the element value.
+       *
+       * @param x An optional container with the new value to set.
+       *
+       * If the value is present in @a x then this function makes a copy 
+       * of this value and sets it as the new value of the element.
+       * Otherwise the element container is set the 'not present' state.
+       */
+      void
+      callout (const callout_optional& x);
+
+      /**
+       * @brief Set the element value without copying.
+       *
+       * @param p A new value to use.
+       *
+       * This function will try to use the passed value directly instead
+       * of making a copy.
+       */
+      void
+      callout (::std::auto_ptr< callout_type > p);
+
+      //@}
+
+      /**
+       * @name entity
+       *
+       * @brief Accessor and modifier functions for the %entity
+       * optional element.
+       */
+      //@{
+
+      /**
+       * @brief Element type.
+       */
+      typedef ::libsbgn::sn_0_2::entity entity_type;
+
+      /**
+       * @brief Element optional container type.
+       */
+      typedef ::xsd::cxx::tree::optional< entity_type > entity_optional;
+
+      /**
+       * @brief Element traits type.
+       */
+      typedef ::xsd::cxx::tree::traits< entity_type, char > entity_traits;
+
+      /**
+       * @brief Return a read-only (constant) reference to the element
+       * container.
+       *
+       * @return A constant reference to the optional container.
+       */
+      const entity_optional&
+      entity () const;
+
+      /**
+       * @brief Return a read-write reference to the element container.
+       *
+       * @return A reference to the optional container.
+       */
+      entity_optional&
+      entity ();
+
+      /**
+       * @brief Set the element value.
+       *
+       * @param x A new value to set.
+       *
+       * This function makes a copy of its argument and sets it as
+       * the new value of the element.
+       */
+      void
+      entity (const entity_type& x);
+
+      /**
+       * @brief Set the element value.
+       *
+       * @param x An optional container with the new value to set.
+       *
+       * If the value is present in @a x then this function makes a copy 
+       * of this value and sets it as the new value of the element.
+       * Otherwise the element container is set the 'not present' state.
+       */
+      void
+      entity (const entity_optional& x);
+
+      /**
+       * @brief Set the element value without copying.
+       *
+       * @param p A new value to use.
+       *
+       * This function will try to use the passed value directly instead
+       * of making a copy.
+       */
+      void
+      entity (::std::auto_ptr< entity_type > p);
+
+      //@}
+
+      /**
+       * @name bbox
+       *
+       * @brief Accessor and modifier functions for the %bbox
+       * required element.
+       */
+      //@{
+
+      /**
+       * @brief Element type.
+       */
+      typedef ::libsbgn::sn_0_2::bbox bbox_type;
 
       /**
        * @brief Element traits type.
@@ -1541,15 +2940,13 @@ namespace libsbgn
        *
        * @brief Accessor and modifier functions for the %glyph
        * sequence element.
-       *
-       * Subnodes are for states and units of information
        */
       //@{
 
       /**
        * @brief Element type.
        */
-      typedef ::libsbgn::pd_0_1::glyph glyph1_type;
+      typedef ::libsbgn::sn_0_2::glyph glyph1_type;
 
       /**
        * @brief Element sequence container type.
@@ -1607,17 +3004,13 @@ namespace libsbgn
        *
        * @brief Accessor and modifier functions for the %port
        * sequence element.
-       *
-       * ports are necessary for process nodes, but we may decide to
-       * use them also for other glyph types in the future, to help
-       * routing arcs
        */
       //@{
 
       /**
        * @brief Element type.
        */
-      typedef ::libsbgn::pd_0_1::port port_type;
+      typedef ::libsbgn::sn_0_2::port port_type;
 
       /**
        * @brief Element sequence container type.
@@ -1674,14 +3067,14 @@ namespace libsbgn
        * @name class
        *
        * @brief Accessor and modifier functions for the %class
-       * optional attribute with a default value.
+       * required attribute.
        */
       //@{
 
       /**
        * @brief Attribute type.
        */
-      typedef ::libsbgn::pd_0_1::class_ class_type;
+      typedef ::libsbgn::sn_0_2::class_ class_type;
 
       /**
        * @brief Attribute traits type.
@@ -1726,15 +3119,6 @@ namespace libsbgn
       void
       class_ (::std::auto_ptr< class_type > p);
 
-      /**
-       * @brief Return the default value for the attribute.
-       *
-       * @return A read-only (constant) reference to the attribute's
-       * default value.
-       */
-      static const class_type&
-      class_default_value ();
-
       //@}
 
       /**
@@ -1742,15 +3126,13 @@ namespace libsbgn
        *
        * @brief Accessor and modifier functions for the %orientation
        * optional attribute with a default value.
-       *
-       * Orientation attribute is only meaningful for some glyph classes
        */
       //@{
 
       /**
        * @brief Attribute type.
        */
-      typedef ::libsbgn::pd_0_1::orientation orientation_type;
+      typedef ::libsbgn::sn_0_2::orientation orientation_type;
 
       /**
        * @brief Attribute traits type.
@@ -1865,6 +3247,147 @@ namespace libsbgn
       //@}
 
       /**
+       * @name compartmentRef
+       *
+       * @brief Accessor and modifier functions for the %compartmentRef
+       * optional attribute.
+       */
+      //@{
+
+      /**
+       * @brief Attribute type.
+       */
+      typedef ::xml_schema::idref compartmentRef_type;
+
+      /**
+       * @brief Attribute optional container type.
+       */
+      typedef ::xsd::cxx::tree::optional< compartmentRef_type > compartmentRef_optional;
+
+      /**
+       * @brief Attribute traits type.
+       */
+      typedef ::xsd::cxx::tree::traits< compartmentRef_type, char > compartmentRef_traits;
+
+      /**
+       * @brief Return a read-only (constant) reference to the attribute
+       * container.
+       *
+       * @return A constant reference to the optional container.
+       */
+      const compartmentRef_optional&
+      compartmentRef () const;
+
+      /**
+       * @brief Return a read-write reference to the attribute container.
+       *
+       * @return A reference to the optional container.
+       */
+      compartmentRef_optional&
+      compartmentRef ();
+
+      /**
+       * @brief Set the attribute value.
+       *
+       * @param x A new value to set.
+       *
+       * This function makes a copy of its argument and sets it as
+       * the new value of the attribute.
+       */
+      void
+      compartmentRef (const compartmentRef_type& x);
+
+      /**
+       * @brief Set the attribute value.
+       *
+       * @param x An optional container with the new value to set.
+       *
+       * If the value is present in @a x then this function makes a copy 
+       * of this value and sets it as the new value of the attribute.
+       * Otherwise the attribute container is set the 'not present' state.
+       */
+      void
+      compartmentRef (const compartmentRef_optional& x);
+
+      /**
+       * @brief Set the attribute value without copying.
+       *
+       * @param p A new value to use.
+       *
+       * This function will try to use the passed value directly instead
+       * of making a copy.
+       */
+      void
+      compartmentRef (::std::auto_ptr< compartmentRef_type > p);
+
+      //@}
+
+      /**
+       * @name compartmentOrder
+       *
+       * @brief Accessor and modifier functions for the %compartmentOrder
+       * optional attribute.
+       */
+      //@{
+
+      /**
+       * @brief Attribute type.
+       */
+      typedef ::xml_schema::float_ compartmentOrder_type;
+
+      /**
+       * @brief Attribute optional container type.
+       */
+      typedef ::xsd::cxx::tree::optional< compartmentOrder_type > compartmentOrder_optional;
+
+      /**
+       * @brief Attribute traits type.
+       */
+      typedef ::xsd::cxx::tree::traits< compartmentOrder_type, char > compartmentOrder_traits;
+
+      /**
+       * @brief Return a read-only (constant) reference to the attribute
+       * container.
+       *
+       * @return A constant reference to the optional container.
+       */
+      const compartmentOrder_optional&
+      compartmentOrder () const;
+
+      /**
+       * @brief Return a read-write reference to the attribute container.
+       *
+       * @return A reference to the optional container.
+       */
+      compartmentOrder_optional&
+      compartmentOrder ();
+
+      /**
+       * @brief Set the attribute value.
+       *
+       * @param x A new value to set.
+       *
+       * This function makes a copy of its argument and sets it as
+       * the new value of the attribute.
+       */
+      void
+      compartmentOrder (const compartmentOrder_type& x);
+
+      /**
+       * @brief Set the attribute value.
+       *
+       * @param x An optional container with the new value to set.
+       *
+       * If the value is present in @a x then this function makes a copy 
+       * of this value and sets it as the new value of the attribute.
+       * Otherwise the attribute container is set the 'not present' state.
+       */
+      void
+      compartmentOrder (const compartmentOrder_optional& x);
+
+      //@}
+
+      /**
        * @name Constructors
        */
       //@{
@@ -1874,6 +3397,7 @@ namespace libsbgn
        * initializers for required elements and attributes.
        */
       glyph (const bbox_type&,
+             const class_type&,
              const id_type&);
 
       /**
@@ -1885,6 +3409,7 @@ namespace libsbgn
        * instead of making copies.
        */
       glyph (::std::auto_ptr< bbox_type >&,
+             const class_type&,
              const id_type&);
 
       /**
@@ -1949,14 +3474,288 @@ namespace libsbgn
       label_optional label_;
       state_optional state_;
       clone_optional clone_;
+      callout_optional callout_;
+      entity_optional entity_;
       ::xsd::cxx::tree::one< bbox_type > bbox_;
       glyph1_sequence glyph1_;
       port_sequence port_;
       ::xsd::cxx::tree::one< class_type > class__;
-      static const class_type class__default_value_;
       ::xsd::cxx::tree::one< orientation_type > orientation_;
       static const orientation_type orientation_default_value_;
       ::xsd::cxx::tree::one< id_type > id_;
+      compartmentRef_optional compartmentRef_;
+      compartmentOrder_optional compartmentOrder_;
+
+      //@endcond
+    };
+
+    /**
+     * @brief Class corresponding to the %arcgroup schema type.
+     *
+     * @nosubgrouping
+     */
+    class arcgroup: public ::libsbgn::sn_0_2::SBGNBase
+    {
+      public:
+      /**
+       * @name glyph
+       *
+       * @brief Accessor and modifier functions for the %glyph
+       * sequence element.
+       */
+      //@{
+
+      /**
+       * @brief Element type.
+       */
+      typedef ::libsbgn::sn_0_2::glyph glyph_type;
+
+      /**
+       * @brief Element sequence container type.
+       */
+      typedef ::xsd::cxx::tree::sequence< glyph_type > glyph_sequence;
+
+      /**
+       * @brief Element iterator type.
+       */
+      typedef glyph_sequence::iterator glyph_iterator;
+
+      /**
+       * @brief Element constant iterator type.
+       */
+      typedef glyph_sequence::const_iterator glyph_const_iterator;
+
+      /**
+       * @brief Element traits type.
+       */
+      typedef ::xsd::cxx::tree::traits< glyph_type, char > glyph_traits;
+
+      /**
+       * @brief Return a read-only (constant) reference to the element
+       * sequence.
+       *
+       * @return A constant reference to the sequence container.
+       */
+      const glyph_sequence&
+      glyph () const;
+
+      /**
+       * @brief Return a read-write reference to the element sequence.
+       *
+       * @return A reference to the sequence container.
+       */
+      glyph_sequence&
+      glyph ();
+
+      /**
+       * @brief Copy elements from a given sequence.
+       *
+       * @param s A sequence to copy elements from.
+       *
+       * For each element in @a s this function makes a copy and adds it 
+       * to the sequence. Note that this operation completely changes the 
+       * sequence and all old elements will be lost.
+       */
+      void
+      glyph (const glyph_sequence& s);
+
+      //@}
+
+      /**
+       * @name arc
+       *
+       * @brief Accessor and modifier functions for the %arc
+       * sequence element.
+       */
+      //@{
+
+      /**
+       * @brief Element type.
+       */
+      typedef ::libsbgn::sn_0_2::arc arc_type;
+
+      /**
+       * @brief Element sequence container type.
+       */
+      typedef ::xsd::cxx::tree::sequence< arc_type > arc_sequence;
+
+      /**
+       * @brief Element iterator type.
+       */
+      typedef arc_sequence::iterator arc_iterator;
+
+      /**
+       * @brief Element constant iterator type.
+       */
+      typedef arc_sequence::const_iterator arc_const_iterator;
+
+      /**
+       * @brief Element traits type.
+       */
+      typedef ::xsd::cxx::tree::traits< arc_type, char > arc_traits;
+
+      /**
+       * @brief Return a read-only (constant) reference to the element
+       * sequence.
+       *
+       * @return A constant reference to the sequence container.
+       */
+      const arc_sequence&
+      arc () const;
+
+      /**
+       * @brief Return a read-write reference to the element sequence.
+       *
+       * @return A reference to the sequence container.
+       */
+      arc_sequence&
+      arc ();
+
+      /**
+       * @brief Copy elements from a given sequence.
+       *
+       * @param s A sequence to copy elements from.
+       *
+       * For each element in @a s this function makes a copy and adds it 
+       * to the sequence. Note that this operation completely changes the 
+       * sequence and all old elements will be lost.
+       */
+      void
+      arc (const arc_sequence& s);
+
+      //@}
+
+      /**
+       * @name class
+       *
+       * @brief Accessor and modifier functions for the %class
+       * required attribute.
+       */
+      //@{
+
+      /**
+       * @brief Attribute type.
+       */
+      typedef ::libsbgn::sn_0_2::class1 class_type;
+
+      /**
+       * @brief Attribute traits type.
+       */
+      typedef ::xsd::cxx::tree::traits< class_type, char > class_traits;
+
+      /**
+       * @brief Return a read-only (constant) reference to the attribute.
+       *
+       * @return A constant reference to the attribute.
+       */
+      const class_type&
+      class_ () const;
+
+      /**
+       * @brief Return a read-write reference to the attribute.
+       *
+       * @return A reference to the attribute.
+       */
+      class_type&
+      class_ ();
+
+      /**
+       * @brief Set the attribute value.
+       *
+       * @param x A new value to set.
+       *
+       * This function makes a copy of its argument and sets it as
+       * the new value of the attribute.
+       */
+      void
+      class_ (const class_type& x);
+
+      /**
+       * @brief Set the attribute value without copying.
+       *
+       * @param p A new value to use.
+       *
+       * This function will try to use the passed value directly
+       * instead of making a copy.
+       */
+      void
+      class_ (::std::auto_ptr< class_type > p);
+
+      //@}
+
+      /**
+       * @name Constructors
+       */
+      //@{
+
+      /**
+       * @brief Create an instance from the ultimate base and
+       * initializers for required elements and attributes.
+       */
+      arcgroup (const class_type&);
+
+      /**
+       * @brief Create an instance from a DOM element.
+       *
+       * @param e A DOM element to extract the data from.
+       * @param f Flags to create the new instance with.
+       * @param c A pointer to the object that will contain the new
+       * instance.
+       */
+      arcgroup (const ::xercesc::DOMElement& e,
+                ::xml_schema::flags f = 0,
+                ::xml_schema::container* c = 0);
+
+      /**
+       * @brief Copy constructor.
+       *
+       * @param x An instance to make a copy of.
+       * @param f Flags to create the copy with.
+       * @param c A pointer to the object that will contain the copy.
+       *
+       * For polymorphic object models use the @c _clone function instead.
+       */
+      arcgroup (const arcgroup& x,
+                ::xml_schema::flags f = 0,
+                ::xml_schema::container* c = 0);
+
+      /**
+       * @brief Copy the instance polymorphically.
+       *
+       * @param f Flags to create the copy with.
+       * @param c A pointer to the object that will contain the copy.
+       * @return A pointer to the dynamically allocated copy.
+       *
+       * This function ensures that the dynamic type of the instance is
+       * used for copying and should be used for polymorphic object
+       * models instead of the copy constructor.
+       */
+      virtual arcgroup*
+      _clone (::xml_schema::flags f = 0,
+              ::xml_schema::container* c = 0) const;
+
+      //@}
+
+      /**
+       * @brief Destructor.
+       */
+      virtual 
+      ~arcgroup ();
+
+      // Implementation.
+      //
+
+      //@cond
+
+      protected:
+      void
+      parse (::xsd::cxx::xml::dom::parser< char >&,
+             ::xml_schema::flags);
+
+      protected:
+      glyph_sequence glyph_;
+      arc_sequence arc_;
+      ::xsd::cxx::tree::one< class_type > class__;
 
       //@endcond
     };
@@ -1966,56 +3765,36 @@ namespace libsbgn
      *
      * @nosubgrouping
      */
-    class arc: public ::xml_schema::type
+    class arc: public ::libsbgn::sn_0_2::SBGNBase
     {
       public:
       /**
        * @name glyph
        *
        * @brief Accessor and modifier functions for the %glyph
-       * optional element.
-       *
-       * an arc has one source, and one target
-       * which reference either a glyph or a glyph port
-       * 
-       * The arc route is described by a "start" point, 
-       * followed by 0 or more "next" element (describing segments)
-       * followed by one "end" element (also describing a segment)
-       * An arc can be approximated by linking the start and end with a
-       * straight line
-       * 
-       * "next" and "end" elements describe the end point of a segment
-       * The start point of this segment is assumed to be the same as the end
-       * point of
-       * the previous segment (or the "start" element, in the case of the first
-       * segment)
-       * 
-       * The "end" element defines the final part of the arc. 
-       * Thus the "start" and "end" elements are very different: 
-       * "start" only specifies a single coordinate,
-       * whereas "end" specifies a whole (curving) segment.
-       * 
-       * Each curve segment is described with control points which are children
-       * of the "next" or "end" element.
-       * This control points can be ignored (segment is drawn as a straight
-       * line)
-       * Segments are Bezier curves.
-       * No control point means a straight line (linear Bezier curve)
-       * 1 control point means a quadratic Bezier curve.
-       * 2 control points mean a cubic Bezier curve.
-       * There is no need for a type attribute.
+       * sequence element.
        */
       //@{
 
       /**
        * @brief Element type.
        */
-      typedef ::libsbgn::pd_0_1::glyph glyph_type;
+      typedef ::libsbgn::sn_0_2::glyph glyph_type;
 
       /**
-       * @brief Element optional container type.
+       * @brief Element sequence container type.
        */
-      typedef ::xsd::cxx::tree::optional< glyph_type > glyph_optional;
+      typedef ::xsd::cxx::tree::sequence< glyph_type > glyph_sequence;
+
+      /**
+       * @brief Element iterator type.
+       */
+      typedef glyph_sequence::iterator glyph_iterator;
+
+      /**
+       * @brief Element constant iterator type.
+       */
+      typedef glyph_sequence::const_iterator glyph_const_iterator;
 
       /**
        * @brief Element traits type.
@@ -2024,54 +3803,96 @@ namespace libsbgn
 
       /**
        * @brief Return a read-only (constant) reference to the element
-       * container.
+       * sequence.
        *
-       * @return A constant reference to the optional container.
+       * @return A constant reference to the sequence container.
        */
-      const glyph_optional&
+      const glyph_sequence&
       glyph () const;
 
       /**
-       * @brief Return a read-write reference to the element container.
+       * @brief Return a read-write reference to the element sequence.
        *
-       * @return A reference to the optional container.
+       * @return A reference to the sequence container.
        */
-      glyph_optional&
+      glyph_sequence&
       glyph ();
 
       /**
-       * @brief Set the element value.
+       * @brief Copy elements from a given sequence.
        *
-       * @param x A new value to set.
+       * @param s A sequence to copy elements from.
        *
-       * This function makes a copy of its argument and sets it as
-       * the new value of the element.
+       * For each element in @a s this function makes a copy and adds it 
+       * to the sequence. Note that this operation completely changes the 
+       * sequence and all old elements will be lost.
        */
       void
-      glyph (const glyph_type& x);
+      glyph (const glyph_sequence& s);
+
+      //@}
 
       /**
-       * @brief Set the element value.
+       * @name port
        *
-       * @param x An optional container with the new value to set.
-       *
-       * If the value is present in @a x then this function makes a copy 
-       * of this value and sets it as the new value of the element.
-       * Otherwise the element container is set the 'not present' state.
+       * @brief Accessor and modifier functions for the %port
+       * sequence element.
        */
-      void
-      glyph (const glyph_optional& x);
+      //@{
 
       /**
-       * @brief Set the element value without copying.
+       * @brief Element type.
+       */
+      typedef ::libsbgn::sn_0_2::port port_type;
+
+      /**
+       * @brief Element sequence container type.
+       */
+      typedef ::xsd::cxx::tree::sequence< port_type > port_sequence;
+
+      /**
+       * @brief Element iterator type.
+       */
+      typedef port_sequence::iterator port_iterator;
+
+      /**
+       * @brief Element constant iterator type.
+       */
+      typedef port_sequence::const_iterator port_const_iterator;
+
+      /**
+       * @brief Element traits type.
+       */
+      typedef ::xsd::cxx::tree::traits< port_type, char > port_traits;
+
+      /**
+       * @brief Return a read-only (constant) reference to the element
+       * sequence.
        *
-       * @param p A new value to use.
+       * @return A constant reference to the sequence container.
+       */
+      const port_sequence&
+      port () const;
+
+      /**
+       * @brief Return a read-write reference to the element sequence.
        *
-       * This function will try to use the passed value directly instead
-       * of making a copy.
+       * @return A reference to the sequence container.
+       */
+      port_sequence&
+      port ();
+
+      /**
+       * @brief Copy elements from a given sequence.
+       *
+       * @param s A sequence to copy elements from.
+       *
+       * For each element in @a s this function makes a copy and adds it 
+       * to the sequence. Note that this operation completely changes the 
+       * sequence and all old elements will be lost.
        */
       void
-      glyph (::std::auto_ptr< glyph_type > p);
+      port (const port_sequence& s);
 
       //@}
 
@@ -2086,7 +3907,7 @@ namespace libsbgn
       /**
        * @brief Element type.
        */
-      typedef ::libsbgn::pd_0_1::start start_type;
+      typedef ::libsbgn::sn_0_2::start start_type;
 
       /**
        * @brief Element traits type.
@@ -2144,7 +3965,7 @@ namespace libsbgn
       /**
        * @brief Element type.
        */
-      typedef ::libsbgn::pd_0_1::next next_type;
+      typedef ::libsbgn::sn_0_2::next next_type;
 
       /**
        * @brief Element sequence container type.
@@ -2208,7 +4029,7 @@ namespace libsbgn
       /**
        * @brief Element type.
        */
-      typedef ::libsbgn::pd_0_1::end end_type;
+      typedef ::libsbgn::sn_0_2::end end_type;
 
       /**
        * @brief Element traits type.
@@ -2259,19 +4080,14 @@ namespace libsbgn
        * @name class
        *
        * @brief Accessor and modifier functions for the %class
-       * optional attribute.
+       * required attribute.
        */
       //@{
 
       /**
        * @brief Attribute type.
        */
-      typedef ::libsbgn::pd_0_1::class1 class_type;
-
-      /**
-       * @brief Attribute optional container type.
-       */
-      typedef ::xsd::cxx::tree::optional< class_type > class_optional;
+      typedef ::libsbgn::sn_0_2::class2 class_type;
 
       /**
        * @brief Attribute traits type.
@@ -2279,20 +4095,19 @@ namespace libsbgn
       typedef ::xsd::cxx::tree::traits< class_type, char > class_traits;
 
       /**
-       * @brief Return a read-only (constant) reference to the attribute
-       * container.
+       * @brief Return a read-only (constant) reference to the attribute.
        *
-       * @return A constant reference to the optional container.
+       * @return A constant reference to the attribute.
        */
-      const class_optional&
+      const class_type&
       class_ () const;
 
       /**
-       * @brief Return a read-write reference to the attribute container.
+       * @brief Return a read-write reference to the attribute.
        *
-       * @return A reference to the optional container.
+       * @return A reference to the attribute.
        */
-      class_optional&
+      class_type&
       class_ ();
 
       /**
@@ -2307,27 +4122,73 @@ namespace libsbgn
       class_ (const class_type& x);
 
       /**
-       * @brief Set the attribute value.
+       * @brief Set the attribute value without copying.
        *
-       * @param x An optional container with the new value to set.
+       * @param p A new value to use.
        *
-       * If the value is present in @a x then this function makes a copy 
-       * of this value and sets it as the new value of the attribute.
-       * Otherwise the attribute container is set the 'not present' state.
+       * This function will try to use the passed value directly
+       * instead of making a copy.
        */
       void
-      class_ (const class_optional& x);
+      class_ (::std::auto_ptr< class_type > p);
+
+      //@}
+
+      /**
+       * @name id
+       *
+       * @brief Accessor and modifier functions for the %id
+       * required attribute.
+       */
+      //@{
+
+      /**
+       * @brief Attribute type.
+       */
+      typedef ::xml_schema::id id_type;
+
+      /**
+       * @brief Attribute traits type.
+       */
+      typedef ::xsd::cxx::tree::traits< id_type, char > id_traits;
+
+      /**
+       * @brief Return a read-only (constant) reference to the attribute.
+       *
+       * @return A constant reference to the attribute.
+       */
+      const id_type&
+      id () const;
+
+      /**
+       * @brief Return a read-write reference to the attribute.
+       *
+       * @return A reference to the attribute.
+       */
+      id_type&
+      id ();
+
+      /**
+       * @brief Set the attribute value.
+       *
+       * @param x A new value to set.
+       *
+       * This function makes a copy of its argument and sets it as
+       * the new value of the attribute.
+       */
+      void
+      id (const id_type& x);
 
       /**
        * @brief Set the attribute value without copying.
        *
        * @param p A new value to use.
        *
-       * This function will try to use the passed value directly instead
-       * of making a copy.
+       * This function will try to use the passed value directly
+       * instead of making a copy.
        */
       void
-      class_ (::std::auto_ptr< class_type > p);
+      id (::std::auto_ptr< id_type > p);
 
       //@}
 
@@ -2336,8 +4197,6 @@ namespace libsbgn
        *
        * @brief Accessor and modifier functions for the %source
        * required attribute.
-       *
-       * ref may refer to the id of a glyph or the id of a port on a glyph
        */
       //@{
 
@@ -2396,8 +4255,6 @@ namespace libsbgn
        *
        * @brief Accessor and modifier functions for the %target
        * required attribute.
-       *
-       * ref may refer to the id of a glyph or the id of a port on a glyph
        */
       //@{
 
@@ -2462,6 +4319,8 @@ namespace libsbgn
        */
       arc (const start_type&,
            const end_type&,
+           const class_type&,
+           const id_type&,
            const source_type&,
            const target_type&);
 
@@ -2475,6 +4334,8 @@ namespace libsbgn
        */
       arc (::std::auto_ptr< start_type >&,
            ::std::auto_ptr< end_type >&,
+           const class_type&,
+           const id_type&,
            const source_type&,
            const target_type&);
 
@@ -2537,11 +4398,13 @@ namespace libsbgn
              ::xml_schema::flags);
 
       protected:
-      glyph_optional glyph_;
+      glyph_sequence glyph_;
+      port_sequence port_;
       ::xsd::cxx::tree::one< start_type > start_;
       next_sequence next_;
       ::xsd::cxx::tree::one< end_type > end_;
-      class_optional class__;
+      ::xsd::cxx::tree::one< class_type > class__;
+      ::xsd::cxx::tree::one< id_type > id_;
       ::xsd::cxx::tree::one< source_type > source_;
       ::xsd::cxx::tree::one< target_type > target_;
 
@@ -2549,118 +4412,50 @@ namespace libsbgn
     };
 
     /**
-     * @brief Class corresponding to the %point schema type.
-     *
-     * @nosubgrouping
+     * @brief Enumeration class corresponding to the %language
+     * schema type.
      */
-    class point: public ::xml_schema::type
+    class language: public ::xml_schema::string
     {
       public:
+
       /**
-       * @name x
+       * @brief Underlying enum type.
+       */
+      enum value
+      {
+        entity_relationship,
+        process_description,
+        activity_flow
+      };
+
+      /**
+       * @brief Create an instance from the underlying enum value.
        *
-       * @brief Accessor and modifier functions for the %x
-       * required attribute.
+       * @param v A enum value.
        */
-      //@{
+      language (value v);
 
       /**
-       * @brief Attribute type.
-       */
-      typedef ::xml_schema::float_ x_type;
-
-      /**
-       * @brief Attribute traits type.
-       */
-      typedef ::xsd::cxx::tree::traits< x_type, char > x_traits;
-
-      /**
-       * @brief Return a read-only (constant) reference to the attribute.
+       * @brief Create an instance from a C string.
        *
-       * @return A constant reference to the attribute.
+       * @param v A string value.
        */
-      const x_type&
-      x () const;
+      language (const char* v);
 
       /**
-       * @brief Return a read-write reference to the attribute.
+       * @brief Create an instance from a string.
        *
-       * @return A reference to the attribute.
+       * @param v A string value.
        */
-      x_type&
-      x ();
+      language (const ::std::string& v);
 
       /**
-       * @brief Set the attribute value.
+       * @brief Create an instance from the base value.
        *
-       * @param x A new value to set.
-       *
-       * This function makes a copy of its argument and sets it as
-       * the new value of the attribute.
+       * @param v A base value.
        */
-      void
-      x (const x_type& x);
-
-      //@}
-
-      /**
-       * @name y
-       *
-       * @brief Accessor and modifier functions for the %y
-       * required attribute.
-       */
-      //@{
-
-      /**
-       * @brief Attribute type.
-       */
-      typedef ::xml_schema::float_ y_type;
-
-      /**
-       * @brief Attribute traits type.
-       */
-      typedef ::xsd::cxx::tree::traits< y_type, char > y_traits;
-
-      /**
-       * @brief Return a read-only (constant) reference to the attribute.
-       *
-       * @return A constant reference to the attribute.
-       */
-      const y_type&
-      y () const;
-
-      /**
-       * @brief Return a read-write reference to the attribute.
-       *
-       * @return A reference to the attribute.
-       */
-      y_type&
-      y ();
-
-      /**
-       * @brief Set the attribute value.
-       *
-       * @param x A new value to set.
-       *
-       * This function makes a copy of its argument and sets it as
-       * the new value of the attribute.
-       */
-      void
-      y (const y_type& x);
-
-      //@}
-
-      /**
-       * @name Constructors
-       */
-      //@{
-
-      /**
-       * @brief Create an instance from the ultimate base and
-       * initializers for required elements and attributes.
-       */
-      point (const x_type&,
-             const y_type&);
+      language (const ::xml_schema::string& v);
 
       /**
        * @brief Create an instance from a DOM element.
@@ -2670,9 +4465,35 @@ namespace libsbgn
        * @param c A pointer to the object that will contain the new
        * instance.
        */
-      point (const ::xercesc::DOMElement& e,
-             ::xml_schema::flags f = 0,
-             ::xml_schema::container* c = 0);
+      language (const ::xercesc::DOMElement& e,
+                ::xml_schema::flags f = 0,
+                ::xml_schema::container* c = 0);
+
+      /**
+       * @brief Create an instance from a DOM attribute.
+       *
+       * @param a A DOM attribute to extract the data from.
+       * @param f Flags to create the new instance with.
+       * @param c A pointer to the object that will contain the new
+       * instance.
+       */
+      language (const ::xercesc::DOMAttr& a,
+                ::xml_schema::flags f = 0,
+                ::xml_schema::container* c = 0);
+
+      /**
+       * @brief Create an instance from a string fragment.
+       *
+       * @param s A string fragment to extract the data from.
+       * @param e A pointer to DOM element containing the string fragment.
+       * @param f Flags to create the new instance with.
+       * @param c A pointer to the object that will contain the new
+       * instance.
+       */
+      language (const ::std::string& s,
+                const ::xercesc::DOMElement* e,
+                ::xml_schema::flags f = 0,
+                ::xml_schema::container* c = 0);
 
       /**
        * @brief Copy constructor.
@@ -2683,9 +4504,9 @@ namespace libsbgn
        *
        * For polymorphic object models use the @c _clone function instead.
        */
-      point (const point& x,
-             ::xml_schema::flags f = 0,
-             ::xml_schema::container* c = 0);
+      language (const language& x,
+                ::xml_schema::flags f = 0,
+                ::xml_schema::container* c = 0);
 
       /**
        * @brief Copy the instance polymorphically.
@@ -2698,406 +4519,40 @@ namespace libsbgn
        * used for copying and should be used for polymorphic object
        * models instead of the copy constructor.
        */
-      virtual point*
+      virtual language*
       _clone (::xml_schema::flags f = 0,
               ::xml_schema::container* c = 0) const;
 
-      //@}
+      /**
+       * @brief Assign the underlying enum value.
+       *
+       * @param v A enum value.
+       * @return A refernce to the instance.
+       */
+      language&
+      operator= (value v);
 
       /**
-       * @brief Destructor.
+       * @brief Implicit conversion operator to the underlying
+       * enum value.
+       *
+       * @return A enum value.
        */
-      virtual 
-      ~point ();
-
-      // Implementation.
-      //
+      virtual
+      operator value () const
+      {
+        return _xsd_language_convert ();
+      }
 
       //@cond
 
       protected:
-      void
-      parse (::xsd::cxx::xml::dom::parser< char >&,
-             ::xml_schema::flags);
+      value
+      _xsd_language_convert () const;
 
-      protected:
-      ::xsd::cxx::tree::one< x_type > x_;
-      ::xsd::cxx::tree::one< y_type > y_;
-
-      //@endcond
-    };
-
-    /**
-     * @brief Class corresponding to the %label schema type.
-     *
-     * @nosubgrouping
-     */
-    class label: public ::xml_schema::type
-    {
       public:
-      /**
-       * @name bbox
-       *
-       * @brief Accessor and modifier functions for the %bbox
-       * optional element.
-       *
-       * bbox defines outer bounding box, even if the shape
-       * is irregular (as may be the case for compartments.
-       * In the case of process nodes, the ports and the lines to them
-       * should be included in the bounding box.
-       * bbox can also be (optionally) added to labels
-       */
-      //@{
-
-      /**
-       * @brief Element type.
-       */
-      typedef ::libsbgn::pd_0_1::bbox bbox_type;
-
-      /**
-       * @brief Element optional container type.
-       */
-      typedef ::xsd::cxx::tree::optional< bbox_type > bbox_optional;
-
-      /**
-       * @brief Element traits type.
-       */
-      typedef ::xsd::cxx::tree::traits< bbox_type, char > bbox_traits;
-
-      /**
-       * @brief Return a read-only (constant) reference to the element
-       * container.
-       *
-       * @return A constant reference to the optional container.
-       */
-      const bbox_optional&
-      bbox () const;
-
-      /**
-       * @brief Return a read-write reference to the element container.
-       *
-       * @return A reference to the optional container.
-       */
-      bbox_optional&
-      bbox ();
-
-      /**
-       * @brief Set the element value.
-       *
-       * @param x A new value to set.
-       *
-       * This function makes a copy of its argument and sets it as
-       * the new value of the element.
-       */
-      void
-      bbox (const bbox_type& x);
-
-      /**
-       * @brief Set the element value.
-       *
-       * @param x An optional container with the new value to set.
-       *
-       * If the value is present in @a x then this function makes a copy 
-       * of this value and sets it as the new value of the element.
-       * Otherwise the element container is set the 'not present' state.
-       */
-      void
-      bbox (const bbox_optional& x);
-
-      /**
-       * @brief Set the element value without copying.
-       *
-       * @param p A new value to use.
-       *
-       * This function will try to use the passed value directly instead
-       * of making a copy.
-       */
-      void
-      bbox (::std::auto_ptr< bbox_type > p);
-
-      //@}
-
-      /**
-       * @name text
-       *
-       * @brief Accessor and modifier functions for the %text
-       * required attribute.
-       *
-       * Multi-line labels are allowed. 
-       * Line breaks are encoded as 
-       * 
-       * as specified by the XML standard.
-       */
-      //@{
-
-      /**
-       * @brief Attribute type.
-       */
-      typedef ::xml_schema::string text_type;
-
-      /**
-       * @brief Attribute traits type.
-       */
-      typedef ::xsd::cxx::tree::traits< text_type, char > text_traits;
-
-      /**
-       * @brief Return a read-only (constant) reference to the attribute.
-       *
-       * @return A constant reference to the attribute.
-       */
-      const text_type&
-      text () const;
-
-      /**
-       * @brief Return a read-write reference to the attribute.
-       *
-       * @return A reference to the attribute.
-       */
-      text_type&
-      text ();
-
-      /**
-       * @brief Set the attribute value.
-       *
-       * @param x A new value to set.
-       *
-       * This function makes a copy of its argument and sets it as
-       * the new value of the attribute.
-       */
-      void
-      text (const text_type& x);
-
-      /**
-       * @brief Set the attribute value without copying.
-       *
-       * @param p A new value to use.
-       *
-       * This function will try to use the passed value directly
-       * instead of making a copy.
-       */
-      void
-      text (::std::auto_ptr< text_type > p);
-
-      //@}
-
-      /**
-       * @name font
-       *
-       * @brief Accessor and modifier functions for the %font
-       * optional attribute.
-       *
-       * The font and fontsize attributes are just examples,
-       * more font attributes will probably be added in the future
-       */
-      //@{
-
-      /**
-       * @brief Attribute type.
-       */
-      typedef ::xml_schema::string font_type;
-
-      /**
-       * @brief Attribute optional container type.
-       */
-      typedef ::xsd::cxx::tree::optional< font_type > font_optional;
-
-      /**
-       * @brief Attribute traits type.
-       */
-      typedef ::xsd::cxx::tree::traits< font_type, char > font_traits;
-
-      /**
-       * @brief Return a read-only (constant) reference to the attribute
-       * container.
-       *
-       * @return A constant reference to the optional container.
-       */
-      const font_optional&
-      font () const;
-
-      /**
-       * @brief Return a read-write reference to the attribute container.
-       *
-       * @return A reference to the optional container.
-       */
-      font_optional&
-      font ();
-
-      /**
-       * @brief Set the attribute value.
-       *
-       * @param x A new value to set.
-       *
-       * This function makes a copy of its argument and sets it as
-       * the new value of the attribute.
-       */
-      void
-      font (const font_type& x);
-
-      /**
-       * @brief Set the attribute value.
-       *
-       * @param x An optional container with the new value to set.
-       *
-       * If the value is present in @a x then this function makes a copy 
-       * of this value and sets it as the new value of the attribute.
-       * Otherwise the attribute container is set the 'not present' state.
-       */
-      void
-      font (const font_optional& x);
-
-      /**
-       * @brief Set the attribute value without copying.
-       *
-       * @param p A new value to use.
-       *
-       * This function will try to use the passed value directly instead
-       * of making a copy.
-       */
-      void
-      font (::std::auto_ptr< font_type > p);
-
-      //@}
-
-      /**
-       * @name fontsize
-       *
-       * @brief Accessor and modifier functions for the %fontsize
-       * optional attribute.
-       */
-      //@{
-
-      /**
-       * @brief Attribute type.
-       */
-      typedef ::xml_schema::float_ fontsize_type;
-
-      /**
-       * @brief Attribute optional container type.
-       */
-      typedef ::xsd::cxx::tree::optional< fontsize_type > fontsize_optional;
-
-      /**
-       * @brief Attribute traits type.
-       */
-      typedef ::xsd::cxx::tree::traits< fontsize_type, char > fontsize_traits;
-
-      /**
-       * @brief Return a read-only (constant) reference to the attribute
-       * container.
-       *
-       * @return A constant reference to the optional container.
-       */
-      const fontsize_optional&
-      fontsize () const;
-
-      /**
-       * @brief Return a read-write reference to the attribute container.
-       *
-       * @return A reference to the optional container.
-       */
-      fontsize_optional&
-      fontsize ();
-
-      /**
-       * @brief Set the attribute value.
-       *
-       * @param x A new value to set.
-       *
-       * This function makes a copy of its argument and sets it as
-       * the new value of the attribute.
-       */
-      void
-      fontsize (const fontsize_type& x);
-
-      /**
-       * @brief Set the attribute value.
-       *
-       * @param x An optional container with the new value to set.
-       *
-       * If the value is present in @a x then this function makes a copy 
-       * of this value and sets it as the new value of the attribute.
-       * Otherwise the attribute container is set the 'not present' state.
-       */
-      void
-      fontsize (const fontsize_optional& x);
-
-      //@}
-
-      /**
-       * @name Constructors
-       */
-      //@{
-
-      /**
-       * @brief Create an instance from the ultimate base and
-       * initializers for required elements and attributes.
-       */
-      label (const text_type&);
-
-      /**
-       * @brief Create an instance from a DOM element.
-       *
-       * @param e A DOM element to extract the data from.
-       * @param f Flags to create the new instance with.
-       * @param c A pointer to the object that will contain the new
-       * instance.
-       */
-      label (const ::xercesc::DOMElement& e,
-             ::xml_schema::flags f = 0,
-             ::xml_schema::container* c = 0);
-
-      /**
-       * @brief Copy constructor.
-       *
-       * @param x An instance to make a copy of.
-       * @param f Flags to create the copy with.
-       * @param c A pointer to the object that will contain the copy.
-       *
-       * For polymorphic object models use the @c _clone function instead.
-       */
-      label (const label& x,
-             ::xml_schema::flags f = 0,
-             ::xml_schema::container* c = 0);
-
-      /**
-       * @brief Copy the instance polymorphically.
-       *
-       * @param f Flags to create the copy with.
-       * @param c A pointer to the object that will contain the copy.
-       * @return A pointer to the dynamically allocated copy.
-       *
-       * This function ensures that the dynamic type of the instance is
-       * used for copying and should be used for polymorphic object
-       * models instead of the copy constructor.
-       */
-      virtual label*
-      _clone (::xml_schema::flags f = 0,
-              ::xml_schema::container* c = 0) const;
-
-      //@}
-
-      /**
-       * @brief Destructor.
-       */
-      virtual 
-      ~label ();
-
-      // Implementation.
-      //
-
-      //@cond
-
-      protected:
-      void
-      parse (::xsd::cxx::xml::dom::parser< char >&,
-             ::xml_schema::flags);
-
-      protected:
-      bbox_optional bbox_;
-      ::xsd::cxx::tree::one< text_type > text_;
-      font_optional font_;
-      fontsize_optional fontsize_;
+      static const char* const _xsd_language_literals_[3];
+      static const value _xsd_language_indexes_[3];
 
       //@endcond
     };
@@ -3114,10 +4569,7 @@ namespace libsbgn
        * @name value
        *
        * @brief Accessor and modifier functions for the %value
-       * required attribute.
-       *
-       * value can be either from a predefined set of string (P, S, etc.)
-       * which correspond to specific SBO terms, or any arbitrary string
+       * optional attribute.
        */
       //@{
 
@@ -3127,24 +4579,30 @@ namespace libsbgn
       typedef ::xml_schema::string value_type;
 
       /**
+       * @brief Attribute optional container type.
+       */
+      typedef ::xsd::cxx::tree::optional< value_type > value_optional;
+
+      /**
        * @brief Attribute traits type.
        */
       typedef ::xsd::cxx::tree::traits< value_type, char > value_traits;
 
       /**
-       * @brief Return a read-only (constant) reference to the attribute.
+       * @brief Return a read-only (constant) reference to the attribute
+       * container.
        *
-       * @return A constant reference to the attribute.
+       * @return A constant reference to the optional container.
        */
-      const value_type&
+      const value_optional&
       value () const;
 
       /**
-       * @brief Return a read-write reference to the attribute.
+       * @brief Return a read-write reference to the attribute container.
        *
-       * @return A reference to the attribute.
+       * @return A reference to the optional container.
        */
-      value_type&
+      value_optional&
       value ();
 
       /**
@@ -3159,12 +4617,24 @@ namespace libsbgn
       value (const value_type& x);
 
       /**
+       * @brief Set the attribute value.
+       *
+       * @param x An optional container with the new value to set.
+       *
+       * If the value is present in @a x then this function makes a copy 
+       * of this value and sets it as the new value of the attribute.
+       * Otherwise the attribute container is set the 'not present' state.
+       */
+      void
+      value (const value_optional& x);
+
+      /**
        * @brief Set the attribute value without copying.
        *
        * @param p A new value to use.
        *
-       * This function will try to use the passed value directly
-       * instead of making a copy.
+       * This function will try to use the passed value directly instead
+       * of making a copy.
        */
       void
       value (::std::auto_ptr< value_type > p);
@@ -3176,9 +4646,6 @@ namespace libsbgn
        *
        * @brief Accessor and modifier functions for the %variable
        * optional attribute.
-       *
-       * variable is required
-       * when there is more than one state variable on a given EPN
        */
       //@{
 
@@ -3259,7 +4726,7 @@ namespace libsbgn
        * @brief Create an instance from the ultimate base and
        * initializers for required elements and attributes.
        */
-      state (const value_type&);
+      state ();
 
       /**
        * @brief Create an instance from a DOM element.
@@ -3320,7 +4787,7 @@ namespace libsbgn
              ::xml_schema::flags);
 
       protected:
-      ::xsd::cxx::tree::one< value_type > value_;
+      value_optional value_;
       variable_optional variable_;
 
       //@endcond
@@ -3345,7 +4812,7 @@ namespace libsbgn
       /**
        * @brief Element type.
        */
-      typedef ::libsbgn::pd_0_1::label label_type;
+      typedef ::libsbgn::sn_0_2::label label_type;
 
       /**
        * @brief Element optional container type.
@@ -3486,158 +4953,60 @@ namespace libsbgn
     };
 
     /**
-     * @brief Class corresponding to the %port schema type.
+     * @brief Class corresponding to the %callout schema type.
      *
      * @nosubgrouping
      */
-    class port: public ::xml_schema::type
+    class callout: public ::xml_schema::type
     {
       public:
       /**
-       * @name x
+       * @name point
        *
-       * @brief Accessor and modifier functions for the %x
-       * required attribute.
+       * @brief Accessor and modifier functions for the %point
+       * required element.
        */
       //@{
 
       /**
-       * @brief Attribute type.
+       * @brief Element type.
        */
-      typedef ::xml_schema::float_ x_type;
+      typedef ::libsbgn::sn_0_2::point point_type;
 
       /**
-       * @brief Attribute traits type.
+       * @brief Element traits type.
        */
-      typedef ::xsd::cxx::tree::traits< x_type, char > x_traits;
+      typedef ::xsd::cxx::tree::traits< point_type, char > point_traits;
 
       /**
-       * @brief Return a read-only (constant) reference to the attribute.
+       * @brief Return a read-only (constant) reference to the element.
        *
-       * @return A constant reference to the attribute.
+       * @return A constant reference to the element.
        */
-      const x_type&
-      x () const;
+      const point_type&
+      point () const;
 
       /**
-       * @brief Return a read-write reference to the attribute.
+       * @brief Return a read-write reference to the element.
        *
-       * @return A reference to the attribute.
+       * @return A reference to the element.
        */
-      x_type&
-      x ();
+      point_type&
+      point ();
 
       /**
-       * @brief Set the attribute value.
-       *
-       * @param x A new value to set.
-       *
-       * This function makes a copy of its argument and sets it as
-       * the new value of the attribute.
-       */
-      void
-      x (const x_type& x);
-
-      //@}
-
-      /**
-       * @name y
-       *
-       * @brief Accessor and modifier functions for the %y
-       * required attribute.
-       */
-      //@{
-
-      /**
-       * @brief Attribute type.
-       */
-      typedef ::xml_schema::float_ y_type;
-
-      /**
-       * @brief Attribute traits type.
-       */
-      typedef ::xsd::cxx::tree::traits< y_type, char > y_traits;
-
-      /**
-       * @brief Return a read-only (constant) reference to the attribute.
-       *
-       * @return A constant reference to the attribute.
-       */
-      const y_type&
-      y () const;
-
-      /**
-       * @brief Return a read-write reference to the attribute.
-       *
-       * @return A reference to the attribute.
-       */
-      y_type&
-      y ();
-
-      /**
-       * @brief Set the attribute value.
+       * @brief Set the element value.
        *
        * @param x A new value to set.
        *
        * This function makes a copy of its argument and sets it as
-       * the new value of the attribute.
+       * the new value of the element.
        */
       void
-      y (const y_type& x);
-
-      //@}
+      point (const point_type& x);
 
       /**
-       * @name id
-       *
-       * @brief Accessor and modifier functions for the %id
-       * required attribute.
-       *
-       * xsd:ID type is an alphanumeric identifier, starting with a letter.
-       * It is recommended to generate meaningless ID's such as glyph1234.
-       * Avoid ID's that have meaning in them, such as "epn1" or "epn_ethanol"
-       */
-      //@{
-
-      /**
-       * @brief Attribute type.
-       */
-      typedef ::xml_schema::id id_type;
-
-      /**
-       * @brief Attribute traits type.
-       */
-      typedef ::xsd::cxx::tree::traits< id_type, char > id_traits;
-
-      /**
-       * @brief Return a read-only (constant) reference to the attribute.
-       *
-       * @return A constant reference to the attribute.
-       */
-      const id_type&
-      id () const;
-
-      /**
-       * @brief Return a read-write reference to the attribute.
-       *
-       * @return A reference to the attribute.
-       */
-      id_type&
-      id ();
-
-      /**
-       * @brief Set the attribute value.
-       *
-       * @param x A new value to set.
-       *
-       * This function makes a copy of its argument and sets it as
-       * the new value of the attribute.
-       */
-      void
-      id (const id_type& x);
-
-      /**
-       * @brief Set the attribute value without copying.
+       * @brief Set the element value without copying.
        *
        * @param p A new value to use.
        *
@@ -3645,7 +5014,83 @@ namespace libsbgn
        * instead of making a copy.
        */
       void
-      id (::std::auto_ptr< id_type > p);
+      point (::std::auto_ptr< point_type > p);
+
+      //@}
+
+      /**
+       * @name target
+       *
+       * @brief Accessor and modifier functions for the %target
+       * optional attribute.
+       */
+      //@{
+
+      /**
+       * @brief Attribute type.
+       */
+      typedef ::xml_schema::idref target_type;
+
+      /**
+       * @brief Attribute optional container type.
+       */
+      typedef ::xsd::cxx::tree::optional< target_type > target_optional;
+
+      /**
+       * @brief Attribute traits type.
+       */
+      typedef ::xsd::cxx::tree::traits< target_type, char > target_traits;
+
+      /**
+       * @brief Return a read-only (constant) reference to the attribute
+       * container.
+       *
+       * @return A constant reference to the optional container.
+       */
+      const target_optional&
+      target () const;
+
+      /**
+       * @brief Return a read-write reference to the attribute container.
+       *
+       * @return A reference to the optional container.
+       */
+      target_optional&
+      target ();
+
+      /**
+       * @brief Set the attribute value.
+       *
+       * @param x A new value to set.
+       *
+       * This function makes a copy of its argument and sets it as
+       * the new value of the attribute.
+       */
+      void
+      target (const target_type& x);
+
+      /**
+       * @brief Set the attribute value.
+       *
+       * @param x An optional container with the new value to set.
+       *
+       * If the value is present in @a x then this function makes a copy 
+       * of this value and sets it as the new value of the attribute.
+       * Otherwise the attribute container is set the 'not present' state.
+       */
+      void
+      target (const target_optional& x);
+
+      /**
+       * @brief Set the attribute value without copying.
+       *
+       * @param p A new value to use.
+       *
+       * This function will try to use the passed value directly instead
+       * of making a copy.
+       */
+      void
+      target (::std::auto_ptr< target_type > p);
 
       //@}
 
@@ -3658,9 +5103,17 @@ namespace libsbgn
        * @brief Create an instance from the ultimate base and
        * initializers for required elements and attributes.
        */
-      port (const x_type&,
-            const y_type&,
-            const id_type&);
+      callout (const point_type&);
+
+      /**
+       * @brief Create an instance from the ultimate base and
+       * initializers for required elements and attributes
+       * (auto_ptr version).
+       *
+       * This constructor will try to use the passed values directly
+       * instead of making copies.
+       */
+      callout (::std::auto_ptr< point_type >&);
 
       /**
        * @brief Create an instance from a DOM element.
@@ -3670,9 +5123,9 @@ namespace libsbgn
        * @param c A pointer to the object that will contain the new
        * instance.
        */
-      port (const ::xercesc::DOMElement& e,
-            ::xml_schema::flags f = 0,
-            ::xml_schema::container* c = 0);
+      callout (const ::xercesc::DOMElement& e,
+               ::xml_schema::flags f = 0,
+               ::xml_schema::container* c = 0);
 
       /**
        * @brief Copy constructor.
@@ -3683,9 +5136,9 @@ namespace libsbgn
        *
        * For polymorphic object models use the @c _clone function instead.
        */
-      port (const port& x,
-            ::xml_schema::flags f = 0,
-            ::xml_schema::container* c = 0);
+      callout (const callout& x,
+               ::xml_schema::flags f = 0,
+               ::xml_schema::container* c = 0);
 
       /**
        * @brief Copy the instance polymorphically.
@@ -3698,7 +5151,7 @@ namespace libsbgn
        * used for copying and should be used for polymorphic object
        * models instead of the copy constructor.
        */
-      virtual port*
+      virtual callout*
       _clone (::xml_schema::flags f = 0,
               ::xml_schema::container* c = 0) const;
 
@@ -3708,7 +5161,7 @@ namespace libsbgn
        * @brief Destructor.
        */
       virtual 
-      ~port ();
+      ~callout ();
 
       // Implementation.
       //
@@ -3721,9 +5174,149 @@ namespace libsbgn
              ::xml_schema::flags);
 
       protected:
-      ::xsd::cxx::tree::one< x_type > x_;
-      ::xsd::cxx::tree::one< y_type > y_;
-      ::xsd::cxx::tree::one< id_type > id_;
+      ::xsd::cxx::tree::one< point_type > point_;
+      target_optional target_;
+
+      //@endcond
+    };
+
+    /**
+     * @brief Class corresponding to the %entity schema type.
+     *
+     * @nosubgrouping
+     */
+    class entity: public ::xml_schema::type
+    {
+      public:
+      /**
+       * @name name
+       *
+       * @brief Accessor and modifier functions for the %name
+       * required attribute.
+       */
+      //@{
+
+      /**
+       * @brief Attribute type.
+       */
+      typedef ::libsbgn::sn_0_2::name name_type;
+
+      /**
+       * @brief Attribute traits type.
+       */
+      typedef ::xsd::cxx::tree::traits< name_type, char > name_traits;
+
+      /**
+       * @brief Return a read-only (constant) reference to the attribute.
+       *
+       * @return A constant reference to the attribute.
+       */
+      const name_type&
+      name () const;
+
+      /**
+       * @brief Return a read-write reference to the attribute.
+       *
+       * @return A reference to the attribute.
+       */
+      name_type&
+      name ();
+
+      /**
+       * @brief Set the attribute value.
+       *
+       * @param x A new value to set.
+       *
+       * This function makes a copy of its argument and sets it as
+       * the new value of the attribute.
+       */
+      void
+      name (const name_type& x);
+
+      /**
+       * @brief Set the attribute value without copying.
+       *
+       * @param p A new value to use.
+       *
+       * This function will try to use the passed value directly
+       * instead of making a copy.
+       */
+      void
+      name (::std::auto_ptr< name_type > p);
+
+      //@}
+
+      /**
+       * @name Constructors
+       */
+      //@{
+
+      /**
+       * @brief Create an instance from the ultimate base and
+       * initializers for required elements and attributes.
+       */
+      entity (const name_type&);
+
+      /**
+       * @brief Create an instance from a DOM element.
+       *
+       * @param e A DOM element to extract the data from.
+       * @param f Flags to create the new instance with.
+       * @param c A pointer to the object that will contain the new
+       * instance.
+       */
+      entity (const ::xercesc::DOMElement& e,
+              ::xml_schema::flags f = 0,
+              ::xml_schema::container* c = 0);
+
+      /**
+       * @brief Copy constructor.
+       *
+       * @param x An instance to make a copy of.
+       * @param f Flags to create the copy with.
+       * @param c A pointer to the object that will contain the copy.
+       *
+       * For polymorphic object models use the @c _clone function instead.
+       */
+      entity (const entity& x,
+              ::xml_schema::flags f = 0,
+              ::xml_schema::container* c = 0);
+
+      /**
+       * @brief Copy the instance polymorphically.
+       *
+       * @param f Flags to create the copy with.
+       * @param c A pointer to the object that will contain the copy.
+       * @return A pointer to the dynamically allocated copy.
+       *
+       * This function ensures that the dynamic type of the instance is
+       * used for copying and should be used for polymorphic object
+       * models instead of the copy constructor.
+       */
+      virtual entity*
+      _clone (::xml_schema::flags f = 0,
+              ::xml_schema::container* c = 0) const;
+
+      //@}
+
+      /**
+       * @brief Destructor.
+       */
+      virtual 
+      ~entity ();
+
+      // Implementation.
+      //
+
+      //@cond
+
+      protected:
+      void
+      parse (::xsd::cxx::xml::dom::parser< char >&,
+             ::xml_schema::flags);
+
+      protected:
+      ::xsd::cxx::tree::one< name_type > name_;
 
       //@endcond
     };
@@ -3751,10 +5344,13 @@ namespace libsbgn
         complex,
         complex_multimer,
         source_and_sink,
+        perturbation,
+        biological_activity,
         perturbing_agent,
         compartment,
         submap,
         tag,
+        terminal,
         process,
         omitted_process,
         uncertain_process,
@@ -3766,7 +5362,18 @@ namespace libsbgn
         not_,
         state_variable,
         unit_of_information,
-        stoichiometry
+        entity,
+        outcome,
+        interaction,
+        influence_target,
+        annotation,
+        variable_value,
+        implicit_xor,
+        delay,
+        existence,
+        location,
+        cardinality,
+        observable
       };
 
       /**
@@ -3891,8 +5498,8 @@ namespace libsbgn
       _xsd_class__convert () const;
 
       public:
-      static const char* const _xsd_class__literals_[26];
-      static const value _xsd_class__indexes_[26];
+      static const char* const _xsd_class__literals_[40];
+      static const value _xsd_class__indexes_[40];
 
       //@endcond
     };
@@ -4042,6 +5649,150 @@ namespace libsbgn
       public:
       static const char* const _xsd_orientation_literals_[6];
       static const value _xsd_orientation_indexes_[6];
+
+      //@endcond
+    };
+
+    /**
+     * @brief Enumeration class corresponding to the %class1
+     * schema type.
+     */
+    class class1: public ::xml_schema::string
+    {
+      public:
+
+      /**
+       * @brief Underlying enum type.
+       */
+      enum value
+      {
+        interaction
+      };
+
+      /**
+       * @brief Create an instance from the underlying enum value.
+       *
+       * @param v A enum value.
+       */
+      class1 (value v);
+
+      /**
+       * @brief Create an instance from a C string.
+       *
+       * @param v A string value.
+       */
+      class1 (const char* v);
+
+      /**
+       * @brief Create an instance from a string.
+       *
+       * @param v A string value.
+       */
+      class1 (const ::std::string& v);
+
+      /**
+       * @brief Create an instance from the base value.
+       *
+       * @param v A base value.
+       */
+      class1 (const ::xml_schema::string& v);
+
+      /**
+       * @brief Create an instance from a DOM element.
+       *
+       * @param e A DOM element to extract the data from.
+       * @param f Flags to create the new instance with.
+       * @param c A pointer to the object that will contain the new
+       * instance.
+       */
+      class1 (const ::xercesc::DOMElement& e,
+              ::xml_schema::flags f = 0,
+              ::xml_schema::container* c = 0);
+
+      /**
+       * @brief Create an instance from a DOM attribute.
+       *
+       * @param a A DOM attribute to extract the data from.
+       * @param f Flags to create the new instance with.
+       * @param c A pointer to the object that will contain the new
+       * instance.
+       */
+      class1 (const ::xercesc::DOMAttr& a,
+              ::xml_schema::flags f = 0,
+              ::xml_schema::container* c = 0);
+
+      /**
+       * @brief Create an instance from a string fragment.
+       *
+       * @param s A string fragment to extract the data from.
+       * @param e A pointer to DOM element containing the string fragment.
+       * @param f Flags to create the new instance with.
+       * @param c A pointer to the object that will contain the new
+       * instance.
+       */
+      class1 (const ::std::string& s,
+              const ::xercesc::DOMElement* e,
+              ::xml_schema::flags f = 0,
+              ::xml_schema::container* c = 0);
+
+      /**
+       * @brief Copy constructor.
+       *
+       * @param x An instance to make a copy of.
+       * @param f Flags to create the copy with.
+       * @param c A pointer to the object that will contain the copy.
+       *
+       * For polymorphic object models use the @c _clone function instead.
+       */
+      class1 (const class1& x,
+              ::xml_schema::flags f = 0,
+              ::xml_schema::container* c = 0);
+
+      /**
+       * @brief Copy the instance polymorphically.
+       *
+       * @param f Flags to create the copy with.
+       * @param c A pointer to the object that will contain the copy.
+       * @return A pointer to the dynamically allocated copy.
+       *
+       * This function ensures that the dynamic type of the instance is
+       * used for copying and should be used for polymorphic object
+       * models instead of the copy constructor.
+       */
+      virtual class1*
+      _clone (::xml_schema::flags f = 0,
+              ::xml_schema::container* c = 0) const;
+
+      /**
+       * @brief Assign the underlying enum value.
+       *
+       * @param v A enum value.
+       * @return A refernce to the instance.
+       */
+      class1&
+      operator= (value v);
+
+      /**
+       * @brief Implicit conversion operator to the underlying
+       * enum value.
+       *
+       * @return A enum value.
+       */
+      virtual
+      operator value () const
+      {
+        return _xsd_class1_convert ();
+      }
+
+      //@cond
+
+      protected:
+      value
+      _xsd_class1_convert () const;
+
+      public:
+      static const char* const _xsd_class1_literals_[1];
+      static const value _xsd_class1_indexes_[1];
 
       //@endcond
     };
@@ -4244,7 +5995,7 @@ namespace libsbgn
       /**
        * @brief Element type.
        */
-      typedef ::libsbgn::pd_0_1::point point_type;
+      typedef ::libsbgn::sn_0_2::point point_type;
 
       /**
        * @brief Element sequence container type.
@@ -4488,7 +6239,7 @@ namespace libsbgn
       /**
        * @brief Element type.
        */
-      typedef ::libsbgn::pd_0_1::point point_type;
+      typedef ::libsbgn::sn_0_2::point point_type;
 
       /**
        * @brief Element sequence container type.
@@ -4714,10 +6465,10 @@ namespace libsbgn
     };
 
     /**
-     * @brief Enumeration class corresponding to the %class1
+     * @brief Enumeration class corresponding to the %class2
      * schema type.
      */
-    class class1: public ::xml_schema::string
+    class class2: public ::xml_schema::string
     {
       public:
 
@@ -4728,13 +6479,20 @@ namespace libsbgn
       {
         production,
         consumption,
+        catalysis,
         modulation,
         stimulation,
-        catalysis,
         inhibition,
+        assignment,
+        interaction,
+        absolute_inhibition,
+        absolute_stimulation,
+        positive_influence,
+        negative_influence,
+        unknown_influence,
+        equivalence_arc,
         necessary_stimulation,
-        logic_arc,
-        equivalence_arc
+        logic_arc
       };
 
       /**
@@ -4742,28 +6500,28 @@ namespace libsbgn
        *
        * @param v A enum value.
        */
-      class1 (value v);
+      class2 (value v);
 
       /**
        * @brief Create an instance from a C string.
        *
        * @param v A string value.
        */
-      class1 (const char* v);
+      class2 (const char* v);
 
       /**
        * @brief Create an instance from a string.
        *
        * @param v A string value.
        */
-      class1 (const ::std::string& v);
+      class2 (const ::std::string& v);
 
       /**
        * @brief Create an instance from the base value.
        *
        * @param v A base value.
        */
-      class1 (const ::xml_schema::string& v);
+      class2 (const ::xml_schema::string& v);
 
       /**
        * @brief Create an instance from a DOM element.
@@ -4773,7 +6531,7 @@ namespace libsbgn
        * @param c A pointer to the object that will contain the new
        * instance.
        */
-      class1 (const ::xercesc::DOMElement& e,
+      class2 (const ::xercesc::DOMElement& e,
               ::xml_schema::flags f = 0,
               ::xml_schema::container* c = 0);
 
@@ -4785,7 +6543,7 @@ namespace libsbgn
        * @param c A pointer to the object that will contain the new
        * instance.
        */
-      class1 (const ::xercesc::DOMAttr& a,
+      class2 (const ::xercesc::DOMAttr& a,
               ::xml_schema::flags f = 0,
               ::xml_schema::container* c = 0);
 
@@ -4798,7 +6556,7 @@ namespace libsbgn
        * @param c A pointer to the object that will contain the new
        * instance.
        */
-      class1 (const ::std::string& s,
+      class2 (const ::std::string& s,
               const ::xercesc::DOMElement* e,
               ::xml_schema::flags f = 0,
               ::xml_schema::container* c = 0);
@@ -4812,7 +6570,7 @@ namespace libsbgn
        *
        * For polymorphic object models use the @c _clone function instead.
        */
-      class1 (const class1& x,
+      class2 (const class2& x,
               ::xml_schema::flags f = 0,
               ::xml_schema::container* c = 0);
 
@@ -4827,7 +6585,7 @@ namespace libsbgn
        * used for copying and should be used for polymorphic object
        * models instead of the copy constructor.
        */
-      virtual class1*
+      virtual class2*
       _clone (::xml_schema::flags f = 0,
               ::xml_schema::container* c = 0) const;
 
@@ -4837,7 +6595,7 @@ namespace libsbgn
        * @param v A enum value.
        * @return A refernce to the instance.
        */
-      class1&
+      class2&
       operator= (value v);
 
       /**
@@ -4849,18 +6607,166 @@ namespace libsbgn
       virtual
       operator value () const
       {
-        return _xsd_class1_convert ();
+        return _xsd_class2_convert ();
       }
 
       //@cond
 
       protected:
       value
-      _xsd_class1_convert () const;
+      _xsd_class2_convert () const;
 
       public:
-      static const char* const _xsd_class1_literals_[9];
-      static const value _xsd_class1_indexes_[9];
+      static const char* const _xsd_class2_literals_[16];
+      static const value _xsd_class2_indexes_[16];
+
+      //@endcond
+    };
+
+    /**
+     * @brief Enumeration class corresponding to the %name
+     * schema type.
+     */
+    class name: public ::xml_schema::string
+    {
+      public:
+
+      /**
+       * @brief Underlying enum type.
+       */
+      enum value
+      {
+        unspecified_entity,
+        simple_chemical,
+        macromolecule,
+        nucleic_acid_feature,
+        complex
+      };
+
+      /**
+       * @brief Create an instance from the underlying enum value.
+       *
+       * @param v A enum value.
+       */
+      name (value v);
+
+      /**
+       * @brief Create an instance from a C string.
+       *
+       * @param v A string value.
+       */
+      name (const char* v);
+
+      /**
+       * @brief Create an instance from a string.
+       *
+       * @param v A string value.
+       */
+      name (const ::std::string& v);
+
+      /**
+       * @brief Create an instance from the base value.
+       *
+       * @param v A base value.
+       */
+      name (const ::xml_schema::string& v);
+
+      /**
+       * @brief Create an instance from a DOM element.
+       *
+       * @param e A DOM element to extract the data from.
+       * @param f Flags to create the new instance with.
+       * @param c A pointer to the object that will contain the new
+       * instance.
+       */
+      name (const ::xercesc::DOMElement& e,
+            ::xml_schema::flags f = 0,
+            ::xml_schema::container* c = 0);
+
+      /**
+       * @brief Create an instance from a DOM attribute.
+       *
+       * @param a A DOM attribute to extract the data from.
+       * @param f Flags to create the new instance with.
+       * @param c A pointer to the object that will contain the new
+       * instance.
+       */
+      name (const ::xercesc::DOMAttr& a,
+            ::xml_schema::flags f = 0,
+            ::xml_schema::container* c = 0);
+
+      /**
+       * @brief Create an instance from a string fragment.
+       *
+       * @param s A string fragment to extract the data from.
+       * @param e A pointer to DOM element containing the string fragment.
+       * @param f Flags to create the new instance with.
+       * @param c A pointer to the object that will contain the new
+       * instance.
+       */
+      name (const ::std::string& s,
+            const ::xercesc::DOMElement* e,
+            ::xml_schema::flags f = 0,
+            ::xml_schema::container* c = 0);
+
+      /**
+       * @brief Copy constructor.
+       *
+       * @param x An instance to make a copy of.
+       * @param f Flags to create the copy with.
+       * @param c A pointer to the object that will contain the copy.
+       *
+       * For polymorphic object models use the @c _clone function instead.
+       */
+      name (const name& x,
+            ::xml_schema::flags f = 0,
+            ::xml_schema::container* c = 0);
+
+      /**
+       * @brief Copy the instance polymorphically.
+       *
+       * @param f Flags to create the copy with.
+       * @param c A pointer to the object that will contain the copy.
+       * @return A pointer to the dynamically allocated copy.
+       *
+       * This function ensures that the dynamic type of the instance is
+       * used for copying and should be used for polymorphic object
+       * models instead of the copy constructor.
+       */
+      virtual name*
+      _clone (::xml_schema::flags f = 0,
+              ::xml_schema::container* c = 0) const;
+
+      /**
+       * @brief Assign the underlying enum value.
+       *
+       * @param v A enum value.
+       * @return A refernce to the instance.
+       */
+      name&
+      operator= (value v);
+
+      /**
+       * @brief Implicit conversion operator to the underlying
+       * enum value.
+       *
+       * @return A enum value.
+       */
+      virtual
+      operator value () const
+      {
+        return _xsd_name_convert ();
+      }
+
+      //@cond
+
+      protected:
+      value
+      _xsd_name_convert () const;
+
+      public:
+      static const char* const _xsd_name_literals_[5];
+      static const value _xsd_name_indexes_[5];
 
       //@endcond
     };
@@ -4875,7 +6781,7 @@ namespace libsbgn
 
 namespace libsbgn
 {
-  namespace pd_0_1
+  namespace sn_0_2
   {
     /**
      * @name Parsing functions for the %sbgn document root.
@@ -4892,7 +6798,7 @@ namespace libsbgn
      *
      * This function uses exceptions to report parsing errors.
      */
-    ::std::auto_ptr< ::libsbgn::pd_0_1::sbgn >
+    ::std::auto_ptr< ::libsbgn::sn_0_2::sbgn >
     sbgn_ (const ::std::string& uri,
            ::xml_schema::flags f = 0,
            const ::xml_schema::properties& p = ::xml_schema::properties ());
@@ -4908,7 +6814,7 @@ namespace libsbgn
      *
      * This function reports parsing errors by calling the error handler.
      */
-    ::std::auto_ptr< ::libsbgn::pd_0_1::sbgn >
+    ::std::auto_ptr< ::libsbgn::sn_0_2::sbgn >
     sbgn_ (const ::std::string& uri,
            ::xml_schema::error_handler& eh,
            ::xml_schema::flags f = 0,
@@ -4926,7 +6832,7 @@ namespace libsbgn
      *
      * This function reports parsing errors by calling the error handler.
      */
-    ::std::auto_ptr< ::libsbgn::pd_0_1::sbgn >
+    ::std::auto_ptr< ::libsbgn::sn_0_2::sbgn >
     sbgn_ (const ::std::string& uri,
            ::xercesc::DOMErrorHandler& eh,
            ::xml_schema::flags f = 0,
@@ -4942,7 +6848,7 @@ namespace libsbgn
      *
      * This function uses exceptions to report parsing errors.
      */
-    ::std::auto_ptr< ::libsbgn::pd_0_1::sbgn >
+    ::std::auto_ptr< ::libsbgn::sn_0_2::sbgn >
     sbgn_ (::std::istream& is,
            ::xml_schema::flags f = 0,
            const ::xml_schema::properties& p = ::xml_schema::properties ());
@@ -4958,7 +6864,7 @@ namespace libsbgn
      *
      * This function reports parsing errors by calling the error handler.
      */
-    ::std::auto_ptr< ::libsbgn::pd_0_1::sbgn >
+    ::std::auto_ptr< ::libsbgn::sn_0_2::sbgn >
     sbgn_ (::std::istream& is,
            ::xml_schema::error_handler& eh,
            ::xml_schema::flags f = 0,
@@ -4976,7 +6882,7 @@ namespace libsbgn
      *
      * This function reports parsing errors by calling the error handler.
      */
-    ::std::auto_ptr< ::libsbgn::pd_0_1::sbgn >
+    ::std::auto_ptr< ::libsbgn::sn_0_2::sbgn >
     sbgn_ (::std::istream& is,
            ::xercesc::DOMErrorHandler& eh,
            ::xml_schema::flags f = 0,
@@ -4996,7 +6902,7 @@ namespace libsbgn
      *
      * This function uses exceptions to report parsing errors.
      */
-    ::std::auto_ptr< ::libsbgn::pd_0_1::sbgn >
+    ::std::auto_ptr< ::libsbgn::sn_0_2::sbgn >
     sbgn_ (::std::istream& is,
            const ::std::string& id,
            ::xml_schema::flags f = 0,
@@ -5018,7 +6924,7 @@ namespace libsbgn
      *
      * This function reports parsing errors by calling the error handler.
      */
-    ::std::auto_ptr< ::libsbgn::pd_0_1::sbgn >
+    ::std::auto_ptr< ::libsbgn::sn_0_2::sbgn >
     sbgn_ (::std::istream& is,
            const ::std::string& id,
            ::xml_schema::error_handler& eh,
@@ -5041,7 +6947,7 @@ namespace libsbgn
      *
      * This function reports parsing errors by calling the error handler.
      */
-    ::std::auto_ptr< ::libsbgn::pd_0_1::sbgn >
+    ::std::auto_ptr< ::libsbgn::sn_0_2::sbgn >
     sbgn_ (::std::istream& is,
            const ::std::string& id,
            ::xercesc::DOMErrorHandler& eh,
@@ -5058,7 +6964,7 @@ namespace libsbgn
      *
      * This function uses exceptions to report parsing errors.
      */
-    ::std::auto_ptr< ::libsbgn::pd_0_1::sbgn >
+    ::std::auto_ptr< ::libsbgn::sn_0_2::sbgn >
     sbgn_ (::xercesc::InputSource& is,
            ::xml_schema::flags f = 0,
            const ::xml_schema::properties& p = ::xml_schema::properties ());
@@ -5074,7 +6980,7 @@ namespace libsbgn
      *
      * This function reports parsing errors by calling the error handler.
      */
-    ::std::auto_ptr< ::libsbgn::pd_0_1::sbgn >
+    ::std::auto_ptr< ::libsbgn::sn_0_2::sbgn >
     sbgn_ (::xercesc::InputSource& is,
            ::xml_schema::error_handler& eh,
            ::xml_schema::flags f = 0,
@@ -5092,7 +6998,7 @@ namespace libsbgn
      *
      * This function reports parsing errors by calling the error handler.
      */
-    ::std::auto_ptr< ::libsbgn::pd_0_1::sbgn >
+    ::std::auto_ptr< ::libsbgn::sn_0_2::sbgn >
     sbgn_ (::xercesc::InputSource& is,
            ::xercesc::DOMErrorHandler& eh,
            ::xml_schema::flags f = 0,
@@ -5106,7 +7012,7 @@ namespace libsbgn
      * @param p Parsing properties. 
      * @return A pointer to the root of the object model.
      */
-    ::std::auto_ptr< ::libsbgn::pd_0_1::sbgn >
+    ::std::auto_ptr< ::libsbgn::sn_0_2::sbgn >
     sbgn_ (const ::xercesc::DOMDocument& d,
            ::xml_schema::flags f = 0,
            const ::xml_schema::properties& p = ::xml_schema::properties ());
@@ -5123,7 +7029,7 @@ namespace libsbgn
      * own_dom parsing flags to assign ownership of the DOM document
      * to the object model.
      */
-    ::std::auto_ptr< ::libsbgn::pd_0_1::sbgn >
+    ::std::auto_ptr< ::libsbgn::sn_0_2::sbgn >
     sbgn_ (::xml_schema::dom::auto_ptr< ::xercesc::DOMDocument >& d,
            ::xml_schema::flags f = 0,
            const ::xml_schema::properties& p = ::xml_schema::properties ());

@@ -5,7 +5,7 @@
 
 using namespace std;
 
-void displayLabel(libsbgn::pd_0_1::label l, std::string indent)
+void displayLabel(libsbgn::sn_0_2::label l, std::string indent)
 {
     cout << indent << "Label " << l.text() << endl;
     if (l.bbox())
@@ -13,17 +13,9 @@ void displayLabel(libsbgn::pd_0_1::label l, std::string indent)
         cout << indent << "\tBbox " << l.bbox()->x() << " " << l.bbox()->y();
         cout << " " << l.bbox()->w() << " " << l.bbox()->h() << endl;
     }
-    if (l.font())
-    {
-        cout << indent << "\tFont " << l.font() << endl;
-    }
-    if (l.fontsize())
-    {
-        cout << indent << "\tFont size " << l.fontsize() << endl;
-    }
 }
 
-void displayGlyph(libsbgn::pd_0_1::glyph g, std::string indent)
+void displayGlyph(libsbgn::sn_0_2::glyph g, std::string indent)
 {
     cout << indent << "Glyph " << g.id() << " (" << g.class_() << ")" << endl;
     if (g.label())
@@ -39,7 +31,7 @@ void displayGlyph(libsbgn::pd_0_1::glyph g, std::string indent)
         }
     }
 
-    for (libsbgn::pd_0_1::glyph::port_const_iterator p (g.port ().begin ()); p != g.port ().end (); ++p)
+    for (libsbgn::sn_0_2::glyph::port_const_iterator p (g.port ().begin ()); p != g.port ().end (); ++p)
     {
         cout << indent << "\tPort " << p->id() << " " << p->x() << " " << p->y() << endl;
     }
@@ -52,7 +44,7 @@ void displayGlyph(libsbgn::pd_0_1::glyph g, std::string indent)
         cout << indent << "\tOrientation " << g.orientation() << endl;    
     }
 
-    for (libsbgn::pd_0_1::glyph::glyph1_const_iterator subglyph (g.glyph1 ().begin ()); subglyph != g.glyph1 ().end (); ++subglyph)
+    for (libsbgn::sn_0_2::glyph::glyph1_const_iterator subglyph (g.glyph1 ().begin ()); subglyph != g.glyph1 ().end (); ++subglyph)
     {
         displayGlyph(*subglyph, indent+"\t");
     }
@@ -71,26 +63,29 @@ int main (int argc, char* argv[])
         try
         {
             xml_schema::properties props;
-            props.schema_location ("http://sbgn.org/libsbgn/pd/0.1", "../resources/SBGN.xsd");
+	    const char* schema_file = "../../resources/SBGN.xsd";
+	    //props.no_namespace_schema_location (schema_file);
+            props.schema_location ("http://sbgn.org/libsbgn/0.2", schema_file);
+	    std::string fname = std::string(argv[i]);
 
-            auto_ptr<libsbgn::pd_0_1::sbgn> s ( libsbgn::pd_0_1::sbgn_ (argv[i], 0, props) );
+            auto_ptr<libsbgn::sn_0_2::sbgn> s ( libsbgn::sn_0_2::sbgn_ (fname, 0, props) );
 
-            std::cout << "****** " << argv[i] << " ******" << std::endl;
-
-            for (libsbgn::pd_0_1::sbgn::map_const_iterator m (s->map ().begin ()); m != s->map ().end (); ++m)
-            {
+            std::cout << "****** " << fname << " ******" << std::endl;
+	    const libsbgn::sn_0_2::map* m = &s->map ();
+            // for (libsbgn::sn_0_2::sbgn::map::const_iterator m = smap.begin (); m != smap.end (); ++m)
+            // {
                 cout << "Map" << endl;
 
-                for (libsbgn::pd_0_1::map::glyph_const_iterator g (m->glyph ().begin ()); g != m->glyph ().end (); ++g)
+                for (libsbgn::sn_0_2::map::glyph_const_iterator g (m->glyph ().begin ()); g != m->glyph ().end (); ++g)
                 {
                     displayGlyph(*g, "\t");
                 }  
 
-                for (libsbgn::pd_0_1::map::arc_const_iterator a (m->arc ().begin ()); a != m->arc ().end (); ++a)
+                for (libsbgn::sn_0_2::map::arc_const_iterator a (m->arc ().begin ()); a != m->arc ().end (); ++a)
                 {
                     cout << "\tArc from " << a->source() << " to " << a->target() << " (" << a->class_() << ")" << endl;
                     cout << "\t\tstarts at " << a->start().x() << " " << a->start().y() << endl;                
-                    for (libsbgn::pd_0_1::arc::next_const_iterator n (a->next ().begin ()); n != a->next ().end (); ++n)
+                    for (libsbgn::sn_0_2::arc::next_const_iterator n (a->next ().begin ()); n != a->next ().end (); ++n)
                     {
                         if (n->point().size() == 0)
                         {
@@ -129,13 +124,13 @@ int main (int argc, char* argv[])
                         cout << ", "<< (a->end().point().begin()++)->x();
                         cout << " " << (a->end().point().begin()++)->y() << ")" << endl;              
                     }
-                    if (a->glyph())
+                    for(libsbgn::sn_0_2::arc::glyph_const_iterator gi = a->glyph().begin(); gi != a->glyph().end(); ++gi)
                     {
                         cout << "\t\tArc stoichiometry:" << endl;
-                        displayGlyph(*(a->glyph()), "\t\t");
+                        displayGlyph(*gi, "\t\t");
                     }
                  }
-            }
+		//            }
         }
         catch (const xml_schema::exception& e)
         {

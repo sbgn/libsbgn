@@ -1,5 +1,5 @@
 DISCLAIMER: WORK IN PROGRESS
-The system was successfully built and tested on MacOSX Snow Leopard
+The system was successfully built and tested on MacOSX Lion
 
 TODO:
 - streamline the automatic building process for all supported systems
@@ -49,8 +49,8 @@ If not, consult the tool's documentation to fix the problem (cf. XSD2CPP/documen
 Step 2
 ++++++
 
-- Modify the first line of the makefile to link to the correct root directory:
-	root := ./XSD2CPP/examples
+- Modify the configuration section of the makefile to suitable file locations (documented in makefile itself).
+
 - Use "make" to update the binder against the latest version of the XSD, and run tests against all the test files.
 
 ****************************
