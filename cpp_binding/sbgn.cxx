@@ -42,8 +42,120 @@
 
 namespace libsbgn
 {
-  namespace pd_0_1
+  namespace sn_0_2
   {
+    // SBGNBase
+    // 
+
+    const SBGNBase::notes_optional& SBGNBase::
+    notes () const
+    {
+      return this->notes_;
+    }
+
+    SBGNBase::notes_optional& SBGNBase::
+    notes ()
+    {
+      return this->notes_;
+    }
+
+    void SBGNBase::
+    notes (const notes_type& x)
+    {
+      this->notes_.set (x);
+    }
+
+    void SBGNBase::
+    notes (const notes_optional& x)
+    {
+      this->notes_ = x;
+    }
+
+    void SBGNBase::
+    notes (::std::auto_ptr< notes_type > x)
+    {
+      this->notes_.set (x);
+    }
+
+    const SBGNBase::extension_optional& SBGNBase::
+    extension () const
+    {
+      return this->extension_;
+    }
+
+    SBGNBase::extension_optional& SBGNBase::
+    extension ()
+    {
+      return this->extension_;
+    }
+
+    void SBGNBase::
+    extension (const extension_type& x)
+    {
+      this->extension_.set (x);
+    }
+
+    void SBGNBase::
+    extension (const extension_optional& x)
+    {
+      this->extension_ = x;
+    }
+
+    void SBGNBase::
+    extension (::std::auto_ptr< extension_type > x)
+    {
+      this->extension_.set (x);
+    }
+
+
+    // notes
+    // 
+
+
+    // extension
+    // 
+
+
+    // point
+    // 
+
+    const point::x_type& point::
+    x () const
+    {
+      return this->x_.get ();
+    }
+
+    point::x_type& point::
+    x ()
+    {
+      return this->x_.get ();
+    }
+
+    void point::
+    x (const x_type& x)
+    {
+      this->x_.set (x);
+    }
+
+    const point::y_type& point::
+    y () const
+    {
+      return this->y_.get ();
+    }
+
+    point::y_type& point::
+    y ()
+    {
+      return this->y_.get ();
+    }
+
+    void point::
+    y (const y_type& x)
+    {
+      this->y_.set (x);
+    }
+
+
     // bbox
     // 
 
@@ -120,8 +232,124 @@ namespace libsbgn
     }
 
 
+    // label
+    // 
+
+    const label::bbox_optional& label::
+    bbox () const
+    {
+      return this->bbox_;
+    }
+
+    label::bbox_optional& label::
+    bbox ()
+    {
+      return this->bbox_;
+    }
+
+    void label::
+    bbox (const bbox_type& x)
+    {
+      this->bbox_.set (x);
+    }
+
+    void label::
+    bbox (const bbox_optional& x)
+    {
+      this->bbox_ = x;
+    }
+
+    void label::
+    bbox (::std::auto_ptr< bbox_type > x)
+    {
+      this->bbox_.set (x);
+    }
+
+    const label::text_type& label::
+    text () const
+    {
+      return this->text_.get ();
+    }
+
+    label::text_type& label::
+    text ()
+    {
+      return this->text_.get ();
+    }
+
+    void label::
+    text (const text_type& x)
+    {
+      this->text_.set (x);
+    }
+
+    void label::
+    text (::std::auto_ptr< text_type > x)
+    {
+      this->text_.set (x);
+    }
+
+
+    // sbgn
+    // 
+
+    const sbgn::map_type& sbgn::
+    map () const
+    {
+      return this->map_.get ();
+    }
+
+    sbgn::map_type& sbgn::
+    map ()
+    {
+      return this->map_.get ();
+    }
+
+    void sbgn::
+    map (const map_type& x)
+    {
+      this->map_.set (x);
+    }
+
+    void sbgn::
+    map (::std::auto_ptr< map_type > x)
+    {
+      this->map_.set (x);
+    }
+
+
     // map
     // 
+
+    const map::bbox_optional& map::
+    bbox () const
+    {
+      return this->bbox_;
+    }
+
+    map::bbox_optional& map::
+    bbox ()
+    {
+      return this->bbox_;
+    }
+
+    void map::
+    bbox (const bbox_type& x)
+    {
+      this->bbox_.set (x);
+    }
+
+    void map::
+    bbox (const bbox_optional& x)
+    {
+      this->bbox_ = x;
+    }
+
+    void map::
+    bbox (::std::auto_ptr< bbox_type > x)
+    {
+      this->bbox_.set (x);
+    }
 
     const map::glyph_sequence& map::
     glyph () const
@@ -159,26 +387,110 @@ namespace libsbgn
       this->arc_ = s;
     }
 
+    const map::arcgroup_sequence& map::
+    arcgroup () const
+    {
+      return this->arcgroup_;
+    }
 
-    // sbgn
+    map::arcgroup_sequence& map::
+    arcgroup ()
+    {
+      return this->arcgroup_;
+    }
+
+    void map::
+    arcgroup (const arcgroup_sequence& s)
+    {
+      this->arcgroup_ = s;
+    }
+
+    const map::language_type& map::
+    language () const
+    {
+      return this->language_.get ();
+    }
+
+    map::language_type& map::
+    language ()
+    {
+      return this->language_.get ();
+    }
+
+    void map::
+    language (const language_type& x)
+    {
+      this->language_.set (x);
+    }
+
+    void map::
+    language (::std::auto_ptr< language_type > x)
+    {
+      this->language_.set (x);
+    }
+
+
+    // port
     // 
 
-    const sbgn::map_sequence& sbgn::
-    map () const
+    const port::x_type& port::
+    x () const
     {
-      return this->map_;
+      return this->x_.get ();
     }
 
-    sbgn::map_sequence& sbgn::
-    map ()
+    port::x_type& port::
+    x ()
     {
-      return this->map_;
+      return this->x_.get ();
     }
 
-    void sbgn::
-    map (const map_sequence& s)
+    void port::
+    x (const x_type& x)
     {
-      this->map_ = s;
+      this->x_.set (x);
+    }
+
+    const port::y_type& port::
+    y () const
+    {
+      return this->y_.get ();
+    }
+
+    port::y_type& port::
+    y ()
+    {
+      return this->y_.get ();
+    }
+
+    void port::
+    y (const y_type& x)
+    {
+      this->y_.set (x);
+    }
+
+    const port::id_type& port::
+    id () const
+    {
+      return this->id_.get ();
+    }
+
+    port::id_type& port::
+    id ()
+    {
+      return this->id_.get ();
+    }
+
+    void port::
+    id (const id_type& x)
+    {
+      this->id_.set (x);
+    }
+
+    void port::
+    id (::std::auto_ptr< id_type > x)
+    {
+      this->id_.set (x);
     }
 
 
@@ -275,6 +587,66 @@ namespace libsbgn
       this->clone_.set (x);
     }
 
+    const glyph::callout_optional& glyph::
+    callout () const
+    {
+      return this->callout_;
+    }
+
+    glyph::callout_optional& glyph::
+    callout ()
+    {
+      return this->callout_;
+    }
+
+    void glyph::
+    callout (const callout_type& x)
+    {
+      this->callout_.set (x);
+    }
+
+    void glyph::
+    callout (const callout_optional& x)
+    {
+      this->callout_ = x;
+    }
+
+    void glyph::
+    callout (::std::auto_ptr< callout_type > x)
+    {
+      this->callout_.set (x);
+    }
+
+    const glyph::entity_optional& glyph::
+    entity () const
+    {
+      return this->entity_;
+    }
+
+    glyph::entity_optional& glyph::
+    entity ()
+    {
+      return this->entity_;
+    }
+
+    void glyph::
+    entity (const entity_type& x)
+    {
+      this->entity_.set (x);
+    }
+
+    void glyph::
+    entity (const entity_optional& x)
+    {
+      this->entity_ = x;
+    }
+
+    void glyph::
+    entity (::std::auto_ptr< entity_type > x)
+    {
+      this->entity_.set (x);
+    }
+
     const glyph::bbox_type& glyph::
     bbox () const
     {
@@ -359,12 +731,6 @@ namespace libsbgn
       this->class__.set (x);
     }
 
-    const glyph::class_type& glyph::
-    class_default_value ()
-    {
-      return class__default_value_;
-    }
-
     const glyph::orientation_type& glyph::
     orientation () const
     {
@@ -419,38 +785,162 @@ namespace libsbgn
       this->id_.set (x);
     }
 
+    const glyph::compartmentRef_optional& glyph::
+    compartmentRef () const
+    {
+      return this->compartmentRef_;
+    }
 
-    // arc
+    glyph::compartmentRef_optional& glyph::
+    compartmentRef ()
+    {
+      return this->compartmentRef_;
+    }
+
+    void glyph::
+    compartmentRef (const compartmentRef_type& x)
+    {
+      this->compartmentRef_.set (x);
+    }
+
+    void glyph::
+    compartmentRef (const compartmentRef_optional& x)
+    {
+      this->compartmentRef_ = x;
+    }
+
+    void glyph::
+    compartmentRef (::std::auto_ptr< compartmentRef_type > x)
+    {
+      this->compartmentRef_.set (x);
+    }
+
+    const glyph::compartmentOrder_optional& glyph::
+    compartmentOrder () const
+    {
+      return this->compartmentOrder_;
+    }
+
+    glyph::compartmentOrder_optional& glyph::
+    compartmentOrder ()
+    {
+      return this->compartmentOrder_;
+    }
+
+    void glyph::
+    compartmentOrder (const compartmentOrder_type& x)
+    {
+      this->compartmentOrder_.set (x);
+    }
+
+    void glyph::
+    compartmentOrder (const compartmentOrder_optional& x)
+    {
+      this->compartmentOrder_ = x;
+    }
+
+
+    // arcgroup
     // 
 
-    const arc::glyph_optional& arc::
+    const arcgroup::glyph_sequence& arcgroup::
     glyph () const
     {
       return this->glyph_;
     }
 
-    arc::glyph_optional& arc::
+    arcgroup::glyph_sequence& arcgroup::
+    glyph ()
+    {
+      return this->glyph_;
+    }
+
+    void arcgroup::
+    glyph (const glyph_sequence& s)
+    {
+      this->glyph_ = s;
+    }
+
+    const arcgroup::arc_sequence& arcgroup::
+    arc () const
+    {
+      return this->arc_;
+    }
+
+    arcgroup::arc_sequence& arcgroup::
+    arc ()
+    {
+      return this->arc_;
+    }
+
+    void arcgroup::
+    arc (const arc_sequence& s)
+    {
+      this->arc_ = s;
+    }
+
+    const arcgroup::class_type& arcgroup::
+    class_ () const
+    {
+      return this->class__.get ();
+    }
+
+    arcgroup::class_type& arcgroup::
+    class_ ()
+    {
+      return this->class__.get ();
+    }
+
+    void arcgroup::
+    class_ (const class_type& x)
+    {
+      this->class__.set (x);
+    }
+
+    void arcgroup::
+    class_ (::std::auto_ptr< class_type > x)
+    {
+      this->class__.set (x);
+    }
+
+
+    // arc
+    // 
+
+    const arc::glyph_sequence& arc::
+    glyph () const
+    {
+      return this->glyph_;
+    }
+
+    arc::glyph_sequence& arc::
     glyph ()
     {
       return this->glyph_;
     }
 
     void arc::
-    glyph (const glyph_type& x)
+    glyph (const glyph_sequence& s)
     {
-      this->glyph_.set (x);
+      this->glyph_ = s;
+    }
+
+    const arc::port_sequence& arc::
+    port () const
+    {
+      return this->port_;
+    }
+
+    arc::port_sequence& arc::
+    port ()
+    {
+      return this->port_;
     }
 
     void arc::
-    glyph (const glyph_optional& x)
+    port (const port_sequence& s)
     {
-      this->glyph_ = x;
-    }
-
-    void arc::
-    glyph (::std::auto_ptr< glyph_type > x)
-    {
-      this->glyph_.set (x);
+      this->port_ = s;
     }
 
     const arc::start_type& arc::
@@ -519,16 +1009,16 @@ namespace libsbgn
       this->end_.set (x);
     }
 
-    const arc::class_optional& arc::
+    const arc::class_type& arc::
     class_ () const
     {
-      return this->class__;
+      return this->class__.get ();
     }
 
-    arc::class_optional& arc::
+    arc::class_type& arc::
     class_ ()
     {
-      return this->class__;
+      return this->class__.get ();
     }
 
     void arc::
@@ -538,15 +1028,33 @@ namespace libsbgn
     }
 
     void arc::
-    class_ (const class_optional& x)
-    {
-      this->class__ = x;
-    }
-
-    void arc::
     class_ (::std::auto_ptr< class_type > x)
     {
       this->class__.set (x);
+    }
+
+    const arc::id_type& arc::
+    id () const
+    {
+      return this->id_.get ();
+    }
+
+    arc::id_type& arc::
+    id ()
+    {
+      return this->id_.get ();
+    }
+
+    void arc::
+    id (const id_type& x)
+    {
+      this->id_.set (x);
+    }
+
+    void arc::
+    id (::std::auto_ptr< id_type > x)
+    {
+      this->id_.set (x);
     }
 
     const arc::source_type& arc::
@@ -598,177 +1106,76 @@ namespace libsbgn
     }
 
 
-    // point
+    // language
     // 
 
-    const point::x_type& point::
-    x () const
+    language::
+    language (value v)
+    : ::xml_schema::string (_xsd_language_literals_[v])
     {
-      return this->x_.get ();
     }
 
-    point::x_type& point::
-    x ()
+    language::
+    language (const char* v)
+    : ::xml_schema::string (v)
     {
-      return this->x_.get ();
     }
 
-    void point::
-    x (const x_type& x)
+    language::
+    language (const ::std::string& v)
+    : ::xml_schema::string (v)
     {
-      this->x_.set (x);
     }
 
-    const point::y_type& point::
-    y () const
+    language::
+    language (const ::xml_schema::string& v)
+    : ::xml_schema::string (v)
     {
-      return this->y_.get ();
     }
 
-    point::y_type& point::
-    y ()
+    language::
+    language (const language& v,
+              ::xml_schema::flags f,
+              ::xml_schema::container* c)
+    : ::xml_schema::string (v, f, c)
     {
-      return this->y_.get ();
     }
 
-    void point::
-    y (const y_type& x)
+    language& language::
+    operator= (value v)
     {
-      this->y_.set (x);
-    }
+      static_cast< ::xml_schema::string& > (*this) = 
+      ::xml_schema::string (_xsd_language_literals_[v]);
 
-
-    // label
-    // 
-
-    const label::bbox_optional& label::
-    bbox () const
-    {
-      return this->bbox_;
-    }
-
-    label::bbox_optional& label::
-    bbox ()
-    {
-      return this->bbox_;
-    }
-
-    void label::
-    bbox (const bbox_type& x)
-    {
-      this->bbox_.set (x);
-    }
-
-    void label::
-    bbox (const bbox_optional& x)
-    {
-      this->bbox_ = x;
-    }
-
-    void label::
-    bbox (::std::auto_ptr< bbox_type > x)
-    {
-      this->bbox_.set (x);
-    }
-
-    const label::text_type& label::
-    text () const
-    {
-      return this->text_.get ();
-    }
-
-    label::text_type& label::
-    text ()
-    {
-      return this->text_.get ();
-    }
-
-    void label::
-    text (const text_type& x)
-    {
-      this->text_.set (x);
-    }
-
-    void label::
-    text (::std::auto_ptr< text_type > x)
-    {
-      this->text_.set (x);
-    }
-
-    const label::font_optional& label::
-    font () const
-    {
-      return this->font_;
-    }
-
-    label::font_optional& label::
-    font ()
-    {
-      return this->font_;
-    }
-
-    void label::
-    font (const font_type& x)
-    {
-      this->font_.set (x);
-    }
-
-    void label::
-    font (const font_optional& x)
-    {
-      this->font_ = x;
-    }
-
-    void label::
-    font (::std::auto_ptr< font_type > x)
-    {
-      this->font_.set (x);
-    }
-
-    const label::fontsize_optional& label::
-    fontsize () const
-    {
-      return this->fontsize_;
-    }
-
-    label::fontsize_optional& label::
-    fontsize ()
-    {
-      return this->fontsize_;
-    }
-
-    void label::
-    fontsize (const fontsize_type& x)
-    {
-      this->fontsize_.set (x);
-    }
-
-    void label::
-    fontsize (const fontsize_optional& x)
-    {
-      this->fontsize_ = x;
+      return *this;
     }
 
 
     // state
     // 
 
-    const state::value_type& state::
+    const state::value_optional& state::
     value () const
     {
-      return this->value_.get ();
+      return this->value_;
     }
 
-    state::value_type& state::
+    state::value_optional& state::
     value ()
     {
-      return this->value_.get ();
+      return this->value_;
     }
 
     void state::
     value (const value_type& x)
     {
       this->value_.set (x);
+    }
+
+    void state::
+    value (const value_optional& x)
+    {
+      this->value_ = x;
     }
 
     void state::
@@ -842,67 +1249,89 @@ namespace libsbgn
     }
 
 
-    // port
+    // callout
     // 
 
-    const port::x_type& port::
-    x () const
+    const callout::point_type& callout::
+    point () const
     {
-      return this->x_.get ();
+      return this->point_.get ();
     }
 
-    port::x_type& port::
-    x ()
+    callout::point_type& callout::
+    point ()
     {
-      return this->x_.get ();
+      return this->point_.get ();
     }
 
-    void port::
-    x (const x_type& x)
+    void callout::
+    point (const point_type& x)
     {
-      this->x_.set (x);
+      this->point_.set (x);
     }
 
-    const port::y_type& port::
-    y () const
+    void callout::
+    point (::std::auto_ptr< point_type > x)
     {
-      return this->y_.get ();
+      this->point_.set (x);
     }
 
-    port::y_type& port::
-    y ()
+    const callout::target_optional& callout::
+    target () const
     {
-      return this->y_.get ();
+      return this->target_;
     }
 
-    void port::
-    y (const y_type& x)
+    callout::target_optional& callout::
+    target ()
     {
-      this->y_.set (x);
+      return this->target_;
     }
 
-    const port::id_type& port::
-    id () const
+    void callout::
+    target (const target_type& x)
     {
-      return this->id_.get ();
+      this->target_.set (x);
     }
 
-    port::id_type& port::
-    id ()
+    void callout::
+    target (const target_optional& x)
     {
-      return this->id_.get ();
+      this->target_ = x;
     }
 
-    void port::
-    id (const id_type& x)
+    void callout::
+    target (::std::auto_ptr< target_type > x)
     {
-      this->id_.set (x);
+      this->target_.set (x);
     }
 
-    void port::
-    id (::std::auto_ptr< id_type > x)
+
+    // entity
+    // 
+
+    const entity::name_type& entity::
+    name () const
     {
-      this->id_.set (x);
+      return this->name_.get ();
+    }
+
+    entity::name_type& entity::
+    name ()
+    {
+      return this->name_.get ();
+    }
+
+    void entity::
+    name (const name_type& x)
+    {
+      this->name_.set (x);
+    }
+
+    void entity::
+    name (::std::auto_ptr< name_type > x)
+    {
+      this->name_.set (x);
     }
 
 
@@ -991,6 +1420,51 @@ namespace libsbgn
     {
       static_cast< ::xml_schema::string& > (*this) = 
       ::xml_schema::string (_xsd_orientation_literals_[v]);
+
+      return *this;
+    }
+
+
+    // class1
+    // 
+
+    class1::
+    class1 (value v)
+    : ::xml_schema::string (_xsd_class1_literals_[v])
+    {
+    }
+
+    class1::
+    class1 (const char* v)
+    : ::xml_schema::string (v)
+    {
+    }
+
+    class1::
+    class1 (const ::std::string& v)
+    : ::xml_schema::string (v)
+    {
+    }
+
+    class1::
+    class1 (const ::xml_schema::string& v)
+    : ::xml_schema::string (v)
+    {
+    }
+
+    class1::
+    class1 (const class1& v,
+            ::xml_schema::flags f,
+            ::xml_schema::container* c)
+    : ::xml_schema::string (v, f, c)
+    {
+    }
+
+    class1& class1::
+    operator= (value v)
+    {
+      static_cast< ::xml_schema::string& > (*this) = 
+      ::xml_schema::string (_xsd_class1_literals_[v]);
 
       return *this;
     }
@@ -1152,46 +1626,91 @@ namespace libsbgn
     }
 
 
-    // class1
+    // class2
     // 
 
-    class1::
-    class1 (value v)
-    : ::xml_schema::string (_xsd_class1_literals_[v])
+    class2::
+    class2 (value v)
+    : ::xml_schema::string (_xsd_class2_literals_[v])
     {
     }
 
-    class1::
-    class1 (const char* v)
+    class2::
+    class2 (const char* v)
     : ::xml_schema::string (v)
     {
     }
 
-    class1::
-    class1 (const ::std::string& v)
+    class2::
+    class2 (const ::std::string& v)
     : ::xml_schema::string (v)
     {
     }
 
-    class1::
-    class1 (const ::xml_schema::string& v)
+    class2::
+    class2 (const ::xml_schema::string& v)
     : ::xml_schema::string (v)
     {
     }
 
-    class1::
-    class1 (const class1& v,
+    class2::
+    class2 (const class2& v,
             ::xml_schema::flags f,
             ::xml_schema::container* c)
     : ::xml_schema::string (v, f, c)
     {
     }
 
-    class1& class1::
+    class2& class2::
     operator= (value v)
     {
       static_cast< ::xml_schema::string& > (*this) = 
-      ::xml_schema::string (_xsd_class1_literals_[v]);
+      ::xml_schema::string (_xsd_class2_literals_[v]);
+
+      return *this;
+    }
+
+
+    // name
+    // 
+
+    name::
+    name (value v)
+    : ::xml_schema::string (_xsd_name_literals_[v])
+    {
+    }
+
+    name::
+    name (const char* v)
+    : ::xml_schema::string (v)
+    {
+    }
+
+    name::
+    name (const ::std::string& v)
+    : ::xml_schema::string (v)
+    {
+    }
+
+    name::
+    name (const ::xml_schema::string& v)
+    : ::xml_schema::string (v)
+    {
+    }
+
+    name::
+    name (const name& v,
+          ::xml_schema::flags f,
+          ::xml_schema::container* c)
+    : ::xml_schema::string (v, f, c)
+    {
+    }
+
+    name& name::
+    operator= (value v)
+    {
+      static_cast< ::xml_schema::string& > (*this) = 
+      ::xml_schema::string (_xsd_name_literals_[v]);
 
       return *this;
     }
@@ -1202,8 +1721,299 @@ namespace libsbgn
 
 namespace libsbgn
 {
-  namespace pd_0_1
+  namespace sn_0_2
   {
+    // SBGNBase
+    //
+
+    SBGNBase::
+    SBGNBase ()
+    : ::xml_schema::type (),
+      notes_ (::xml_schema::flags (), this),
+      extension_ (::xml_schema::flags (), this)
+    {
+    }
+
+    SBGNBase::
+    SBGNBase (const SBGNBase& x,
+              ::xml_schema::flags f,
+              ::xml_schema::container* c)
+    : ::xml_schema::type (x, f, c),
+      notes_ (x.notes_, f, this),
+      extension_ (x.extension_, f, this)
+    {
+    }
+
+    SBGNBase::
+    SBGNBase (const ::xercesc::DOMElement& e,
+              ::xml_schema::flags f,
+              ::xml_schema::container* c)
+    : ::xml_schema::type (e, f | ::xml_schema::flags::base, c),
+      notes_ (f, this),
+      extension_ (f, this)
+    {
+      if ((f & ::xml_schema::flags::base) == 0)
+      {
+        ::xsd::cxx::xml::dom::parser< char > p (e, true, false);
+        this->parse (p, f);
+      }
+    }
+
+    void SBGNBase::
+    parse (::xsd::cxx::xml::dom::parser< char >& p,
+           ::xml_schema::flags f)
+    {
+      for (; p.more_elements (); p.next_element ())
+      {
+        const ::xercesc::DOMElement& i (p.cur_element ());
+        const ::xsd::cxx::xml::qualified_name< char > n (
+          ::xsd::cxx::xml::dom::name< char > (i));
+
+        // notes
+        //
+        if (n.name () == "notes" && n.namespace_ () == "http://sbgn.org/libsbgn/0.2")
+        {
+          ::std::auto_ptr< notes_type > r (
+            notes_traits::create (i, f, this));
+
+          if (!this->notes_)
+          {
+            this->notes_.set (r);
+            continue;
+          }
+        }
+
+        // extension
+        //
+        if (n.name () == "extension" && n.namespace_ () == "http://sbgn.org/libsbgn/0.2")
+        {
+          ::std::auto_ptr< extension_type > r (
+            extension_traits::create (i, f, this));
+
+          if (!this->extension_)
+          {
+            this->extension_.set (r);
+            continue;
+          }
+        }
+
+        break;
+      }
+    }
+
+    SBGNBase* SBGNBase::
+    _clone (::xml_schema::flags f,
+            ::xml_schema::container* c) const
+    {
+      return new class SBGNBase (*this, f, c);
+    }
+
+    SBGNBase::
+    ~SBGNBase ()
+    {
+    }
+
+    // notes
+    //
+
+    notes::
+    notes ()
+    : ::xml_schema::type ()
+    {
+    }
+
+    notes::
+    notes (const notes& x,
+           ::xml_schema::flags f,
+           ::xml_schema::container* c)
+    : ::xml_schema::type (x, f, c)
+    {
+    }
+
+    notes::
+    notes (const ::xercesc::DOMElement& e,
+           ::xml_schema::flags f,
+           ::xml_schema::container* c)
+    : ::xml_schema::type (e, f | ::xml_schema::flags::base, c)
+    {
+      if ((f & ::xml_schema::flags::base) == 0)
+      {
+        ::xsd::cxx::xml::dom::parser< char > p (e, true, false);
+        this->parse (p, f);
+      }
+    }
+
+    void notes::
+    parse (::xsd::cxx::xml::dom::parser< char >& p,
+           ::xml_schema::flags)
+    {
+      for (; p.more_elements (); p.next_element ())
+      {
+        const ::xercesc::DOMElement& i (p.cur_element ());
+        const ::xsd::cxx::xml::qualified_name< char > n (
+          ::xsd::cxx::xml::dom::name< char > (i));
+
+        break;
+      }
+    }
+
+    notes* notes::
+    _clone (::xml_schema::flags f,
+            ::xml_schema::container* c) const
+    {
+      return new class notes (*this, f, c);
+    }
+
+    notes::
+    ~notes ()
+    {
+    }
+
+    // extension
+    //
+
+    extension::
+    extension ()
+    : ::xml_schema::type ()
+    {
+    }
+
+    extension::
+    extension (const extension& x,
+               ::xml_schema::flags f,
+               ::xml_schema::container* c)
+    : ::xml_schema::type (x, f, c)
+    {
+    }
+
+    extension::
+    extension (const ::xercesc::DOMElement& e,
+               ::xml_schema::flags f,
+               ::xml_schema::container* c)
+    : ::xml_schema::type (e, f | ::xml_schema::flags::base, c)
+    {
+      if ((f & ::xml_schema::flags::base) == 0)
+      {
+        ::xsd::cxx::xml::dom::parser< char > p (e, true, false);
+        this->parse (p, f);
+      }
+    }
+
+    void extension::
+    parse (::xsd::cxx::xml::dom::parser< char >& p,
+           ::xml_schema::flags)
+    {
+      for (; p.more_elements (); p.next_element ())
+      {
+        const ::xercesc::DOMElement& i (p.cur_element ());
+        const ::xsd::cxx::xml::qualified_name< char > n (
+          ::xsd::cxx::xml::dom::name< char > (i));
+
+        break;
+      }
+    }
+
+    extension* extension::
+    _clone (::xml_schema::flags f,
+            ::xml_schema::container* c) const
+    {
+      return new class extension (*this, f, c);
+    }
+
+    extension::
+    ~extension ()
+    {
+    }
+
+    // point
+    //
+
+    point::
+    point (const x_type& x,
+           const y_type& y)
+    : ::libsbgn::sn_0_2::SBGNBase (),
+      x_ (x, ::xml_schema::flags (), this),
+      y_ (y, ::xml_schema::flags (), this)
+    {
+    }
+
+    point::
+    point (const point& x,
+           ::xml_schema::flags f,
+           ::xml_schema::container* c)
+    : ::libsbgn::sn_0_2::SBGNBase (x, f, c),
+      x_ (x.x_, f, this),
+      y_ (x.y_, f, this)
+    {
+    }
+
+    point::
+    point (const ::xercesc::DOMElement& e,
+           ::xml_schema::flags f,
+           ::xml_schema::container* c)
+    : ::libsbgn::sn_0_2::SBGNBase (e, f | ::xml_schema::flags::base, c),
+      x_ (f, this),
+      y_ (f, this)
+    {
+      if ((f & ::xml_schema::flags::base) == 0)
+      {
+        ::xsd::cxx::xml::dom::parser< char > p (e, true, true);
+        this->parse (p, f);
+      }
+    }
+
+    void point::
+    parse (::xsd::cxx::xml::dom::parser< char >& p,
+           ::xml_schema::flags f)
+    {
+      this->::libsbgn::sn_0_2::SBGNBase::parse (p, f);
+
+      while (p.more_attributes ())
+      {
+        const ::xercesc::DOMAttr& i (p.next_attribute ());
+        const ::xsd::cxx::xml::qualified_name< char > n (
+          ::xsd::cxx::xml::dom::name< char > (i));
+
+        if (n.name () == "x" && n.namespace_ ().empty ())
+        {
+          this->x_.set (x_traits::create (i, f, this));
+          continue;
+        }
+
+        if (n.name () == "y" && n.namespace_ ().empty ())
+        {
+          this->y_.set (y_traits::create (i, f, this));
+          continue;
+        }
+      }
+
+      if (!x_.present ())
+      {
+        throw ::xsd::cxx::tree::expected_attribute< char > (
+          "x",
+          "");
+      }
+
+      if (!y_.present ())
+      {
+        throw ::xsd::cxx::tree::expected_attribute< char > (
+          "y",
+          "");
+      }
+    }
+
+    point* point::
+    _clone (::xml_schema::flags f,
+            ::xml_schema::container* c) const
+    {
+      return new class point (*this, f, c);
+    }
+
+    point::
+    ~point ()
+    {
+    }
+
     // bbox
     //
 
@@ -1212,7 +2022,7 @@ namespace libsbgn
           const y_type& y,
           const w_type& w,
           const h_type& h)
-    : ::xml_schema::type (),
+    : ::libsbgn::sn_0_2::SBGNBase (),
       x_ (x, ::xml_schema::flags (), this),
       y_ (y, ::xml_schema::flags (), this),
       w_ (w, ::xml_schema::flags (), this),
@@ -1224,7 +2034,7 @@ namespace libsbgn
     bbox (const bbox& x,
           ::xml_schema::flags f,
           ::xml_schema::container* c)
-    : ::xml_schema::type (x, f, c),
+    : ::libsbgn::sn_0_2::SBGNBase (x, f, c),
       x_ (x.x_, f, this),
       y_ (x.y_, f, this),
       w_ (x.w_, f, this),
@@ -1236,7 +2046,7 @@ namespace libsbgn
     bbox (const ::xercesc::DOMElement& e,
           ::xml_schema::flags f,
           ::xml_schema::container* c)
-    : ::xml_schema::type (e, f | ::xml_schema::flags::base, c),
+    : ::libsbgn::sn_0_2::SBGNBase (e, f | ::xml_schema::flags::base, c),
       x_ (f, this),
       y_ (f, this),
       w_ (f, this),
@@ -1244,7 +2054,7 @@ namespace libsbgn
     {
       if ((f & ::xml_schema::flags::base) == 0)
       {
-        ::xsd::cxx::xml::dom::parser< char > p (e, false, true);
+        ::xsd::cxx::xml::dom::parser< char > p (e, true, true);
         this->parse (p, f);
       }
     }
@@ -1253,6 +2063,8 @@ namespace libsbgn
     parse (::xsd::cxx::xml::dom::parser< char >& p,
            ::xml_schema::flags f)
     {
+      this->::libsbgn::sn_0_2::SBGNBase::parse (p, f);
+
       while (p.more_attributes ())
       {
         const ::xercesc::DOMAttr& i (p.next_attribute ());
@@ -1325,710 +2137,14 @@ namespace libsbgn
     {
     }
 
-    // map
-    //
-
-    map::
-    map ()
-    : ::xml_schema::type (),
-      glyph_ (::xml_schema::flags (), this),
-      arc_ (::xml_schema::flags (), this)
-    {
-    }
-
-    map::
-    map (const map& x,
-         ::xml_schema::flags f,
-         ::xml_schema::container* c)
-    : ::xml_schema::type (x, f, c),
-      glyph_ (x.glyph_, f, this),
-      arc_ (x.arc_, f, this)
-    {
-    }
-
-    map::
-    map (const ::xercesc::DOMElement& e,
-         ::xml_schema::flags f,
-         ::xml_schema::container* c)
-    : ::xml_schema::type (e, f | ::xml_schema::flags::base, c),
-      glyph_ (f, this),
-      arc_ (f, this)
-    {
-      if ((f & ::xml_schema::flags::base) == 0)
-      {
-        ::xsd::cxx::xml::dom::parser< char > p (e, true, false);
-        this->parse (p, f);
-      }
-    }
-
-    void map::
-    parse (::xsd::cxx::xml::dom::parser< char >& p,
-           ::xml_schema::flags f)
-    {
-      for (; p.more_elements (); p.next_element ())
-      {
-        const ::xercesc::DOMElement& i (p.cur_element ());
-        const ::xsd::cxx::xml::qualified_name< char > n (
-          ::xsd::cxx::xml::dom::name< char > (i));
-
-        // glyph
-        //
-        if (n.name () == "glyph" && n.namespace_ () == "http://sbgn.org/libsbgn/pd/0.1")
-        {
-          ::std::auto_ptr< glyph_type > r (
-            glyph_traits::create (i, f, this));
-
-          this->glyph_.push_back (r);
-          continue;
-        }
-
-        // arc
-        //
-        if (n.name () == "arc" && n.namespace_ () == "http://sbgn.org/libsbgn/pd/0.1")
-        {
-          ::std::auto_ptr< arc_type > r (
-            arc_traits::create (i, f, this));
-
-          this->arc_.push_back (r);
-          continue;
-        }
-
-        break;
-      }
-    }
-
-    map* map::
-    _clone (::xml_schema::flags f,
-            ::xml_schema::container* c) const
-    {
-      return new class map (*this, f, c);
-    }
-
-    map::
-    ~map ()
-    {
-    }
-
-    // sbgn
-    //
-
-    sbgn::
-    sbgn ()
-    : ::xml_schema::type (),
-      map_ (::xml_schema::flags (), this)
-    {
-    }
-
-    sbgn::
-    sbgn (const sbgn& x,
-          ::xml_schema::flags f,
-          ::xml_schema::container* c)
-    : ::xml_schema::type (x, f, c),
-      map_ (x.map_, f, this)
-    {
-    }
-
-    sbgn::
-    sbgn (const ::xercesc::DOMElement& e,
-          ::xml_schema::flags f,
-          ::xml_schema::container* c)
-    : ::xml_schema::type (e, f | ::xml_schema::flags::base, c),
-      map_ (f, this)
-    {
-      if ((f & ::xml_schema::flags::base) == 0)
-      {
-        ::xsd::cxx::xml::dom::parser< char > p (e, true, false);
-        this->parse (p, f);
-      }
-    }
-
-    void sbgn::
-    parse (::xsd::cxx::xml::dom::parser< char >& p,
-           ::xml_schema::flags f)
-    {
-      for (; p.more_elements (); p.next_element ())
-      {
-        const ::xercesc::DOMElement& i (p.cur_element ());
-        const ::xsd::cxx::xml::qualified_name< char > n (
-          ::xsd::cxx::xml::dom::name< char > (i));
-
-        // map
-        //
-        if (n.name () == "map" && n.namespace_ () == "http://sbgn.org/libsbgn/pd/0.1")
-        {
-          ::std::auto_ptr< map_type > r (
-            map_traits::create (i, f, this));
-
-          this->map_.push_back (r);
-          continue;
-        }
-
-        break;
-      }
-    }
-
-    sbgn* sbgn::
-    _clone (::xml_schema::flags f,
-            ::xml_schema::container* c) const
-    {
-      return new class sbgn (*this, f, c);
-    }
-
-    sbgn::
-    ~sbgn ()
-    {
-    }
-
-    // glyph
-    //
-
-    const glyph::class_type glyph::class__default_value_ (
-      "unspecified entity");
-
-    const glyph::orientation_type glyph::orientation_default_value_ (
-      "horizontal");
-
-    glyph::
-    glyph (const bbox_type& bbox,
-           const id_type& id)
-    : ::xml_schema::type (),
-      label_ (::xml_schema::flags (), this),
-      state_ (::xml_schema::flags (), this),
-      clone_ (::xml_schema::flags (), this),
-      bbox_ (bbox, ::xml_schema::flags (), this),
-      glyph1_ (::xml_schema::flags (), this),
-      port_ (::xml_schema::flags (), this),
-      class__ (class_default_value (), ::xml_schema::flags (), this),
-      orientation_ (orientation_default_value (), ::xml_schema::flags (), this),
-      id_ (id, ::xml_schema::flags (), this)
-    {
-    }
-
-    glyph::
-    glyph (::std::auto_ptr< bbox_type >& bbox,
-           const id_type& id)
-    : ::xml_schema::type (),
-      label_ (::xml_schema::flags (), this),
-      state_ (::xml_schema::flags (), this),
-      clone_ (::xml_schema::flags (), this),
-      bbox_ (bbox, ::xml_schema::flags (), this),
-      glyph1_ (::xml_schema::flags (), this),
-      port_ (::xml_schema::flags (), this),
-      class__ (class_default_value (), ::xml_schema::flags (), this),
-      orientation_ (orientation_default_value (), ::xml_schema::flags (), this),
-      id_ (id, ::xml_schema::flags (), this)
-    {
-    }
-
-    glyph::
-    glyph (const glyph& x,
-           ::xml_schema::flags f,
-           ::xml_schema::container* c)
-    : ::xml_schema::type (x, f, c),
-      label_ (x.label_, f, this),
-      state_ (x.state_, f, this),
-      clone_ (x.clone_, f, this),
-      bbox_ (x.bbox_, f, this),
-      glyph1_ (x.glyph1_, f, this),
-      port_ (x.port_, f, this),
-      class__ (x.class__, f, this),
-      orientation_ (x.orientation_, f, this),
-      id_ (x.id_, f, this)
-    {
-    }
-
-    glyph::
-    glyph (const ::xercesc::DOMElement& e,
-           ::xml_schema::flags f,
-           ::xml_schema::container* c)
-    : ::xml_schema::type (e, f | ::xml_schema::flags::base, c),
-      label_ (f, this),
-      state_ (f, this),
-      clone_ (f, this),
-      bbox_ (f, this),
-      glyph1_ (f, this),
-      port_ (f, this),
-      class__ (f, this),
-      orientation_ (f, this),
-      id_ (f, this)
-    {
-      if ((f & ::xml_schema::flags::base) == 0)
-      {
-        ::xsd::cxx::xml::dom::parser< char > p (e, true, true);
-        this->parse (p, f);
-      }
-    }
-
-    void glyph::
-    parse (::xsd::cxx::xml::dom::parser< char >& p,
-           ::xml_schema::flags f)
-    {
-      for (; p.more_elements (); p.next_element ())
-      {
-        const ::xercesc::DOMElement& i (p.cur_element ());
-        const ::xsd::cxx::xml::qualified_name< char > n (
-          ::xsd::cxx::xml::dom::name< char > (i));
-
-        // label
-        //
-        if (n.name () == "label" && n.namespace_ () == "http://sbgn.org/libsbgn/pd/0.1")
-        {
-          ::std::auto_ptr< label_type > r (
-            label_traits::create (i, f, this));
-
-          if (!this->label_)
-          {
-            this->label_.set (r);
-            continue;
-          }
-        }
-
-        // state
-        //
-        if (n.name () == "state" && n.namespace_ () == "http://sbgn.org/libsbgn/pd/0.1")
-        {
-          ::std::auto_ptr< state_type > r (
-            state_traits::create (i, f, this));
-
-          if (!this->state_)
-          {
-            this->state_.set (r);
-            continue;
-          }
-        }
-
-        // clone
-        //
-        if (n.name () == "clone" && n.namespace_ () == "http://sbgn.org/libsbgn/pd/0.1")
-        {
-          ::std::auto_ptr< clone_type > r (
-            clone_traits::create (i, f, this));
-
-          if (!this->clone_)
-          {
-            this->clone_.set (r);
-            continue;
-          }
-        }
-
-        // bbox
-        //
-        if (n.name () == "bbox" && n.namespace_ () == "http://sbgn.org/libsbgn/pd/0.1")
-        {
-          ::std::auto_ptr< bbox_type > r (
-            bbox_traits::create (i, f, this));
-
-          if (!bbox_.present ())
-          {
-            this->bbox_.set (r);
-            continue;
-          }
-        }
-
-        // glyph
-        //
-        if (n.name () == "glyph" && n.namespace_ () == "http://sbgn.org/libsbgn/pd/0.1")
-        {
-          ::std::auto_ptr< glyph1_type > r (
-            glyph1_traits::create (i, f, this));
-
-          this->glyph1_.push_back (r);
-          continue;
-        }
-
-        // port
-        //
-        if (n.name () == "port" && n.namespace_ () == "http://sbgn.org/libsbgn/pd/0.1")
-        {
-          ::std::auto_ptr< port_type > r (
-            port_traits::create (i, f, this));
-
-          this->port_.push_back (r);
-          continue;
-        }
-
-        break;
-      }
-
-      if (!bbox_.present ())
-      {
-        throw ::xsd::cxx::tree::expected_element< char > (
-          "bbox",
-          "http://sbgn.org/libsbgn/pd/0.1");
-      }
-
-      while (p.more_attributes ())
-      {
-        const ::xercesc::DOMAttr& i (p.next_attribute ());
-        const ::xsd::cxx::xml::qualified_name< char > n (
-          ::xsd::cxx::xml::dom::name< char > (i));
-
-        if (n.name () == "class" && n.namespace_ ().empty ())
-        {
-          ::std::auto_ptr< class_type > r (
-            class_traits::create (i, f, this));
-
-          this->class__.set (r);
-          continue;
-        }
-
-        if (n.name () == "orientation" && n.namespace_ ().empty ())
-        {
-          ::std::auto_ptr< orientation_type > r (
-            orientation_traits::create (i, f, this));
-
-          this->orientation_.set (r);
-          continue;
-        }
-
-        if (n.name () == "id" && n.namespace_ ().empty ())
-        {
-          ::std::auto_ptr< id_type > r (
-            id_traits::create (i, f, this));
-
-          this->id_.set (r);
-          continue;
-        }
-      }
-
-      if (!class__.present ())
-      {
-        this->class__.set (class_default_value ());
-      }
-
-      if (!orientation_.present ())
-      {
-        this->orientation_.set (orientation_default_value ());
-      }
-
-      if (!id_.present ())
-      {
-        throw ::xsd::cxx::tree::expected_attribute< char > (
-          "id",
-          "");
-      }
-    }
-
-    glyph* glyph::
-    _clone (::xml_schema::flags f,
-            ::xml_schema::container* c) const
-    {
-      return new class glyph (*this, f, c);
-    }
-
-    glyph::
-    ~glyph ()
-    {
-    }
-
-    // arc
-    //
-
-    arc::
-    arc (const start_type& start,
-         const end_type& end,
-         const source_type& source,
-         const target_type& target)
-    : ::xml_schema::type (),
-      glyph_ (::xml_schema::flags (), this),
-      start_ (start, ::xml_schema::flags (), this),
-      next_ (::xml_schema::flags (), this),
-      end_ (end, ::xml_schema::flags (), this),
-      class__ (::xml_schema::flags (), this),
-      source_ (source, ::xml_schema::flags (), this),
-      target_ (target, ::xml_schema::flags (), this)
-    {
-    }
-
-    arc::
-    arc (::std::auto_ptr< start_type >& start,
-         ::std::auto_ptr< end_type >& end,
-         const source_type& source,
-         const target_type& target)
-    : ::xml_schema::type (),
-      glyph_ (::xml_schema::flags (), this),
-      start_ (start, ::xml_schema::flags (), this),
-      next_ (::xml_schema::flags (), this),
-      end_ (end, ::xml_schema::flags (), this),
-      class__ (::xml_schema::flags (), this),
-      source_ (source, ::xml_schema::flags (), this),
-      target_ (target, ::xml_schema::flags (), this)
-    {
-    }
-
-    arc::
-    arc (const arc& x,
-         ::xml_schema::flags f,
-         ::xml_schema::container* c)
-    : ::xml_schema::type (x, f, c),
-      glyph_ (x.glyph_, f, this),
-      start_ (x.start_, f, this),
-      next_ (x.next_, f, this),
-      end_ (x.end_, f, this),
-      class__ (x.class__, f, this),
-      source_ (x.source_, f, this),
-      target_ (x.target_, f, this)
-    {
-    }
-
-    arc::
-    arc (const ::xercesc::DOMElement& e,
-         ::xml_schema::flags f,
-         ::xml_schema::container* c)
-    : ::xml_schema::type (e, f | ::xml_schema::flags::base, c),
-      glyph_ (f, this),
-      start_ (f, this),
-      next_ (f, this),
-      end_ (f, this),
-      class__ (f, this),
-      source_ (f, this),
-      target_ (f, this)
-    {
-      if ((f & ::xml_schema::flags::base) == 0)
-      {
-        ::xsd::cxx::xml::dom::parser< char > p (e, true, true);
-        this->parse (p, f);
-      }
-    }
-
-    void arc::
-    parse (::xsd::cxx::xml::dom::parser< char >& p,
-           ::xml_schema::flags f)
-    {
-      for (; p.more_elements (); p.next_element ())
-      {
-        const ::xercesc::DOMElement& i (p.cur_element ());
-        const ::xsd::cxx::xml::qualified_name< char > n (
-          ::xsd::cxx::xml::dom::name< char > (i));
-
-        // glyph
-        //
-        if (n.name () == "glyph" && n.namespace_ () == "http://sbgn.org/libsbgn/pd/0.1")
-        {
-          ::std::auto_ptr< glyph_type > r (
-            glyph_traits::create (i, f, this));
-
-          if (!this->glyph_)
-          {
-            this->glyph_.set (r);
-            continue;
-          }
-        }
-
-        // start
-        //
-        if (n.name () == "start" && n.namespace_ () == "http://sbgn.org/libsbgn/pd/0.1")
-        {
-          ::std::auto_ptr< start_type > r (
-            start_traits::create (i, f, this));
-
-          if (!start_.present ())
-          {
-            this->start_.set (r);
-            continue;
-          }
-        }
-
-        // next
-        //
-        if (n.name () == "next" && n.namespace_ () == "http://sbgn.org/libsbgn/pd/0.1")
-        {
-          ::std::auto_ptr< next_type > r (
-            next_traits::create (i, f, this));
-
-          this->next_.push_back (r);
-          continue;
-        }
-
-        // end
-        //
-        if (n.name () == "end" && n.namespace_ () == "http://sbgn.org/libsbgn/pd/0.1")
-        {
-          ::std::auto_ptr< end_type > r (
-            end_traits::create (i, f, this));
-
-          if (!end_.present ())
-          {
-            this->end_.set (r);
-            continue;
-          }
-        }
-
-        break;
-      }
-
-      if (!start_.present ())
-      {
-        throw ::xsd::cxx::tree::expected_element< char > (
-          "start",
-          "http://sbgn.org/libsbgn/pd/0.1");
-      }
-
-      if (!end_.present ())
-      {
-        throw ::xsd::cxx::tree::expected_element< char > (
-          "end",
-          "http://sbgn.org/libsbgn/pd/0.1");
-      }
-
-      while (p.more_attributes ())
-      {
-        const ::xercesc::DOMAttr& i (p.next_attribute ());
-        const ::xsd::cxx::xml::qualified_name< char > n (
-          ::xsd::cxx::xml::dom::name< char > (i));
-
-        if (n.name () == "class" && n.namespace_ ().empty ())
-        {
-          ::std::auto_ptr< class_type > r (
-            class_traits::create (i, f, this));
-
-          this->class__.set (r);
-          continue;
-        }
-
-        if (n.name () == "source" && n.namespace_ ().empty ())
-        {
-          ::std::auto_ptr< source_type > r (
-            source_traits::create (i, f, this));
-
-          this->source_.set (r);
-          continue;
-        }
-
-        if (n.name () == "target" && n.namespace_ ().empty ())
-        {
-          ::std::auto_ptr< target_type > r (
-            target_traits::create (i, f, this));
-
-          this->target_.set (r);
-          continue;
-        }
-      }
-
-      if (!source_.present ())
-      {
-        throw ::xsd::cxx::tree::expected_attribute< char > (
-          "source",
-          "");
-      }
-
-      if (!target_.present ())
-      {
-        throw ::xsd::cxx::tree::expected_attribute< char > (
-          "target",
-          "");
-      }
-    }
-
-    arc* arc::
-    _clone (::xml_schema::flags f,
-            ::xml_schema::container* c) const
-    {
-      return new class arc (*this, f, c);
-    }
-
-    arc::
-    ~arc ()
-    {
-    }
-
-    // point
-    //
-
-    point::
-    point (const x_type& x,
-           const y_type& y)
-    : ::xml_schema::type (),
-      x_ (x, ::xml_schema::flags (), this),
-      y_ (y, ::xml_schema::flags (), this)
-    {
-    }
-
-    point::
-    point (const point& x,
-           ::xml_schema::flags f,
-           ::xml_schema::container* c)
-    : ::xml_schema::type (x, f, c),
-      x_ (x.x_, f, this),
-      y_ (x.y_, f, this)
-    {
-    }
-
-    point::
-    point (const ::xercesc::DOMElement& e,
-           ::xml_schema::flags f,
-           ::xml_schema::container* c)
-    : ::xml_schema::type (e, f | ::xml_schema::flags::base, c),
-      x_ (f, this),
-      y_ (f, this)
-    {
-      if ((f & ::xml_schema::flags::base) == 0)
-      {
-        ::xsd::cxx::xml::dom::parser< char > p (e, false, true);
-        this->parse (p, f);
-      }
-    }
-
-    void point::
-    parse (::xsd::cxx::xml::dom::parser< char >& p,
-           ::xml_schema::flags f)
-    {
-      while (p.more_attributes ())
-      {
-        const ::xercesc::DOMAttr& i (p.next_attribute ());
-        const ::xsd::cxx::xml::qualified_name< char > n (
-          ::xsd::cxx::xml::dom::name< char > (i));
-
-        if (n.name () == "x" && n.namespace_ ().empty ())
-        {
-          this->x_.set (x_traits::create (i, f, this));
-          continue;
-        }
-
-        if (n.name () == "y" && n.namespace_ ().empty ())
-        {
-          this->y_.set (y_traits::create (i, f, this));
-          continue;
-        }
-      }
-
-      if (!x_.present ())
-      {
-        throw ::xsd::cxx::tree::expected_attribute< char > (
-          "x",
-          "");
-      }
-
-      if (!y_.present ())
-      {
-        throw ::xsd::cxx::tree::expected_attribute< char > (
-          "y",
-          "");
-      }
-    }
-
-    point* point::
-    _clone (::xml_schema::flags f,
-            ::xml_schema::container* c) const
-    {
-      return new class point (*this, f, c);
-    }
-
-    point::
-    ~point ()
-    {
-    }
-
     // label
     //
 
     label::
     label (const text_type& text)
-    : ::xml_schema::type (),
+    : ::libsbgn::sn_0_2::SBGNBase (),
       bbox_ (::xml_schema::flags (), this),
-      text_ (text, ::xml_schema::flags (), this),
-      font_ (::xml_schema::flags (), this),
-      fontsize_ (::xml_schema::flags (), this)
+      text_ (text, ::xml_schema::flags (), this)
     {
     }
 
@@ -2036,11 +2152,9 @@ namespace libsbgn
     label (const label& x,
            ::xml_schema::flags f,
            ::xml_schema::container* c)
-    : ::xml_schema::type (x, f, c),
+    : ::libsbgn::sn_0_2::SBGNBase (x, f, c),
       bbox_ (x.bbox_, f, this),
-      text_ (x.text_, f, this),
-      font_ (x.font_, f, this),
-      fontsize_ (x.fontsize_, f, this)
+      text_ (x.text_, f, this)
     {
     }
 
@@ -2048,11 +2162,9 @@ namespace libsbgn
     label (const ::xercesc::DOMElement& e,
            ::xml_schema::flags f,
            ::xml_schema::container* c)
-    : ::xml_schema::type (e, f | ::xml_schema::flags::base, c),
+    : ::libsbgn::sn_0_2::SBGNBase (e, f | ::xml_schema::flags::base, c),
       bbox_ (f, this),
-      text_ (f, this),
-      font_ (f, this),
-      fontsize_ (f, this)
+      text_ (f, this)
     {
       if ((f & ::xml_schema::flags::base) == 0)
       {
@@ -2065,6 +2177,8 @@ namespace libsbgn
     parse (::xsd::cxx::xml::dom::parser< char >& p,
            ::xml_schema::flags f)
     {
+      this->::libsbgn::sn_0_2::SBGNBase::parse (p, f);
+
       for (; p.more_elements (); p.next_element ())
       {
         const ::xercesc::DOMElement& i (p.cur_element ());
@@ -2073,7 +2187,7 @@ namespace libsbgn
 
         // bbox
         //
-        if (n.name () == "bbox" && n.namespace_ () == "http://sbgn.org/libsbgn/pd/0.1")
+        if (n.name () == "bbox" && n.namespace_ () == "http://sbgn.org/libsbgn/0.2")
         {
           ::std::auto_ptr< bbox_type > r (
             bbox_traits::create (i, f, this));
@@ -2102,21 +2216,6 @@ namespace libsbgn
           this->text_.set (r);
           continue;
         }
-
-        if (n.name () == "font" && n.namespace_ ().empty ())
-        {
-          ::std::auto_ptr< font_type > r (
-            font_traits::create (i, f, this));
-
-          this->font_.set (r);
-          continue;
-        }
-
-        if (n.name () == "fontsize" && n.namespace_ ().empty ())
-        {
-          this->fontsize_.set (fontsize_traits::create (i, f, this));
-          continue;
-        }
       }
 
       if (!text_.present ())
@@ -2139,116 +2238,38 @@ namespace libsbgn
     {
     }
 
-    // state
+    // sbgn
     //
 
-    state::
-    state (const value_type& value)
-    : ::xml_schema::type (),
-      value_ (value, ::xml_schema::flags (), this),
-      variable_ (::xml_schema::flags (), this)
+    sbgn::
+    sbgn (const map_type& map)
+    : ::libsbgn::sn_0_2::SBGNBase (),
+      map_ (map, ::xml_schema::flags (), this)
     {
     }
 
-    state::
-    state (const state& x,
-           ::xml_schema::flags f,
-           ::xml_schema::container* c)
-    : ::xml_schema::type (x, f, c),
-      value_ (x.value_, f, this),
-      variable_ (x.variable_, f, this)
+    sbgn::
+    sbgn (::std::auto_ptr< map_type >& map)
+    : ::libsbgn::sn_0_2::SBGNBase (),
+      map_ (map, ::xml_schema::flags (), this)
     {
     }
 
-    state::
-    state (const ::xercesc::DOMElement& e,
-           ::xml_schema::flags f,
-           ::xml_schema::container* c)
-    : ::xml_schema::type (e, f | ::xml_schema::flags::base, c),
-      value_ (f, this),
-      variable_ (f, this)
-    {
-      if ((f & ::xml_schema::flags::base) == 0)
-      {
-        ::xsd::cxx::xml::dom::parser< char > p (e, false, true);
-        this->parse (p, f);
-      }
-    }
-
-    void state::
-    parse (::xsd::cxx::xml::dom::parser< char >& p,
-           ::xml_schema::flags f)
-    {
-      while (p.more_attributes ())
-      {
-        const ::xercesc::DOMAttr& i (p.next_attribute ());
-        const ::xsd::cxx::xml::qualified_name< char > n (
-          ::xsd::cxx::xml::dom::name< char > (i));
-
-        if (n.name () == "value" && n.namespace_ ().empty ())
-        {
-          ::std::auto_ptr< value_type > r (
-            value_traits::create (i, f, this));
-
-          this->value_.set (r);
-          continue;
-        }
-
-        if (n.name () == "variable" && n.namespace_ ().empty ())
-        {
-          ::std::auto_ptr< variable_type > r (
-            variable_traits::create (i, f, this));
-
-          this->variable_.set (r);
-          continue;
-        }
-      }
-
-      if (!value_.present ())
-      {
-        throw ::xsd::cxx::tree::expected_attribute< char > (
-          "value",
-          "");
-      }
-    }
-
-    state* state::
-    _clone (::xml_schema::flags f,
-            ::xml_schema::container* c) const
-    {
-      return new class state (*this, f, c);
-    }
-
-    state::
-    ~state ()
+    sbgn::
+    sbgn (const sbgn& x,
+          ::xml_schema::flags f,
+          ::xml_schema::container* c)
+    : ::libsbgn::sn_0_2::SBGNBase (x, f, c),
+      map_ (x.map_, f, this)
     {
     }
 
-    // clone
-    //
-
-    clone::
-    clone ()
-    : ::xml_schema::type (),
-      label_ (::xml_schema::flags (), this)
-    {
-    }
-
-    clone::
-    clone (const clone& x,
-           ::xml_schema::flags f,
-           ::xml_schema::container* c)
-    : ::xml_schema::type (x, f, c),
-      label_ (x.label_, f, this)
-    {
-    }
-
-    clone::
-    clone (const ::xercesc::DOMElement& e,
-           ::xml_schema::flags f,
-           ::xml_schema::container* c)
-    : ::xml_schema::type (e, f | ::xml_schema::flags::base, c),
-      label_ (f, this)
+    sbgn::
+    sbgn (const ::xercesc::DOMElement& e,
+          ::xml_schema::flags f,
+          ::xml_schema::container* c)
+    : ::libsbgn::sn_0_2::SBGNBase (e, f | ::xml_schema::flags::base, c),
+      map_ (f, this)
     {
       if ((f & ::xml_schema::flags::base) == 0)
       {
@@ -2257,43 +2278,195 @@ namespace libsbgn
       }
     }
 
-    void clone::
+    void sbgn::
     parse (::xsd::cxx::xml::dom::parser< char >& p,
            ::xml_schema::flags f)
     {
+      this->::libsbgn::sn_0_2::SBGNBase::parse (p, f);
+
       for (; p.more_elements (); p.next_element ())
       {
         const ::xercesc::DOMElement& i (p.cur_element ());
         const ::xsd::cxx::xml::qualified_name< char > n (
           ::xsd::cxx::xml::dom::name< char > (i));
 
-        // label
+        // map
         //
-        if (n.name () == "label" && n.namespace_ () == "http://sbgn.org/libsbgn/pd/0.1")
+        if (n.name () == "map" && n.namespace_ () == "http://sbgn.org/libsbgn/0.2")
         {
-          ::std::auto_ptr< label_type > r (
-            label_traits::create (i, f, this));
+          ::std::auto_ptr< map_type > r (
+            map_traits::create (i, f, this));
 
-          if (!this->label_)
+          if (!map_.present ())
           {
-            this->label_.set (r);
+            this->map_.set (r);
             continue;
           }
         }
 
         break;
       }
+
+      if (!map_.present ())
+      {
+        throw ::xsd::cxx::tree::expected_element< char > (
+          "map",
+          "http://sbgn.org/libsbgn/0.2");
+      }
     }
 
-    clone* clone::
+    sbgn* sbgn::
     _clone (::xml_schema::flags f,
             ::xml_schema::container* c) const
     {
-      return new class clone (*this, f, c);
+      return new class sbgn (*this, f, c);
     }
 
-    clone::
-    ~clone ()
+    sbgn::
+    ~sbgn ()
+    {
+    }
+
+    // map
+    //
+
+    map::
+    map (const language_type& language)
+    : ::libsbgn::sn_0_2::SBGNBase (),
+      bbox_ (::xml_schema::flags (), this),
+      glyph_ (::xml_schema::flags (), this),
+      arc_ (::xml_schema::flags (), this),
+      arcgroup_ (::xml_schema::flags (), this),
+      language_ (language, ::xml_schema::flags (), this)
+    {
+    }
+
+    map::
+    map (const map& x,
+         ::xml_schema::flags f,
+         ::xml_schema::container* c)
+    : ::libsbgn::sn_0_2::SBGNBase (x, f, c),
+      bbox_ (x.bbox_, f, this),
+      glyph_ (x.glyph_, f, this),
+      arc_ (x.arc_, f, this),
+      arcgroup_ (x.arcgroup_, f, this),
+      language_ (x.language_, f, this)
+    {
+    }
+
+    map::
+    map (const ::xercesc::DOMElement& e,
+         ::xml_schema::flags f,
+         ::xml_schema::container* c)
+    : ::libsbgn::sn_0_2::SBGNBase (e, f | ::xml_schema::flags::base, c),
+      bbox_ (f, this),
+      glyph_ (f, this),
+      arc_ (f, this),
+      arcgroup_ (f, this),
+      language_ (f, this)
+    {
+      if ((f & ::xml_schema::flags::base) == 0)
+      {
+        ::xsd::cxx::xml::dom::parser< char > p (e, true, true);
+        this->parse (p, f);
+      }
+    }
+
+    void map::
+    parse (::xsd::cxx::xml::dom::parser< char >& p,
+           ::xml_schema::flags f)
+    {
+      this->::libsbgn::sn_0_2::SBGNBase::parse (p, f);
+
+      for (; p.more_elements (); p.next_element ())
+      {
+        const ::xercesc::DOMElement& i (p.cur_element ());
+        const ::xsd::cxx::xml::qualified_name< char > n (
+          ::xsd::cxx::xml::dom::name< char > (i));
+
+        // bbox
+        //
+        if (n.name () == "bbox" && n.namespace_ () == "http://sbgn.org/libsbgn/0.2")
+        {
+          ::std::auto_ptr< bbox_type > r (
+            bbox_traits::create (i, f, this));
+
+          if (!this->bbox_)
+          {
+            this->bbox_.set (r);
+            continue;
+          }
+        }
+
+        // glyph
+        //
+        if (n.name () == "glyph" && n.namespace_ () == "http://sbgn.org/libsbgn/0.2")
+        {
+          ::std::auto_ptr< glyph_type > r (
+            glyph_traits::create (i, f, this));
+
+          this->glyph_.push_back (r);
+          continue;
+        }
+
+        // arc
+        //
+        if (n.name () == "arc" && n.namespace_ () == "http://sbgn.org/libsbgn/0.2")
+        {
+          ::std::auto_ptr< arc_type > r (
+            arc_traits::create (i, f, this));
+
+          this->arc_.push_back (r);
+          continue;
+        }
+
+        // arcgroup
+        //
+        if (n.name () == "arcgroup" && n.namespace_ () == "http://sbgn.org/libsbgn/0.2")
+        {
+          ::std::auto_ptr< arcgroup_type > r (
+            arcgroup_traits::create (i, f, this));
+
+          this->arcgroup_.push_back (r);
+          continue;
+        }
+
+        break;
+      }
+
+      while (p.more_attributes ())
+      {
+        const ::xercesc::DOMAttr& i (p.next_attribute ());
+        const ::xsd::cxx::xml::qualified_name< char > n (
+          ::xsd::cxx::xml::dom::name< char > (i));
+
+        if (n.name () == "language" && n.namespace_ ().empty ())
+        {
+          ::std::auto_ptr< language_type > r (
+            language_traits::create (i, f, this));
+
+          this->language_.set (r);
+          continue;
+        }
+      }
+
+      if (!language_.present ())
+      {
+        throw ::xsd::cxx::tree::expected_attribute< char > (
+          "language",
+          "");
+      }
+    }
+
+    map* map::
+    _clone (::xml_schema::flags f,
+            ::xml_schema::container* c) const
+    {
+      return new class map (*this, f, c);
+    }
+
+    map::
+    ~map ()
     {
     }
 
@@ -2304,7 +2477,7 @@ namespace libsbgn
     port (const x_type& x,
           const y_type& y,
           const id_type& id)
-    : ::xml_schema::type (),
+    : ::libsbgn::sn_0_2::SBGNBase (),
       x_ (x, ::xml_schema::flags (), this),
       y_ (y, ::xml_schema::flags (), this),
       id_ (id, ::xml_schema::flags (), this)
@@ -2315,7 +2488,7 @@ namespace libsbgn
     port (const port& x,
           ::xml_schema::flags f,
           ::xml_schema::container* c)
-    : ::xml_schema::type (x, f, c),
+    : ::libsbgn::sn_0_2::SBGNBase (x, f, c),
       x_ (x.x_, f, this),
       y_ (x.y_, f, this),
       id_ (x.id_, f, this)
@@ -2326,14 +2499,14 @@ namespace libsbgn
     port (const ::xercesc::DOMElement& e,
           ::xml_schema::flags f,
           ::xml_schema::container* c)
-    : ::xml_schema::type (e, f | ::xml_schema::flags::base, c),
+    : ::libsbgn::sn_0_2::SBGNBase (e, f | ::xml_schema::flags::base, c),
       x_ (f, this),
       y_ (f, this),
       id_ (f, this)
     {
       if ((f & ::xml_schema::flags::base) == 0)
       {
-        ::xsd::cxx::xml::dom::parser< char > p (e, false, true);
+        ::xsd::cxx::xml::dom::parser< char > p (e, true, true);
         this->parse (p, f);
       }
     }
@@ -2342,6 +2515,8 @@ namespace libsbgn
     parse (::xsd::cxx::xml::dom::parser< char >& p,
            ::xml_schema::flags f)
     {
+      this->::libsbgn::sn_0_2::SBGNBase::parse (p, f);
+
       while (p.more_attributes ())
       {
         const ::xercesc::DOMAttr& i (p.next_attribute ());
@@ -2404,6 +2579,1081 @@ namespace libsbgn
     {
     }
 
+    // glyph
+    //
+
+    const glyph::orientation_type glyph::orientation_default_value_ (
+      "horizontal");
+
+    glyph::
+    glyph (const bbox_type& bbox,
+           const class_type& class_,
+           const id_type& id)
+    : ::libsbgn::sn_0_2::SBGNBase (),
+      label_ (::xml_schema::flags (), this),
+      state_ (::xml_schema::flags (), this),
+      clone_ (::xml_schema::flags (), this),
+      callout_ (::xml_schema::flags (), this),
+      entity_ (::xml_schema::flags (), this),
+      bbox_ (bbox, ::xml_schema::flags (), this),
+      glyph1_ (::xml_schema::flags (), this),
+      port_ (::xml_schema::flags (), this),
+      class__ (class_, ::xml_schema::flags (), this),
+      orientation_ (orientation_default_value (), ::xml_schema::flags (), this),
+      id_ (id, ::xml_schema::flags (), this),
+      compartmentRef_ (::xml_schema::flags (), this),
+      compartmentOrder_ (::xml_schema::flags (), this)
+    {
+    }
+
+    glyph::
+    glyph (::std::auto_ptr< bbox_type >& bbox,
+           const class_type& class_,
+           const id_type& id)
+    : ::libsbgn::sn_0_2::SBGNBase (),
+      label_ (::xml_schema::flags (), this),
+      state_ (::xml_schema::flags (), this),
+      clone_ (::xml_schema::flags (), this),
+      callout_ (::xml_schema::flags (), this),
+      entity_ (::xml_schema::flags (), this),
+      bbox_ (bbox, ::xml_schema::flags (), this),
+      glyph1_ (::xml_schema::flags (), this),
+      port_ (::xml_schema::flags (), this),
+      class__ (class_, ::xml_schema::flags (), this),
+      orientation_ (orientation_default_value (), ::xml_schema::flags (), this),
+      id_ (id, ::xml_schema::flags (), this),
+      compartmentRef_ (::xml_schema::flags (), this),
+      compartmentOrder_ (::xml_schema::flags (), this)
+    {
+    }
+
+    glyph::
+    glyph (const glyph& x,
+           ::xml_schema::flags f,
+           ::xml_schema::container* c)
+    : ::libsbgn::sn_0_2::SBGNBase (x, f, c),
+      label_ (x.label_, f, this),
+      state_ (x.state_, f, this),
+      clone_ (x.clone_, f, this),
+      callout_ (x.callout_, f, this),
+      entity_ (x.entity_, f, this),
+      bbox_ (x.bbox_, f, this),
+      glyph1_ (x.glyph1_, f, this),
+      port_ (x.port_, f, this),
+      class__ (x.class__, f, this),
+      orientation_ (x.orientation_, f, this),
+      id_ (x.id_, f, this),
+      compartmentRef_ (x.compartmentRef_, f, this),
+      compartmentOrder_ (x.compartmentOrder_, f, this)
+    {
+    }
+
+    glyph::
+    glyph (const ::xercesc::DOMElement& e,
+           ::xml_schema::flags f,
+           ::xml_schema::container* c)
+    : ::libsbgn::sn_0_2::SBGNBase (e, f | ::xml_schema::flags::base, c),
+      label_ (f, this),
+      state_ (f, this),
+      clone_ (f, this),
+      callout_ (f, this),
+      entity_ (f, this),
+      bbox_ (f, this),
+      glyph1_ (f, this),
+      port_ (f, this),
+      class__ (f, this),
+      orientation_ (f, this),
+      id_ (f, this),
+      compartmentRef_ (f, this),
+      compartmentOrder_ (f, this)
+    {
+      if ((f & ::xml_schema::flags::base) == 0)
+      {
+        ::xsd::cxx::xml::dom::parser< char > p (e, true, true);
+        this->parse (p, f);
+      }
+    }
+
+    void glyph::
+    parse (::xsd::cxx::xml::dom::parser< char >& p,
+           ::xml_schema::flags f)
+    {
+      this->::libsbgn::sn_0_2::SBGNBase::parse (p, f);
+
+      for (; p.more_elements (); p.next_element ())
+      {
+        const ::xercesc::DOMElement& i (p.cur_element ());
+        const ::xsd::cxx::xml::qualified_name< char > n (
+          ::xsd::cxx::xml::dom::name< char > (i));
+
+        // label
+        //
+        if (n.name () == "label" && n.namespace_ () == "http://sbgn.org/libsbgn/0.2")
+        {
+          ::std::auto_ptr< label_type > r (
+            label_traits::create (i, f, this));
+
+          if (!this->label_)
+          {
+            this->label_.set (r);
+            continue;
+          }
+        }
+
+        // state
+        //
+        if (n.name () == "state" && n.namespace_ () == "http://sbgn.org/libsbgn/0.2")
+        {
+          ::std::auto_ptr< state_type > r (
+            state_traits::create (i, f, this));
+
+          if (!this->state_)
+          {
+            this->state_.set (r);
+            continue;
+          }
+        }
+
+        // clone
+        //
+        if (n.name () == "clone" && n.namespace_ () == "http://sbgn.org/libsbgn/0.2")
+        {
+          ::std::auto_ptr< clone_type > r (
+            clone_traits::create (i, f, this));
+
+          if (!this->clone_)
+          {
+            this->clone_.set (r);
+            continue;
+          }
+        }
+
+        // callout
+        //
+        if (n.name () == "callout" && n.namespace_ () == "http://sbgn.org/libsbgn/0.2")
+        {
+          ::std::auto_ptr< callout_type > r (
+            callout_traits::create (i, f, this));
+
+          if (!this->callout_)
+          {
+            this->callout_.set (r);
+            continue;
+          }
+        }
+
+        // entity
+        //
+        if (n.name () == "entity" && n.namespace_ () == "http://sbgn.org/libsbgn/0.2")
+        {
+          ::std::auto_ptr< entity_type > r (
+            entity_traits::create (i, f, this));
+
+          if (!this->entity_)
+          {
+            this->entity_.set (r);
+            continue;
+          }
+        }
+
+        // bbox
+        //
+        if (n.name () == "bbox" && n.namespace_ () == "http://sbgn.org/libsbgn/0.2")
+        {
+          ::std::auto_ptr< bbox_type > r (
+            bbox_traits::create (i, f, this));
+
+          if (!bbox_.present ())
+          {
+            this->bbox_.set (r);
+            continue;
+          }
+        }
+
+        // glyph
+        //
+        if (n.name () == "glyph" && n.namespace_ () == "http://sbgn.org/libsbgn/0.2")
+        {
+          ::std::auto_ptr< glyph1_type > r (
+            glyph1_traits::create (i, f, this));
+
+          this->glyph1_.push_back (r);
+          continue;
+        }
+
+        // port
+        //
+        if (n.name () == "port" && n.namespace_ () == "http://sbgn.org/libsbgn/0.2")
+        {
+          ::std::auto_ptr< port_type > r (
+            port_traits::create (i, f, this));
+
+          this->port_.push_back (r);
+          continue;
+        }
+
+        break;
+      }
+
+      if (!bbox_.present ())
+      {
+        throw ::xsd::cxx::tree::expected_element< char > (
+          "bbox",
+          "http://sbgn.org/libsbgn/0.2");
+      }
+
+      while (p.more_attributes ())
+      {
+        const ::xercesc::DOMAttr& i (p.next_attribute ());
+        const ::xsd::cxx::xml::qualified_name< char > n (
+          ::xsd::cxx::xml::dom::name< char > (i));
+
+        if (n.name () == "class" && n.namespace_ ().empty ())
+        {
+          ::std::auto_ptr< class_type > r (
+            class_traits::create (i, f, this));
+
+          this->class__.set (r);
+          continue;
+        }
+
+        if (n.name () == "orientation" && n.namespace_ ().empty ())
+        {
+          ::std::auto_ptr< orientation_type > r (
+            orientation_traits::create (i, f, this));
+
+          this->orientation_.set (r);
+          continue;
+        }
+
+        if (n.name () == "id" && n.namespace_ ().empty ())
+        {
+          ::std::auto_ptr< id_type > r (
+            id_traits::create (i, f, this));
+
+          this->id_.set (r);
+          continue;
+        }
+
+        if (n.name () == "compartmentRef" && n.namespace_ ().empty ())
+        {
+          ::std::auto_ptr< compartmentRef_type > r (
+            compartmentRef_traits::create (i, f, this));
+
+          this->compartmentRef_.set (r);
+          continue;
+        }
+
+        if (n.name () == "compartmentOrder" && n.namespace_ ().empty ())
+        {
+          this->compartmentOrder_.set (compartmentOrder_traits::create (i, f, this));
+          continue;
+        }
+      }
+
+      if (!class__.present ())
+      {
+        throw ::xsd::cxx::tree::expected_attribute< char > (
+          "class",
+          "");
+      }
+
+      if (!orientation_.present ())
+      {
+        this->orientation_.set (orientation_default_value ());
+      }
+
+      if (!id_.present ())
+      {
+        throw ::xsd::cxx::tree::expected_attribute< char > (
+          "id",
+          "");
+      }
+    }
+
+    glyph* glyph::
+    _clone (::xml_schema::flags f,
+            ::xml_schema::container* c) const
+    {
+      return new class glyph (*this, f, c);
+    }
+
+    glyph::
+    ~glyph ()
+    {
+    }
+
+    // arcgroup
+    //
+
+    arcgroup::
+    arcgroup (const class_type& class_)
+    : ::libsbgn::sn_0_2::SBGNBase (),
+      glyph_ (::xml_schema::flags (), this),
+      arc_ (::xml_schema::flags (), this),
+      class__ (class_, ::xml_schema::flags (), this)
+    {
+    }
+
+    arcgroup::
+    arcgroup (const arcgroup& x,
+              ::xml_schema::flags f,
+              ::xml_schema::container* c)
+    : ::libsbgn::sn_0_2::SBGNBase (x, f, c),
+      glyph_ (x.glyph_, f, this),
+      arc_ (x.arc_, f, this),
+      class__ (x.class__, f, this)
+    {
+    }
+
+    arcgroup::
+    arcgroup (const ::xercesc::DOMElement& e,
+              ::xml_schema::flags f,
+              ::xml_schema::container* c)
+    : ::libsbgn::sn_0_2::SBGNBase (e, f | ::xml_schema::flags::base, c),
+      glyph_ (f, this),
+      arc_ (f, this),
+      class__ (f, this)
+    {
+      if ((f & ::xml_schema::flags::base) == 0)
+      {
+        ::xsd::cxx::xml::dom::parser< char > p (e, true, true);
+        this->parse (p, f);
+      }
+    }
+
+    void arcgroup::
+    parse (::xsd::cxx::xml::dom::parser< char >& p,
+           ::xml_schema::flags f)
+    {
+      this->::libsbgn::sn_0_2::SBGNBase::parse (p, f);
+
+      for (; p.more_elements (); p.next_element ())
+      {
+        const ::xercesc::DOMElement& i (p.cur_element ());
+        const ::xsd::cxx::xml::qualified_name< char > n (
+          ::xsd::cxx::xml::dom::name< char > (i));
+
+        // glyph
+        //
+        if (n.name () == "glyph" && n.namespace_ () == "http://sbgn.org/libsbgn/0.2")
+        {
+          ::std::auto_ptr< glyph_type > r (
+            glyph_traits::create (i, f, this));
+
+          this->glyph_.push_back (r);
+          continue;
+        }
+
+        // arc
+        //
+        if (n.name () == "arc" && n.namespace_ () == "http://sbgn.org/libsbgn/0.2")
+        {
+          ::std::auto_ptr< arc_type > r (
+            arc_traits::create (i, f, this));
+
+          this->arc_.push_back (r);
+          continue;
+        }
+
+        break;
+      }
+
+      while (p.more_attributes ())
+      {
+        const ::xercesc::DOMAttr& i (p.next_attribute ());
+        const ::xsd::cxx::xml::qualified_name< char > n (
+          ::xsd::cxx::xml::dom::name< char > (i));
+
+        if (n.name () == "class" && n.namespace_ ().empty ())
+        {
+          ::std::auto_ptr< class_type > r (
+            class_traits::create (i, f, this));
+
+          this->class__.set (r);
+          continue;
+        }
+      }
+
+      if (!class__.present ())
+      {
+        throw ::xsd::cxx::tree::expected_attribute< char > (
+          "class",
+          "");
+      }
+    }
+
+    arcgroup* arcgroup::
+    _clone (::xml_schema::flags f,
+            ::xml_schema::container* c) const
+    {
+      return new class arcgroup (*this, f, c);
+    }
+
+    arcgroup::
+    ~arcgroup ()
+    {
+    }
+
+    // arc
+    //
+
+    arc::
+    arc (const start_type& start,
+         const end_type& end,
+         const class_type& class_,
+         const id_type& id,
+         const source_type& source,
+         const target_type& target)
+    : ::libsbgn::sn_0_2::SBGNBase (),
+      glyph_ (::xml_schema::flags (), this),
+      port_ (::xml_schema::flags (), this),
+      start_ (start, ::xml_schema::flags (), this),
+      next_ (::xml_schema::flags (), this),
+      end_ (end, ::xml_schema::flags (), this),
+      class__ (class_, ::xml_schema::flags (), this),
+      id_ (id, ::xml_schema::flags (), this),
+      source_ (source, ::xml_schema::flags (), this),
+      target_ (target, ::xml_schema::flags (), this)
+    {
+    }
+
+    arc::
+    arc (::std::auto_ptr< start_type >& start,
+         ::std::auto_ptr< end_type >& end,
+         const class_type& class_,
+         const id_type& id,
+         const source_type& source,
+         const target_type& target)
+    : ::libsbgn::sn_0_2::SBGNBase (),
+      glyph_ (::xml_schema::flags (), this),
+      port_ (::xml_schema::flags (), this),
+      start_ (start, ::xml_schema::flags (), this),
+      next_ (::xml_schema::flags (), this),
+      end_ (end, ::xml_schema::flags (), this),
+      class__ (class_, ::xml_schema::flags (), this),
+      id_ (id, ::xml_schema::flags (), this),
+      source_ (source, ::xml_schema::flags (), this),
+      target_ (target, ::xml_schema::flags (), this)
+    {
+    }
+
+    arc::
+    arc (const arc& x,
+         ::xml_schema::flags f,
+         ::xml_schema::container* c)
+    : ::libsbgn::sn_0_2::SBGNBase (x, f, c),
+      glyph_ (x.glyph_, f, this),
+      port_ (x.port_, f, this),
+      start_ (x.start_, f, this),
+      next_ (x.next_, f, this),
+      end_ (x.end_, f, this),
+      class__ (x.class__, f, this),
+      id_ (x.id_, f, this),
+      source_ (x.source_, f, this),
+      target_ (x.target_, f, this)
+    {
+    }
+
+    arc::
+    arc (const ::xercesc::DOMElement& e,
+         ::xml_schema::flags f,
+         ::xml_schema::container* c)
+    : ::libsbgn::sn_0_2::SBGNBase (e, f | ::xml_schema::flags::base, c),
+      glyph_ (f, this),
+      port_ (f, this),
+      start_ (f, this),
+      next_ (f, this),
+      end_ (f, this),
+      class__ (f, this),
+      id_ (f, this),
+      source_ (f, this),
+      target_ (f, this)
+    {
+      if ((f & ::xml_schema::flags::base) == 0)
+      {
+        ::xsd::cxx::xml::dom::parser< char > p (e, true, true);
+        this->parse (p, f);
+      }
+    }
+
+    void arc::
+    parse (::xsd::cxx::xml::dom::parser< char >& p,
+           ::xml_schema::flags f)
+    {
+      this->::libsbgn::sn_0_2::SBGNBase::parse (p, f);
+
+      for (; p.more_elements (); p.next_element ())
+      {
+        const ::xercesc::DOMElement& i (p.cur_element ());
+        const ::xsd::cxx::xml::qualified_name< char > n (
+          ::xsd::cxx::xml::dom::name< char > (i));
+
+        // glyph
+        //
+        if (n.name () == "glyph" && n.namespace_ () == "http://sbgn.org/libsbgn/0.2")
+        {
+          ::std::auto_ptr< glyph_type > r (
+            glyph_traits::create (i, f, this));
+
+          this->glyph_.push_back (r);
+          continue;
+        }
+
+        // port
+        //
+        if (n.name () == "port" && n.namespace_ () == "http://sbgn.org/libsbgn/0.2")
+        {
+          ::std::auto_ptr< port_type > r (
+            port_traits::create (i, f, this));
+
+          this->port_.push_back (r);
+          continue;
+        }
+
+        // start
+        //
+        if (n.name () == "start" && n.namespace_ () == "http://sbgn.org/libsbgn/0.2")
+        {
+          ::std::auto_ptr< start_type > r (
+            start_traits::create (i, f, this));
+
+          if (!start_.present ())
+          {
+            this->start_.set (r);
+            continue;
+          }
+        }
+
+        // next
+        //
+        if (n.name () == "next" && n.namespace_ () == "http://sbgn.org/libsbgn/0.2")
+        {
+          ::std::auto_ptr< next_type > r (
+            next_traits::create (i, f, this));
+
+          this->next_.push_back (r);
+          continue;
+        }
+
+        // end
+        //
+        if (n.name () == "end" && n.namespace_ () == "http://sbgn.org/libsbgn/0.2")
+        {
+          ::std::auto_ptr< end_type > r (
+            end_traits::create (i, f, this));
+
+          if (!end_.present ())
+          {
+            this->end_.set (r);
+            continue;
+          }
+        }
+
+        break;
+      }
+
+      if (!start_.present ())
+      {
+        throw ::xsd::cxx::tree::expected_element< char > (
+          "start",
+          "http://sbgn.org/libsbgn/0.2");
+      }
+
+      if (!end_.present ())
+      {
+        throw ::xsd::cxx::tree::expected_element< char > (
+          "end",
+          "http://sbgn.org/libsbgn/0.2");
+      }
+
+      while (p.more_attributes ())
+      {
+        const ::xercesc::DOMAttr& i (p.next_attribute ());
+        const ::xsd::cxx::xml::qualified_name< char > n (
+          ::xsd::cxx::xml::dom::name< char > (i));
+
+        if (n.name () == "class" && n.namespace_ ().empty ())
+        {
+          ::std::auto_ptr< class_type > r (
+            class_traits::create (i, f, this));
+
+          this->class__.set (r);
+          continue;
+        }
+
+        if (n.name () == "id" && n.namespace_ ().empty ())
+        {
+          ::std::auto_ptr< id_type > r (
+            id_traits::create (i, f, this));
+
+          this->id_.set (r);
+          continue;
+        }
+
+        if (n.name () == "source" && n.namespace_ ().empty ())
+        {
+          ::std::auto_ptr< source_type > r (
+            source_traits::create (i, f, this));
+
+          this->source_.set (r);
+          continue;
+        }
+
+        if (n.name () == "target" && n.namespace_ ().empty ())
+        {
+          ::std::auto_ptr< target_type > r (
+            target_traits::create (i, f, this));
+
+          this->target_.set (r);
+          continue;
+        }
+      }
+
+      if (!class__.present ())
+      {
+        throw ::xsd::cxx::tree::expected_attribute< char > (
+          "class",
+          "");
+      }
+
+      if (!id_.present ())
+      {
+        throw ::xsd::cxx::tree::expected_attribute< char > (
+          "id",
+          "");
+      }
+
+      if (!source_.present ())
+      {
+        throw ::xsd::cxx::tree::expected_attribute< char > (
+          "source",
+          "");
+      }
+
+      if (!target_.present ())
+      {
+        throw ::xsd::cxx::tree::expected_attribute< char > (
+          "target",
+          "");
+      }
+    }
+
+    arc* arc::
+    _clone (::xml_schema::flags f,
+            ::xml_schema::container* c) const
+    {
+      return new class arc (*this, f, c);
+    }
+
+    arc::
+    ~arc ()
+    {
+    }
+
+    // language
+    //
+
+    language::
+    language (const ::xercesc::DOMElement& e,
+              ::xml_schema::flags f,
+              ::xml_schema::container* c)
+    : ::xml_schema::string (e, f, c)
+    {
+      _xsd_language_convert ();
+    }
+
+    language::
+    language (const ::xercesc::DOMAttr& a,
+              ::xml_schema::flags f,
+              ::xml_schema::container* c)
+    : ::xml_schema::string (a, f, c)
+    {
+      _xsd_language_convert ();
+    }
+
+    language::
+    language (const ::std::string& s,
+              const ::xercesc::DOMElement* e,
+              ::xml_schema::flags f,
+              ::xml_schema::container* c)
+    : ::xml_schema::string (s, e, f, c)
+    {
+      _xsd_language_convert ();
+    }
+
+    language* language::
+    _clone (::xml_schema::flags f,
+            ::xml_schema::container* c) const
+    {
+      return new class language (*this, f, c);
+    }
+
+    language::value language::
+    _xsd_language_convert () const
+    {
+      ::xsd::cxx::tree::enum_comparator< char > c (_xsd_language_literals_);
+      const value* i (::std::lower_bound (
+                        _xsd_language_indexes_,
+                        _xsd_language_indexes_ + 3,
+                        *this,
+                        c));
+
+      if (i == _xsd_language_indexes_ + 3 || _xsd_language_literals_[*i] != *this)
+      {
+        throw ::xsd::cxx::tree::unexpected_enumerator < char > (*this);
+      }
+
+      return *i;
+    }
+
+    const char* const language::
+    _xsd_language_literals_[3] =
+    {
+      "entity relationship",
+      "process description",
+      "activity flow"
+    };
+
+    const language::value language::
+    _xsd_language_indexes_[3] =
+    {
+      ::libsbgn::sn_0_2::language::activity_flow,
+      ::libsbgn::sn_0_2::language::entity_relationship,
+      ::libsbgn::sn_0_2::language::process_description
+    };
+
+    // state
+    //
+
+    state::
+    state ()
+    : ::xml_schema::type (),
+      value_ (::xml_schema::flags (), this),
+      variable_ (::xml_schema::flags (), this)
+    {
+    }
+
+    state::
+    state (const state& x,
+           ::xml_schema::flags f,
+           ::xml_schema::container* c)
+    : ::xml_schema::type (x, f, c),
+      value_ (x.value_, f, this),
+      variable_ (x.variable_, f, this)
+    {
+    }
+
+    state::
+    state (const ::xercesc::DOMElement& e,
+           ::xml_schema::flags f,
+           ::xml_schema::container* c)
+    : ::xml_schema::type (e, f | ::xml_schema::flags::base, c),
+      value_ (f, this),
+      variable_ (f, this)
+    {
+      if ((f & ::xml_schema::flags::base) == 0)
+      {
+        ::xsd::cxx::xml::dom::parser< char > p (e, false, true);
+        this->parse (p, f);
+      }
+    }
+
+    void state::
+    parse (::xsd::cxx::xml::dom::parser< char >& p,
+           ::xml_schema::flags f)
+    {
+      while (p.more_attributes ())
+      {
+        const ::xercesc::DOMAttr& i (p.next_attribute ());
+        const ::xsd::cxx::xml::qualified_name< char > n (
+          ::xsd::cxx::xml::dom::name< char > (i));
+
+        if (n.name () == "value" && n.namespace_ ().empty ())
+        {
+          ::std::auto_ptr< value_type > r (
+            value_traits::create (i, f, this));
+
+          this->value_.set (r);
+          continue;
+        }
+
+        if (n.name () == "variable" && n.namespace_ ().empty ())
+        {
+          ::std::auto_ptr< variable_type > r (
+            variable_traits::create (i, f, this));
+
+          this->variable_.set (r);
+          continue;
+        }
+      }
+    }
+
+    state* state::
+    _clone (::xml_schema::flags f,
+            ::xml_schema::container* c) const
+    {
+      return new class state (*this, f, c);
+    }
+
+    state::
+    ~state ()
+    {
+    }
+
+    // clone
+    //
+
+    clone::
+    clone ()
+    : ::xml_schema::type (),
+      label_ (::xml_schema::flags (), this)
+    {
+    }
+
+    clone::
+    clone (const clone& x,
+           ::xml_schema::flags f,
+           ::xml_schema::container* c)
+    : ::xml_schema::type (x, f, c),
+      label_ (x.label_, f, this)
+    {
+    }
+
+    clone::
+    clone (const ::xercesc::DOMElement& e,
+           ::xml_schema::flags f,
+           ::xml_schema::container* c)
+    : ::xml_schema::type (e, f | ::xml_schema::flags::base, c),
+      label_ (f, this)
+    {
+      if ((f & ::xml_schema::flags::base) == 0)
+      {
+        ::xsd::cxx::xml::dom::parser< char > p (e, true, false);
+        this->parse (p, f);
+      }
+    }
+
+    void clone::
+    parse (::xsd::cxx::xml::dom::parser< char >& p,
+           ::xml_schema::flags f)
+    {
+      for (; p.more_elements (); p.next_element ())
+      {
+        const ::xercesc::DOMElement& i (p.cur_element ());
+        const ::xsd::cxx::xml::qualified_name< char > n (
+          ::xsd::cxx::xml::dom::name< char > (i));
+
+        // label
+        //
+        if (n.name () == "label" && n.namespace_ () == "http://sbgn.org/libsbgn/0.2")
+        {
+          ::std::auto_ptr< label_type > r (
+            label_traits::create (i, f, this));
+
+          if (!this->label_)
+          {
+            this->label_.set (r);
+            continue;
+          }
+        }
+
+        break;
+      }
+    }
+
+    clone* clone::
+    _clone (::xml_schema::flags f,
+            ::xml_schema::container* c) const
+    {
+      return new class clone (*this, f, c);
+    }
+
+    clone::
+    ~clone ()
+    {
+    }
+
+    // callout
+    //
+
+    callout::
+    callout (const point_type& point)
+    : ::xml_schema::type (),
+      point_ (point, ::xml_schema::flags (), this),
+      target_ (::xml_schema::flags (), this)
+    {
+    }
+
+    callout::
+    callout (::std::auto_ptr< point_type >& point)
+    : ::xml_schema::type (),
+      point_ (point, ::xml_schema::flags (), this),
+      target_ (::xml_schema::flags (), this)
+    {
+    }
+
+    callout::
+    callout (const callout& x,
+             ::xml_schema::flags f,
+             ::xml_schema::container* c)
+    : ::xml_schema::type (x, f, c),
+      point_ (x.point_, f, this),
+      target_ (x.target_, f, this)
+    {
+    }
+
+    callout::
+    callout (const ::xercesc::DOMElement& e,
+             ::xml_schema::flags f,
+             ::xml_schema::container* c)
+    : ::xml_schema::type (e, f | ::xml_schema::flags::base, c),
+      point_ (f, this),
+      target_ (f, this)
+    {
+      if ((f & ::xml_schema::flags::base) == 0)
+      {
+        ::xsd::cxx::xml::dom::parser< char > p (e, true, true);
+        this->parse (p, f);
+      }
+    }
+
+    void callout::
+    parse (::xsd::cxx::xml::dom::parser< char >& p,
+           ::xml_schema::flags f)
+    {
+      for (; p.more_elements (); p.next_element ())
+      {
+        const ::xercesc::DOMElement& i (p.cur_element ());
+        const ::xsd::cxx::xml::qualified_name< char > n (
+          ::xsd::cxx::xml::dom::name< char > (i));
+
+        // point
+        //
+        if (n.name () == "point" && n.namespace_ () == "http://sbgn.org/libsbgn/0.2")
+        {
+          ::std::auto_ptr< point_type > r (
+            point_traits::create (i, f, this));
+
+          if (!point_.present ())
+          {
+            this->point_.set (r);
+            continue;
+          }
+        }
+
+        break;
+      }
+
+      if (!point_.present ())
+      {
+        throw ::xsd::cxx::tree::expected_element< char > (
+          "point",
+          "http://sbgn.org/libsbgn/0.2");
+      }
+
+      while (p.more_attributes ())
+      {
+        const ::xercesc::DOMAttr& i (p.next_attribute ());
+        const ::xsd::cxx::xml::qualified_name< char > n (
+          ::xsd::cxx::xml::dom::name< char > (i));
+
+        if (n.name () == "target" && n.namespace_ ().empty ())
+        {
+          ::std::auto_ptr< target_type > r (
+            target_traits::create (i, f, this));
+
+          this->target_.set (r);
+          continue;
+        }
+      }
+    }
+
+    callout* callout::
+    _clone (::xml_schema::flags f,
+            ::xml_schema::container* c) const
+    {
+      return new class callout (*this, f, c);
+    }
+
+    callout::
+    ~callout ()
+    {
+    }
+
+    // entity
+    //
+
+    entity::
+    entity (const name_type& name)
+    : ::xml_schema::type (),
+      name_ (name, ::xml_schema::flags (), this)
+    {
+    }
+
+    entity::
+    entity (const entity& x,
+            ::xml_schema::flags f,
+            ::xml_schema::container* c)
+    : ::xml_schema::type (x, f, c),
+      name_ (x.name_, f, this)
+    {
+    }
+
+    entity::
+    entity (const ::xercesc::DOMElement& e,
+            ::xml_schema::flags f,
+            ::xml_schema::container* c)
+    : ::xml_schema::type (e, f | ::xml_schema::flags::base, c),
+      name_ (f, this)
+    {
+      if ((f & ::xml_schema::flags::base) == 0)
+      {
+        ::xsd::cxx::xml::dom::parser< char > p (e, false, true);
+        this->parse (p, f);
+      }
+    }
+
+    void entity::
+    parse (::xsd::cxx::xml::dom::parser< char >& p,
+           ::xml_schema::flags f)
+    {
+      while (p.more_attributes ())
+      {
+        const ::xercesc::DOMAttr& i (p.next_attribute ());
+        const ::xsd::cxx::xml::qualified_name< char > n (
+          ::xsd::cxx::xml::dom::name< char > (i));
+
+        if (n.name () == "name" && n.namespace_ ().empty ())
+        {
+          ::std::auto_ptr< name_type > r (
+            name_traits::create (i, f, this));
+
+          this->name_.set (r);
+          continue;
+        }
+      }
+
+      if (!name_.present ())
+      {
+        throw ::xsd::cxx::tree::expected_attribute< char > (
+          "name",
+          "");
+      }
+    }
+
+    entity* entity::
+    _clone (::xml_schema::flags f,
+            ::xml_schema::container* c) const
+    {
+      return new class entity (*this, f, c);
+    }
+
+    entity::
+    ~entity ()
+    {
+    }
+
     // class_
     //
 
@@ -2448,11 +3698,11 @@ namespace libsbgn
       ::xsd::cxx::tree::enum_comparator< char > c (_xsd_class__literals_);
       const value* i (::std::lower_bound (
                         _xsd_class__indexes_,
-                        _xsd_class__indexes_ + 26,
+                        _xsd_class__indexes_ + 40,
                         *this,
                         c));
 
-      if (i == _xsd_class__indexes_ + 26 || _xsd_class__literals_[*i] != *this)
+      if (i == _xsd_class__indexes_ + 40 || _xsd_class__literals_[*i] != *this)
       {
         throw ::xsd::cxx::tree::unexpected_enumerator < char > (*this);
       }
@@ -2461,7 +3711,7 @@ namespace libsbgn
     }
 
     const char* const class_::
-    _xsd_class__literals_[26] =
+    _xsd_class__literals_[40] =
     {
       "unspecified entity",
       "simple chemical",
@@ -2473,10 +3723,13 @@ namespace libsbgn
       "complex",
       "complex multimer",
       "source and sink",
+      "perturbation",
+      "biological activity",
       "perturbing agent",
       "compartment",
       "submap",
       "tag",
+      "terminal",
       "process",
       "omitted process",
       "uncertain process",
@@ -2488,38 +3741,63 @@ namespace libsbgn
       "not",
       "state variable",
       "unit of information",
-      "stoichiometry"
+      "entity",
+      "outcome",
+      "interaction",
+      "influence target",
+      "annotation",
+      "variable value",
+      "implicit xor",
+      "delay",
+      "existence",
+      "location",
+      "cardinality",
+      "observable"
     };
 
     const class_::value class_::
-    _xsd_class__indexes_[26] =
+    _xsd_class__indexes_[40] =
     {
-      ::libsbgn::pd_0_1::class_::and_,
-      ::libsbgn::pd_0_1::class_::association,
-      ::libsbgn::pd_0_1::class_::compartment,
-      ::libsbgn::pd_0_1::class_::complex,
-      ::libsbgn::pd_0_1::class_::complex_multimer,
-      ::libsbgn::pd_0_1::class_::dissociation,
-      ::libsbgn::pd_0_1::class_::macromolecule,
-      ::libsbgn::pd_0_1::class_::macromolecule_multimer,
-      ::libsbgn::pd_0_1::class_::not_,
-      ::libsbgn::pd_0_1::class_::nucleic_acid_feature,
-      ::libsbgn::pd_0_1::class_::nucleic_acid_feature_multimer,
-      ::libsbgn::pd_0_1::class_::omitted_process,
-      ::libsbgn::pd_0_1::class_::or_,
-      ::libsbgn::pd_0_1::class_::perturbing_agent,
-      ::libsbgn::pd_0_1::class_::phenotype,
-      ::libsbgn::pd_0_1::class_::process,
-      ::libsbgn::pd_0_1::class_::simple_chemical,
-      ::libsbgn::pd_0_1::class_::simple_chemical_multimer,
-      ::libsbgn::pd_0_1::class_::source_and_sink,
-      ::libsbgn::pd_0_1::class_::state_variable,
-      ::libsbgn::pd_0_1::class_::stoichiometry,
-      ::libsbgn::pd_0_1::class_::submap,
-      ::libsbgn::pd_0_1::class_::tag,
-      ::libsbgn::pd_0_1::class_::uncertain_process,
-      ::libsbgn::pd_0_1::class_::unit_of_information,
-      ::libsbgn::pd_0_1::class_::unspecified_entity
+      ::libsbgn::sn_0_2::class_::and_,
+      ::libsbgn::sn_0_2::class_::annotation,
+      ::libsbgn::sn_0_2::class_::association,
+      ::libsbgn::sn_0_2::class_::biological_activity,
+      ::libsbgn::sn_0_2::class_::cardinality,
+      ::libsbgn::sn_0_2::class_::compartment,
+      ::libsbgn::sn_0_2::class_::complex,
+      ::libsbgn::sn_0_2::class_::complex_multimer,
+      ::libsbgn::sn_0_2::class_::delay,
+      ::libsbgn::sn_0_2::class_::dissociation,
+      ::libsbgn::sn_0_2::class_::entity,
+      ::libsbgn::sn_0_2::class_::existence,
+      ::libsbgn::sn_0_2::class_::implicit_xor,
+      ::libsbgn::sn_0_2::class_::influence_target,
+      ::libsbgn::sn_0_2::class_::interaction,
+      ::libsbgn::sn_0_2::class_::location,
+      ::libsbgn::sn_0_2::class_::macromolecule,
+      ::libsbgn::sn_0_2::class_::macromolecule_multimer,
+      ::libsbgn::sn_0_2::class_::not_,
+      ::libsbgn::sn_0_2::class_::nucleic_acid_feature,
+      ::libsbgn::sn_0_2::class_::nucleic_acid_feature_multimer,
+      ::libsbgn::sn_0_2::class_::observable,
+      ::libsbgn::sn_0_2::class_::omitted_process,
+      ::libsbgn::sn_0_2::class_::or_,
+      ::libsbgn::sn_0_2::class_::outcome,
+      ::libsbgn::sn_0_2::class_::perturbation,
+      ::libsbgn::sn_0_2::class_::perturbing_agent,
+      ::libsbgn::sn_0_2::class_::phenotype,
+      ::libsbgn::sn_0_2::class_::process,
+      ::libsbgn::sn_0_2::class_::simple_chemical,
+      ::libsbgn::sn_0_2::class_::simple_chemical_multimer,
+      ::libsbgn::sn_0_2::class_::source_and_sink,
+      ::libsbgn::sn_0_2::class_::state_variable,
+      ::libsbgn::sn_0_2::class_::submap,
+      ::libsbgn::sn_0_2::class_::tag,
+      ::libsbgn::sn_0_2::class_::terminal,
+      ::libsbgn::sn_0_2::class_::uncertain_process,
+      ::libsbgn::sn_0_2::class_::unit_of_information,
+      ::libsbgn::sn_0_2::class_::unspecified_entity,
+      ::libsbgn::sn_0_2::class_::variable_value
     };
 
     // orientation
@@ -2592,12 +3870,80 @@ namespace libsbgn
     const orientation::value orientation::
     _xsd_orientation_indexes_[6] =
     {
-      ::libsbgn::pd_0_1::orientation::down,
-      ::libsbgn::pd_0_1::orientation::horizontal,
-      ::libsbgn::pd_0_1::orientation::left,
-      ::libsbgn::pd_0_1::orientation::right,
-      ::libsbgn::pd_0_1::orientation::up,
-      ::libsbgn::pd_0_1::orientation::vertical
+      ::libsbgn::sn_0_2::orientation::down,
+      ::libsbgn::sn_0_2::orientation::horizontal,
+      ::libsbgn::sn_0_2::orientation::left,
+      ::libsbgn::sn_0_2::orientation::right,
+      ::libsbgn::sn_0_2::orientation::up,
+      ::libsbgn::sn_0_2::orientation::vertical
+    };
+
+    // class1
+    //
+
+    class1::
+    class1 (const ::xercesc::DOMElement& e,
+            ::xml_schema::flags f,
+            ::xml_schema::container* c)
+    : ::xml_schema::string (e, f, c)
+    {
+      _xsd_class1_convert ();
+    }
+
+    class1::
+    class1 (const ::xercesc::DOMAttr& a,
+            ::xml_schema::flags f,
+            ::xml_schema::container* c)
+    : ::xml_schema::string (a, f, c)
+    {
+      _xsd_class1_convert ();
+    }
+
+    class1::
+    class1 (const ::std::string& s,
+            const ::xercesc::DOMElement* e,
+            ::xml_schema::flags f,
+            ::xml_schema::container* c)
+    : ::xml_schema::string (s, e, f, c)
+    {
+      _xsd_class1_convert ();
+    }
+
+    class1* class1::
+    _clone (::xml_schema::flags f,
+            ::xml_schema::container* c) const
+    {
+      return new class class1 (*this, f, c);
+    }
+
+    class1::value class1::
+    _xsd_class1_convert () const
+    {
+      ::xsd::cxx::tree::enum_comparator< char > c (_xsd_class1_literals_);
+      const value* i (::std::lower_bound (
+                        _xsd_class1_indexes_,
+                        _xsd_class1_indexes_ + 1,
+                        *this,
+                        c));
+
+      if (i == _xsd_class1_indexes_ + 1 || _xsd_class1_literals_[*i] != *this)
+      {
+        throw ::xsd::cxx::tree::unexpected_enumerator < char > (*this);
+      }
+
+      return *i;
+    }
+
+    const char* const class1::
+    _xsd_class1_literals_[1] =
+    {
+      "interaction"
+    };
+
+    const class1::value class1::
+    _xsd_class1_indexes_[1] =
+    {
+      ::libsbgn::sn_0_2::class1::interaction
     };
 
     // start
@@ -2739,7 +4085,7 @@ namespace libsbgn
 
         // point
         //
-        if (n.name () == "point" && n.namespace_ () == "http://sbgn.org/libsbgn/pd/0.1")
+        if (n.name () == "point" && n.namespace_ () == "http://sbgn.org/libsbgn/0.2")
         {
           ::std::auto_ptr< point_type > r (
             point_traits::create (i, f, this));
@@ -2849,7 +4195,7 @@ namespace libsbgn
 
         // point
         //
-        if (n.name () == "point" && n.namespace_ () == "http://sbgn.org/libsbgn/pd/0.1")
+        if (n.name () == "point" && n.namespace_ () == "http://sbgn.org/libsbgn/0.2")
         {
           ::std::auto_ptr< point_type > r (
             point_traits::create (i, f, this));
@@ -2907,55 +4253,55 @@ namespace libsbgn
     {
     }
 
-    // class1
+    // class2
     //
 
-    class1::
-    class1 (const ::xercesc::DOMElement& e,
+    class2::
+    class2 (const ::xercesc::DOMElement& e,
             ::xml_schema::flags f,
             ::xml_schema::container* c)
     : ::xml_schema::string (e, f, c)
     {
-      _xsd_class1_convert ();
+      _xsd_class2_convert ();
     }
 
-    class1::
-    class1 (const ::xercesc::DOMAttr& a,
+    class2::
+    class2 (const ::xercesc::DOMAttr& a,
             ::xml_schema::flags f,
             ::xml_schema::container* c)
     : ::xml_schema::string (a, f, c)
     {
-      _xsd_class1_convert ();
+      _xsd_class2_convert ();
     }
 
-    class1::
-    class1 (const ::std::string& s,
+    class2::
+    class2 (const ::std::string& s,
             const ::xercesc::DOMElement* e,
             ::xml_schema::flags f,
             ::xml_schema::container* c)
     : ::xml_schema::string (s, e, f, c)
     {
-      _xsd_class1_convert ();
+      _xsd_class2_convert ();
     }
 
-    class1* class1::
+    class2* class2::
     _clone (::xml_schema::flags f,
             ::xml_schema::container* c) const
     {
-      return new class class1 (*this, f, c);
+      return new class class2 (*this, f, c);
     }
 
-    class1::value class1::
-    _xsd_class1_convert () const
+    class2::value class2::
+    _xsd_class2_convert () const
     {
-      ::xsd::cxx::tree::enum_comparator< char > c (_xsd_class1_literals_);
+      ::xsd::cxx::tree::enum_comparator< char > c (_xsd_class2_literals_);
       const value* i (::std::lower_bound (
-                        _xsd_class1_indexes_,
-                        _xsd_class1_indexes_ + 9,
+                        _xsd_class2_indexes_,
+                        _xsd_class2_indexes_ + 16,
                         *this,
                         c));
 
-      if (i == _xsd_class1_indexes_ + 9 || _xsd_class1_literals_[*i] != *this)
+      if (i == _xsd_class2_indexes_ + 16 || _xsd_class2_literals_[*i] != *this)
       {
         throw ::xsd::cxx::tree::unexpected_enumerator < char > (*this);
       }
@@ -2963,32 +4309,122 @@ namespace libsbgn
       return *i;
     }
 
-    const char* const class1::
-    _xsd_class1_literals_[9] =
+    const char* const class2::
+    _xsd_class2_literals_[16] =
     {
       "production",
       "consumption",
+      "catalysis",
       "modulation",
       "stimulation",
-      "catalysis",
       "inhibition",
+      "assignment",
+      "interaction",
+      "absolute inhibition",
+      "absolute stimulation",
+      "positive influence",
+      "negative influence",
+      "unknown influence",
+      "equivalence arc",
       "necessary stimulation",
-      "logic arc",
-      "equivalence arc"
+      "logic arc"
     };
 
-    const class1::value class1::
-    _xsd_class1_indexes_[9] =
+    const class2::value class2::
+    _xsd_class2_indexes_[16] =
     {
-      ::libsbgn::pd_0_1::class1::catalysis,
-      ::libsbgn::pd_0_1::class1::consumption,
-      ::libsbgn::pd_0_1::class1::equivalence_arc,
-      ::libsbgn::pd_0_1::class1::inhibition,
-      ::libsbgn::pd_0_1::class1::logic_arc,
-      ::libsbgn::pd_0_1::class1::modulation,
-      ::libsbgn::pd_0_1::class1::necessary_stimulation,
-      ::libsbgn::pd_0_1::class1::production,
-      ::libsbgn::pd_0_1::class1::stimulation
+      ::libsbgn::sn_0_2::class2::absolute_inhibition,
+      ::libsbgn::sn_0_2::class2::absolute_stimulation,
+      ::libsbgn::sn_0_2::class2::assignment,
+      ::libsbgn::sn_0_2::class2::catalysis,
+      ::libsbgn::sn_0_2::class2::consumption,
+      ::libsbgn::sn_0_2::class2::equivalence_arc,
+      ::libsbgn::sn_0_2::class2::inhibition,
+      ::libsbgn::sn_0_2::class2::interaction,
+      ::libsbgn::sn_0_2::class2::logic_arc,
+      ::libsbgn::sn_0_2::class2::modulation,
+      ::libsbgn::sn_0_2::class2::necessary_stimulation,
+      ::libsbgn::sn_0_2::class2::negative_influence,
+      ::libsbgn::sn_0_2::class2::positive_influence,
+      ::libsbgn::sn_0_2::class2::production,
+      ::libsbgn::sn_0_2::class2::stimulation,
+      ::libsbgn::sn_0_2::class2::unknown_influence
+    };
+
+    // name
+    //
+
+    name::
+    name (const ::xercesc::DOMElement& e,
+          ::xml_schema::flags f,
+          ::xml_schema::container* c)
+    : ::xml_schema::string (e, f, c)
+    {
+      _xsd_name_convert ();
+    }
+
+    name::
+    name (const ::xercesc::DOMAttr& a,
+          ::xml_schema::flags f,
+          ::xml_schema::container* c)
+    : ::xml_schema::string (a, f, c)
+    {
+      _xsd_name_convert ();
+    }
+
+    name::
+    name (const ::std::string& s,
+          const ::xercesc::DOMElement* e,
+          ::xml_schema::flags f,
+          ::xml_schema::container* c)
+    : ::xml_schema::string (s, e, f, c)
+    {
+      _xsd_name_convert ();
+    }
+
+    name* name::
+    _clone (::xml_schema::flags f,
+            ::xml_schema::container* c) const
+    {
+      return new class name (*this, f, c);
+    }
+
+    name::value name::
+    _xsd_name_convert () const
+    {
+      ::xsd::cxx::tree::enum_comparator< char > c (_xsd_name_literals_);
+      const value* i (::std::lower_bound (
+                        _xsd_name_indexes_,
+                        _xsd_name_indexes_ + 5,
+                        *this,
+                        c));
+
+      if (i == _xsd_name_indexes_ + 5 || _xsd_name_literals_[*i] != *this)
+      {
+        throw ::xsd::cxx::tree::unexpected_enumerator < char > (*this);
+      }
+
+      return *i;
+    }
+
+    const char* const name::
+    _xsd_name_literals_[5] =
+    {
+      "unspecified entity",
+      "simple chemical",
+      "macromolecule",
+      "nucleic acid feature",
+      "complex"
+    };
+
+    const name::value name::
+    _xsd_name_indexes_[5] =
+    {
+      ::libsbgn::sn_0_2::name::complex,
+      ::libsbgn::sn_0_2::name::macromolecule,
+      ::libsbgn::sn_0_2::name::nucleic_acid_feature,
+      ::libsbgn::sn_0_2::name::simple_chemical,
+      ::libsbgn::sn_0_2::name::unspecified_entity
     };
   }
 }
@@ -2999,9 +4435,9 @@ namespace libsbgn
 
 namespace libsbgn
 {
-  namespace pd_0_1
+  namespace sn_0_2
   {
-    ::std::auto_ptr< ::libsbgn::pd_0_1::sbgn >
+    ::std::auto_ptr< ::libsbgn::sn_0_2::sbgn >
     sbgn_ (const ::std::string& u,
            ::xml_schema::flags f,
            const ::xml_schema::properties& p)
@@ -3018,14 +4454,14 @@ namespace libsbgn
 
       h.throw_if_failed< ::xsd::cxx::tree::parsing< char > > ();
 
-      ::std::auto_ptr< ::libsbgn::pd_0_1::sbgn > r (
-        ::libsbgn::pd_0_1::sbgn_ (
+      ::std::auto_ptr< ::libsbgn::sn_0_2::sbgn > r (
+        ::libsbgn::sn_0_2::sbgn_ (
           d, f | ::xml_schema::flags::own_dom, p));
 
       return r;
     }
 
-    ::std::auto_ptr< ::libsbgn::pd_0_1::sbgn >
+    ::std::auto_ptr< ::libsbgn::sn_0_2::sbgn >
     sbgn_ (const ::std::string& u,
            ::xml_schema::error_handler& h,
            ::xml_schema::flags f,
@@ -3042,14 +4478,14 @@ namespace libsbgn
       if (!d.get ())
         throw ::xsd::cxx::tree::parsing< char > ();
 
-      ::std::auto_ptr< ::libsbgn::pd_0_1::sbgn > r (
-        ::libsbgn::pd_0_1::sbgn_ (
+      ::std::auto_ptr< ::libsbgn::sn_0_2::sbgn > r (
+        ::libsbgn::sn_0_2::sbgn_ (
           d, f | ::xml_schema::flags::own_dom, p));
 
       return r;
     }
 
-    ::std::auto_ptr< ::libsbgn::pd_0_1::sbgn >
+    ::std::auto_ptr< ::libsbgn::sn_0_2::sbgn >
     sbgn_ (const ::std::string& u,
            ::xercesc::DOMErrorHandler& h,
            ::xml_schema::flags f,
@@ -3062,14 +4498,14 @@ namespace libsbgn
       if (!d.get ())
         throw ::xsd::cxx::tree::parsing< char > ();
 
-      ::std::auto_ptr< ::libsbgn::pd_0_1::sbgn > r (
-        ::libsbgn::pd_0_1::sbgn_ (
+      ::std::auto_ptr< ::libsbgn::sn_0_2::sbgn > r (
+        ::libsbgn::sn_0_2::sbgn_ (
           d, f | ::xml_schema::flags::own_dom, p));
 
       return r;
     }
 
-    ::std::auto_ptr< ::libsbgn::pd_0_1::sbgn >
+    ::std::auto_ptr< ::libsbgn::sn_0_2::sbgn >
     sbgn_ (::std::istream& is,
            ::xml_schema::flags f,
            const ::xml_schema::properties& p)
@@ -3079,10 +4515,10 @@ namespace libsbgn
         (f & ::xml_schema::flags::keep_dom) == 0);
 
       ::xsd::cxx::xml::sax::std_input_source isrc (is);
-      return ::libsbgn::pd_0_1::sbgn_ (isrc, f, p);
+      return ::libsbgn::sn_0_2::sbgn_ (isrc, f, p);
     }
 
-    ::std::auto_ptr< ::libsbgn::pd_0_1::sbgn >
+    ::std::auto_ptr< ::libsbgn::sn_0_2::sbgn >
     sbgn_ (::std::istream& is,
            ::xml_schema::error_handler& h,
            ::xml_schema::flags f,
@@ -3093,20 +4529,20 @@ namespace libsbgn
         (f & ::xml_schema::flags::keep_dom) == 0);
 
       ::xsd::cxx::xml::sax::std_input_source isrc (is);
-      return ::libsbgn::pd_0_1::sbgn_ (isrc, h, f, p);
+      return ::libsbgn::sn_0_2::sbgn_ (isrc, h, f, p);
     }
 
-    ::std::auto_ptr< ::libsbgn::pd_0_1::sbgn >
+    ::std::auto_ptr< ::libsbgn::sn_0_2::sbgn >
     sbgn_ (::std::istream& is,
            ::xercesc::DOMErrorHandler& h,
            ::xml_schema::flags f,
            const ::xml_schema::properties& p)
     {
       ::xsd::cxx::xml::sax::std_input_source isrc (is);
-      return ::libsbgn::pd_0_1::sbgn_ (isrc, h, f, p);
+      return ::libsbgn::sn_0_2::sbgn_ (isrc, h, f, p);
     }
 
-    ::std::auto_ptr< ::libsbgn::pd_0_1::sbgn >
+    ::std::auto_ptr< ::libsbgn::sn_0_2::sbgn >
     sbgn_ (::std::istream& is,
            const ::std::string& sid,
            ::xml_schema::flags f,
@@ -3117,10 +4553,10 @@ namespace libsbgn
         (f & ::xml_schema::flags::keep_dom) == 0);
 
       ::xsd::cxx::xml::sax::std_input_source isrc (is, sid);
-      return ::libsbgn::pd_0_1::sbgn_ (isrc, f, p);
+      return ::libsbgn::sn_0_2::sbgn_ (isrc, f, p);
     }
 
-    ::std::auto_ptr< ::libsbgn::pd_0_1::sbgn >
+    ::std::auto_ptr< ::libsbgn::sn_0_2::sbgn >
     sbgn_ (::std::istream& is,
            const ::std::string& sid,
            ::xml_schema::error_handler& h,
@@ -3132,10 +4568,10 @@ namespace libsbgn
         (f & ::xml_schema::flags::keep_dom) == 0);
 
       ::xsd::cxx::xml::sax::std_input_source isrc (is, sid);
-      return ::libsbgn::pd_0_1::sbgn_ (isrc, h, f, p);
+      return ::libsbgn::sn_0_2::sbgn_ (isrc, h, f, p);
     }
 
-    ::std::auto_ptr< ::libsbgn::pd_0_1::sbgn >
+    ::std::auto_ptr< ::libsbgn::sn_0_2::sbgn >
     sbgn_ (::std::istream& is,
            const ::std::string& sid,
            ::xercesc::DOMErrorHandler& h,
@@ -3143,10 +4579,10 @@ namespace libsbgn
            const ::xml_schema::properties& p)
     {
       ::xsd::cxx::xml::sax::std_input_source isrc (is, sid);
-      return ::libsbgn::pd_0_1::sbgn_ (isrc, h, f, p);
+      return ::libsbgn::sn_0_2::sbgn_ (isrc, h, f, p);
     }
 
-    ::std::auto_ptr< ::libsbgn::pd_0_1::sbgn >
+    ::std::auto_ptr< ::libsbgn::sn_0_2::sbgn >
     sbgn_ (::xercesc::InputSource& i,
            ::xml_schema::flags f,
            const ::xml_schema::properties& p)
@@ -3159,14 +4595,14 @@ namespace libsbgn
 
       h.throw_if_failed< ::xsd::cxx::tree::parsing< char > > ();
 
-      ::std::auto_ptr< ::libsbgn::pd_0_1::sbgn > r (
-        ::libsbgn::pd_0_1::sbgn_ (
+      ::std::auto_ptr< ::libsbgn::sn_0_2::sbgn > r (
+        ::libsbgn::sn_0_2::sbgn_ (
           d, f | ::xml_schema::flags::own_dom, p));
 
       return r;
     }
 
-    ::std::auto_ptr< ::libsbgn::pd_0_1::sbgn >
+    ::std::auto_ptr< ::libsbgn::sn_0_2::sbgn >
     sbgn_ (::xercesc::InputSource& i,
            ::xml_schema::error_handler& h,
            ::xml_schema::flags f,
@@ -3179,14 +4615,14 @@ namespace libsbgn
       if (!d.get ())
         throw ::xsd::cxx::tree::parsing< char > ();
 
-      ::std::auto_ptr< ::libsbgn::pd_0_1::sbgn > r (
-        ::libsbgn::pd_0_1::sbgn_ (
+      ::std::auto_ptr< ::libsbgn::sn_0_2::sbgn > r (
+        ::libsbgn::sn_0_2::sbgn_ (
           d, f | ::xml_schema::flags::own_dom, p));
 
       return r;
     }
 
-    ::std::auto_ptr< ::libsbgn::pd_0_1::sbgn >
+    ::std::auto_ptr< ::libsbgn::sn_0_2::sbgn >
     sbgn_ (::xercesc::InputSource& i,
            ::xercesc::DOMErrorHandler& h,
            ::xml_schema::flags f,
@@ -3199,14 +4635,14 @@ namespace libsbgn
       if (!d.get ())
         throw ::xsd::cxx::tree::parsing< char > ();
 
-      ::std::auto_ptr< ::libsbgn::pd_0_1::sbgn > r (
-        ::libsbgn::pd_0_1::sbgn_ (
+      ::std::auto_ptr< ::libsbgn::sn_0_2::sbgn > r (
+        ::libsbgn::sn_0_2::sbgn_ (
           d, f | ::xml_schema::flags::own_dom, p));
 
       return r;
     }
 
-    ::std::auto_ptr< ::libsbgn::pd_0_1::sbgn >
+    ::std::auto_ptr< ::libsbgn::sn_0_2::sbgn >
     sbgn_ (const ::xercesc::DOMDocument& d,
            ::xml_schema::flags f,
            const ::xml_schema::properties& p)
@@ -3216,8 +4652,8 @@ namespace libsbgn
         ::xml_schema::dom::auto_ptr< ::xercesc::DOMDocument > c (
           static_cast< ::xercesc::DOMDocument* > (d.cloneNode (true)));
 
-        ::std::auto_ptr< ::libsbgn::pd_0_1::sbgn > r (
-          ::libsbgn::pd_0_1::sbgn_ (
+        ::std::auto_ptr< ::libsbgn::sn_0_2::sbgn > r (
+          ::libsbgn::sn_0_2::sbgn_ (
             c, f | ::xml_schema::flags::own_dom, p));
 
         return r;
@@ -3228,10 +4664,10 @@ namespace libsbgn
         ::xsd::cxx::xml::dom::name< char > (e));
 
       if (n.name () == "sbgn" &&
-          n.namespace_ () == "http://sbgn.org/libsbgn/pd/0.1")
+          n.namespace_ () == "http://sbgn.org/libsbgn/0.2")
       {
-        ::std::auto_ptr< ::libsbgn::pd_0_1::sbgn > r (
-          ::xsd::cxx::tree::traits< ::libsbgn::pd_0_1::sbgn, char >::create (
+        ::std::auto_ptr< ::libsbgn::sn_0_2::sbgn > r (
+          ::xsd::cxx::tree::traits< ::libsbgn::sn_0_2::sbgn, char >::create (
             e, f, 0));
         return r;
       }
@@ -3240,10 +4676,10 @@ namespace libsbgn
         n.name (),
         n.namespace_ (),
         "sbgn",
-        "http://sbgn.org/libsbgn/pd/0.1");
+        "http://sbgn.org/libsbgn/0.2");
     }
 
-    ::std::auto_ptr< ::libsbgn::pd_0_1::sbgn >
+    ::std::auto_ptr< ::libsbgn::sn_0_2::sbgn >
     sbgn_ (::xml_schema::dom::auto_ptr< ::xercesc::DOMDocument >& d,
            ::xml_schema::flags f,
            const ::xml_schema::properties&)
@@ -3266,10 +4702,10 @@ namespace libsbgn
                          0);
 
       if (n.name () == "sbgn" &&
-          n.namespace_ () == "http://sbgn.org/libsbgn/pd/0.1")
+          n.namespace_ () == "http://sbgn.org/libsbgn/0.2")
       {
-        ::std::auto_ptr< ::libsbgn::pd_0_1::sbgn > r (
-          ::xsd::cxx::tree::traits< ::libsbgn::pd_0_1::sbgn, char >::create (
+        ::std::auto_ptr< ::libsbgn::sn_0_2::sbgn > r (
+          ::xsd::cxx::tree::traits< ::libsbgn::sn_0_2::sbgn, char >::create (
             e, f, 0));
         return r;
       }
@@ -3278,7 +4714,7 @@ namespace libsbgn
         n.name (),
         n.namespace_ (),
         "sbgn",
-        "http://sbgn.org/libsbgn/pd/0.1");
+        "http://sbgn.org/libsbgn/0.2");
     }
   }
 }
