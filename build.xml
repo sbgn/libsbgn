@@ -53,6 +53,7 @@
 				<include name="cpp_binding/**/*"/>
 				<include name="README.txt" />
 				<include name="COPYING.txt" />
+				<include name="CHANGES.txt" />
 				<include name="licenses/*.txt" />
 				<include name="specifications/**/*" />
 				<include name="sbgnutil.sh" />
