@@ -1,0 +1,25 @@
+Release notes
+
+Milestone 2, December 2011
+
+- AF and ER languages are now supported in addition to PD
+- Two utility classes have been added to help backwards compatibility, namely: ConvertMilestone1To2 and SbgnVersionFinder
+- Support for high-level validation using Schematron (in addition to low-level XSD validation)
+- The schema is now fully extensible through the Extension element
+- Java and C++ bindings have been updated 
+
+major API Changes between Milestone 1 and Milestone 2:
+
+- Arcs must have id's, so just must call arc.setId() before writing out.
+- Map must have a language attribute, so you must call Map.setLanguage() before writing out
+- The GlyphClazz, ArcClazz and Language enums have been added to help ensure correctness of string values.
+- An arc can now have multiple subGlyphs, so a construct like arc.setGlyph(g) must be replaced with arc.getGlyph().add(g) or similar.
+- New classes and methods have been added to support the AF and ER languages, such as Callout, Entity, etc. 
+
+Milestone 1, January 2011
+
+- First public release
+- Support reading / writing of the PD language only. AF and ER are not supported.
+- Graphics are stored only at the global level, i.e. the bounding boxes of glyphs can be stored, but other graphical properties such as color and line-thickness are not supported.
+- Support low-level validation using XSD Schema
+- Both java and C++ bindings are available 
