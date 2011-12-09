@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://xframe.sf.net/sample/stress/imported" xmlns="http://xframe.sf.net/sample/stress/imported" xmlns:ii="http://xframe.sf.net/sample/stress/importedImported"
+xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <xs:annotation>
+    <xs:documentation>This namespace is used to test imports.</xs:documentation>
+  </xs:annotation>
+  <xs:import namespace="http://xframe.sf.net/sample/stress/importedImported" schemaLocation="importedImported.xsd"/>
+  <xs:include schemaLocation="cameleon.xsd"/>
+  <xs:simpleType name="simpleImported1">
+    <xs:restriction base="ii:simpleImportedImported1"></xs:restriction>
+  </xs:simpleType>
+  <xs:element name="cameleonTypeUsage1" type="cameleonType">
+    <xs:annotation>
+      <xs:documentation>The type of this element is defined in a cameleon
+schema with empty target namespace.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="cameleonTypeUsage2">
+    <xs:annotation>
+      <xs:documentation>This element contains another element that
+referes an element declaration from a cameleon schema
+with empty target namespace.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="cameleon"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

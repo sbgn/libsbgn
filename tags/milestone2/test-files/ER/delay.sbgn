@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbgn xmlns="http://sbgn.org/libsbgn/0.2">
+<map language="entity relationship">
+	<glyph class="variable value" id="g1">
+		<label text="P" />
+		<bbox x="267" y="50" w="20" h="20" />
+	</glyph>
+
+	<glyph class="entity" id="g2">
+		<label text="CaMKII" />
+		<bbox x="142" y="210" w="180" h="60" />
+		<glyph class="state variable" id="g2_1">
+			<state value="P" variable="T286" />
+			<bbox x="159" y="202" w="56" h="15" />
+		</glyph>
+		<glyph class="state variable" id="g2_2">
+			<state variable="T306" />
+			<bbox x="258" y="202" w="38" h="15" />
+		</glyph>
+		<glyph class="unit of information" id="g2_3">
+			<label text="mt:prot" />
+			<bbox x="209" y="262" w="47" h="15" />
+		</glyph>
+	</glyph>
+
+	<glyph class="delay" id="g3">
+		<bbox x="71" y="194" w="42" h="42" />
+		<port x="123" y="215" id="g3_1" />
+		<port x="61" y="215" id="g3_2" />
+	</glyph>
+
+	<arc class="assignment" source="g1" target="g2_2" id="a1">
+		<port x="277" y="120" id="g4" />
+		<start x="277" y="70" />
+		<end x="277" y="202" />
+	</arc>
+
+	<arc class="logic arc" source="g2" target="g3_1" id="a2">
+		<start x="142" y="215" />
+		<end x="123" y="215" />
+	</arc>
+
+	<arc class="necessary stimulation" source="g3_2" target="g4" id="a3">
+		<start x="61" y="215" />
+		<next x="50" y="215"/>
+		<next x="50" y="120"/>
+		<end x="277" y="120" />
+	</arc>
+</map>
+</sbgn>

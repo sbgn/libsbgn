@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbgn xmlns="http://sbgn.org/libsbgn/0.2">
+	<map language="activity flow">
+
+		<glyph class="perturbation" id="g1">
+			<label text="increase in&#xA;membrane&#xA;potential"/>
+			<bbox x="30" y="30" w="120" h="60"/>
+		</glyph>
+
+		<glyph class="biological activity" id="g2">
+			<label text="sodium&#xA;channel&#xA;activity"/>
+			<bbox x="36" y="232" w="108" h="75"/>
+			<glyph class="unit of information" id="g2.1">
+				<label text="sodium&#xA;channel"/>
+				<entity name="macromolecule"/>
+				<bbox x="39" y="219" w="46" h="26"/>
+			</glyph>
+		</glyph>
+
+		<glyph class="phenotype" id="g3">
+			<label text="depolarization"/>
+			<bbox x="30" y="450" w="120" h="60"/>
+		</glyph>
+
+		<arc class="positive influence" source="g1" target="g2" id="a1">
+			<start x="90" y="90" />
+			<end x="90" y="232" />
+		</arc>
+
+		<arc class="necessary stimulation" source="g2" target="g3" id="a2">
+			<start x="90" y="307" />
+			<end x="90" y="450" />
+		</arc>
+
+	</map>
+</sbgn>

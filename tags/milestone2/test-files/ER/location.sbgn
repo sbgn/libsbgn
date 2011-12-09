@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbgn xmlns="http://sbgn.org/libsbgn/0.2">
+  <map language="entity relationship">
+	<glyph class="entity" id="glyph1">
+		<label text="GluR"/>
+		<bbox x="36" y="170" w="108" h="60"/>
+		<glyph class="unit of information" id="glyph1a">
+			<label text="mt:prot"/>
+			<bbox x="67" y="222" w="46" h="15"/>
+		</glyph>
+		<glyph class="location" id="glyph1b">
+			<bbox x="52" y="160" w="20" h="20"/>
+		</glyph>
+		<glyph class="state variable" id="glyph1c">
+			<state variable="T306"/>
+			<bbox x="99" y="162" w="36" h="15"/>
+		</glyph>
+	</glyph>
+	<glyph class="variable value" id="glyph2">
+		<label text="PSD"/>
+		<bbox x="45" y="30" w="36" h="20"/>
+	</glyph>
+	<glyph class="variable value" id="glyph3">
+		<label text="T"/>
+		<bbox x="107" y="30" w="20" h="20"/>
+	</glyph>
+	<arc class="assignment" source="glyph2" target="glyph1b" id="a1">
+		<port x="63" y="80" id="glyph5"/>
+		<start x="63" y="50"/>
+		<end x="63" y="160"/>
+	</arc>
+	<arc class="assignment" source="glyph3" target="glyph1c" id="a2">
+		<glyph class="outcome" id="glyph4">
+			<bbox x="111" y="74" w="12" h="12"/>
+		</glyph>
+		<start x="117" y="50"/>
+		<end x="117" y="162"/>
+	</arc>
+	<arc class="stimulation" source="glyph4" target="glyph5" id="a3">
+		<start x="111" y="80"/>
+		<end x="63" y="80"/>
+	</arc>
+  </map>
+</sbgn>

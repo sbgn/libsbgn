@@ -1,0 +1,294 @@
+<html>
+	<head>
+		<title>Rules</title> 
+	</head>
+	<body>		
+		<p>Rule count: 28</p>
+		<table border="1">
+			<tr>
+				<th>Pattern ID</th>
+				<th>Pattern Name</th>
+				<th>Rule ID</th>
+				<th>Role</th>
+				<th>See</th>
+				<th>Diagnostics</th>
+				<th>Rule Text</th>
+			</tr>			
+			<tr>
+				<td>00000</td>
+				<td>sanity-check</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td>id</td>
+				<td>This assertion should always fail.</td>
+			</tr>
+			<tr>
+				<td>00001</td>
+				<td>check-id</td>
+				<td></td>
+				<td>error</td>
+				<td></td>
+				<td>id</td>
+				<td>ID needs to be unique.</td>
+			</tr>
+			<tr>
+				<td>00002</td>
+				<td>check-idref</td>
+				<td></td>
+				<td>error</td>
+				<td></td>
+				<td>target</td>
+				<td>An arc target should be a glyph defined in the diagram.</td>
+			</tr>
+			<tr>
+				<td>pd10101</td>
+				<td>check-consumption</td>
+				<td>check-consumption-source-class</td>
+				<td>error</td>
+				<td>sbgn-pd-L1V1.3-3.4.1</td>
+				<td>source class</td>
+				<td>Arc with class consumption must have source reference to glyph of EPN classes and target reference to port on glyph of PN classes
+			</td>
+			</tr>
+			<tr>
+				<td>pd10101</td>
+				<td>check-consumption</td>
+				<td>check-consumption-target-class</td>
+				<td>error</td>
+				<td>sbgn-pd-L1V1.3-3.4.1</td>
+				<td>target port-class</td>
+				<td>Arc with class consumption must have target reference to port on glyph with PN classes and source reference to glyph of EPN classes
+			</td>
+			</tr>
+			<tr>
+				<td>pd10102</td>
+				<td>check-production</td>
+				<td>check-production-source-class</td>
+				<td>error</td>
+				<td>sbgn-pd-L1V1.3-3.4.1</td>
+				<td>source port-class</td>
+				<td>Arc with class production must have source reference to port on glyph with PN classes and target reference to glyph of EPN classes
+			</td>
+			</tr>
+			<tr>
+				<td>pd10102</td>
+				<td>check-production</td>
+				<td>check-production-target-class</td>
+				<td>error</td>
+				<td>sbgn-pd-L1V1.3-3.4.1</td>
+				<td>target class</td>
+				<td>Arc with class production must have target reference to glyph of EPN classes and source reference to port on glyph of PN classes
+			</td>
+			</tr>
+			<tr>
+				<td>pd10103</td>
+				<td>check-modulation</td>
+				<td>check-modulation-source-class</td>
+				<td>error</td>
+				<td>sbgn-pd-L1V1.3-3.4.1</td>
+				<td>source port-class class</td>
+				<td>Arc with class modulation must have source reference to glyph of EPN classes or a logical operator and target reference to port on glyph of PN classes
+			</td>
+			</tr>
+			<tr>
+				<td>pd10103</td>
+				<td>check-modulation</td>
+				<td>check-modulation-target-class</td>
+				<td>error</td>
+				<td>sbgn-pd-L1V1.3-3.4.1</td>
+				<td>target port-class</td>
+				<td>Arc with class modulation must have target reference to port on glyph with PN classes and source reference to glyph of EPN classes
+			</td>
+			</tr>
+			<tr>
+				<td>pd10104</td>
+				<td>check-stimulation</td>
+				<td>check-stimulation-source-class</td>
+				<td>error</td>
+				<td>sbgn-pd-L1V1.3-3.4.1</td>
+				<td>source port-class class</td>
+				<td>Arc with class stimulation must have source reference to glyph of EPN classes or a logical operator and target reference to port on glyph of PN classes
+			</td>
+			</tr>
+			<tr>
+				<td>pd10104</td>
+				<td>check-stimulation</td>
+				<td>check-stimulation-target-class</td>
+				<td>error</td>
+				<td>sbgn-pd-L1V1.3-3.4.1</td>
+				<td>target port-class</td>
+				<td>Arc with class stimulation must have target reference to port on glyph with PN classes and source reference to glyph of EPN classes
+			</td>
+			</tr>
+			<tr>
+				<td>pd10105</td>
+				<td>check-catalysis</td>
+				<td>check-catalysis-source-class</td>
+				<td>error</td>
+				<td>sbgn-pd-L1V1.3-3.4.1</td>
+				<td>source port-class class</td>
+				<td>Arc with class catalysis must have source reference to glyph of EPN classes or a logical operator and target reference to port on glyph of PN classes
+			</td>
+			</tr>
+			<tr>
+				<td>pd10105</td>
+				<td>check-catalysis</td>
+				<td>check-catalysis-target-class</td>
+				<td>error</td>
+				<td>sbgn-pd-L1V1.3-3.4.1</td>
+				<td>target port-class</td>
+				<td>Arc with class catalysis must have target reference to port on glyph with PN classes and source reference to glyph of EPN classes
+			</td>
+			</tr>
+			<tr>
+				<td>pd10106</td>
+				<td>check-inhibition</td>
+				<td>check-inhibition-source-class</td>
+				<td>error</td>
+				<td>sbgn-pd-L1V1.3-3.4.1</td>
+				<td>source port-class class</td>
+				<td>Arc with class inhibition must have source reference to glyph of EPN classes or a logical operator and target reference to port on glyph of PN classes
+			</td>
+			</tr>
+			<tr>
+				<td>pd10106</td>
+				<td>check-inhibition</td>
+				<td>check-inhibition-target-class</td>
+				<td>error</td>
+				<td>sbgn-pd-L1V1.3-3.4.1</td>
+				<td>target port-class</td>
+				<td>Arc with class inhibition must have target reference to port on glyph with PN classes and source reference to glyph of EPN classes
+			</td>
+			</tr>
+			<tr>
+				<td>pd10107</td>
+				<td>check-necessary-stimulation</td>
+				<td>check-necessary-stimulation-source-class</td>
+				<td>error</td>
+				<td>sbgn-pd-L1V1.3-3.4.1</td>
+				<td>source port-class class</td>
+				<td>Arc with class necessary stimulation must have source reference to glyph of EPN classes or a logical operator and target reference to port on glyph of PN classes
+			</td>
+			</tr>
+			<tr>
+				<td>pd10107</td>
+				<td>check-necessary-stimulation</td>
+				<td>check-necessary-stimulation-target-class</td>
+				<td>error</td>
+				<td>sbgn-pd-L1V1.3-3.4.1</td>
+				<td>target port-class</td>
+				<td>Arc with class necessary stimulation must have target reference to port on glyph with PN classes and source reference to glyph of EPN classes
+			</td>
+			</tr>
+			<tr>
+				<td>pd10108</td>
+				<td>check-logic-arc</td>
+				<td>check-logic-arc-source-class</td>
+				<td>error</td>
+				<td>sbgn-pd-L1V1.3-3.4.1</td>
+				<td>source class</td>
+				<td>Arc with class logic arc must have source reference to glyph of EPN classes and target reference to port on glyph of PN classes
+			</td>
+			</tr>
+			<tr>
+				<td>pd10108</td>
+				<td>check-logic-arc</td>
+				<td>check-logic-arc-target-class</td>
+				<td>error</td>
+				<td>sbgn-pd-L1V1.3-3.4.1</td>
+				<td>target port-class</td>
+				<td>Arc with class logic arc must have target reference to port on glyph with PN classes or a logical operator and source reference to glyph of EPN classes
+			</td>
+			</tr>
+			<tr>
+				<td>pd10109</td>
+				<td>check-equivalence-arc</td>
+				<td>check-equivalence-arc-source-class</td>
+				<td>error</td>
+				<td>sbgn-pd-L1V1.3-3.4.1</td>
+				<td>source class</td>
+				<td>Arc with class equivalence arc must have source reference to glyph of EPN classes and target reference to port on glyph of PN classes
+			</td>
+			</tr>
+			<tr>
+				<td>pd10109</td>
+				<td>check-equivalence-arc</td>
+				<td>check-equivalence-arc-target-class</td>
+				<td>error</td>
+				<td>sbgn-pd-L1V1.3-3.4.1</td>
+				<td>target port-class class</td>
+				<td>Arc with class logic arc must have target reference to port on glyph with PN classes or 'tag' or 'submap' EPN classes and source reference to glyph of EPN classes
+			</td>
+			</tr>
+			<tr>
+				<td>pd10131</td>
+				<td>state-var-unique</td>
+				<td>state-var-unique</td>
+				<td>error</td>
+				<td>sbgn-pd-L1V1.3-3.5.1-1</td>
+				<td>id</td>
+				<td>All state variables associated with a Stateful Entity Pool Node should be unique and note duplicated within that node. 
+			</td>
+			</tr>
+			<tr>
+				<td>pd101XX</td>
+				<td>subunit-mod-arc</td>
+				<td>subunit-mod-arc-source</td>
+				<td>error</td>
+				<td></td>
+				<td>id class</td>
+				<td>[NOT SURE]
+			</td>
+			</tr>
+			<tr>
+				<td>pd10133</td>
+				<td>epns-must-connect</td>
+				<td>epns-must-connect</td>
+				<td>error</td>
+				<td>sbgn-pd-L1V1.3-3.5.1-3</td>
+				<td>id class</td>
+				<td>EPNs should not be orphaned (i.e. they must be associated with at least one arc.)
+			</td>
+			</tr>
+			<tr>
+				<td>pd10135</td>
+				<td>pns-lhs-rhs-existence</td>
+				<td>pns-port-count-eq-2</td>
+				<td>error</td>
+				<td>sbgn-pd-L1V1.3-3.5.2.1-1</td>
+				<td>id</td>
+				<td>All process nodes (with the exception of phenotype) must have a LHS and RHS.
+			</td>
+			</tr>
+			<tr>
+				<td>pd10136</td>
+				<td>different-pn-substrates</td>
+				<td>pns-arc-count-eq-2</td>
+				<td>error</td>
+				<td>sbgn-pd-L1V1.3-3.5.2.1-2,3</td>
+				<td>id</td>
+				<td>All EPNs on the LHS of a process must be unique. 
+			</td>
+			</tr>
+			<tr>
+				<td>pd99999</td>
+				<td>unimplemented-untestable-rules</td>
+				<td>multiple-stoichiometries</td>
+				<td>untestable</td>
+				<td>sbgn-pd-L1V1.3-3.5.2.1-8</td>
+				<td></td>
+				<td>If more than one set of stoichiometries can be applied to the flux arcs of the process then the stoichiometry of the flux arcs must be displayed.</td>
+			</tr>
+			<tr>
+				<td>pd99999</td>
+				<td>unimplemented-untestable-rules</td>
+				<td>undefined-unknown-stochiometry</td>
+				<td>unimplemented</td>
+				<td>sbgn-pd-L1V1.3-3.5.2.1-7</td>
+				<td></td>
+				<td>If the stoichiometry is undefined or unknown this should be indicated by the use of a question mark ("?").</td>
+			</tr>
+			</table>		
+	</body>
+</html>

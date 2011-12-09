@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbgn xmlns="http://sbgn.org/libsbgn/0.2">
+<map language="entity relationship">
+	<glyph id="id1" class="entity">
+		<label text="Sense"/>
+		<bbox x="66" y="40" w="108" h="60"/>
+		<glyph id="id1_1" class="unit of information">
+			<label text="mt:dna"/>
+			<bbox x="96" y="32" w="48" h="15"/>
+		</glyph>
+	</glyph>
+
+	<glyph id="id2" class="entity">
+		<label text="3' primer"/>
+		<bbox x="66" y="220" w="108" h="60"/>
+		<glyph id="id2_1" class="unit of information">
+			<label text="mt:dna"/>
+			<bbox x="96" y="272" w="48" h="15"/>
+		</glyph>
+	</glyph>
+
+	<glyph id="id3" class="phenotype">
+		<label text="Phenotype X"/>
+		<bbox x="176" y="130" w="108" h="60"/>
+	</glyph>
+
+	<arc source="id1" target="id2" class="interaction" id="a1">
+		<glyph id="id4" class="outcome">
+			<bbox x="114" y="154" w="12" h="12"/>
+		</glyph>
+		<start x="120" y="100"/>
+		<end x="120" y="220"/>
+	</arc>
+
+	<arc source="id4" target="id3" class="stimulation" id="a2">
+		<start x="126" y="160"/>
+		<end x="176" y="160"/>
+	</arc>
+</map>
+</sbgn>

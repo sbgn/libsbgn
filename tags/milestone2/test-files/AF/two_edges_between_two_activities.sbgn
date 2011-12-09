@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbgn xmlns="http://sbgn.org/libsbgn/0.2">
+	<map language="activity flow">
+
+		<glyph class="biological activity" id="g1">
+			<label text="Grb2"/>
+			<bbox x="76" y="20" w="108" h="40"/>
+		</glyph>
+
+		<glyph class="biological activity" id="g2">
+			<label text="Spry"/>
+			<bbox x="16" y="126" w="108" h="40"/>
+			<glyph class="unit of information" id="g2a">
+				<entity name="unspecified entity"/>
+				<bbox x="28" y="157" w="30" h="18"/>
+			</glyph>
+		</glyph>
+
+		<glyph class="biological activity" id="g3">
+			<label text="GAB1"/>
+			<bbox x="186" y="126" w="108" h="40"/>
+		</glyph>
+
+		<glyph class="biological activity" id="g4">
+			<label text="p85 PI3K"/>
+			<bbox x="86" y="230" w="108" h="40"/>
+		</glyph>
+
+		<arc class="positive influence" source="g1" target="g2" id="a1">
+			<start x="97" y="60" />
+			<end x="69" y="126">
+			<point x="77" y="75" />
+			<point x="66" y="100" />
+			</end>
+		</arc>
+
+		<arc class="positive influence" source="g1" target="g3" id="a2">
+			<start x="152" y="60" />
+			<end x="216" y="126" />
+		</arc>
+
+		<arc class="negative influence" source="g2" target="g1" id="a3">
+			<start x="80" y="126" />
+			<end x="115" y="65" />
+		</arc>
+
+		<arc class="positive influence" source="g3" target="g4" id="a4">
+			<start x="219" y="166" />
+			<end x="159" y="230" />
+		</arc>
+
+	</map>
+</sbgn>

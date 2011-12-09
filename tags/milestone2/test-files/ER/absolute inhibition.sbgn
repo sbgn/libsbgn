@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbgn xmlns="http://sbgn.org/libsbgn/0.2">
+<map language="entity relationship">
+	<glyph class="entity" id="g1">
+		<label text="Sense" />
+		<bbox x="86" y="160" w="108" h="60" />
+		<glyph class="unit of information" id="g1_1">
+			<label text="mt:dna" />
+			<bbox x="117" y="152" w="46" h="15" />
+		</glyph>
+	</glyph>
+
+	<glyph class="entity" id="g2">
+		<label text="Antisense" />
+		<bbox x="386" y="160" w="108" h="60" />
+		<glyph class="unit of information" id="g2_1">
+			<label text="mt:dna" />
+			<bbox x="417" y="152" w="46" h="15" />
+		</glyph>
+	</glyph>
+
+	<glyph class="perturbing agent" id="g3">
+		<label text="Heat" />
+		<bbox x="236" y="30" w="108" h="60" />
+	</glyph>
+
+	<arc class="interaction" source="g1" target="g2" id="a1">
+		<port x="290" y="190" id="g4" />
+		<start x="194" y="190" />
+		<end x="386" y="190" />
+	</arc>
+
+	<arc class="absolute inhibition" source="g3" target="g4" id="a2">
+		<start x="290" y="90" />
+		<end x="290" y="186" />
+	</arc>
+</map>
+</sbgn>

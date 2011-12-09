@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xmi="http://www.omg.org/XMI" xmlns="http://www.ibm.com/websphere/appserver/schemas/5.0/orb.xmi" targetNamespace="http://www.ibm.com/websphere/appserver/schemas/5.0/orb.xmi" xmlns:process="http://www.ibm.com/websphere/appserver/schemas/5.0/process.xmi" xmlns:ipc="http://www.ibm.com/websphere/appserver/schemas/5.0/ipc.xmi">
+
+<xsd:import namespace="http://www.omg.org/XMI" schemaLocation="xmi20.xsd"/>
+<xsd:import namespace="http://www.ibm.com/websphere/appserver/schemas/5.0/process.xmi" schemaLocation="process.xsd"/>
+<xsd:import namespace="http://www.ibm.com/websphere/appserver/schemas/5.0/ipc.xmi" schemaLocation="ipc.xsd"/>
+
+<xsd:simpleType name="boolean">
+  <xsd:restriction base="xsd:string">
+    <xsd:enumeration value="true"/>
+    <xsd:enumeration value="false"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="LSDMode">
+  <xsd:restriction base="xsd:string">
+    <xsd:enumeration value="NONE"/>
+    <xsd:enumeration value="IMPLICIT_CLIENT"/>
+    <xsd:enumeration value="EXPLICIT_CLIENT"/>
+    <xsd:enumeration value="PROVIDER"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:annotation>
+  <xsd:documentation>PACKAGE: orb</xsd:documentation>
+</xsd:annotation>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: ObjectRequestBroker</xsd:documentation>
+  <xsd:documentation>Configuration settings for the object request broker (ORB).</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: requestTimeout</xsd:documentation>
+  <xsd:documentation>Specifies the number of seconds to wait before timing out on a request message.|#|#Default 180|#Range 0 to 300</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: requestRetriesCount</xsd:documentation>
+  <xsd:documentation>Specifies the number of times that the ORB attempts to send a request if a server fails. Retrying sometimes enables recovery from transient network failures. |#|#Default 1|#Range 1 to 10</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: requestRetriesDelay</xsd:documentation>
+  <xsd:documentation>Specifies the number of milliseconds between request retries.|#|#Default 0 |#Range 0 to 60</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: connectionCacheMaximum</xsd:documentation>
+  <xsd:documentation>Specifies the largest number of connections allowed to occupy the connection cache for the service. |#|#Default 240 </xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: connectionCacheMinimum</xsd:documentation>
+  <xsd:documentation>Specifies the smallest number of connections allowed to occupy the connection cache for the service.|#|#Default 100 </xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: commTraceEnabled</xsd:documentation>
+  <xsd:documentation>Enables the tracing of ORB GIOP messages. This setting affects two system properties: com.ibm.CORBA.Debug and com.ibm.CORBA.CommTrace.|#|#Default Not enabled (false) </xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: locateRequestTimeout</xsd:documentation>
+  <xsd:documentation>Specifies the number of seconds to wait before timing out on a LocateRequest message.|#|#Default 180 |#Range 0 to 300 </xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: forceTunnel</xsd:documentation>
+  <xsd:documentation>Controls how the client ORB attempts to use HTTP tunneling. Possible values are ALWAYS, NEVER, or WHENREQUIRED. |#|#ALWAYS - Use HTTP tunneling immediately, without trying TCP connections first. |#NEVER (default) - Disable HTTP tunneling. If a TCP connection fails, a CORBA system exception (COMM_FAILURE) is thrown. |#WHENREQUIRED - Use HTTP tunneling if TCP connections fail. </xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: tunnelAgentURL</xsd:documentation>
+  <xsd:documentation>Specifies the URL of the servlet used to support HTTP tunneling. This must be a properly formed URL, such as http://w3.mycorp.com:81/servlet/com.ibm.CORBA.services.IIOPTunnelServlet or, for applets, http://applethost:port/servlet/com.ibm.CORBA.services.IIOPTunnelServlet. This field is required if HTTP tunneling is set.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: noLocalCopies</xsd:documentation>
+  <xsd:documentation>When enabled, this specifies that the ORB is to pass parameters by reference instead of by value, which bypasses a copy operation. Enable this property with caution, |#because unexpected behavior might occur. Default Not enabled (false)</xsd:documentation>
+  <xsd:documentation>ASSOCIATION END: interceptors </xsd:documentation>
+  <xsd:documentation>List of interceptors the ORB will invoke during every IIOP request.</xsd:documentation>
+  <xsd:documentation>ASSOCIATION END: plugins</xsd:documentation>
+  <xsd:documentation>List of plugins the ORB will invoke during ORB initialization.</xsd:documentation>
+  <xsd:documentation>ASSOCIATION END: lsdConnection</xsd:documentation>
+  <xsd:documentation>A reference to the Location Service Daemon, used by the ORB when necessary to resolve indirect IORs.</xsd:documentation>
+  <xsd:documentation>ASSOCIATION END: threadPool</xsd:documentation>
+  <xsd:documentation>Thread pool settings for the orb.</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="ObjectRequestBroker">
+    <xsd:complexContent>
+        <xsd:extension base="process:Service">
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="requestTimeout" type="xsd:string" nillable="true"/>
+            <xsd:element name="requestRetriesCount" type="xsd:string" nillable="true"/>
+            <xsd:element name="requestRetriesDelay" type="xsd:string" nillable="true"/>
+            <xsd:element name="connectionCacheMaximum" type="xsd:string" nillable="true"/>
+            <xsd:element name="connectionCacheMinimum" type="xsd:string" nillable="true"/>
+            <xsd:element name="commTraceEnabled" type="boolean" nillable="true"/>
+            <xsd:element name="locateRequestTimeout" type="xsd:string" nillable="true"/>
+            <xsd:element name="forceTunnel" type="xsd:string" nillable="true"/>
+            <xsd:element name="tunnelAgentURL" type="xsd:string" nillable="true"/>
+            <xsd:element name="noLocalCopies" type="boolean" nillable="true"/>
+            <xsd:element name="interceptors" type="Interceptor"/>
+            <xsd:element name="plugins" type="ORBPlugin"/>
+            <xsd:element name="lsdConnection" type="LSDConnection"/>
+            <xsd:element name="threadPool" type="process:ThreadPool"/>
+          </xsd:choice>
+          <xsd:attribute name="requestTimeout" type="xsd:string" use="optional"/>
+          <xsd:attribute name="requestRetriesCount" type="xsd:string" use="optional"/>
+          <xsd:attribute name="requestRetriesDelay" type="xsd:string" use="optional"/>
+          <xsd:attribute name="connectionCacheMaximum" type="xsd:string" use="optional"/>
+          <xsd:attribute name="connectionCacheMinimum" type="xsd:string" use="optional"/>
+          <xsd:attribute name="commTraceEnabled" type="boolean" use="optional"/>
+          <xsd:attribute name="locateRequestTimeout" type="xsd:string" use="optional"/>
+          <xsd:attribute name="forceTunnel" type="xsd:string" use="optional"/>
+          <xsd:attribute name="tunnelAgentURL" type="xsd:string" use="optional"/>
+          <xsd:attribute name="noLocalCopies" type="boolean" use="optional"/>
+        </xsd:extension>
+    </xsd:complexContent>
+</xsd:complexType>
+
+<xsd:element name="ObjectRequestBroker" type="ObjectRequestBroker"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: Interceptor</xsd:documentation>
+  <xsd:documentation>Interceptors are initialized during initialization of the ORB and are subsequently invoked by the ORB at predetermined points during execution of every IIOP request.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: name</xsd:documentation>
+  <xsd:documentation>The interceptor classname (fully qualified) prepended with the string "org.omg.PortableInterceptor.ORBInitializerClass."</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="Interceptor">
+  <xsd:choice minOccurs="0" maxOccurs="unbounded">
+    <xsd:element name="name" type="xsd:string" nillable="true"/>
+    <xsd:element ref="xmi:Extension"/>
+  </xsd:choice>
+  <xsd:attribute ref="xmi:id"/>
+  <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  <xsd:attribute name="name" type="xsd:string" use="optional"/>
+</xsd:complexType>
+
+<xsd:element name="Interceptor" type="Interceptor"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: ORBPlugin</xsd:documentation>
+  <xsd:documentation>Custom code can be specified to extend the ORB.  A plugin captures the class that contains the custom logic.  During server initialization, the server will take the name of the plugin, prepend com.ibm.CORBA.ORBPluginClass.XXX</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: name</xsd:documentation>
+  <xsd:documentation>The ***unqualified*** class name of the plugin to load and initialize.</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="ORBPlugin">
+  <xsd:choice minOccurs="0" maxOccurs="unbounded">
+    <xsd:element name="name" type="xsd:string" nillable="true"/>
+    <xsd:element ref="xmi:Extension"/>
+  </xsd:choice>
+  <xsd:attribute ref="xmi:id"/>
+  <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  <xsd:attribute name="name" type="xsd:string" use="optional"/>
+</xsd:complexType>
+
+<xsd:element name="ORBPlugin" type="ORBPlugin"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: LSDConnection</xsd:documentation>
+  <xsd:documentation>Specifies the properties used to connect to a LocationServiceDaemon. A LSD is a server, listening on a fixed port, that processes requests to locate persistent object references and redirects clients to the appropriate application server.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: mode</xsd:documentation>
+  <xsd:documentation>The location service daemon's mode.</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="LSDConnection">
+  <xsd:choice minOccurs="0" maxOccurs="unbounded">
+    <xsd:element name="mode" type="LSDMode" nillable="true"/>
+    <xsd:element name="endPoint" type="ipc:EndPoint"/>
+    <xsd:element ref="xmi:Extension"/>
+  </xsd:choice>
+  <xsd:attribute ref="xmi:id"/>
+  <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  <xsd:attribute name="mode" type="LSDMode" use="optional"/>
+</xsd:complexType>
+
+<xsd:element name="LSDConnection" type="LSDConnection"/>
+
+<xsd:element name="orb">
+  <xsd:complexType>
+    <xsd:choice minOccurs="0" maxOccurs="unbounded">
+      <xsd:element ref="ObjectRequestBroker"/>
+      <xsd:element ref="Interceptor"/>
+      <xsd:element ref="ORBPlugin"/>
+      <xsd:element ref="LSDConnection"/>
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+  </xsd:complexType>
+</xsd:element>
+
+</xsd:schema>

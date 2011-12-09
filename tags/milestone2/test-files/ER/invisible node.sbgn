@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbgn xmlns="http://sbgn.org/libsbgn/0.2">
+<map language="entity relationship">
+	<glyph class="variable value" id="g1">
+		<label text="T" /> <!-- should this be a state instead? [!] -->
+		<bbox x="55" y="30" w="20" h="20" />
+	</glyph>
+
+	<glyph class="entity" id="g2">
+		<label text="Ca2+" />
+		<bbox x="40" y="160" w="110" h="60" />
+		<glyph class="existence" id="g2_1">
+			<bbox x="55" y="150" w="20" h="20" />
+		</glyph>
+		<glyph class="unit of information" id="g2_2">
+			<label text="mt:ion" />
+			<bbox x="98" y="151" w="43" h="14" />
+		</glyph>
+	</glyph>
+
+	<glyph class="perturbing agent" id="g3">
+		<label text="dV" />
+		<bbox x="105" y="60" w="110" h="60" />
+	</glyph>
+
+	<arc class="assignment" source="g1" target="g2_1" id="a1">
+		<port x="64" y="88" id="g4" />
+		<start x="64" y="50" />
+		<end x="64" y="150" />
+	</arc>
+
+	<arc class="stimulation" source="g3" target="g4" id="a2">
+		<start x="130" y="88" />
+		<end x="64" y="88" />
+	</arc>
+</map>
+</sbgn>

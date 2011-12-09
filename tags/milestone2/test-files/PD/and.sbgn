@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<sbgn xmlns="http://sbgn.org/libsbgn/0.2">
+  <map language="process description">
+    <glyph class="nucleic acid feature" id="glyph0">
+        <label text="IRF1"/>
+        <bbox x="440" y="330" w="120" h="60"/>
+        <glyph class="unit of information" id="glyph0a">
+            <label text="ct:mRNA"/>
+            <bbox x="468" y="321" w="63" h="18"/>
+        </glyph>
+    </glyph>
+	
+    <glyph class="and" id="glyph1" orientation="vertical">
+        <bbox x="350" y="230" w="40" h="40"/>
+		<port x="370" y="210" id="glyph1.1"/>
+		<port x="370" y="290" id="glyph1.2"/>
+    </glyph>
+	
+    <glyph class="process" id="glyph2" orientation="vertical">
+        <bbox x="360" y="350" w="20" h="20"/>
+        <port x="350" y="360" id="glyph2.1"/>
+        <port x="390" y="360" id="glyph2.2"/>
+    </glyph>
+	
+    <glyph class="source and sink" id="glyph3">
+        <bbox x="250" y="330" w="60" h="60"/>
+    </glyph>
+	
+	
+    <glyph class="complex" id="glyph7">
+        <bbox x="40" y="30" w="220" h="270"/>
+		
+		<glyph class="complex" id="glyph5">
+			<bbox x="60" y="55" w="180" h="140"/>
+							
+			<glyph class="macromolecule" id="glyph4">
+				<label text="STAT1α"/>
+				<bbox x="80" y="95" w="140" h="60"/>
+				<glyph class="unit of information" id="glyph4a">
+					<label text="mt:prot"/>
+					<bbox x="123" y="86" w="53" h="18"/>
+				</glyph>
+				<glyph class="state variable" id="glyph4b">
+					<state value="P" variable="Y701"/>
+					<bbox x="80" y="141" w="69" h="28"/>
+				</glyph>
+				<glyph class="state variable" id="glyph4c">
+					<state value="P" variable="Y727"/>
+					<bbox x="150" y="141" w="69" h="28"/>
+				</glyph>
+			</glyph>
+			
+		</glyph>
+		
+		<glyph class="nucleic acid feature" id="glyph6">
+			<label text="IRF1-GAS"/>
+			<bbox x="90" y="220" w="120" h="60"/>
+			<glyph class="unit of information" id="glyph6a">
+				<label text="ct:grr"/>
+				<bbox x="129" y="211" w="42" h="18"/>
+			</glyph>
+		</glyph>
+		
+    </glyph>
+	
+    <glyph class="nucleic acid feature" id="glyph8">
+        <label text="IRF1"/>
+        <bbox x="430" y="140" w="120" h="60"/>
+        <glyph class="unit of information" id="glyph8a">
+            <label text="ct:gene"/>
+            <bbox x="462" y="131" w="55" h="18"/>
+        </glyph>
+    </glyph>
+	
+    <arc class="necessary stimulation" source="glyph1.2" target="glyph2" id="a01">
+        <start x="370" y="290" />
+        <end x="370" y="350" />
+    </arc>
+	
+    <arc class="consumption" source="glyph3" target="glyph2.1" id="a02">
+        <start x="310" y="360" />
+        <end x="350" y="360" />
+    </arc>
+	
+    <arc class="production" source="glyph2.2" target="glyph0" id="a03">
+        <start x="390" y="360" />
+        <end x="440" y="360" />
+    </arc>
+	
+    <arc class="logic arc" source="glyph8" target="glyph1.1" id="a04">
+        <start x="430" y="189" />
+        <end x="370" y="210" />
+    </arc>
+	
+    <arc class="logic arc" source="glyph7" target="glyph1.1" id="a05">
+        <start x="260" y="188" />
+        <end x="370" y="210" />
+    </arc>
+  </map>
+</sbgn>

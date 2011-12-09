@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbgn xmlns="http://sbgn.org/libsbgn/0.2">
+  <map language="process description">
+    <glyph id="g1" class="macromolecule">
+	  <label text="LABEL"/>
+	  <bbox x="90" y="160" w="380" h="210"/>
+	</glyph>
+	<glyph id="g2" class="annotation">
+	  <callout target="g1">
+	    <point x="160" y="200"/>
+	  </callout>
+	  <bbox x="5" y="5" w="220" h="125"/>
+	</glyph>
+  </map>
+</sbgn>

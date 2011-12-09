@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xmi="http://www.omg.org/XMI" xmlns="application.xmi" targetNamespace="application.xmi" xmlns:common="common.xmi">
+
+<xsd:import namespace="http://www.omg.org/XMI" schemaLocation="xmi20.xsd"/>
+<xsd:import namespace="common.xmi" schemaLocation="common.xsd"/>
+
+<xsd:annotation>
+  <xsd:documentation>PACKAGE: application</xsd:documentation>
+</xsd:annotation>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: Application</xsd:documentation>
+  <xsd:documentation>The application element is the root element of a J2EE application deployment descriptor.|#</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: smallIcon</xsd:documentation>
+  <xsd:documentation>The small-icon element specifies the URI for a small GIF or JPEG icon image to represent the application in a GUI.|#</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: largeIcon</xsd:documentation>
+  <xsd:documentation>The large-icon element specifies the URI for a large GIF or JPEG icon image to represent the application in a GUI.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: description</xsd:documentation>
+  <xsd:documentation>The description element provides a human readable description of the|#application. The description element should include any information that the|#application assembler wants to provide the deployer.|#</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: displayName</xsd:documentation>
+  <xsd:documentation>The display-name element specifies an application name.|#The application name is assigned to the application by the application assembler and is used to identify the application to the deployer at deployment time.|#</xsd:documentation>
+  <xsd:documentation>ASSOCIATION END: securityRoles</xsd:documentation>
+  <xsd:documentation>Contains the definitions of security roles which are|#global to the application. </xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="Application">
+  <xsd:choice minOccurs="0" maxOccurs="unbounded">
+    <xsd:element name="smallIcon" type="xsd:string" nillable="true"/>
+    <xsd:element name="largeIcon" type="xsd:string" nillable="true"/>
+    <xsd:element name="description" type="xsd:string" nillable="true"/>
+    <xsd:element name="displayName" type="xsd:string" nillable="true"/>
+    <xsd:element name="securityRoles" type="common:SecurityRole"/>
+    <xsd:element name="modules" type="Module"/>
+    <xsd:element ref="xmi:Extension"/>
+  </xsd:choice>
+  <xsd:attribute ref="xmi:id"/>
+  <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  <xsd:attribute name="smallIcon" type="xsd:string" use="optional"/>
+  <xsd:attribute name="largeIcon" type="xsd:string" use="optional"/>
+  <xsd:attribute name="description" type="xsd:string" use="optional"/>
+  <xsd:attribute name="displayName" type="xsd:string" use="optional"/>
+</xsd:complexType>
+
+<xsd:element name="Application" type="Application"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: Module</xsd:documentation>
+  <xsd:documentation>The module element represents a single J2EE module and contains an ejb, java, or web element, which indicates the module type and contains a path to the module file, and an optional alt-dd element, which specifies an optional URI to the post-assembly version of the deployment descriptor. The application deployment descriptor must have one module element for each J2EE module in the application package.|#</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: uri</xsd:documentation>
+  <xsd:documentation>Specifies the URI of a module, relative to the top level of the application package.|#</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: altDD</xsd:documentation>
+  <xsd:documentation>The alt-dd element specifies an optional URI to the post-assembly version of the deployment descriptor file for a particular J2EE module. The URI must specify the full pathname of the deployment descriptor file relative to the application's root directory. If alt-dd is not specified, the deployer must read the deployment descriptor from the default location and file name required by the respective component specification.|#</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="Module">
+  <xsd:choice minOccurs="0" maxOccurs="unbounded">
+    <xsd:element name="uri" type="xsd:string" nillable="true"/>
+    <xsd:element name="altDD" type="xsd:string" nillable="true"/>
+    <xsd:element name="application" type="Application"/>
+    <xsd:element ref="xmi:Extension"/>
+  </xsd:choice>
+  <xsd:attribute ref="xmi:id"/>
+  <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  <xsd:attribute name="uri" type="xsd:string" use="optional"/>
+  <xsd:attribute name="altDD" type="xsd:string" use="optional"/>
+  <xsd:attribute name="application" type="xsd:IDREFS" use="optional"/>
+</xsd:complexType>
+
+<xsd:element name="Module" type="Module"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: WebModule</xsd:documentation>
+  <xsd:documentation>Contains the web-uri and context-root of a web application module.|#</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: contextRoot</xsd:documentation>
+  <xsd:documentation>The context-root element specifies the context root of a web application|#</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="WebModule">
+    <xsd:complexContent>
+        <xsd:extension base="Module">
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="contextRoot" type="xsd:string" nillable="true"/>
+          </xsd:choice>
+          <xsd:attribute name="contextRoot" type="xsd:string" use="optional"/>
+        </xsd:extension>
+    </xsd:complexContent>
+</xsd:complexType>
+
+<xsd:element name="WebModule" type="WebModule"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: JavaClientModule</xsd:documentation>
+  <xsd:documentation>specifies the URI of a java application client module, relative to the top level of the application package.|#</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="JavaClientModule">
+    <xsd:complexContent>
+        <xsd:extension base="Module">
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+          </xsd:choice>
+        </xsd:extension>
+    </xsd:complexContent>
+</xsd:complexType>
+
+<xsd:element name="JavaClientModule" type="JavaClientModule"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: EjbModule</xsd:documentation>
+  <xsd:documentation>Specifies the URI of a ejb-jar, relative to the top level of the application package.|#</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="EjbModule">
+    <xsd:complexContent>
+        <xsd:extension base="Module">
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+          </xsd:choice>
+        </xsd:extension>
+    </xsd:complexContent>
+</xsd:complexType>
+
+<xsd:element name="EjbModule" type="EjbModule"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: ConnectorModule</xsd:documentation>
+  <xsd:documentation>Specifies the URI of a resource adapter archive file, relative to the top level of the application package.</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="ConnectorModule">
+    <xsd:complexContent>
+        <xsd:extension base="Module">
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+          </xsd:choice>
+        </xsd:extension>
+    </xsd:complexContent>
+</xsd:complexType>
+
+<xsd:element name="ConnectorModule" type="ConnectorModule"/>
+
+<xsd:element name="application">
+  <xsd:complexType>
+    <xsd:choice minOccurs="0" maxOccurs="unbounded">
+      <xsd:element ref="Application"/>
+      <xsd:element ref="Module"/>
+      <xsd:element ref="WebModule"/>
+      <xsd:element ref="JavaClientModule"/>
+      <xsd:element ref="EjbModule"/>
+      <xsd:element ref="ConnectorModule"/>
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+  </xsd:complexType>
+</xsd:element>
+
+</xsd:schema>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbgn xmlns="http://sbgn.org/libsbgn/0.2">
+  <map language="process description">
+	<glyph class="macromolecule" id="glyph1">
+ 		<label text="X" />
+ 		<bbox x="42" y="17" w="60" h="100"/>
+ 		<glyph class="state variable" id="glyph1_1">
+			<state value="P" variable="122"/>
+			<bbox x="17" y="41" w="50" h="25"/>
+		</glyph>
+ 		<glyph class="state variable" id="glyph1_2">
+			<state value="P" variable="257"/>
+			<bbox x="76" y="41" w="50" h="25"/>
+		</glyph>
+ 		<glyph class="state variable" id="glyph1_3">
+			<state value="P" variable="312"/>
+			<bbox x="17" y="78" w="50" h="25"/>
+		</glyph>
+ 		<glyph class="state variable" id="glyph1_4">
+			<state value="P" variable="438"/>
+			<bbox x="76" y="78" w="50" h="25"/>
+		</glyph>
+ 	</glyph>
+  </map>
+</sbgn>

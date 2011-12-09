@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbgn xmlns="http://sbgn.org/libsbgn/0.2">
+	<map language="activity flow">
+	
+		<glyph class="compartment" id="g1" compartmentOrder="1">
+			<label text="membrane">
+				<bbox x="234" y="542" w="72" h="18"/>
+			</label>
+			<bbox x="25" y="190" w="490" h="380"/>
+		</glyph>
+
+		<glyph class="compartment" id="g2" compartmentOrder="2">
+			<label text="cytosol">
+				<bbox x="245" y="502" w="50" h="18"/>
+			</label>
+			<bbox x="35" y="210" w="470" h="320"/>
+		</glyph>
+		
+		<glyph class="submap" id="g3">
+			<bbox x="140" y="300" w="220" h="120"/>
+			<glyph class="terminal"  orientation="down" id="g3.1">
+				<label text="1"/>
+				<bbox x="240" y="300" w="20" h="40"/>
+			</glyph>
+			<glyph class="terminal"  orientation="up" id="g3.2">
+				<label text="2"/>
+				<bbox x="170" y="380" w="20" h="40"/>
+			</glyph>
+			<glyph class="terminal"  orientation="left" id="g3.3">
+				<label text="3"/>
+				<bbox x="320" y="380" w="40" h="20"/>
+			</glyph>
+			<glyph class="terminal"  orientation="left" id="g3.4">
+				<label text="4"/>
+				<bbox x="320" y="310" w="40" h="20"/>
+			</glyph>
+			<glyph class="terminal"  orientation="left" id="g3.5">
+				<label text="5"/>
+				<bbox x="320" y="340" w="40" h="20"/>
+			</glyph>
+		</glyph>
+		
+		<glyph class="biological activity" id="g4">
+			<label text="ligand"/>
+			<bbox x="196" y="20" w="108" h="60"/>
+		</glyph>
+		
+		<glyph class="biological activity" id="g5">
+			<label text="GiPCR"/>
+			<bbox x="196" y="180" w="108" h="60"/>
+		</glyph>
+		
+		<glyph class="biological activity" id="g6">
+			<label text="GIRK"/>
+			<bbox x="426" y="360" w="108" h="60"/>
+		</glyph>
+		
+		<glyph class="biological activity" id="g7">
+			<label text="adenylate&#xA;cyclase"/>
+			<bbox x="126" y="460" w="108" h="60"/>
+		</glyph>
+		
+		<arc class="positive influence" source="g4" target="g5" id="a1">
+			<start x="250" y="80" />
+			<end x="250" y="180" />
+		</arc>
+
+		<arc class="equivalence arc" source="g5" target="g3.1" id="a2">
+			<start x="250" y="240" />
+			<end x="250" y="300" />
+		</arc>
+
+		<arc class="equivalence arc" source="g7" target="g3.2" id="a3">
+			<start x="180" y="460" />
+			<end x="180" y="420" />
+		</arc>
+
+		<arc class="equivalence arc" source="g6" target="g3.3" id="a4">
+			<start x="426" y="390" />
+			<end x="360" y="390" />
+		</arc>
+		
+		<arc class="equivalence arc" source="g2" target="g3.4" id="a5">
+			<start x="505" y="320" />
+			<end x="360" y="320" />
+		</arc>
+		
+		<arc class="equivalence arc" source="g1" target="g3.5" id="a6">
+			<start x="515" y="350" />
+			<end x="360" y="350" />
+		</arc>
+
+	</map>
+</sbgn>

@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xmi="http://www.omg.org/XMI" xmlns="http://www.ibm.com/websphere/appserver/schemas/5.0/multibroker.drsclient.xmi" targetNamespace="http://www.ibm.com/websphere/appserver/schemas/5.0/multibroker.drsclient.xmi" xmlns:datatype="http://www.ibm.com/websphere/appserver/schemas/5.0/datatype.xmi" xmlns:ipc.ssl="http://www.ibm.com/websphere/appserver/schemas/5.0/ipc.ssl.xmi">
+
+<xsd:import namespace="http://www.omg.org/XMI" schemaLocation="xmi20.xsd"/>
+<xsd:import namespace="http://www.ibm.com/websphere/appserver/schemas/5.0/datatype.xmi" schemaLocation="datatype.xsd"/>
+<xsd:import namespace="http://www.ibm.com/websphere/appserver/schemas/5.0/ipc.ssl.xmi" schemaLocation="ipc.ssl.xsd"/>
+
+<xsd:simpleType name="boolean">
+  <xsd:restriction base="xsd:string">
+    <xsd:enumeration value="true"/>
+    <xsd:enumeration value="false"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="DRSRuntimeMode">
+  <xsd:restriction base="xsd:string">
+    <xsd:enumeration value="BOTH"/>
+    <xsd:enumeration value="CLIENT"/>
+    <xsd:enumeration value="SERVER"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="DRSEncryptionKind">
+  <xsd:restriction base="xsd:string">
+    <xsd:enumeration value="NONE"/>
+    <xsd:enumeration value="DES"/>
+    <xsd:enumeration value="TRIPLE_DES"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="DRSSerializationKind">
+  <xsd:restriction base="xsd:string">
+    <xsd:enumeration value="BYTES"/>
+    <xsd:enumeration value="OBJECT"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:annotation>
+  <xsd:documentation>PACKAGE: drsclient</xsd:documentation>
+</xsd:annotation>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: DRSConnectionPool</xsd:documentation>
+  <xsd:documentation>Manages the various resources used with internal replication.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: size</xsd:documentation>
+  <xsd:documentation>The max number of items in the pool.|#Default: 10|#Min: 1, Max: 50</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: poolConnections</xsd:documentation>
+  <xsd:documentation>When true, the DRS will pool JMS connections in addition to JMS sessions, publishers and subscribers.|#Default: True</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="DRSConnectionPool">
+  <xsd:choice minOccurs="0" maxOccurs="unbounded">
+    <xsd:element name="size" type="xsd:string" nillable="true"/>
+    <xsd:element name="poolConnections" type="boolean" nillable="true"/>
+    <xsd:element ref="xmi:Extension"/>
+  </xsd:choice>
+  <xsd:attribute ref="xmi:id"/>
+  <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  <xsd:attribute name="size" type="xsd:string" use="optional"/>
+  <xsd:attribute name="poolConnections" type="boolean" use="optional"/>
+</xsd:complexType>
+
+<xsd:element name="DRSConnectionPool" type="DRSConnectionPool"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: DataReplication</xsd:documentation>
+  <xsd:documentation>Global tuning and configuration options for internal replication within a replication domain.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: messageBrokerName</xsd:documentation>
+  <xsd:documentation>The name which identifies a message broker that the DRS should connect to.  The host and port of the message broker can be determine from the multibroker routing table.|#Default: localhost:1506|#This name should match the name of one of the SystemMessageServers which has been configured in the domain.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: requestTimeout</xsd:documentation>
+  <xsd:documentation>Specifies how long a replicator will wait when requesting information from another replicator before giving up and assuming the information does not exist.  Specified in seconds.  Default value 5 seconds.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: useSSL</xsd:documentation>
+  <xsd:documentation>Not shown or supported in 5.0, this is a placeholder for using JMS or SSL transport.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: userId</xsd:documentation>
+  <xsd:documentation>Not shown or supported in 5.0, this is a placeholder for using JMS id/password authentication.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: password</xsd:documentation>
+  <xsd:documentation>Not shown or supported in 5.0, this is a placeholder for using JMS id/password authentication.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: encryptionType</xsd:documentation>
+  <xsd:documentation>Specifies the type of encryption which is used prior to transfer.  One of NONE, DES, TRIPLE_DES.  Default is NONE.  You have the options of encrypting data sent between WebSphere processes as part of internal replication (i.e. HttpSession or Dynacache) if you feel the network joining them is unsecured.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: encryptionKeyValue</xsd:documentation>
+  <xsd:documentation>The base-64 encoded value of the Java security key.</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="DataReplication">
+  <xsd:choice minOccurs="0" maxOccurs="unbounded">
+    <xsd:element name="messageBrokerName" type="xsd:string" nillable="true"/>
+    <xsd:element name="requestTimeout" type="xsd:string" nillable="true"/>
+    <xsd:element name="useSSL" type="boolean" nillable="true"/>
+    <xsd:element name="userId" type="xsd:string" nillable="true"/>
+    <xsd:element name="password" type="xsd:string" nillable="true"/>
+    <xsd:element name="encryptionType" type="DRSEncryptionKind" nillable="true"/>
+    <xsd:element name="encryptionKeyValue" type="xsd:string" nillable="true"/>
+    <xsd:element name="pooling" type="DRSConnectionPool"/>
+    <xsd:element name="partition" type="DRSPartition"/>
+    <xsd:element name="serialization" type="DRSSerialization"/>
+    <xsd:element name="ssl" type="ipc.ssl:SecureSocketLayer"/>
+    <xsd:element ref="xmi:Extension"/>
+  </xsd:choice>
+  <xsd:attribute ref="xmi:id"/>
+  <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  <xsd:attribute name="messageBrokerName" type="xsd:string" use="optional"/>
+  <xsd:attribute name="requestTimeout" type="xsd:string" use="optional"/>
+  <xsd:attribute name="useSSL" type="boolean" use="optional"/>
+  <xsd:attribute name="userId" type="xsd:string" use="optional"/>
+  <xsd:attribute name="password" type="xsd:string" use="optional"/>
+  <xsd:attribute name="encryptionType" type="DRSEncryptionKind" use="optional"/>
+  <xsd:attribute name="encryptionKeyValue" type="xsd:string" use="optional"/>
+</xsd:complexType>
+
+<xsd:element name="DataReplication" type="DataReplication"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: DRSPartition</xsd:documentation>
+  <xsd:documentation>Encapsulates the partition strategy for an Internal Replication Domain.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: size</xsd:documentation>
+  <xsd:documentation>The data transferred by the DRS is called the "domain" of the DRS.  The domains can be partitioned (subdivided) to reduce traffic.  This value specifies how many partitions should be used.|#Default: 10|#|#Subscribers on multiple topics require multiple threads to handle incoming requests on those topics.  So internally if this value is ten, the DRS will allocate 10 topics.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: partitionOnEntry</xsd:documentation>
+  <xsd:documentation>When enabled, individual, uniquely identified peices of data will have their own dedicated channel for subsequent communication.|#Default = False</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="DRSPartition">
+  <xsd:choice minOccurs="0" maxOccurs="unbounded">
+    <xsd:element name="size" type="xsd:string" nillable="true"/>
+    <xsd:element name="partitionOnEntry" type="boolean" nillable="true"/>
+    <xsd:element ref="xmi:Extension"/>
+  </xsd:choice>
+  <xsd:attribute ref="xmi:id"/>
+  <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  <xsd:attribute name="size" type="xsd:string" use="optional"/>
+  <xsd:attribute name="partitionOnEntry" type="boolean" use="optional"/>
+</xsd:complexType>
+
+<xsd:element name="DRSPartition" type="DRSPartition"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: DRSSerialization</xsd:documentation>
+  <xsd:documentation>Internal Replication can transfer actual Java objects between instances, or break down the Java object into bytes first, and only transfer the bytes.  It is then up the user of the data on the receiving side to convert the bytes into an instantiated Java object.  Transferring only bytes around aids in classpath administration,  with a slight amount of additional overhead (i.e. breaking down the object into bytes, and then writing across the Java stream).  Specifically, EAR and WAR specific classes don't need to be recognized at a system level when transferring the data, vs. in the context they are used in (i.e. in the web container).  The default mode is to use bytes.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: entrySerializationKind</xsd:documentation>
+  <xsd:documentation>The kind of serialization to use when replicating entries.|#</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: propertySerializationKind</xsd:documentation>
+  <xsd:documentation>The kind of serialization to use when replicating properties.</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="DRSSerialization">
+  <xsd:choice minOccurs="0" maxOccurs="unbounded">
+    <xsd:element name="entrySerializationKind" type="DRSSerializationKind" nillable="true"/>
+    <xsd:element name="propertySerializationKind" type="DRSSerializationKind" nillable="true"/>
+    <xsd:element ref="xmi:Extension"/>
+  </xsd:choice>
+  <xsd:attribute ref="xmi:id"/>
+  <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  <xsd:attribute name="entrySerializationKind" type="DRSSerializationKind" use="optional"/>
+  <xsd:attribute name="propertySerializationKind" type="DRSSerializationKind" use="optional"/>
+</xsd:complexType>
+
+<xsd:element name="DRSSerialization" type="DRSSerialization"/>
+
+<xsd:element name="drsclient">
+  <xsd:complexType>
+    <xsd:choice minOccurs="0" maxOccurs="unbounded">
+      <xsd:element ref="DRSConnectionPool"/>
+      <xsd:element ref="DataReplication"/>
+      <xsd:element ref="DRSPartition"/>
+      <xsd:element ref="DRSSerialization"/>
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+  </xsd:complexType>
+</xsd:element>
+
+</xsd:schema>

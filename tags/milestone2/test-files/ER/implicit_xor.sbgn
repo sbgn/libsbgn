@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbgn xmlns="http://sbgn.org/libsbgn/0.2">
+  <map language="entity relationship">
+	<glyph class="entity" id="glyph1">
+		<label text="CaMKII"/>
+		<bbox x="60" y="130" w="120" h="60"/>
+		<glyph class="unit of information" id="glyph1a">
+			<label text="mt:prot"/>
+			<bbox x="97" y="182" w="46" h="15"/>
+		</glyph>
+		<glyph class="state variable" id="glyph1b">
+			<state value="P" variable="T286"/>
+			<bbox x="62" y="122" w="54" h="15"/>
+		</glyph>
+		<glyph class="state variable" id="glyph1c">
+			<state variable="T306"/>
+			<bbox x="132" y="122" w="36" h="15"/>
+		</glyph>
+	</glyph>
+	<glyph class="variable value" id="glyph2">
+		<label text="T"/>
+		<bbox x="60" y="40" w="20" h="20"/>
+	</glyph>
+	<glyph class="variable value" id="glyph3">
+		<label text="F"/>
+		<bbox x="100" y="40" w="20" h="20"/>
+	</glyph>
+	<glyph class="implicit xor" id="glyph4">
+		<bbox x="90" y="90" w="0" h="0"/>
+	</glyph>
+	<arc class="assignment" source="glyph2" target="glyph4" id="a1">
+		<start x="75" y="59"/>
+		<end x="90" y="90"/>
+	</arc>
+	<arc class="assignment" source="glyph3" target="glyph4" id="a2">
+		<start x="105" y="59"/>
+		<end x="90" y="90"/>
+	</arc>
+	<arc class="assignment" source="glyph4" target="glyph1b" id="a3">
+		<start x="90" y="90"/>
+		<end x="90" y="122"/>
+	</arc>
+  </map>
+</sbgn>

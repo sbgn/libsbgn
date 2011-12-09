@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbgn xmlns="http://sbgn.org/libsbgn/0.2">
+  <map language="process description">
+	<glyph class="compartment" id="glyph1">
+		<label text="extracellular"/>
+		<bbox x="90" y="70" w="440" h="140"/>
+	</glyph>
+	<glyph class="compartment" id="glyph8">
+		<label text="cytosol"/>
+		<bbox x="90" y="230" w="440" h="260"/>
+	</glyph>
+	
+	<glyph class="complex" id="glyph2" compartmentRef="glyph1">
+		<bbox x="360" y="150" w="140" h="160"/>
+		<glyph class="macromolecule" id="glyph3">
+			<label text="IGF"/>
+			<bbox x="380" y="171" w="100" h="60"/>
+		</glyph>
+		<glyph class="macromolecule" id="glyph6">
+			<label text="IGFR"/>
+			<bbox x="380" y="232" w="100" h="60"/>
+		</glyph>
+	</glyph>
+	
+	<glyph class="macromolecule" id="glyph4" compartmentRef="glyph8">
+		<label text="IGFR"/>
+		<bbox x="120" y="250" w="100" h="60"/>
+	</glyph>
+	
+	<glyph class="macromolecule" id="glyph5" compartmentRef="glyph1">
+		<label text="IGF"/>
+		<bbox x="170" y="130" w="100" h="60"/>
+	</glyph>
+
+	<glyph class="association" id="pn1">
+		<bbox x="280" y="270" w="20" h="20"/>
+		<port x="270" y="280" id="pn1.1"/>
+		<port x="310" y="280" id="pn1.2"/>
+	</glyph>
+	
+	<arc class="production" source="pn1.2" target="glyph2" id="a01">
+		<start x="310" y="280" />			
+		<end x="360" y="280" />
+	</arc>
+	<arc class="consumption" source="glyph4" target="pn1.1" id="a02">
+		<start x="220" y="280" />
+		<end x="270" y="280" />			
+	</arc>
+	<arc class="consumption" source="glyph5" target="pn1.1" id="a03">
+		<start x="233" y="190" />
+		<end x="270" y="280" />			
+	</arc>
+  </map>
+</sbgn>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbgn xmlns="http://sbgn.org/libsbgn/0.2">
+  <map language="process description">
+	<glyph class="tag" orientation="right" id="glyph1">
+		<label text="RAS"/>
+		<bbox x="100" y="20" w="100" h="60"/>
+	</glyph>
+	
+	<glyph class="macromolecule" id="glyph2">
+		<label text="RAS" />
+		<bbox x="270" y="20" w="100" h="60"/>
+		<glyph class="state variable" id="glyph2a">
+			<state value="active"/>
+			<bbox x="304" y="74" w="32" h="12"/>
+		</glyph>
+	</glyph>
+
+	<glyph class="macromolecule" id="glyph3">
+		<label text="RAF" />
+		<bbox x="120" y="150" w="100" h="60"/>
+		<glyph class="state variable" id="glyph3a">
+			<bbox x="164" y="204" w="12" h="12"/>
+		</glyph>
+	</glyph>
+
+	<glyph class="macromolecule" id="glyph4">
+		<label text="RAF" />
+		<bbox x="400" y="150" w="100" h="60"/>
+		<glyph class="state variable" id="glyph4a">
+			<state value="P"/>
+			<bbox x="444" y="204" w="12" h="12"/>
+		</glyph>
+	</glyph>
+
+	<glyph class="process" id="glyph5">
+		<bbox x="308" y="168" w="24" h="24"/>
+		<port x="296" y="180" id="glyph5a"/>
+		<port x="344" y="180" id="glyph5b"/>
+	</glyph>
+
+	<arc class="equivalence arc" source="glyph2" target="glyph1" id="a1">
+		<start x="270" y="50" />
+		<end x="200" y="50" />			
+	</arc>
+	
+	<arc class="catalysis" source="glyph2" target="glyph5" id="a2">
+		<start x="320" y="86" />		
+		<end x="320" y="168" />
+	</arc>
+
+	<arc class="consumption" source="glyph3" target="glyph5a" id="a3">
+		<start x="220" y="180" />
+		<end x="296" y="180" />
+	</arc>
+
+	<arc class="production" source="glyph5b" target="glyph4" id="a4">
+		<start x="344" y="180" />
+		<end x="400" y="180" />			
+	</arc>
+  </map>
+</sbgn>

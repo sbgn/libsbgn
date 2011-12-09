@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xmi="http://www.omg.org/XMI" xmlns="http://www.ibm.com/websphere/appserver/schemas/5.0/properties.xmi" targetNamespace="http://www.ibm.com/websphere/appserver/schemas/5.0/properties.xmi">
+
+<xsd:import namespace="http://www.omg.org/XMI" schemaLocation="xmi20.xsd"/>
+
+<xsd:simpleType name="boolean">
+  <xsd:restriction base="xsd:string">
+    <xsd:enumeration value="true"/>
+    <xsd:enumeration value="false"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:annotation>
+  <xsd:documentation>PACKAGE: properties</xsd:documentation>
+</xsd:annotation>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: Property</xsd:documentation>
+  <xsd:documentation>Specifies arbitrary name/value pairs of data, where the name is a property key and the value is a string value which can be used to set internal system configuration properties.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: name</xsd:documentation>
+  <xsd:documentation>The name of the property.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: value</xsd:documentation>
+  <xsd:documentation>The value for the property.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: description</xsd:documentation>
+  <xsd:documentation>An optional description for this property value</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: required</xsd:documentation>
+  <xsd:documentation>An optional attribute which specifies whether this property is required to have a value.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: validationExpression</xsd:documentation>
+  <xsd:documentation>The console or other tools may use this value to validate the contents of the value of this property.</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="Property">
+  <xsd:choice minOccurs="0" maxOccurs="unbounded">
+    <xsd:element name="name" type="xsd:string" nillable="true"/>
+    <xsd:element name="value" type="xsd:string" nillable="true"/>
+    <xsd:element name="description" type="xsd:string" nillable="true"/>
+    <xsd:element name="required" type="boolean" nillable="true"/>
+    <xsd:element name="validationExpression" type="xsd:string" nillable="true"/>
+    <xsd:element ref="xmi:Extension"/>
+  </xsd:choice>
+  <xsd:attribute ref="xmi:id"/>
+  <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  <xsd:attribute name="name" type="xsd:string" use="optional"/>
+  <xsd:attribute name="value" type="xsd:string" use="optional"/>
+  <xsd:attribute name="description" type="xsd:string" use="optional"/>
+  <xsd:attribute name="required" type="boolean" use="optional"/>
+  <xsd:attribute name="validationExpression" type="xsd:string" use="optional"/>
+</xsd:complexType>
+
+<xsd:element name="Property" type="Property"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: TypedProperty</xsd:documentation>
+  <xsd:documentation>Custom property value.  Check runtime component documentation to determine if there are additional supported custom properties available.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: type</xsd:documentation>
+  <xsd:documentation>Fully qualified Java type of this property (java.lang.Integer, java.lang.Byte).</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="TypedProperty">
+    <xsd:complexContent>
+        <xsd:extension base="Property">
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="type" type="xsd:string" nillable="true"/>
+          </xsd:choice>
+          <xsd:attribute name="type" type="xsd:string" use="optional"/>
+        </xsd:extension>
+    </xsd:complexContent>
+</xsd:complexType>
+
+<xsd:element name="TypedProperty" type="TypedProperty"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: PropertySet</xsd:documentation>
+  <xsd:documentation>A collection of properties that are used for some purpose.  </xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: description</xsd:documentation>
+  <xsd:documentation>Some runtime components allow a collection of additional properties which can be used for further customization.  See documentation related to the runtime component to determine if special properties can be used.</xsd:documentation>
+  <xsd:documentation>ASSOCIATION END: properties</xsd:documentation>
+  <xsd:documentation>Some runtime components allow a collection of additional properties which can be used for further customization.  See documentation related to the runtime component to determine if special properties can be used.</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="PropertySet">
+  <xsd:choice minOccurs="0" maxOccurs="unbounded">
+    <xsd:element name="description" type="xsd:string" nillable="true"/>
+    <xsd:element name="properties" type="Property"/>
+    <xsd:element ref="xmi:Extension"/>
+  </xsd:choice>
+  <xsd:attribute ref="xmi:id"/>
+  <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  <xsd:attribute name="description" type="xsd:string" use="optional"/>
+</xsd:complexType>
+
+<xsd:element name="PropertySet" type="PropertySet"/>
+
+<xsd:element name="properties">
+  <xsd:complexType>
+    <xsd:choice minOccurs="0" maxOccurs="unbounded">
+      <xsd:element ref="Property"/>
+      <xsd:element ref="TypedProperty"/>
+      <xsd:element ref="PropertySet"/>
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+  </xsd:complexType>
+</xsd:element>
+
+</xsd:schema>

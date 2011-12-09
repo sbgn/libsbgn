@@ -1,0 +1,20 @@
+{| border=1
+|-
+! Pattern ID
+! Pattern Name
+! Rule ID
+! Role
+! See
+! Diagnostics
+! Rule Text
+#foreach($element in $elementList)
+|-
+| ${element.getParentNode().getParentNode().getAttribute("id")}
+| ${element.getParentNode().getParentNode().getAttribute("name")}
+| ${element.getAttribute("id")}
+| ${element.getAttribute("role")}
+| ${element.getAttribute("see")} 
+| ${element.getAttribute("diagnostics")}
+| ${element.getTextContent()}
+#end
+|}

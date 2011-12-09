@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xmi="http://www.omg.org/XMI" xmlns="http://www.ibm.com/websphere/appserver/schemas/5.0/ipc.xmi" targetNamespace="http://www.ibm.com/websphere/appserver/schemas/5.0/ipc.xmi" xmlns:properties="http://www.ibm.com/websphere/appserver/schemas/5.0/properties.xmi">
+
+<xsd:import namespace="http://www.omg.org/XMI" schemaLocation="xmi20.xsd"/>
+<xsd:import namespace="http://www.ibm.com/websphere/appserver/schemas/5.0/properties.xmi" schemaLocation="properties.xsd"/>
+
+<xsd:simpleType name="boolean">
+  <xsd:restriction base="xsd:string">
+    <xsd:enumeration value="true"/>
+    <xsd:enumeration value="false"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="TCPIPProtocolType">
+  <xsd:restriction base="xsd:string">
+    <xsd:enumeration value="UDP"/>
+    <xsd:enumeration value="TCP"/>
+    <xsd:enumeration value="MULTICAST"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:annotation>
+  <xsd:documentation>PACKAGE: ipc</xsd:documentation>
+</xsd:annotation>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: EndPoint</xsd:documentation>
+  <xsd:documentation>Specifies a communication endpoint used by services or runtime components running within a process.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: host</xsd:documentation>
+  <xsd:documentation>The hostname on which logic for this endpoint is listening.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: port</xsd:documentation>
+  <xsd:documentation>The port number of the host on which logic for this endpoint is listening.</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="EndPoint">
+  <xsd:choice minOccurs="0" maxOccurs="unbounded">
+    <xsd:element name="host" type="xsd:string" nillable="true"/>
+    <xsd:element name="port" type="xsd:string" nillable="true"/>
+    <xsd:element ref="xmi:Extension"/>
+  </xsd:choice>
+  <xsd:attribute ref="xmi:id"/>
+  <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  <xsd:attribute name="host" type="xsd:string" use="optional"/>
+  <xsd:attribute name="port" type="xsd:string" use="optional"/>
+</xsd:complexType>
+
+<xsd:element name="EndPoint" type="EndPoint"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: Transport</xsd:documentation>
+  <xsd:documentation>Configuration for the "transport" by which application requests flow from the WebSphere plug-ins for Web servers to the application server. IBM WebSphere Application Server works with several popular Web servers. WebSphere Application Server provides plug-ins for each of the servers to enable them to communicate with it. The plug-ins allow application requests to flow along a transport from the Web server to application servers on which the requested applications reside. See the InfoCenter documentation for more information about Web server plug-ins.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: external</xsd:documentation>
+  <xsd:documentation>Specifies whether this transport is for internal or external use.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: sslEnabled</xsd:documentation>
+  <xsd:documentation>Whether to use SSL for the connection between the Web server and the Web container in WebSphere Application Server.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: sslConfig</xsd:documentation>
+  <xsd:documentation>The alias used to identify the configuration for Secure Sockets used by this transport if security is enabled.</xsd:documentation>
+  <xsd:documentation>ASSOCIATION END: address</xsd:documentation>
+  <xsd:documentation>Specifies the address to connect to for the transport.</xsd:documentation>
+  <xsd:documentation>ASSOCIATION END: properties</xsd:documentation>
+  <xsd:documentation>Special configuration properties for the transport. Each transport type can contain custom properties specified by the transport provider. See the documentation for each transport type to determine if there are special transport properties, and the possible values of those properties.</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="Transport">
+  <xsd:choice minOccurs="0" maxOccurs="unbounded">
+    <xsd:element name="external" type="boolean" nillable="true"/>
+    <xsd:element name="sslEnabled" type="boolean" nillable="true"/>
+    <xsd:element name="sslConfig" type="xsd:string" nillable="true"/>
+    <xsd:element name="address" type="EndPoint"/>
+    <xsd:element name="properties" type="properties:Property"/>
+    <xsd:element ref="xmi:Extension"/>
+  </xsd:choice>
+  <xsd:attribute ref="xmi:id"/>
+  <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  <xsd:attribute name="external" type="boolean" use="optional"/>
+  <xsd:attribute name="sslEnabled" type="boolean" use="optional"/>
+  <xsd:attribute name="sslConfig" type="xsd:string" use="optional"/>
+</xsd:complexType>
+
+<xsd:element name="Transport" type="Transport"/>
+
+<xsd:element name="ipc">
+  <xsd:complexType>
+    <xsd:choice minOccurs="0" maxOccurs="unbounded">
+      <xsd:element ref="EndPoint"/>
+      <xsd:element ref="Transport"/>
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+  </xsd:complexType>
+</xsd:element>
+
+</xsd:schema>

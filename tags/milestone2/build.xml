@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<project name="libsbgn" default="dist" basedir=".">
+  
+  <property name="libsbgn.version" value="milestone2"/>
+  
+   <macrodef name="iterate">
+		<attribute name="target"/>
+		<sequential>
+			<subant target="@{target}">
+				<filelist dir=".">
+					<!-- NOTE: order is important! -->
+					<file name="org.sbgn/build.xml"/>
+					<!-- add more module directories here -->
+				</filelist>
+			</subant>
+		</sequential>
+	</macrodef>
+
+  <target name="build">
+	<iterate target="build"/>
+  </target>
+
+  <target name="doc" depends="build">
+	<iterate target="doc"/>
+  </target>
+
+  <target name="dist">
+	<iterate target="dist"/>
+  </target>
+
+  <target name="clean">
+		<iterate target="clean"/>
+  </target>
+
+  <target name="test" depends="build">
+		<iterate target="test"/>
+  </target>
+  
+  
+	<target name="ziptar" depends="clean,dist,doc" description="Create a zip and tarball, including jar file">
+		<property name="zipbase" value="libsbgn-${libsbgn.version}" />
+
+		<zip destfile="${zipbase}.zip">
+			<zipfileset dir="." prefix="libsbgn-${libsbgn.version}">
+				<include name="docs/**/*" />
+				<include name="build.xml" />
+				<include name="org.sbgn/**/*" />
+				<include name="resources/SBGN.xsd" />
+				<include name="test-files/**/*" />
+				<include name="example-files/**/*" />
+				<include name="validation/**/*" />
+				<include name="tools/**/*" />
+				<include name="cpp_binding/**/*"/>
+				<include name="README.txt" />
+				<include name="COPYING.txt" />
+				<include name="CHANGES.txt" />
+				<include name="licenses/*.txt" />
+				<include name="specifications/**/*" />
+				<include name="sbgnutil.sh" />
+			</zipfileset>
+			<zipfileset dir="dist" prefix="libsbgn-${libsbgn.version}">
+				<include name="org.sbgn.jar"/>
+			</zipfileset>
+		</zip>
+		<tar destfile="${zipbase}.tar.gz" compression="gzip">
+		  <zipfileset src="${zipbase}.zip"/>
+		</tar>
+	</target>
+
+</project>

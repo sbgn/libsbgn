@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbgn xmlns="http://sbgn.org/libsbgn/0.2">
+  <map language="entity relationship">
+	<glyph class="entity" id="glyph1">
+		<label text="Sense"/>
+		<bbox x="36" y="40" w="108" h="60"/>
+		<glyph class="unit of information" id="glyph1a">
+			<label text="mt:DNA"/>
+			<bbox x="66" y="32" w="45" h="15"/>
+		</glyph>
+		<glyph class="existence" id="glyph1b">
+			<bbox x="80" y="90" w="20" h="20"/>
+		</glyph>
+	</glyph>
+	<glyph class="variable value" id="glyph2">
+		<label text="T"/>
+		<bbox x="80" y="170" w="20" h="20"/>
+	</glyph>
+	<arc class="assignment" source="glyph2" target="glyph1b" id="a1">
+		<start x="90" y="170" />
+		<end x="90" y="110" />
+	</arc>
+  </map>
+</sbgn>

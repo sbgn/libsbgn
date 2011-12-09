@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbgn xmlns="http://sbgn.org/libsbgn/0.2">
+  <map language="process description">
+    <glyph class="source and sink" id="glyph1">
+        <bbox x="270" y="50" w="60" h="60"/>
+    </glyph>
+    <glyph class="omitted process" orientation="horizontal" id="glyph2">
+        <bbox x="188" y="68" w="24" h="24"/>
+        <port x="176" y="80" id="glyph2.1"/>
+        <port x="224" y="80" id="glyph2.2"/>
+    </glyph>
+    <glyph class="macromolecule" id="glyph3">
+        <label text="Protein"/>
+        <bbox x="16" y="50" w="108" h="60"/>
+    </glyph>
+    <arc class="production" source="glyph2.2" target="glyph1" id="a1">
+        <start x="224" y="80" />
+        <end x="270" y="80" />
+    </arc>
+    <arc class="consumption" source="glyph3" target="glyph2.1" id="a2">
+        <start x="124" y="80" />
+        <end x="176" y="80" />
+    </arc>
+  </map>
+</sbgn>

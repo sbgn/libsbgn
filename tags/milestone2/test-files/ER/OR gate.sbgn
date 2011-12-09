@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbgn xmlns="http://sbgn.org/libsbgn/0.2">
+<map language="entity relationship">
+	<glyph class="entity" id="g1">
+		<label text="Sense" />
+		<bbox x="15" y="55" w="110" h="60" />
+		<glyph class="unit of information" id="g1_1">
+			<label text="mt:dna" />
+			<bbox x="45" y="45" w="50" h="15" />
+		</glyph>
+	</glyph>
+
+	<glyph class="entity" id="g2">
+		<label text="Antisense" />
+		<bbox x="315" y="55" w="110" h="60" />
+		<glyph class="unit of information" id="g2_1">
+			<label text="mt:dna" />
+			<bbox x="345" y="45" w="50" h="15" />
+		</glyph>
+	</glyph>
+
+	<glyph class="entity" id="g3">
+		<label text="3' primer" />
+		<bbox x="15" y="355" w="110" h="60" />
+		<glyph class="unit of information" id="g3_1">
+			<label text="mt:dna" />
+			<bbox x="45" y="407" w="50" h="15" />
+		</glyph>
+	</glyph>
+
+	<glyph class="entity" id="g4">
+		<label text="5' primer" />
+		<bbox x="315" y="355" w="110" h="60" />
+		<glyph class="unit of information" id="g4_1">
+			<label text="mt:dna" />
+			<bbox x="345" y="405" w="50" h="15" />
+		</glyph>
+	</glyph>
+
+	<glyph class="or" id="g5">
+		<bbox x="195" y="190" w="48" h="48" />
+		<port x="217" y="263" id="g5_1" />
+		<port x="217" y="188" id="g5_2" />
+	</glyph>
+
+	<arc class="interaction" source="g1" target="g2" id="a1">
+		<port x="217" y="83" id="g6" />
+		<start x="120" y="83" />
+		<end x="315" y="83" />
+	</arc>
+
+	<arc class="interaction" source="g1" target="g3" id="a2">
+		<glyph class="outcome" id="g7" >
+			<bbox x="60" y="255" w="16" h="16" />
+		</glyph>
+		<start x="65" y="113" />
+		<end x="65" y="353" />
+	</arc>
+
+	<arc class="interaction" source="g2" target="g4" id="a3">
+		<glyph class="outcome" id="g8" >
+			<bbox x="360" y="255" w="16" h="16" />
+		</glyph>
+		<start x="367" y="113" />
+		<end x="367" y="353" />
+	</arc>
+
+	<arc class="logic arc" source="g7" target="g5_1" id="a4">
+		<start x="75" y="263" />
+		<end x="217" y="263" />
+	</arc>
+
+	<arc class="logic arc" source="g8" target="g5_1" id="a5">
+		<start x="362" y="263" />
+		<end x="217" y="263" />
+	</arc>
+
+	<arc class="absolute inhibition" source="g5_2" target="g6" id="a6">
+		<start x="217" y="188" />
+		<end x="217" y="93" />
+	</arc>
+</map>
+</sbgn>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbgn xmlns="http://sbgn.org/libsbgn/0.2">
+  <map language="process description">
+	<glyph class="simple chemical" id="glyph1">
+		<label text="Glucose"/>
+		<bbox x="20" y="110" w="60" h="60"/>
+	</glyph>
+	<glyph class="simple chemical" id="glyph2">
+		<label text="ATP"/>
+		<clone/>
+		<bbox x="70" y="200" w="60" h="60"/>
+	</glyph>
+	<glyph class="simple chemical" id="glyph3">
+		<label text="ADP"/>
+		<clone/>
+		<bbox x="200" y="200" w="60" h="60"/>
+	</glyph>
+	<glyph class="simple chemical" id="glyph4">
+		<label text="Glucose&#xA;6P"/> <!-- contains line break -->
+		<bbox x="250" y="110" w="60" h="60"/>
+	</glyph>
+	<glyph class="simple chemical" id="glyph5">
+		<label text="Fructose&#xA;6P"/> <!-- contains line break -->
+		<bbox x="450" y="110" w="60" h="60"/>
+	</glyph>
+	<glyph class="simple chemical" id="glyph6">
+		<label text="ATP"/>
+		<clone/>
+		<bbox x="500" y="200" w="60" h="60"/>
+	</glyph>
+	<glyph class="simple chemical" id="glyph7">
+		<label text="ADP"/>
+		<clone/>
+		<bbox x="630" y="200" w="60" h="60"/>
+	</glyph>
+	<glyph class="simple chemical" id="glyph8">
+		<label text="Fructose&#xA;1,6P"/> <!-- contains line break -->
+		<bbox x="660" y="110" w="60" h="60"/>
+	</glyph>
+
+	<glyph class="process" orientation="horizontal" id="glyph9">
+		<bbox x="150" y="130" w="20" h="20"/>
+		<port x="140" y="140" id="glyph9a"/>
+		<port x="180" y="140" id="glyph9b"/>
+	</glyph>
+	<glyph class="process" orientation="horizontal" id="glyph10">
+		<bbox x="360" y="130" w="20" h="20"/>
+		<port x="350" y="140" id="glyph10a"/>
+		<port x="390" y="140" id="glyph10b"/>
+	</glyph>
+	<glyph class="process" orientation="horizontal" id="glyph11">
+		<bbox x="580" y="130" w="20" h="20"/>
+		<port x="570" y="140" id="glyph11a"/>
+		<port x="610" y="140" id="glyph11b"/>
+	</glyph>
+
+	<arc class="consumption" source="glyph1" target="glyph9a" id="a01">
+		<start x="80" y="140" />
+		<end x="140" y="140" />
+	</arc>
+	<arc class="consumption" source="glyph2" target="glyph9a" id="a02">
+		<start x="110" y="201" />
+		<end x="140" y="140" />			
+	</arc>
+	<arc class="consumption" source="glyph4" target="glyph10a" id="a03">
+		<start x="310" y="140" />
+		<end x="350" y="140" />			
+	</arc>
+	<arc class="consumption" source="glyph5" target="glyph11a" id="a04">
+		<start x="510" y="140" />
+		<end x="570" y="140" />			
+	</arc>
+	<arc class="consumption" source="glyph6" target="glyph11a" id="a05">
+		<start x="540" y="201" />
+		<end x="570" y="140" />			
+	</arc>
+
+	<arc class="production" source="glyph9b" target="glyph3" id="a06">
+		<start x="180" y="140" />
+		<end x="214" y="203" />			
+	</arc>
+	<arc class="production" source="glyph9b" target="glyph4" id="a07">
+		<start x="180" y="140" />
+		<end x="250" y="140" />			
+	</arc>
+	<arc class="production" source="glyph10b" target="glyph5" id="a08">
+		<start x="390" y="140" />
+		<end x="450" y="140" />			
+	</arc>
+	<arc class="production" source="glyph11b" target="glyph7" id="a09">
+		<start x="610" y="140" />
+		<end x="644" y="203" />			
+	</arc>
+	<arc class="production" source="glyph11b" target="glyph8" id="a10">
+		<start x="610" y="140" />
+		<end x="660" y="140" />			
+	</arc>
+  </map>
+</sbgn>

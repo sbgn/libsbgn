@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<sbgn xmlns="http://sbgn.org/libsbgn/0.2">
+	<map language="activity flow">
+	
+		<glyph class="compartment" id="g1">
+			<label text="nucleus">
+				<bbox x="185" y="285" w="50" h="15"/>
+			</label>
+			<bbox x="25" y="30" w="370" h="280"/>
+		</glyph>
+
+		<glyph class="biological activity" id="g2">
+			<label text="co-repressor"/>
+			<bbox x="66" y="60" w="108" h="40"/>
+		</glyph>
+		
+		<glyph class="biological activity" id="g3">
+			<label text="co-activator"/>
+			<bbox x="246" y="60" w="108" h="40"/>
+		</glyph>
+		
+		<glyph class="and" orientation="vertical" id="g4">
+			<bbox x="189" y="119" w="42" h="42"/>
+			<port id="g4.1" x="210" y="98"/>
+			<port id="g4.2" x="210" y="182"/>
+		</glyph>
+		
+		<glyph class="phenotype" id="g5">
+			<label text="Gene&#xA;transcription"/>
+			<bbox x="156" y="210" w="108" h="60"/>
+		</glyph>
+		
+		<arc class="logic arc" source="g2" target="g4.1" id="a1">
+			<start x="174" y="90" />
+			<end x="210" y="98" />
+		</arc>
+
+		<arc class="logic arc" source="g3" target="g4.1" id="a2">
+			<start x="246" y="90" />
+			<end x="210" y="98" />
+		</arc>
+
+		<arc class="necessary stimulation" source="g4.2" target="g5" id="a3">
+			<start x="210" y="182" />
+			<end x="210" y="210" />
+		</arc>
+
+	</map>
+</sbgn>

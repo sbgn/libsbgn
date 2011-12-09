@@ -1,0 +1,539 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://xframe.sf.net/sample/stress" xmlns:i2="http://xframe.sf.net/sample/stress/imported2" xmlns:i="http://xframe.sf.net/sample/stress/imported" xmlns:ii="http://xframe.sf.net/sample/stress/importedImported" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:st="http://xframe.sf.net/sample/stress" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<!--
+  <xs:annotation>
+    <xs:documentation>This namespace is used as a stress test for xsddoc.</xs:documentation>
+  </xs:annotation>
+  <xs:include schemaLocation="cameleon.xsd"/>
+  <xs:import namespace="http://xframe.sf.net/sample/stress/imported" schemaLocation="imported.xsd"/>
+  <xs:import namespace="http://xframe.sf.net/sample/stress/imported2" schemaLocation="imported2.xsd"/>
+  <xs:import namespace="http://xframe.sf.net/sample/stress/circular1" schemaLocation="circular1.xsd"/>
+  <xs:include schemaLocation="included1.xsd"/>
+  <xs:include schemaLocation="included2.xsd"/>
+  <xs:include schemaLocation="includedIncluded.xsd"/>
+  <xs:redefine schemaLocation="redefined.xsd">
+    <xs:group name="selfRedefined">
+      <xs:annotation>
+        <xs:documentation>This group definition redefines a
+          group definition from the redefined schema redefined.xsd
+          to test redefined groups that refer a base group with the same name.</xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+        <xs:group ref="st:selfRedefined"/>
+        <xs:element name="additionalElement" type="xs:string"/>
+      </xs:sequence>
+    </xs:group>
+    <xs:complexType name="testRedefine">
+      <xs:annotation>
+        <xs:documentation>
+          <p>This is a redefined type declaration.</p>
+        </xs:documentation>
+      </xs:annotation>
+      <xs:complexContent>
+        <xs:extension base="st:testRedefine">
+          <xs:sequence>
+            <xs:element name="testRedefined" type="xs:string"/>
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:redefine>
+  <xs:element name="russianDoll" block="#all" final="#all">
+    <xs:annotation>
+      <xs:documentation>An example of russian doll element declaration.
+			This text is part of a documentation tag that is the first child of the <i>element</i> tag.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="rdRoot" block="#all" >
+          <xs:annotation>
+            <xs:documentation>The root of the russian doll.
+						This text is part of a documentation tag that is the first child of the <i>rdRoot</i> tag.</xs:documentation>
+          </xs:annotation>
+          <xs:complexType mixed="true">
+            <xs:sequence>
+              <xs:element name="rdChild1" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>The first child of the russian doll.
+									This text is part of a documentation tag that is the first child of the <i>rdChild1</i> tag.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="rdChild2" block="#all">
+                <xs:annotation>
+                  <xs:documentation>The second child of the russian doll.
+									This text is part of a documentation tag that is the first child of the <i>rdChild2</i> tag.</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:choice>
+                    <xs:element name="child2node" type="st:nodeType"/>
+                    <xs:element name="child2stress" type="st:stressType"/>
+                  </xs:choice>
+                  <xs:attributeGroup ref="st:std-attrs"/>
+                  <xs:attribute name="onlyInChild2" type="xs:integer" use="required"/>
+                  <xs:attribute name="reqAttr" type="xs:integer" use="required"/>
+                  <xs:attribute name="optAttr" type="xs:string" use="optional"/>
+                  <xs:attribute ref="st:test1"/>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="rdChild3">
+                <xs:annotation>
+                  <xs:documentation>The third  child of the russian doll.
+									This text is part of a documentation tag that is the first child of the <i>rdChild3</i> tag.</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:enumeration value="value1"/>
+                    <xs:enumeration value="value2"/>
+                    <xs:enumeration value="value3"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="rdChild4">
+                <xs:annotation>
+                  <xs:documentation>The fourth child of the russian doll.
+                  The type of this nested element is a local restriction of <code>xs:string</code>.
+									This text is part of a documentation tag that is the fourth child of the <i>rdChild4</i> tag.</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255"/>
+                    <xs:whiteSpace value="collapse"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="rdChild5" type="st:test2Type">
+                <xs:annotation>
+                  <xs:documentation>The fifth child of the russian doll.
+                  The type of this nested element is a local declared simpleType.
+									This text is part of a documentation tag that is the fifth child of the <i>rdChild5</i> tag.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+            <xs:attributeGroup ref="st:std-attrs"/>
+            <xs:attribute name="reqAttr" type="xs:string" use="required"/>
+            <xs:attribute name="optAttr" type="xs:string" use="optional"/>
+            <xs:attribute ref="st:test2"/>
+            <xs:attribute name="onlyInRoot" type="xs:integer" use="required"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attributeGroup ref="st:std-attrs"/>
+      <xs:attribute name="reqAttr" type="xs:string" use="required"/>
+      <xs:attribute name="optAttr" type="xs:string" use="optional"/>
+      <xs:attribute ref="st:test3"/>
+      <xs:attribute name="onlyInRussianDoll" type="xs:integer" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="stress" type="st:stressType">
+    <xs:annotation>
+      <xs:documentation>Stress test for xsddoc</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="stressType">
+    <xs:annotation>
+      <xs:documentation>This is plain text documentation.
+Multiple Lines should
+remain multiple lines.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence maxOccurs="unbounded">
+      <xs:choice>
+        <xs:element ref="st:node"/>
+        <xs:element ref="st:stress"/>
+        <xs:element ref="st:russianDoll"/>
+        <xs:element name="includeTest" type="st:complexTypeIncluded1"/>
+        <xs:element ref="st:includedElement"/>
+      </xs:choice>
+      <xs:group ref="st:sequenceGroup" minOccurs="0" maxOccurs="2">
+        <xs:annotation>
+          <xs:documentation>This is the documentation of the concrete usage of the sequence-group.</xs:documentation>
+        </xs:annotation>
+      </xs:group>
+      <xs:group ref="st:choiceGroup" minOccurs="0" maxOccurs="2">
+        <xs:annotation>
+          <xs:documentation>This is the documentation of the concrete usage of the choice-group.</xs:documentation>
+        </xs:annotation>
+      </xs:group>
+    </xs:sequence>
+    <xs:attribute name="testIncluded1" type="st:included1" use="optional"/>
+    <xs:attribute name="testInclude2" type="st:include2" use="required"/>
+  </xs:complexType>
+  <xs:element name="node" type="st:nodeType">
+    <xs:annotation>
+      <xs:documentation>A recursive element declaration.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="nodeType">
+    <xs:annotation>
+      <xs:documentation>
+        A node in a tree.
+        This is XHTML documentation as mixed content inside the xs:documentation tag.
+        <h3>a title with h3 style</h3>
+        Here is a table within the schema documentation:<br/>
+        <table border="1">
+          <tr>
+            <td>
+              <b>A</b>
+            </td>
+            <td>
+              <i>B</i>
+            </td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>2</td>
+          </tr>
+        </table>
+        <br/>
+        And here is an image (remind that the image file itself must get
+        copied to the proper location after xsddoc has run):<br/>
+        <img src="http://xframe.sourceforge.net/xsddoc/images/project-logo.png"/>
+        <br/>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence maxOccurs="unbounded">
+      <xs:element ref="st:node"/>
+    </xs:sequence>
+    <xs:attribute name="description" type="xs:string">
+      <xs:annotation>
+        <xs:documentation>This is the the attribute description. some more text.
+        <p>This is some <i>additional description</i> to the attribute.</p>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attributeGroup ref="st:std-attrs">
+      <xs:annotation>
+        <xs:documentation>This documentation explains the concrete usage of the group within the current context.</xs:documentation>
+      </xs:annotation>
+    </xs:attributeGroup>
+  </xs:complexType>
+  <xs:attribute name="test1" type="st:test1Type">
+    <xs:annotation>
+      <xs:documentation>This is a simple attribute test</xs:documentation>
+    </xs:annotation>
+  </xs:attribute>
+  <xs:attribute name="test2" type="st:test2Type">
+    <xs:annotation>
+      <xs:documentation>This is another simple attribute test</xs:documentation>
+    </xs:annotation>
+  </xs:attribute>
+  <xs:attribute name="test3" type="st:test3Type">
+    <xs:annotation>
+      <xs:documentation>This is yet another simple attribute test</xs:documentation>
+    </xs:annotation>
+  </xs:attribute>
+  <xs:attribute name="test4" type="st:test4Type">
+    <xs:annotation>
+      <xs:documentation>This is the fourth simple attribute test</xs:documentation>
+    </xs:annotation>
+  </xs:attribute>
+  <xs:simpleType name="test1Type">
+    <xs:annotation>
+      <xs:documentation>type is from imported namespace</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="i:simpleImported1">
+      <xs:enumeration value="value1"/>
+      <xs:enumeration value="value2"/>
+      <xs:enumeration value="value3"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="test2Type">
+    <xs:annotation>
+      <xs:documentation>type is from imported imported namespace</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="i:simpleImported1">
+      <xs:pattern value="\c+"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="test3Type">
+    <xs:annotation>
+      <xs:documentation>type restricts type from imported namespace</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="i:simpleImported1">
+      <xs:maxLength value="32"/>
+      <xs:whiteSpace value="preserve"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="test4Type">
+    <xs:annotation>
+      <xs:documentation>type restricts type from imported imported namespace</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="i:simpleImported1">
+      <xs:whiteSpace value="collapse" fixed="true"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="test5Type">
+    <xs:annotation>
+      <xs:documentation>type restricts type from included schema</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="st:included1">
+      <xs:maxLength value="64"/>
+      <xs:whiteSpace value="collapse" fixed="true"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="test6Type">
+    <xs:annotation>
+      <xs:documentation>type restricts type from included schema</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="st:include4">
+      <xs:maxLength value="64"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="imported2Element" type="i2:imported2DerivedType">
+    <xs:annotation>
+      <xs:documentation>An element declaration derived from an imported type.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="russianDollType">
+    <xs:annotation>
+      <xs:documentation>An example of russian doll complexType Definition.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="rdRoot">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="rdChild1" type="xs:string"/>
+            <xs:element name="rdChild2">
+              <xs:complexType>
+                <xs:choice>
+                  <xs:element name="child2node" type="st:nodeType"/>
+                  <xs:element name="child2stress" type="st:stressType"/>
+                </xs:choice>
+                <xs:attribute name="name" type="xs:string" use="required"/>
+                <xs:attribute name="optAttr" type="xs:string" use="optional"/>
+                <xs:attribute ref="st:test1"/>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+          <xs:attribute name="name" type="xs:string" use="required"/>
+          <xs:attribute name="optAttr" type="xs:string" use="optional"/>
+          <xs:attribute ref="st:test2"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="name" type="xs:string" use="required">
+      <xs:annotation>
+        <xs:documentation>This is the name attribute.
+        <p>This attribute is a required attribute.</p>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="optAttr" type="xs:string" use="optional"/>
+    <xs:attribute ref="st:test3"/>
+  </xs:complexType>
+  <xs:attributeGroup name="std-attrs">
+    <xs:annotation>
+      <xs:documentation>group of standard attributes</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="id" use="optional">
+      <xs:annotation>
+        <xs:documentation>This is the the attribute description. some more text. some more text.
+        <p>This is some <i>additional description</i> to the attribute.</p>
+        </xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:ID">
+          <xs:whiteSpace value="collapse"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="name" use="optional">
+      <xs:annotation>
+        <xs:documentation>This is the the attribute description. some more text.
+        <p>This is some <i>additional description</i> to the attribute.</p>
+        </xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:NCName">
+          <xs:whiteSpace value="collapse"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="class" use="optional">
+      <xs:annotation>
+        <xs:documentation>This is the the attribute description. some more text.
+        <p>This is some <i>additional description</i> to the attribute.</p>
+        </xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:NCName">
+          <xs:whiteSpace value="collapse"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:element name="simpleContentTest1" final="#all" nillable="true">
+    <xs:annotation>
+      <xs:documentation>This is a test of an element with simple type content.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:Name">
+          <xs:attribute name="test" type="st:include2" use="required"/>
+          <xs:attributeGroup ref="st:std-attrs"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="simpleContentTest2" final="#all">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="st:test3Type">
+          <xs:attribute name="test" type="st:include2" use="required"/>
+          <xs:attributeGroup ref="st:std-attrs"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="complexContentTest" block="restriction" final="restriction">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="st:complexTypeIncluded1">
+          <xs:sequence>
+            <xs:element name="node" type="st:nodeType"/>
+            <xs:element name="doll" type="st:russianDollType"/>
+          </xs:sequence>
+          <xs:attribute name="value" type="st:include4" default="default-value"/>
+          <xs:attribute name="test" type="xs:string" use="optional" default="test"/>
+          <xs:attributeGroup ref="st:std-attrs"/>
+          <xs:attribute name="version" type="xs:string" use="required" fixed="my-fixed-version-no"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="dataPathList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="hdfDataPath" type="xs:string" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="parentElement">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="childElement1" type="st:childElement1" maxOccurs="unbounded"/>
+        <xs:element name="childElement2" type="st:childElement2" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:simpleType name="childElement1">
+    <xs:annotation>
+      <xs:documentation>This is the type definition of the first child element</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:simpleType name="childElement2">
+    <xs:annotation>
+      <xs:documentation>This is the type definition of the second child element</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:group name="allGroup">
+    <xs:annotation>
+      <xs:documentation>This is description of for a simple group using the all compisitor.</xs:documentation>
+    </xs:annotation>
+    <xs:all>
+      <xs:element name="test1" type="st:nodeType"/>
+      <xs:element name="test2" type="xs:string"/>
+      <xs:element name="test3" type="st:childElement2"/>
+    </xs:all>
+  </xs:group>
+  <xs:group name="sequenceGroup">
+    <xs:annotation>
+      <xs:documentation>This is description of for a simple group using the sequence compositor.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="test1" type="st:nodeType"/>
+      <xs:element name="test2" type="xs:string"/>
+      <xs:element name="test3" type="st:childElement2"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="choiceGroup">
+    <xs:annotation>
+      <xs:documentation>This is description of for a simple group using the choice compositor.</xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:element name="test1" type="st:nodeType"/>
+      <xs:element name="test2" type="xs:string"/>
+      <xs:element name="test3" type="st:childElement2"/>
+    </xs:choice>
+  </xs:group>
+  <xs:complexType name="testAllType">
+    <xs:all>
+      <xs:element name="test1" type="st:nodeType"/>
+      <xs:element name="test2" type="xs:string"/>
+      <xs:element name="test3" type="st:childElement2"/>
+    </xs:all>
+  </xs:complexType>
+  <xs:complexType name="dummyfileType">
+    <xs:sequence>
+      <xs:element name="dummytype" type="st:dummytypeType" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="dummytypeType">
+    <xs:annotation>
+      <xs:documentation>
+        This is the abstract dummytypeType.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="name">
+        <xs:annotation>
+          <xs:documentation>The name of the dummy type.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:maxLength value="128"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="dummyfile" type="st:dummyfileType">
+    <xs:annotation>
+      <xs:documentation>
+        The Dummy File Record.
+
+        Interesting doucmentation...        
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="cameleonTypeUsage1" type="st:cameleonType">
+    <xs:annotation>
+      <xs:documentation>The type of this element is defined in a cameleon
+schema with empty target namespace.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="cameleonTypeUsage2">
+    <xs:annotation>
+      <xs:documentation>This element contains another element that
+referes an element declaration from a cameleon schema
+with empty target namespace.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="st:cameleon"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="elementWithAllAttributesTest" abstract="true" block="#all" final="#all" id="a1234">
+    <xs:annotation>
+      <xs:documentation>This element is a test of an element with all optional attributes.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:sequence>
+        <xs:element ref="st:node"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="complexTypeWithAllAttributesTest" abstract="true" block="#all" final="#all" id="b2345" mixed="true">
+    <xs:annotation>
+      <xs:documentation>This element is a test of a complex type with all optional attributes.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="st:node"/>
+    </xs:sequence>
+  </xs:complexType>
+-->
+  <xs:element name="SameName" type="SameName"/>
+  <xs:complexType name="SameName" base="xs:string"/>
+</xs:schema>

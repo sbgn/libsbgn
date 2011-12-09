@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbgn xmlns="http://sbgn.org/libsbgn/0.2">
+<map language="process description">
+
+<glyph class="macromolecule" id="glyph1">
+	<label text="RAS"/>
+	<bbox x="70" y="70" w="100" h="60"/>
+	<glyph class="state variable" id="glyph4">
+		<state value="active"/>
+		<bbox x="90" y="110" w="50" h="30"/>
+	</glyph>
+</glyph>
+
+<glyph class="submap" id="glyph2">
+	<label text="MAPK&#xA;cascade"/>
+	<bbox x="220" y="40" w="220" h="120"/>
+	
+	<glyph class="terminal"  orientation="right" id="glyph5">
+		<label text="RAS"/>
+		<bbox x="220" y="77" w="80" h="45"/>
+	</glyph>
+	<glyph class="terminal"  orientation="left" id="glyph6">
+		<label text="ERK"/>
+		<bbox x="360" y="77" w="80" h="45"/>
+	</glyph>	
+</glyph>
+
+<glyph class="macromolecule" id="glyph3">
+	<label text="ERK"/>
+	<bbox x="520" y="70" w="100" h="60"/>
+	<glyph class="state variable" id="glyph7">
+		<state value="2P"/>
+		<bbox x="530" y="120" w="30" h="20"/>
+	</glyph>
+</glyph>
+
+<arc class="equivalence arc" source="glyph1" target="glyph5" id="a1">
+	<start x="170" y="100" />
+	<end x="220" y="100" />
+</arc>
+
+<arc class="equivalence arc" source="glyph3" target="glyph6" id="a2">
+	<start x="520" y="100" />
+	<end x="440" y="100" />
+</arc>
+
+</map>
+</sbgn>

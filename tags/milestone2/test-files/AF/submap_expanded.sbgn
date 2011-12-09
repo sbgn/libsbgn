@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<sbgn xmlns="http://sbgn.org/libsbgn/0.2">
+	<map language="activity flow">
+	
+		<glyph class="compartment" id="g1" compartmentOrder="1.0">
+			<label text="membrane">
+				<bbox x="244" y="493" w="72" h="18"/>
+			</label>
+			<bbox x="35" y="140" w="490" h="380"/>
+		</glyph>
+
+		<glyph class="compartment" id="g2" compartmentOrder="2.0">
+			<label text="cytosol">
+				<bbox x="254" y="452" w="50" h="18"/>
+			</label>
+			<bbox x="45" y="160" w="470" h="320"/>
+		</glyph>
+		
+		<glyph class="biological activity" id="g3">
+			<label text="GiPCR"/>
+			<bbox x="206" y="130" w="108" h="60"/>
+		</glyph>
+		
+		<glyph class="biological activity" id="g4">
+			<label text="Giα"/>
+			<bbox x="136" y="270" w="108" h="60"/>
+		</glyph>
+		
+		<glyph class="biological activity" id="g5">
+			<label text="Gβγ"/>
+			<bbox x="296" y="270" w="108" h="60"/>
+		</glyph>
+		
+		<glyph class="biological activity" id="g6">
+			<label text="GIRK"/>
+			<bbox x="436" y="330" w="108" h="60"/>
+		</glyph>
+		
+		<glyph class="biological activity" id="g7">
+			<label text="adenylate&#xA;cyclase"/>
+			<bbox x="136" y="410" w="108" h="60"/>
+		</glyph>
+
+		<glyph class="tag" orientation="down" id="g8">
+			<label text="1"/>
+			<bbox x="250" y="30" w="20" h="40"/>
+		</glyph>
+		
+		<glyph class="tag" orientation="up" id="g9">
+			<label text="2"/>
+			<bbox x="180" y="540" w="20" h="40"/>
+		</glyph>
+		
+		<glyph class="tag" orientation="left" id="g10">
+			<label text="3"/>
+			<bbox x="600" y="350" w="40" h="20"/>
+		</glyph>
+		
+		<glyph class="tag" orientation="left" id="g11">
+			<label text="4"/>
+			<bbox x="600" y="260" w="40" h="20"/>
+		</glyph>
+		
+		<glyph class="tag" orientation="left" id="g12">
+			<label text="5"/>
+			<bbox x="600" y="290" w="40" h="20"/>
+		</glyph>
+
+		<arc class="positive influence" source="g3" target="g4" id="a1">
+			<start x="244" y="190" />
+			<end x="204" y="270" />
+		</arc>
+
+		<arc class="positive influence" source="g3" target="g5" id="a2">
+			<start x="280" y="190"/>
+			<end x="332" y="270" />
+		</arc>
+
+		<arc class="positive influence" source="g5" target="g6" id="a3">
+			<start x="350" y="330"/>
+			<next x="350" y="360"/>
+			<end x="436" y="360"/>
+		</arc>
+
+		<arc class="negative influence" source="g4" target="g7" id="a4">
+			<start x="190" y="330"/>
+			<end x="190" y="405"/>
+		</arc>
+
+		<arc class="equivalence arc" source="g3" target="g8" id="a5">
+			<start x="260" y="130"/>
+			<end x="260" y="70"/>
+		</arc>
+
+		<arc class="equivalence arc" source="g7" target="g9" id="a6">
+			<start x="190" y="470"/>
+			<end x="190" y="540"/>
+		</arc>
+
+		<arc class="equivalence arc" source="g6" target="g10" id="a7">
+			<start x="544" y="360"/>
+			<end x="600" y="360"/>
+		</arc>
+		
+		<arc class="equivalence arc" source="g2" target="g11" id="a8">
+			<start x="515" y="270"/>
+			<end x="600" y="270"/>
+		</arc>
+		
+		<arc class="equivalence arc" source="g1" target="g12" id="a9">
+			<start x="525" y="300"/>
+			<end x="600" y="300"/>
+		</arc>
+
+	</map>
+</sbgn>

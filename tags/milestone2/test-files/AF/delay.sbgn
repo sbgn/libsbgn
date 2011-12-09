@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbgn xmlns="http://sbgn.org/libsbgn/0.2">
+	<map language="activity flow">
+	
+		<glyph class="biological activity" id="g1">
+			<label text="early&#xA;effect"/>
+			<bbox x="46" y="180" w="108" h="60"/>
+		</glyph>
+		
+		<glyph class="delay" orientation="vertical" id="g2">
+			<bbox x="79" y="109" w="42" h="42"/>
+			<port id="g2.1" x="100" y="172"/>
+			<port id="g2.2" x="100" y="88"/>
+		</glyph>
+		
+		<glyph class="biological activity" id="g3">
+			<label text="late&#xA;effect"/>
+			<bbox x="46" y="10" w="108" h="60"/>
+		</glyph>
+
+		<arc class="logic arc" source="g1" target="g2.1" id="a1">
+			<start x="100" y="172" />
+			<end x="100" y="151" />
+		</arc>
+
+		<arc class="positive influence" source="g2.2" target="g3" id="a2">
+			<start x="100" y="88" />
+			<end x="100" y="70" />
+		</arc>
+		
+	</map>
+</sbgn>

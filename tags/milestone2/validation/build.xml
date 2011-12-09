@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!-- 
+
+Ant script to validate the SBGNML test files 
+
+@author Augustin Luna
+@version 21 May 2011
+
+To validate a specific directory of files 
+with a specific schematron ruleset:
+
+ant -Ddir=/my/directory -Dschema=/my/rules.sch schematron-validate-dir
+--> 
+	
+<project name="SBGNSchematron" default="schematron-validate" basedir="..">
+	<echo message="Ant version: ${ant.version}"/>
+	
+	<property name="project.dir" value="${basedir}/validation/" />
+	<property name="output.dir" value="${project.dir}" />
+	<property name="lib.dir" value="${project.dir}lib/" />
+	<property name="schema.dir" value="${basedir}/resources/" />
+	<property name="test-files.dir" value="${basedir}/test-files/" />
+		
+    <taskdef name="schematron" classname="com.schematron.ant.SchematronTask" classpath="${lib.dir}saxon9he.jar:${lib.dir}ant-schematron.jar"/>
+	
+	<target name="schema-validate"> 
+		<schemavalidate>
+			<schema namespace="http://sbgn.org/libsbgn/0.2" file="${schema.dir}SBGN.xsd"/>
+			<fileset dir="${test-files.dir}" includes="*.sbgn"/>
+		</schemavalidate>
+	</target>
+
+	<target name="schematron-validate-dir">
+		<schematron 
+			schema="${schema}"
+			format="svrl" 
+			failonerror="false"
+			diagnose="yes"
+			generate_paths="false"
+			queryLanguageBinding="xslt2"
+			outputFilename="${output.dir}results.xml"
+		>
+			<fileset dir="${dir}" includes="*.sbgn"/>
+		</schematron>
+	</target>
+
+	<target name="schematron-validate-pd">
+		<antcall target="schematron-validate-dir">
+			<param name="schema" value="${project.dir}rules/sbgn_pd.sch"/>
+			<param name="dir" value="${test-files.dir}/PD"/>
+		</antcall>
+	</target>
+	
+	<target name="schematron-validate-er">
+		<antcall target="schematron-validate-dir">
+			<param name="schema" value="${project.dir}rules/sbgn_er.sch"/>
+			<param name="dir" value="${test-files.dir}/ER"/>
+		</antcall>
+	</target>
+	
+	<target name="schematron-validate" depends="schematron-validate-er, schematron-validate-pd"> 
+	</target>
+</project>

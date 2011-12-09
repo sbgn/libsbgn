@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xmi="http://www.omg.org/XMI" xmlns="http://www.ibm.com/websphere/appserver/schemas/5.0/appdeployment.xmi" targetNamespace="http://www.ibm.com/websphere/appserver/schemas/5.0/appdeployment.xmi" xmlns:classloader="http://www.ibm.com/websphere/appserver/schemas/5.0/classloader.xmi" xmlns:appcfg="http://www.ibm.com/websphere/appserver/schemas/5.0/appcfg.xmi" xmlns:resources.j2c="http://www.ibm.com/websphere/appserver/schemas/5.0/resources.j2c.xmi">
+
+<xsd:import namespace="http://www.omg.org/XMI" schemaLocation="xmi20.xsd"/>
+<xsd:import namespace="http://www.ibm.com/websphere/appserver/schemas/5.0/classloader.xmi" schemaLocation="classloader.xsd"/>
+<xsd:import namespace="http://www.ibm.com/websphere/appserver/schemas/5.0/appcfg.xmi" schemaLocation="appcfg.xsd"/>
+<xsd:import namespace="http://www.ibm.com/websphere/appserver/schemas/5.0/resources.j2c.xmi" schemaLocation="resources.j2c.xsd"/>
+
+<xsd:simpleType name="Boolean">
+  <xsd:restriction base="xsd:string">
+    <xsd:enumeration value="true"/>
+    <xsd:enumeration value="false"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:annotation>
+  <xsd:documentation>PACKAGE: appdeployment</xsd:documentation>
+</xsd:annotation>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: WebModuleDeployment</xsd:documentation>
+  <xsd:documentation>Web Module deployment configuration.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: classloaderMode</xsd:documentation>
+  <xsd:documentation>Use this to specify the order in which classes are loaded for this web module.  (PARENT_LAST==WEB-INF/classes searched first, PARENT_FIRST==WEB-INF/classes serached last.)  PARENT_FIRST is default</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="WebModuleDeployment">
+    <xsd:complexContent>
+        <xsd:extension base="ModuleDeployment">
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="classloaderMode" type="classloader:ClassLoadingMode" nillable="true"/>
+          </xsd:choice>
+          <xsd:attribute name="classloaderMode" type="classloader:ClassLoadingMode" use="optional"/>
+        </xsd:extension>
+    </xsd:complexContent>
+</xsd:complexType>
+
+<xsd:element name="WebModuleDeployment" type="WebModuleDeployment"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: ModuleDeployment</xsd:documentation>
+  <xsd:documentation>Represents a deployment of an enterprise module into a J2EE environment. </xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: uri</xsd:documentation>
+  <xsd:documentation>A uri which when resolved relative to the application URL specifies the location of a module's archive contents on a filesystem.  This uri must match the uri of a ModuleRef uri in an application's deployment descriptor if the module was packaged as part of a deployed application (ear).</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: altDD</xsd:documentation>
+  <xsd:documentation>uri which when resolved relative to the application URL specifies the location of alternate DD for this module. Used only if the module definition found in application DD for this module contains a reference to alternate DD.</xsd:documentation>
+  <xsd:documentation>ASSOCIATION END: applicationDeployment</xsd:documentation>
+  <xsd:documentation>The ApplicationDeployment instance that this ModuleDeployment is contained within. The ApplicationDeployment instance represents deployment of a J2EE application that this module is contained within.</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="ModuleDeployment">
+    <xsd:complexContent>
+        <xsd:extension base="DeployedObject">
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="uri" type="xsd:string" nillable="true"/>
+            <xsd:element name="altDD" type="xsd:string" nillable="true"/>
+            <xsd:element name="applicationDeployment" type="ApplicationDeployment"/>
+          </xsd:choice>
+          <xsd:attribute name="uri" type="xsd:string" use="optional"/>
+          <xsd:attribute name="altDD" type="xsd:string" use="optional"/>
+          <xsd:attribute name="applicationDeployment" type="xsd:IDREFS" use="optional"/>
+        </xsd:extension>
+    </xsd:complexContent>
+</xsd:complexType>
+
+<xsd:element name="ModuleDeployment" type="ModuleDeployment"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: DeployedObject</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="DeployedObject">
+  <xsd:choice minOccurs="0" maxOccurs="unbounded">
+    <xsd:element name="deploymentId" type="xsd:string" nillable="true"/>
+    <xsd:element name="startingWeight" type="xsd:string" nillable="true"/>
+    <xsd:element name="targetMappings" type="DeploymentTargetMapping"/>
+    <xsd:element name="configs" type="appcfg:DeployedObjectConfig"/>
+    <xsd:element ref="xmi:Extension"/>
+  </xsd:choice>
+  <xsd:attribute ref="xmi:id"/>
+  <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  <xsd:attribute name="deploymentId" type="xsd:string" use="optional"/>
+  <xsd:attribute name="startingWeight" type="xsd:string" use="optional"/>
+</xsd:complexType>
+
+<xsd:element name="DeployedObject" type="DeployedObject"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: ApplicationDeployment</xsd:documentation>
+  <xsd:documentation>Application deployment configuration into a WebSphere J2EE environment.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: binariesURL</xsd:documentation>
+  <xsd:documentation>Specifies the location of the application's ear file.  This can be an absolute value such as /opt/MyApps/myapp.ear or a pathmap variable such as ${MY_APPS}/myapp.ear.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: useMetadataFromBinaries</xsd:documentation>
+  <xsd:documentation>Normally, the server will use the bindings, extensions, and deployment descriptors co-located with the appdeployment document, rather than those descriptors which are colocated with the binaries of the application.  When this flag is true, the server will run using the metadata that is in the original binaries.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: enableDistribution</xsd:documentation>
+  <xsd:documentation> Boolean attribute that specifies whether the application should be automatically distributed to other nodes. In single server configuration this attribute specifies if the application binaries are expanded or deleted from install destination (binariesURL) upon installation or uninstallation.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: warClassLoaderPolicy</xsd:documentation>
+  <xsd:documentation>Defines whether there is a single classloader (SINGLE) for all WARs in the application or a classloader per WAR (MULITPLE) in the application.|#</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: createMBeansForResources</xsd:documentation>
+  <xsd:documentation>Defines if MBeans are created for all the resources such as servlets, jsps, EJBs defined in an application when the application is started on a deployment target.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: reloadInterval</xsd:documentation>
+  <xsd:documentation>The timeperiod (in seconds) in which the application's filesystem will be scanned for updated files. |#The reloadInterval attribute on the ApplicationDeployment object in deployment.xml will override the property if it was set in the application's deployment descriptor.|#Valid range is &gt; 0. </xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: reloadEnabled</xsd:documentation>
+  <xsd:documentation>Whether the application's filesystem will be scanned for updated files, so that changes are dynamically reloaded.  The reloadInterval attribute on the ApplicationDeployment object in deployment.xml will overrides the setting in the application's deployment descriptor.</xsd:documentation>
+  <xsd:documentation>ASSOCIATION END: modules</xsd:documentation>
+  <xsd:documentation>The module deployment configuration for each module of an enterprise application.</xsd:documentation>
+  <xsd:documentation>ASSOCIATION END: classloader</xsd:documentation>
+  <xsd:documentation>Classloader configuration for this application deployment.</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="ApplicationDeployment">
+    <xsd:complexContent>
+        <xsd:extension base="DeployedObject">
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="binariesURL" type="xsd:string" nillable="true"/>
+            <xsd:element name="useMetadataFromBinaries" type="Boolean" nillable="true"/>
+            <xsd:element name="enableDistribution" type="Boolean" nillable="true"/>
+            <xsd:element name="warClassLoaderPolicy" type="classloader:ClassLoaderPolicy" nillable="true"/>
+            <xsd:element name="createMBeansForResources" type="Boolean" nillable="true"/>
+            <xsd:element name="reloadInterval" type="xsd:string" nillable="true"/>
+            <xsd:element name="reloadEnabled" type="Boolean" nillable="true"/>
+            <xsd:element name="modules" type="ModuleDeployment"/>
+            <xsd:element name="classloader" type="classloader:Classloader"/>
+          </xsd:choice>
+          <xsd:attribute name="binariesURL" type="xsd:string" use="optional"/>
+          <xsd:attribute name="useMetadataFromBinaries" type="Boolean" use="optional"/>
+          <xsd:attribute name="enableDistribution" type="Boolean" use="optional"/>
+          <xsd:attribute name="warClassLoaderPolicy" type="classloader:ClassLoaderPolicy" use="optional"/>
+          <xsd:attribute name="createMBeansForResources" type="Boolean" use="optional"/>
+          <xsd:attribute name="reloadInterval" type="xsd:string" use="optional"/>
+          <xsd:attribute name="reloadEnabled" type="Boolean" use="optional"/>
+        </xsd:extension>
+    </xsd:complexContent>
+</xsd:complexType>
+
+<xsd:element name="ApplicationDeployment" type="ApplicationDeployment"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: DeploymentTargetMapping</xsd:documentation>
+  <xsd:documentation>The mapping of a deployed object such as an application or module into a server or cluster environment. </xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: enable</xsd:documentation>
+  <xsd:documentation>When enabled, this module will not be loaded on the specified deployment target.</xsd:documentation>
+  <xsd:documentation>ASSOCIATION END: target</xsd:documentation>
+  <xsd:documentation>The target that this deployed object is deployed onto.  </xsd:documentation>
+  <xsd:documentation>ASSOCIATION END: config</xsd:documentation>
+  <xsd:documentation>A configuration definition for the deployed object on a specific deployment target.  This configuration overrides the corresponding default configuration defined in the deployed object. (For example, session management settings defined here override the ones defined in the corresponding server definition).</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="DeploymentTargetMapping">
+  <xsd:choice minOccurs="0" maxOccurs="unbounded">
+    <xsd:element name="enable" type="Boolean" nillable="true"/>
+    <xsd:element name="target" type="DeploymentTarget"/>
+    <xsd:element name="config" type="appcfg:DeployedObjectConfig"/>
+    <xsd:element ref="xmi:Extension"/>
+  </xsd:choice>
+  <xsd:attribute ref="xmi:id"/>
+  <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  <xsd:attribute name="enable" type="Boolean" use="optional"/>
+  <xsd:attribute name="target" type="xsd:IDREFS" use="optional"/>
+  <xsd:attribute name="config" type="xsd:IDREFS" use="optional"/>
+</xsd:complexType>
+
+<xsd:element name="DeploymentTargetMapping" type="DeploymentTargetMapping"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: DeploymentTarget</xsd:documentation>
+  <xsd:documentation>Specifies a server or a cluster where an application module is deployed.</xsd:documentation>
+  <xsd:documentation>ATTRIBUTE: name</xsd:documentation>
+  <xsd:documentation>The name of one of the following:|#  1) An application server |#  2) A cluster |#  3) A cluster member |#</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="DeploymentTarget">
+  <xsd:choice minOccurs="0" maxOccurs="unbounded">
+    <xsd:element name="name" type="xsd:string" nillable="true"/>
+    <xsd:element ref="xmi:Extension"/>
+  </xsd:choice>
+  <xsd:attribute ref="xmi:id"/>
+  <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  <xsd:attribute name="name" type="xsd:string" use="optional"/>
+</xsd:complexType>
+
+<xsd:element name="DeploymentTarget" type="DeploymentTarget"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: ClusteredTarget</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="ClusteredTarget">
+    <xsd:complexContent>
+        <xsd:extension base="DeploymentTarget">
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+          </xsd:choice>
+        </xsd:extension>
+    </xsd:complexContent>
+</xsd:complexType>
+
+<xsd:element name="ClusteredTarget" type="ClusteredTarget"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: ServerTarget</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="ServerTarget">
+    <xsd:complexContent>
+        <xsd:extension base="DeploymentTarget">
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="nodeName" type="xsd:string" nillable="true"/>
+          </xsd:choice>
+          <xsd:attribute name="nodeName" type="xsd:string" use="optional"/>
+        </xsd:extension>
+    </xsd:complexContent>
+</xsd:complexType>
+
+<xsd:element name="ServerTarget" type="ServerTarget"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: Deployment</xsd:documentation>
+  <xsd:documentation>This is a single root level object in deployment.xml generated as a part of application installation process.</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="Deployment">
+  <xsd:choice minOccurs="0" maxOccurs="unbounded">
+    <xsd:element name="deploymentTargets" type="DeploymentTarget"/>
+    <xsd:element name="deployedObject" type="DeployedObject"/>
+    <xsd:element ref="xmi:Extension"/>
+  </xsd:choice>
+  <xsd:attribute ref="xmi:id"/>
+  <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+</xsd:complexType>
+
+<xsd:element name="Deployment" type="Deployment"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: EJBModuleDeployment</xsd:documentation>
+  <xsd:documentation>EJB module deployment configuration.</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="EJBModuleDeployment">
+    <xsd:complexContent>
+        <xsd:extension base="ModuleDeployment">
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+          </xsd:choice>
+        </xsd:extension>
+    </xsd:complexContent>
+</xsd:complexType>
+
+<xsd:element name="EJBModuleDeployment" type="EJBModuleDeployment"/>
+
+<xsd:annotation>
+  <xsd:documentation>CLASS: ConnectorModuleDeployment</xsd:documentation>
+  <xsd:documentation>Connector module deployment configuration.</xsd:documentation>
+  <xsd:documentation>ASSOCIATION END: resourceAdapter</xsd:documentation>
+  <xsd:documentation>JCA Connector module deployment configuration.</xsd:documentation>
+</xsd:annotation>
+
+<xsd:complexType name="ConnectorModuleDeployment">
+    <xsd:complexContent>
+        <xsd:extension base="ModuleDeployment">
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="resourceAdapter" type="resources.j2c:J2CResourceAdapter"/>
+          </xsd:choice>
+        </xsd:extension>
+    </xsd:complexContent>
+</xsd:complexType>
+
+<xsd:element name="ConnectorModuleDeployment" type="ConnectorModuleDeployment"/>
+
+<xsd:element name="appdeployment">
+  <xsd:complexType>
+    <xsd:choice minOccurs="0" maxOccurs="unbounded">
+      <xsd:element ref="WebModuleDeployment"/>
+      <xsd:element ref="ModuleDeployment"/>
+      <xsd:element ref="DeployedObject"/>
+      <xsd:element ref="ApplicationDeployment"/>
+      <xsd:element ref="DeploymentTargetMapping"/>
+      <xsd:element ref="DeploymentTarget"/>
+      <xsd:element ref="ClusteredTarget"/>
+      <xsd:element ref="ServerTarget"/>
+      <xsd:element ref="Deployment"/>
+      <xsd:element ref="EJBModuleDeployment"/>
+      <xsd:element ref="ConnectorModuleDeployment"/>
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+  </xsd:complexType>
+</xsd:element>
+
+</xsd:schema>

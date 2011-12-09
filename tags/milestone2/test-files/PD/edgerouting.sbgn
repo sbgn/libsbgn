@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbgn xmlns="http://sbgn.org/libsbgn/0.2">
+  <map language="process description">
+	<glyph class="simple chemical" id="glyph1">
+		<label text="Ethanol"/> <!-- fontsize="" etc -->
+		<!-- Line breaks are allowed in the text attribute -->
+		<bbox x="90" y="240" w="60" h="60"/>
+	</glyph>
+	
+	<glyph class="simple chemical" id="glyph2">
+		<label text="NADH" />
+		<bbox x="290" y="150" w="60" h="60"/>
+	</glyph>
+	
+	<glyph class="macromolecule" id="glyph3">
+		<label text="ADH1" />
+		<bbox x="196" y="80" w="108" h="60"/>
+	</glyph>
+	
+	<glyph class="process" orientation="horizontal" id="pn1">
+		<bbox x="148" y="168" w="24" h="24"/>
+		<port x="136" y="180" id="pn1.1"/>
+		<port x="184" y="180" id="pn1.2"/>
+	</glyph>
+
+	<arc class="consumption" source="glyph1" target="pn1.1" id="a01">
+		<start x="90" y="270" />
+		<next x="70" y="270"/>
+		<next x="70" y="180"/>
+		<end x="136" y="180" />
+	</arc>
+
+	<arc class="catalysis" source="glyph3" target="pn1" id="a02">
+		<start x="250" y="80" />
+		<next x="250" y="50"/>
+		<next x="160" y="50"/>
+		<end x="160" y="168" />		
+	</arc>
+
+	<arc class="production" source="pn1.2" target="glyph2" id="a03">
+		<start x="184" y="180" />
+		<next x="190" y="180"/>
+		<next x="190" y="240"/>
+		<next x="240" y="240"/>
+		<next x="240" y="180"/>
+		<end x="290" y="180" />
+	</arc>
+  </map>
+</sbgn>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<sbgn xmlns="http://sbgn.org/libsbgn/0.2">
+    <map language="process description">
+        <glyph id="glyph0" class="macromolecule">
+            <label text="greek letter alpha: α"/>
+            <bbox y="20.0" x="20.0" h="60.0" w="140.0"/>
+        </glyph>
+    </map>
+</sbgn>

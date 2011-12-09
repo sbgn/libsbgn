@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbgn xmlns="http://sbgn.org/libsbgn/0.2">
+<map language="entity relationship">
+
+	<glyph class="entity" id="g1">
+		<label text="A" />
+		<bbox x="16" y="150" w="108" h="60" />
+	</glyph>
+
+	<glyph class="entity" id="g2">
+		<label text="B" />
+		<bbox x="296" y="150" w="108" h="60" />
+	</glyph>
+
+	<glyph class="phenotype" id="g4">
+		<label text="phenotype X" />
+		<bbox x="176" y="250" w="108" h="60" />
+	</glyph>
+	
+	<arc class="stimulation" source="g3_1" target="g4" id="a1">
+		<start x="230" y="207" />
+		<end x="230" y="250" />
+	</arc>	
+
+	<arcgroup class="interaction">
+	
+		<glyph class="interaction" id="g3">
+			<bbox x="209" y="159" w="42" h="42" />
+			<glyph class="outcome" id="g3_1">
+				<bbox x="224" y="195" w="12" h="12" />
+			</glyph>
+		</glyph>
+
+		<arc class="interaction" source="g3" target="g1" id="a2">
+			<glyph class="cardinality" id="g5">
+				<label text="2" />
+				<bbox x="162" y="172" w="20" h="15" />
+			</glyph>
+			<start x="209" y="180" />
+			<end x="124" y="180" />
+		</arc>
+
+		<arc class="interaction" source="g3" target="g2" id="a3">
+			<start x="251" y="180" />
+			<end x="296" y="180" />
+		</arc>
+	
+	</arcgroup>
+
+</map>
+</sbgn>

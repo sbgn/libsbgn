@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbgn xmlns="http://sbgn.org/libsbgn/0.2">
+<map language="entity relationship">
+	<glyph class="entity" id="g1">
+		<label text="A" />
+		<bbox x="16" y="20" w="108" h="60" />
+	</glyph>
+
+	<glyph class="entity" id="g2">
+		<label text="B" />
+		<bbox x="296" y="20" w="108" h="60" />
+	</glyph>
+
+	<arcgroup class="interaction">
+	
+		<glyph class="interaction" id="g3">
+			<bbox x="189" y="29" w="42" h="42" />
+		</glyph>
+
+		<arc class="interaction" source="g3" target="g1" id="a1">
+			<start x="189" y="50" />
+			<end x="124" y="50" />
+		</arc>
+
+		<arc class="interaction" source="g3" target="g2" id="a2">
+			<start x="231" y="50" />
+			<end x="296" y="50" />
+		</arc>
+
+	</arcgroup>
+	
+</map>
+</sbgn>

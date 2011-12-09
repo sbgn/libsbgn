@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbgn xmlns="http://sbgn.org/libsbgn/0.2">
+	<map language="activity flow">
+	
+		<glyph class="biological activity" id="g1">
+			<label text="A"/>
+			<bbox x="16" y="20" w="108" h="40"/>
+		</glyph>
+		
+		<glyph class="biological activity" id="g2">
+			<label text="B"/>
+			<bbox x="16" y="130" w="108" h="40"/>
+		</glyph>
+		
+		<arc class="unknown influence" source="g1" target="g2" id="a1">
+			<start x="70" y="60" />
+			<end x="70" y="130" />
+		</arc>
+
+	</map>
+</sbgn>

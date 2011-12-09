@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbgn xmlns="http://sbgn.org/libsbgn/0.2">
+<map language="entity relationship">
+	<glyph class="entity" id="g1">
+		<label text="A" />
+		<bbox x="16" y="100" w="108" h="60" />
+	</glyph>
+
+	<glyph class="entity" id="g2">
+		<label text="B" />
+		<bbox x="296" y="50" w="108" h="60" />
+	</glyph>
+
+	<glyph class="entity" id="g3">
+		<label text="C" />
+		<bbox x="296" y="150" w="108" h="60" />
+	</glyph>
+
+	<glyph class="perturbing agent" id="g5">
+		<label text="Heat" />
+		<bbox x="156" y="10" w="108" h="60" />
+	</glyph>
+
+	<glyph class="phenotype" id="g6">
+		<label text="phenotype X" />
+		<bbox x="156" y="200" w="108" h="60" />
+	</glyph>
+
+	<arc class="absolute inhibition" source="g5" target="g4_2" id="a1">
+		<start x="210" y="70" />
+		<end x="210" y="104" />
+	</arc>	
+	
+	<arc class="stimulation" source="g4_1" target="g6" id="a2">
+		<start x="210" y="157" />
+		<end x="210" y="200" />
+	</arc>	
+	
+	<arcgroup class="interaction">
+
+		<glyph class="interaction" id="g4">
+			<bbox x="189" y="109" w="42" h="42" />
+			<glyph class="outcome" id="g4_1">
+				<bbox x="204" y="145" w="12" h="12" />
+			</glyph>
+			<port x="210" y="109" id="g4_2" />
+		</glyph>
+
+		<arc class="interaction" source="g4" target="g3" id="a3">
+			<start x="230" y="137" />
+			<end x="296" y="161" />
+		</arc>
+
+		<arc class="interaction" source="g4" target="g1" id="a4">
+			<start x="189" y="130" />
+			<end x="124" y="130" />
+		</arc>
+
+		<arc class="interaction" source="g4" target="g2" id="a5">
+			<start x="230" y="123" />
+			<end x="296" y="99" />
+		</arc>
+		
+	</arcgroup>
+	
+</map>
+</sbgn>

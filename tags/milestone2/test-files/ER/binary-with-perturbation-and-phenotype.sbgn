@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbgn xmlns="http://sbgn.org/libsbgn/0.2">
+<map language="entity relationship">
+	<glyph class="entity" id="g1">
+		<label text="A" />
+		<bbox x="26" y="100" w="108" h="60" />
+	</glyph>
+
+	<glyph class="entity" id="g2">
+		<label text="B" />
+		<bbox x="296" y="100" w="108" h="60" />
+	</glyph>
+
+	<glyph class="perturbing agent" id="g3">
+		<label text="Heat" />
+		<bbox x="186" y="10" w="108" h="60" />
+	</glyph>
+
+	<glyph class="phenotype" id="g4">
+		<label text="Phenotype X" />
+		<bbox x="126" y="190" w="108" h="60" />
+	</glyph>
+
+	<arc class="interaction" source="g1" target="g2" id="a1">
+		<glyph class="outcome" id="g5">
+			<bbox x="174" y="124" w="12" h="12" />
+		</glyph>
+		<port x="240" y="130" id="g6" />
+		<start x="134" y="130" />
+		<end x="296" y="130" />
+	</arc>
+
+	<arc class="absolute inhibition" source="g3" target="g6" id="a2">
+		<start x="240" y="70" />
+		<end x="240" y="125" />
+	</arc>
+
+	<arc class="stimulation" source="g5" target="g4" id="a3">
+		<start x="180" y="136" />
+		<end x="180" y="190" />
+	</arc>
+
+</map>
+</sbgn>

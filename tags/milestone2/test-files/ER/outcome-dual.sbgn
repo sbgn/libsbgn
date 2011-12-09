@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbgn xmlns="http://sbgn.org/libsbgn/0.2">
+<map language="entity relationship">
+	<glyph id="id1" class="entity">
+		<label text="Sense"/>
+		<bbox x="135" y="20" w="110" h="60"/>
+		<glyph id="id1_1" class="unit of information">
+			<label text="mt:dna"/>
+			<bbox x="166" y="10" w="47" h="15"/>
+		</glyph>
+	</glyph>
+
+	<glyph id="id2" class="entity">
+		<label text="3' primer"/>
+		<bbox x="135" y="220" w="110" h="60"/>
+		<glyph id="id2_1" class="unit of information">
+			<label text="mt:dna"/>
+			<bbox x="166" y="272" w="47" h="15"/>
+		</glyph>
+	</glyph>
+
+	<glyph id="id3" class="phenotype">
+		<label text="Phenotype A"/>
+		<bbox x="275" y="100" w="110" h="60"/>
+	</glyph>
+
+	<glyph id="id4" class="phenotype">
+		<label text="Phenotype B"/>
+		<bbox x="5" y="140" w="110" h="60"/>
+	</glyph>
+
+	<arc source="id1" target="id2" class="interaction" id="a1">
+		<glyph id="id5" class="outcome">
+			<bbox x="180" y="120" w="16" h="16"/>
+		</glyph>
+		<glyph id="id6" class="outcome">
+			<bbox x="180" y="160" w="16" h="16"/>
+		</glyph>
+		<start x="188" y="80"/>
+		<end x="188" y="220"/>
+	</arc>
+
+	<arc source="id5" target="id3" class="modulation" id="a2">
+		<start x="196" y="128"/>
+		<end x="275" y="128"/>
+	</arc>
+
+	<arc source="id6" target="id4" class="inhibition" id="a3">
+		<start x="180" y="168"/>
+		<end x="120" y="168"/>
+	</arc>
+</map>
+</sbgn>
