@@ -1,5 +1,5 @@
 DISCLAIMER: WORK IN PROGRESS
-The system was successfully built and tested on MacOSX Lion
+The system was successfully built and tested on MacOSX Lion and Ubuntu 11.04
 
 TODO:
 - streamline the automatic building process for all supported systems
@@ -28,6 +28,9 @@ Tools to generate the binder: makefile, and a local installation of the XSD conv
 * How to (re)build the binder? *
 ********************************
 
+Instructions for Windows / Mac OS X:
+====================================
+
 sbgn.hxx and sbgn.cxx are generated automatically from SBGN.xsd.
 To stay up-to-date with the latest specifications, these files should be rebuilt whenever the xsd is modified.
 
@@ -52,6 +55,33 @@ Step 2
 - Modify the configuration section of the makefile to suitable file locations (documented in makefile itself).
 
 - Use "make" to update the binder against the latest version of the XSD, and run tests against all the test files.
+
+Instructions for Linux
+======================
+
+The instructions for linux are similar to above, but:
+- we need to make sure libxerces is installed properly
+- The xsd tool will be installed in the standard locations (/usr/bin, /usr/include etc.) automatically
+
+Step 0
+++++++
+
+Download and install appropriate deb from here:
+http://www.codesynthesis.com/products/xsd/download.xhtml
+
+Step 1
+++++++
+
+# install the header files for libxerces
+sudo apt-get install libxerces-c2-dev
+
+Step 2
+++++++
+
+Run make, overriding the XSD_BASE variable
+make XSD_BASE=/usr
+
+
 
 ****************************
 * How to reuse the binder? *
