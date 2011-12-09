@@ -9,16 +9,16 @@
             <label text="B"/>
             <bbox w="108.0" h="60.0" x="386.0" y="10.0"/>
         </glyph>
-        <glyph class="process" id="glyph3">
+        <glyph class="and" id="glyph3">
+            <label text="AND"/>
             <bbox w="42.0" h="42.0" x="249.0" y="79.0"/>
-            <port id="glyph3.1" x="270.0" y="100.0"/>
             <port id="glyph3.2" x="312.0" y="100.0"/>
         </glyph>
         <glyph class="biological activity" id="glyph1">
             <label text="C"/>
             <bbox w="108.0" h="60.0" x="386.0" y="130.0"/>
         </glyph>
-        <arc class="positive influence" id="f99c1" source="glyph3.1" target="glyph0">
+        <arc class="positive influence" id="f99c1" source="glyph3" target="glyph0">
             <start x="249.0" y="100.0"/>
             <end x="164.0" y="100.0"/>
         </arc>

@@ -22,12 +22,14 @@ Schematron validation for SBGN AF
 		<iso:active pattern="00001"/>
 		<iso:active pattern="00002"/>
 		<iso:active pattern="af10101"/>
+		<iso:active pattern="af10102"/>
 		<iso:active pattern="af10103"/>
-		<iso:active pattern="af10105"/>
-		<iso:active pattern="af10107"/>
+		<iso:active pattern="af10104"/>
 		<iso:active pattern="af10109"/>
+		<iso:active pattern="af10110"/>
 		<iso:active pattern="af10111"/>
 		<iso:active pattern="af10112"/>
+		<iso:active pattern="af10113"/>
 	</iso:phase>
 
 	<iso:pattern id="00000">
@@ -57,12 +59,11 @@ Schematron validation for SBGN AF
 	</iso:pattern> 
 
 	<iso:pattern id="af10101">
-		<iso:rule context="sbgn:arc[@class='positive influence']">
+		<iso:rule context="sbgn:arc[(@class='positive influence') or (@class='negative influence') or 
+			(@class='unknown influence') or (@class='necessary stimulation')]">
 			<iso:let name="id" value="@id"/>
 			<iso:let name="source" value="@source"/>			
 			<iso:let name="source-class" value="//sbgn:glyph[@id=$source]/@class"/>			
-			<iso:let name="target" value="@target"/>			
-			<iso:let name="target-class" value="//sbgn:glyph[@id=$target]/@class"/>				
 			<iso:let name="port-class" value="//sbgn:port[@id=$source]/../@class"/>				
 			<iso:assert 
 				id="af10101"
@@ -76,8 +77,17 @@ Schematron validation for SBGN AF
 				$port-class='or' or 	
 				$port-class='not' or 
 				$port-class='delay'"
-				diagnostics="id source source-class port-class">Incorrect source reference for arc with class "positive influence"
+				diagnostics="id source source-class port-class">Incorrect source reference for influence arc
 			</iso:assert>
+		</iso:rule> 
+	</iso:pattern> 
+	<iso:pattern id="af10102">
+		<iso:rule context="sbgn:arc[(@class='positive influence') or (@class='negative influence') or 
+			(@class='unknown influence') or (@class='necessary stimulation')]">		
+			<iso:let name="id" value="@id"/>
+			<iso:let name="target" value="@target"/>			
+			<iso:let name="target-class" value="//sbgn:glyph[@id=$target]/@class"/>				
+			<iso:let name="port-class" value="//sbgn:port[@id=$target]/../@class"/>				
 			<iso:assert
 				id="af10102"
 				name="check-positive-influence-target-class"
@@ -86,124 +96,67 @@ Schematron validation for SBGN AF
 				test="
 				$target-class='biological activity' or 
 				$target-class='phenotype'" 
-				diagnostics="id target target-class port-class">Incorrect target reference for arc with class "positive influence"
+				diagnostics="id target target-class port-class">Incorrect target reference for influence arc
 			</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
 
+
 	<iso:pattern id="af10103">
-		<iso:rule context="sbgn:arc[@class='negative influence']">
+		<iso:rule context="sbgn:arc">
 			<iso:let name="id" value="@id"/>
-			<iso:let name="source" value="@source"/>			
-			<iso:let name="source-class" value="//sbgn:glyph[@id=$source]/@class"/>
-			<iso:let name="target" value="@target"/>			
-			<iso:let name="target-class" value="//sbgn:glyph[@id=$target]/@class"/>				
-			<iso:let name="port-class" value="//sbgn:port[@id=$source]/../@class"/>				
+			<iso:let name="class" value="@class"/>			
 			<iso:assert 
 				id="af10103"
-				name="check-negative-influence-source-class"
+				name="check-arc-class"
 				role="error"
-				see="sbgn-af-L1V1.0-3.3.1"				
+				see="sbgn-af-L1V1..."
 				test="
-				$source-class='biological activity' or 
-				$source-class='perturbation' or
-				$port-class='and' or 
-				$port-class='or' or 	
-				$port-class='not' or 
-				$port-class='delay'" 
-				diagnostics="id source source-class port-class">Incorrect source reference for arc with class "negative influence"
+				$class='logic arc' or 
+				$class='equivalence arc' or 
+				$class='positive influence' or
+				$class='negative influence' or
+				$class='necessary stimulation' or
+				$class='unknown influence'
+				"
+				diagnostics="id class">This arc class is not allowed in Activity Flow
 			</iso:assert>
+		</iso:rule> 
+	</iso:pattern> 
+
+	<iso:pattern id="af10104">
+		<iso:rule context="sbgn:glyph">
+			<iso:let name="id" value="@id"/>
+			<iso:let name="class" value="@class"/>			
 			<iso:assert 
 				id="af10104"
-				name="check-negative-influence-target-class"
+				name="check-glyph-class"
 				role="error"
-				see="sbgn-af-L1V1.0-3.3.1"				
+				see="sbgn-af-L1V1..."
 				test="
-				$target-class='biological activity' or 
-				$target-class='phenotype'" 
-				diagnostics="id target target-class port-class">Incorrect target reference for arc with class "negative influence"
+				$class='biological activity' or 
+				$class='and' or 
+				$class='or' or
+				$class='not' or
+				$class='delay' or
+				$class='tag' or
+				$class='submap' or
+				$class='terminal' or
+				$class='unit of information' or
+				$class='compartment' or
+				$class='perturbation' or
+				$class='phenotype'
+				"
+				diagnostics="id class">This glyph class is not allowed in Activity Flow
 			</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
-	
-	<iso:pattern id="af10105">
-		<iso:rule context="sbgn:arc[@class='unknown influence']">
-			<iso:let name="id" value="@id"/>
-			<iso:let name="source" value="@source"/>			
-			<iso:let name="source-class" value="//sbgn:glyph[@id=$source]/@class"/>	
-			<iso:let name="target" value="@target"/>			
-			<iso:let name="target-class" value="//sbgn:glyph[@id=$target]/@class"/>				
-			<iso:let name="port-class" value="//sbgn:port[@id=$source]/../@class"/>		
-			<iso:assert 
-				id="af10105"
-				name="check-unknown-influence-source-class"
-				role="error"
-				see="sbgn-af-L1V1.0-3.3.1"				
-				test="
-				$source-class='biological activity' or 
-				$source-class='perturbation' or
-				$port-class='and' or 
-				$port-class='or' or 	
-				$port-class='not' or 
-				$port-class='delay'" 
-				diagnostics="id source source-class port-class">Incorrect source reference for arc with class "unknown influence"
-			</iso:assert>
-			<iso:assert 
-				id="af10106"
-				name="check-unknown-influence-target-class"
-				role="error"
-				see="sbgn-af-L1V1.0-3.3.1"				
-				test="
-				$target-class='biological activity' or 
-				$target-class='phenotype'" 
-				diagnostics="id target target-class">Incorrect target reference for arc with class "unknown influence"
-			</iso:assert>
-		</iso:rule> 
-	</iso:pattern> 
-	
-	<iso:pattern id="af10107">
-		<iso:rule context="sbgn:arc[@class='necessary stimulation']">
-			<iso:let name="id" value="@id"/>
-			<iso:let name="source" value="@source"/>			
-			<iso:let name="source-class" value="//sbgn:glyph[@id=$source]/@class"/>	
-			<iso:let name="target" value="@target"/>			
-			<iso:let name="target-class" value="//sbgn:glyph[@id=$target]/@class"/>	
-			<iso:let name="port-class" value="//sbgn:port[@id=$source]/../@class"/>					
-			<iso:assert 
-				id="af10107"
-				name="check-necessary-stimulation-source-class"
-				role="error"
-				see="sbgn-af-L1V1.0-3.3.1"				
-				test="
-				$source-class='biological activity' or 
-				$source-class='perturbation' or
-				$port-class='and' or 
-				$port-class='or' or 	
-				$port-class='not' or 
-				$port-class='delay'" 
-				diagnostics="id source source-class port-class">Incorrect source reference for arc with class "necessary stimulation"
-			</iso:assert>
-			<iso:assert 
-				id="af10108"
-				name="check-necessary-stimulation-target-class"
-				role="error"
-				see="sbgn-af-L1V1.0-3.3.1"				
-				test="
-				$target-class='biological activity' or 
-				$target-class='phenotype'" 
-				diagnostics="id target target-class">Incorrect target reference for arc with class "necessary stimulation"
-			</iso:assert>
-		</iso:rule> 
-	</iso:pattern> 
-	
+
 	<iso:pattern id="af10109">
 		<iso:rule context="sbgn:arc[@class='logic arc']">
 			<iso:let name="id" value="@id"/>
 			<iso:let name="source" value="@source"/>			
 			<iso:let name="source-class" value="//sbgn:glyph[@id=$source]/@class"/>	
-			<iso:let name="target" value="@target"/>			
-			<iso:let name="target-class" value="//sbgn:glyph[@id=$target]/@class"/>	
-			<iso:let name="port-class" value="//sbgn:port[@id=$target]/../@class"/>		
 			<iso:assert 
 				id="af10109"
 				name="check-logic-arc-source-class"
@@ -213,6 +166,15 @@ Schematron validation for SBGN AF
 				$source-class='biological activity'" 
 				diagnostics="id source source-class">Incorrect source reference for arc with class "logic arc"
 			</iso:assert>
+		</iso:rule> 
+	</iso:pattern> 
+
+	<iso:pattern id="af10110">
+		<iso:rule context="sbgn:arc[@class='logic arc']">
+			<iso:let name="id" value="@id"/>
+			<iso:let name="target" value="@target"/>			
+			<iso:let name="target-class" value="//sbgn:glyph[@id=$target]/@class"/>	
+			<iso:let name="port-class" value="//sbgn:port[@id=$target]/../@class"/>		
 			<iso:assert 
 				id="af10110"
 				name="check-logic-arc-target-class"
@@ -228,6 +190,7 @@ Schematron validation for SBGN AF
 		</iso:rule> 
 	</iso:pattern> 
 	<!-- Limited Number Rules -->
+
 	<iso:pattern id="af10111">
 		<iso:rule context="sbgn:glyph[@class='not']">
 			<iso:let name="id" value="@id"/>
@@ -249,8 +212,6 @@ Schematron validation for SBGN AF
 			<iso:let name="id" value="@id"/>
 			<iso:let name="source" value="@source"/>			
 			<iso:let name="source-class" value="//sbgn:glyph[@id=$source]/@class"/>	
-			<iso:let name="target" value="@target"/>			
-			<iso:let name="target-class" value="//sbgn:glyph[@id=$target]/@class"/>	
 			<iso:assert 
 				id="af10112"
 				name="check-equivalence-arc-source-class"
@@ -261,6 +222,13 @@ Schematron validation for SBGN AF
 				$source-class='compartment'" 
 				diagnostics="id source source-class">Incorrect source reference for arc with class "equivalence arc"
 			</iso:assert>
+		</iso:rule> 
+	</iso:pattern> 
+	<iso:pattern id="af10113">
+		<iso:rule context="sbgn:arc[@class='equivalence arc']">
+			<iso:let name="id" value="@id"/>
+			<iso:let name="target" value="@target"/>			
+			<iso:let name="target-class" value="//sbgn:glyph[@id=$target]/@class"/>	
 			<iso:assert 
 				id="af10113"
 				name="check-equivalence-arc-target-class"
@@ -274,7 +242,7 @@ Schematron validation for SBGN AF
 			</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
-	
+
 	<iso:diagnostics>
 		<iso:diagnostic id="id"><iso:value-of select="$id"/></iso:diagnostic> 		
 		<iso:diagnostic id="port-id"><iso:value-of select="$port-id"/></iso:diagnostic> 				
