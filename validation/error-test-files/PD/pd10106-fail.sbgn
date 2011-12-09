@@ -19,9 +19,9 @@
 		<start x="98" y="160" />
 		<end x="136" y="180" />
 	</arc>	
-	<arc class="production" source="pn1.2" target="glyph_ethanal" id="a05">
-		<start x="184" y="180" />			
-		<end x="224" y="154" />
+	<arc class="production" source="glyph_ethanal" target="pn1.2" id="a05">
+		<start x="224" y="154" />
+		<end x="184" y="180" />			
 	</arc>
   </map>
 </sbgn>

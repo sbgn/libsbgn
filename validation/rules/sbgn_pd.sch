@@ -35,17 +35,6 @@ Schematron validation for SBGN PD
 		<iso:active pattern="pd10109"/>
 		<iso:active pattern="pd10110"/>
 		<iso:active pattern="pd10111"/>
-		<iso:active pattern="pd10112"/>
-		<iso:active pattern="pd10113"/>
-
-		<iso:active pattern="pd10115"/>
-		<iso:active pattern="pd10116"/>
-
-		<iso:active pattern="pd10118"/>
-		<iso:active pattern="pd10119"/>
-
-		<iso:active pattern="pd10121"/>
-		<iso:active pattern="pd10122"/>
 
 		<iso:active pattern="pd10124"/>
 		<iso:active pattern="pd10125"/>
@@ -108,7 +97,7 @@ Schematron validation for SBGN PD
 				$class='simple chemical multimer' or 
 				$class='nucleic acid feature multimer' or 
 				$class='source and sink'" 
-				diagnostics="id source class">Arc with class consumption must have source reference to glyph of EPN classes and target reference to port on glyph of PN classes
+				diagnostics="id source class">Arc with class consumption must have source reference to glyph of EPN classes
 			</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
@@ -129,7 +118,7 @@ Schematron validation for SBGN PD
 				$port-class='association' or
 				$port-class='dissociation' or
 				$port-class='phenotype'" 
-				diagnostics="id target port-class">Arc with class consumption must have target reference to port on glyph with PN classes and source reference to glyph of EPN classes
+				diagnostics="id target port-class">Arc with class consumption must have target reference to port on glyph with PN classes
 			</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
@@ -243,7 +232,8 @@ Schematron validation for SBGN PD
 	</iso:pattern> 
 
 	<iso:pattern id="pd10109">
-		<iso:rule context="sbgn:arc[@class='modulation']">
+		<iso:rule context="sbgn:arc[(@class='modulation') or (@class='stimulation') or
+			(@class='catalysis') or (@class='inhibition') or (@class='necessary stimulation')]">
 			<iso:let name="id" value="@id"/>
 			<iso:let name="source" value="@source"/>			
 			<iso:let name="class" value="//sbgn:glyph[@id=$source]/@class"/>	
@@ -267,12 +257,13 @@ Schematron validation for SBGN PD
 				$port-class='and' or 
 				$port-class='or' or 
 				$port-class='not')" 
-				diagnostics="id source port-class class">Arc with class modulation must have source reference to glyph of EPN classes or a logical operator
+				diagnostics="id source port-class class">Influence arc must have source reference to glyph of EPN classes or a logical operator
 			</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
 	<iso:pattern id="pd10110">
-		<iso:rule context="sbgn:arc[@class='modulation']">
+		<iso:rule context="sbgn:arc[(@class='modulation') or (@class='stimulation') or
+			(@class='catalysis') or (@class='inhibition') or (@class='necessary stimulation')]">
 			<iso:let name="id" value="@id"/>			
 			<iso:let name="target" value="@target"/>			
 			<iso:let name="target-class" value="//sbgn:glyph[@id=$target]/@class"/>	
@@ -286,7 +277,7 @@ Schematron validation for SBGN PD
 				$target-class='omitted process' or
 				$target-class='uncertain process' or
 				$target-class='phenotype'" 
-				diagnostics="id target target-class">Arc with class modulation must have target reference to PN classes
+				diagnostics="id target target-class">Influence arc must have target reference to PN classes
 			</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
@@ -305,207 +296,6 @@ Schematron validation for SBGN PD
 				diagnostics="id port-id count">'and', 'or', and 'not' glyphs must be the source for exactly one arc. 
 			</iso:assert>
 		</iso:rule>
-	</iso:pattern> 
-
-	<iso:pattern id="pd10112">
-		<iso:rule context="sbgn:arc[@class='stimulation']">
-			<iso:let name="id" value="@id"/>			
-			<iso:let name="source" value="@source"/>			
-			<iso:let name="class" value="//sbgn:glyph[@id=$source]/@class"/>	
-			<iso:let name="port-class" value="//sbgn:port[@id=$source]/../@class"/>	
-			<iso:assert 
-				id="pd10112"
-				name="check-stimulation-source-class"
-				role="error"
-				see="sbgn-pd-L1V1.3-3.4.1"				
-				test="(
-				$class='unspecified entity' or 
-				$class='simple chemical' or
-				$class='macromolecule' or 
-				$class='macromolecule multimer' or
-				$class='nucleic acid feature' or 
-				$class='simple chemical multimer' or 
-				$class='nucleic acid feature multimer' or 
-				$class='complex' or 
-				$class='complex multimer' or 				
-				$class='perturbing agent') or (
-				$port-class='and' or 
-				$port-class='or' or 
-				$port-class='not')" 				
-				diagnostics="id source port-class class">Arc with class stimulation must have source reference to glyph of EPN classes or a logical operator and target reference to port on glyph of PN classes
-			</iso:assert>
-		</iso:rule> 
-	</iso:pattern> 
-	<iso:pattern id="pd10113">
-		<iso:rule context="sbgn:arc[@class='stimulation']">
-			<iso:let name="id" value="@id"/>			
-			<iso:let name="target" value="@target"/>			
-			<iso:let name="target-class" value="//sbgn:glyph[@id=$target]/@class"/>	
-			<iso:assert 
-				id="pd10113"
-				name="check-stimulation-target-class"
-				role="error"
-				see="sbgn-pd-L1V1.3-3.4.1"				
-				test="
-				$target-class='process' or 
-				$target-class='omitted process' or
-				$target-class='uncertain process' or
-				$target-class='association' or
-				$target-class='dissociation' or
-				$target-class='phenotype'" 
-				diagnostics="id target target-class">Arc with class stimulation must have target reference to glyph with PN classes
-			</iso:assert>
-		</iso:rule> 
-	</iso:pattern> 
-
-	<iso:pattern id="pd10115">
-		<iso:rule context="sbgn:arc[@class='catalysis']">
-			<iso:let name="id" value="@id"/>			
-			<iso:let name="source" value="@source"/>			
-			<iso:let name="class" value="//sbgn:glyph[@id=$source]/@class"/>	
-			<iso:let name="port-class" value="//sbgn:port[@id=$source]/../@class"/>				
-			<iso:assert 
-				id="pd10115"
-				name="check-catalysis-source-class"
-				role="error"
-				see="sbgn-pd-L1V1.3-3.4.1"				
-				test="(
-				$class='unspecified entity' or 
-				$class='simple chemical' or
-				$class='macromolecule' or 
-				$class='macromolecule multimer' or
-				$class='simple chemical multimer' or 
-				$class='complex' or 
-				$class='complex multimer') or (
-				$port-class='and' or
-				$port-class='or' or 
-				$port-class='not')" 
-				diagnostics="id source port-class class">Arc with class catalysis must have source reference to glyph of EPN classes or a logical operator and target reference to port on glyph of PN classes
-			</iso:assert>
-		</iso:rule> 
-	</iso:pattern> 
-	<iso:pattern id="pd10116">
-		<iso:rule context="sbgn:arc[@class='catalysis']">
-			<iso:let name="id" value="@id"/>			
-			<iso:let name="target" value="@target"/>			
-			<iso:let name="target-class" value="//sbgn:glyph[@id=$target]/@class"/>				
-			<iso:assert 
-				id="pd10116"
-				name="check-catalysis-target-class"
-				role="error"
-				see="sbgn-pd-L1V1.3-3.4.1"				
-				test="
-				$target-class='process' or 
-				$target-class='omitted process' or
-				$target-class='uncertain process' or
-				$target-class='association' or
-				$target-class='dissociation' or
-				$target-class='phenotype'" 
-				diagnostics="id target">Arc with class catalysis must have target reference to glyph with PN classes
-			</iso:assert>
-		</iso:rule> 
-	</iso:pattern> 
-
-	<iso:pattern id="pd10118">
-		<iso:rule context="sbgn:arc[@class='inhibition']">
-			<iso:let name="id" value="@id"/>			
-			<iso:let name="source" value="@source"/>			
-			<iso:let name="class" value="//sbgn:glyph[@id=$source]/@class"/>
-			<iso:let name="port-class" value="//sbgn:port[@id=$source]/../@class"/>				
-			<iso:assert 
-				id="pd10118"
-				name="check-inhibition-source-class"
-				role="error"
-				see="sbgn-pd-L1V1.3-3.4.1"				
-				test="(
-				$class='unspecified entity' or 
-				$class='simple chemical' or
-				$class='macromolecule' or 
-				$class='macromolecule multimer' or
-				$class='nucleic acid feature' or 
-				$class='simple chemical multimer' or 
-				$class='nucleic acid feature multimer' or 
-				$class='complex' or 
-				$class='complex multimer' or 				
-				$class='perturbing agent') or (
-				$port-class='and' or
-				$port-class='or' or 
-				$port-class='not')" 
-				diagnostics="id source port-class class">Arc with class inhibition must have source reference to glyph of EPN classes or a logical operator and target reference to port on glyph of PN classes
-			</iso:assert>
-		</iso:rule> 
-	</iso:pattern> 
-	<iso:pattern id="pd10119">
-		<iso:rule context="sbgn:arc[@class='inhibition']">
-			<iso:let name="id" value="@id"/>
-			<iso:let name="target" value="@target"/>			
-			<iso:let name="port-class" value="//sbgn:port[@id=$target]/../@class"/>	
-			<iso:assert 
-				id="pd10119"
-				name="check-inhibition-target-class"
-				role="error"
-				see="sbgn-pd-L1V1.3-3.4.1"				
-				test="
-				$port-class='process' or 
-				$port-class='omitted process' or
-				$port-class='uncertain process' or
-				$port-class='association' or
-				$port-class='dissociation' or
-				$port-class='phenotype'" 
-				diagnostics="id target port-class">Arc with class inhibition must have target reference to port on glyph with PN classes and source reference to glyph of EPN classes
-			</iso:assert>
-		</iso:rule> 
-	</iso:pattern> 
-
-	<iso:pattern id="pd10121">
-		<iso:rule context="sbgn:arc[@class='necessary stimulation']">
-			<iso:let name="id" value="@id"/>			
-			<iso:let name="source" value="@source"/>			
-			<iso:let name="class" value="//sbgn:glyph[@id=$source]/@class"/>	
-			<iso:let name="port-class" value="//sbgn:port[@id=$source]/../@class"/>				
-			<iso:assert 
-				id="pd10121"
-				name="check-necessary-stimulation-source-class"
-				role="error"
-				see="sbgn-pd-L1V1.3-3.4.1"				
-				test="(
-				$class='unspecified entity' or 
-				$class='simple chemical' or
-				$class='macromolecule' or 
-				$class='macromolecule multimer' or
-				$class='nucleic acid feature' or 
-				$class='simple chemical multimer' or 
-				$class='nucleic acid feature multimer' or 
-				$class='complex' or 
-				$class='complex multimer' or 				
-				$class='perturbing agent') or (
-				$port-class='and' or 
-				$port-class='or' or
-				$port-class='not')" 
-				diagnostics="id source port-class class">Arc with class necessary stimulation must have source reference to glyph of EPN classes
-			</iso:assert>
-		</iso:rule> 
-	</iso:pattern> 
-	<iso:pattern id="pd10122">
-		<iso:rule context="sbgn:arc[@class='necessary stimulation']">
-			<iso:let name="id" value="@id"/>			
-			<iso:let name="target" value="@target"/>			
-			<iso:let name="target-class" value="//sbgn:glyph[@id=$target]/@class"/>	
-			<iso:assert 
-				id="pd10122"
-				name="check-necessary-stimulation-target-class"
-				role="error"
-				see="sbgn-pd-L1V1.3-3.4.1"				
-				test="
-				$target-class='process' or 
-				$target-class='omitted process' or
-				$target-class='uncertain process' or
-				$target-class='association' or
-				$target-class='dissociation' or
-				$target-class='phenotype'" 
-				diagnostics="id target">Arc with class necessary stimulation must have target reference to glyph with PN classes
-			</iso:assert>
-		</iso:rule> 
 	</iso:pattern> 
 
 	<iso:pattern id="pd10124">
