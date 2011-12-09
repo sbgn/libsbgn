@@ -257,7 +257,7 @@ Schematron validation for SBGN PD
 				$port-class='and' or 
 				$port-class='or' or 
 				$port-class='not')" 
-				diagnostics="id source port-class class">Influence arc must have source reference to glyph of EPN classes or a logical operator
+				diagnostics="id source port-class class">Modulation arc must have source reference to glyph of EPN classes or a logical operator
 			</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
@@ -276,9 +276,11 @@ Schematron validation for SBGN PD
 				$target-class='process' or 
 				$target-class='omitted process' or
 				$target-class='uncertain process' or
+				$target-class='association' or
+				$target-class='dissociation' or
 				$target-class='phenotype'" 
-				diagnostics="id target target-class">Influence arc must have target reference to PN classes
-			</iso:assert>
+				diagnostics="id target target-class">Modulation arc must have target reference to PN classes
+			</iso:assert><!-- added association / dissociation as allowed targets: possible mistake in spec -->
 		</iso:rule> 
 	</iso:pattern> 
 	<iso:pattern id="pd10111">
