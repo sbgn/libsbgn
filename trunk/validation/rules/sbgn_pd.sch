@@ -305,6 +305,7 @@ Schematron validation for SBGN PD
 			<iso:let name="id" value="@id"/>			
 			<iso:let name="source" value="@source"/>			
 			<iso:let name="class" value="//sbgn:glyph[@id=$source]/@class"/>	
+			<iso:let name="port-class" value="//sbgn:port[@id=$source]/../@class"/>	
 			<iso:assert 
 				id="pd10124"
 				name="check-logic-arc-source-class"
@@ -319,8 +320,11 @@ Schematron validation for SBGN PD
 				$class='simple chemical multimer' or 
 				$class='nucleic acid feature multimer' or 
 				$class='complex' or 
-				$class='complex multimer'" 
-				diagnostics="id source class">Arc with class logic arc must have source reference to glyph of EPN classes and target reference to port on glyph of PN classes
+				$class='complex multimer' or
+				$port-class='and' or
+				$port-class='or' or
+				$port-class='not'" 
+				diagnostics="id source class">Arc with class logic arc must have source reference to glyph of EPN classes, or logic gates
 			</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
@@ -330,7 +334,7 @@ Schematron validation for SBGN PD
 			<iso:let name="target" value="@target"/>			
 			<iso:let name="port-class" value="//sbgn:port[@id=$target]/../@class"/>	
 			<iso:assert 
-				id="pd1025"
+				id="pd10125"
 				name="check-logic-arc-target-class"
 				role="error"
 				see="sbgn-pd-L1V1.3-3.4.1"				
@@ -344,7 +348,7 @@ Schematron validation for SBGN PD
 				$port-class='and' or
 				$port-class='or' or
 				$port-class='not'" 
-				diagnostics="id target port-class">Arc with class logic arc must have target reference to port on glyph with PN classes or a logical operator and source reference to glyph of EPN classes
+				diagnostics="id target port-class">Arc with class logic arc must have target reference to port on glyph with PN classes or a logical operator
 			</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
@@ -360,7 +364,7 @@ Schematron validation for SBGN PD
 				role="error"
 				see="sbgn-pd-L1V1.3-3.4.1"				
 				test="$count = 1"
-				diagnostics="id port-id count">The 'not' glyph can only be connected to one logic arc glyph. 
+				diagnostics="id port-id count">The 'not' glyph can only be the target of one logic arc glyph. 
 			</iso:assert>
 		</iso:rule> 						
 	</iso:pattern> 
