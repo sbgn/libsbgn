@@ -3,18 +3,20 @@ Release notes
 Milestone 2, December 2011
 
 - AF and ER languages are now supported in addition to PD
-- Two utility classes have been added to help backwards compatibility, namely: ConvertMilestone1To2 and SbgnVersionFinder
+- a utility script "sbgnutil" has been added for validating SBGN-ML, and for converting M1 to M2
 - Support for high-level validation using Schematron (in addition to low-level XSD validation)
 - The schema is now fully extensible through the Extension element
 - Java and C++ bindings have been updated 
 
 major API Changes between Milestone 1 and Milestone 2:
 
-- Arcs must have id's, so just must call arc.setId() before writing out.
+- Arcs must have id's, so you must call arc.setId() before writing out.
 - Map must have a language attribute, so you must call Map.setLanguage() before writing out
 - The GlyphClazz, ArcClazz and Language enums have been added to help ensure correctness of string values.
 - An arc can now have multiple subGlyphs, so a construct like arc.setGlyph(g) must be replaced with arc.getGlyph().add(g) or similar.
-- New classes and methods have been added to support the AF and ER languages, such as Callout, Entity, etc. 
+- The glyph class "stiochiometry" has been renamed to "cardinality". The use of stoichiometry as a glyph class is no longer allowed.
+- New classes and methods have been added to support the AF and ER languages, such as Callout, Entity, etc.
+- Please note that two utility classes have been added to help backwards compatibility, namely: ConvertMilestone1To2 and SbgnVersionFinder
 
 Milestone 1, January 2011
 
