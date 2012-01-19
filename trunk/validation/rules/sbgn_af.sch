@@ -30,6 +30,7 @@ Schematron validation for SBGN AF
 		<iso:active pattern="af10111"/>
 		<iso:active pattern="af10112"/>
 		<iso:active pattern="af10113"/>
+		<iso:active pattern="af10114"/>
 	</iso:phase>
 
 	<iso:pattern id="00000">
@@ -239,6 +240,21 @@ Schematron validation for SBGN AF
 				$target-class='submap' or
 				$target-class='terminal'" 
 				diagnostics="id target target-class">Incorrect target reference for arc with class "equivalence arc"
+			</iso:assert>
+		</iso:rule> 
+	</iso:pattern> 
+
+	<iso:pattern id="af10114">
+		<iso:rule context="sbgn:map/sbgn:glyph[(@class='biological activity')]">
+			<iso:let name="id" value="@id"/>
+			<iso:let name="compartment-count" value="count(//sbgn:glyph[@class='compartment'])"/>
+			<iso:assert 
+				id="af10114"
+				name="check-compartment-ref"
+				role="error"
+				test="
+				($compartment-count > 0) and @compartmentRef"
+				diagnostics="id">If there are compartments defined, top-level glyphs must have a compartmentRef"
 			</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 

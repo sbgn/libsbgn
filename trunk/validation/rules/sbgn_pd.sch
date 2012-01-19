@@ -35,6 +35,7 @@ Schematron validation for SBGN PD
 		<iso:active pattern="pd10109"/>
 		<iso:active pattern="pd10110"/>
 		<iso:active pattern="pd10111"/>
+		<iso:active pattern="pd10112"/>
 
 		<iso:active pattern="pd10124"/>
 		<iso:active pattern="pd10125"/>
@@ -300,6 +301,31 @@ Schematron validation for SBGN PD
 		</iso:rule>
 	</iso:pattern> 
 
+	<iso:pattern id="pd10112">
+		<iso:rule context="sbgn:map/sbgn:glyph[(@class = 'unspecified entity' or 
+				@class = 'simple chemical' or 
+				@class = 'macromolecule' or 
+				@class = 'nucleic acid feature' or
+				@class = 'simple chemical multimer' or 
+				@class = 'macromolecule multimer' or 
+				@class = 'nucleic acid feature multimer' or 
+				@class = 'complex' or 
+				@class = 'complex multimer' or 
+				@class = 'source and sink' or
+				@class = 'perturbing agent')]">
+			<iso:let name="id" value="@id"/>
+			<iso:let name="compartment-count" value="count(//sbgn:glyph[@class='compartment'])"/>
+			<iso:assert 
+				id="pd10112"
+				name="check-compartment-ref"
+				role="error"
+				test="
+				($compartment-count > 0) and @compartmentRef"
+				diagnostics="id">If there are compartments defined, top-level glyphs must have a compartmentRef"
+			</iso:assert>
+		</iso:rule> 
+	</iso:pattern> 
+
 	<iso:pattern id="pd10124">
 		<iso:rule context="sbgn:arc[@class='logic arc']">
 			<iso:let name="id" value="@id"/>			
@@ -542,7 +568,7 @@ Schematron validation for SBGN PD
 				test="true()">If the stoichiometry is undefined or unknown this should be indicated by the use of a question mark ("?").</iso:assert>
 		</iso:rule>
 	</iso:pattern>
-	
+
 	<iso:diagnostics>
 		<iso:diagnostic id="id"><iso:value-of select="$id"/></iso:diagnostic> 		
 		<iso:diagnostic id="port-id"><iso:value-of select="$port-id"/></iso:diagnostic> 				
