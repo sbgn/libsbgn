@@ -25,7 +25,7 @@ public class SbgnUtil
 	 * @returns Sbgn data structure
 	 * @throws JAXBException if there is an IO error, or the file is not SBGNML.
 	 */
-	static Sbgn readFromFile (File f) throws JAXBException
+	public static Sbgn readFromFile (File f) throws JAXBException
 	{
 		JAXBContext context = JAXBContext.newInstance("org.sbgn.bindings");
 		Unmarshaller unmarshaller = context.createUnmarshaller();
