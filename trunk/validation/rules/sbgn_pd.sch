@@ -320,8 +320,8 @@ Schematron validation for SBGN PD
 				name="check-compartment-ref"
 				role="error"
 				test="
-				($compartment-count > 0) and @compartmentRef"
-				diagnostics="id">If there are compartments defined, top-level glyphs must have a compartmentRef"
+				(($compartment-count = 0) and not (@compartmentRef)) or (($compartment-count &gt; 0) and @compartmentRef)"
+				diagnostics="id">If there are compartments defined, top-level glyphs must have a compartmentRef."
 			</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
