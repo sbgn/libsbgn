@@ -67,9 +67,24 @@
 	     <attribute name="Main-Class" value="org.sbgn.Main"/>
 		 <attribute name="Class-Path" value="${manifest.cp}"/>
 	  </manifest>
-	</jar>
+	</jar>	
   </target>
 
+  <target name="fatjar" depends="jar">
+    <mkdir dir="build/all"/>
+     <unjar src="../dist/org.sbgn.jar" dest="build/all"/>
+     <unjar dest="build/all">
+	   <fileset dir=".">
+	     <include name="lib/*.jar"/>
+	     <include name="../dist/org.sbgn.jar"/>
+	   </fileset>
+     </unjar>
+	 <jar jarfile="../dist/org.sbgn-with-dependencies.jar" manifest="META-INF/MANIFEST.MF">
+	   <fileset dir="build/all" includes="**/*"/>
+	</jar>
+	<delete dir="build/all"/>
+  </target>
+  
   <target name="doc" depends="build">
 	<javadoc packagenames = "org.sbgn.bindings"
 			destdir="../docs"
