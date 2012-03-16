@@ -1,9 +1,5 @@
 <?xml version="1.0"?>
 <project name="org.sbgn" default="dist" basedir=".">
-
-  <!-- always be java 1.5 compatible -->
-  <property name="ant.build.javac.target" value="1.5"/>
-  <property name="ant.build.javac.source" value="1.5"/>
 	
   <property name="jar.name" value="../dist/org.sbgn.jar"/>
   <property name="sbgn.xsd" value="../resources/SBGN.xsd"/>
@@ -24,13 +20,15 @@
 		<pathelement location="resources"/>
 	</path>
 
-	<!-- JAXB compiler task definition -->
-	<taskdef name="xjc" classname="com.sun.tools.xjc.XJCTask" classpathref="project.classpath"/>
-
   <target name="jaxb" depends="prepare">
-	<xjc schema="${sbgn.xsd}" destdir="gensrc" package="org.sbgn.bindings">
-		<produces dir="gensrc" includes="**/*.java" />
-	</xjc>
+	<!-- Invoke JAXB: see http://stackoverflow.com/questions/3630474/ -->
+	<java classname="com.sun.tools.internal.xjc.XJCFacade">
+			<arg value="-d" />
+			<arg value="${basedir}/gensrc"/>
+			<arg value="-p" />
+			<arg value="org.sbgn.bindings"/>
+			<arg value="${basedir}/${sbgn.xsd}" />
+	</java>
   </target>
   
   <target name="build" depends="jaxb">
@@ -75,12 +73,14 @@
      <unjar src="../dist/org.sbgn.jar" dest="build/all"/>
      <unjar dest="build/all">
 	   <fileset dir=".">
-	     <include name="lib/*.jar"/>
-	     <include name="../dist/org.sbgn.jar"/>
+	     <include name="lib/saxon*.jar"/>
 	   </fileset>
      </unjar>
 	 <jar jarfile="../dist/org.sbgn-with-dependencies.jar" manifest="META-INF/MANIFEST.MF">
 	   <fileset dir="build/all" includes="**/*"/>
+	  <manifest>
+	     <attribute name="Main-Class" value="org.sbgn.Main"/>
+	  </manifest>	   
 	</jar>
 	<delete dir="build/all"/>
   </target>
