@@ -4,7 +4,8 @@ Bundle-Name: org.sbgn
 Bundle-SymbolicName: org.sbgn
 Bundle-Version: 0.2
 Export-Package: org.sbgn,
- org.sbgn.bindings
+ org.sbgn.bindings,
+ net.sf.saxon
 Import-Package: org.jdom;version="1.1.0",
  org.jdom.input;version="1.1.0",
  org.jdom.output;version="1.1.0"
