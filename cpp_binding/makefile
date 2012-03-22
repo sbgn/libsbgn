@@ -1,18 +1,18 @@
-.PHONY: clean test uninstall
+.PHONY: clean test distclean all
 
 
 ################ EDIT THESE SETTINGS ######################
 
-
+PREFIX=/usr/local
 
 # Location of Code Synthesis Library
-XSD_BASE=$(PWD)/xsd-3.3.0-i686-linux-gnu
+XSD_BASE=/usr/local/share/xsd-3.3.0-i686-macosx
 
 # Location of additional includes, such as Xerces C++ library
-INCLUDES=-I/usr/local/include -I$(HOME)/local/include
+INCLUDES=-I/opt/local/include
 
 # Location of libraries, such as Xerces C++ library 
-LIBS=-L/usr/local/lib -L$(HOME)/local/lib
+LIBS=-L/opt/local/lib
 
 ################# LEAVE SETTINGS BELOW ####################
 
@@ -26,7 +26,7 @@ CXXFLAGS=$(INCLUDES) -I$(XSD_BASE)/libxsd -Wall -g
 LDFLAGS=$(LIBS)
 
 # All.
-all: libsbgn.a test
+all: libsbgn.a
 
 # Library.
 #
@@ -59,14 +59,16 @@ sbgn2txt.o: sbgn2txt.cxx sbgn.hxx
 
 # Install.
 install:
-	install -Dm644 sbgn.hxx $(DESTDIR)/$(PREFIX)/include/
-	install -Dm755 libsbgn.a $(DESTDIR)/$(PREFIX)/lib/
-	if [ -x libsbgn.o ]; 
-		install -Dm755 libsbgn.so $(DESTDIR)/$(PREFIX)/lib/
+	install -d $(PREFIX)/include/
+	install -d $(PREFIX)/lib/
+	install -m644 sbgn.hxx $(PREFIX)/include/
+	install -m755 libsbgn.a $(PREFIX)/lib/
+	if [ -e libsbgn.so ]; then \
+		install -m755 libsbgn.so $(PREFIX)/lib/; \
 	fi
 
 # Uninstall.
-uninstall: clean
+distclean: clean
 	rm -f sbgn.?xx
 
 # Clean.
