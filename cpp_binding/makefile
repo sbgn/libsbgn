@@ -6,13 +6,13 @@
 PREFIX=/usr/local
 
 # Location of Code Synthesis Library
-XSD_BASE=/usr/local/share/xsd-3.3.0-i686-macosx
+XSD_BASE=/usr/local/share/xsd-3.3.0-i686-# PUT YOUR ARCH HERE
 
 # Location of additional includes, such as Xerces C++ library
-INCLUDES=-I/opt/local/include
+INCLUDES=-I/usr/local/include
 
 # Location of libraries, such as Xerces C++ library 
-LIBS=-L/opt/local/lib
+LIBS=-L/usr/local/lib
 
 ################# LEAVE SETTINGS BELOW ####################
 
@@ -67,7 +67,7 @@ install:
 		install -m755 libsbgn.so $(PREFIX)/lib/; \
 	fi
 
-# Uninstall.
+# Thorough clean of all files
 distclean: clean
 	rm -f sbgn.?xx
 
