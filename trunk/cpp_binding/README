@@ -1,15 +1,15 @@
 DISCLAIMER: WORK IN PROGRESS
-The system was successfully built and tested on MacOSX Lion and Ubuntu 11.04
+The system was successfully built and tested on MacOSX Lion and Red Hat Enterprise 6.2
 
 TODO:
 - streamline the automatic building process for all supported systems
-- package the resulting files as a standalone library
+- get shared library working for Mac and Windows
 
 **************************
 * What's in this folder? *
 **************************
 
-SBGN C++ binder: sbgn.cxx and sbgn.hxx [!] FOR REFERENCE ONLY, MAY NOT BE UP-TO-DATE
+SBGN C++ binder: sbgn.cxx and sbgn.hxx - Generated files
 ----------------
 - automatically generated from ../resources/SBGN.xsd
 - using http://www.codesynthesis.com/products/xsd/
@@ -21,14 +21,16 @@ Code using the binder: sbgn2txt.cxx
 
 Tools to generate the binder: makefile, and a local installation of the XSD converter [!] NOT INCLUDED
 -----------------------------
-- "make libsbgn" generates sbgn.cxx and sbgn.hxx from the current XSD
+- "make libsbgn.a" generates sbgn.cxx and sbgn.hxx from the current XSD and compiles to a static library
 - "make test" compiles and runs sbgn2txt on all *.sbgn files in ../test-files
+- "make install" installs the library and header files at a configurable location.
+- "make libsbgn.so" creates a shared library that can be installed using "make install". Linux/Unix only at the moment.
 
 ********************************
 * How to (re)build the binder? *
 ********************************
 
-Instructions for Windows / Mac OS X:
+Instructions for Linux / Mac OS X:
 ====================================
 
 sbgn.hxx and sbgn.cxx are generated automatically from SBGN.xsd.
@@ -54,39 +56,40 @@ Step 2
 
 - Modify the configuration section of the makefile to suitable file locations (documented in makefile itself).
 
-- Use "make" to update the binder against the latest version of the XSD, and run tests against all the test files.
+- Use "make" to update the binder against the latest version of the XSD, and create a static library.
 
-Instructions for Linux
-======================
-
-The instructions for linux are similar to above, but:
-- we need to make sure libxerces is installed properly
-- The xsd tool will be installed in the standard locations (/usr/bin, /usr/include etc.) automatically
-
-Step 0
+Step 3
 ++++++
 
-Download and install appropriate deb from here:
-http://www.codesynthesis.com/products/xsd/download.xhtml
+- Execute "make test" to run tests against all the test files
 
-Step 1
+Step 4
 ++++++
 
-# install the header files for libxerces
-sudo apt-get install libxerces-c2-dev
+- Make sure the PREFIX variable is set to the appropriate location for installation.
 
-Step 2
-++++++
+- Execute "make install" to install the library and header files.
 
-Run make, overriding the XSD_BASE variable
-make XSD_BASE=/usr
+Optional Step for Linux/Unix only
++++++++++++++++++++++++++++++++++
 
+- Create a shared library my executing "make libsbgn.so".
+
+- To install this follow Step 4 above.
 
 
 ****************************
 * How to reuse the binder? *
 ****************************
 
-In order to reuse sbgn.hxx and sbgn.cxx in your own project, you need to be able to link to a copy of libxsd (cf. XSD2CPP/libxsd)
-For building and linking options (dependencies, system specific settings, etc.), have a look at XSD2CPP/examples/build
-Refer to sbgn2txt.cxx for examples of how to invoke the library in your own code.
+To use the library you need the following:
+
+Headers:
+- sbgn.hxx
+- headers provided by the codesynthesis package located in $XSD2CPP/libxsd
+
+Libraries:
+- libxerces-c 3.1
+- libsbgn  (static or shared library)
+
+Refer to the sbgn2txt makefile target for an examples of how to compile the library in your own code.
