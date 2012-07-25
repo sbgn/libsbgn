@@ -40,22 +40,22 @@
 			</glyph>
 		</glyph>
 		
-		<glyph class="biological activity" id="g4">
+		<glyph class="biological activity" id="g4" compartmentRef="g2">
 			<label text="ligand"/>
 			<bbox x="196" y="20" w="108" h="60"/>
 		</glyph>
 		
-		<glyph class="biological activity" id="g5">
+		<glyph class="biological activity" id="g5" compartmentRef="g2">
 			<label text="GiPCR"/>
 			<bbox x="196" y="180" w="108" h="60"/>
 		</glyph>
 		
-		<glyph class="biological activity" id="g6">
+		<glyph class="biological activity" id="g6" compartmentRef="g2">
 			<label text="GIRK"/>
 			<bbox x="426" y="360" w="108" h="60"/>
 		</glyph>
 		
-		<glyph class="biological activity" id="g7">
+		<glyph class="biological activity" id="g7" compartmentRef="g2">
 			<label text="adenylate&#xA;cyclase"/>
 			<bbox x="126" y="460" w="108" h="60"/>
 		</glyph>
