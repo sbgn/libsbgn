@@ -9,12 +9,12 @@
 			<bbox x="25" y="30" w="370" h="280"/>
 		</glyph>
 
-		<glyph class="biological activity" id="g2">
+		<glyph class="biological activity" id="g2" compartmentRef="g1">
 			<label text="co-repressor"/>
 			<bbox x="66" y="60" w="108" h="40"/>
 		</glyph>
 		
-		<glyph class="biological activity" id="g3">
+		<glyph class="biological activity" id="g3" compartmentRef="g1">
 			<label text="co-activator"/>
 			<bbox x="246" y="60" w="108" h="40"/>
 		</glyph>
