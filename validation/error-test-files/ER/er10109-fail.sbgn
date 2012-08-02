@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<sbgn xmlns="http://sbgn.org/libsbgn/0.2">
+    <map language="entity relationship">
+        <glyph class="entity" id="glyph1">
+            <label text="B"/>
+            <bbox w="108.0" h="60.0" x="87.0" y="467.0"/>
+        </glyph>
+        <glyph class="entity" id="glyph3">
+            <label text="A"/>
+            <bbox w="108.0" h="60.0" x="86.0" y="160.0"/>
+        </glyph>
+        <glyph class="entity" id="glyph2">
+            <label text="C"/>
+            <bbox w="108.0" h="60.0" x="372.0" y="461.0"/>
+        </glyph>
+        <glyph class="or" id="glyph5">
+            <label text="OR"/>
+            <bbox w="42.0" h="42.0" x="247.0" y="322.0"/>
+            <port id="cdf77" x="310.0" y="343.0"/>
+            <port id="ab007" x="226.0" y="343.0"/>
+        </glyph>
+        <glyph class="entity" id="fd99b">
+            <label text="D"/>
+            <bbox w="115.0" h="72.0" x="372.0" y="189.0"/>
+        </glyph>
+        <arc class="logic arc" id="ca337" source="glyph1" target="ab007">
+            <start x="141.0" y="467.0"/>
+            <end x="226.0" y="343.0"/>
+        </arc>
+        <arc class="interaction" id="arc0" source="fd99b" target="glyph2">
+            <port id="c7465" x="428.06677" y="342.89902"/>
+            <start x="429.5" y="261.0"/>
+            <end x="426.0" y="461.0"/>
+        </arc>
+        <arc class="logic arc" id="a8f3d" source="cdf77" target="c7465">
+            <start x="310.0" y="343.0"/>
+            <end x="428.06677" y="342.89902"/>
+        </arc>
+    </map>
+</sbgn>
