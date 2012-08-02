@@ -34,7 +34,6 @@ Schematron validation for SBGN ER
 		<iso:active pattern="er10107"/>
 		<iso:active pattern="er10108"/>
 		<iso:active pattern="er10109"/>
-		<iso:active pattern="er10110"/>
 		<iso:active pattern="er10111"/>
 	</iso:phase>
 
