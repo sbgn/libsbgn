@@ -572,7 +572,7 @@ Schematron validation for SBGN PD
 		</iso:rule>
 	</iso:pattern>
 	
-		<iso:pattern id="pd10140">
+	<iso:pattern id="pd10140">
 		<iso:rule context="sbgn:glyph">
 			<iso:let name="id" value="@id"/>
 			<iso:let name="class" value="@class"/>			
@@ -607,26 +607,27 @@ Schematron validation for SBGN PD
 		</iso:rule> 
 	</iso:pattern> 
 	
-<iso:pattern id="pd10142">
+	<iso:pattern id="pd10142">
 		<iso:rule context="sbgn:arc[@class='logic arc']">
 			<iso:let name="id" value="@id"/>
 			<iso:let name="source" value="@source"/>			
 			<iso:let name="target" value="@target"/>			
 			<iso:let name="port-class" value="//sbgn:port[@id=$source or @id=$target]/../@class"/>	
 			<iso:assert 
-				name="check-logic arc --class"
+				name="check-logic-arc--class"
 				id="pd10142"
 				role="error"
 				see="sbgn-pd-L1V1.3-3.4.1"				
 				test="
 				$port-class='and' or 
-				$port-class='or' " 
-				diagnostics="id source port-class target">logic Arc with must be connected to either 'OR' or 'AND'
+				$port-class='or' or
+				$port-class='not'" 
+				diagnostics="id source port-class target">logic Arc must be connected to either 'OR', 'AND' or 'NOT'
 			</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
 	
-		<iso:diagnostics>
+	<iso:diagnostics>
 		<iso:diagnostic id="id"><iso:value-of select="$id"/></iso:diagnostic> 		
 		<iso:diagnostic id="port-id"><iso:value-of select="$port-id"/></iso:diagnostic> 				
 		<iso:diagnostic id="target"><iso:value-of select="$target"/></iso:diagnostic> 
