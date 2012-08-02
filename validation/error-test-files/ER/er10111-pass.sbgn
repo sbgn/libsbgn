@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<sbgn xmlns="http://sbgn.org/libsbgn/0.2">
+    <map language="entity relationship">
+        <glyph class="not" id="ec25d">
+            <label text="NOT"/>
+            <bbox w="30.0" h="30.0" x="390.17242" y="162.11598"/>
+            <port id="a0833" x="365.17242" y="177.11598"/>
+            <port id="d0a9d" x="445.17242" y="177.11598"/>
+        </glyph>
+        <glyph class="macromolecule" id="b1e27">
+            <label text="F"/>
+            <bbox w="80.0" h="20.0" x="530.92163" y="168.84012"/>
+        </glyph>
+        <glyph class="macromolecule" id="e4802">
+            <label text="E"/>
+            <bbox w="80.0" h="20.0" x="222.92789" y="164.13792"/>
+        </glyph>
+        <arc class="consumption" id="d1a47" source="b1e27" target="d0a9d">
+            <start x="610.92163" y="178.84012"/>
+            <end x="445.17242" y="177.11598"/>
+        </arc>
+        <arc class="logic arc" id="bf65a" source="e4802" target="a0833">
+            <start x="302.9279" y="174.13792"/>
+            <end x="365.17242" y="177.11598"/>
+        </arc>
+    </map>
+</sbgn>

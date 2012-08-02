@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<sbgn xmlns="http://sbgn.org/libsbgn/0.2">
+    <map language="entity relationship">
+        <glyph class="entity" id="glyph0">
+            <label text="5' primer"/>
+            <bbox w="108.0" h="60.0" x="195.78261" y="304.2029"/>
+            <glyph class="unit of information" id="glyph0a">
+                <label text="mt:dna"/>
+                <bbox w="47.0" h="17.0" x="232.62318" y="354.7971"/>
+            </glyph>
+            <glyph class="state variable" id="d2a97">
+                <label text="V1"/>
+                <bbox w="25.0" h="25.0" x="237.28261" y="291.7029"/>
+            </glyph>
+        </glyph>
+        <glyph class="entity" id="glyph2">
+            <label text="Antisense"/>
+            <bbox w="108.0" h="60.0" x="190.34782" y="111.99275"/>
+            <glyph class="unit of information" id="glyph2a">
+                <label text="mt:dna"/>
+                <bbox w="47.0" h="17.0" x="220.84782" y="103.49275"/>
+            </glyph>
+        </glyph>
+        <arc class="interaction" id="arc2" source="glyph2" target="d2a97">
+            <port id="a149a" x="243.70244" y="266.76328"/>
+            <port id="cd4d9" x="243.83832" y="246.8116"/>
+            <start x="244.34782" y="171.99275"/>
+            <end x="243.53261" y="291.7029"/>
+        </arc>
+    </map>
+</sbgn>
