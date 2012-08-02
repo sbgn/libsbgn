@@ -48,6 +48,9 @@ Schematron validation for SBGN PD
 		<iso:active pattern="pd10132"/>
 		<iso:active pattern="pd10133"/>
 		<iso:active pattern="pd10134"/>
+		<iso:active pattern="pd10140"/>
+		<iso:active pattern="pd10141"/>		
+		<iso:active pattern="pd10142"/>		
 	</iso:phase>
 
 	<iso:pattern id="00000">
@@ -568,8 +571,62 @@ Schematron validation for SBGN PD
 				test="true()">If the stoichiometry is undefined or unknown this should be indicated by the use of a question mark ("?").</iso:assert>
 		</iso:rule>
 	</iso:pattern>
-
-	<iso:diagnostics>
+	
+		<iso:pattern id="pd10140">
+		<iso:rule context="sbgn:glyph">
+			<iso:let name="id" value="@id"/>
+			<iso:let name="class" value="@class"/>			
+			<iso:assert 
+				id="pd10140"
+				name="check-glyph-class"
+				role="error"
+				see="sbgn-pd-L1V1.3-3.5.2.1-2,3"
+				test="not($class='biological activity' or
+				 $class='outcome' or
+				 $class='variable value' or
+				 $class='entity')"
+				diagnostics="id class">This 'glyph class' is not allowed in Process Description
+			</iso:assert>
+		</iso:rule> 
+	</iso:pattern> 
+	
+	<iso:pattern id="pd10141">
+		<iso:rule context="sbgn:glyph[@class='process']">
+			<iso:let name="id" value="@id"/>
+			<iso:let name="port-id" value="./sbgn:port/@id"/>				
+			<iso:let name="count" value="count(//sbgn:arc[(./@target = current()/sbgn:port/@id) or (./@source = current()/sbgn:port/@id)])"/>				
+			
+			<iso:assert 
+				id="pd10141"
+				name="pns-port-count-eq-2"
+				see="sbgn-pd-L1V1.3-3.5.2.1-1"
+				role="error"
+				test="($count &gt;= 2)"
+				diagnostics="id count">All process nodes should have at least one input and at least one ouput pointing to the arcs 
+			</iso:assert>
+		</iso:rule> 
+	</iso:pattern> 
+	
+<iso:pattern id="pd10142">
+		<iso:rule context="sbgn:arc[@class='logic arc']">
+			<iso:let name="id" value="@id"/>
+			<iso:let name="source" value="@source"/>			
+			<iso:let name="target" value="@target"/>			
+			<iso:let name="port-class" value="//sbgn:port[@id=$source or @id=$target]/../@class"/>	
+			<iso:assert 
+				name="check-logic arc --class"
+				id="pd10142"
+				role="error"
+				see="sbgn-pd-L1V1.3-3.4.1"				
+				test="
+				$port-class='and' or 
+				$port-class='or' " 
+				diagnostics="id source port-class target">logic Arc with must be connected to either 'OR' or 'AND'
+			</iso:assert>
+		</iso:rule> 
+	</iso:pattern> 
+	
+		<iso:diagnostics>
 		<iso:diagnostic id="id"><iso:value-of select="$id"/></iso:diagnostic> 		
 		<iso:diagnostic id="port-id"><iso:value-of select="$port-id"/></iso:diagnostic> 				
 		<iso:diagnostic id="target"><iso:value-of select="$target"/></iso:diagnostic> 
