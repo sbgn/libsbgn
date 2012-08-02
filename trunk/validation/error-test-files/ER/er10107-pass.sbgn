@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<sbgn xmlns="http://sbgn.org/libsbgn/0.2">
+    <map language="entity relationship">
+        <glyph class="entity" id="g1">
+            <label text="Sense"/>
+            <bbox w="108.0" h="60.0" x="86.0" y="160.0"/>
+        </glyph>
+        <glyph class="entity" id="g2">
+            <label text="Antisense"/>
+            <bbox w="108.0" h="60.0" x="386.0" y="160.0"/>
+        </glyph>
+        <glyph class="perturbing agent" id="g3">
+            <label text="Heat"/>
+            <bbox w="108.0" h="60.0" x="237.0" y="53.0"/>
+        </glyph>
+        <arc class="interaction" id="c7362" source="g1" target="g2">
+            <port id="b4a90" x="290.0" y="190.0"/>
+            <start x="194.0" y="190.0"/>
+            <end x="386.0" y="190.0"/>
+        </arc>
+        <arc class="inhibition" id="e8037" source="g3" target="b4a90">
+            <start x="291.0" y="113.0"/>
+            <end x="290.0" y="190.0"/>
+        </arc>
+    </map>
+</sbgn>

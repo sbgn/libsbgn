@@ -367,17 +367,10 @@ Schematron validation for SBGN PD
 				name="check-logic-arc-target-class"
 				role="error"
 				see="sbgn-pd-L1V1.3-3.4.1"				
-				test="
-				$port-class='process' or 
-				$port-class='omitted process' or
-				$port-class='uncertain process' or
-				$port-class='association' or
-				$port-class='dissociation' or
-				$port-class='phenotype' or
-				$port-class='and' or
+				test="$port-class='and' or
 				$port-class='or' or
 				$port-class='not'" 
-				diagnostics="id target port-class">Arc with class logic arc must have target reference to port on glyph with PN classes or a logical operator
+				diagnostics="id target port-class">Arc with class logic arc must have target reference to  a logical operator
 			</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
