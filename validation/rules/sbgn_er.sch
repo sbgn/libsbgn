@@ -241,7 +241,7 @@ Schematron validation for SBGN ER
 			<iso:let name="target" value="@target"/>			
 			<iso:let name="port-class" value="//sbgn:port[@id=$target]/../@class"/>	
 			<iso:assert 
-				id="er10125"
+				id="er10109"
 				name="check-logic-arc-target-class"
 				role="error"
 				see="sbgn-er-L1V1.2-3.3.1"				
@@ -254,34 +254,18 @@ Schematron validation for SBGN ER
 			</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
-	<iso:pattern id="er10110">
-		<!-- Number Limited Rules --> 
-		<iso:rule context="sbgn:glyph[(@class='outcome') or (@class='and') or (@class='or') or (@class='not') or (@class='delay')]">
-			<iso:let name="id" value="@id"/>
-			<iso:let name="port-id" value="./sbgn:port/@id"/>				
-			<iso:let name="source-count" value="count(//sbgn:arc[(./@class = 'logic arc') and (./@source = current()/sbgn:port/@id)])"/>										
-			<iso:assert 
-				id="er10126"
-				name="check-logic_arc-outcome_and_or_not_delay-source-count-equals-1"
-				role="error"
-				see="sbgn-pd-L1V1.3-3.4.1"				
-				test="$source-count &lt;= 1"
-				diagnostics="id port-id source-count">The 'outcome', 'and', 'or', 'not', and 'delay' glyphs can only be connected to one logic arc glyph at the input.
-			</iso:assert>
-		</iso:rule>		
-	</iso:pattern> 
 	<iso:pattern id="er10111">
 		<iso:rule context="sbgn:glyph[(@class='not') or (@class='delay')]">
 			<iso:let name="id" value="@id"/>
 			<iso:let name="port-id" value="./sbgn:port/@id"/>				
 			<iso:let name="target-count" value="count(//sbgn:arc[(./@class = 'logic arc') and (./@target = current()/sbgn:port/@id)])"/>										
 			<iso:assert 
-				id="er10127"
+				id="er10111"
 				name="check-logic_arc-not_delay-target-count-equals-1"
 				role="error"
 				see="sbgn-pd-L1V1.3-3.4.1"				
 				test="$target-count &lt;= 1"
-				diagnostics="id port-id target-count">The 'outcome', 'and', 'or', 'not', and 'delay' glyphs can only be connected to one logic arc glyph at the output.
+				diagnostics="id port-id target-count">The 'not', and 'delay' glyphs can only be connected to one logic arc glyph at the output.
 			</iso:assert>
 		</iso:rule>				
 	</iso:pattern> 		
