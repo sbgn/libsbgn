@@ -6,20 +6,21 @@
 PREFIX=/usr/local
 
 # Location of Code Synthesis Library
-XSD_BASE=/usr/local/share/xsd-3.3.0-i686-# PUT YOUR ARCH HERE
+XSD_BASE=./xsd-3.3.0-i686-macosx
 
 # Location of additional includes, such as Xerces C++ library
-INCLUDES=-I/usr/local/include
+INCLUDES=-I/usr/local/include -I /opt/local/include
 
 # Location of libraries, such as Xerces C++ library 
-LIBS=-L/usr/local/lib
+LIBS=-L/usr/local/lib -L /opt/local/lib
 
 ################# LEAVE SETTINGS BELOW ####################
 
 
 XSD := $(XSD_BASE)/bin/xsd
 
-XSDFLAGS := --namespace-map http://sbgn.org/libsbgn/0.2=libsbgn::sn_0_2 --root-element sbgn --generate-doxygen
+XSDFLAGS := --namespace-map http://sbgn.org/libsbgn/0.2=libsbgn::sn_0_2 --root-element sbgn \
+	--generate-serialization --generate-doxygen
 
 CXXFLAGS=$(INCLUDES) -I$(XSD_BASE)/libxsd -Wall -g
 
