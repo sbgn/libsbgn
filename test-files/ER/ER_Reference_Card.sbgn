@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<sbgn xmlns="http://sbgn.org/libsbgn/0.2">
+    <map language="entity relationship">
+        <glyph id="glyph2" class="entity">
+            <label text="Entity with&#xA;State Location"/>
+            <bbox y="405.0" x="390.0" h="70.0" w="140.0"/>
+            <glyph id="glyph2a" class="location">
+                <bbox y="389.0" x="414.0" h="32.0" w="22.0"/>
+            </glyph>
+        </glyph>
+        <glyph id="glyph3" class="entity">
+            <label text="Entity with&#xA;State Variable"/>
+            <bbox y="205.0" x="390.0" h="70.0" w="140.0"/>
+            <glyph id="glyph3a" class="state variable">
+                <state variable="var" value="val"/>
+                <bbox y="196.5" x="397.0" h="17.0" w="56.0"/>
+            </glyph>
+        </glyph>
+        <glyph id="glyph4" class="entity">
+            <label text="Entity with&#xA;Unit of Information"/>
+            <bbox y="105.0" x="390.0" h="70.0" w="140.0"/>
+            <glyph id="glyph4a" class="unit of information">
+                <label text="pre:label"/>
+                <bbox y="96.5" x="397.0" h="17.0" w="56.0"/>
+            </glyph>
+        </glyph>
+        <glyph id="glyph5" class="entity">
+            <label text="Entity with&#xA;State Existence"/>
+            <bbox y="305.0" x="390.0" h="70.0" w="140.0"/>
+            <glyph id="glyph5a" class="existence">
+                <bbox y="292.5" x="414.0" h="25.0" w="22.0"/>
+            </glyph>
+        </glyph>
+        <glyph id="glyph6" class="annotation">
+            <label text="Annotation"/>
+            <bbox y="575.0" x="390.0" h="70.0" w="140.0"/>
+        </glyph>
+        <glyph id="glyph7" class="perturbing agent">
+            <label text="Perturbing&#xA;Agent"/>
+            <bbox y="405.0" x="110.0" h="70.0" w="140.0"/>
+        </glyph>
+        <glyph id="glyph8" class="phenotype">
+            <label text="Phenotype"/>
+            <bbox y="445.0" x="705.0" h="70.0" w="140.0"/>
+        </glyph>
+        <glyph id="glyph23" class="variable value">
+            <label text="Variable Value"/>
+            <bbox y="615.0" x="715.0" h="30.0" w="120.0"/>
+        </glyph>
+        <glyph id="glyph27" class="and">
+            <bbox y="515.0" x="105.0" h="50.0" w="50.0"/>
+        </glyph>
+        <glyph id="glyph28" class="not">
+            <bbox y="610.0" x="105.0" h="50.0" w="50.0"/>
+        </glyph>
+        <glyph id="glyph29" class="delay">
+            <bbox y="610.0" x="205.0" h="50.0" w="50.0"/>
+        </glyph>
+        <glyph id="glyph31" class="or">
+            <bbox y="515.0" x="205.0" h="50.0" w="50.0"/>
+        </glyph>
+        <glyph id="glyph1" class="entity">
+            <label text="Entity"/>
+            <bbox y="105.0" x="110.0" h="70.0" w="140.0"/>
+        </glyph>
+        <glyph id="glyph0" class="entity">
+            <label text="Entity"/>
+            <bbox y="305.0" x="110.0" h="70.0" w="140.0"/>
+        </glyph>
+        <glyph id="glyph14" class="entity">
+            <label text="Source&#xA;Entity"/>
+            <bbox y="587.5" x="1000.0" h="55.0" w="100.0"/>
+        </glyph>
+        <glyph id="glyph30" class="and">
+            <bbox y="590.0" x="1225.0" h="50.0" w="50.0"/>
+            <port y="615.0" x="1200.0" id="glyph30.1"/>
+        </glyph>
+        <glyph id="glyph33" class="variable value">
+            <label text="val"/>
+            <bbox y="92.0" x="729.0" h="16.0" w="40.0"/>
+        </glyph>
+        <glyph id="glyph22" class="entity">
+            <label text="Entity"/>
+            <bbox y="170.0" x="725.0" h="50.0" w="100.0"/>
+            <glyph id="glyph22a" class="state variable">
+                <state variable="var" value="val"/>
+                <bbox y="161.5" x="722.0" h="17.0" w="56.0"/>
+            </glyph>
+        </glyph>
+        <glyph id="glyph25" class="entity">
+            <label text="Entity"/>
+            <bbox y="240.0" x="830.0" h="40.0" w="80.0"/>
+        </glyph>
+        <glyph id="glyph26" class="entity">
+            <label text="Entity"/>
+            <bbox y="380.0" x="830.0" h="40.0" w="80.0"/>
+        </glyph>
+        <glyph id="glyph24" class="entity">
+            <label text="Entity"/>
+            <bbox y="310.0" x="640.0" h="40.0" w="80.0"/>
+        </glyph>
+        <glyph id="glyph9" class="entity">
+            <label text="Source&#xA;Entity"/>
+            <bbox y="187.5" x="1000.0" h="55.0" w="100.0"/>
+        </glyph>
+        <glyph id="glyph18" class="phenotype">
+            <label text="Target"/>
+            <bbox y="187.5" x="1200.0" h="55.0" w="100.0"/>
+        </glyph>
+        <glyph id="glyph10" class="entity">
+            <label text="Source&#xA;Entity"/>
+            <bbox y="267.5" x="1000.0" h="55.0" w="100.0"/>
+        </glyph>
+        <glyph id="glyph17" class="phenotype">
+            <label text="Target"/>
+            <bbox y="267.5" x="1200.0" h="55.0" w="100.0"/>
+        </glyph>
+        <glyph id="glyph12" class="entity">
+            <label text="Source&#xA;Entity"/>
+            <bbox y="347.5" x="1000.0" h="55.0" w="100.0"/>
+        </glyph>
+        <glyph id="glyph21" class="phenotype">
+            <label text="Target"/>
+            <bbox y="347.5" x="1200.0" h="55.0" w="100.0"/>
+        </glyph>
+        <glyph id="glyph13" class="entity">
+            <label text="Source&#xA;Entity"/>
+            <bbox y="507.5" x="1000.0" h="55.0" w="100.0"/>
+        </glyph>
+        <glyph id="glyph20" class="phenotype">
+            <label text="Target"/>
+            <bbox y="507.5" x="1200.0" h="55.0" w="100.0"/>
+        </glyph>
+        <glyph id="glyph11" class="entity">
+            <label text="Source&#xA;Entity"/>
+            <bbox y="427.5" x="1000.0" h="55.0" w="100.0"/>
+        </glyph>
+        <glyph id="glyph16" class="phenotype">
+            <label text="Target"/>
+            <bbox y="427.5" x="1200.0" h="55.0" w="100.0"/>
+        </glyph>
+        <glyph id="glyph15" class="entity">
+            <label text="Source&#xA;Entity"/>
+            <bbox y="107.5" x="1000.0" h="55.0" w="100.0"/>
+        </glyph>
+        <glyph id="glyph19" class="phenotype">
+            <label text="Target"/>
+            <bbox y="107.5" x="1200.0" h="55.0" w="100.0"/>
+        </glyph>
+        <arc target="glyph0" source="glyph1" id="arc0" class="interaction">
+            <glyph id="arc0.0" class="outcome">
+                <bbox y="230.0" x="170.0" h="20.0" w="20.0"/>
+            </glyph>
+            <start y="175.0" x="180.0"/>
+            <end y="305.0" x="180.0"/>
+        </arc>
+        <arc target="glyph30.1" source="glyph14" id="arc1" class="logic arc">
+            <start y="615.0" x="1100.0"/>
+            <end y="615.0" x="1200.0"/>
+        </arc>
+        <arc target="glyph22" source="glyph33" id="arc2" class="assignment">
+            <start y="108.0" x="751.18945"/>
+            <end y="165.0" x="750.0"/>
+        </arc>
+        <arc target="glyph18" source="glyph9" id="arc6" class="stimulation">
+            <start y="215.0" x="1100.0"/>
+            <end y="215.0" x="1200.0"/>
+        </arc>
+        <arc target="glyph17" source="glyph10" id="arc7" class="necessary stimulation">
+            <start y="295.0" x="1100.0"/>
+            <end y="295.0" x="1200.0"/>
+        </arc>
+        <arc target="glyph21" source="glyph12" id="arc8" class="absolute stimulation">
+            <start y="375.0" x="1100.0"/>
+            <end y="375.0" x="1200.0"/>
+        </arc>
+        <arc target="glyph20" source="glyph13" id="arc9" class="absolute inhibition">
+            <start y="535.0" x="1100.0"/>
+            <end y="535.0" x="1200.0"/>
+        </arc>
+        <arc target="glyph16" source="glyph11" id="arc10" class="inhibition">
+            <start y="455.0" x="1100.0"/>
+            <end y="455.0" x="1200.0"/>
+        </arc>
+        <arc target="glyph19" source="glyph15" id="arc11" class="modulation">
+            <start y="135.0" x="1100.0"/>
+            <end y="135.0" x="1200.0"/>
+        </arc>
+        <arcgroup class="interaction">
+            <glyph id="glyph32" class="interaction">
+                <bbox y="312.5" x="792.5" h="35.0" w="35.0"/>
+            </glyph>
+            <arc target="glyph32" source="glyph25" id="arc3" class="interaction">
+                <start y="280.0" x="852.8571"/>
+                <end y="312.5" x="825.0"/>
+            </arc>
+            <arc target="glyph32" source="glyph26" id="arc4" class="interaction">
+                <start y="380.0" x="852.8571"/>
+                <end y="347.5" x="825.0"/>
+            </arc>
+            <arc target="glyph24" source="glyph32" id="arc5" class="interaction">
+                <glyph id="glyph38" class="cardinality">
+                    <label text="N"/>
+                    <bbox y="319.0" x="751.0" h="17.5" w="22.5"/>
+                </glyph>
+                <start y="330.0" x="792.5"/>
+                <end y="330.0" x="720.0"/>
+            </arc>
+        </arcgroup>
+    </map>
+</sbgn>
