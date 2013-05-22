@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<sbgn xmlns="http://sbgn.org/libsbgn/0.2">
+    <map language="activity flow">
+        <glyph compartmentOrder="-39.0" id="glyph0" class="compartment">
+            <label text="Connecting Arcs">
+                <bbox y="54.0" x="484.0" h="18.0" w="112.0"/>
+            </label>
+            <bbox y="50.0" x="330.0" h="600.0" w="420.0"/>
+        </glyph>
+        <glyph compartmentOrder="-38.0" id="glyph1" class="compartment">
+            <label text="Auxiliary Units">
+                <bbox y="54.0" x="872.0" h="18.0" w="96.0"/>
+            </label>
+            <bbox y="50.0" x="770.0" h="600.0" w="300.0"/>
+        </glyph>
+        <glyph compartmentOrder="-37.0" id="glyph2" class="compartment">
+            <label text="Reference Nodes">
+                <bbox y="674.0" x="340.5" h="18.0" w="119.0"/>
+            </label>
+            <bbox y="670.0" x="50.0" h="200.0" w="700.0"/>
+        </glyph>
+        <glyph compartmentOrder="-36.0" id="glyph3" class="compartment">
+            <label text="Activity Nodes (AN)">
+                <bbox y="54.0" x="115.5" h="18.0" w="129.0"/>
+            </label>
+            <bbox y="50.0" x="50.0" h="360.0" w="260.0"/>
+        </glyph>
+        <glyph compartmentOrder="-35.0" id="glyph4" class="compartment">
+            <label text="Container Node (CN)">
+                <bbox y="674.0" x="849.5" h="18.0" w="141.0"/>
+            </label>
+            <bbox y="670.0" x="770.0" h="200.0" w="300.0"/>
+        </glyph>
+        <glyph compartmentOrder="-34.0" id="glyph5" class="compartment">
+            <label text="Logical Operators">
+                <bbox y="434.0" x="119.0" h="18.0" w="122.0"/>
+            </label>
+            <bbox y="430.0" x="50.0" h="220.0" w="260.0"/>
+        </glyph>
+        <glyph compartmentOrder="-33.0" id="glyph6" class="compartment">
+            <label text="Compartment">
+                <bbox y="738.0" x="873.0" h="18.0" w="94.0"/>
+            </label>
+            <bbox y="730.0" x="830.0" h="100.0" w="180.0"/>
+            <glyph id="glyph6a" class="unit of information">
+                <label text="e:INFO"/>
+                <bbox y="721.5" x="850.0" h="17.0" w="50.0"/>
+            </glyph>
+        </glyph>
+        <glyph id="glyph7" class="submap">
+            <label text="Submap"/>
+            <bbox y="720.0" x="245.0" h="120.0" w="160.0"/>
+            <glyph id="glyph36" orientation="left" class="terminal">
+                <label text="C"/>
+                <bbox y="795.0" x="355.0" h="30.0" w="50.0"/>
+            </glyph>
+            <glyph id="glyph38" orientation="left" class="terminal">
+                <label text="B"/>
+                <bbox y="735.0" x="355.0" h="30.0" w="50.0"/>
+            </glyph>
+            <glyph id="glyph37" orientation="right" class="terminal">
+                <label text="A"/>
+                <bbox y="765.0" x="245.0" h="30.0" w="50.0"/>
+            </glyph>
+        </glyph>
+        <glyph id="glyph8" class="biological activity">
+            <label text="AN"/>
+            <bbox y="215.0" x="820.0" h="70.0" w="200.0"/>
+            <glyph id="glyph8a" class="unit of information">
+                <label text="Simple&#xA;Chemical"/>
+                <entity name="simple chemical"/>
+                <bbox y="188.5" x="843.5" h="53.0" w="53.0"/>
+            </glyph>
+        </glyph>
+        <glyph id="glyph9" class="biological activity">
+            <label text="AN"/>
+            <bbox y="105.0" x="820.0" h="70.0" w="200.0"/>
+            <glyph id="glyph9a" class="unit of information">
+                <label text="Macromolecule"/>
+                <entity name="macromolecule"/>
+                <bbox y="96.5" x="826.5" h="17.0" w="87.0"/>
+            </glyph>
+        </glyph>
+        <glyph id="glyph10" class="biological activity">
+            <label text="AN"/>
+            <bbox y="325.0" x="820.0" h="70.0" w="200.0"/>
+            <glyph id="glyph10a" class="unit of information">
+                <label text="Nucleic Acid&#xA;Feature"/>
+                <entity name="nucleic acid feature"/>
+                <bbox y="309.5" x="832.5" h="31.0" w="75.0"/>
+            </glyph>
+        </glyph>
+        <glyph id="glyph11" class="biological activity">
+            <label text="AN"/>
+            <bbox y="435.0" x="820.0" h="70.0" w="200.0"/>
+            <glyph id="glyph11a" class="unit of information">
+                <label text="Unspecified"/>
+                <entity name="unspecified entity"/>
+                <bbox y="420.5" x="831.0" h="29.0" w="78.0"/>
+            </glyph>
+        </glyph>
+        <glyph id="glyph12" class="biological activity">
+            <label text="AN"/>
+            <bbox y="545.0" x="820.0" h="70.0" w="200.0"/>
+            <glyph id="glyph12a" class="unit of information">
+                <label text="Complex"/>
+                <entity name="complex"/>
+                <bbox y="536.5" x="842.0" h="17.0" w="56.0"/>
+            </glyph>
+        </glyph>
+        <glyph id="glyph13" class="biological activity">
+            <label text="Biological&#xA;Activity"/>
+            <bbox y="105.0" x="110.0" h="70.0" w="140.0"/>
+        </glyph>
+        <glyph id="glyph14" class="perturbation">
+            <label text="Perturbation"/>
+            <bbox y="305.0" x="110.0" h="70.0" w="140.0"/>
+        </glyph>
+        <glyph id="glyph15" class="phenotype">
+            <label text="Phenotype"/>
+            <bbox y="205.0" x="110.0" h="70.0" w="140.0"/>
+        </glyph>
+        <glyph id="glyph26" orientation="right" class="tag">
+            <label text="Tag"/>
+            <bbox y="750.0" x="591.0" h="60.0" w="108.0"/>
+        </glyph>
+        <glyph id="glyph32" class="or">
+            <bbox y="485.0" x="205.0" h="50.0" w="50.0"/>
+        </glyph>
+        <glyph id="glyph33" class="not">
+            <bbox y="565.0" x="105.0" h="50.0" w="50.0"/>
+        </glyph>
+        <glyph id="glyph34" class="and">
+            <bbox y="485.0" x="105.0" h="50.0" w="50.0"/>
+        </glyph>
+        <glyph id="glyph35" class="delay">
+            <bbox y="565.0" x="205.0" h="50.0" w="50.0"/>
+        </glyph>
+        <glyph id="glyph27" orientation="right" class="tag">
+            <label text="LABEL"/>
+            <bbox y="550.0" x="376.0" h="60.0" w="108.0"/>
+        </glyph>
+        <glyph id="glyph24" class="biological activity">
+            <label text="AN&#xA;or CN"/>
+            <bbox y="550.0" x="596.0" h="60.0" w="108.0"/>
+        </glyph>
+        <glyph id="glyph17" class="biological activity">
+            <label text="Source&#xA;AN"/>
+            <bbox y="460.0" x="376.0" h="60.0" w="108.0"/>
+        </glyph>
+        <glyph id="glyph31" class="and">
+            <bbox y="460.0" x="620.0" h="60.0" w="60.0"/>
+            <port y="490.0" x="590.0" id="glyph31.1"/>
+        </glyph>
+        <glyph id="glyph21" class="biological activity">
+            <label text="Source&#xA;AN"/>
+            <bbox y="280.0" x="376.0" h="60.0" w="108.0"/>
+        </glyph>
+        <glyph id="glyph22" class="biological activity">
+            <label text="Target&#xA;AN"/>
+            <bbox y="280.0" x="596.0" h="60.0" w="108.0"/>
+        </glyph>
+        <glyph id="glyph25" class="biological activity">
+            <label text="Source&#xA;AN"/>
+            <bbox y="100.0" x="376.0" h="60.0" w="108.0"/>
+        </glyph>
+        <glyph id="glyph16" class="biological activity">
+            <label text="Target&#xA;AN"/>
+            <bbox y="100.0" x="596.0" h="60.0" w="108.0"/>
+        </glyph>
+        <glyph id="glyph20" class="biological activity">
+            <label text="Source&#xA;AN"/>
+            <bbox y="190.0" x="376.0" h="60.0" w="108.0"/>
+        </glyph>
+        <glyph id="glyph19" class="biological activity">
+            <label text="Target&#xA;AN"/>
+            <bbox y="190.0" x="596.0" h="60.0" w="108.0"/>
+        </glyph>
+        <glyph id="glyph23" class="biological activity">
+            <label text="Source&#xA;AN"/>
+            <bbox y="370.0" x="376.0" h="60.0" w="108.0"/>
+        </glyph>
+        <glyph id="glyph18" class="biological activity">
+            <label text="Target&#xA;AN"/>
+            <bbox y="370.0" x="596.0" h="60.0" w="108.0"/>
+        </glyph>
+        <glyph id="glyph29" class="biological activity">
+            <label text="AN&#xA;or CN"/>
+            <bbox y="790.0" x="450.0" h="50.0" w="100.0"/>
+        </glyph>
+        <glyph id="glyph30" class="biological activity">
+            <label text="AN&#xA;or CN"/>
+            <bbox y="720.0" x="450.0" h="50.0" w="100.0"/>
+        </glyph>
+        <glyph id="glyph28" class="biological activity">
+            <label text="AN&#xA;or CN"/>
+            <bbox y="755.0" x="105.0" h="50.0" w="100.0"/>
+        </glyph>
+        <arc target="glyph24" source="glyph27" id="arc0" class="equivalence arc">
+            <start y="580.0" x="484.0"/>
+            <end y="580.0" x="596.0"/>
+        </arc>
+        <arc target="glyph31.1" source="glyph17" id="arc1" class="logic arc">
+            <start y="490.0" x="484.0"/>
+            <end y="490.0" x="590.0"/>
+        </arc>
+        <arc target="glyph22" source="glyph21" id="arc2" class="unknown influence">
+            <start y="310.0" x="484.0"/>
+            <end y="310.0" x="596.0"/>
+        </arc>
+        <arc target="glyph16" source="glyph25" id="arc3" class="positive influence">
+            <start y="130.0" x="484.0"/>
+            <end y="130.0" x="596.0"/>
+        </arc>
+        <arc target="glyph19" source="glyph20" id="arc4" class="negative influence">
+            <start y="220.0" x="484.0"/>
+            <end y="220.0" x="596.0"/>
+        </arc>
+        <arc target="glyph18" source="glyph23" id="arc5" class="necessary stimulation">
+            <start y="400.0" x="484.0"/>
+            <end y="400.0" x="596.0"/>
+        </arc>
+        <arc target="glyph29" source="glyph36" id="arc6" class="equivalence arc">
+            <start y="811.0417" x="405.0"/>
+            <end y="812.9167" x="450.0"/>
+        </arc>
+        <arc target="glyph30" source="glyph38" id="arc7" class="equivalence arc">
+            <start y="748.9583" x="405.0"/>
+            <end y="747.0833" x="450.0"/>
+        </arc>
+        <arc target="glyph37" source="glyph28" id="arc8" class="equivalence arc">
+            <start y="780.0" x="205.0"/>
+            <end y="780.0" x="245.0"/>
+        </arc>
+    </map>
+</sbgn>
