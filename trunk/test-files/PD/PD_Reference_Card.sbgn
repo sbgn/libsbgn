@@ -31,7 +31,7 @@
             </label>
             <bbox y="700.0" x="420.0" h="200.0" w="640.0"/>
         </glyph>
-        <glyph id="glyph5" class="complex">
+        <glyph id="glyph5" class="complex" compartmentRef="glyph1">
             <label text="Complex">
                 <bbox y="622.0" x="193.5" h="18.0" w="63.0"/>
             </label>
@@ -118,7 +118,7 @@
                 <bbox y="825.0" x="695.0" h="30.0" w="50.0"/>
             </glyph>
         </glyph>
-        <glyph id="glyph11" class="macromolecule multimer">
+        <glyph id="glyph11" class="macromolecule multimer" compartmentRef="glyph1">
             <label text="Multimer&#xA;Macromolecule"/>
             <bbox y="505.0" x="82.0" h="70.0" w="126.0"/>
             <glyph id="glyph11a" class="unit of information">
@@ -126,7 +126,7 @@
                 <bbox y="497.0" x="98.0" h="16.0" w="31.0"/>
             </glyph>
         </glyph>
-        <glyph id="glyph12" class="nucleic acid feature multimer">
+        <glyph id="glyph12" class="nucleic acid feature multimer" compartmentRef="glyph1">
             <label text="Multimer&#xA;Nucleic Acid&#xA;Feature"/>
             <bbox y="505.0" x="242.0" h="70.0" w="126.0"/>
             <glyph id="glyph12a" class="unit of information">
@@ -134,7 +134,7 @@
                 <bbox y="497.0" x="258.0" h="16.0" w="31.0"/>
             </glyph>
         </glyph>
-        <glyph id="glyph13" class="complex multimer">
+        <glyph id="glyph13" class="complex multimer" compartmentRef="glyph1">
             <label text="Multimer&#xA;Complex">
                 <bbox y="412.5" x="113.5" h="35.0" w="63.0"/>
             </label>
@@ -144,12 +144,12 @@
                 <bbox y="387.0" x="98.0" h="16.0" w="31.0"/>
             </glyph>
         </glyph>
-        <glyph id="glyph14" class="macromolecule">
+        <glyph id="glyph14" class="macromolecule" compartmentRef="glyph2">
             <label text="EPN with&#xA;Clone Marker"/>
             <clone/>
             <bbox y="275.0" x="512.0" h="80.0" w="126.0"/>
         </glyph>
-        <glyph id="glyph15" class="macromolecule">
+        <glyph id="glyph15" class="macromolecule" compartmentRef="glyph2">
             <label text="EPN with&#xA;Clone Marker"/>
             <clone>
                 <label text="Clone Label">
@@ -158,23 +158,23 @@
             </clone>
             <bbox y="375.0" x="512.0" h="80.0" w="126.0"/>
         </glyph>
-        <glyph id="glyph16" class="unspecified entity">
+        <glyph id="glyph16" class="unspecified entity" compartmentRef="glyph1">
             <label text="Unspecified&#xA;Entity"/>
             <bbox y="95.0" x="82.0" h="70.0" w="126.0"/>
         </glyph>
-        <glyph id="glyph17" class="macromolecule">
+        <glyph id="glyph17" class="macromolecule" compartmentRef="glyph1">
             <label text="Macromolecule"/>
             <bbox y="185.0" x="82.0" h="70.0" w="126.0"/>
         </glyph>
-        <glyph id="glyph18" class="nucleic acid feature">
+        <glyph id="glyph18" class="nucleic acid feature" compartmentRef="glyph1">
             <label text="Nucleic Acid&#xA;Feature"/>
             <bbox y="185.0" x="242.0" h="70.0" w="126.0"/>
         </glyph>
-        <glyph id="glyph19" class="perturbing agent">
+        <glyph id="glyph19" class="perturbing agent" compartmentRef="glyph1">
             <label text="Perturbing&#xA;Agent"/>
             <bbox y="275.0" x="242.0" h="70.0" w="126.0"/>
         </glyph>
-        <glyph id="glyph20" class="macromolecule">
+        <glyph id="glyph20" class="macromolecule" compartmentRef="glyph2">
             <label text="EPN with&#xA;Unit of Information"/>
             <bbox y="95.0" x="515.0" h="70.0" w="120.0"/>
             <glyph id="glyph20a" class="unit of information">
@@ -182,7 +182,7 @@
                 <bbox y="87.0" x="516.5" h="16.0" w="57.0"/>
             </glyph>
         </glyph>
-        <glyph id="glyph26" class="macromolecule">
+        <glyph id="glyph26" class="macromolecule" compartmentRef="glyph2">
             <label text="EPN with&#xA;State Variable"/>
             <bbox y="185.0" x="515.0" h="70.0" w="120.0"/>
             <glyph id="glyph26a" class="state variable">
@@ -190,7 +190,7 @@
                 <bbox y="173.0" x="516.5" h="24.0" w="57.0"/>
             </glyph>
         </glyph>
-        <glyph id="glyph27" class="simple chemical multimer">
+        <glyph id="glyph27" class="simple chemical multimer" compartmentRef="glyph1">
             <label text="Multimer&#xA;Simple&#xA;Chemical"/>
             <bbox y="395.0" x="270.0" h="70.0" w="70.0"/>
             <glyph id="glyph27a" class="unit of information">
@@ -206,10 +206,10 @@
             <label text="Tag"/>
             <bbox y="780.0" x="931.0" h="60.0" w="108.0"/>
         </glyph>
-        <glyph id="glyph41" class="source and sink">
+        <glyph id="glyph41" class="source and sink" compartmentRef="glyph1">
             <bbox y="275.0" x="110.0" h="70.0" w="70.0"/>
         </glyph>
-        <glyph id="glyph42" class="simple chemical">
+        <glyph id="glyph42" class="simple chemical" compartmentRef="glyph1">
             <label text="Simple&#xA;Chemical"/>
             <bbox y="95.0" x="270.0" h="70.0" w="70.0"/>
         </glyph>
@@ -237,15 +237,15 @@
         <glyph id="glyph60" class="omitted process">
             <bbox y="168.0" x="893.0" h="24.0" w="24.0"/>
         </glyph>
-        <glyph id="glyph40" class="unspecified entity">
+        <glyph id="glyph40" class="unspecified entity" compartmentRef="glyph4">
             <label text="EPN&#xA;or CN"/>
             <bbox y="785.0" x="445.0" h="50.0" w="100.0"/>
         </glyph>
-        <glyph id="glyph38" class="unspecified entity">
+        <glyph id="glyph38" class="unspecified entity" compartmentRef="glyph4">
             <label text="EPN&#xA;or CN"/>
             <bbox y="750.0" x="785.0" h="50.0" w="100.0"/>
         </glyph>
-        <glyph id="glyph39" class="unspecified entity">
+        <glyph id="glyph39" class="unspecified entity" compartmentRef="glyph4">
             <label text="EPN&#xA;or CN"/>
             <bbox y="820.0" x="785.0" h="50.0" w="100.0"/>
         </glyph>
@@ -253,47 +253,47 @@
             <label text="LABEL"/>
             <bbox y="790.0" x="1121.0" h="60.0" w="108.0"/>
         </glyph>
-        <glyph id="glyph29" class="unspecified entity">
+        <glyph id="glyph29" class="unspecified entity" compartmentRef="glyph0">
             <label text="EPN"/>
             <bbox y="790.0" x="1321.0" h="60.0" w="108.0"/>
         </glyph>
-        <glyph id="glyph28" class="unspecified entity">
+        <glyph id="glyph28" class="unspecified entity" compartmentRef="glyph0">
             <label text="Source&#xA;EPN"/>
             <bbox y="710.0" x="1121.0" h="60.0" w="108.0"/>
         </glyph>
-        <glyph id="glyph32" class="unspecified entity">
+        <glyph id="glyph32" class="unspecified entity" compartmentRef="glyph0">
             <label text="Target&#xA;Logical&#xA;Operator"/>
             <bbox y="710.0" x="1321.0" h="60.0" w="108.0"/>
         </glyph>
-        <glyph id="glyph22" class="unspecified entity">
+        <glyph id="glyph22" class="unspecified entity" compartmentRef="glyph0">
             <label text="Source&#xA;EPN or&#xA;Logical Operator"/>
             <bbox y="255.0" x="1115.0" h="70.0" w="120.0"/>
         </glyph>
         <glyph id="glyph61" class="process">
             <bbox y="278.0" x="1363.0" h="24.0" w="24.0"/>
         </glyph>
-        <glyph id="glyph21" class="unspecified entity">
+        <glyph id="glyph21" class="unspecified entity" compartmentRef="glyph0">
             <label text="Source&#xA;EPN or&#xA;Logical Operator"/>
             <bbox y="345.0" x="1115.0" h="70.0" w="120.0"/>
         </glyph>
         <glyph id="glyph57" class="process">
             <bbox y="368.0" x="1363.0" h="24.0" w="24.0"/>
         </glyph>
-        <glyph id="glyph23" class="unspecified entity">
+        <glyph id="glyph23" class="unspecified entity" compartmentRef="glyph0">
             <label text="Source&#xA;EPN or&#xA;Logical Operator"/>
             <bbox y="435.0" x="1115.0" h="70.0" w="120.0"/>
         </glyph>
         <glyph id="glyph53" class="process">
             <bbox y="458.0" x="1363.0" h="24.0" w="24.0"/>
         </glyph>
-        <glyph id="glyph25" class="unspecified entity">
+        <glyph id="glyph25" class="unspecified entity" compartmentRef="glyph0">
             <label text="Source&#xA;EPN or&#xA;Logical Operator"/>
             <bbox y="525.0" x="1115.0" h="70.0" w="120.0"/>
         </glyph>
         <glyph id="glyph50" class="process">
             <bbox y="548.0" x="1363.0" h="24.0" w="24.0"/>
         </glyph>
-        <glyph id="glyph24" class="unspecified entity">
+        <glyph id="glyph24" class="unspecified entity" compartmentRef="glyph0">
             <label text="Source&#xA;EPN or&#xA;Logical Operator"/>
             <bbox y="615.0" x="1115.0" h="70.0" w="120.0"/>
         </glyph>
@@ -304,11 +304,11 @@
             <bbox y="188.0" x="1163.0" h="24.0" w="24.0"/>
             <port y="200.0" x="1199.0" id="glyph51.2"/>
         </glyph>
-        <glyph id="glyph31" class="unspecified entity">
+        <glyph id="glyph31" class="unspecified entity" compartmentRef="glyph0">
             <label text="Target&#xA;EPN"/>
             <bbox y="170.0" x="1321.0" h="60.0" w="108.0"/>
         </glyph>
-        <glyph id="glyph34" class="unspecified entity">
+        <glyph id="glyph34" class="unspecified entity" compartmentRef="glyph0">
             <label text="Source&#xA;EPN"/>
             <bbox y="90.0" x="1121.0" h="60.0" w="108.0"/>
         </glyph>
