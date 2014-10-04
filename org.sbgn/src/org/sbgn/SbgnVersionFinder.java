@@ -58,7 +58,8 @@ public class SbgnVersionFinder
 
 		VersionHandler versionHandler = new VersionHandler();
 
-		xr.setEntityResolver(null);		
+        //NOTE: Commented out setEntityResolver(null) results in NullPointerException
+		//xr.setEntityResolver(null);
 		xr.setContentHandler(versionHandler);
 		xr.setErrorHandler(versionHandler);
 		xr.parse(new InputSource(

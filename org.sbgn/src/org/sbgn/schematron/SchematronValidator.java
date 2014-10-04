@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.StringReader;
 import java.io.StringWriter;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -26,9 +27,14 @@ import org.xml.sax.SAXException;
 public class SchematronValidator 
 {
 	private SchematronValidator() {} // private to prevent external instantiation
-	
+
 	private static boolean fSvrlDump = false;
-	public static void setSvrlDump(boolean value)
+
+    /** Dump validation report to file
+     *
+     * @param value set value to true to dump validation report to file
+     */
+    public static void setSvrlDump(boolean value)
 	{
 		fSvrlDump = value;
 	}
@@ -78,7 +84,16 @@ public class SchematronValidator
 		Result result2 = new StreamResult(sw2);
 		transformer2.transform(inputSource, result2);
 		
-		if (fSvrlDump) { System.out.println (sw2.toString()); }
+		if (fSvrlDump) {
+            //System.out.println(sw2.toString());
+
+            File f = File.createTempFile(inputFile.getName(), ".svrl");
+            System.out.println("SVRL Location: " + f);
+
+            PrintWriter out = new PrintWriter(f);
+            out.println(sw2.toString());
+            out.close();
+        }
 		parseSVRL(removeXMLheader(sw2.toString()));
 	}
 
