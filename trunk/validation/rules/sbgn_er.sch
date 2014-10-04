@@ -119,6 +119,7 @@ Schematron validation for SBGN ER
 	
 	<iso:pattern id="er10103">
 		<iso:rule context="sbgn:arc[@class='interaction']">
+			<iso:let name="id" value="@id"/>	
 			<iso:let name="source" value="@source"/>			
 			<iso:let name="class" value="//sbgn:glyph[@id=$source]/@class"/>	
 			<iso:assert 
@@ -131,12 +132,13 @@ Schematron validation for SBGN ER
 				$class='outcome' or 
 				$class='unit of information' or
 				$class='interaction'" 
-				diagnostics="source class">Incorrect source reference for arc with class "interaction"
+				diagnostics="id source class">Incorrect source reference for arc with class "interaction"
 			</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
 	<iso:pattern id="er10104">
 		<iso:rule context="sbgn:arc[@class='interaction']">
+			<iso:let name="id" value="@id"/>
 			<iso:let name="target" value="@target"/>			
 			<iso:let name="target-class" value="//sbgn:glyph[@id=$target]/@class"/>	
 			<iso:assert 
@@ -148,7 +150,7 @@ Schematron validation for SBGN ER
 				$target-class='entity' or 
 				$target-class='outcome' or 
 				$target-class='unit of information'" 
-				diagnostics="target target-class">Incorrect target reference for arc with class "interaction"
+				diagnostics="id target target-class">Incorrect target reference for arc with class "interaction"
 			</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
@@ -237,6 +239,7 @@ Schematron validation for SBGN ER
 			
 	<iso:pattern id="er10109">
 		<iso:rule context="sbgn:arc[@class='logic arc']">
+			<iso:let name="id" value="@id"/>
 			<iso:let name="target" value="@target"/>			
 			<iso:let name="port-class" value="//sbgn:port[@id=$target]/../@class"/>	
 			<iso:assert 
@@ -249,7 +252,7 @@ Schematron validation for SBGN ER
 				$port-class='or' or
 				$port-class='not' or
 				$port-class='delay'" 
-				diagnostics="target port-class">Incorrect target reference for arc with class "logic arc"
+				diagnostics="id target port-class">Incorrect target reference for arc with class "logic arc"
 			</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 

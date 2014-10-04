@@ -45,6 +45,9 @@ public class ValidationExample
 	 */
 	public static void highLevelExample(File f) throws IOException, ParserConfigurationException, TransformerException, SAXException
 	{
+        // Export validation reports to file for debugging
+        SchematronValidator.setSvrlDump(true);
+
 		// validation will result in a list of issues
 		List<Issue> issues = SchematronValidator.validate(f);
 
@@ -58,10 +61,12 @@ public class ValidationExample
 	
 	public static void main (String[] args) throws JAXBException, SAXException, ParserConfigurationException, IOException, TransformerException
 	{
-		File f = new File ("../test-files/PD/adh.sbgn");
+        System.out.println("LOW LEVEL VALIDATION");
+		File f = new File ("./test-files/PD/adh.sbgn");
 		lowLevelExample(f);
-		
-		File f2 = new File ("../test-files/PD/multimer2.sbgn");
-		highLevelExample (f2);			
+
+        System.out.println("HIGH LEVEL VALIDATION");
+        File f2 = new File ("./test-files/PD/multimer2.sbgn");
+		highLevelExample(f2);
 	}
 }

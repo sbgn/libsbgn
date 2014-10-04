@@ -12,7 +12,6 @@
 	<mkdir dir="../dist"/>
   </target>
 
-
 	<path id="project.classpath">
 		<fileset dir="lib">
 			<include name="*.jar"/>
@@ -45,6 +44,7 @@
 	</javac>
 	<copy toDir="build">
 		<fileset dir="../validation/rules" includes="*.sch"/>
+        <fileset dir="../validation/schematron" includes="*.xsl"/>
 		<fileset dir="../resources" includes="SBGN.xsd"/>
 	</copy>
   </target>
@@ -73,7 +73,7 @@
      <unjar src="../dist/org.sbgn.jar" dest="build/all"/>
      <unjar dest="build/all">
 	   <fileset dir=".">
-	     <include name="lib/saxon*.jar"/>
+	     <include name="lib/net.sf.saxon*.jar"/>
 	   </fileset>
      </unjar>
 	 <jar jarfile="../dist/org.sbgn-with-dependencies.jar" manifest="META-INF/MANIFEST.MF">

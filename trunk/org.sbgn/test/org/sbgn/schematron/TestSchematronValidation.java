@@ -11,6 +11,7 @@ import javax.xml.bind.JAXBException;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 
+import org.apache.xpath.SourceTree;
 import org.sbgn.SbgnUtil;
 import org.xml.sax.SAXException;
 
@@ -18,7 +19,8 @@ import junit.framework.TestCase;
 
 public class TestSchematronValidation extends TestCase
 {
-	File rulesDir = new File("validation/rules/");
+    //rulesDir not used
+	//File rulesDir = new File("validation/rules/");
 	File testFilesBase = new File ("test-files");
 	File negTestFilesDir = new File("validation/error-test-files/");
 	
@@ -33,10 +35,16 @@ public class TestSchematronValidation extends TestCase
 			assertTrue (testFilesDir.isDirectory());
 
 			int issueNum = 0;
-			
-			for (File f : testFilesDir.listFiles())
+
+            System.out.println("Total files: " + testFilesDir.listFiles().length);
+
+            for (File f : testFilesDir.listFiles())
 			{
 				if (!f.getName().endsWith(".sbgn")) continue;
+
+                // ignore the Reference Card .sbgn as these files will have many unconnected glyphs
+                System.out.println("File: " + f);
+                if(f.getName().contains("Reference")) continue;
 
 				boolean first = true;
 				for (Issue i : SchematronValidator.validate(f))
@@ -47,12 +55,12 @@ public class TestSchematronValidation extends TestCase
 					
 					if (first)
 					{
-						System.out.println ("===============");
-						System.out.println (f);
+						System.out.println("===============");
+						System.out.println(f);
 						first = false;
 					}
 					issueNum++;
-					System.out.println (i.getAboutId() + " " + i.getRuleId() + " " + i.getRuleDescription());
+					System.out.println(i.getAboutId() + " " + i.getRuleId() + " " + i.getRuleDescription());
 				}
 			}
 			assertEquals ("Expected zero validation issues", 0, issueNum);
@@ -68,10 +76,14 @@ public class TestSchematronValidation extends TestCase
 			assertTrue ("Could not find directory " + testFilesDir, testFilesDir.exists());
 			assertTrue (testFilesDir.isDirectory());
 
+            System.out.println("Total files: " + testFilesDir.listFiles().length);
+
 			for (File f : testFilesDir.listFiles())
 			{
 				if (!f.getName().endsWith(".sbgn")) continue;
-				System.out.println ("@@@@@@@@@@@@@@");
+                System.out.println(f);
+
+                System.out.println ("@@@@@@@@@@@@@@");
 				System.out.println (f);
 				assertTrue (f + " does not validate. All schematron test cases must pass low-level XSD validation", SbgnUtil.isValid(f));
 				
@@ -83,10 +95,16 @@ public class TestSchematronValidation extends TestCase
 				String expectedRuleId = name.split("-")[0];
 				
 				boolean failedExpectedRule = false;
+
+                // Export validation reports to file for debugging
+                SchematronValidator.setSvrlDump(true);
+
 				List<Issue> issues = SchematronValidator.validate(f);
 				for (Issue issue : issues)
 				{
-					assertNotNull (issue.getRuleId());
+                    System.out.println("Issue: " + issue.toString());
+
+					assertNotNull(issue.getRuleId());
 					assertNotNull ("About id of " + issue.getRuleId() + " must not be null", issue.getAboutId());
 					assertNotNull ("Rule description of " + issue.getRuleId() + " must not be null", issue.getRuleDescription());
 					assertNotNull ("Issue severity of " + issue.getRuleId() + " must not be null", issue.getSeverity());

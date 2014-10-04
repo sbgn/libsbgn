@@ -34,5 +34,5 @@ public class Issue
 	public String getRuleId() { return ruleId; }
 	
 	@Override
-	public String toString() { return severity + " at id=" + diagnosticId + ": " + message; }
+	public String toString() { return severity + " at diagnosticId=" + diagnosticId + "; ruleId=" + ruleId + " Message: " + message; }
 }
