@@ -34,12 +34,14 @@
 	<javac srcdir="gensrc"
 		   includes="**"
 		   debug="true"
-		   destdir="build">
+		   destdir="build"
+		   includeantruntime="false">
 	</javac>
 	<javac srcdir="src"
 		   includes="**"
 		   debug="true"
-		   destdir="build">
+		   destdir="build"
+		   includeantruntime="false">
 		   <classpath refid="project.classpath"/>
 	</javac>
 	<copy toDir="build">
@@ -118,7 +120,8 @@
 		<javac srcdir="test" debug="true" 
 					includes="**"
 					destdir="build"
-					source="1.5">
+					source="1.5"
+					includeantruntime="false">
 			<classpath refid="test.classpath"/>
 		</javac>		
 		<junit printsummary="on" haltonfailure="true" fork="true">
