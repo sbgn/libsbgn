@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<sbgn xmlns="http://sbgn.org/libsbgn/0.2">
+    <map language="process description">
+        <glyph id="glyph4" orientation="left" class="tag">
+            <label text="ERK"/>
+            <bbox y="130.0" x="520.0" h="60.0" w="100.0"/>
+        </glyph>
+        <glyph id="glyph1" class="macromolecule">
+            <label text="RAS"/>
+            <bbox y="20.0" x="200.0" h="60.0" w="100.0"/>
+            <glyph id="glyph1a" class="state variable">
+                <state value="active"/>
+                <bbox y="67.0" x="225.0" h="26.0" w="50.0"/>
+            </glyph>
+        </glyph>
+        <glyph id="glyph3" orientation="right" class="tag">
+            <label text="RAS"/>
+            <bbox y="20.0" x="30.0" h="60.0" w="100.0"/>
+        </glyph>
+        <glyph id="glyph5" class="source and sink">
+            <bbox y="130.0" x="90.0" h="60.0" w="60.0"/>
+        </glyph>
+        <glyph id="glyph6" class="omitted process">
+            <bbox y="150.0" x="240.0" h="20.0" w="20.0"/>
+            <port y="160.0" x="230.0" id="glyph6.1"/>
+            <port y="160.0" x="270.0" id="glyph6.2"/>
+        </glyph>
+        <glyph id="glyph2" class="macromolecule">
+            <label text="ERK"/>
+            <bbox y="130.0" x="350.0" h="60.0" w="100.0"/>
+            <glyph id="glyph2a" class="state variable">
+                <state value="2P"/>
+                <bbox y="179.0" x="359.0" h="22.0" w="32.0"/>
+            </glyph>
+        </glyph>
+        <arc target="glyph6" source="glyph1" id="arc1" class="catalysis">
+            <start y="92.0" x="250.0"/>
+            <end y="150.0" x="250.0"/>
+        </arc>
+        <arc target="glyph4" source="glyph2" id="arc2" class="equivalence arc">
+            <start y="160.0" x="450.0"/>
+            <end y="160.0" x="520.0"/>
+        </arc>
+        <arc target="glyph3" source="glyph1" id="arc3" class="equivalence arc">
+            <start y="50.0" x="200.0"/>
+            <end y="50.0" x="130.0"/>
+        </arc>
+        <arc target="glyph6.1" source="glyph5" id="arc4" class="consumption">
+            <start y="160.0" x="150.0"/>
+            <end y="160.0" x="230.0"/>
+        </arc>
+        <arc target="glyph2" source="glyph6.2" id="arc5" class="production">
+            <start y="160.0" x="270.0"/>
+            <end y="160.0" x="350.0"/>
+        </arc>
+    </map>
+</sbgn>
