@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<sbgn xmlns="http://sbgn.org/libsbgn/0.2">
-    <map language="process description">
+<sbgn xmlns="http://sbgn.org/libsbgn/0.3">
+    <map language="process description" id="map1">
         <glyph id="glyph9" class="macromolecule">
             <label text="hexokinase"/>
             <bbox y="40.0" x="170.0" h="60.0" w="120.0"/>
@@ -195,179 +195,179 @@
             <label text="DHA-P"/>
             <bbox y="40.0" x="960.0" h="60.0" w="60.0"/>
         </glyph>
-        <arc target="glyph8" source="glyph9" class="catalysis">
+        <arc id="arc0" target="glyph8" source="glyph9" class="catalysis">
             <start y="100.0" x="230.0"/>
             <end y="160.0" x="230.0"/>
         </arc>
-        <arc target="glyph8.1" source="glyph0" class="consumption">
+        <arc id="arc1" target="glyph8.1" source="glyph0" class="consumption">
             <start y="170.0" x="150.0"/>
             <end y="170.0" x="210.0"/>
         </arc>
-        <arc target="glyph1" source="glyph8.2" class="production">
+        <arc id="arc2" target="glyph1" source="glyph8.2" class="production">
             <start y="170.0" x="250.0"/>
             <end y="170.0" x="320.0"/>
         </arc>
-        <arc target="glyph8.1" source="glyph6" class="consumption">
+        <arc id="arc3" target="glyph8.1" source="glyph6" class="consumption">
             <start y="232.58565" x="182.18416"/>
             <end y="170.0" x="210.0"/>
         </arc>
-        <arc target="glyph7" source="glyph8.2" class="production">
+        <arc id="arc4" target="glyph7" source="glyph8.2" class="production">
             <start y="170.0" x="250.0"/>
             <end y="236.31943" x="281.5818"/>
         </arc>
-        <arc target="glyph12" source="glyph11.2" class="production">
+        <arc id="arc5" target="glyph12" source="glyph11.2" class="production">
             <start y="170.0" x="680.0"/>
             <end y="236.31943" x="711.5818"/>
         </arc>
-        <arc target="glyph11.1" source="glyph13" class="consumption">
+        <arc id="arc6" target="glyph11.1" source="glyph13" class="consumption">
             <start y="232.58565" x="612.18414"/>
             <end y="170.0" x="640.0"/>
         </arc>
-        <arc target="glyph10.1" source="glyph1" class="consumption">
+        <arc id="arc7" target="glyph10.1" source="glyph1" class="consumption">
             <start y="170.0" x="380.0"/>
             <end y="170.0" x="420.0"/>
         </arc>
-        <arc target="glyph2" source="glyph10.2" class="production">
+        <arc id="arc8" target="glyph2" source="glyph10.2" class="production">
             <start y="170.0" x="460.0"/>
             <end y="170.0" x="520.0"/>
         </arc>
-        <arc target="glyph11.1" source="glyph2" class="consumption">
+        <arc id="arc9" target="glyph11.1" source="glyph2" class="consumption">
             <start y="170.0" x="580.0"/>
             <end y="170.0" x="640.0"/>
         </arc>
-        <arc target="glyph3" source="glyph11.2" class="production">
+        <arc id="arc10" target="glyph3" source="glyph11.2" class="production">
             <start y="170.0" x="680.0"/>
             <end y="170.0" x="730.0"/>
         </arc>
-        <arc target="glyph4" source="glyph14.2" class="production">
+        <arc id="arc11" target="glyph4" source="glyph14.2" class="production">
             <start y="190.0" x="990.0"/>
             <end y="240.0" x="990.0"/>
         </arc>
-        <arc target="glyph14" source="glyph15" class="catalysis">
+        <arc id="arc12" target="glyph14" source="glyph15" class="catalysis">
             <start y="170.0" x="1080.0"/>
             <end y="170.0" x="1000.0"/>
         </arc>
-        <arc target="glyph16.1" source="glyph3" class="consumption">
+        <arc id="arc13" target="glyph16.1" source="glyph3" class="consumption">
             <start y="170.0" x="790.0"/>
             <end y="170.0" x="860.0"/>
         </arc>
-        <arc target="glyph5" source="glyph16.2" class="production">
+        <arc id="arc14" target="glyph5" source="glyph16.2" class="production">
             <start y="170.0" x="900.0"/>
             <end y="90.18018" x="967.8018"/>
         </arc>
-        <arc target="glyph4" source="glyph16.2" class="production">
+        <arc id="arc15" target="glyph4" source="glyph16.2" class="production">
             <start y="170.0" x="900.0"/>
             <end y="249.81981" x="967.8018"/>
         </arc>
-        <arc target="glyph10" source="glyph17" class="catalysis">
+        <arc id="arc16" target="glyph10" source="glyph17" class="catalysis">
             <start y="100.0" x="440.0"/>
             <end y="160.0" x="440.0"/>
         </arc>
-        <arc target="glyph11" source="glyph19" class="catalysis">
+        <arc id="arc17" target="glyph11" source="glyph19" class="catalysis">
             <start y="100.0" x="660.0"/>
             <end y="160.0" x="660.0"/>
         </arc>
-        <arc target="glyph16" source="glyph18" class="catalysis">
+        <arc id="arc18" target="glyph16" source="glyph18" class="catalysis">
             <start y="100.0" x="880.0"/>
             <end y="160.0" x="880.0"/>
         </arc>
-        <arc target="glyph20" source="glyph22" class="catalysis">
+        <arc id="arc19" target="glyph20" source="glyph22" class="catalysis">
             <start y="380.0" x="1080.0"/>
             <end y="380.0" x="1000.0"/>
         </arc>
-        <arc target="glyph20.1" source="glyph4" class="consumption">
+        <arc id="arc20" target="glyph20.1" source="glyph4" class="consumption">
             <start y="300.0" x="990.0"/>
             <end y="360.0" x="990.0"/>
         </arc>
-        <arc target="glyph21" source="glyph20.2" class="production">
+        <arc id="arc21" target="glyph21" source="glyph20.2" class="production">
             <start y="400.0" x="990.0"/>
             <end y="460.0" x="990.0"/>
         </arc>
-        <arc target="glyph20.1" source="glyph23" class="consumption">
+        <arc id="arc22" target="glyph20.1" source="glyph23" class="consumption">
             <start y="325.89996" x="935.43994"/>
             <end y="360.0" x="990.0"/>
         </arc>
-        <arc target="glyph20.1" source="glyph24" class="consumption">
+        <arc id="arc23" target="glyph20.1" source="glyph24" class="consumption">
             <start y="324.56927" x="1053.7753"/>
             <end y="360.0" x="990.0"/>
         </arc>
-        <arc target="glyph25" source="glyph20.2" class="production">
+        <arc id="arc24" target="glyph25" source="glyph20.2" class="production">
             <start y="400.0" x="990.0"/>
             <end y="431.5818" x="1056.3195"/>
         </arc>
-        <arc target="glyph26" source="glyph20.2" class="production">
+        <arc id="arc25" target="glyph26" source="glyph20.2" class="production">
             <start y="400.0" x="990.0"/>
             <end y="494.76465" x="1063.7772"/>
         </arc>
-        <arc target="glyph31" source="glyph35" class="catalysis">
+        <arc id="arc26" target="glyph31" source="glyph35" class="catalysis">
             <start y="540.0" x="880.0"/>
             <end y="500.0" x="880.0"/>
         </arc>
-        <arc target="glyph32" source="glyph36" class="catalysis">
+        <arc id="arc27" target="glyph32" source="glyph36" class="catalysis">
             <start y="540.0" x="640.0"/>
             <end y="500.0" x="640.0"/>
         </arc>
-        <arc target="glyph33" source="glyph37" class="catalysis">
+        <arc id="arc28" target="glyph33" source="glyph37" class="catalysis">
             <start y="540.0" x="410.0"/>
             <end y="500.0" x="410.0"/>
         </arc>
-        <arc target="glyph34" source="glyph38" class="catalysis">
+        <arc id="arc29" target="glyph34" source="glyph38" class="catalysis">
             <start y="540.0" x="160.0"/>
             <end y="500.0" x="160.0"/>
         </arc>
-        <arc target="glyph31.2" source="glyph21" class="consumption">
+        <arc id="arc30" target="glyph31.2" source="glyph21" class="consumption">
             <start y="490.0" x="960.0"/>
             <end y="490.0" x="900.0"/>
         </arc>
-        <arc target="glyph31.2" source="glyph42" class="consumption">
+        <arc id="arc31" target="glyph31.2" source="glyph42" class="consumption">
             <start y="446.0473" x="925.11584"/>
             <end y="490.0" x="900.0"/>
         </arc>
-        <arc target="glyph41" source="glyph31.1" class="production">
+        <arc id="arc32" target="glyph41" source="glyph31.1" class="production">
             <start y="490.0" x="860.0"/>
             <end y="441.2132" x="831.2132"/>
         </arc>
-        <arc target="glyph27" source="glyph31.1" class="production">
+        <arc id="arc33" target="glyph27" source="glyph31.1" class="production">
             <start y="490.0" x="860.0"/>
             <end y="490.0" x="780.0"/>
         </arc>
-        <arc target="glyph32.2" source="glyph27" class="consumption">
+        <arc id="arc34" target="glyph32.2" source="glyph27" class="consumption">
             <start y="490.0" x="720.0"/>
             <end y="490.0" x="660.0"/>
         </arc>
-        <arc target="glyph28" source="glyph32.1" class="production">
+        <arc id="arc35" target="glyph28" source="glyph32.1" class="production">
             <start y="490.0" x="620.0"/>
             <end y="490.0" x="550.0"/>
         </arc>
-        <arc target="glyph33.2" source="glyph28" class="consumption">
+        <arc id="arc36" target="glyph33.2" source="glyph28" class="consumption">
             <start y="490.0" x="490.0"/>
             <end y="490.0" x="430.0"/>
         </arc>
-        <arc target="glyph43" source="glyph33.1" class="production">
+        <arc id="arc37" target="glyph43" source="glyph33.1" class="production">
             <start y="490.0" x="390.0"/>
             <end y="442.7777" x="369.52374"/>
         </arc>
-        <arc target="glyph29" source="glyph33.1" class="production">
+        <arc id="arc38" target="glyph29" source="glyph33.1" class="production">
             <start y="490.0" x="390.0"/>
             <end y="490.0" x="330.0"/>
         </arc>
-        <arc target="glyph34.2" source="glyph29" class="consumption">
+        <arc id="arc39" target="glyph34.2" source="glyph29" class="consumption">
             <start y="490.0" x="270.0"/>
             <end y="490.0" x="180.0"/>
         </arc>
-        <arc target="glyph34.2" source="glyph39" class="consumption">
+        <arc id="arc40" target="glyph34.2" source="glyph39" class="consumption">
             <start y="442.7777" x="220.47626"/>
             <end y="490.0" x="180.0"/>
         </arc>
-        <arc target="glyph40" source="glyph34.1" class="production">
+        <arc id="arc41" target="glyph40" source="glyph34.1" class="production">
             <start y="490.0" x="140.0"/>
             <end y="441.2132" x="111.2132"/>
         </arc>
-        <arc target="glyph30" source="glyph34.1" class="production">
+        <arc id="arc42" target="glyph30" source="glyph34.1" class="production">
             <start y="490.0" x="140.0"/>
             <end y="490.0" x="90.0"/>
         </arc>
-        <arc target="glyph5" source="glyph14.1" class="production">
+        <arc id="arc43" target="glyph5" source="glyph14.1" class="production">
             <start y="150.0" x="990.0"/>
             <end y="100.0" x="990.0"/>
         </arc>
