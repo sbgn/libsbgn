@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<sbgn xmlns="http://sbgn.org/libsbgn/0.3">
+    <map language="activity flow" id="map1">
+        <glyph id="glyph4" class="perturbation">
+            <label text="increase in&#xA;membrane&#xA;potential"/>
+            <bbox y="30.0" x="30.0" h="60.0" w="120.0"/>
+        </glyph>
+        <glyph id="glyph3" class="perturbation">
+            <label text="increase in&#xA;membrane&#xA;potential"/>
+            <bbox y="30.0" x="280.0" h="60.0" w="120.0"/>
+        </glyph>
+        <glyph id="glyph5" class="biological activity">
+            <label text="gating&#xA;activity"/>
+            <bbox y="170.0" x="286.0" h="60.0" w="108.0"/>
+            <glyph id="glyph5a" class="unit of information">
+                <label text="sodium&#xA;channel"/>
+                <entity name="macromolecule"/>
+                <bbox y="156.5" x="289.5" h="27.0" w="47.0"/>
+            </glyph>
+        </glyph>
+        <glyph id="glyph6" class="biological activity">
+            <label text="conductance&#xA;activity"/>
+            <bbox y="310.0" x="286.0" h="60.0" w="108.0"/>
+            <glyph id="glyph6a" class="unit of information">
+                <label text="sodium&#xA;channel"/>
+                <entity name="macromolecule"/>
+                <bbox y="296.5" x="289.5" h="27.0" w="47.0"/>
+            </glyph>
+        </glyph>
+        <glyph id="glyph1" class="phenotype">
+            <label text="depolarization"/>
+            <bbox y="450.0" x="280.0" h="60.0" w="120.0"/>
+        </glyph>
+        <glyph id="glyph0" class="biological activity">
+            <label text="sodium&#xA;channel&#xA;activity"/>
+            <bbox y="232.5" x="36.0" h="75.0" w="108.0"/>
+            <glyph id="glyph0a" class="unit of information">
+                <label text="sodium&#xA;channel"/>
+                <entity name="macromolecule"/>
+                <bbox y="219.0" x="39.5" h="27.0" w="47.0"/>
+            </glyph>
+        </glyph>
+        <glyph id="glyph2" class="phenotype">
+            <label text="depolarization"/>
+            <bbox y="450.0" x="30.0" h="60.0" w="120.0"/>
+        </glyph>
+        <arc target="glyph0" source="glyph4" id="arc0" class="positive influence">
+            <start y="90.0" x="90.0"/>
+            <end y="232.5" x="90.0"/>
+        </arc>
+        <arc target="glyph5" source="glyph3" id="arc1" class="positive influence">
+            <start y="90.0" x="340.0"/>
+            <end y="170.0" x="340.0"/>
+        </arc>
+        <arc target="glyph6" source="glyph5" id="arc2" class="positive influence">
+            <start y="230.0" x="340.0"/>
+            <end y="310.0" x="340.0"/>
+        </arc>
+        <arc target="glyph1" source="glyph6" id="arc3" class="necessary stimulation">
+            <start y="370.0" x="340.0"/>
+            <end y="450.0" x="340.0"/>
+        </arc>
+        <arc target="glyph2" source="glyph0" id="arc4" class="necessary stimulation">
+            <start y="307.5" x="90.0"/>
+            <end y="450.0" x="90.0"/>
+        </arc>
+    </map>
+</sbgn>

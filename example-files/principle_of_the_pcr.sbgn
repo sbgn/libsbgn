@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<sbgn xmlns="http://sbgn.org/libsbgn/0.3">
+    <map language="entity relationship" id="map1">
+        <glyph id="glyph2" class="entity">
+            <label text="3' primer"/>
+            <bbox y="460.0" x="86.0" h="60.0" w="108.0"/>
+            <glyph id="glyph2a" class="unit of information">
+                <label text="mt:dna"/>
+                <bbox y="511.5" x="116.5" h="17.0" w="47.0"/>
+            </glyph>
+        </glyph>
+        <glyph id="glyph0" class="entity">
+            <label text="5' primer"/>
+            <bbox y="460.0" x="386.0" h="60.0" w="108.0"/>
+            <glyph id="glyph0a" class="unit of information">
+                <label text="mt:dna"/>
+                <bbox y="511.5" x="416.5" h="17.0" w="47.0"/>
+            </glyph>
+        </glyph>
+        <glyph id="glyph7" class="variable value">
+            <label text="T"/>
+            <bbox y="300.0" x="157.0" h="20.0" w="20.0"/>
+        </glyph>
+        <glyph id="glyph3" class="entity">
+            <label text="Sense"/>
+            <bbox y="160.0" x="86.0" h="60.0" w="108.0"/>
+            <glyph id="glyph3a" class="unit of information">
+                <label text="mt:dna"/>
+                <bbox y="151.5" x="116.5" h="17.0" w="47.0"/>
+            </glyph>
+            <glyph id="glyph3b" class="existence">
+                <bbox y="207.5" x="156.0" h="25.0" w="22.0"/>
+            </glyph>
+        </glyph>
+        <glyph id="glyph6" class="variable value">
+            <label text="T"/>
+            <bbox y="300.0" x="403.0" h="20.0" w="20.0"/>
+        </glyph>
+        <glyph id="glyph1" class="entity">
+            <label text="Antisense"/>
+            <bbox y="160.0" x="386.0" h="60.0" w="108.0"/>
+            <glyph id="glyph1a" class="unit of information">
+                <label text="mt:dna"/>
+                <bbox y="151.5" x="416.5" h="17.0" w="47.0"/>
+            </glyph>
+            <glyph id="glyph1b" class="existence">
+                <bbox y="207.5" x="402.0" h="25.0" w="22.0"/>
+            </glyph>
+        </glyph>
+        <glyph id="glyph4" class="perturbing agent">
+            <label text="Heat"/>
+            <bbox y="30.0" x="236.0" h="60.0" w="108.0"/>
+        </glyph>
+        <glyph id="glyph5" orientation="vertical" class="or">
+            <bbox y="296.0" x="269.0" h="42.0" w="42.0"/>
+            <port y="275.0" x="290.0" id="glyph5.1"/>
+            <port y="359.0" x="290.0" id="glyph5.2"/>
+        </glyph>
+        <arc target="glyph1" source="glyph3" id="arc0" class="interaction">
+            <glyph id="arc0.2" class="outcome">
+                <bbox y="184.0" x="324.0" h="12.0" w="12.0"/>
+            </glyph>
+            <glyph id="arc0.0" class="outcome">
+                <bbox y="184.0" x="244.0" h="12.0" w="12.0"/>
+            </glyph>
+            <port y="190.0" x="290.0" id="arc0.1"/>
+            <start y="190.0" x="194.0"/>
+            <end y="190.0" x="386.0"/>
+        </arc>
+        <arc target="glyph3" source="glyph2" id="arc1" class="interaction">
+            <glyph id="arc1.1" class="outcome">
+                <bbox y="354.0" x="134.0" h="12.0" w="12.0"/>
+            </glyph>
+            <glyph id="arc1.0" class="outcome">
+                <bbox y="404.0" x="134.0" h="12.0" w="12.0"/>
+            </glyph>
+            <port y="270.0" x="140.0" id="arc1.3"/>
+            <port y="310.0" x="140.0" id="arc1.2"/>
+            <start y="460.0" x="140.0"/>
+            <end y="220.0" x="140.0"/>
+        </arc>
+        <arc target="glyph1" source="glyph0" id="arc2" class="interaction">
+            <glyph id="arc2.0" class="outcome">
+                <bbox y="384.0" x="434.0" h="12.0" w="12.0"/>
+            </glyph>
+            <glyph id="arc2.1" class="outcome">
+                <bbox y="354.0" x="434.0" h="12.0" w="12.0"/>
+            </glyph>
+            <port y="310.0" x="440.0" id="arc2.2"/>
+            <port y="270.0" x="440.0" id="arc2.3"/>
+            <start y="460.0" x="440.0"/>
+            <end y="220.0" x="440.0"/>
+        </arc>
+        <arc target="glyph3" source="glyph7" id="arc3" class="assignment">
+            <port y="270.0" x="167.0" id="arc3.0"/>
+            <start y="300.0" x="164.75"/>
+            <end y="225.0" x="167.0"/>
+        </arc>
+        <arc target="glyph1" source="glyph6" id="arc4" class="assignment">
+            <port y="270.0" x="413.0" id="arc4.0"/>
+            <start y="300.0" x="415.25"/>
+            <end y="225.0" x="413.0"/>
+        </arc>
+        <arc target="arc0.1" source="glyph4" id="arc5" class="absolute inhibition">
+            <start y="90.0" x="290.0"/>
+            <end y="190.0" x="290.0"/>
+        </arc>
+        <arc target="arc0.1" source="glyph5.1" id="arc6" class="absolute inhibition">
+            <start y="275.0" x="290.0"/>
+            <end y="190.0" x="290.0"/>
+        </arc>
+        <arc target="arc2.2" source="glyph4" id="arc7" class="absolute inhibition">
+            <start y="90.0" x="303.5"/>
+            <next y="110.0" x="304.0"/>
+            <next y="110.0" x="550.0"/>
+            <next y="310.0" x="550.0"/>
+            <end y="310.0" x="440.0"/>
+        </arc>
+        <arc target="arc2.3" source="arc0.2" id="arc8" class="absolute inhibition">
+            <start y="184.0" x="330.0"/>
+            <next y="120.0" x="330.0"/>
+            <next y="120.0" x="540.0"/>
+            <next y="270.0" x="540.0"/>
+            <end y="270.0" x="440.0"/>
+        </arc>
+        <arc target="arc3.0" source="arc2.0" id="arc9" class="necessary stimulation">
+            <start y="390.0" x="434.0"/>
+            <next y="390.0" x="210.0"/>
+            <next y="270.0" x="210.0"/>
+            <end y="270.0" x="167.0"/>
+        </arc>
+        <arc target="arc4.0" source="arc1.0" id="arc10" class="necessary stimulation">
+            <start y="410.0" x="146.0"/>
+            <next y="410.0" x="370.0"/>
+            <next y="270.0" x="370.0"/>
+            <end y="270.0" x="413.0"/>
+        </arc>
+        <arc target="arc1.2" source="glyph4" id="arc11" class="absolute inhibition">
+            <start y="90.0" x="276.5"/>
+            <next y="110.0" x="276.0"/>
+            <next y="110.0" x="30.0"/>
+            <next y="310.0" x="30.0"/>
+            <end y="310.0" x="140.0"/>
+        </arc>
+        <arc target="arc1.3" source="arc0.0" id="arc12" class="absolute inhibition">
+            <start y="184.0" x="250.0"/>
+            <next y="120.0" x="250.0"/>
+            <next y="120.0" x="40.0"/>
+            <next y="270.0" x="40.0"/>
+            <end y="270.0" x="140.0"/>
+        </arc>
+        <arc target="glyph5.2" source="arc1.1" id="arc13" class="logic arc">
+            <start y="359.96" x="146.0"/>
+            <end y="359.0" x="290.0"/>
+        </arc>
+        <arc target="glyph5.2" source="arc2.1" id="arc14" class="logic arc">
+            <start y="359.96" x="434.0"/>
+            <end y="359.0" x="290.0"/>
+        </arc>
+    </map>
+</sbgn>
