@@ -1,8 +1,8 @@
 <xsd:schema 
-	targetNamespace="http://sbgn.org/libsbgn/0.2"
-  xmlns ="http://sbgn.org/libsbgn/0.2"
+	targetNamespace="http://sbgn.org/libsbgn/0.3"
+  xmlns ="http://sbgn.org/libsbgn/0.3"
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-	xmlns:sbgn="http://sbgn.org/libsbgn/0.2"
+	xmlns:sbgn="http://sbgn.org/libsbgn/0.3"
 	elementFormDefault="qualified">
 	<xsd:annotation>
 		<xsd:documentation>
@@ -225,7 +225,7 @@
       <xsd:complexContent>
         <xsd:extension base="SBGNBase">
           <xsd:sequence>
-            <xsd:element ref="sbgn:map" minOccurs="1" maxOccurs="1"/>
+            <xsd:element ref="sbgn:map" minOccurs="1" maxOccurs="unbounded"/>
           </xsd:sequence>
         </xsd:extension>
       </xsd:complexContent>
@@ -286,6 +286,18 @@
               </xsd:restriction>
             </xsd:simpleType>
           </xsd:attribute>
+          <xsd:attribute name="id" type="xsd:ID" use="required">
+            <xsd:annotation>
+              <xsd:documentation>
+                <p>
+                  The xsd:ID type is an alphanumeric identifier, starting with a
+                  letter.
+                  It is recommended to generate meaningless IDs (e.g. "map1234")
+                  and avoid IDs with a meaning (e.g. "MAPK cascade")
+                </p>
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>		  
         </xsd:extension>
       </xsd:complexContent>
 		</xsd:complexType>
@@ -697,6 +709,7 @@
                   present in the diagram. Compartments are
                   only used in PD and AF, and thus this attribute as well.
                   For PD, this should be used only for EPN's.
+				  For AF, this should be used only for Activity Nodes.
                 </p>
                 <p>
                   In case there are no compartments, entities that
@@ -725,6 +738,37 @@
 				  has not to be unique. Compartments with higher compartment
 				  order are drawn on top. The attribute is optional and should
 				  only be used for compartments.
+                </p>
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+		  
+          <xsd:attribute name="mapRef" type="xsd:IDREF" use="optional">
+            <xsd:annotation>
+              <xsd:documentation>
+				<p>
+				  This attribute is only used on a submap glyph. It is required.
+				</p>
+                <p>
+                  Reference to the ID of the map which provides the content of the submap.
+				  If no map is available providing the content of the submap an omitted
+				  process should be used instead of the submap.
+				  Submaps are only used in PD and AF, and thus this attribute as well.
+                </p>
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:attribute>
+		  
+          <xsd:attribute name="tagRef" type="xsd:IDREF" use="optional">
+            <xsd:annotation>
+              <xsd:documentation>
+				<p>
+				  This attribute is only used on a terminal glyph. It is required.
+				</p>
+                <p>
+                  Reference to the ID of a tag on a map providing the content of a submap.
+				  The terminal glyph is defined as sub-glyph of this submap.
+				  Submaps and therefore terminals are only used in PD and AF, and thus this attribute as well.
                 </p>
               </xsd:documentation>
             </xsd:annotation>
