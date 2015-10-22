@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<sbgn xmlns="http://sbgn.org/libsbgn/0.2">
-    <map language="activity flow">
+<sbgn xmlns="http://sbgn.org/libsbgn/0.3">
+    <map language="activity flow" id="map1">
         <glyph compartmentOrder="-39.0" id="glyph0" class="compartment">
             <label text="Connecting Arcs">
                 <bbox y="54.0" x="484.0" h="18.0" w="112.0"/>
@@ -63,7 +63,7 @@
                 <bbox y="765.0" x="245.0" h="30.0" w="50.0"/>
             </glyph>
         </glyph>
-        <glyph id="glyph8" class="biological activity">
+        <glyph id="glyph8" compartmentRef="glyph1" class="biological activity">
             <label text="AN"/>
             <bbox y="215.0" x="820.0" h="70.0" w="200.0"/>
             <glyph id="glyph8a" class="unit of information">
@@ -72,7 +72,7 @@
                 <bbox y="188.5" x="843.5" h="53.0" w="53.0"/>
             </glyph>
         </glyph>
-        <glyph id="glyph9" class="biological activity">
+        <glyph id="glyph9" compartmentRef="glyph1" class="biological activity">
             <label text="AN"/>
             <bbox y="105.0" x="820.0" h="70.0" w="200.0"/>
             <glyph id="glyph9a" class="unit of information">
@@ -81,7 +81,7 @@
                 <bbox y="96.5" x="826.5" h="17.0" w="87.0"/>
             </glyph>
         </glyph>
-        <glyph id="glyph10" class="biological activity">
+        <glyph id="glyph10" compartmentRef="glyph1" class="biological activity">
             <label text="AN"/>
             <bbox y="325.0" x="820.0" h="70.0" w="200.0"/>
             <glyph id="glyph10a" class="unit of information">
@@ -90,7 +90,7 @@
                 <bbox y="309.5" x="832.5" h="31.0" w="75.0"/>
             </glyph>
         </glyph>
-        <glyph id="glyph11" class="biological activity">
+        <glyph id="glyph11" compartmentRef="glyph1" class="biological activity">
             <label text="AN"/>
             <bbox y="435.0" x="820.0" h="70.0" w="200.0"/>
             <glyph id="glyph11a" class="unit of information">
@@ -99,7 +99,7 @@
                 <bbox y="420.5" x="831.0" h="29.0" w="78.0"/>
             </glyph>
         </glyph>
-        <glyph id="glyph12" class="biological activity">
+        <glyph id="glyph12" compartmentRef="glyph1" class="biological activity">
             <label text="AN"/>
             <bbox y="545.0" x="820.0" h="70.0" w="200.0"/>
             <glyph id="glyph12a" class="unit of information">
@@ -108,15 +108,15 @@
                 <bbox y="536.5" x="842.0" h="17.0" w="56.0"/>
             </glyph>
         </glyph>
-        <glyph id="glyph13" class="biological activity">
+        <glyph id="glyph13" compartmentRef="glyph3" class="biological activity">
             <label text="Biological&#xA;Activity"/>
             <bbox y="105.0" x="110.0" h="70.0" w="140.0"/>
         </glyph>
-        <glyph id="glyph14" class="perturbation">
+        <glyph id="glyph14" compartmentRef="glyph3" class="perturbation">
             <label text="Perturbation"/>
             <bbox y="305.0" x="110.0" h="70.0" w="140.0"/>
         </glyph>
-        <glyph id="glyph15" class="phenotype">
+        <glyph id="glyph15" compartmentRef="glyph3" class="phenotype">
             <label text="Phenotype"/>
             <bbox y="205.0" x="110.0" h="70.0" w="140.0"/>
         </glyph>
@@ -140,11 +140,11 @@
             <label text="LABEL"/>
             <bbox y="550.0" x="376.0" h="60.0" w="108.0"/>
         </glyph>
-        <glyph id="glyph24" class="biological activity">
+        <glyph id="glyph24" compartmentRef="glyph0" class="biological activity">
             <label text="AN&#xA;or CN"/>
             <bbox y="550.0" x="596.0" h="60.0" w="108.0"/>
         </glyph>
-        <glyph id="glyph17" class="biological activity">
+        <glyph id="glyph17" compartmentRef="glyph0" class="biological activity">
             <label text="Source&#xA;AN"/>
             <bbox y="460.0" x="376.0" h="60.0" w="108.0"/>
         </glyph>
@@ -152,47 +152,47 @@
             <bbox y="460.0" x="620.0" h="60.0" w="60.0"/>
             <port y="490.0" x="590.0" id="glyph31.1"/>
         </glyph>
-        <glyph id="glyph21" class="biological activity">
+        <glyph id="glyph21" compartmentRef="glyph0" class="biological activity">
             <label text="Source&#xA;AN"/>
             <bbox y="280.0" x="376.0" h="60.0" w="108.0"/>
         </glyph>
-        <glyph id="glyph22" class="biological activity">
+        <glyph id="glyph22" compartmentRef="glyph0" class="biological activity">
             <label text="Target&#xA;AN"/>
             <bbox y="280.0" x="596.0" h="60.0" w="108.0"/>
         </glyph>
-        <glyph id="glyph25" class="biological activity">
+        <glyph id="glyph25" compartmentRef="glyph0" class="biological activity">
             <label text="Source&#xA;AN"/>
             <bbox y="100.0" x="376.0" h="60.0" w="108.0"/>
         </glyph>
-        <glyph id="glyph16" class="biological activity">
+        <glyph id="glyph16" compartmentRef="glyph0" class="biological activity">
             <label text="Target&#xA;AN"/>
             <bbox y="100.0" x="596.0" h="60.0" w="108.0"/>
         </glyph>
-        <glyph id="glyph20" class="biological activity">
+        <glyph id="glyph20" compartmentRef="glyph0" class="biological activity">
             <label text="Source&#xA;AN"/>
             <bbox y="190.0" x="376.0" h="60.0" w="108.0"/>
         </glyph>
-        <glyph id="glyph19" class="biological activity">
+        <glyph id="glyph19" compartmentRef="glyph0" class="biological activity">
             <label text="Target&#xA;AN"/>
             <bbox y="190.0" x="596.0" h="60.0" w="108.0"/>
         </glyph>
-        <glyph id="glyph23" class="biological activity">
+        <glyph id="glyph23" compartmentRef="glyph0" class="biological activity">
             <label text="Source&#xA;AN"/>
             <bbox y="370.0" x="376.0" h="60.0" w="108.0"/>
         </glyph>
-        <glyph id="glyph18" class="biological activity">
+        <glyph id="glyph18" compartmentRef="glyph0" class="biological activity">
             <label text="Target&#xA;AN"/>
             <bbox y="370.0" x="596.0" h="60.0" w="108.0"/>
         </glyph>
-        <glyph id="glyph29" class="biological activity">
+        <glyph id="glyph29" compartmentRef="glyph2" class="biological activity">
             <label text="AN&#xA;or CN"/>
             <bbox y="790.0" x="450.0" h="50.0" w="100.0"/>
         </glyph>
-        <glyph id="glyph30" class="biological activity">
+        <glyph id="glyph30" compartmentRef="glyph2" class="biological activity">
             <label text="AN&#xA;or CN"/>
             <bbox y="720.0" x="450.0" h="50.0" w="100.0"/>
         </glyph>
-        <glyph id="glyph28" class="biological activity">
+        <glyph id="glyph28" compartmentRef="glyph2" class="biological activity">
             <label text="AN&#xA;or CN"/>
             <bbox y="755.0" x="105.0" h="50.0" w="100.0"/>
         </glyph>
