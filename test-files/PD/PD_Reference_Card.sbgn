@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<sbgn xmlns="http://sbgn.org/libsbgn/0.2">
-    <map language="process description">
+<sbgn xmlns="http://sbgn.org/libsbgn/0.3">
+    <map language="process description" id="map1">
         <glyph compartmentOrder="-62.0" id="glyph0" class="compartment">
             <label text="Connecting Arcs">
                 <bbox y="54.0" x="1219.0" h="18.0" w="112.0"/>
