@@ -1,8 +1,8 @@
 Manifest-Version: 1.0
-Bundle-ManifestVersion: 2
+Bundle-ManifestVersion: 3
 Bundle-Name: org.sbgn
 Bundle-SymbolicName: org.sbgn
-Bundle-Version: 0.2
+Bundle-Version: 0.3
 Export-Package: org.sbgn,
  org.sbgn.bindings,
  net.sf.saxon
