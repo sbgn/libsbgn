@@ -12,7 +12,7 @@
 				<a href="http://libsbgn.sourceforge.net">http://libsbgn.sourceforge.net</a>.
 			</p>
 			<p>
-				Version: LibSBGN Milestone 2 (cf. targetNamespace attribute - as recommended by the W3C)
+				Version: LibSBGN Milestone 3 (cf. targetNamespace attribute - as recommended by the W3C)
 			</p>
 		</xsd:documentation>
 	</xsd:annotation>
@@ -506,6 +506,7 @@
                       <xsd:enumeration value="macromolecule"/>
                       <xsd:enumeration value="nucleic acid feature"/>
                       <xsd:enumeration value="complex"/>
+                      <xsd:enumeration value="perturbation"/>
                     </xsd:restriction>
                   </xsd:simpleType>
                 </xsd:attribute>
@@ -603,6 +604,7 @@
                 <xsd:enumeration value="complex multimer"/>
                 <xsd:enumeration value="source and sink"/>
                 <!-- Activities (AF) -->
+                <!-- perturbation is deprecated in AF as Activity Node in milestone 3. -->
                 <xsd:enumeration value="perturbation"/>
                 <xsd:enumeration value="biological activity"/>
                 <!-- Entities (both PD and ER) -->
