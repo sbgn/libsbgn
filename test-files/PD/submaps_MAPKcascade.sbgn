@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbgn xmlns="http://sbgn.org/libsbgn/0.3">
+<map language="process description" id="map1">
+
+<glyph class="macromolecule" id="glyph1">
+	<label text="RAS"/>
+	<bbox x="70" y="70" w="100" h="60"/>
+	<glyph class="state variable" id="glyph4">
+		<state value="active"/>
+		<bbox x="90" y="110" w="50" h="30"/>
+	</glyph>
+</glyph>
+
+<glyph class="submap" id="glyph2" mapRef="map2">
+	<label text="MAPK&#xA;cascade"/>
+	<bbox x="220" y="40" w="220" h="120"/>
+	
+	<glyph class="terminal"  orientation="right" id="glyph5" tagRef="glyph03">
+		<label text="RAS"/>
+		<bbox x="220" y="77" w="80" h="45"/>
+	</glyph>
+	<glyph class="terminal"  orientation="left" id="glyph6" tagRef="glyph04">
+		<label text="ERK"/>
+		<bbox x="360" y="77" w="80" h="45"/>
+	</glyph>	
+</glyph>
+
+<glyph class="macromolecule" id="glyph3">
+	<label text="ERK"/>
+	<bbox x="520" y="70" w="100" h="60"/>
+	<glyph class="state variable" id="glyph7">
+		<state value="2P"/>
+		<bbox x="530" y="120" w="30" h="20"/>
+	</glyph>
+</glyph>
+
+<arc class="equivalence arc" source="glyph1" target="glyph5" id="a1">
+	<start x="170" y="100" />
+	<end x="220" y="100" />
+</arc>
+
+<arc class="equivalence arc" source="glyph3" target="glyph6" id="a2">
+	<start x="520" y="100" />
+	<end x="440" y="100" />
+</arc>
+
+</map>
+<map language="process description" id="map2">
+        <glyph id="glyph04" orientation="left" class="tag">
+            <label text="ERK"/>
+            <bbox y="130.0" x="520.0" h="60.0" w="100.0"/>
+        </glyph>
+        <glyph id="glyph01" class="macromolecule">
+            <label text="RAS"/>
+            <bbox y="20.0" x="200.0" h="60.0" w="100.0"/>
+            <glyph id="glyph01a" class="state variable">
+                <state value="active"/>
+                <bbox y="67.0" x="225.0" h="26.0" w="50.0"/>
+            </glyph>
+        </glyph>
+        <glyph id="glyph03" orientation="right" class="tag">
+            <label text="RAS"/>
+            <bbox y="20.0" x="30.0" h="60.0" w="100.0"/>
+        </glyph>
+        <glyph id="glyph05" class="source and sink">
+            <bbox y="130.0" x="90.0" h="60.0" w="60.0"/>
+        </glyph>
+        <glyph id="glyph06" class="omitted process">
+            <bbox y="150.0" x="240.0" h="20.0" w="20.0"/>
+            <port y="160.0" x="230.0" id="glyph06.1"/>
+            <port y="160.0" x="270.0" id="glyph06.2"/>
+        </glyph>
+        <glyph id="glyph02" class="macromolecule">
+            <label text="ERK"/>
+            <bbox y="130.0" x="350.0" h="60.0" w="100.0"/>
+            <glyph id="glyph02a" class="state variable">
+                <state value="2P"/>
+                <bbox y="179.0" x="359.0" h="22.0" w="32.0"/>
+            </glyph>
+        </glyph>
+        <arc target="glyph06" source="glyph01" id="arc1" class="catalysis">
+            <start y="92.0" x="250.0"/>
+            <end y="150.0" x="250.0"/>
+        </arc>
+        <arc target="glyph04" source="glyph02" id="arc2" class="equivalence arc">
+            <start y="160.0" x="450.0"/>
+            <end y="160.0" x="520.0"/>
+        </arc>
+        <arc target="glyph03" source="glyph01" id="arc3" class="equivalence arc">
+            <start y="50.0" x="200.0"/>
+            <end y="50.0" x="130.0"/>
+        </arc>
+        <arc target="glyph06.1" source="glyph05" id="arc4" class="consumption">
+            <start y="160.0" x="150.0"/>
+            <end y="160.0" x="230.0"/>
+        </arc>
+        <arc target="glyph02" source="glyph06.2" id="arc5" class="production">
+            <start y="160.0" x="270.0"/>
+            <end y="160.0" x="350.0"/>
+        </arc>
+    </map>
+</sbgn>
