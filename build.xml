@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <project name="libsbgn" default="dist" basedir=".">
   
-  <property name="libsbgn.version" value="milestone2"/>
+  <property name="libsbgn.version" value="milestone3"/>
   
    <macrodef name="iterate">
 		<attribute name="target"/>
