@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<sbgn xmlns="http://sbgn.org/libsbgn/0.2">
-    <map language="process description">
+<sbgn xmlns="http://sbgn.org/libsbgn/0.3">
+    <map language="process description" id="map2">
         <glyph id="glyph4" orientation="left" class="tag">
             <label text="ERK"/>
             <bbox y="130.0" x="520.0" h="60.0" w="100.0"/>
