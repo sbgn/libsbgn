@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <sbgn xmlns="http://sbgn.org/libsbgn/0.3">
     <map language="activity flow" id="map1">
-        <glyph id="glyph4" class="perturbation">
-            <label text="increase in&#xA;membrane&#xA;potential"/>
-            <bbox y="30.0" x="30.0" h="60.0" w="120.0"/>
+        <glyph id="glyph4" class="biological activity">
+            <label text="Membrane&#xA;potential &#xA;activity"/>
+            <bbox y="30.0" x="30.0" h="100.0" w="120.0"/>
+            <glyph id="glyph4a" class="unit of information">
+            	<label text="increase in&#xA;membrane&#xA;potential"/>
+            	<entity name="perturbation"/>
+            	<bbox y="0" x="-20" h="65.0" w="150.0"/>
+            </glyph>
         </glyph>
-        <glyph id="glyph3" class="perturbation">
-            <label text="increase in&#xA;membrane&#xA;potential"/>
-            <bbox y="30.0" x="280.0" h="60.0" w="120.0"/>
+        <glyph id="glyph3" class="biological activity">
+            <label text="Membrane&#xA;potential &#xA;activity"/>
+            <bbox y="30.0" x="280.0" h="100.0" w="120.0"/>
+            <glyph id="glyph3a" class="unit of information">
+            	<label text="increase in&#xA;membrane&#xA;potential"/>
+            	<entity name="perturbation"/>
+            	<bbox y="0" x="200" h="65.0" w="150.0"/>
+            </glyph>
         </glyph>
         <glyph id="glyph5" class="biological activity">
             <label text="gating&#xA;activity"/>
@@ -66,3 +76,4 @@
         </arc>
     </map>
 </sbgn>
+

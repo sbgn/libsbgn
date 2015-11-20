@@ -38,7 +38,7 @@
 				<bbox x="177" y="110" w="30" h="19"/>
 			</glyph>
 		</glyph>
-		
+        
 		<glyph class="biological activity" id="g5">
 			<label text="ribosome&#xA;activity"/>
 			<bbox x="26" y="210" w="108" h="60"/>
@@ -48,6 +48,13 @@
 				<bbox x="22" y="202" w="61" h="15"/>
 			</glyph>
 		</glyph>
-		
+				
+		<glyph class="biological activity" id="g6">
+            <bbox y="210.0" x="166.0" h="60.0" w="108.0"/>
+            <glyph class="unit of information" id="g6.1">
+                <entity name="perturbation"/>
+                <bbox y="200.0" x="167.0" h="20.0" w="32.0"/>
+            </glyph>
+        </glyph>
 	</map>
 </sbgn>

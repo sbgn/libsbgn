@@ -2,9 +2,14 @@
 <sbgn xmlns="http://sbgn.org/libsbgn/0.3">
 	<map language="activity flow" id="map1">
 
-		<glyph class="perturbation" id="g1">
-			<label text="increase in&#xA;membrane&#xA;potential"/>
-			<bbox x="30" y="30" w="120" h="60"/>
+		<glyph class="biological activity" id="g1">
+			<label text="membrane&#xA;potential&#xA;activity"/>
+			<bbox x="30" y="30" w="120" h="100"/>
+			<glyph class="unit of information" id="g1a">
+				<label text="increase in&#xA;membrane&#xA;potential"/>
+				<entity name="perturbation"/>
+				<bbox x="0" y="0" w="120" h="60"/>				
+			</glyph>
 		</glyph>
 
 		<glyph class="biological activity" id="g2">

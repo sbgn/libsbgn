@@ -1,5 +1,7 @@
 graph [
   sbgn [
+    mapid "map1"
+    milestone "milestone3"
     role "ACTIVITYFLOW"
   ]
   directed 1
@@ -9,28 +11,45 @@ graph [
 
     graphics [
       x 90.0
-      y 60.0
+      y 80.0
       w 120.0
-      h 60.0
+      h 100.0
       fill "#FFFFFF"
       outline "#000000"
       frameThickness 2.0
       gradient 0.0
+      opacity 1.0
       rounding 0.0
-      type "pertubation"
+      type "rectangle"
     ]
-    label "<html>increase in<br>membrane<br>potential"
+    label "<html><center>membrane<br>potential<br>activity"
     labelgraphics [
       alignment "center"
       anchor "c"
       color "#000000"
       fontName "Arial"
-      fontSize 12
+      fontSize 14
       fontStyle "plain"
       type "text"
     ]
+    labelgraphics1 [
+      alignment "center"
+      anchor "btl"
+      color "#000000"
+      fontName "Arial"
+      fontSize 10
+      fontStyle "plain,hexagon"
+      position [
+        localAlign 0.0
+        relHor 0.0
+        relVert 0.0
+      ]
+      text "<html><center>increase in<br>membrane<br>potential"
+      type "text"
+    ]
     sbgn [
-      role "PERTURBATION"
+      glyphid "g1"
+      role "BIOLOGICALACTIVITY"
     ]
   ]
   node [
@@ -39,42 +58,44 @@ graph [
 
     graphics [
       x 90.0
-      y 270.0
+      y 269.5
       w 108.0
       h 75.0
       fill "#FFFFFF"
       outline "#000000"
       frameThickness 2.0
       gradient 0.0
+      opacity 1.0
       rounding 0.0
       type "rectangle"
     ]
-    label "<html>sodium<br>channel<br>activity"
+    label "<html><center>sodium<br>channel<br>activity"
     labelgraphics [
       alignment "center"
       anchor "c"
       color "#000000"
       fontName "Arial"
-      fontSize 12
+      fontSize 14
       fontStyle "plain"
       type "text"
     ]
-    labelgraphics2 [
+    labelgraphics1 [
       alignment "center"
       anchor "btl"
       color "#000000"
       fontName "Arial"
-      fontSize 9
-      fontStyle "roundrect"
+      fontSize 10
+      fontStyle "plain,roundrect"
       position [
         localAlign 0.0
         relHor 0.0
         relVert 0.0
       ]
-      text "<html>sodium<br>channel"
+      text "<html><center>sodium<br>channel"
       type "text"
     ]
     sbgn [
+      glyphid "g2"
       role "BIOLOGICALACTIVITY"
     ]
   ]
@@ -91,8 +112,9 @@ graph [
       outline "#000000"
       frameThickness 2.0
       gradient 0.0
+      opacity 1.0
       rounding 0.0
-      type "observable"
+      type "de.ipk_gatersleben.ag_nw.graffiti.plugins.shapes.ObservableShape"
     ]
     label "depolarization"
     labelgraphics [
@@ -100,11 +122,12 @@ graph [
       anchor "c"
       color "#000000"
       fontName "Arial"
-      fontSize 12
+      fontSize 14
       fontStyle "plain"
       type "text"
     ]
     sbgn [
+      glyphid "g3"
       role "PHENOTYPE"
     ]
   ]
@@ -119,10 +142,12 @@ graph [
       arrowheadstyle "stimulation"
       frameThickness 1.5
       gradient 0.0
+      opacity 1.0
       rounding 5.0
       thickness 15.0
     ]
     sbgn [
+      glyphid "a1"
       role "POSITIVEINFLUENCE"
     ]
   ]
@@ -137,10 +162,12 @@ graph [
       arrowheadstyle "trigger"
       frameThickness 1.5
       gradient 0.0
+      opacity 1.0
       rounding 5.0
       thickness 15.0
     ]
     sbgn [
+      glyphid "a2"
       role "NECESSARYSTIMULATION"
     ]
   ]
