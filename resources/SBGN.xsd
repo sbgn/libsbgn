@@ -268,7 +268,37 @@
             <xsd:element ref="sbgn:arc" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element ref="sbgn:arcgroup" minOccurs="0" maxOccurs="unbounded"/>
           </xsd:sequence>
-          <xsd:attribute name="language" use="required">
+          
+          <xsd:attribute name="version" use="required">
+            <xsd:annotation>
+              <xsd:documentation>
+                <p>
+                  Version of the map: URI identifier that gives the language, level and version defined by SBGN.
+                  Different languages/levels/versions have different restrictions on the usage of sub-elements (that are not encoded in this schema
+                  but must be validated with an external validator)
+                </p>
+              </xsd:documentation>
+            </xsd:annotation>
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:anyURI">
+                <xsd:enumeration value="http://identifiers.org/combine.specifications/sbgn.pd.level-1.version-1.3"/>
+                <xsd:enumeration value="http://identifiers.org/combine.specifications/sbgn.pd.level-1.version-1.2"/>
+                <xsd:enumeration value="http://identifiers.org/combine.specifications/sbgn.pd.level-1.version-1.1"/>
+                <xsd:enumeration value="http://identifiers.org/combine.specifications/sbgn.pd.level-1.version-1.0"/>
+                <xsd:enumeration value="http://identifiers.org/combine.specifications/sbgn.pd.level-1.version-1"/>
+                <xsd:enumeration value="http://identifiers.org/combine.specifications/sbgn.er.level-1.version-2"/>
+                <xsd:enumeration value="http://identifiers.org/combine.specifications/sbgn.er.level-1.version-1.2"/>
+                <xsd:enumeration value="http://identifiers.org/combine.specifications/sbgn.er.level-1.version-1.1"/>
+                <xsd:enumeration value="http://identifiers.org/combine.specifications/sbgn.er.level-1.version-1.0"/>
+                <xsd:enumeration value="http://identifiers.org/combine.specifications/sbgn.er.level-1.version-1"/>
+                <xsd:enumeration value="http://identifiers.org/combine.specifications/sbgn.af.level-1.version-1.2"/>
+                <xsd:enumeration value="http://identifiers.org/combine.specifications/sbgn.af.level-1.version-1.0"/>
+                <xsd:enumeration value="http://identifiers.org/combine.specifications/sbgn.af.level-1.version-1"/>
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:attribute>
+          <!-- DEPRECATED: Language attribute is deprecated in Milestone 3 -->
+          <xsd:attribute name="language">
             <xsd:annotation>
               <xsd:documentation>
                 <p>
@@ -297,7 +327,8 @@
                 </p>
               </xsd:documentation>
             </xsd:annotation>
-          </xsd:attribute>		  
+          </xsd:attribute>	
+          <!-- /DEPRECATED-->	            
         </xsd:extension>
       </xsd:complexContent>
 		</xsd:complexType>
@@ -604,7 +635,8 @@
                 <xsd:enumeration value="complex multimer"/>
                 <xsd:enumeration value="source and sink"/>
                 <!-- Activities (AF) -->
-                <!-- perturbation is deprecated in AF as Activity Node in milestone 3. -->
+                <!-- perturbation is 
+                deprecated in AF as Activity Node in milestone 3. -->
                 <xsd:enumeration value="perturbation"/>
                 <xsd:enumeration value="biological activity"/>
                 <!-- Entities (both PD and ER) -->
