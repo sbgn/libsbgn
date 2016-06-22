@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <sbgn xmlns="http://sbgn.org/libsbgn/0.3">
-    <map language="process description" id="map1">
+    <map version="http://identifiers.org/combine.specifications/sbgn.pd.level-1.version-1.3" id="map1">
         <glyph id="glyph4" class="simple chemical">
             <label text="ATP"/>
             <clone/>

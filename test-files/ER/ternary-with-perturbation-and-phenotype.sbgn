@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sbgn xmlns="http://sbgn.org/libsbgn/0.3">
-<map language="entity relationship" id="map1">
+<map version="http://identifiers.org/combine.specifications/sbgn.er.level-1.version-2" id="map1">
 	<glyph class="entity" id="g1">
 		<label text="A" />
 		<bbox x="16" y="100" w="108" h="60" />
