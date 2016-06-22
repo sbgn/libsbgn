@@ -635,8 +635,7 @@
                 <xsd:enumeration value="complex multimer"/>
                 <xsd:enumeration value="source and sink"/>
                 <!-- Activities (AF) -->
-                <!-- perturbation is 
-                deprecated in AF as Activity Node in milestone 3. -->
+                <!-- perturbation is deprecated in AF as Activity Node in milestone 3. -->
                 <xsd:enumeration value="perturbation"/>
                 <xsd:enumeration value="biological activity"/>
                 <!-- Entities (both PD and ER) -->
