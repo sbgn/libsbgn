@@ -316,6 +316,7 @@
               </xsd:restriction>
             </xsd:simpleType>
           </xsd:attribute>
+          <!-- /DEPRECATED-->
           <xsd:attribute name="id" type="xsd:ID" use="required">
             <xsd:annotation>
               <xsd:documentation>
@@ -327,8 +328,7 @@
                 </p>
               </xsd:documentation>
             </xsd:annotation>
-          </xsd:attribute>	
-          <!-- /DEPRECATED-->	            
+          </xsd:attribute>		            
         </xsd:extension>
       </xsd:complexContent>
 		</xsd:complexType>
