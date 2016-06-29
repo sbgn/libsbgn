@@ -1,6 +1,6 @@
 ## LibSBGN
 
-Software support library for the [Systems Biology Graphical Notation](www,sbgn.org)
+Software support library for the [Systems Biology Graphical Notation](http://www.sbgn.org)
 
 ### HOW TO BUILD
 
