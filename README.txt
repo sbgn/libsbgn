@@ -1,7 +1,7 @@
 LibSBGN
 -------
 
-Software support library for the Systems Biology Graphical Notation
+Software support library for the Systems Biology Graphical Notation (http://www.sbgn.org)
 
 HOW TO BUILD
 ------------
@@ -12,20 +12,19 @@ For the java version of LibSBGN, you need to have installed:
 * Ant
 
 Simply type "ant" from the source directory.
-This will result in the creation of dist/org.sbgn.jar, 
-which you can include in your project.
+This will result in the creation of dist/org.sbgn.jar which you can include in your project.
 
 FILES
 -----
 
 Here is an explanation of the directories in this project:
 
-org.sbgn	   - LibSBGN source code (Java version)
+org.sbgn       - LibSBGN source code (Java version)
 cpp_binding    - C++ version of LibSBGN
-resources	   - general resources, including the XML Schema
-validation	   - schematron validation rules, test-cases and resources
-test-files	   - SBGN-ML test cases and reference images
-example-files  - some example SBGN-ML files, larger and more complete than the test-cases.
+resources      - general resources, including the XML Schema
+validation     - schematron validation rules, test-cases and resources
+test-files     - SBGN-ML test cases and reference images
+example-files  - some example SBGN-ML files, larger and more complete than the test-cases
 specifications - Auto-generated documentation for the XML Schema
 
 AUTHORS
@@ -46,4 +45,4 @@ Contact our mailinglist:
 sbgn-libsbgn@lists.sourceforge.net
 
 Our official website:
-http://libsbgn.sourceforge.net
+http://www.sbgn.org/LibSBGN

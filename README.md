@@ -21,7 +21,7 @@ Here is an explanation of the directories in this project:
     resources      - general resources, including the XML Schema  
     validation     - schematron validation rules, test-cases and resources  
     test-files     - SBGN-ML test cases and reference images  
-    example-files  - some example SBGN-ML files, larger and more complete than the test-cases.  
+    example-files  - some example SBGN-ML files, larger and more complete than the test-cases  
     specifications - Auto-generated documentation for the XML Schema  
 
 ### AUTHORS
