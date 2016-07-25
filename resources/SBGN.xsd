@@ -269,7 +269,7 @@
             <xsd:element ref="sbgn:arcgroup" minOccurs="0" maxOccurs="unbounded"/>
           </xsd:sequence>
           
-          <xsd:attribute name="version" use="required">
+          <xsd:attribute name="version">
             <xsd:annotation>
               <xsd:documentation>
                 <p>
