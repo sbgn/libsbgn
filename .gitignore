@@ -1,2 +1,7 @@
 # idea files
 .idea/
+
+# build files
+dist/
+org.sbgn/build/
+org.sbgn/gensrc/

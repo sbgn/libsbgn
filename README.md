@@ -16,13 +16,17 @@ This will result in the creation of `dist/org.sbgn.jar` which you can include in
 
 Here is an explanation of the directories in this project:
 
-    org.sbgn       - LibSBGN source code (Java version)  
+
     cpp_binding    - C++ version of LibSBGN  
-    resources      - general resources, including the XML Schema  
-    validation     - schematron validation rules, test-cases and resources  
-    test-files     - SBGN-ML test cases and reference images  
     example-files  - some example SBGN-ML files, larger and more complete than the test-cases  
+    licenses       - license information  
+    org.sbgn       - LibSBGN source code (Java version)  
+    resources      - general resources, including XML Schema (SBGN.xsd)  
     specifications - Auto-generated documentation for the XML Schema  
+	test-files     - SBGN-ML test cases and reference images  
+    tools		   - 
+    validation     - schematron validation rules, test-cases and resources  
+    
 
 ### AUTHORS
 
@@ -33,6 +37,7 @@ Martijn van Iersel
 Sarah Boyd  
 Tobias Czauderna  
 Stuart Moodie  
+Matthias König  
 
 ### CONTACT
 
