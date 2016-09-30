@@ -1,11 +1,17 @@
-## LibSBGN
+# LibSBGN
 
 Software support library for the [Systems Biology Graphical Notation (SBGN)](http://www.sbgn.org).
 
-Documentation about LibSBGN and the development process is available from the WIKI  
-https://github.com/sbgn/sbgn/wiki/LibSBGN
+Documentation about LibSBGN and the development process is available from the Wiki  
+https://github.com/sbgn/sbgn/wiki/LibSBGN  
+and the SBGN website  
 
-### HOW TO BUILD
+## How to cite
+Software support for SBGN maps: SBGN-ML and LibSBGN  
+van Iersel MP, Villéger AC, Czauderna T, Boyd SE, Bergmann FT, Luna A, Demir E, Sorokin A, Dogrusoz U, Matsuoka Y, Funahashi A, Aladjem MI, Mi H, Moodie SL, Kitano H, Le Novère N, Schreiber F.  
+Bioinformatics, 28(15):2016-2021, 2012 [PubMed](https://www.ncbi.nlm.nih.gov/pubmed/22581176)
+
+## How to build
 
 To build the java version of LibSBGN, you need to have installed:
 
@@ -25,7 +31,8 @@ ant
 ```
 This will result in the creation of `dist/org.sbgn.jar` which you can include in your project.
 
-### FILES
+
+## Files
 
 Here is an explanation of the directories in this project:
 
@@ -41,7 +48,7 @@ Here is an explanation of the directories in this project:
     validation     - schematron validation rules, test-cases and resources  
     
 
-### AUTHORS
+## Authors
 
 Alice Villeger  
 Augustin Luna  
@@ -52,7 +59,7 @@ Tobias Czauderna
 Stuart Moodie  
 Matthias König  
 
-### CONTACT
+### Contact
 
 Contact our mailinglist:  
 sbgn-libsbgn@lists.sourceforge.net
