@@ -23,14 +23,23 @@
     <xsd:complexType name="SBGNBase" abstract="true">
         <xsd:annotation>
             <xsd:documentation>
+                <p>
                 The SBGNBase type is the base type of all main components in SBGN.
                 It supports attaching notes and extensions to components, with
                 metadata and annotations encoded in the extension element.
+                </p>
             </xsd:documentation>
         </xsd:annotation>
         <xsd:sequence>
             <xsd:element name="notes" minOccurs="0">
                 <xsd:complexType>
+                    <xsd:annotation>
+                        <xsd:documentation>
+                            <p>
+                                The notes element stores notes.
+                            </p>
+                        </xsd:documentation>
+                    </xsd:annotation>
                     <xsd:sequence>
                         <xsd:any namespace="http://www.w3.org/1999/xhtml"
                                  processContents="skip"
@@ -40,6 +49,14 @@
             </xsd:element>
             <xsd:element name="extension" minOccurs="0">
                 <xsd:complexType>
+                    <xsd:annotation>
+                        <xsd:documentation>
+                            <p>
+                                The extension element stores extension information like
+                                render information, metadata or annotations.
+                            </p>
+                        </xsd:documentation>
+                    </xsd:annotation>
                     <xsd:sequence>
                         <xsd:any processContents="skip"
                                  minOccurs="0" maxOccurs="unbounded"/>
