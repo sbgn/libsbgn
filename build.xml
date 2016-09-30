@@ -39,7 +39,6 @@
 
     <target name="ziptar" depends="clean,dist,doc" description="Create a zip and tarball, including jar file">
         <property name="zipbase" value="libsbgn-${libsbgn.version}"/>
-
         <zip destfile="${zipbase}.zip">
             <zipfileset dir="." prefix="libsbgn-${libsbgn.version}">
                 <include name="docs/**/*"/>
