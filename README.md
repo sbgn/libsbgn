@@ -30,8 +30,17 @@ Than build the library with ant from the source directory
 ```
 ant
 ```
-This will result in the creation of `dist/org.sbgn.jar` which you can include in your project.
+This will result in the creation of `/dist/org.sbgn.jar` which you can include in your project.
 
+To build the documentation in `/docs/` use
+```
+ant doc
+```
+
+To run the tests use 
+```
+ant test
+``` 
 
 ## Files
 
