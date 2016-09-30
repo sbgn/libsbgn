@@ -27,12 +27,9 @@ def create_html(path, f_html):
     # all *.sbgn files recursively in folder
     fnames = [y for x in os.walk(path) for y in glob(os.path.join(x[0], '*.sbgn'))]
     for fname in sorted(fnames):
-        print(fname)
 
+        # print(fname)
         namesplit = os.path.splitext(fname)
-        if namesplit[1] != ".sbgn":
-            continue
-
         root = namesplit[0]
         href_image = root + ".png"
 
@@ -77,7 +74,7 @@ if __name__ == "__main__":
     script_path = os.path.dirname(os.path.realpath(__file__))
     os.chdir(script_path)
     print("-"*80)
-    print("Creating examples")
+    print("Create SBGN examples HTML")
     print("-" * 80)
 
     test_path = "../test-files/"
