@@ -4,12 +4,22 @@ Software support library for the [Systems Biology Graphical Notation (SBGN)](htt
 
 ### HOW TO BUILD
 
-For the java version of LibSBGN, you need to have installed:
+To build the java version of LibSBGN, you need to have installed:
 
-*  Java
-*  Ant
+* Git
+* Java
+* Ant
 
-Simply type `ant` from the source directory.  
+First clone the repository via
+```
+git clone https://github.com/sbgn/libsbgn.git
+cd libsbgn
+```
+
+Than build the library with ant from the source directory
+```
+ant
+```
 This will result in the creation of `dist/org.sbgn.jar` which you can include in your project.
 
 ### FILES
