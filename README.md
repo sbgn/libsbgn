@@ -4,11 +4,12 @@ Software support library for the [Systems Biology Graphical Notation (SBGN)](htt
 
 Documentation about LibSBGN and the development process is available from the Wiki  
 https://github.com/sbgn/sbgn/wiki/LibSBGN  
-and the SBGN website  
+Documentation about SBGN is available from the SBGN homepage    
+http://sbgn.org
 
 ## How to cite
-Software support for SBGN maps: SBGN-ML and LibSBGN  
-van Iersel MP, Villéger AC, Czauderna T, Boyd SE, Bergmann FT, Luna A, Demir E, Sorokin A, Dogrusoz U, Matsuoka Y, Funahashi A, Aladjem MI, Mi H, Moodie SL, Kitano H, Le Novère N, Schreiber F.  
+**Software support for SBGN maps: SBGN-ML and LibSBGN**  
+*van Iersel MP, Villéger AC, Czauderna T, Boyd SE, Bergmann FT, Luna A, Demir E, Sorokin A, Dogrusoz U, Matsuoka Y, Funahashi A, Aladjem MI, Mi H, Moodie SL, Kitano H, Le Novère N, Schreiber F.*  
 Bioinformatics, 28(15):2016-2021, 2012 [PubMed](https://www.ncbi.nlm.nih.gov/pubmed/22581176)
 
 ## How to build
