@@ -1,0 +1,1066 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=windows-1252">
+        <title>XML diff</title>
+        </head>
+<body bgcolor="#FFFFFF">
+
+<pre>
+
+<font color="red">- &lt;xsd:schema elementFormDefault='qualified' targetNamespace='http://sbgn.org/libsbgn/0.2' xmlns='http://sbgn.org/libsbgn/0.2' xmlns:sbgn='http://sbgn.org/libsbgn/0.2' xmlns:xsd='http://www.w3.org/2001/XMLSchema'&gt;</font>
+<font color="green">+ &lt;xsd:schema elementFormDefault='qualified' targetNamespace='http://sbgn.org/libsbgn/0.3' xmlns='http://sbgn.org/libsbgn/0.3' xmlns:sbgn='http://sbgn.org/libsbgn/0.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema'&gt;</font>
+<font color="gray">    &lt;xsd:annotation&gt;</font>
+<font color="gray">      &lt;xsd:documentation&gt;</font>
+<font color="gray">        &lt;p&gt;</font>
+<font color="gray">  				SBGNML is an XML implementation of the Systems Biology Graphical Notation.</font>
+<font color="gray">  				For more information, please consult</font>
+<font color="gray">          &lt;a href='http://libsbgn.sourceforge.net'&gt;http://libsbgn.sourceforge.net&lt;/a&gt;.</font>
+<font color="gray">  			</font>
+<font color="gray">        &lt;/p&gt;</font>
+<font color="gray">        &lt;p&gt;</font>
+<font color="red">- 				Version: LibSBGN Milestone 2 (cf. targetNamespace attribute - as recommended by the W3C)</font>
+<font color="green">+ 				Version: LibSBGN Milestone 3 (cf. targetNamespace attribute - as recommended by the W3C)</font>
+<font color="gray">  			&lt;/p&gt;</font>
+<font color="gray">      &lt;/xsd:documentation&gt;</font>
+<font color="gray">    &lt;/xsd:annotation&gt;</font>
+<font color="gray">  &lt;!-- COMMON TYPES AND ELEMENTS - COMMON TYPES AND ELEMENTS - COMMON TYPES AND ELEMENTS --&gt;</font>
+<font color="gray">  &lt;!--The definition of the SBGN base class.--&gt;</font>
+<font color="gray">    &lt;xsd:complexType abstract='true' name='SBGNBase'&gt;</font>
+<font color="gray">      &lt;xsd:annotation&gt;</font>
+<font color="gray">        &lt;xsd:documentation&gt;</font>
+<font color="gray">          The SBGNBase type is the base type of all main</font>
+<font color="gray">          components in SBGN.  It supports attaching metadata, notes and</font>
+<font color="gray">          annotations to components.</font>
+<font color="gray">        &lt;/xsd:documentation&gt;</font>
+<font color="gray">      &lt;/xsd:annotation&gt;</font>
+<font color="gray">      &lt;xsd:sequence&gt;</font>
+<font color="gray">        &lt;xsd:element minOccurs='0' name='notes'&gt;</font>
+<font color="gray">          &lt;xsd:complexType&gt;</font>
+<font color="gray">            &lt;xsd:sequence&gt;</font>
+<font color="gray">              &lt;xsd:any maxOccurs='unbounded' minOccurs='0' namespace='http://www.w3.org/1999/xhtml' processContents='skip' /&gt;</font>
+<font color="gray">            &lt;/xsd:sequence&gt;</font>
+<font color="gray">          &lt;/xsd:complexType&gt;</font>
+<font color="gray">        &lt;/xsd:element&gt;</font>
+<font color="gray">        &lt;xsd:element minOccurs='0' name='extension'&gt;</font>
+<font color="gray">          &lt;xsd:complexType&gt;</font>
+<font color="gray">            &lt;xsd:sequence&gt;</font>
+<font color="gray">              &lt;xsd:any maxOccurs='unbounded' minOccurs='0' processContents='skip' /&gt;</font>
+<font color="gray">            &lt;/xsd:sequence&gt;</font>
+<font color="gray">          &lt;/xsd:complexType&gt;</font>
+<font color="gray">        &lt;/xsd:element&gt;</font>
+<font color="gray">      &lt;/xsd:sequence&gt;</font>
+<font color="gray">    &lt;/xsd:complexType&gt;</font>
+<font color="gray">  &lt;!-- PointAttributes attribute group --&gt;</font>
+<font color="gray">    &lt;xsd:attributeGroup name='PointAttributes'&gt;</font>
+<font color="gray">      &lt;xsd:annotation&gt;</font>
+<font color="gray">        &lt;xsd:documentation&gt;</font>
+<font color="gray">          &lt;p&gt;</font>
+<font color="gray">  					The PointAttributes group describes absolute 2D cartesian coordinates. Namely:</font>
+<font color="gray">            &lt;ul&gt;</font>
+<font color="gray">              &lt;li&gt;x (horizontal, from left to right),&lt;/li&gt;</font>
+<font color="gray">              &lt;li&gt;y (vertical, from top to bottom).&lt;/li&gt;</font>
+<font color="gray">            &lt;/ul&gt;</font>
+<font color="gray">          &lt;/p&gt;</font>
+<font color="gray">          &lt;p&gt;</font>
+<font color="gray">  					The origin is located in the top-left corner of the map.</font>
+<font color="gray">  					There is no unit:</font>
+<font color="gray">  					proportions must be preserved, but the maps can be drawn at any scale.</font>
+<font color="gray">  					In the test files examples, to obtain a drawing similar to the reference</font>
+<font color="gray">  					*.png file, values in the corresponding *.sbgn file should be read as pixels.</font>
+<font color="gray">  				&lt;/p&gt;</font>
+<font color="gray">        &lt;/xsd:documentation&gt;</font>
+<font color="gray">      &lt;/xsd:annotation&gt;</font>
+<font color="gray">      &lt;xsd:attribute name='x' type='xsd:float' use='required' /&gt;</font>
+<font color="gray">      &lt;xsd:attribute name='y' type='xsd:float' use='required' /&gt;</font>
+<font color="gray">    &lt;/xsd:attributeGroup&gt;</font>
+<font color="gray">  &lt;!-- point element --&gt;</font>
+<font color="gray">    &lt;xsd:element name='point'&gt;</font>
+<font color="gray">      &lt;xsd:annotation&gt;</font>
+<font color="gray">        &lt;xsd:documentation&gt;</font>
+<font color="gray">          &lt;p&gt;</font>
+<font color="gray">  					The point element is characterized by PointAttributes,</font>
+<font color="gray">  					which describe absolute 2D cartesian coordinates. Namely:</font>
+<font color="gray">            &lt;ul&gt;</font>
+<font color="gray">              &lt;li&gt;x (horizontal, from left to right),&lt;/li&gt;</font>
+<font color="gray">              &lt;li&gt;y (vertical, from top to bottom).&lt;/li&gt;</font>
+<font color="gray">            &lt;/ul&gt;</font>
+<font color="gray">          &lt;/p&gt;</font>
+<font color="gray">          &lt;p&gt;</font>
+<font color="gray">  					The origin is located in the top-left corner of the map.</font>
+<font color="gray">  					There is no unit:</font>
+<font color="gray">  					proportions must be preserved, but the maps can be drawn at any scale.</font>
+<font color="gray">  					In the test files examples, to obtain a drawing similar to the reference</font>
+<font color="gray">  					*.png file, values in the corresponding *.sbgn file should be read as pixels.</font>
+<font color="gray">  				&lt;/p&gt;</font>
+<font color="gray">        &lt;/xsd:documentation&gt;</font>
+<font color="gray">      &lt;/xsd:annotation&gt;</font>
+<font color="gray">      &lt;xsd:complexType&gt;</font>
+<font color="gray">        &lt;xsd:complexContent&gt;</font>
+<font color="gray">          &lt;xsd:extension base='SBGNBase'&gt;</font>
+<font color="gray">            &lt;xsd:attributeGroup ref='sbgn:PointAttributes' /&gt;</font>
+<font color="gray">          &lt;/xsd:extension&gt;</font>
+<font color="gray">        &lt;/xsd:complexContent&gt;</font>
+<font color="gray">      &lt;/xsd:complexType&gt;</font>
+<font color="gray">    &lt;/xsd:element&gt;</font>
+<font color="gray">  &lt;!-- bbox element --&gt;</font>
+<font color="gray">    &lt;xsd:element name='bbox'&gt;</font>
+<font color="gray">      &lt;xsd:annotation&gt;</font>
+<font color="gray">        &lt;xsd:documentation&gt;</font>
+<font color="gray">          &lt;p&gt;</font>
+<font color="gray">  					The bbox element describes a rectangle. This rectangle is defined by:</font>
+<font color="gray">            &lt;ul&gt;</font>
+<font color="gray">              &lt;li&gt;</font>
+<font color="gray">  							PointAttributes corresponding to the 2D coordinates of the top left</font>
+<font color="gray">  							corner,</font>
+<font color="gray">  						&lt;/li&gt;</font>
+<font color="gray">              &lt;li&gt;width and height attributes.&lt;/li&gt;</font>
+<font color="gray">            &lt;/ul&gt;</font>
+<font color="gray">          &lt;/p&gt;</font>
+<font color="gray">          &lt;p&gt;</font>
+<font color="gray">  					The rectangle corresponds to the outer bounding box of a shape.</font>
+<font color="gray">  					The shape itself can be irregular</font>
+<font color="gray">  					(for instance in the case of some compartments).</font>
+<font color="gray">  				&lt;/p&gt;</font>
+<font color="gray">          &lt;p&gt;</font>
+<font color="gray">  					In the case of process nodes,</font>
+<font color="gray">  					the bounding box only concerns the central glyph (square, or circle),</font>
+<font color="gray">  					the input/output ports are not included, and neither are the lines connecting</font>
+<font color="gray">  					them to the central glyph.</font>
+<font color="gray">  				&lt;/p&gt;</font>
+<font color="gray">          &lt;p&gt;</font>
+<font color="gray">  					A bbox is required for all glyphs, and is optional for labels.</font>
+<font color="gray">  				&lt;/p&gt;</font>
+<font color="gray">        &lt;/xsd:documentation&gt;</font>
+<font color="gray">      &lt;/xsd:annotation&gt;</font>
+<font color="gray">      &lt;xsd:complexType&gt;</font>
+<font color="gray">        &lt;xsd:complexContent&gt;</font>
+<font color="gray">          &lt;xsd:extension base='SBGNBase'&gt;</font>
+<font color="gray">            &lt;xsd:attributeGroup ref='sbgn:PointAttributes' /&gt;</font>
+<font color="gray">            &lt;xsd:attribute name='w' type='xsd:float' use='required' /&gt;</font>
+<font color="gray">            &lt;xsd:attribute name='h' type='xsd:float' use='required' /&gt;</font>
+<font color="gray">          &lt;/xsd:extension&gt;</font>
+<font color="gray">        &lt;/xsd:complexContent&gt;</font>
+<font color="gray">      &lt;/xsd:complexType&gt;</font>
+<font color="gray">    &lt;/xsd:element&gt;</font>
+<font color="gray">  &lt;!-- label element --&gt;</font>
+<font color="gray">    &lt;xsd:element name='label'&gt;</font>
+<font color="gray">      &lt;xsd:annotation&gt;</font>
+<font color="gray">        &lt;xsd:documentation&gt;</font>
+<font color="gray">          &lt;p&gt;</font>
+<font color="gray">  					The label element describes the text accompanying a glyph.</font>
+<font color="gray">  					The text attribute is mandatory.</font>
+<font color="gray">  					Its position can be specified by a bbox (optional).</font>
+<font color="gray">  					Tools are free to display the text in any style (font, font-size, etc.)</font>
+<font color="gray">  				&lt;/p&gt;</font>
+<font color="gray">        &lt;/xsd:documentation&gt;</font>
+<font color="gray">      &lt;/xsd:annotation&gt;</font>
+<font color="gray">      &lt;xsd:complexType&gt;</font>
+<font color="gray">        &lt;xsd:complexContent&gt;</font>
+<font color="gray">          &lt;xsd:extension base='SBGNBase'&gt;</font>
+<font color="gray">            &lt;xsd:sequence&gt;</font>
+<font color="gray">              &lt;xsd:annotation&gt;</font>
+<font color="gray">                &lt;xsd:documentation&gt;</font>
+<font color="gray">                  &lt;p&gt;</font>
+<font color="gray">                    The bbox element of a label is optional.</font>
+<font color="gray">                    When no bbox is defined, the bbox of the parent glyph is</font>
+<font color="gray">                    inherited.</font>
+<font color="gray">                    The label should be drawn centered horizontally and vertically in the</font>
+<font color="gray">                    bbox.</font>
+<font color="gray">                  &lt;/p&gt;</font>
+<font color="gray">                  &lt;p&gt;</font>
+<font color="gray">                    When the bbox is inherited, the label can freely spill outside (just</font>
+<font color="gray">                    like it can spill outside its parent glyph).</font>
+<font color="gray">                    An explicit bbox provides a stronger hint regarding what surface the</font>
+<font color="gray">                    label should cover. It defines an upper boundary outside of which the</font>
+<font color="gray">                    label should (ideally) not spill. It also represents a preferred size:</font>
+<font color="gray">                    the surface covered by the label can be smaller, but should ideally be</font>
+<font color="gray">                    as close as possible to the bbox.</font>
+<font color="gray">                  &lt;/p&gt;</font>
+<font color="gray">                  &lt;p&gt;</font>
+<font color="gray">                    In most glyphs (EPNs, unit of information, etc.), the label is supposed</font>
+<font color="gray">                    to be centered, so the bbox is usually omitted (unless there's a</font>
+<font color="gray">                    specific hint to be shared concerning the area the label should ideally</font>
+<font color="gray">                    cover).</font>
+<font color="gray">                    However, labels can be drawn anywhere inside compartments or complex, so</font>
+<font color="gray">                    these should preferably have an explicit bbox.</font>
+<font color="gray">                  &lt;/p&gt;</font>
+<font color="gray">                &lt;/xsd:documentation&gt;</font>
+<font color="gray">              &lt;/xsd:annotation&gt;</font>
+<font color="gray">              &lt;xsd:element maxOccurs='1' minOccurs='0' ref='sbgn:bbox' /&gt;</font>
+<font color="gray">            &lt;/xsd:sequence&gt;</font>
+<font color="gray">            &lt;xsd:attribute name='text' type='xsd:string' use='required'&gt;</font>
+<font color="gray">              &lt;xsd:annotation&gt;</font>
+<font color="gray">                &lt;xsd:documentation&gt;</font>
+<font color="gray">                  &lt;p&gt;</font>
+<font color="gray">                    Multi-line labels are allowed.</font>
+<font color="gray">                    Line breaks are encoded as &amp;amp;#xA; as specified by the</font>
+<font color="gray">                    XML standard.</font>
+<font color="gray">                  &lt;/p&gt;</font>
+<font color="gray">                &lt;/xsd:documentation&gt;</font>
+<font color="gray">              &lt;/xsd:annotation&gt;</font>
+<font color="gray">            &lt;/xsd:attribute&gt;</font>
+<font color="gray">          &lt;/xsd:extension&gt;</font>
+<font color="gray">        &lt;/xsd:complexContent&gt;</font>
+<font color="gray">      &lt;/xsd:complexType&gt;</font>
+<font color="gray">    &lt;/xsd:element&gt;</font>
+<font color="gray">  &lt;!-- HIGH LEVEL ELEMENTS - HIGH LEVEL ELEMENTS - HIGH LEVEL ELEMENTS - HIGH LEVEL ELEMENTS --&gt;</font>
+<font color="gray">  &lt;!-- sbgn element [root] --&gt;</font>
+<font color="gray">    &lt;xsd:element name='sbgn'&gt;</font>
+<font color="gray">      &lt;xsd:annotation&gt;</font>
+<font color="gray">        &lt;xsd:documentation&gt;</font>
+<font color="gray">          &lt;p&gt;</font>
+<font color="gray">  					The sbgn element is the root of any SBGNML document.</font>
+<font color="gray">  					Currently each document must contain exactly one map element.</font>
+<font color="gray">  				&lt;/p&gt;</font>
+<font color="gray">        &lt;/xsd:documentation&gt;</font>
+<font color="gray">      &lt;/xsd:annotation&gt;</font>
+<font color="gray">      &lt;xsd:complexType&gt;</font>
+<font color="gray">        &lt;xsd:complexContent&gt;</font>
+<font color="gray">          &lt;xsd:extension base='SBGNBase'&gt;</font>
+<font color="gray">            &lt;xsd:sequence&gt;</font>
+<font color="red">-             &lt;xsd:element maxOccurs='1' minOccurs='1' ref='sbgn:map' /&gt;</font>
+<font color="green">+             &lt;xsd:element maxOccurs='unbounded' minOccurs='1' ref='sbgn:map' /&gt;</font>
+<font color="gray">            &lt;/xsd:sequence&gt;</font>
+<font color="gray">          &lt;/xsd:extension&gt;</font>
+<font color="gray">        &lt;/xsd:complexContent&gt;</font>
+<font color="gray">      &lt;/xsd:complexType&gt;</font>
+<font color="gray">    &lt;/xsd:element&gt;</font>
+<font color="gray">  &lt;!-- map element --&gt;</font>
+<font color="gray">    &lt;xsd:element name='map'&gt;</font>
+<font color="gray">      &lt;xsd:annotation&gt;</font>
+<font color="gray">        &lt;xsd:documentation&gt;</font>
+<font color="gray">          &lt;p&gt;</font>
+<font color="gray">  					The map element describes a single SBGN PD map.</font>
+<font color="gray">  					It contains a list of glyph elements and a list of arc elements.</font>
+<font color="gray">  					These lists can be of any size (possibly empty).</font>
+<font color="gray">  				&lt;/p&gt;</font>
+<font color="gray">        &lt;/xsd:documentation&gt;</font>
+<font color="gray">      &lt;/xsd:annotation&gt;</font>
+<font color="gray">      &lt;xsd:complexType&gt;</font>
+<font color="gray">        &lt;xsd:complexContent&gt;</font>
+<font color="gray">          &lt;xsd:extension base='SBGNBase'&gt;</font>
+<font color="gray">            &lt;xsd:sequence&gt;</font>
+<font color="gray">              &lt;xsd:element maxOccurs='1' minOccurs='0' ref='sbgn:bbox'&gt;</font>
+<font color="gray">                &lt;xsd:annotation&gt;</font>
+<font color="gray">                  &lt;xsd:documentation&gt;</font>
+<font color="gray">                    &lt;p&gt;</font>
+<font color="gray">                      The bbox element on a map is not mandatory, it allows the </font>
+<font color="gray">  					application to define a canvas, and at the same time </font>
+<font color="gray">  					define a whitespace margin around the glyphs.</font>
+<font color="gray">  				&lt;/p&gt;</font>
+<font color="gray">                    &lt;p&gt;</font>
+<font color="gray">  					If a bbox is defined on a map, all glyphs and arcs must be </font>
+<font color="gray">  					inside this bbox, otherwise they could be</font>
+<font color="gray">  					clipped off by applications.</font>
+<font color="gray">  				&lt;/p&gt;</font>
+<font color="gray">                  &lt;/xsd:documentation&gt;</font>
+<font color="gray">                &lt;/xsd:annotation&gt;</font>
+<font color="gray">              &lt;/xsd:element&gt;</font>
+<font color="gray">              &lt;xsd:element maxOccurs='unbounded' minOccurs='0' ref='sbgn:glyph' /&gt;</font>
+<font color="gray">              &lt;xsd:element maxOccurs='unbounded' minOccurs='0' ref='sbgn:arc' /&gt;</font>
+<font color="gray">              &lt;xsd:element maxOccurs='unbounded' minOccurs='0' ref='sbgn:arcgroup' /&gt;</font>
+<font color="gray">            &lt;/xsd:sequence&gt;</font>
+<font color="red">-           &lt;xsd:attribute name='language' use='required'&gt;</font>
+<font color="green">+           &lt;xsd:attribute name='version'&gt;</font>
+<font color="green">+             &lt;xsd:annotation&gt;</font>
+<font color="green">+               &lt;xsd:documentation&gt;</font>
+<font color="green">+                 &lt;p&gt;</font>
+<font color="green">+                   Version of the map: URI identifier that gives the language, level and version defined by SBGN.</font>
+<font color="green">+                   Different languages/levels/versions have different restrictions on the usage of sub-elements (that are not encoded in this schema</font>
+<font color="green">+                   but must be validated with an external validator)</font>
+<font color="green">+                 &lt;/p&gt;</font>
+<font color="green">+               &lt;/xsd:documentation&gt;</font>
+<font color="green">+             &lt;/xsd:annotation&gt;</font>
+<font color="green">+             &lt;xsd:simpleType&gt;</font>
+<font color="green">+               &lt;xsd:restriction base='xsd:anyURI'&gt;</font>
+<font color="green">+                 &lt;xsd:enumeration value='http://identifiers.org/combine.specifications/sbgn.pd.level-1.version-1.3' /&gt;</font>
+<font color="green">+                 &lt;xsd:enumeration value='http://identifiers.org/combine.specifications/sbgn.pd.level-1.version-1.2' /&gt;</font>
+<font color="green">+                 &lt;xsd:enumeration value='http://identifiers.org/combine.specifications/sbgn.pd.level-1.version-1.1' /&gt;</font>
+<font color="green">+                 &lt;xsd:enumeration value='http://identifiers.org/combine.specifications/sbgn.pd.level-1.version-1.0' /&gt;</font>
+<font color="green">+                 &lt;xsd:enumeration value='http://identifiers.org/combine.specifications/sbgn.pd.level-1.version-1' /&gt;</font>
+<font color="green">+                 &lt;xsd:enumeration value='http://identifiers.org/combine.specifications/sbgn.er.level-1.version-2' /&gt;</font>
+<font color="green">+                 &lt;xsd:enumeration value='http://identifiers.org/combine.specifications/sbgn.er.level-1.version-1.2' /&gt;</font>
+<font color="green">+                 &lt;xsd:enumeration value='http://identifiers.org/combine.specifications/sbgn.er.level-1.version-1.1' /&gt;</font>
+<font color="green">+                 &lt;xsd:enumeration value='http://identifiers.org/combine.specifications/sbgn.er.level-1.version-1.0' /&gt;</font>
+<font color="green">+                 &lt;xsd:enumeration value='http://identifiers.org/combine.specifications/sbgn.er.level-1.version-1' /&gt;</font>
+<font color="green">+                 &lt;xsd:enumeration value='http://identifiers.org/combine.specifications/sbgn.af.level-1.version-1.2' /&gt;</font>
+<font color="green">+                 &lt;xsd:enumeration value='http://identifiers.org/combine.specifications/sbgn.af.level-1.version-1.0' /&gt;</font>
+<font color="green">+                 &lt;xsd:enumeration value='http://identifiers.org/combine.specifications/sbgn.af.level-1.version-1' /&gt;</font>
+<font color="green">+               &lt;/xsd:restriction&gt;</font>
+<font color="green">+             &lt;/xsd:simpleType&gt;</font>
+<font color="green">+           &lt;/xsd:attribute&gt;</font>
+<font color="green">+ &lt;!-- DEPRECATED: Language attribute is deprecated in Milestone 3 --&gt;</font>
+<font color="green">+           &lt;xsd:attribute name='language'&gt;</font>
+<font color="gray">              &lt;xsd:annotation&gt;</font>
+<font color="gray">                &lt;xsd:documentation&gt;</font>
+<font color="gray">                  &lt;p&gt;</font>
+<font color="gray">                    Language of the map: one of three sublanguages defined by SBGN.</font>
+<font color="gray">                    Different languages have different restrictions on the usage of sub-elements (that are not encoded in this schema</font>
+<font color="gray">                    but must be validated with an external validator)</font>
+<font color="gray">                  &lt;/p&gt;</font>
+<font color="gray">                &lt;/xsd:documentation&gt;</font>
+<font color="gray">              &lt;/xsd:annotation&gt;</font>
+<font color="gray">              &lt;xsd:simpleType&gt;</font>
+<font color="gray">                &lt;xsd:restriction base='xsd:string'&gt;</font>
+<font color="gray">                  &lt;xsd:enumeration value='entity relationship' /&gt;</font>
+<font color="gray">                  &lt;xsd:enumeration value='process description' /&gt;</font>
+<font color="gray">                  &lt;xsd:enumeration value='activity flow' /&gt;</font>
+<font color="gray">                &lt;/xsd:restriction&gt;</font>
+<font color="gray">              &lt;/xsd:simpleType&gt;</font>
+<font color="gray">            &lt;/xsd:attribute&gt;</font>
+<font color="green">+ &lt;!-- /DEPRECATED--&gt;</font>
+<font color="green">+           &lt;xsd:attribute name='id' type='xsd:ID' use='required'&gt;</font>
+<font color="green">+             &lt;xsd:annotation&gt;</font>
+<font color="green">+               &lt;xsd:documentation&gt;</font>
+<font color="green">+                 &lt;p&gt;</font>
+<font color="green">+                   The xsd:ID type is an alphanumeric identifier, starting with a</font>
+<font color="green">+                   letter.</font>
+<font color="green">+                   It is recommended to generate meaningless IDs (e.g. "map1234")</font>
+<font color="green">+                   and avoid IDs with a meaning (e.g. "MAPK cascade")</font>
+<font color="green">+                 &lt;/p&gt;</font>
+<font color="green">+               &lt;/xsd:documentation&gt;</font>
+<font color="green">+             &lt;/xsd:annotation&gt;</font>
+<font color="green">+           &lt;/xsd:attribute&gt;</font>
+<font color="gray">          &lt;/xsd:extension&gt;</font>
+<font color="gray">        &lt;/xsd:complexContent&gt;</font>
+<font color="gray">      &lt;/xsd:complexType&gt;</font>
+<font color="gray">    &lt;/xsd:element&gt;</font>
+<font color="gray">  &lt;!-- port element --&gt;</font>
+<font color="gray">    &lt;xsd:element name='port'&gt;</font>
+<font color="gray">      &lt;xsd:annotation&gt;</font>
+<font color="gray">        &lt;xsd:documentation&gt;</font>
+<font color="gray">          &lt;p&gt;</font>
+<font color="gray">  					The port element describes an anchor point which arcs can refer to</font>
+<font color="gray">  					as a source or target. It consists in:</font>
+<font color="gray">            &lt;ul&gt;</font>
+<font color="gray">              &lt;li&gt;absolute 2D cartesian coordinates (PointAttribute),&lt;/li&gt;</font>
+<font color="gray">              &lt;li&gt;a unique id attribute.&lt;/li&gt;</font>
+<font color="gray">            &lt;/ul&gt;</font>
+<font color="gray">          &lt;/p&gt;</font>
+<font color="gray">          &lt;p&gt;</font>
+<font color="gray">  					Two port elements are required for process nodes. They represent</font>
+<font color="gray">  					the extremity of the two "arms" which protrude on both sides of the</font>
+<font color="gray">  					core of the glyph (= square or circle shape).</font>
+<font color="gray">  					Other glyphs don't need ports (but can use them if desired).</font>
+<font color="gray">  				&lt;/p&gt;</font>
+<font color="gray">        &lt;/xsd:documentation&gt;</font>
+<font color="gray">      &lt;/xsd:annotation&gt;</font>
+<font color="gray">      &lt;xsd:complexType&gt;</font>
+<font color="gray">        &lt;xsd:complexContent&gt;</font>
+<font color="gray">          &lt;xsd:extension base='SBGNBase'&gt;</font>
+<font color="gray">            &lt;xsd:attributeGroup ref='sbgn:PointAttributes' /&gt;</font>
+<font color="gray">            &lt;xsd:attribute name='id' type='xsd:ID' use='required'&gt;</font>
+<font color="gray">              &lt;xsd:annotation&gt;</font>
+<font color="gray">                &lt;xsd:documentation&gt;</font>
+<font color="gray">                  &lt;p&gt;</font>
+<font color="gray">                    The xsd:ID type is an alphanumeric identifier,</font>
+<font color="gray">                    starting with a letter.</font>
+<font color="gray">                    Port IDs often contain the ID of their glyph, followed by a</font>
+<font color="gray">                    local port number (e.g. glyph4.1, glyph4.2, etc.)</font>
+<font color="gray">                    However, this style convention is not mandatory,</font>
+<font color="gray">                    and IDs should never be interpreted as carrying any meaning.</font>
+<font color="gray">                  &lt;/p&gt;</font>
+<font color="gray">                &lt;/xsd:documentation&gt;</font>
+<font color="gray">              &lt;/xsd:annotation&gt;</font>
+<font color="gray">            &lt;/xsd:attribute&gt;</font>
+<font color="gray">          &lt;/xsd:extension&gt;</font>
+<font color="gray">        &lt;/xsd:complexContent&gt;</font>
+<font color="gray">      &lt;/xsd:complexType&gt;</font>
+<font color="gray">    &lt;/xsd:element&gt;</font>
+<font color="gray">  &lt;!-- GLYPH GLYPH GLYPH GLYPH GLYPH GLYPH GLYPH GLYPH GLYPH GLYPH GLYPH GLYPH GLYPH GLYPH GLYPH G --&gt;</font>
+<font color="gray">    &lt;xsd:element name='glyph'&gt;</font>
+<font color="gray">      &lt;xsd:annotation&gt;</font>
+<font color="gray">        &lt;xsd:documentation&gt;</font>
+<font color="gray">          &lt;p&gt;</font>
+<font color="gray">  				The glyph element is:</font>
+<font color="gray">            &lt;ul&gt;</font>
+<font color="gray">              &lt;li&gt;either a stand-alone, high-level SBGN glyph</font>
+<font color="gray">  						(EPN, PN, compartment, etc),&lt;/li&gt;</font>
+<font color="gray">              &lt;li&gt;or a sub-glyph</font>
+<font color="gray">  						(state variable, unit of information, inside of a complex, ...)&lt;/li&gt;</font>
+<font color="gray">            &lt;/ul&gt;</font>
+<font color="gray">          &lt;/p&gt;</font>
+<font color="gray">          &lt;p&gt;</font>
+<font color="gray">  				In the first case, it appears directly in the glyph list of the map.</font>
+<font color="gray">  				In the second case, it is a child of another glyph element.</font>
+<font color="gray">  			&lt;/p&gt;</font>
+<font color="gray">        &lt;/xsd:documentation&gt;</font>
+<font color="gray">      &lt;/xsd:annotation&gt;</font>
+<font color="gray">      &lt;xsd:complexType&gt;</font>
+<font color="gray">        &lt;xsd:complexContent&gt;</font>
+<font color="gray">          &lt;xsd:extension base='SBGNBase'&gt;</font>
+<font color="gray">            &lt;xsd:sequence&gt;</font>
+<font color="gray">              &lt;xsd:choice&gt;</font>
+<font color="gray">                &lt;xsd:annotation&gt;</font>
+<font color="gray">                  &lt;xsd:documentation&gt;</font>
+<font color="gray">                    &lt;p&gt;</font>
+<font color="gray">                      The text inside a glyph is described:</font>
+<font color="gray">                      &lt;ul&gt;</font>
+<font color="gray">                        &lt;li&gt;</font>
+<font color="gray">                          either by a label element (optional)</font>
+<font color="gray">                          [process nodes can't have one],</font>
+<font color="gray">                        &lt;/li&gt;</font>
+<font color="gray">                        &lt;li&gt;</font>
+<font color="gray">                          or by a state element (optional)</font>
+<font color="gray">                          [for state variables only].</font>
+<font color="gray">                        &lt;/li&gt;</font>
+<font color="gray">                      &lt;/ul&gt;</font>
+<font color="gray">                    &lt;/p&gt;</font>
+<font color="gray">                  &lt;/xsd:documentation&gt;</font>
+<font color="gray">                &lt;/xsd:annotation&gt;</font>
+<font color="gray">                &lt;xsd:element maxOccurs='1' minOccurs='0' ref='sbgn:label' /&gt;</font>
+<font color="gray">                &lt;xsd:element maxOccurs='1' minOccurs='0' name='state'&gt;</font>
+<font color="gray">                  &lt;xsd:annotation&gt;</font>
+<font color="gray">                    &lt;xsd:documentation&gt;</font>
+<font color="gray">                      &lt;p&gt;</font>
+<font color="gray">                        The state element should only be used for state variables.</font>
+<font color="gray">                        It replaces the label element used for other glyphs.</font>
+<font color="gray">                        It describes the text to be drawn inside the state variable.</font>
+<font color="gray">                      &lt;/p&gt;</font>
+<font color="gray">                      &lt;p&gt;</font>
+<font color="gray">                        A state must have a value, a variable, or both.</font>
+<font color="gray">                        If it has both, they are rendered as a concatenated string with</font>
+<font color="gray">                        @ in between.</font>
+<font color="gray">                      &lt;/p&gt;</font>
+<font color="gray">                    &lt;/xsd:documentation&gt;</font>
+<font color="gray">                  &lt;/xsd:annotation&gt;</font>
+<font color="gray">                  &lt;xsd:complexType&gt;</font>
+<font color="gray">                    &lt;xsd:attribute name='value' type='xsd:string' use='optional'&gt;</font>
+<font color="gray">                      &lt;xsd:annotation&gt;</font>
+<font color="gray">                        &lt;xsd:documentation&gt;</font>
+<font color="gray">                          &lt;p&gt;</font>
+<font color="gray">                            The value attribute represents the state of the</font>
+<font color="gray">                            variable. It can be:</font>
+<font color="gray">                            &lt;ul&gt;</font>
+<font color="gray">                              &lt;li&gt;</font>
+<font color="gray">                                either from a predefined set of string</font>
+<font color="gray">                                (P, S, etc.) which correspond to specific</font>
+<font color="gray">                                SBO terms (cf. SBGN specs),</font>
+<font color="gray">                              &lt;/li&gt;</font>
+<font color="gray">                              &lt;li&gt;</font>
+<font color="gray">                                or any arbitrary string.</font>
+<font color="gray">                              &lt;/li&gt;</font>
+<font color="gray">                            &lt;/ul&gt;</font>
+<font color="gray">                          &lt;/p&gt;</font>
+<font color="gray">                        &lt;/xsd:documentation&gt;</font>
+<font color="gray">                      &lt;/xsd:annotation&gt;</font>
+<font color="gray">                    &lt;/xsd:attribute&gt;</font>
+<font color="gray">                    &lt;xsd:attribute name='variable' type='xsd:string' use='optional'&gt;</font>
+<font color="gray">                      &lt;xsd:annotation&gt;</font>
+<font color="gray">                        &lt;xsd:documentation&gt;</font>
+<font color="gray">                          &lt;p&gt;</font>
+<font color="gray">                            The variable attribute describes the site where the</font>
+<font color="gray">                            modification described by the value attribute occurs.</font>
+<font color="gray">                            It is:</font>
+<font color="gray">                            &lt;ul&gt;</font>
+<font color="gray">                              &lt;li&gt;</font>
+<font color="gray">                                optional when there is only one state variable</font>
+<font color="gray">                                on the parent EPN,</font>
+<font color="gray">                              &lt;/li&gt;</font>
+<font color="gray">                              &lt;li&gt;</font>
+<font color="gray">                                required when there is more than one state</font>
+<font color="gray">                                variable the parent EPN.</font>
+<font color="gray">                              &lt;/li&gt;</font>
+<font color="gray">                            &lt;/ul&gt;</font>
+<font color="gray">                          &lt;/p&gt;</font>
+<font color="gray">                        &lt;/xsd:documentation&gt;</font>
+<font color="gray">                      &lt;/xsd:annotation&gt;</font>
+<font color="gray">                    &lt;/xsd:attribute&gt;</font>
+<font color="gray">                  &lt;/xsd:complexType&gt;</font>
+<font color="gray">                &lt;/xsd:element&gt;</font>
+<font color="gray">              &lt;/xsd:choice&gt;</font>
+<font color="gray">              &lt;xsd:element maxOccurs='1' minOccurs='0' name='clone'&gt;</font>
+<font color="gray">                &lt;xsd:annotation&gt;</font>
+<font color="gray">                  &lt;xsd:documentation&gt;</font>
+<font color="gray">                    &lt;p&gt;</font>
+<font color="gray">                      The clone element (which is optional) means the glyph carries a</font>
+<font color="gray">                      clone marker. It can contain an optional label.</font>
+<font color="gray">                    &lt;/p&gt;</font>
+<font color="gray">                  &lt;/xsd:documentation&gt;</font>
+<font color="gray">                &lt;/xsd:annotation&gt;</font>
+<font color="gray">                &lt;xsd:complexType&gt;</font>
+<font color="gray">                  &lt;xsd:sequence&gt;</font>
+<font color="gray">                    &lt;xsd:element maxOccurs='1' minOccurs='0' ref='sbgn:label' /&gt;</font>
+<font color="gray">                  &lt;/xsd:sequence&gt;</font>
+<font color="gray">                &lt;/xsd:complexType&gt;</font>
+<font color="gray">              &lt;/xsd:element&gt;</font>
+<font color="gray">              &lt;xsd:element maxOccurs='1' minOccurs='0' name='callout'&gt;</font>
+<font color="gray">                &lt;xsd:annotation&gt;</font>
+<font color="gray">                  &lt;xsd:documentation&gt;</font>
+<font color="gray">                    &lt;p&gt;</font>
+<font color="gray">                      The callout element is only used for glyphs with class annotation.</font>
+<font color="gray">                      It contains the coordinate of the point where the annotation points to,</font>
+<font color="gray">  					as well as a reference to the element that is pointed to.</font>
+<font color="gray">                    &lt;/p&gt;</font>
+<font color="gray">                  &lt;/xsd:documentation&gt;</font>
+<font color="gray">                &lt;/xsd:annotation&gt;</font>
+<font color="gray">                &lt;xsd:complexType&gt;</font>
+<font color="gray">                  &lt;xsd:sequence&gt;</font>
+<font color="gray">                    &lt;xsd:element maxOccurs='1' minOccurs='1' ref='sbgn:point' /&gt;</font>
+<font color="gray">                  &lt;/xsd:sequence&gt;</font>
+<font color="gray">                  &lt;xsd:attribute name='target' type='xsd:IDREF' use='optional' /&gt;</font>
+<font color="gray">                &lt;/xsd:complexType&gt;</font>
+<font color="gray">              &lt;/xsd:element&gt;</font>
+<font color="gray">              &lt;xsd:element maxOccurs='1' minOccurs='0' name='entity'&gt;</font>
+<font color="gray">                &lt;xsd:annotation&gt;</font>
+<font color="gray">                  &lt;xsd:documentation&gt;</font>
+<font color="gray">                    &lt;p&gt;</font>
+<font color="gray">                      The entity is only used in activity flow diagrams.</font>
+<font color="gray">                      It can only be used on a unit of information glyph</font>
+<font color="gray">                      on a biological activity glyph, where it is compulsory.</font>
+<font color="gray">                      It is used to indicate the shape of this unit of information.</font>
+<font color="gray">                    &lt;/p&gt;</font>
+<font color="gray">                  &lt;/xsd:documentation&gt;</font>
+<font color="gray">                &lt;/xsd:annotation&gt;</font>
+<font color="gray">                &lt;xsd:complexType&gt;</font>
+<font color="gray">                  &lt;xsd:attribute name='name' use='required'&gt;</font>
+<font color="gray">                    &lt;xsd:simpleType&gt;</font>
+<font color="gray">                      &lt;xsd:restriction base='xsd:string'&gt;</font>
+<font color="gray">                        &lt;xsd:enumeration value='unspecified entity' /&gt;</font>
+<font color="gray">                        &lt;xsd:enumeration value='simple chemical' /&gt;</font>
+<font color="gray">                        &lt;xsd:enumeration value='macromolecule' /&gt;</font>
+<font color="gray">                        &lt;xsd:enumeration value='nucleic acid feature' /&gt;</font>
+<font color="gray">                        &lt;xsd:enumeration value='complex' /&gt;</font>
+<font color="green">+                       &lt;xsd:enumeration value='perturbation' /&gt;</font>
+<font color="gray">                      &lt;/xsd:restriction&gt;</font>
+<font color="gray">                    &lt;/xsd:simpleType&gt;</font>
+<font color="gray">                  &lt;/xsd:attribute&gt;</font>
+<font color="gray">                &lt;/xsd:complexType&gt;</font>
+<font color="gray">              &lt;/xsd:element&gt;</font>
+<font color="gray">              &lt;xsd:element maxOccurs='1' minOccurs='1' ref='sbgn:bbox'&gt;</font>
+<font color="gray">                &lt;xsd:annotation&gt;</font>
+<font color="gray">                  &lt;xsd:documentation&gt;</font>
+<font color="gray">                    &lt;p&gt;</font>
+<font color="gray">                      The bbox element is mandatory and unique: exactly one per</font>
+<font color="gray">                      glyph.</font>
+<font color="gray">                      It defines the outer bounding box of the glyph.</font>
+<font color="gray">                      The actual shape of the glyph can be irregular</font>
+<font color="gray">                      (for instance in the case of some compartments)</font>
+<font color="gray">                    &lt;/p&gt;</font>
+<font color="gray">                    &lt;p&gt;</font>
+<font color="gray">                      In the case of process nodes, the bounding box only concerns the</font>
+<font color="gray">                      central glyph (square, or circle):</font>
+<font color="gray">                      the input/output ports are not included, and neither are the lines</font>
+<font color="gray">                      connecting them to the central glyph.</font>
+<font color="gray">                    &lt;/p&gt;</font>
+<font color="gray">                  &lt;/xsd:documentation&gt;</font>
+<font color="gray">                &lt;/xsd:annotation&gt;</font>
+<font color="gray">              &lt;/xsd:element&gt;</font>
+<font color="gray">              &lt;xsd:element maxOccurs='unbounded' minOccurs='0' ref='sbgn:glyph'&gt;</font>
+<font color="gray">                &lt;xsd:annotation&gt;</font>
+<font color="gray">                  &lt;xsd:documentation&gt;</font>
+<font color="gray">                    &lt;p&gt;</font>
+<font color="gray">                      A glyph element can contain any number of children glyph</font>
+<font color="gray">                      elements.</font>
+<font color="gray">                      In practice, this should only happen in the following cases:</font>
+<font color="gray">                      &lt;ul&gt;</font>
+<font color="gray">                        &lt;li&gt;a compartment with unit of information children,&lt;/li&gt;</font>
+<font color="gray">                        &lt;li&gt;</font>
+<font color="gray">                          an EPN with states variables and/or unit of information</font>
+<font color="gray">                          children,</font>
+<font color="gray">                        &lt;/li&gt;</font>
+<font color="gray">                        &lt;li&gt;</font>
+<font color="gray">                          a complex, with state variables, unit of info, and/or EPN</font>
+<font color="gray">                          children.</font>
+<font color="gray">                        &lt;/li&gt;</font>
+<font color="gray">                      &lt;/ul&gt;</font>
+<font color="gray">                    &lt;/p&gt;</font>
+<font color="gray">                  &lt;/xsd:documentation&gt;</font>
+<font color="gray">                &lt;/xsd:annotation&gt;</font>
+<font color="gray">              &lt;/xsd:element&gt;</font>
+<font color="gray">              &lt;xsd:element maxOccurs='unbounded' minOccurs='0' ref='sbgn:port' /&gt;</font>
+<font color="gray">            &lt;/xsd:sequence&gt;</font>
+<font color="gray">            &lt;xsd:attribute name='class' use='required'&gt;</font>
+<font color="gray">              &lt;xsd:annotation&gt;</font>
+<font color="gray">                &lt;xsd:documentation&gt;</font>
+<font color="gray">                  &lt;p&gt;</font>
+<font color="gray">                    The class attribute defines the semantic of the glyph, and influences:</font>
+<font color="gray">                    &lt;ul&gt;</font>
+<font color="gray">                      &lt;li&gt;the way that glyph should be rendered,&lt;/li&gt;</font>
+<font color="gray">                      &lt;li&gt;the overall syntactic validity of the map.&lt;/li&gt;</font>
+<font color="gray">                    &lt;/ul&gt;</font>
+<font color="gray">                  &lt;/p&gt;</font>
+<font color="gray">                  &lt;p&gt;</font>
+<font color="gray">                    The various classes encompass the following PD SBGN elements:</font>
+<font color="gray">                    &lt;ul&gt;</font>
+<font color="gray">                      &lt;li&gt;Entity Pool Nodes (EPN),&lt;/li&gt;</font>
+<font color="gray">                      &lt;li&gt;Process Nodes (PN),&lt;/li&gt;</font>
+<font color="gray">                      &lt;li&gt;Logic Operator Nodes,&lt;/li&gt;</font>
+<font color="gray">                      &lt;li&gt;Sub-glyphs on Nodes (State Variable, Unit of Information),&lt;/li&gt;</font>
+<font color="gray">                      &lt;li&gt;Sub-glyphs on Arcs (Stoichiometry Label),&lt;/li&gt;</font>
+<font color="gray">                      &lt;li&gt;Other glyphs (Compartment, Submap, Tag, Terminal).&lt;/li&gt;</font>
+<font color="gray">                    &lt;/ul&gt;</font>
+<font color="gray">                    And the following ER SBGN elements</font>
+<font color="gray">                    &lt;ul&gt;</font>
+<font color="gray">                      &lt;li&gt;Entities (Entity, Outcome)&lt;/li&gt;</font>
+<font color="gray">                      &lt;li&gt;Other (Annotation, Phenotype)&lt;/li&gt;</font>
+<font color="gray">                      &lt;li&gt;Auxiliary on glyps (Existence, Location)&lt;/li&gt;</font>
+<font color="gray">                      &lt;li&gt;Auxiliary on arcs (Cardinality)&lt;/li&gt;</font>
+<font color="gray">                      &lt;li&gt;Delay operator&lt;/li&gt;</font>
+<font color="gray">                      &lt;li&gt;implicit xor&lt;/li&gt;</font>
+<font color="gray">                    &lt;/ul&gt;</font>
+<font color="gray">                  &lt;/p&gt;</font>
+<font color="gray">                &lt;/xsd:documentation&gt;</font>
+<font color="gray">              &lt;/xsd:annotation&gt;</font>
+<font color="gray">              &lt;xsd:simpleType&gt;</font>
+<font color="gray">                &lt;xsd:restriction base='xsd:string'&gt;</font>
+<font color="gray">  &lt;!-- Entity Pool Node classes (PD only) --&gt;</font>
+<font color="gray">                  &lt;xsd:enumeration value='unspecified entity' /&gt;</font>
+<font color="gray">                  &lt;xsd:enumeration value='simple chemical' /&gt;</font>
+<font color="gray">                  &lt;xsd:enumeration value='macromolecule' /&gt;</font>
+<font color="gray">                  &lt;xsd:enumeration value='nucleic acid feature' /&gt;</font>
+<font color="gray">                  &lt;xsd:enumeration value='simple chemical multimer' /&gt;</font>
+<font color="gray">                  &lt;xsd:enumeration value='macromolecule multimer' /&gt;</font>
+<font color="gray">                  &lt;xsd:enumeration value='nucleic acid feature multimer' /&gt;</font>
+<font color="gray">                  &lt;xsd:enumeration value='complex' /&gt;</font>
+<font color="gray">                  &lt;xsd:enumeration value='complex multimer' /&gt;</font>
+<font color="gray">                  &lt;xsd:enumeration value='source and sink' /&gt;</font>
+<font color="gray">  &lt;!-- Activities (AF) --&gt;</font>
+<font color="green">+ &lt;!-- perturbation is deprecated in AF as Activity Node in milestone 3. --&gt;</font>
+<font color="gray">                  &lt;xsd:enumeration value='perturbation' /&gt;</font>
+<font color="gray">                  &lt;xsd:enumeration value='biological activity' /&gt;</font>
+<font color="gray">  &lt;!-- Entities (both PD and ER) --&gt;</font>
+<font color="gray">                  &lt;xsd:enumeration value='perturbing agent' /&gt;</font>
+<font color="gray">  &lt;!-- Other (PD only) --&gt;</font>
+<font color="gray">                  &lt;xsd:enumeration value='compartment' /&gt;</font>
+<font color="gray">                  &lt;xsd:enumeration value='submap' /&gt;</font>
+<font color="gray">                  &lt;xsd:enumeration value='tag' /&gt;</font>
+<font color="gray">                  &lt;xsd:enumeration value='terminal' /&gt;</font>
+<font color="gray">  &lt;!-- Process Node classes (PD only) --&gt;</font>
+<font color="gray">                  &lt;xsd:enumeration value='process' /&gt;</font>
+<font color="gray">                  &lt;xsd:enumeration value='omitted process' /&gt;</font>
+<font color="gray">                  &lt;xsd:enumeration value='uncertain process' /&gt;</font>
+<font color="gray">                  &lt;xsd:enumeration value='association' /&gt;</font>
+<font color="gray">                  &lt;xsd:enumeration value='dissociation' /&gt;</font>
+<font color="gray">  &lt;!-- PD, ER and AF --&gt;</font>
+<font color="gray">                  &lt;xsd:enumeration value='phenotype' /&gt;</font>
+<font color="gray">  &lt;!-- Logical Operator classes (PD, ER and AF) --&gt;</font>
+<font color="gray">                  &lt;xsd:enumeration value='and' /&gt;</font>
+<font color="gray">                  &lt;xsd:enumeration value='or' /&gt;</font>
+<font color="gray">                  &lt;xsd:enumeration value='not' /&gt;</font>
+<font color="gray">  &lt;!-- Subglyph on glyph classes (both PD and ER) --&gt;</font>
+<font color="gray">                  &lt;xsd:enumeration value='state variable' /&gt;</font>
+<font color="gray">                  &lt;xsd:enumeration value='unit of information' /&gt;</font>
+<font color="gray">  &lt;!-- Entities classes (ER) --&gt;</font>
+<font color="gray">                  &lt;xsd:enumeration value='entity' /&gt;</font>
+<font color="gray">                  &lt;xsd:enumeration value='outcome' /&gt;</font>
+<font color="gray">  &lt;!-- Other (ER) --&gt;</font>
+<font color="gray">                  &lt;xsd:enumeration value='interaction' /&gt;</font>
+<font color="gray">                  &lt;xsd:enumeration value='influence target' /&gt;</font>
+<font color="gray">                  &lt;xsd:enumeration value='annotation' /&gt;</font>
+<font color="gray">                  &lt;xsd:enumeration value='variable value' /&gt;</font>
+<font color="gray">                  &lt;xsd:enumeration value='implicit xor' /&gt;</font>
+<font color="gray">  &lt;!-- Logical Operator classes (ER and AF) --&gt;</font>
+<font color="gray">                  &lt;xsd:enumeration value='delay' /&gt;</font>
+<font color="gray">  &lt;!-- Auxiliary on glyph classes --&gt;</font>
+<font color="gray">                  &lt;xsd:enumeration value='existence' /&gt;</font>
+<font color="gray">                  &lt;xsd:enumeration value='location' /&gt;</font>
+<font color="gray">  &lt;!-- Auxiliary on arc classes --&gt;</font>
+<font color="gray">                  &lt;xsd:enumeration value='cardinality' /&gt;</font>
+<font color="gray">  &lt;!-- used for cis / trans and stoichiometry --&gt;</font>
+<font color="gray">  &lt;!-- NB Arc classes are in a separate enumeration --&gt;</font>
+<font color="gray">  &lt;!-- The use of observable is deprecated in newer versions of SBGN.</font>
+<font color="gray">  				Because it occurs in older versions of the SBGN spec, </font>
+<font color="gray">  				we will keep it around indefinitely.</font>
+<font color="gray">  				!--&gt;</font>
+<font color="gray">                  &lt;xsd:enumeration value='observable' /&gt;</font>
+<font color="gray">                &lt;/xsd:restriction&gt;</font>
+<font color="gray">              &lt;/xsd:simpleType&gt;</font>
+<font color="gray">            &lt;/xsd:attribute&gt;</font>
+<font color="gray">            &lt;xsd:attribute default='horizontal' name='orientation'&gt;</font>
+<font color="gray">              &lt;xsd:annotation&gt;</font>
+<font color="gray">                &lt;xsd:documentation&gt;</font>
+<font color="gray">                  &lt;p&gt;</font>
+<font color="gray">                    The orientation attribute is used to express how to draw asymmetric</font>
+<font color="gray">                    glyphs.</font>
+<font color="gray">                    In PD, the orientation of Process Nodes is either horizontal or vertical.</font>
+<font color="gray">                    It refers to an (imaginary) line connecting the two in/out sides of the</font>
+<font color="gray">                    PN.</font>
+<font color="gray">                    In PD, the orientation of Tags and Terminals can be left, right, up or down.</font>
+<font color="gray">                    It refers to the direction the arrow side of the glyph is pointing</font>
+<font color="gray">                    at.</font>
+<font color="gray">                  &lt;/p&gt;</font>
+<font color="gray">                &lt;/xsd:documentation&gt;</font>
+<font color="gray">              &lt;/xsd:annotation&gt;</font>
+<font color="gray">              &lt;xsd:simpleType&gt;</font>
+<font color="gray">                &lt;xsd:restriction base='xsd:string'&gt;</font>
+<font color="gray">  &lt;!-- horizontal / vertical are for process nodes --&gt;</font>
+<font color="gray">                  &lt;xsd:enumeration value='horizontal' /&gt;</font>
+<font color="gray">                  &lt;xsd:enumeration value='vertical' /&gt;</font>
+<font color="gray">  &lt;!-- left / right / up / down are for tags and terminals --&gt;</font>
+<font color="gray">                  &lt;xsd:enumeration value='left' /&gt;</font>
+<font color="gray">                  &lt;xsd:enumeration value='right' /&gt;</font>
+<font color="gray">                  &lt;xsd:enumeration value='up' /&gt;</font>
+<font color="gray">                  &lt;xsd:enumeration value='down' /&gt;</font>
+<font color="gray">                &lt;/xsd:restriction&gt;</font>
+<font color="gray">              &lt;/xsd:simpleType&gt;</font>
+<font color="gray">            &lt;/xsd:attribute&gt;</font>
+<font color="gray">            &lt;xsd:attribute name='id' type='xsd:ID' use='required'&gt;</font>
+<font color="gray">              &lt;xsd:annotation&gt;</font>
+<font color="gray">                &lt;xsd:documentation&gt;</font>
+<font color="gray">                  &lt;p&gt;</font>
+<font color="gray">                    The xsd:ID type is an alphanumeric identifier, starting with a</font>
+<font color="gray">                    letter.</font>
+<font color="gray">                    It is recommended to generate meaningless IDs (e.g. "glyph1234")</font>
+<font color="gray">                    and avoid IDs with a meaning (e.g. "epn_ethanol")</font>
+<font color="gray">                  &lt;/p&gt;</font>
+<font color="gray">                &lt;/xsd:documentation&gt;</font>
+<font color="gray">              &lt;/xsd:annotation&gt;</font>
+<font color="gray">            &lt;/xsd:attribute&gt;</font>
+<font color="gray">            &lt;xsd:attribute name='compartmentRef' type='xsd:IDREF' use='optional'&gt;</font>
+<font color="gray">              &lt;xsd:annotation&gt;</font>
+<font color="gray">                &lt;xsd:documentation&gt;</font>
+<font color="gray">                  &lt;p&gt;</font>
+<font color="gray">                    Reference to the ID of the compartment that this glyph</font>
+<font color="gray">                    is part of. Only use</font>
+<font color="gray">                    this if there is at least one explicit compartment</font>
+<font color="gray">                    present in the diagram. Compartments are</font>
+<font color="gray">                    only used in PD and AF, and thus this attribute as well.</font>
+<font color="gray">                    For PD, this should be used only for EPN's.</font>
+<font color="green">+ 				  For AF, this should be used only for Activity Nodes.</font>
+<font color="gray">                  &lt;/p&gt;</font>
+<font color="gray">                  &lt;p&gt;</font>
+<font color="gray">                    In case there are no compartments, entities that</font>
+<font color="gray">                    can have a location, such as EPN's, are implicit</font>
+<font color="gray">                    member of an invisible compartment that</font>
+<font color="gray">                    encompasses the whole map. In that case, this</font>
+<font color="gray">                    attribute must be omitted.</font>
+<font color="gray">                  &lt;/p&gt;</font>
+<font color="gray">                &lt;/xsd:documentation&gt;</font>
+<font color="gray">              &lt;/xsd:annotation&gt;</font>
+<font color="gray">            &lt;/xsd:attribute&gt;</font>
+<font color="gray">            &lt;xsd:attribute name='compartmentOrder' type='xsd:float' use='optional'&gt;</font>
+<font color="gray">              &lt;xsd:annotation&gt;</font>
+<font color="gray">                &lt;xsd:documentation&gt;</font>
+<font color="gray">                  &lt;p&gt;</font>
+<font color="gray">                    The compartment order attribute can be used to define</font>
+<font color="gray">  				  a drawing order for compartments. It enables tools to</font>
+<font color="gray">  				  draw compartments in the correct order especially in</font>
+<font color="gray">  				  the case of overlapping compartments.</font>
+<font color="gray">  				  Compartments are only used in PD and AF, and thus</font>
+<font color="gray">  				  this attribute as well.</font>
+<font color="gray">                  &lt;/p&gt;</font>
+<font color="gray">                  &lt;p&gt;</font>
+<font color="gray">                    The attribute is of type float, the attribute value</font>
+<font color="gray">  				  has not to be unique. Compartments with higher compartment</font>
+<font color="gray">  				  order are drawn on top. The attribute is optional and should</font>
+<font color="gray">  				  only be used for compartments.</font>
+<font color="green">+                 &lt;/p&gt;</font>
+<font color="green">+               &lt;/xsd:documentation&gt;</font>
+<font color="green">+             &lt;/xsd:annotation&gt;</font>
+<font color="green">+           &lt;/xsd:attribute&gt;</font>
+<font color="green">+           &lt;xsd:attribute name='mapRef' type='xsd:IDREF' use='optional'&gt;</font>
+<font color="green">+             &lt;xsd:annotation&gt;</font>
+<font color="green">+               &lt;xsd:documentation&gt;</font>
+<font color="green">+                 &lt;p&gt;</font>
+<font color="green">+ 				  This attribute is only used on a submap glyph. It is required.</font>
+<font color="green">+ 				&lt;/p&gt;</font>
+<font color="green">+                 &lt;p&gt;</font>
+<font color="green">+                   Reference to the ID of the map which provides the content of the submap.</font>
+<font color="green">+ 				  If no map is available providing the content of the submap an omitted</font>
+<font color="green">+ 				  process should be used instead of the submap.</font>
+<font color="green">+ 				  Submaps are only used in PD and AF, and thus this attribute as well.</font>
+<font color="green">+                 &lt;/p&gt;</font>
+<font color="green">+               &lt;/xsd:documentation&gt;</font>
+<font color="green">+             &lt;/xsd:annotation&gt;</font>
+<font color="green">+           &lt;/xsd:attribute&gt;</font>
+<font color="green">+           &lt;xsd:attribute name='tagRef' type='xsd:IDREF' use='optional'&gt;</font>
+<font color="green">+             &lt;xsd:annotation&gt;</font>
+<font color="green">+               &lt;xsd:documentation&gt;</font>
+<font color="green">+                 &lt;p&gt;</font>
+<font color="green">+ 				  This attribute is only used on a terminal glyph. It is required.</font>
+<font color="green">+ 				&lt;/p&gt;</font>
+<font color="green">+                 &lt;p&gt;</font>
+<font color="green">+                   Reference to the ID of a tag on a map providing the content of a submap.</font>
+<font color="green">+ 				  The terminal glyph is defined as sub-glyph of this submap.</font>
+<font color="green">+ 				  Submaps and therefore terminals are only used in PD and AF, and thus this attribute as well.</font>
+<font color="gray">                  &lt;/p&gt;</font>
+<font color="gray">                &lt;/xsd:documentation&gt;</font>
+<font color="gray">              &lt;/xsd:annotation&gt;</font>
+<font color="gray">            &lt;/xsd:attribute&gt;</font>
+<font color="gray">          &lt;/xsd:extension&gt;</font>
+<font color="gray">        &lt;/xsd:complexContent&gt;</font>
+<font color="gray">      &lt;/xsd:complexType&gt;</font>
+<font color="gray">    &lt;/xsd:element&gt;</font>
+<font color="gray">  &lt;!-- ARCGROUP ARCGROUP ARCGROUP ARCGROUP ARCGROUP ARCGROUP ARCGROUP ARCGROUP ARCGROUP ARCGROUP ARCGROUP --&gt;</font>
+<font color="gray">    &lt;xsd:element name='arcgroup'&gt;</font>
+<font color="gray">      &lt;xsd:annotation&gt;</font>
+<font color="gray">        &lt;xsd:documentation&gt;</font>
+<font color="gray">          &lt;p&gt;</font>
+<font color="gray">  					The arc group describes a set of arcs and glyphs that together have a relation.</font>
+<font color="gray">  					For example</font>
+<font color="gray">            &lt;ul&gt;</font>
+<font color="gray">              &lt;li&gt;For ER: interaction arcs around an interaction glyph,&lt;/li&gt;</font>
+<font color="gray">              &lt;li&gt;...&lt;/li&gt;</font>
+<font color="gray">            &lt;/ul&gt;</font>
+<font color="gray">  					Note that, in spite of the name, an arcgroup contains both arcs and glyphs.</font>
+<font color="gray">  				</font>
+<font color="gray">          &lt;/p&gt;</font>
+<font color="gray">        &lt;/xsd:documentation&gt;</font>
+<font color="gray">      &lt;/xsd:annotation&gt;</font>
+<font color="gray">      &lt;xsd:complexType&gt;</font>
+<font color="gray">        &lt;xsd:complexContent&gt;</font>
+<font color="gray">          &lt;xsd:extension base='SBGNBase'&gt;</font>
+<font color="gray">            &lt;xsd:sequence&gt;</font>
+<font color="gray">              &lt;xsd:element maxOccurs='unbounded' minOccurs='0' ref='sbgn:glyph'&gt;</font>
+<font color="gray">                &lt;xsd:annotation&gt;</font>
+<font color="gray">                  &lt;xsd:documentation&gt;</font>
+<font color="gray">                    &lt;p&gt;</font>
+<font color="gray">                      An arcgroup can contain glyphs. For example, in an interaction arcgroup, there must be one interaction glyph.</font>
+<font color="gray">                    &lt;/p&gt;</font>
+<font color="gray">                  &lt;/xsd:documentation&gt;</font>
+<font color="gray">                &lt;/xsd:annotation&gt;</font>
+<font color="gray">              &lt;/xsd:element&gt;</font>
+<font color="gray">              &lt;xsd:element maxOccurs='unbounded' minOccurs='0' ref='sbgn:arc'&gt;</font>
+<font color="gray">                &lt;xsd:annotation&gt;</font>
+<font color="gray">                  &lt;xsd:documentation&gt;</font>
+<font color="gray">                    &lt;p&gt;</font>
+<font color="gray">  				  An arcgroup can have multiple arcs. They are all assumed to form a single hyperarc-like structure.</font>
+<font color="gray">                    &lt;/p&gt;</font>
+<font color="gray">                  &lt;/xsd:documentation&gt;</font>
+<font color="gray">                &lt;/xsd:annotation&gt;</font>
+<font color="gray">              &lt;/xsd:element&gt;</font>
+<font color="gray">            &lt;/xsd:sequence&gt;</font>
+<font color="gray">            &lt;xsd:attribute name='class' use='required'&gt;</font>
+<font color="gray">              &lt;xsd:annotation&gt;</font>
+<font color="gray">                &lt;xsd:documentation&gt;</font>
+<font color="gray">                  &lt;p&gt;</font>
+<font color="gray">                    The class attribute defines the semantic of the arcgroup.</font>
+<font color="gray">                  &lt;/p&gt;</font>
+<font color="gray">                &lt;/xsd:documentation&gt;</font>
+<font color="gray">              &lt;/xsd:annotation&gt;</font>
+<font color="gray">              &lt;xsd:simpleType&gt;</font>
+<font color="gray">                &lt;xsd:restriction base='xsd:string'&gt;</font>
+<font color="gray">  &lt;!-- ER only --&gt;</font>
+<font color="gray">                  &lt;xsd:enumeration value='interaction' /&gt;</font>
+<font color="gray">                &lt;/xsd:restriction&gt;</font>
+<font color="gray">              &lt;/xsd:simpleType&gt;</font>
+<font color="gray">            &lt;/xsd:attribute&gt;</font>
+<font color="gray">          &lt;/xsd:extension&gt;</font>
+<font color="gray">        &lt;/xsd:complexContent&gt;</font>
+<font color="gray">      &lt;/xsd:complexType&gt;</font>
+<font color="gray">    &lt;/xsd:element&gt;</font>
+<font color="gray">  &lt;!-- ARC ARC ARC ARC ARC ARC ARC ARC ARC ARC ARC ARC ARC ARC ARC ARC ARC ARC ARC ARC ARC ARC ARC --&gt;</font>
+<font color="gray">    &lt;xsd:element name='arc'&gt;</font>
+<font color="gray">      &lt;xsd:annotation&gt;</font>
+<font color="gray">        &lt;xsd:documentation&gt;</font>
+<font color="gray">          &lt;p&gt;</font>
+<font color="gray">  					The arc element describes an SBGN arc between two SBGN nodes. It contains:</font>
+<font color="gray">            &lt;ul&gt;</font>
+<font color="gray">              &lt;li&gt;For PD: an optional stoichiometry marker,&lt;/li&gt;</font>
+<font color="gray">              &lt;li&gt;For ER: an optional cardinality marker, </font>
+<font color="gray">  						zero or more ports (influence targets), and zero or more outcomes,&lt;/li&gt;</font>
+<font color="gray">              &lt;li&gt;a mandatory source and target (glyph or port),&lt;/li&gt;</font>
+<font color="gray">              &lt;li&gt;a geometric description of its whole path, from start to end.&lt;/li&gt;</font>
+<font color="gray">            &lt;/ul&gt;</font>
+<font color="gray">            &lt;p&gt;&lt;/p&gt;</font>
+<font color="gray">  					This path can involve any number of straight lines or quadratic/cubic Bezier</font>
+<font color="gray">  					curves.</font>
+<font color="gray">  				</font>
+<font color="gray">          &lt;/p&gt;</font>
+<font color="gray">        &lt;/xsd:documentation&gt;</font>
+<font color="gray">      &lt;/xsd:annotation&gt;</font>
+<font color="gray">      &lt;xsd:complexType&gt;</font>
+<font color="gray">        &lt;xsd:complexContent&gt;</font>
+<font color="gray">          &lt;xsd:extension base='SBGNBase'&gt;</font>
+<font color="gray">            &lt;xsd:sequence&gt;</font>
+<font color="gray">              &lt;xsd:element maxOccurs='unbounded' minOccurs='0' ref='sbgn:glyph'&gt;</font>
+<font color="gray">                &lt;xsd:annotation&gt;</font>
+<font color="gray">                  &lt;xsd:documentation&gt;</font>
+<font color="gray">                    &lt;p&gt;</font>
+<font color="gray">                      In PD, an arc can contain a single optional sub-glyph.</font>
+<font color="gray">                      This glyph must be a stoichiometry marker</font>
+<font color="gray">                      (square with a numeric label)</font>
+<font color="gray">                    &lt;/p&gt;</font>
+<font color="gray">                    &lt;p&gt;</font>
+<font color="gray">                      In ER, an arc can contain several sub-glyphs.</font>
+<font color="gray">                      This can be zero or one cardinality glyphs</font>
+<font color="gray">                      (e.g. cis or trans), plus zero to many</font>
+<font color="gray">                      outcome glyphs (black dot)</font>
+<font color="gray">                    &lt;/p&gt;</font>
+<font color="gray">                  &lt;/xsd:documentation&gt;</font>
+<font color="gray">                &lt;/xsd:annotation&gt;</font>
+<font color="gray">              &lt;/xsd:element&gt;</font>
+<font color="gray">              &lt;xsd:element maxOccurs='unbounded' minOccurs='0' ref='sbgn:port'&gt;</font>
+<font color="gray">                &lt;xsd:annotation&gt;</font>
+<font color="gray">                  &lt;xsd:documentation&gt;</font>
+<font color="gray">                    &lt;p&gt;</font>
+<font color="gray">                      Ports are only allowed in ER.</font>
+<font color="gray">                    &lt;/p&gt;</font>
+<font color="gray">                  &lt;/xsd:documentation&gt;</font>
+<font color="gray">                &lt;/xsd:annotation&gt;</font>
+<font color="gray">              &lt;/xsd:element&gt;</font>
+<font color="gray">              &lt;xsd:element maxOccurs='1' minOccurs='1' name='start'&gt;</font>
+<font color="gray">                &lt;xsd:annotation&gt;</font>
+<font color="gray">                  &lt;xsd:documentation&gt;</font>
+<font color="gray">                    &lt;p&gt;</font>
+<font color="gray">                      The start element represents the starting point of the arc's path.</font>
+<font color="gray">                      It is unique and mandatory.</font>
+<font color="gray">                    &lt;/p&gt;</font>
+<font color="gray">                  &lt;/xsd:documentation&gt;</font>
+<font color="gray">                &lt;/xsd:annotation&gt;</font>
+<font color="gray">                &lt;xsd:complexType&gt;</font>
+<font color="gray">                  &lt;xsd:attributeGroup ref='sbgn:PointAttributes' /&gt;</font>
+<font color="gray">                &lt;/xsd:complexType&gt;</font>
+<font color="gray">              &lt;/xsd:element&gt;</font>
+<font color="gray">              &lt;xsd:element maxOccurs='unbounded' minOccurs='0' name='next'&gt;</font>
+<font color="gray">                &lt;xsd:annotation&gt;</font>
+<font color="gray">                  &lt;xsd:documentation&gt;</font>
+<font color="gray">                    &lt;p&gt;</font>
+<font color="gray">                      The next element represents the next point in the arc's path.</font>
+<font color="gray">                      Between the start and the end of the path, there can be any number</font>
+<font color="gray">                      (even zero) of next elements (intermediate points). They are read</font>
+<font color="gray">                      consecutively: start, next, next, ..., next, end.</font>
+<font color="gray">                      When the path from the previous point to this point is not straight,</font>
+<font color="gray">                      this element also contains a list of control points</font>
+<font color="gray">                      (between 1 and 2) describing a Bezier curve (quadratic if 1 control</font>
+<font color="gray">                      point, cubic if 2) between the previous point and this point.</font>
+<font color="gray">                    &lt;/p&gt;</font>
+<font color="gray">                  &lt;/xsd:documentation&gt;</font>
+<font color="gray">                &lt;/xsd:annotation&gt;</font>
+<font color="gray">                &lt;xsd:complexType&gt;</font>
+<font color="gray">                  &lt;xsd:sequence&gt;</font>
+<font color="gray">                    &lt;xsd:annotation&gt;</font>
+<font color="gray">                      &lt;xsd:documentation&gt;</font>
+<font color="gray">                        &lt;p&gt;</font>
+<font color="gray">                          List of control points, used when the path describes a</font>
+<font color="gray">                          curve.</font>
+<font color="gray">                          The number of points describes the degree of the Bezier</font>
+<font color="gray">                          curve: linear (0), quadratic (1) or cubic (2)</font>
+<font color="gray">                        &lt;/p&gt;</font>
+<font color="gray">                      &lt;/xsd:documentation&gt;</font>
+<font color="gray">                    &lt;/xsd:annotation&gt;</font>
+<font color="gray">                    &lt;xsd:element maxOccurs='2' minOccurs='0' ref='sbgn:point' /&gt;</font>
+<font color="gray">                  &lt;/xsd:sequence&gt;</font>
+<font color="gray">                  &lt;xsd:attributeGroup ref='sbgn:PointAttributes' /&gt;</font>
+<font color="gray">                &lt;/xsd:complexType&gt;</font>
+<font color="gray">              &lt;/xsd:element&gt;</font>
+<font color="gray">              &lt;xsd:element maxOccurs='1' minOccurs='1' name='end'&gt;</font>
+<font color="gray">                &lt;xsd:annotation&gt;</font>
+<font color="gray">                  &lt;xsd:documentation&gt;</font>
+<font color="gray">                    &lt;p&gt;</font>
+<font color="gray">                      The end element represents the ending point of the arc's path.</font>
+<font color="gray">                      It is unique and mandatory.</font>
+<font color="gray">                      When the path from the previous point to this point is not straight,</font>
+<font color="gray">                      this element also contains a list of control points</font>
+<font color="gray">                      (between 1 and 2) describing a Bezier curve (quadratic if 1 control</font>
+<font color="gray">                      point, cubic if 2) between the previous point and this point.</font>
+<font color="gray">                    &lt;/p&gt;</font>
+<font color="gray">                  &lt;/xsd:documentation&gt;</font>
+<font color="gray">                &lt;/xsd:annotation&gt;</font>
+<font color="gray">                &lt;xsd:complexType&gt;</font>
+<font color="gray">                  &lt;xsd:sequence&gt;</font>
+<font color="gray">                    &lt;xsd:annotation&gt;</font>
+<font color="gray">                      &lt;xsd:documentation&gt;</font>
+<font color="gray">                        &lt;p&gt;</font>
+<font color="gray">                          List of control points, used when the path describes a</font>
+<font color="gray">                          curve.</font>
+<font color="gray">                          The number of points describes the degree of the Bezier</font>
+<font color="gray">                          curve: linear (0), quadratic (1) or cubic (2)</font>
+<font color="gray">                        &lt;/p&gt;</font>
+<font color="gray">                      &lt;/xsd:documentation&gt;</font>
+<font color="gray">                    &lt;/xsd:annotation&gt;</font>
+<font color="gray">                    &lt;xsd:element maxOccurs='2' minOccurs='0' ref='sbgn:point' /&gt;</font>
+<font color="gray">                  &lt;/xsd:sequence&gt;</font>
+<font color="gray">                  &lt;xsd:attributeGroup ref='sbgn:PointAttributes' /&gt;</font>
+<font color="gray">                &lt;/xsd:complexType&gt;</font>
+<font color="gray">              &lt;/xsd:element&gt;</font>
+<font color="gray">            &lt;/xsd:sequence&gt;</font>
+<font color="gray">            &lt;xsd:attribute name='class' use='required'&gt;</font>
+<font color="gray">              &lt;xsd:annotation&gt;</font>
+<font color="gray">                &lt;xsd:documentation&gt;</font>
+<font color="gray">                  &lt;p&gt;</font>
+<font color="gray">                    The class attribute defines the semantic of the arc, and influences:</font>
+<font color="gray">                    &lt;ul&gt;</font>
+<font color="gray">                      &lt;li&gt;the way that arc should be rendered,&lt;/li&gt;</font>
+<font color="gray">                      &lt;li&gt;the overall syntactic validity of the map.&lt;/li&gt;</font>
+<font color="gray">                    &lt;/ul&gt;</font>
+<font color="gray">                  &lt;/p&gt;</font>
+<font color="gray">                  &lt;p&gt;</font>
+<font color="gray">                    The various classes encompass all possible types of SBGN arcs:</font>
+<font color="gray">                    &lt;ul&gt;</font>
+<font color="gray">                      &lt;li&gt;production and consumption arcs,&lt;/li&gt;</font>
+<font color="gray">                      &lt;li&gt;all types of modification arcs,&lt;/li&gt;</font>
+<font color="gray">                      &lt;li&gt;logic arcs,&lt;/li&gt;</font>
+<font color="gray">                      &lt;li&gt;equivalence arcs.&lt;/li&gt;</font>
+<font color="gray">                    &lt;/ul&gt;</font>
+<font color="gray">                    To express a reversible reaction,</font>
+<font color="gray">                    use production arcs on both sides of the Process Node.</font>
+<font color="gray">                  </font>
+<font color="gray">                  &lt;/p&gt;</font>
+<font color="gray">                &lt;/xsd:documentation&gt;</font>
+<font color="gray">              &lt;/xsd:annotation&gt;</font>
+<font color="gray">              &lt;xsd:simpleType&gt;</font>
+<font color="gray">                &lt;xsd:restriction base='xsd:string'&gt;</font>
+<font color="gray">  &lt;!-- PD only --&gt;</font>
+<font color="gray">                  &lt;xsd:enumeration value='production' /&gt;</font>
+<font color="gray">                  &lt;xsd:enumeration value='consumption' /&gt;</font>
+<font color="gray">                  &lt;xsd:enumeration value='catalysis' /&gt;</font>
+<font color="gray">  &lt;!-- PD and ER --&gt;</font>
+<font color="gray">                  &lt;xsd:enumeration value='modulation' /&gt;</font>
+<font color="gray">                  &lt;xsd:enumeration value='stimulation' /&gt;</font>
+<font color="gray">                  &lt;xsd:enumeration value='inhibition' /&gt;</font>
+<font color="gray">  &lt;!-- ER only --&gt;</font>
+<font color="gray">                  &lt;xsd:enumeration value='assignment' /&gt;</font>
+<font color="gray">                  &lt;xsd:enumeration value='interaction' /&gt;</font>
+<font color="gray">                  &lt;xsd:enumeration value='absolute inhibition' /&gt;</font>
+<font color="gray">                  &lt;xsd:enumeration value='absolute stimulation' /&gt;</font>
+<font color="gray">  &lt;!-- AF only --&gt;</font>
+<font color="gray">                  &lt;xsd:enumeration value='positive influence' /&gt;</font>
+<font color="gray">                  &lt;xsd:enumeration value='negative influence' /&gt;</font>
+<font color="gray">                  &lt;xsd:enumeration value='unknown influence' /&gt;</font>
+<font color="gray">  &lt;!-- PD and AF --&gt;</font>
+<font color="gray">                  &lt;xsd:enumeration value='equivalence arc' /&gt;</font>
+<font color="gray">  &lt;!-- PD, ER and AF --&gt;</font>
+<font color="gray">                  &lt;xsd:enumeration value='necessary stimulation' /&gt;</font>
+<font color="gray">                  &lt;xsd:enumeration value='logic arc' /&gt;</font>
+<font color="gray">  &lt;!-- NB Glyph classes are in a separate enumeration --&gt;</font>
+<font color="gray">                &lt;/xsd:restriction&gt;</font>
+<font color="gray">              &lt;/xsd:simpleType&gt;</font>
+<font color="gray">            &lt;/xsd:attribute&gt;</font>
+<font color="gray">            &lt;xsd:attribute name='id' type='xsd:ID' use='required'&gt;</font>
+<font color="gray">              &lt;xsd:annotation&gt;</font>
+<font color="gray">                &lt;xsd:documentation&gt;</font>
+<font color="gray">                  &lt;p&gt;</font>
+<font color="gray">                    The xsd:ID type is an alphanumeric identifier,</font>
+<font color="gray">                    starting with a letter.</font>
+<font color="gray">                  &lt;/p&gt;</font>
+<font color="gray">                &lt;/xsd:documentation&gt;</font>
+<font color="gray">              &lt;/xsd:annotation&gt;</font>
+<font color="gray">            &lt;/xsd:attribute&gt;</font>
+<font color="gray">            &lt;xsd:attribute name='source' type='xsd:IDREF' use='required'&gt;</font>
+<font color="gray">              &lt;xsd:annotation&gt;</font>
+<font color="gray">                &lt;xsd:documentation&gt;</font>
+<font color="gray">                  &lt;p&gt;</font>
+<font color="gray">                    The source attribute can refer:</font>
+<font color="gray">                    &lt;ul&gt;</font>
+<font color="gray">                      &lt;li&gt;either to the id of a glyph,&lt;/li&gt;</font>
+<font color="gray">                      &lt;li&gt;or to the id of a port on a glyph.&lt;/li&gt;</font>
+<font color="gray">                    &lt;/ul&gt;</font>
+<font color="gray">                  &lt;/p&gt;</font>
+<font color="gray">                &lt;/xsd:documentation&gt;</font>
+<font color="gray">              &lt;/xsd:annotation&gt;</font>
+<font color="gray">            &lt;/xsd:attribute&gt;</font>
+<font color="gray">            &lt;xsd:attribute name='target' type='xsd:IDREF' use='required'&gt;</font>
+<font color="gray">              &lt;xsd:annotation&gt;</font>
+<font color="gray">                &lt;xsd:documentation&gt;</font>
+<font color="gray">                  &lt;p&gt;</font>
+<font color="gray">                    The target attribute can refer:</font>
+<font color="gray">                    &lt;ul&gt;</font>
+<font color="gray">                      &lt;li&gt;either to the id of a glyph,&lt;/li&gt;</font>
+<font color="gray">                      &lt;li&gt;or to the id of a port on a glyph.&lt;/li&gt;</font>
+<font color="gray">                    &lt;/ul&gt;</font>
+<font color="gray">                  &lt;/p&gt;</font>
+<font color="gray">                &lt;/xsd:documentation&gt;</font>
+<font color="gray">              &lt;/xsd:annotation&gt;</font>
+<font color="gray">            &lt;/xsd:attribute&gt;</font>
+<font color="gray">          &lt;/xsd:extension&gt;</font>
+<font color="gray">        &lt;/xsd:complexContent&gt;</font>
+<font color="gray">      &lt;/xsd:complexType&gt;</font>
+<font color="gray">    &lt;/xsd:element&gt;</font>
+<font color="gray">  &lt;/xsd:schema&gt;</font>
+
+
+
+</pre>
+
+</body></html>

@@ -1,5 +1,18 @@
 #!/bin/sh
-../tools/xsddoc-1.0/bin/xsddoc -o sbgn.doc -t "libSBGN Documentation" ../resources/SBGN.xsd
-echo "Last generated on `date`" > sbgn.doc/readme.text
+################################################
+# Create latest documentation
+################################################
 
+MILESTONE=libsbgn-v0.3-SNAPSHOT
+
+echo "-------------------------------------"
+echo "SBGN documentation from specification"
+echo "-------------------------------------"
+mkdir ${MILESTONE}
+../tools/xsddoc-1.0/bin/xsddoc -o ${MILESTONE} -t "libSBGN Documentation" ../resources/SBGN.xsd
+
+# Store date of generation
+echo "Last generated on `date`" > ${MILESTONE}/README.md
+
+# Create the examples HTML
 ./makeexamples.py
