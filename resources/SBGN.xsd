@@ -9,24 +9,23 @@
             <p>
                 SBGN-ML is an XML implementation of the Systems Biology Graphical Notation.
                 For more information, please consult
-                <a href="http://libsbgn.sourceforge.net">http://libsbgn.sourceforge.net</a>.
+                <a href="https://github.com/sbgn/libsbgn">https://github.com/sbgn/libsbgn</a>.
             </p>
             <p>
-                Version: LibSBGN Milestone 3 (cf. targetNamespace attribute - as recommended by the W3C)
+                Version: LibSBGN Milestone 3
             </p>
         </xsd:documentation>
     </xsd:annotation>
 
     <!-- COMMON TYPES AND ELEMENTS - COMMON TYPES AND ELEMENTS - COMMON TYPES AND ELEMENTS -->
 
-
-    <!--The definition of the SBGN base class.-->
+    <!-- SBGNBase -->
     <xsd:complexType name="SBGNBase" abstract="true">
         <xsd:annotation>
             <xsd:documentation>
-                The SBGNBase type is the base type of all main
-                components in SBGN. It supports attaching metadata, notes and
-                annotations to components.
+                The SBGNBase type is the base type of all main components in SBGN.
+                It supports attaching notes and extensions to components, with
+                metadata and annotations encoded in the extension element.
             </xsd:documentation>
         </xsd:annotation>
         <xsd:sequence>
@@ -50,7 +49,7 @@
         </xsd:sequence>
     </xsd:complexType>
 
-    <!-- PointAttributes attribute group -->
+    <!-- PointAttributes -->
     <xsd:attributeGroup name="PointAttributes">
         <xsd:annotation>
             <xsd:documentation>
@@ -74,7 +73,7 @@
         <xsd:attribute name="y" type="xsd:float" use="required"/>
     </xsd:attributeGroup>
 
-    <!-- point element -->
+    <!-- point -->
     <xsd:element name="point">
         <xsd:annotation>
             <xsd:documentation>
@@ -104,7 +103,7 @@
         </xsd:complexType>
     </xsd:element>
 
-    <!-- bbox element -->
+    <!-- bbox -->
     <xsd:element name="bbox">
         <xsd:annotation>
             <xsd:documentation>
@@ -145,8 +144,7 @@
         </xsd:complexType>
     </xsd:element>
 
-    <!-- label element -->
-
+    <!-- label -->
     <xsd:element name="label">
         <xsd:annotation>
             <xsd:documentation>
@@ -210,8 +208,7 @@
 
     <!-- HIGH LEVEL ELEMENTS - HIGH LEVEL ELEMENTS - HIGH LEVEL ELEMENTS - HIGH LEVEL ELEMENTS -->
 
-    <!-- sbgn element [root] -->
-
+    <!-- sbgn  -->
     <xsd:element name="sbgn">
         <xsd:annotation>
             <xsd:documentation>
@@ -232,8 +229,7 @@
         </xsd:complexType>
     </xsd:element>
 
-    <!-- map element -->
-
+    <!-- map -->
     <xsd:element name="map">
         <xsd:annotation>
             <xsd:documentation>
@@ -350,14 +346,13 @@
         </xsd:complexType>
     </xsd:element>
 
-    <!-- port element -->
-
+    <!-- port -->
     <xsd:element name="port">
         <xsd:annotation>
             <xsd:documentation>
                 <p>
-                    The port element describes an anchor point which arcs can refer to
-                    as a source or target. It consists in:
+                    The port element describes an anchor point to which arcs can refer
+                    as a source or target. It consists of:
                     <ul>
                         <li>absolute 2D cartesian coordinates (PointAttribute),</li>
                         <li>a unique id attribute.</li>
@@ -379,8 +374,7 @@
                         <xsd:annotation>
                             <xsd:documentation>
                                 <p>
-                                    The xsd:ID type is an alphanumeric identifier,
-                                    starting with a letter.
+                                    The xsd:ID type is an alphanumeric identifier, starting with a letter.
                                     Port IDs often contain the ID of their glyph, followed by a
                                     local port number (e.g. glyph4.1, glyph4.2, etc.)
                                     However, this style convention is not mandatory,
@@ -396,6 +390,7 @@
 
     <!-- GLYPH GLYPH GLYPH GLYPH GLYPH GLYPH GLYPH GLYPH GLYPH GLYPH GLYPH GLYPH GLYPH GLYPH GLYPH G -->
 
+    <!-- glyph -->
     <xsd:element name="glyph">
         <xsd:annotation>
             <xsd:documentation>
@@ -712,14 +707,11 @@
                         <xsd:annotation>
                             <xsd:documentation>
                                 <p>
-                                    The orientation attribute is used to express how to draw asymmetric
-                                    glyphs.
+                                    The orientation attribute is used to express how to draw asymmetric glyphs.
                                     In PD, the orientation of Process Nodes is either horizontal or vertical.
-                                    It refers to an (imaginary) line connecting the two in/out sides of the
-                                    PN.
+                                    It refers to an (imaginary) line connecting the two in/out sides of the PN.
                                     In PD, the orientation of Tags and Terminals can be left, right, up or down.
-                                    It refers to the direction the arrow side of the glyph is pointing
-                                    at.
+                                    It refers to the direction the arrow side of the glyph is pointing at.
                                 </p>
                             </xsd:documentation>
                         </xsd:annotation>
