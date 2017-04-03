@@ -20,6 +20,8 @@ To build the java version of LibSBGN, you need to have installed:
 * Java JDK [download](http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html)
 * Ant [download](https://ant.apache.org/bindownload.cgi)
 
+Add Git, Java JDK, and Ant to your path
+
 First clone the repository via
 ```
 git clone https://github.com/sbgn/libsbgn.git
