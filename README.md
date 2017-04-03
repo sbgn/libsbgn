@@ -16,14 +16,20 @@ Bioinformatics, 28(15):2016-2021, 2012 [PubMed](https://www.ncbi.nlm.nih.gov/pub
 
 To build the java version of LibSBGN, you need to have installed:
 
-* Git
-* Java
-* Ant
+* Git [download](https://git-scm.com/downloads)
+* Java JDK [download](http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html)
+* Ant [download](https://ant.apache.org/bindownload.cgi)
 
 First clone the repository via
 ```
 git clone https://github.com/sbgn/libsbgn.git
 cd libsbgn
+```
+
+Get the latest stable release otherwise you will work with the unstable development version
+```
+git fetch
+git checkout milestone-2
 ```
 
 Than build the library with ant from the source directory
