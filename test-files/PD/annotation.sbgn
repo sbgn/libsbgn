@@ -6,6 +6,7 @@
 	  <bbox x="90" y="160" w="380" h="210"/>
 	</glyph>
 	<glyph id="g2" class="annotation">
+	  <label text="INFO"/>	
 	  <callout target="g1">
 	    <point x="160" y="200"/>
 	  </callout>
