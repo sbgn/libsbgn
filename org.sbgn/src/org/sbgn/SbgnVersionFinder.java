@@ -27,7 +27,11 @@ public class SbgnVersionFinder
 		{
 			if ("sbgn".equals (qName))
 			{
-				if ("http://sbgn.org/libsbgn/0.2".equals(uri))
+				if ("http://sbgn.org/libsbgn/0.3".equals(uri))
+				{
+					version = 3;
+				} 
+				else if ("http://sbgn.org/libsbgn/0.2".equals(uri))
 				{
 					version = 2;
 				} 
@@ -43,7 +47,69 @@ public class SbgnVersionFinder
 			else if ("map".equals (qName))
 			{
 				String l = attributes.getValue("language");
-				if (l != null) lang = Language.fromString(l); 
+				if (l != null)
+				{
+					lang = Language.fromString(l); 
+				} else
+				{
+					l = attributes.getValue("version");
+					if ( l!= null )
+					{
+
+						if (l.equals("http://identifiers.org/combine.specifications/sbgn.pd.level-1.version-1.3"))
+						{
+							lang = Language.fromString("process description");
+						}
+						else if (l.equals("http://identifiers.org/combine.specifications/sbgn.pd.level-1.version-1.2"))
+						{
+							lang = Language.fromString("process description");
+						}
+						else if (l.equals("http://identifiers.org/combine.specifications/sbgn.pd.level-1.version-1.1"))
+						{
+							lang = Language.fromString("process description");
+						}
+						else if (l.equals("http://identifiers.org/combine.specifications/sbgn.pd.level-1.version-1.0"))
+						{
+							lang = Language.fromString("process description");
+						}
+						else if (l.equals("http://identifiers.org/combine.specifications/sbgn.pd.level-1.version-1"))
+						{
+							lang = Language.fromString("process description");
+						}
+						else if (l.equals("http://identifiers.org/combine.specifications/sbgn.er.level-1.version-2"))
+						{
+							lang = Language.fromString("entity relationship");
+						}
+						else if (l.equals("http://identifiers.org/combine.specifications/sbgn.er.level-1.version-1.2"))
+						{
+							lang = Language.fromString("entity relationship");
+						}
+						else if (l.equals("http://identifiers.org/combine.specifications/sbgn.er.level-1.version-1.1"))
+						{
+							lang = Language.fromString("entity relationship");
+						}
+						else if (l.equals("http://identifiers.org/combine.specifications/sbgn.er.level-1.version-1.0"))
+						{
+							lang = Language.fromString("entity relationship");
+						}
+						else if (l.equals("http://identifiers.org/combine.specifications/sbgn.er.level-1.version-1"))
+						{
+							lang = Language.fromString("entity relationship");
+						}
+						else if (l.equals("http://identifiers.org/combine.specifications/sbgn.af.level-1.version-1.2"))
+						{
+							lang = Language.fromString("activity flow");
+						}
+						else if (l.equals("http://identifiers.org/combine.specifications/sbgn.af.level-1.version-1.0"))
+						{
+							lang = Language.fromString("activity flow");
+						}
+						else if (l.equals("http://identifiers.org/combine.specifications/sbgn.af.level-1.version-1"))
+						{
+							lang = Language.fromString("activity flow");
+						}
+					}
+				}
 			}
 		}
 		

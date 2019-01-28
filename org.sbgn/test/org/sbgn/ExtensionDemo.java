@@ -47,7 +47,7 @@ public class ExtensionDemo
 		Sbgn sbgn = new Sbgn();
 		Map map = new Map();
 		map.setLanguage("process description");
-		sbgn.setMap(map);
+		sbgn.getMap().add(map);
 		
 		// set up one glyph in this sample document
 		Glyph g = new Glyph();
@@ -91,7 +91,7 @@ public class ExtensionDemo
 		Sbgn sbgn = SbgnUtil.readFromFile(f);
 
 		// get the first glyph in the document
-		Glyph g = sbgn.getMap().getGlyph().get(0);
+		Glyph g = sbgn.getMap().get(0).getGlyph().get(0);
 		System.out.println("Found glyph with id " + g.getId());
 			
 		// check that there is an extension

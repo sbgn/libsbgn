@@ -1,6 +1,5 @@
 package org.sbgn;
 
-import java.awt.Label;
 import java.io.File;
 
 import javax.xml.bind.JAXBException;
@@ -10,6 +9,7 @@ import org.sbgn.bindings.Bbox;
 import org.sbgn.bindings.Glyph;
 import org.sbgn.bindings.Map;
 import org.sbgn.bindings.Sbgn;
+import org.sbgn.bindings.Label;
 
 public class WriteExample
 {	
@@ -19,7 +19,7 @@ public class WriteExample
 		
 		Sbgn sbgn = new Sbgn();		
 		Map map = new Map();
-		sbgn.setMap(map);
+		sbgn.getMap().add(map);
 		
 		// create a glyph with an id and class "macromolecule"
 		Glyph g1 = new Glyph();
@@ -40,6 +40,8 @@ public class WriteExample
 		// define a label for this glyph
 		Label label1 = new Label();
 		label1.setText("P53");
+		g1.setLabel(label1);
+
 		
 		// now write everything to disk
 		SbgnUtil.writeToFile(sbgn, f);

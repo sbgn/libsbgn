@@ -20,7 +20,7 @@ public class Test extends TestCase
 		Unmarshaller unmarshaller = context.createUnmarshaller() ;
 		Sbgn sbgn = (Sbgn)unmarshaller.unmarshal (file1);
 		
-		Map map = sbgn.getMap();
+		Map map = sbgn.getMap().get(0);
 		
 		assertEquals (7, map.getGlyph().size());
 		assertEquals (6, map.getArc().size());

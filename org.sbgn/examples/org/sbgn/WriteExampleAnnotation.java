@@ -17,7 +17,7 @@ public class WriteExampleAnnotation
 		Map map = new Map();
         map.setLanguage("process description");
 
-		sbgn.setMap(map);
+		sbgn.getMap().add(map);
 
 		// create a glyph with an id and class "macromolecule"
         Glyph g1 = new Glyph();

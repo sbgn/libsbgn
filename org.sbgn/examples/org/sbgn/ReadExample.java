@@ -21,7 +21,7 @@ public class ReadExample
 		Sbgn sbgn = SbgnUtil.readFromFile(f);
 
 		// map is a container for the glyphs and arcs 
-		Map map = sbgn.getMap();
+		Map map = sbgn.getMap().get(0);
 		
 		// we can get a list of glyphs (nodes) in this map with getGlyph()
 		for (Glyph g : map.getGlyph())
