@@ -11,7 +11,7 @@ Schematron validation for SBGN ER
   defaultPhase="basic"
   schemaVersion="0.2">
      
-	<iso:ns prefix="sbgn" uri="http://sbgn.org/libsbgn/0.2"/>
+	<iso:ns prefix="sbgn" uri="http://sbgn.org/libsbgn/0.3"/>
 	
 	<iso:title>sbgn_er_validation</iso:title>
 

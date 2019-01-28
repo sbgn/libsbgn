@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<sbgn xmlns="http://sbgn.org/libsbgn/0.2">
-    <map language="process description">
+<sbgn xmlns="http://sbgn.org/libsbgn/0.3">
+    <map id="map1" language="process description">
         <glyph class="simple chemical" id="glyph4">
             <label text="B"/>
             <bbox w="60.0" h="60.0" x="63.0" y="228.0"/>

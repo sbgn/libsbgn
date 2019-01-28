@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<sbgn xmlns="http://sbgn.org/libsbgn/0.2">
-    <map language="process description">
+<sbgn xmlns="http://sbgn.org/libsbgn/0.3">
+    <map id="map1" language="process description">
         <glyph id="glyph4" class="association">
             <bbox y="178.0" x="158.0" h="24.0" w="24.0"/>
             <port y="190.0" x="146.0" id="glyph4.1"/>

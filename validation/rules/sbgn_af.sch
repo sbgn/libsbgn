@@ -11,7 +11,7 @@ Schematron validation for SBGN AF
   defaultPhase="basic"
   schemaVersion="0.1">
      
-	<iso:ns prefix="sbgn" uri="http://sbgn.org/libsbgn/0.2"/>
+	<iso:ns prefix="sbgn" uri="http://sbgn.org/libsbgn/0.3"/>
 	
 	<iso:title>sbgn_af_validation</iso:title>
 	
