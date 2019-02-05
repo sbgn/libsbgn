@@ -76,7 +76,7 @@
     <testSourceDirectory>org.sbgn/test</testSourceDirectory>
     <resources>
       <resource>
-        <directory>org.sbgn/resources</directory>
+        <directory>resources</directory>
       </resource>
     </resources>
     <testResources>
@@ -105,7 +105,7 @@
       </plugin>
 
       <!-- plugin needed to deploy to sonatype/maven central. -->
-      <plugin>
+      <!--<plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-gpg-plugin</artifactId>
         <version>1.5</version>
@@ -118,9 +118,9 @@
             </goals>
           </execution>
         </executions>
-      </plugin>
+      </plugin>-->
 
-      <plugin>
+      <!--<plugin>
         <artifactId>maven-antrun-plugin</artifactId>
         <version>1.7</version>
         <executions>
@@ -168,7 +168,7 @@
           </dependency>
         </dependencies>
 
-      </plugin>
+      </plugin>-->
 
     </plugins>
   </build>
