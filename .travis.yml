@@ -1,2 +1,4 @@
 language: java
-install: ant test
+script:
+- mvn clean verify
+- ant test
