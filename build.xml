@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <project name="libsbgn" default="dist" basedir=".">
 
+    <property name="build.compiler" value="extJavac"/>
     <property name="libsbgn.version" value="milestone3"/>
 
     <macrodef name="iterate">

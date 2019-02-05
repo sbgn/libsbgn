@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>org.sbgn.libsbgn</groupId>
+  <artifactId>libsbgn-parent</artifactId>
+  <version>0.3-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>libSBGN</name>
+  <inceptionYear>2009</inceptionYear>
+  <description>Software support library for the Systems Biology Graphical Notation (SBGN).</description>
+  <url>https://github.com/sbgn/sbgn/wiki/LibSBGN</url>
+
+  <licenses>
+    <license>
+      <name>LGPL License</name>
+      <url>http://opensource.org/licenses/LGPL-2.1</url>
+    </license>
+    <license>
+      <name>Apache License 2.0</name>
+      <url>https://opensource.org/licenses/Apache-2.0</url>
+    </license>
+    <license>
+      <name>Licensing and Distribution Terms for libSBGN</name>
+      <url>https://github.com/sbgn/libsbgn/blob/master/LICENSE.txt</url>
+    </license>
+  </licenses>
+
+  <developers>
+    <developer>
+      <name>SBGN team</name>
+      <email>sbgn-team@googlegroups.com</email>
+      <organization>SBGN Team</organization>
+      <organizationUrl>http://www.sbgn.org</organizationUrl>
+    </developer>
+  </developers>
+
+  <issueManagement>
+    <url>https://github.com/sbgn/libsbgn/issues</url>
+    <system>GitHub Issues</system>
+  </issueManagement>
+  <mailingLists>
+    <mailingList>
+      <name>SBGN Team</name>
+      <post>sbgn-team@googlegroups.com</post>
+    </mailingList>
+    <mailingList>
+      <name>SBGN Discuss</name>
+      <post>sbgn-discuss@googlegroups.com</post>
+      <archive>https://groups.google.com/forum/#!forum/sbgn-discuss</archive>
+    </mailingList>
+  </mailingLists>
+
+  <scm>
+    <connection>scm:git:git://github.com/sbgn/libsbgn.git</connection>
+    <developerConnection>scm:git:ssh://github.com/sbgn/libsbgn.git</developerConnection>
+    <url>https://github.com/sbgn/libsbgn/tree/master</url>
+    <tag>libsbgn-parent-0.3-SNAPSHOT</tag>
+  </scm>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <libsbgn.version>${project.version}</libsbgn.version>
+    <libsbgn.basedir>${basedir}</libsbgn.basedir>
+    <libsbgn.build.javac.source>1.6</libsbgn.build.javac.source>
+    <libsbgn.build.javac.target>1.6</libsbgn.build.javac.target>
+  </properties>
+
+  <build>
+
+    <sourceDirectory>org.sbgn/src</sourceDirectory>
+    <testSourceDirectory>org.sbgn/test</testSourceDirectory>
+    <resources>
+      <resource>
+        <directory>org.sbgn/resources</directory>
+      </resource>
+    </resources>
+    <testResources>
+      <testResource>
+        <directory>org.sbgn/test</directory>
+      </testResource>
+    </testResources>
+
+    <extensions>
+      <extension>
+        <groupId>org.apache.maven.wagon</groupId>
+        <artifactId>wagon-ssh</artifactId>
+        <version>2.10</version>
+      </extension>
+    </extensions>
+
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.5.1</version>
+        <configuration>
+          <source>${libsbgn.build.javac.source}</source>
+          <target>${libsbgn.build.javac.target}</target>
+        </configuration>
+      </plugin>
+
+      <!-- plugin needed to deploy to sonatype/maven central. -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-gpg-plugin</artifactId>
+        <version>1.5</version>
+        <executions>
+          <execution>
+            <id>sign-artifacts</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>sign</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <version>1.7</version>
+        <executions>
+          <execution>
+            <phase>generate-sources</phase>
+            <configuration>
+              <target>
+                <property name="compile_classpath" refid="maven.compile.classpath"/>
+                <property name="runtime_classpath" refid="maven.runtime.classpath"/>
+                <property name="test_classpath" refid="maven.test.classpath"/>
+                <property name="plugin_classpath" refid="maven.plugin.classpath"/>
+                <property name="libsbgn.version" value="milestone3"/>
+                
+                <ant antfile="${basedir}/build.xml">
+                  <target name="build"/>
+                </ant>
+
+              </target>
+            </configuration>
+            <goals>
+              <goal>run</goal>
+            </goals>
+          </execution>
+        </executions>
+        <dependencies>
+          <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+          </dependency>
+          <dependency>
+            <groupId>ant</groupId>
+            <artifactId>ant-junit</artifactId>
+            <version>1.6.5</version>
+          </dependency>
+          <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.2.12</version>
+          </dependency>
+          <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-impl</artifactId>
+            <version>2.2.11</version>
+          </dependency>
+        </dependencies>
+
+      </plugin>
+
+    </plugins>
+  </build>
+
+  <repositories>
+    <repository>
+      <id>central</id>
+      <url>http://repo.maven.apache.org/maven2/</url>
+    </repository>
+  </repositories>
+
+  <profiles>
+    <profile>
+      <id>ossrh</id>
+      <activation>
+        <property>
+          <name>deploy</name>
+          <value>ossrh</value>
+        </property>
+      </activation>
+
+      <build>
+        <plugins>
+          <!-- plugins needed to deploy to sonatype/maven central -->
+          <plugin>
+            <groupId>org.sonatype.plugins</groupId>
+            <artifactId>nexus-staging-maven-plugin</artifactId>
+            <version>1.6.7</version>
+            <extensions>true</extensions>
+            <configuration>
+              <serverId>ossrh</serverId>
+              <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+              <autoReleaseAfterClose>false</autoReleaseAfterClose>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+
+      <distributionManagement>
+
+        <snapshotRepository>
+          <id>ossrh</id>
+          <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+          <id>ossrh</id>
+          <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+      </distributionManagement>
+    </profile>
+
+    <profile>
+      <id>local</id>
+      <!-- To deploy locally add '-Ddeploy=local' to your command line. -->
+      <activation>
+        <property>
+          <name>deploy</name>
+          <value>local</value>
+        </property>
+      </activation>
+      <distributionManagement>
+        <repository>
+          <id>local-repo-deploy</id>
+          <name>Test Maven repository</name>
+          <url>file:///var/www/html/repo</url>
+        </repository>
+        <!-- if  snapshotRepository is not define, the defined repository will be used for snapshots as well. -->
+      </distributionManagement>
+    </profile>
+
+  </profiles>
+
+</project>
