@@ -9,6 +9,7 @@
   <!-- Ignore these elements -->
   <xsl:template match="//iso:ns" />
   <xsl:template match="//iso:title" />
+  <xsl:template match="//iso:p" />
   <xsl:template match="//iso:phase" />
 
   <!-- Extract text -->
