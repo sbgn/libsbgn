@@ -1,4 +1,9 @@
 language: java
+
+jdk: oraclejdk8
+
 script:
 - mvn clean verify
 - ant test
+- java -jar validation/lib/saxon9he.jar -o:sch_af.md validation/rules/sbgn_af.sch validation/schematron_to_markdown.xsl
+- cat sch_af.md
