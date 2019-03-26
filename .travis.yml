@@ -3,11 +3,20 @@ language: java
 jdk: oraclejdk8
 
 script:
-- mvn clean verify
-- ant test
-- java -jar validation/lib/saxon9he.jar -o:schematron_rules_pd.md validation/rules/sbgn_pd.sch validation/schematron_to_markdown.xsl
-- java -jar validation/lib/saxon9he.jar -o:schematron_rules_af.md validation/rules/sbgn_af.sch validation/schematron_to_markdown.xsl
-- java -jar validation/lib/saxon9he.jar -o:schematron_rules_er.md validation/rules/sbgn_er.sch validation/schematron_to_markdown.xsl
-- cat schematron_rules_pd.md
-- cat schematron_rules_af.md
-- cat schematron_rules_er.md
+  - mvn clean verify
+  - ant test
+  - java -jar validation/lib/saxon9he.jar -o:schematron_rules_pd.md validation/rules/sbgn_pd.sch validation/schematron_to_markdown.xsl
+  - java -jar validation/lib/saxon9he.jar -o:schematron_rules_af.md validation/rules/sbgn_af.sch validation/schematron_to_markdown.xsl
+  - java -jar validation/lib/saxon9he.jar -o:schematron_rules_er.md validation/rules/sbgn_er.sch validation/schematron_to_markdown.xsl
+  - cat schematron_rules_pd.md
+  - cat schematron_rules_af.md
+  - cat schematron_rules_er.md
+
+after_success:
+  - cd ..
+  - git clone "https://${GITHUB_TOKEN}@github.com/sbgn/sbgn.wiki.git"
+  - mv -f libsbgn/*.md sbgn.wiki/
+  - cd sbgn.wiki
+  - git add *.md 
+  - git commit -m "Generated Wiki via Travis-CI"
+  - git push
