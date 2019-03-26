@@ -12,10 +12,9 @@ Schematron validation for SBGN PD
   defaultPhase="basic"
   schemaVersion="0.1">
      
-	<iso:ns prefix="sbgn" uri="http://sbgn.org/libsbgn/0.3"/>"/>
+	<iso:ns prefix="sbgn" uri="http://sbgn.org/libsbgn/0.3"/>
 	
-	<iso:title>sbgn_validation</iso:title>
-	<iso:p>p test 1</iso:p>
+	<iso:title>sbgn_pd_validation</iso:title>
 	
 	<iso:phase id="sanity">
 		<iso:active pattern="00000"/>	
