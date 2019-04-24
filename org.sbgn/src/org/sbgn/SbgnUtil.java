@@ -227,4 +227,247 @@ public class SbgnUtil
 		marshaller.marshal(sbgn, node);
 	}
 
+	
+        /**
+         * Adds an annotation as provided by the input source to the given SBGN element
+         * @param sbgnElement the element to add the annotation to
+         * @param is the input source containing the annotation string
+         * @throws ParserConfigurationException 
+         * @throws SAXException
+         * @throws IOException
+         */
+        public static void addAnnotation(SBGNBase sbgnElement, InputSource is)
+                        throws ParserConfigurationException, SAXException, IOException {
+                Extension ext = sbgnElement.getExtension();
+                if (ext == null) {
+                        ext = new Extension();
+                }
+
+                DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+                DocumentBuilder db = dbf.newDocumentBuilder();
+                Document doc = db.parse(is);
+
+                ext.getAny().add(doc.getDocumentElement());
+
+                sbgnElement.setExtension(ext);
+        }
+
+        /**
+         * Adds an annotation as provided by the input stream to the given SBGN element
+         * @param sbgnElement the element to add the annotation to
+         * @param is the input stream containing the annotation string
+         * @throws ParserConfigurationException 
+         * @throws SAXException
+         * @throws IOException
+         */
+        public static void addAnnotation(SBGNBase sbgnElement, InputStream is)
+                        throws ParserConfigurationException, SAXException, IOException {
+
+                addAnnotation(sbgnElement, new InputSource(is));
+        }
+
+        /**
+         * Adds an annotation as provided by the reader to the given SBGN element
+         * @param sbgnElement the element to add the annotation to
+         * @param r the reader containing the annotation string
+         * @throws ParserConfigurationException 
+         * @throws SAXException
+         * @throws IOException
+         */
+        public static void addAnnotation(SBGNBase sbgnElement, Reader r)
+                        throws ParserConfigurationException, SAXException, IOException {
+
+                addAnnotation(sbgnElement, new InputSource(r));
+        }
+
+        /**
+         * Adds an annotation as provided by the input source to the given SBGN element
+         * @param sbgnElement the element to add the annotation to
+         * @param annotation the xml string representing the annotation to add
+         * @throws ParserConfigurationException 
+         * @throws SAXException
+         * @throws IOException
+         */
+        public static void addAnnotation(SBGNBase sbgnElement, String annotation)
+                        throws ParserConfigurationException, SAXException, IOException {
+                addAnnotation(sbgnElement, new StringReader(annotation));
+        }
+
+        /**
+         * Returns the annotation serialized to string of the given SBGN element and provided namespace. 
+         * 
+         * @param sbgnElement the sbgn element
+         * @param namespaceURI the namespace uri of the annotation to return. 
+         * @return the annotation serialized as xml string if present, null otherwise
+         * @throws TransformerException
+         */
+        public static String getAnnotationString(SBGNBase sbgnElement, String namespaceURI)
+                        throws TransformerException
+        {
+                Element elt = getAnnotation(sbgnElement, namespaceURI);
+                if (elt == null)
+                        return null;
+                TransformerFactory transFactory = TransformerFactory.newInstance();
+                Transformer transformer = transFactory.newTransformer();
+                StringWriter buffer = new StringWriter();
+                transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
+                transformer.transform(new DOMSource(elt), new StreamResult(buffer));
+                return buffer.toString();
+        }
+
+        /**
+         * Return the annotation (as w3c element) of the provided SBGN element and namespace
+         * @param sbgnElement the sbgn element 
+         * @param namespaceURI the namespace uri of the annotation to find
+         * @return the element with given namespace uri if found, null otherwise. 
+         */
+        public static Element getAnnotation(SBGNBase sbgnElement, String namespaceURI)
+        {
+                if (sbgnElement == null)
+                        return null;
+
+                Extension ext = sbgnElement.getExtension();
+                if (ext == null)
+                        return null;
+
+                for (Element elt : ext.getAny())
+                {
+                        String elNs = elt.getNamespaceURI();
+
+                        if (elNs != null && elt.getNamespaceURI().equals(namespaceURI))
+                                return elt;
+
+                        if (elNs == null)
+                        {
+                                String prefix = elt.getPrefix();
+                                if (prefix == null)
+                                {
+                                        prefix = elt.getNodeName();
+                                        int index = prefix.indexOf(':');
+                                        if (index != -1)
+                                        {
+                                                prefix = prefix.substring(0, index);
+                                        }
+                                }
+                                NamedNodeMap map = elt.getAttributes();
+                                for (int i = 0; i < map.getLength(); ++i)
+                                {
+                                        Node current = map.item(i);
+                                        String name = current.getNodeName();
+
+                                        if (name.equals("xmlns") || name.equals("xmlns:" + prefix))
+                                        {
+                                                if (current.getNodeValue().equals(namespaceURI))
+                                                        return elt;
+                                        }
+
+                                }
+                                
+                        }
+                }
+
+                return null;
+        }
+
+        /**
+         * wraps the provided content into the rdf namespace as used by the COMBINE network. The 
+         * RDF namespace will be xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'. 
+         * 
+         * @param content the xml content to be wrapped
+         * 
+         * @return the input content wrapped into the rdf tags
+         */
+        public static String wrapRdf(String content)
+        {
+                return wrapRdf(content, false);
+        }
+
+        /**
+         * wraps the provided content into the rdf namespace as used by the COMBINE network. The 
+         * RDF namespace will be xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'. 
+         * Using this method the model qualifier, Vcard and dublin core namespaces will be left out.
+         * 
+         * @param content the xml content to be wrapped
+         * @param includeBiol flag indicating whether to include the xmlns:bqbiol='http://biomodels.net/biology-qualifiers/ namespace.
+         * 
+         * @return the input content wrapped into the rdf tags with the additional namespaces if selected
+         */
+        public static String wrapRdf(String content, boolean includeBiol)
+        {
+                return wrapRdf(content, includeBiol, false);
+        }
+
+        /**
+         * wraps the provided content into the rdf namespace as used by the COMBINE network. The 
+         * RDF namespace will be xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'. 
+         * Using this method the Vcard and dublin core namespaces will be left out.
+         * 
+         * @param content the xml content to be wrapped
+         * @param includeBiol flag indicating whether to include the xmlns:bqbiol='http://biomodels.net/biology-qualifiers/ namespace.
+         * @param includeModel flag whether to include the xmlns:bqmodel='http://biomodels.net/model-qualifiers/ namespace
+         * 
+         * @return the input content wrapped into the rdf tags with the additional namespaces if selected
+         */
+        public static String wrapRdf(String content, boolean includeBiol,  boolean includeModel)
+        {
+                return wrapRdf(content, includeBiol, includeModel, false);
+        }
+
+        /**
+         * wraps the provided content into the rdf namespace as used by the COMBINE network. The 
+         * RDF namespace will be xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'. 
+         * Using this method the Vcard namespace will be left out.
+         * 
+         * @param content the xml content to be wrapped
+         * @param includeBiol flag indicating whether to include the xmlns:bqbiol='http://biomodels.net/biology-qualifiers/ namespace.
+         * @param includeModel flag whether to include the xmlns:bqmodel='http://biomodels.net/model-qualifiers/ namespace
+         * @param includeDc flag whether to include the dublin core namespaces xmlns:dc='http://purl.org/dc/elements/1.1/' and xmlns:dcterms='http://purl.org/dc/terms/'
+         * 
+         * @return the input content wrapped into the rdf tags with the additional namespaces if selected
+         */
+        public static String wrapRdf(String content, boolean includeBiol,  boolean includeModel, boolean includeDc)
+        {
+                return wrapRdf(content, includeBiol, includeModel, includeDc, false);
+        }
+
+        /**
+         * wraps the provided content into the rdf namespace as used by the COMBINE network. The 
+         * RDF namespace will be xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'
+         * 
+         * @param content the xml content to be wrapped
+         * @param includeBiol flag indicating whether to include the xmlns:bqbiol='http://biomodels.net/biology-qualifiers/ namespace.
+         * @param includeModel flag whether to include the xmlns:bqmodel='http://biomodels.net/model-qualifiers/ namespace
+         * @param includeDc flag whether to include the dublin core namespaces xmlns:dc='http://purl.org/dc/elements/1.1/' and xmlns:dcterms='http://purl.org/dc/terms/'
+         * @param includeVcard flag whether to include the VCard namespace xmlns:vCard='http://www.w3.org/2001/vcard-rdf/3.0#'
+         * 
+         * @return the input content wrapped into the rdf tags with the additional namespaces if selected
+         */
+        public static String wrapRdf(String content, boolean includeBiol, boolean includeModel, boolean includeDc, boolean includeVcard)
+        {
+                StringBuilder sb = new StringBuilder("<rdf:RDF xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#' ");
+                if (includeBiol)
+                {
+                        sb.append("xmlns:bqbiol='http://biomodels.net/biology-qualifiers/' ");
+                }
+
+                if (includeModel)
+                {
+                        sb.append("xmlns:bqmodel='http://biomodels.net/model-qualifiers/'> ");
+                }
+                if (includeDc)
+                {
+                        sb.append("xmlns:dc='http://purl.org/dc/elements/1.1/' xmlns:dcterms='http://purl.org/dc/terms/' ");
+                }
+
+                if (includeVcard)
+                {
+                        sb.append("xmlns:vCard='http://www.w3.org/2001/vcard-rdf/3.0#' ");
+                }
+
+                sb.append(">");
+                sb.append(content);
+                sb.append("</rdf:RDF>");
+                return sb.toString();
+        }
+
 }
