@@ -5,3 +5,7 @@
 dist/
 org.sbgn/build/
 org.sbgn/gensrc/
+/bin/
+
+.vs
+.vscode
