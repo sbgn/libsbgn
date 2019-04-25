@@ -4,6 +4,7 @@
         xmlns:xsd="http://www.w3.org/2001/XMLSchema"
         xmlns:sbgn="http://sbgn.org/libsbgn/0.3"
         elementFormDefault="qualified">
+  <xsd:import namespace="http://www.sbml.org/sbml/level3/version1/render/version1" schemaLocation="./render.xsd" />
     <xsd:annotation>
         <xsd:documentation>
             <p>

@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema 
+  xmlns:render="http://www.sbml.org/sbml/level3/version1/render/version1" 
+  attributeFormDefault="unqualified" 
+  elementFormDefault="qualified" 
+  targetNamespace="http://www.sbml.org/sbml/level3/version1/render/version1" 
+  xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="colorDefinition">
+    <xs:complexType>
+      <xs:attribute ref="render:id" use="required" />
+      <xs:attribute ref="render:value" use="required" />
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="linearGradient">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" name="stop">
+          <xs:complexType>
+            <xs:attribute ref="render:offset" use="required" />
+            <xs:attribute ref="render:stop-color" use="required" />
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute ref="render:id" use="required" />
+      <xs:attribute ref="render:x1" use="optional" />
+      <xs:attribute ref="render:x2" use="optional" />
+      <xs:attribute ref="render:y1" use="optional" />
+      <xs:attribute ref="render:y2" use="optional" />
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="g">
+    <xs:complexType>
+      <xs:attribute ref="render:stroke" use="optional" />
+      <xs:attribute ref="render:stroke-width" use="optional" />
+      <xs:attribute ref="render:fill" use="optional" />
+      <xs:attribute ref="render:fill-rule" use="optional" />
+      <xs:attribute ref="render:font-family" use="optional" />
+      <xs:attribute ref="render:font-weight" use="optional" />
+      <xs:attribute ref="render:font-style" use="optional" />
+      <xs:attribute ref="render:text-anchor" use="optional" />
+      <xs:attribute ref="render:vtext-anchor" use="optional" />
+      <xs:attribute ref="render:font-size" use="optional" />
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="style">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="render:g" />          
+      </xs:sequence>
+      <xs:attribute ref="render:idList" use="optional" />
+      <xs:attribute ref="render:roleList" use="optional" />
+      <xs:attribute ref="render:typeList" use="optional" />
+    </xs:complexType>
+  </xs:element>
+
+
+  <xs:element name="listOfColorDefinitions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="render:colorDefinition" maxOccurs="unbounded" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="listOfGradientDefinitions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="render:linearGradient"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="listOfStyles">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="render:style" maxOccurs="unbounded" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="renderInformation">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="render:listOfColorDefinitions"/>
+        <xs:element ref="render:listOfGradientDefinitions"/>
+        <xs:element ref="render:listOfStyles"/>
+      </xs:sequence>
+      <xs:attribute ref="render:id" use="optional" />
+      <xs:attribute ref="render:name" use="optional" />
+      <xs:attribute ref="render:backgroundColor" use="optional" />
+    </xs:complexType>
+  </xs:element>
+
+  <xs:attribute name="id" type="xs:string" />
+  <xs:attribute name="name" type="xs:string" />
+  <xs:attribute name="backgroundColor" type="xs:string" />
+  <xs:attribute name="value" type="xs:string" />
+  <xs:attribute name="x1" type="xs:string" />
+  <xs:attribute name="x2" type="xs:string" />
+  <xs:attribute name="y1" type="xs:string" />
+  <xs:attribute name="y2" type="xs:string" />
+  <xs:attribute name="offset" type="xs:string" />
+  <xs:attribute name="stop-color" type="xs:string" />
+  <xs:attribute name="stroke" type="xs:string" />
+  <xs:attribute name="stroke-width" type="xs:float" />
+  <xs:attribute name="fill" type="xs:string" />
+  <xs:attribute name="font-weight" type="xs:string" />
+  <xs:attribute name="font-style" type="xs:string" />
+  <xs:attribute name="text-anchor" type="xs:string" />
+  <xs:attribute name="vtext-anchor" type="xs:string" />
+  <xs:attribute name="idList" type="xs:string" />
+  <xs:attribute name="roleList" type="xs:string" />
+  <xs:attribute name="fill-rule" type="xs:string" />
+  <xs:attribute name="font-family" type="xs:string" />
+  <xs:attribute name="font-size" type="xs:integer" />
+  <xs:attribute name="typeList" type="xs:string" />
+  <xs:attribute name="width" type="xs:float" />
+  <xs:attribute name="height" type="xs:float" />
+  <xs:attribute name="ry" type="xs:string" />
+  <xs:attribute name="rx" type="xs:string" />
+</xs:schema>
