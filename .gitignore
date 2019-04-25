@@ -1,5 +1,11 @@
 # idea files
 .idea/
+.vs
+.vscode
+.settings
+.externalToolBuilders
+.classpath
+.project
 
 # build files
 dist/
@@ -7,5 +13,11 @@ org.sbgn/build/
 org.sbgn/gensrc/
 /bin/
 
-.vs
-.vscode
+org.sbgn/examples/*.jar
+org.sbgn/examples/*.bat
+org.sbgn/examples/org/sbgn/*.class
+org.sbgn/examples/test*sbgn
+cpp_binding/sbgn.xsd
+
+target
+tools/xsddoc-1.0/classes
