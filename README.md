@@ -1,5 +1,6 @@
 # LibSBGN
 [![](https://jitpack.io/v/sbgn/libsbgn.svg)](https://jitpack.io/#sbgn/libsbgn)
+[![](https://travis-ci.org/sbgn/libsbgn.svg?branch=master)](https://travis-ci.org/sbgn/libsbgn)
 
 
 
