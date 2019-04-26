@@ -176,8 +176,9 @@
               </patterns>
             </filter>
           </xjcSourceExcludeFilters>
-
-          <!-- <schemaFiles>SBGN.xsd</schemaFiles> -->
+          <additionalJOptions>
+            <additionalJOption>-Djavax.xml.accessExternalSchema=all </additionalJOption>
+          </additionalJOptions>
         </configuration>
       </plugin>
 
