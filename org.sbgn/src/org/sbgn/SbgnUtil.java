@@ -44,7 +44,7 @@ public class SbgnUtil
 	/**
 	 * Read an sbgn file (without validating against the schema)
 	 * @param f file to read from 
-	 * @returns Sbgn data structure
+	 * @return Sbgn data structure
 	 * @throws JAXBException if there is an IO error, or the file is not SBGNML.
 	 */
 	public static Sbgn readFromFile (File f) throws JAXBException
@@ -61,7 +61,7 @@ public class SbgnUtil
 	/**
 	 * Read an sbgn file (without validating against the schema)
 	 * @param is input stream to read from 
-	 * @returns Sbgn data structure
+	 * @return Sbgn data structure
 	 * @throws JAXBException if there is an IO error, or the file is not SBGNML.
 	 */
 	public static Sbgn readFrom (InputStream is) throws JAXBException
@@ -76,7 +76,7 @@ public class SbgnUtil
 	/**
 	 * Read an sbgn file (without validating against the schema)
 	 * @param r reader to read from 
-	 * @returns Sbgn data structure
+	 * @return Sbgn data structure
 	 * @throws JAXBException if there is an IO error, or the file is not SBGNML.
 	 */
 	public static Sbgn readFrom (Reader r) throws JAXBException
@@ -91,7 +91,7 @@ public class SbgnUtil
 	/**
 	 * Read an sbgn file (without validating against the schema)
 	 * @param url url to read from 
-	 * @returns Sbgn data structure
+	 * @return Sbgn data structure
 	 * @throws JAXBException if there is an IO error, or the file is not SBGNML.
 	 */
 	public static Sbgn readFrom (URL url) throws JAXBException
@@ -106,7 +106,7 @@ public class SbgnUtil
 	/**
 	 * Read an sbgn file (without validating against the schema)
 	 * @param source source to read from 
-	 * @returns Sbgn data structure
+	 * @return Sbgn data structure
 	 * @throws JAXBException if there is an IO error, or the file is not SBGNML.
 	 */
 	public static Sbgn readFrom (InputSource source) throws JAXBException
@@ -121,7 +121,7 @@ public class SbgnUtil
 	/**
 	 * Read an sbgn file (without validating against the schema)
 	 * @param node node to read from 
-	 * @returns Sbgn data structure
+	 * @return Sbgn data structure
 	 * @throws JAXBException if there is an IO error, or the file is not SBGNML.
 	 */
 	public static Sbgn readFrom (Node node) throws JAXBException
@@ -143,9 +143,8 @@ public class SbgnUtil
 	/**
 	 * Check if a given file validates against the given xsd. If validation fails,
 	 * an error message is printed to System.err.
-	 * @returns true if the file is valid
+	 * @return true if the file is valid
 	 * @param f the file to validate
-	 * @param xsd the file containing the schema to validate against
 	 * @throws SAXException if there are problems reading xsd
 	 * @throws JAXBException if there are problems reading f that are not due 
 	 *  to validation problems (for example, disk error or file not found) 

@@ -1,4 +1,7 @@
 # LibSBGN
+[![](https://jitpack.io/v/sbgn/libsbgn.svg)](https://jitpack.io/#sbgn/libsbgn)
+
+
 
 Software support library for the [Systems Biology Graphical Notation (SBGN)](http://www.sbgn.org).
 
@@ -12,6 +15,73 @@ http://sbgn.org
 *van Iersel MP, Villéger AC, Czauderna T, Boyd SE, Bergmann FT, Luna A, Demir E, Sorokin A, Dogrusoz U, Matsuoka Y, Funahashi A, Aladjem MI, Mi H, Moodie SL, Kitano H, Le Novère N, Schreiber F.*  
 Bioinformatics, 28(15):2016-2021, 2012 [PubMed](https://www.ncbi.nlm.nih.gov/pubmed/22581176)
 
+## Using libsbgn
+
+As of milestone 3, thanks to [jitpack.io](https://jitpack.io/#sbgn/libsbgn), it is easy to use libsbgn right away withL 
+
+### gradle: 
+
+Step 1. Add the JitPack repository to your build file
+
+Add it in your root build.gradle at the end of repositories:
+
+	allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+Step 2. Add the dependency
+
+	dependencies {
+	        implementation 'com.github.sbgn:libsbgn:Tag'
+	}
+
+
+### Maven
+Step 1. Add the JitPack repository to your build file
+
+	<repositories>
+		<repository>
+		    <id>jitpack.io</id>
+		    <url>https://jitpack.io</url>
+		</repository>
+	</repositories>
+Step 2. Add the dependency
+
+	<dependency>
+	    <groupId>com.github.sbgn</groupId>
+	    <artifactId>libsbgn</artifactId>
+	    <version>Tag</version>
+	</dependency> 
+
+### sbt
+
+Add it in your build.sbt at the end of resolvers:
+
+ 
+    resolvers += "jitpack" at "https://jitpack.io"
+        
+    
+Step 2. Add the dependency
+
+	
+	libraryDependencies += "com.github.sbgn" % "libsbgn" % "Tag"
+
+### leiningen
+
+Add it in your project.clj at the end of repositories:
+
+ 
+    :repositories [["jitpack" "https://jitpack.io"]]
+        
+    
+Step 2. Add the dependency
+
+	
+	:dependencies [[com.github.sbgn/libsbgn "Tag"]]	
+Share this release: 
+
 ## How to build
 
 To build the java version of LibSBGN, you need to have installed:
@@ -19,6 +89,19 @@ To build the java version of LibSBGN, you need to have installed:
 * Git [download](https://git-scm.com/downloads)
 * Java JDK [download](http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html)
 * Ant [download](https://ant.apache.org/bindownload.cgi)
+
+### Building with Maven
+
+First clone the repository via
+```
+git clone https://github.com/sbgn/libsbgn.git
+cd libsbgn
+```
+
+then compile using `mvn install`.
+
+
+### Building with Ant
 
 Add Git, Java JDK, and Ant to your path
 
@@ -36,18 +119,18 @@ git checkout milestone-2
 
 Than build the library with ant from the source directory
 ```
-ant
+ant -f ant-build-script.xml
 ```
 This will result in the creation of `/dist/org.sbgn.jar` which you can include in your project.
 
 To build the documentation in `/docs/` use
 ```
-ant doc
+ant -f ant-build-script.xml doc
 ```
 
 To run the tests use 
 ```
-ant test
+ant -f ant-build-script.xml test
 ``` 
 
 ## Files
