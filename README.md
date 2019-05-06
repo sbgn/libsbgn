@@ -83,6 +83,16 @@ Step 2. Add the dependency
 	:dependencies [[com.github.sbgn/libsbgn "Tag"]]	
 Share this release: 
 
+## Example code
+If you would like to see how to use libsbgn, have a look at some of the examples: 
+
+* [reading SBGN](org.sbgn/examples/org/sbgn/ReadExample.java)
+* [writing SBGN](org.sbgn/examples/org/sbgn/WriteExample.java)
+* [writing SBGN with annotation glyph](org.sbgn/examples/org/sbgn/WriteExampleAnnotation.java)
+* [reading SBGN render information](org.sbgn/examples/org/sbgn/ReadExampleWithRender.java)
+* [writing SBGN render information](org.sbgn/examples/org/sbgn/WriteRenderExtensionExample.java)
+
+
 ## How to build
 
 To build the java version of LibSBGN, you need to have installed:
