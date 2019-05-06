@@ -91,7 +91,13 @@
       <version>2.2.12</version>
     </dependency>
     <!-- UNCHECKED -->
-
+      
+    <!-- https://mvnrepository.com/artifact/org.apache.velocity/velocity -->
+    <dependency>
+        <groupId>org.apache.velocity</groupId>
+        <artifactId>velocity</artifactId>
+        <version>1.6.2</version>
+    </dependency>
     <dependency>
       <groupId>com.sun.xml.bind</groupId>
       <artifactId>jaxb-impl</artifactId>
@@ -179,6 +185,10 @@
           <additionalJOptions>
             <additionalJOption>-Djavax.xml.accessExternalSchema=all </additionalJOption>
           </additionalJOptions>
+
+          <!-- use the same output dir as the ant build -->
+          <outputDirectory>org.sbgn/gensrc</outputDirectory>
+
         </configuration>
       </plugin>
 
