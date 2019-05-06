@@ -1,14 +1,15 @@
 package org.sbgn;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.Reader;
 import java.io.StringReader;
-import java.io.StringWriter;
 import java.io.Writer;
 import java.net.URL;
+import java.nio.file.StandardCopyOption;
 
 import javax.xml.XMLConstants;
 import javax.xml.bind.JAXBContext;
@@ -19,12 +20,7 @@ import javax.xml.bind.Unmarshaller;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.OutputKeys;
-import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
@@ -39,22 +35,41 @@ import org.w3c.dom.Node;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
-public class SbgnUtil
-{
-	/**
-	 * Read an sbgn file (without validating against the schema)
-	 * @param f file to read from 
-	 * @return Sbgn data structure
-	 * @throws JAXBException if there is an IO error, or the file is not SBGNML.
-	 */
-	public static Sbgn readFromFile (File f) throws JAXBException
-	{
-		JAXBContext context = JAXBContext.newInstance("org.sbgn.bindings");
-		Unmarshaller unmarshaller = context.createUnmarshaller();
-		
-		// Now read from "f" and put the result in "sbgn"
-		Sbgn result = (Sbgn)unmarshaller.unmarshal (f);
-		return result;
+public class SbgnUtil {
+        /**
+         * Read an sbgn file (without validating against the schema)
+         * 
+         * @param f file to read from
+         * @return Sbgn data structure
+         * @throws JAXBException if there is an IO error, or the file is not SBGNML.
+         */
+        public static Sbgn readFromFile(File f) throws JAXBException {
+                JAXBContext context = JAXBContext.newInstance("org.sbgn.bindings");
+                Unmarshaller unmarshaller = context.createUnmarshaller();
+
+                // Now read from "f" and put the result in "sbgn"
+                try {
+                        Sbgn result = (Sbgn) unmarshaller.unmarshal(f);
+                        return result;
+                } catch (JAXBException ex) {
+                        try {
+                                String docUri = XmlUtil.getDocumentUri(new FileInputStream(f));
+                                if (docUri.equals("http://sbgn.org/libsbgn/0.2")) {
+                                        File tmp = File.createTempFile("sbgn_m2", "sbgn");
+                                        tmp.deleteOnExit();
+                                        ConvertMilestone2to3.convert(f, tmp);
+                                        return readFromFile(tmp);
+                                } else if (docUri.equals("http://sbgn.org/libsbgn/pd/0.1")) {
+                                        File tmp = File.createTempFile("sbgn_m1", "sbgn");
+                                        tmp.deleteOnExit();
+                                        ConvertMilestone1to2.convert(f, tmp);
+                                        ConvertMilestone2to3.convert(tmp, tmp);
+                                        return readFromFile(tmp);
+                                }
+                        } catch (Exception e) {
+                        }
+                        throw ex;
+                }
 	}
 
 
@@ -69,8 +84,36 @@ public class SbgnUtil
 		JAXBContext context = JAXBContext.newInstance("org.sbgn.bindings");
 		Unmarshaller unmarshaller = context.createUnmarshaller();
 		
-		Sbgn result = (Sbgn)unmarshaller.unmarshal (is);
-		return result;
+		try {
+                        Sbgn result = (Sbgn) unmarshaller.unmarshal(is);
+                        return result;
+                } catch (JAXBException ex) {
+                        try {
+                                String docUri = XmlUtil.getDocumentUri(is);
+                                if (docUri.equals("http://sbgn.org/libsbgn/0.2")) {
+                                        File tmp1 = File.createTempFile("orig_m2", "sbgn");
+                                        tmp1.deleteOnExit();
+                                        java.nio.file.Files.copy(is, tmp1.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                                        
+                                        File tmp = File.createTempFile("sbgn_m2", "sbgn");
+
+                                        tmp.deleteOnExit();
+                                        ConvertMilestone2to3.convert(tmp1, tmp);
+                                        return readFromFile(tmp);
+                                } else if (docUri.equals("http://sbgn.org/libsbgn/pd/0.1")) {
+                                        File tmp1 = File.createTempFile("orig_m2", "sbgn");
+                                        tmp1.deleteOnExit();
+                                        java.nio.file.Files.copy(is, tmp1.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                                        File tmp = File.createTempFile("sbgn_m1", "sbgn");
+                                        tmp.deleteOnExit();
+                                        ConvertMilestone1to2.convert(tmp1, tmp);
+                                        ConvertMilestone2to3.convert(tmp, tmp);
+                                        return readFromFile(tmp);
+                                }
+                        } catch (Exception e) {                                
+                        }
+                        throw ex;
+                }
 	}
 
 	/**
@@ -322,12 +365,7 @@ public class SbgnUtil
                 Element elt = getAnnotation(sbgnElement, namespaceURI);
                 if (elt == null)
                         return null;
-                TransformerFactory transFactory = TransformerFactory.newInstance();
-                Transformer transformer = transFactory.newTransformer();
-                StringWriter buffer = new StringWriter();
-                transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
-                transformer.transform(new DOMSource(elt), new StreamResult(buffer));
-                return buffer.toString();
+                return XmlUtil.toString(elt);
         }
 
         /**

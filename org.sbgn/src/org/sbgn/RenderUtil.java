@@ -10,6 +10,8 @@ import javax.xml.bind.Unmarshaller;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.stream.XMLStreamException;
 
+import org.jdom.Namespace;
+import org.sbgn.bindings.Arc;
 import org.sbgn.bindings.ColorDefinition;
 import org.sbgn.bindings.G;
 import org.sbgn.bindings.Glyph;
@@ -27,15 +29,15 @@ import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
 
 /**
- * Utility class to make it easier dealing with Render information in Sbgn 
- * elements. 
+ * Utility class to make it easier dealing with Render information in Sbgn
+ * elements.
  *
  */
 public class RenderUtil {
 
 	/**
-	 * returns the render information object contained in an annotation of the 
-	 * given map element. 
+	 * returns the render information object contained in an annotation of the given
+	 * map element.
 	 * 
 	 * @param map the map element to get the RenderInformation off
 	 * @return the render information object, or null if not found
@@ -47,8 +49,8 @@ public class RenderUtil {
 	}
 
 	/**
-	 * returns the render information object contained in an annotation of the 
-	 * given sbgn document.
+	 * returns the render information object contained in an annotation of the given
+	 * sbgn document.
 	 * 
 	 * @param document the sbgn document
 	 * @return the render information object, or null if not found
@@ -60,28 +62,52 @@ public class RenderUtil {
 	}
 
 	/**
-	 * While theoretically any sbgn element could contain a render information 
-	 * object, it really should only be on a map element (or the document 
-	 * element). The element will be searched in the following two namespaces: 
+	 * While theoretically any sbgn element could contain a render information
+	 * object, it really should only be on a map element (or the document element).
+	 * The element will be searched in the following two namespaces:
 	 * 
-	 * - http://www.sbml.org/sbml/level3/version1/render/version1
-	 * - http://projects.eml.org/bcb/sbml/render/level2
+	 * - http://www.sbml.org/sbml/level3/version1/render/version1 -
+	 * http://projects.eml.org/bcb/sbml/render/level2
 	 * 
-	 * with the former being preferred, as it is the official standard. 
+	 * with the former being preferred, as it is the official standard.
 	 * 
 	 * @param sbgnElement the element containing the render annotation
-	 * @return the render information object, or null if not found. 
+	 * @return the render information object, or null if not found.
 	 * 
 	 * @throws JAXBException
 	 */
 	private static RenderInformation getRenderInformation(SBGNBase sbgnElement) throws JAXBException {
 		Element elt = SbgnUtil.getAnnotation(sbgnElement, "http://www.sbml.org/sbml/level3/version1/render/version1");
 
-		if (elt == null)
+		if (elt == null) {
 			elt = SbgnUtil.getAnnotation(sbgnElement, "http://projects.eml.org/bcb/sbml/render/level2");
+			if (elt != null) {
+				// well jaxb can't parse stuff from 2 namespaces, so we just move things into the l3 namespace
+				elt = XmlUtil.replaceNamespace(elt, 
+					Namespace.getNamespace("http://projects.eml.org/bcb/sbml/render/level2"), 
+					Namespace.getNamespace("render", "http://www.sbml.org/sbml/level3/version1/render/version1"), 
+					true);
+					
+				// see what we have
+				System.out.println(XmlUtil.toString(elt));
+			}
+			else
+			{
+				return null;
+			}
+		}
 
-		if (elt == null)
-			return null;
+		// also need to transform if we are in the dault namespace, otherwise the jaxb marshaller cant' find the 
+		// information
+		else if (XmlUtil.usesDefaultNamespace(elt))
+		{
+			elt = XmlUtil.replaceNamespace(elt, 
+					Namespace.getNamespace("http://www.sbml.org/sbml/level3/version1/render/version1"), 
+					Namespace.getNamespace("render", "http://www.sbml.org/sbml/level3/version1/render/version1"), 
+					true);
+		}
+
+
 
 		JAXBContext context = JAXBContext.newInstance("org.sbgn.bindings");
 		Unmarshaller unmarshaller = context.createUnmarshaller();
@@ -319,6 +345,26 @@ public class RenderUtil {
 	}
 
 	/**
+	 * Returns the style object for the given SBGN element. For that it will look first through the styles by their idlist, and then if not found tries to find a style that matches the elements class.  
+	 * 
+	 * @param ri the render information object to search
+	 * @param sbgnElement the sbgn element. 
+	 * 
+	 * @return the style object if found, null otherwise
+	 */
+	public static Style getStyle(RenderInformation ri, Arc sbgnElement)
+	{
+		if (ri.getListOfStyles() == null) return null;
+
+		Style result = getStyleById(ri, sbgnElement.getId());
+
+		if (result == null)
+			result = getStyleByClass(ri, sbgnElement.getClazz());
+
+		return result;
+	}
+
+	/**
 	 * returns the style object for a style in the given render information object, that has the specified id in its idlist
 	 * 
 	 * @param ri the render information object to search
@@ -334,7 +380,11 @@ public class RenderUtil {
 
 		for (Style style : ri.getListOfStyles().getStyle())
 		{
-			String idList = style.getIdList().trim();
+			String idList = style.getIdList();
+			if (idList == null)
+			  continue;
+			idList = idList.replace("&#32;", " ");
+			idList = idList.trim();
 			if (idList.equals(id))
 				return style;
 			if (idList.startsWith(id + " "))
@@ -364,7 +414,12 @@ public class RenderUtil {
 
 		for (Style style : ri.getListOfStyles().getStyle())
 		{
-			String typeList = style.getTypeList().trim();
+			String typeList = style.getTypeList();
+			if (typeList == null)
+			  continue;
+
+			typeList = typeList.replace("&#32;", " ");
+			typeList = typeList.trim();
 			if (typeList.equals(clazz))
 				return style;
 			if (typeList.startsWith(clazz + " "))
@@ -416,4 +471,24 @@ public class RenderUtil {
 				return grad;
 		return null;	
 	}
+
+	public static Object getStyleProperty(Style style, String property)
+	{
+		if (style == null || style.getG() == null)
+			return "";
+
+		if (property.equalsIgnoreCase("fill"))
+			return style.getG().getFill();
+		if (property.equalsIgnoreCase("stroke"))
+			return style.getG().getStroke();
+		if (property.equalsIgnoreCase("strokeWidth"))
+			return style.getG().getStrokeWidth();
+		if (property.equalsIgnoreCase("FontFamily"))
+			return style.getG().getFontFamily();
+		if (property.equalsIgnoreCase("FontSize"))
+			return style.getG().getFontSize();
+	
+		return "";
+	}
+
 }

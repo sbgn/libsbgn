@@ -15,7 +15,13 @@ public class ReadExample
 	public static void main(String[] args) throws JAXBException
 	{
 		// our sbgnml file goes in "f"
-		File f = new File ("../test-files/PD/adh.sbgn");
+
+		String fileName = "../test-files/PD/adh.sbgn";
+
+		if (args.length > 0)
+			fileName = args[0];
+
+		File f = new File (fileName);
 				
 		// Now read from "f" and put the result in "sbgn"
 		Sbgn sbgn = SbgnUtil.readFromFile(f);

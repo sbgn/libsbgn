@@ -26,7 +26,7 @@ public class ConvertMilestone1to2
 		Element elt = doc.getRootElement();
 		
 		// fix 1: recursively change namespace
-		recursivelyChangeNamespace(elt);
+		XmlUtil.replaceNamespace(elt, M1, M2, false);
 		
 		// fix 2: add language attribute
 		elt.getChild("map", M2).setAttribute("language", "process description");
@@ -95,15 +95,6 @@ public class ConvertMilestone1to2
 		}
 	}
 	
-	private static void recursivelyChangeNamespace(Element elt)
-	{
-		elt.setNamespace(M2);
-		for (Object o : elt.getChildren())
-		{
-			recursivelyChangeNamespace((Element)o);
-		}
-	}
-
 	private static void recursivelyChangeStoichiometry(Element elt)
 	{
 		if ("stoichiometry".equals (elt.getAttributeValue("class")))
