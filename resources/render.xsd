@@ -91,12 +91,16 @@
       </xs:sequence>
       <xs:attribute ref="render:id" use="optional" />
       <xs:attribute ref="render:name" use="optional" />
+      <xs:attribute ref="render:programName" use="optional" />
+      <xs:attribute ref="render:programVersion" use="optional" />
       <xs:attribute ref="render:backgroundColor" use="optional" />
     </xs:complexType>
   </xs:element>
 
   <xs:attribute name="id" type="xs:string" />
   <xs:attribute name="name" type="xs:string" />
+  <xs:attribute name="programName" type="xs:string" />
+  <xs:attribute name="programVersion" type="xs:string" />
   <xs:attribute name="backgroundColor" type="xs:string" />
   <xs:attribute name="value" type="xs:string" />
   <xs:attribute name="x1" type="xs:string" />
@@ -122,4 +126,5 @@
   <xs:attribute name="height" type="xs:float" />
   <xs:attribute name="ry" type="xs:string" />
   <xs:attribute name="rx" type="xs:string" />
+  
 </xs:schema>
