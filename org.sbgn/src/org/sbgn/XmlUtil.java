@@ -145,6 +145,8 @@ public class XmlUtil {
 
 			if (attr.getName().equals("idlist"))
 			attr.setName("idList");
+			if (attr.getName().equals("strokeWidth"))
+			attr.setName("stroke-width");
 		}
 
 	}
