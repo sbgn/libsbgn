@@ -109,7 +109,7 @@ public class RenderUtil {
 
 
 
-		JAXBContext context = JAXBContext.newInstance("org.sbgn.bindings");
+		JAXBContext context = Util.getJAXBContext();
 		Unmarshaller unmarshaller = context.createUnmarshaller();
 
 		RenderInformation result = (RenderInformation) unmarshaller.unmarshal(elt);
@@ -172,7 +172,7 @@ public class RenderUtil {
 	private static void setRenderInformation(SBGNBase sbgnElement, RenderInformation ri)
 			throws XMLStreamException, JAXBException, ParserConfigurationException, SAXException, IOException {
 		StringWriter writer = new StringWriter();
-		JAXBContext context = JAXBContext.newInstance("org.sbgn.bindings");
+		JAXBContext context = Util.getJAXBContext();
 		Marshaller marshaller = context.createMarshaller();
 		marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
 		marshaller.setProperty(Marshaller.JAXB_FRAGMENT, Boolean.TRUE);
