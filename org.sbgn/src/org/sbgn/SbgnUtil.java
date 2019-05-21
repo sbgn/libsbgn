@@ -44,7 +44,7 @@ public class SbgnUtil {
          * @throws JAXBException if there is an IO error, or the file is not SBGNML.
          */
         public static Sbgn readFromFile(File f) throws JAXBException {
-                JAXBContext context = JAXBContext.newInstance("org.sbgn.bindings");
+                JAXBContext context = Util.getJAXBContext();
                 Unmarshaller unmarshaller = context.createUnmarshaller();
 
                 // Now read from "f" and put the result in "sbgn"
@@ -81,7 +81,7 @@ public class SbgnUtil {
 	 */
 	public static Sbgn readFrom (InputStream is) throws JAXBException
 	{
-		JAXBContext context = JAXBContext.newInstance("org.sbgn.bindings");
+		JAXBContext context = Util.getJAXBContext();
 		Unmarshaller unmarshaller = context.createUnmarshaller();
 		
 		try {
@@ -124,7 +124,7 @@ public class SbgnUtil {
 	 */
 	public static Sbgn readFrom (Reader r) throws JAXBException
 	{
-		JAXBContext context = JAXBContext.newInstance("org.sbgn.bindings");
+		JAXBContext context = Util.getJAXBContext();
 		Unmarshaller unmarshaller = context.createUnmarshaller();
 		
 		Sbgn result = (Sbgn)unmarshaller.unmarshal (r);
@@ -139,7 +139,7 @@ public class SbgnUtil {
 	 */
 	public static Sbgn readFrom (URL url) throws JAXBException
 	{
-		JAXBContext context = JAXBContext.newInstance("org.sbgn.bindings");
+		JAXBContext context = Util.getJAXBContext();
 		Unmarshaller unmarshaller = context.createUnmarshaller();
 		
 		Sbgn result = (Sbgn)unmarshaller.unmarshal (url);
@@ -154,7 +154,7 @@ public class SbgnUtil {
 	 */
 	public static Sbgn readFrom (InputSource source) throws JAXBException
 	{
-		JAXBContext context = JAXBContext.newInstance("org.sbgn.bindings");
+		JAXBContext context = Util.getJAXBContext();
 		Unmarshaller unmarshaller = context.createUnmarshaller();
 		
 		Sbgn result = (Sbgn)unmarshaller.unmarshal (source);
@@ -169,7 +169,7 @@ public class SbgnUtil {
 	 */
 	public static Sbgn readFrom (Node node) throws JAXBException
 	{
-		JAXBContext context = JAXBContext.newInstance("org.sbgn.bindings");
+		JAXBContext context = Util.getJAXBContext();
 		Unmarshaller unmarshaller = context.createUnmarshaller();
 		
 		Sbgn result = (Sbgn)unmarshaller.unmarshal (node);
@@ -200,7 +200,7 @@ public class SbgnUtil {
 		{
 			
 			// create a JAXB context and unmarshaller like usual
-			JAXBContext context = JAXBContext.newInstance("org.sbgn.bindings");
+			JAXBContext context = Util.getJAXBContext();
 			Unmarshaller unmarshaller = context.createUnmarshaller();
 		
 			// parse the schema.
@@ -232,7 +232,7 @@ public class SbgnUtil {
 	 */
 	public static void writeToFile (Sbgn sbgn, File f) throws JAXBException
 	{
-		JAXBContext context = JAXBContext.newInstance("org.sbgn.bindings");
+		JAXBContext context = Util.getJAXBContext();
 		Marshaller marshaller = context.createMarshaller();
 		marshaller.setProperty( Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE );
 
@@ -248,7 +248,7 @@ public class SbgnUtil {
 	 */
 	public static void writeTo (Sbgn sbgn, OutputStream os) throws JAXBException
 	{
-		JAXBContext context = JAXBContext.newInstance("org.sbgn.bindings");
+		JAXBContext context = Util.getJAXBContext();
 		Marshaller marshaller = context.createMarshaller();
 		marshaller.setProperty( Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE );
 
@@ -263,7 +263,7 @@ public class SbgnUtil {
 	 */
 	public static void writeTo (Sbgn sbgn, Writer w) throws JAXBException
 	{
-		JAXBContext context = JAXBContext.newInstance("org.sbgn.bindings");
+		JAXBContext context = Util.getJAXBContext();
 		Marshaller marshaller = context.createMarshaller();
 		marshaller.setProperty( Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE );
 
@@ -278,7 +278,7 @@ public class SbgnUtil {
 	 */
 	public static void writeTo (Sbgn sbgn, Node node) throws JAXBException
 	{
-		JAXBContext context = JAXBContext.newInstance("org.sbgn.bindings");
+		JAXBContext context = Util.getJAXBContext();
 		Marshaller marshaller = context.createMarshaller();
 		marshaller.setProperty( Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE );
 
