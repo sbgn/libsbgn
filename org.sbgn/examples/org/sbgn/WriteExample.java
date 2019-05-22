@@ -20,6 +20,7 @@ public class WriteExample
 		Sbgn sbgn = new Sbgn();		
 		Map map = new Map();
 		sbgn.getMap().add(map);
+		map.setId("test-output");
 		
 		// create a glyph with an id and class "macromolecule"
 		Glyph g1 = new Glyph();
