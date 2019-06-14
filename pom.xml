@@ -66,10 +66,19 @@
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <libsbgn.version>${project.version}</libsbgn.version>
     <libsbgn.basedir>${basedir}</libsbgn.basedir>
-    <libsbgn.build.javac.source>1.6</libsbgn.build.javac.source>
-    <libsbgn.build.javac.target>1.6</libsbgn.build.javac.target>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
+    <maven.compile.targetLevel>1.8</maven.compile.targetLevel>
+    <maven.compile.sourceLevel>1.8</maven.compile.sourceLevel>
+    <maven.compile.optimize>false</maven.compile.optimize>
+    <maven.compile.deprecation>true</maven.compile.deprecation>
+    <maven.javadoc.skip>false</maven.javadoc.skip>
+    <junit.version>4.12</junit.version>
+    <ant.version>1.6.5</ant.version>
+    <jdom.version>1.1</jdom.version>
+    <velocity.version>1.6.2</velocity.version>
+    <javax-api.version>2.3.1</javax-api.version>
+    <xalan.version>2.7.0</xalan.version>
+    <saxon.version>8.7</saxon.version>
+    <xerces.version>2.11.0</xerces.version>
   </properties>
 
 
@@ -78,17 +87,17 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>3.8.1</version>
+      <version>${junit.version}</version>
     </dependency>
     <dependency>
       <groupId>ant</groupId>
       <artifactId>ant-junit</artifactId>
-      <version>1.6.5</version>
+      <version>${ant.version}</version>
     </dependency>
     <dependency>
       <groupId>javax.xml.bind</groupId>
       <artifactId>jaxb-api</artifactId>
-      <version>2.2.12</version>
+      <version>${javax-api.version}</version>
     </dependency>
     <!-- UNCHECKED -->
       
@@ -96,7 +105,12 @@
     <dependency>
         <groupId>org.apache.velocity</groupId>
         <artifactId>velocity</artifactId>
-        <version>1.6.2</version>
+        <version>${velocity.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>javax.activation</groupId>
+      <artifactId>javax.activation-api</artifactId>
+      <version>1.2.0</version>
     </dependency>
     <dependency>
       <groupId>com.sun.xml.bind</groupId>
@@ -108,25 +122,36 @@
       <artifactId>jaxb-core</artifactId>
       <version>2.2.11</version>
     </dependency>
+    
     <dependency>
       <groupId>org.jdom</groupId>
       <artifactId>jdom</artifactId>
-      <version>1.1</version>
+      <version>${jdom.version}</version>
     </dependency>
     <dependency>
       <groupId>net.sf.saxon</groupId>
       <artifactId>saxon</artifactId>
-      <version>8.7</version>
+      <version>${saxon.version}</version>
     </dependency>
     <dependency>
       <groupId>net.sf.saxon</groupId>
       <artifactId>saxon-dom</artifactId>
-      <version>8.7</version>
+      <version>${saxon.version}</version>
     </dependency>
     <dependency>
       <groupId>xalan</groupId>
       <artifactId>xalan</artifactId>
-      <version>2.7.0</version>
+      <version>${xalan.version}</version>
+    </dependency>
+    <dependency>
+	    <groupId>xerces</groupId>
+    	<artifactId>xercesImpl</artifactId>
+    	<version>${xerces.version}</version>    	
+    </dependency>
+    <dependency>
+      <groupId>xml-apis</groupId>
+      <artifactId>xml-apis</artifactId>
+      <version>1.4.01</version>
     </dependency>
   </dependencies>
 
@@ -190,6 +215,13 @@
           <outputDirectory>org.sbgn/gensrc</outputDirectory>
 
         </configuration>
+      <dependencies>
+      <dependency>
+      <groupId>javax.activation</groupId>
+      <artifactId>javax.activation-api</artifactId>
+      <version>1.2.0</version>
+      </dependency>
+      </dependencies>
       </plugin>
 
       <plugin>
@@ -197,8 +229,9 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.5.1</version>
         <configuration>
-          <source>1.6</source>
-          <target>1.6</target>
+          <source>${maven.compile.sourceLevel}</source>
+          <target>${maven.compile.targetLevel}</target>
+          <optimize>${maven.compile.optimize}</optimize>
         </configuration>
       </plugin>
 
@@ -229,6 +262,13 @@
           </execution>
         </executions>
         <configuration>
+          <detectLinks>false</detectLinks>
+          <keywords>true</keywords>
+          <linksource>false</linksource>
+          <failOnError>true</failOnError>
+          <quiet>true</quiet>
+          <source>${maven.compile.sourceLevel}</source>
+          <verbose>false</verbose>
           <additionalJOptions>
             <additionalJOption>-Xdoclint:none </additionalJOption>
           </additionalJOptions>
