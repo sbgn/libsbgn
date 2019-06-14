@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<sbgn xmlns="http://sbgn.org/libsbgn/0.2" xmlns:render="http://www.sbml.org/sbml/level3/version1/render/version1">
+    <map language="process description">
+        <extension>
+            <render:renderInformation render:backgroundColor="#00FF00">
+                <render:listOfColorDefinitions>
+                    <render:colorDefinition render:id="white" render:value="#FFFFFF" />
+                    <render:colorDefinition render:id="red" render:value="#FF0000" />
+                </render:listOfColorDefinitions>
+                <render:listOfGradientDefinitions>
+                    <render:linearGradient render:id="grad1" render:x1="0%" render:x2="100%" render:y1="0%" render:y2="100%">
+                        <render:stop render:offset="0%" render:stop-color="white" />
+                        <render:stop render:offset="100%" render:stop-color="red" />
+                    </render:linearGradient>
+                </render:listOfGradientDefinitions>
+                <render:listOfStyles>
+                    <render:style render:idList="g1">
+                        <render:g render:fill="grad1" render:stroke="#000000" render:stroke-width="3.0" />
+                    </render:style>
+                </render:listOfStyles>
+            </render:renderInformation>
+        </extension>
+        <glyph class="macromolecule" id="g1">
+            <label text="LABEL" />
+            <bbox w="380.0" h="210.0" x="90.0" y="160.0" />
+        </glyph>
+        <glyph class="annotation" id="g2">
+            <label text="INFO" />
+            <callout target="g1">
+                <point x="160.0" y="200.0" />
+            </callout>
+            <bbox w="220.0" h="125.0" x="5.0" y="5.0" />
+        </glyph>
+    </map>
+</sbgn>
