@@ -57,21 +57,20 @@ public class XmlUtil {
 			XMLReader xr = XMLReaderFactory.createXMLReader();
 			DefaultHandler handler = new DefaultHandler() {
 				@Override
-				public void startElement (String uri, String localName, String qName, Attributes attributes) throws SAXException
-				{
+				public void startElement(String uri, String localName, String qName, Attributes attributes)
+						throws SAXException {
 					throw new SAXException(uri);
 				}
 			};
 			xr.setErrorHandler(handler);
 			xr.setContentHandler(handler);
 			xr.parse(in);
-		
-		}
-		catch (SAXException e) {			
-				if (e.getMessage().startsWith("http"))return e.getMessage();
-				return null;
-			}
-		catch (Exception e) {
+
+		} catch (SAXException e) {
+			if (e.getMessage().startsWith("http"))
+				return e.getMessage();
+			return null;
+		} catch (Exception e) {
 			return null;
 		}
 		return null;
@@ -102,7 +101,6 @@ public class XmlUtil {
 			elt = outputter.output(doc.getDocument()).getDocumentElement();
 		} catch (JDOMException e) {
 			elt = null;
-			e.printStackTrace();
 		}
 		return elt;
 	}
@@ -144,15 +142,16 @@ public class XmlUtil {
 				attr.setNamespace(n2);
 
 			if (attr.getName().equals("idlist"))
-			attr.setName("idList");
+				attr.setName("idList");
 			if (attr.getName().equals("strokeWidth"))
-			attr.setName("stroke-width");
+				attr.setName("stroke-width");
 		}
 
 	}
 
 	public static String toString(org.w3c.dom.Element elt) {
-		if (elt == null) return null;
+		if (elt == null)
+			return null;
 		TransformerFactory transFactory = TransformerFactory.newInstance();
 		Transformer transformer;
 		try {
@@ -168,7 +167,7 @@ public class XmlUtil {
 		}
 	}
 
-	public static boolean usesDefaultNamespace(org.w3c.dom.Element elt) {		
+	public static boolean usesDefaultNamespace(org.w3c.dom.Element elt) {
 		return elt.getNodeName().equals(elt.getLocalName());
 	}
 
