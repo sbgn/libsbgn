@@ -3,7 +3,6 @@ package org.sbgn.bindings;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.StringReader;
@@ -49,14 +48,14 @@ public class TestRenderUtilMilestone3 extends TestCase {
         checkDocument(doc);
     }
 
-    public static void testReadFromFileReader() throws JAXBException, FileNotFoundException {
+    public static void testReadFromFileReader() throws JAXBException, IOException {
         assertTrue(file1.exists());
 
         Sbgn doc = SbgnUtil.readFrom(new FileReader(file1));
         checkDocument(doc);
     }
 
-    public static void testReadFromFileInputStream() throws JAXBException, FileNotFoundException {
+    public static void testReadFromFileInputStream() throws JAXBException, IOException {
         assertTrue(file1.exists());
 
         Sbgn doc = SbgnUtil.readFrom(new FileInputStream(file1));
@@ -86,14 +85,14 @@ public class TestRenderUtilMilestone3 extends TestCase {
     }
 
     
-    public static void testReadFromFileInputSourceFromReader() throws JAXBException, FileNotFoundException {
+    public static void testReadFromFileInputSourceFromReader() throws JAXBException, IOException {
         assertTrue(file1.exists());
 
         Sbgn doc = SbgnUtil.readFrom(new InputSource(new FileReader(file1)));
         checkDocument(doc);
     }
 
-    public static void testReadFromFileInputSourceFromStream() throws JAXBException, FileNotFoundException {
+    public static void testReadFromFileInputSourceFromStream() throws JAXBException, IOException {
         assertTrue(file1.exists());
 
         Sbgn doc = SbgnUtil.readFrom(new InputSource(new FileInputStream(file1)));

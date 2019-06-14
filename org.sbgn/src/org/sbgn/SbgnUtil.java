@@ -86,7 +86,7 @@ public class SbgnUtil {
 
                 try {
                         File tmp1 = File.createTempFile("fallback_", "sbgn");
-                        // tmp1.deleteOnExit();
+                        tmp1.deleteOnExit();
                         Util.copyFile(is, tmp1);
                         return readFromFile(tmp1);
                 } catch (JAXBException e) {
@@ -106,7 +106,7 @@ public class SbgnUtil {
 
                 try {
                         File tmp1 = File.createTempFile("fallback_", "sbgn");
-                        // tmp1.deleteOnExit();
+                        tmp1.deleteOnExit();
                         Util.copyFile(r, tmp1);
                         return readFromFile(tmp1);
                 } catch (JAXBException e) {
@@ -126,7 +126,7 @@ public class SbgnUtil {
 
                 try {
                         File tmp1 = File.createTempFile("fallback_", "sbgn");
-                        // tmp1.deleteOnExit();
+                        tmp1.deleteOnExit();
                         Util.copyFile(source, tmp1);
                         return readFromFile(tmp1);
                 } catch (JAXBException e) {
