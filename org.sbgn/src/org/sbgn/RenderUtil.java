@@ -487,6 +487,10 @@ public class RenderUtil {
 			return style.getG().getFontFamily();
 		if (property.equalsIgnoreCase("FontSize"))
 			return style.getG().getFontSize();
+		if (property.equalsIgnoreCase("FontStyle"))
+			return style.getG().getFontStyle();
+		if (property.equalsIgnoreCase("FontWeight"))
+			return style.getG().getFontWeight();
 	
 		return "";
 	}
