@@ -688,6 +688,7 @@
                                 <xsd:enumeration value="and"/>
                                 <xsd:enumeration value="or"/>
                                 <xsd:enumeration value="not"/>
+                                <xsd:enumeration value="equivalence"/>
                                 <!-- Subglyph on glyph classes (both PD and ER) -->
                                 <xsd:enumeration value="state variable"/>
                                 <xsd:enumeration value="unit of information"/>

@@ -39,6 +39,7 @@ public enum GlyphClazz
 	AND ("and"),
 	OR ("or"),
 	NOT ("not"),
+    EQUIVALENCE ("equivalence"),
 	STATE_VARIABLE ("state variable"),
 	UNIT_OF_INFORMATION ("unit of information"),
 	/** 
