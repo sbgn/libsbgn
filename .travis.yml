@@ -3,7 +3,7 @@ language: java
 jdk: openjdk8
 
 script:
-  - ant -f ant-build-script.xml test
+  - mvn clean test
   - java -jar validation/lib/saxon9he.jar -o:schematron_rules_pd.md validation/rules/sbgn_pd.sch validation/schematron_to_markdown.xsl
   - java -jar validation/lib/saxon9he.jar -o:schematron_rules_af.md validation/rules/sbgn_af.sch validation/schematron_to_markdown.xsl
   - java -jar validation/lib/saxon9he.jar -o:schematron_rules_er.md validation/rules/sbgn_er.sch validation/schematron_to_markdown.xsl
