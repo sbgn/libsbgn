@@ -2,16 +2,12 @@ package org.sbgn.schematron;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.xml.bind.JAXBException;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 
-import org.apache.xpath.SourceTree;
 import org.sbgn.SbgnUtil;
 import org.xml.sax.SAXException;
 
