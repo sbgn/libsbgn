@@ -1,8 +1,5 @@
 language: java
 
-jdk:
-  - openjdk8
-  - openjdk11
 
 stages:
   - test
@@ -10,23 +7,29 @@ stages:
 
 jobs:
   include:
-    - stage: test
-      name: test-mvn
-      script:
-        - mvn clean test
-        - java -jar validation/lib/saxon9he.jar -o:schematron_rules_pd.md validation/rules/sbgn_pd.sch validation/schematron_to_markdown.xsl
-        - java -jar validation/lib/saxon9he.jar -o:schematron_rules_af.md validation/rules/sbgn_af.sch validation/schematron_to_markdown.xsl
-        - java -jar validation/lib/saxon9he.jar -o:schematron_rules_er.md validation/rules/sbgn_er.sch validation/schematron_to_markdown.xsl
-        - cat schematron_rules_pd.md
-        - cat schematron_rules_af.md
-        - cat schematron_rules_er.md
-    - stage: test
-      name: test-ant
+    - name: test-mvn-jdk8
+      jdk: openjdk8
+      script: mvn clean test
+    - name: test-mvn-jdk11
+      jdk: openjdk11
+      script: mvn clean test
+    - name: test-ant-jdk8
+      jdk: openjdk8
       before_install: 
         - sudo apt-get update
         - sudo apt-get install ant-optional
       script:
         - ant -f ant-build-script.xml test
+    - name: test-ant-jdk11
+      jdk: openjdk11
+      before_install: 
+        - sudo apt-get update
+        - sudo apt-get install ant-optional
+      script:
+        - ant -f ant-build-script.xml test
+    - name: test-schematron
+      jdk: openjdk11
+      script:
         - java -jar validation/lib/saxon9he.jar -o:schematron_rules_pd.md validation/rules/sbgn_pd.sch validation/schematron_to_markdown.xsl
         - java -jar validation/lib/saxon9he.jar -o:schematron_rules_af.md validation/rules/sbgn_af.sch validation/schematron_to_markdown.xsl
         - java -jar validation/lib/saxon9he.jar -o:schematron_rules_er.md validation/rules/sbgn_er.sch validation/schematron_to_markdown.xsl
@@ -35,8 +38,7 @@ jobs:
         - cat schematron_rules_er.md
     - stage: deploy
       name: deploy-wiki
-      only:
-        - master
+      if: branch = master
       script:
         - cd ..
         - git clone "https://${GITHUB_TOKEN}@github.com/sbgn/sbgn.wiki.git"
