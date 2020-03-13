@@ -35,6 +35,8 @@ jobs:
         - cat schematron_rules_er.md
     - stage: deploy
       name: deploy-wiki
+      only:
+        - master
       script:
         - cd ..
         - git clone "https://${GITHUB_TOKEN}@github.com/sbgn/sbgn.wiki.git"
