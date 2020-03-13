@@ -19,15 +19,12 @@
 		<pathelement location="resources"/>
 	</path>
 
+  <taskdef name="xjc" classname="com.sun.tools.xjc.XJCTask">
+    <classpath refid="project.classpath"/>
+  </taskdef>
+
   <target name="jaxb" depends="prepare">
-	<!-- Invoke JAXB: see http://stackoverflow.com/questions/3630474/ -->
-	<java classname="com.sun.tools.internal.xjc.XJCFacade">
-			<arg value="-d" />
-			<arg value="${basedir}/gensrc"/>
-			<arg value="-p" />
-			<arg value="org.sbgn.bindings"/>
-			<arg value="${basedir}/${sbgn.xsd}" />
-	</java>
+	<xjc schema="${basedir}/${sbgn.xsd}" destdir="${basedir}/gensrc" package="org.sbgn.bindings" />
   </target>
   
   <target name="build" depends="jaxb">
@@ -36,6 +33,7 @@
 		   debug="true"
 		   destdir="build"
 		   includeantruntime="false">
+		   <classpath refid="project.classpath"/>
 	</javac>
 	<javac srcdir="src"
 		   includes="**"
