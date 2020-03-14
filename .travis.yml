@@ -1,10 +1,5 @@
 language: java
 
-
-stages:
-  - test
-  - deploy
-
 jobs:
   include:
     - name: test-mvn-jdk8
@@ -36,15 +31,14 @@ jobs:
         - cat schematron_rules_pd.md
         - cat schematron_rules_af.md
         - cat schematron_rules_er.md
-    - stage: deploy
-      name: deploy-wiki
-      if: branch = master
-      script:
-        - cd ..
-        - git clone "https://${GITHUB_TOKEN}@github.com/sbgn/sbgn.wiki.git"
-        - mv -f libsbgn/*.md sbgn.wiki/
-        - cd sbgn.wiki
-        - git add schematron_rules_*.md 
-        - git commit -m "Generated Wiki via Travis-CI"
-        - git push
+
+after_success:
+  - cd ..
+  - git clone "https://${GITHUB_TOKEN}@github.com/sbgn/sbgn.wiki.git"
+  - mv -f libsbgn/*.md sbgn.wiki/
+  - cd sbgn.wiki
+  - git add schematron_rules_*.md 
+  - git commit -m "Generated Wiki via Travis-CI"
+  - git push
+
 install: true
