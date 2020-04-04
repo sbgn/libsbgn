@@ -88,11 +88,13 @@
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>${junit.version}</version>
+      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>ant</groupId>
       <artifactId>ant-junit</artifactId>
       <version>${ant.version}</version>
+      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>javax.xml.bind</groupId>
