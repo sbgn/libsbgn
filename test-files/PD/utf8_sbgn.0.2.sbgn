@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<sbgn xmlns="http://sbgn.org/libsbgn/0.2">
+    <map language="process description">
+        <glyph class="simple chemical" id="glyph_n3">
+            <label text="β"/>
+            <bbox w="140.0" h="32.0" x="75.0" y="272.53503"/>
+        </glyph>
+    </map>
+</sbgn>
