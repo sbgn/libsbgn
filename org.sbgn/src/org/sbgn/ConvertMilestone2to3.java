@@ -1,7 +1,7 @@
 package org.sbgn;
 
 import java.io.File;
-import java.io.FileWriter;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 import org.jdom.Document;
@@ -31,7 +31,9 @@ public class ConvertMilestone2to3
 
 		// done, store result.
 		XMLOutputter xo = new XMLOutputter();
-		xo.output(doc, new FileWriter(out));
+		FileOutputStream outputStream = new FileOutputStream(out);
+		xo.output(doc, outputStream);
+		outputStream.close();
 	}
 
 	/**
