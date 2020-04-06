@@ -1,7 +1,7 @@
 package org.sbgn;
 
 import java.io.File;
-import java.io.FileWriter;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
@@ -41,7 +41,9 @@ public class ConvertMilestone1to2
 
 		// done, store result.
 		XMLOutputter xo = new XMLOutputter();
-		xo.output(doc, new FileWriter(out));
+		FileOutputStream outputStream = new FileOutputStream(out);
+		xo.output(doc, outputStream);
+		outputStream.close();
 	}
 
 	Set<String> existingIds = new HashSet<String>();
