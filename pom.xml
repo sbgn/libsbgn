@@ -78,7 +78,7 @@
     <javax-api.version>2.3.1</javax-api.version>
     <xalan.version>2.7.0</xalan.version>
     <saxon.version>9.9.1-6</saxon.version>
-    <xerces.version>2.11.0</xerces.version>
+    <xerces.version>2.12.0</xerces.version>
   </properties>
 
 
