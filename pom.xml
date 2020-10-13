@@ -71,7 +71,7 @@
     <maven.compile.optimize>false</maven.compile.optimize>
     <maven.compile.deprecation>true</maven.compile.deprecation>
     <maven.javadoc.skip>false</maven.javadoc.skip>
-    <junit.version>4.12</junit.version>
+    <junit.version>4.13.1</junit.version>
     <ant.version>1.6.5</ant.version>
     <jdom.version>1.1</jdom.version>
     <velocity.version>1.6.2</velocity.version>
