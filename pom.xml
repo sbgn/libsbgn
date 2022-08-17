@@ -76,7 +76,7 @@
     <jdom.version>1.1</jdom.version>
     <velocity.version>1.6.2</velocity.version>
     <javax-api.version>2.3.1</javax-api.version>
-    <xalan.version>2.7.0</xalan.version>
+    <xalan.version>2.7.2</xalan.version>
     <saxon.version>9.9.1-6</saxon.version>
     <xerces.version>2.12.2</xerces.version>
   </properties>
