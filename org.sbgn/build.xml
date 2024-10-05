@@ -119,7 +119,7 @@
 		<javac srcdir="test" debug="true" 
 					includes="**"
 					destdir="build"
-					source="1.6"
+					source="1.8"
 					includeantruntime="false">
 			<classpath refid="test.classpath"/>
 		</javac>		
