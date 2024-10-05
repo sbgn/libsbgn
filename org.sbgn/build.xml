@@ -85,7 +85,15 @@
 	<delete dir="build/all"/>
   </target>
   
-  <target name="doc" depends="build">
+  <target name="doc" depends="docJDK8, docNotJDK8"/>
+
+  <target name="isJDK8">
+    <condition property="JDK8">
+      <equals arg1="${ant.java.version}" arg2="1.8"/>
+    </condition>
+  </target>
+  
+  <target name="docJDK8" if="JDK8" depends="build, isJDK8">
 	<javadoc packagenames = "org.sbgn.bindings"
 			destdir="../docs"
 			footer="Generated ${TODAY}">
@@ -98,6 +106,34 @@
 
   </target>
   
+  <target name="isNotJDK8">
+    <condition property="notJDK8">
+      <not>
+        <equals arg1="${ant.java.version}" arg2="1.8"/>
+      </not>
+    </condition>
+  </target>
+
+  <target name="docNotJDK8" if="notJDK8" depends="build, isNotJDK8">
+    <javadoc packagenames="org.sbgn.bindings" destdir="../docs">
+			<arg value="--add-modules"/>
+			<arg value="java.xml.bind"/>
+    	    <!-- JDK 10 has the options -html4 and -html5, shows a warning when not specified -->
+        	<!-- JDK 9 ignores the option, HTML 4.01 is the default -->
+	        <!-- JDK 11 and above ignore the option, HTML 5 is the default -->
+			<arg value="-html5"/>
+			<modulepath>
+				<pathelement location="lib"/>
+			</modulepath>
+			<sourcepath>
+				<pathelement location="src"/>
+				<pathelement location="gensrc"/>
+			</sourcepath>
+			<arg value="-Xdoclint:none"/>
+			<bottom>Generated ${TODAY}</bottom>
+    </javadoc>
+  </target>
+
   <target name="clean">
 	<delete dir="build"/>
 	<delete dir="gensrc"/>
