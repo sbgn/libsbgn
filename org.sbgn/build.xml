@@ -93,6 +93,7 @@
 				<pathelement location="src"/>
 				<pathelement location="gensrc"/>
 			</sourcepath>
+			<arg value="-Xdoclint:none"/>
 	</javadoc>
 
   </target>
