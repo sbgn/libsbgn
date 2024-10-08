@@ -1,6 +1,6 @@
 package org.sbgn;
 
-import org.jdom.Attribute;
+import org.jdom2.Attribute;
 
 interface IAttributeTransformer
 {

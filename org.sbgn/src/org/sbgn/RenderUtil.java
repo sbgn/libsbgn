@@ -10,7 +10,7 @@ import javax.xml.bind.Unmarshaller;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.stream.XMLStreamException;
 
-import org.jdom.Namespace;
+import org.jdom2.Namespace;
 import org.sbgn.bindings.Arc;
 import org.sbgn.bindings.ColorDefinition;
 import org.sbgn.bindings.G;

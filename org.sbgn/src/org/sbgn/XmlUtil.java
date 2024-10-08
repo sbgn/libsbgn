@@ -16,14 +16,14 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
-import org.jdom.Document;
-import org.jdom.Element;
-import org.jdom.JDOMException;
-import org.jdom.Namespace;
-import org.jdom.input.DOMBuilder;
-import org.jdom.input.SAXBuilder;
-import org.jdom.output.DOMOutputter;
-import org.jdom.output.XMLOutputter;
+import org.jdom2.Document;
+import org.jdom2.Element;
+import org.jdom2.JDOMException;
+import org.jdom2.Namespace;
+import org.jdom2.input.DOMBuilder;
+import org.jdom2.input.SAXBuilder;
+import org.jdom2.output.DOMOutputter;
+import org.jdom2.output.XMLOutputter;
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -111,7 +111,7 @@ public class XmlUtil {
 			return;
 		if (attrTransformer != null) {
 			for (Object attr : elt.getAttributes())
-				attrTransformer.transform((org.jdom.Attribute) attr);
+				attrTransformer.transform((org.jdom2.Attribute) attr);
 		}
 
 		if (transformer != null) {
@@ -135,7 +135,7 @@ public class XmlUtil {
 			return;
 
 		for (Object o : elt.getAttributes()) {
-			org.jdom.Attribute attr = (org.jdom.Attribute) o;
+			org.jdom2.Attribute attr = (org.jdom2.Attribute) o;
 			namespace = attr.getNamespace();
 
 			if (namespace == null || namespace.getURI().isEmpty() || namespace.equals(n1))
