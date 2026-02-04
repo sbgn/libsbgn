@@ -49,7 +49,9 @@ Schematron validation for SBGN PD
 		<iso:active pattern="pd10134"/>
 		<iso:active pattern="pd10140"/>
 		<iso:active pattern="pd10141"/>		
-		<iso:active pattern="pd10142"/>		
+		<iso:active pattern="pd10142"/>
+		<iso:active pattern="pd10143"/>
+		<iso:active pattern="pd10144"/>
 	</iso:phase>
 
 	<iso:pattern id="00000">
@@ -618,6 +620,43 @@ Schematron validation for SBGN PD
 			</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
+
+	<!-- NEW RULE pd10143: State variables must be unique within a stateful EPN -->
+	<!-- SBGN PD Spec Section 3.5.1, Rule 1 -->
+	<iso:pattern id="pd10143">
+		<iso:rule context="sbgn:glyph[@class='macromolecule' or @class='nucleic acid feature' or @class='complex' or @class='macromolecule multimer' or @class='nucleic acid feature multimer' or @class='complex multimer']">
+			<iso:let name="id" value="@id"/>
+			<iso:let name="state-vars" value="sbgn:glyph[@class='state variable']/sbgn:state/@variable"/>
+			<iso:let name="state-count" value="count($state-vars)"/>
+			<iso:let name="unique-count" value="count(distinct-values($state-vars))"/>
+			<iso:assert 
+				id="pd10143"
+				name="unique-state-variables"
+				role="error"
+				see="sbgn-pd-L1V2.0-3.5.1"
+				test="$state-count = $unique-count"
+				diagnostics="id state-count unique-count">All state variables within a stateful EPN must be unique. Duplicate state variable found.
+			</iso:assert>
+		</iso:rule>
+	</iso:pattern>
+
+	<!-- NEW RULE pd10144: At most one catalysis arc per process -->
+	<!-- SBGN PD Spec Section 3.5.2.4, Rule 8 -->
+	<iso:pattern id="pd10144">
+		<iso:rule context="sbgn:glyph[@class='process' or @class='omitted process' or @class='uncertain process' or @class='association' or @class='dissociation']">
+			<iso:let name="id" value="@id"/>
+			<iso:let name="port-ids" value="sbgn:port/@id"/>
+			<iso:let name="catalysis-count" value="count(//sbgn:arc[@class='catalysis' and (@target=current()/@id or @target=current()/sbgn:port/@id)])"/>
+			<iso:assert 
+				id="pd10144"
+				name="single-catalysis-per-process"
+				role="error"
+				see="sbgn-pd-L1V2.0-3.5.2.4"
+				test="$catalysis-count &lt;= 1"
+				diagnostics="id catalysis-count">At most one catalysis arc can be assigned to a process node. Found multiple catalysis arcs targeting this process.
+			</iso:assert>
+		</iso:rule>
+	</iso:pattern>
 	
 	<iso:diagnostics>
 		<iso:diagnostic id="id"><iso:value-of select="$id"/></iso:diagnostic> 		
@@ -628,6 +667,9 @@ Schematron validation for SBGN PD
 		<iso:diagnostic id="class"><iso:value-of select="$class"/></iso:diagnostic> 
 		<iso:diagnostic id="port-class"><iso:value-of select="$port-class"/></iso:diagnostic> 
 		<iso:diagnostic id="count"><iso:value-of select="$count"/></iso:diagnostic> 			
-		<iso:diagnostic id="arc-count"><iso:value-of select="$arc-count"/></iso:diagnostic> 			
+		<iso:diagnostic id="arc-count"><iso:value-of select="$arc-count"/></iso:diagnostic>
+		<iso:diagnostic id="state-count"><iso:value-of select="$state-count"/></iso:diagnostic>
+		<iso:diagnostic id="unique-count"><iso:value-of select="$unique-count"/></iso:diagnostic>
+		<iso:diagnostic id="catalysis-count"><iso:value-of select="$catalysis-count"/></iso:diagnostic>
 	</iso:diagnostics> 
 </iso:schema>
