@@ -32,6 +32,7 @@ Schematron validation for SBGN AF
 		<iso:active pattern="af10112"/>
 		<iso:active pattern="af10113"/>
 		<iso:active pattern="af10114"/>
+		<iso:active pattern="af10115"/>
 	</iso:phase>
 
 	<iso:pattern id="00000">
@@ -256,6 +257,43 @@ Schematron validation for SBGN AF
 				test="
 				(($compartment-count = 0) and not (@compartmentRef)) or (($compartment-count &gt; 0) and @compartmentRef)"
 				diagnostics="id">If there are compartments defined, top-level glyphs must have a compartmentRef"
+			</iso:assert>
+		</iso:rule> 
+	</iso:pattern> 
+	 
+	<iso:pattern id="af10115">
+		<iso:rule context="sbgn:map/sbgn:glyph[
+			@class= 'biological activity' or 
+		@class = 'phenotype' or 
+		@class = 'submap' or 
+		@class = 'and' or 
+		@class = 'or' or 
+		@class = 'not' or 
+		@class = 'delay'
+		]">
+			<iso:let name="id" value="@id"/>
+			<iso:assert
+				id="af10115"
+				name="check-overlapping-nodes"
+				role="error"
+				test="not(following-sibling::sbgn:glyph[
+					(@class= 'biological activity' or
+				@class = 'phenotype' or
+				@class = 'submap' or
+				@class = 'and' or
+				@class = 'or' or
+				@class = 'not' or
+				@class = 'delay')
+				and (
+  						(number(sbgn:bbox/@x) &lt;= number(current()/sbgn:bbox/@x) + number(current()/sbgn:bbox/@w)) and
+ 					(number(sbgn:bbox/@x) + number(sbgn:bbox/@w) >= number(current()/sbgn:bbox/@x)) and
+  					(number(sbgn:bbox/@y) &lt;= number(current()/sbgn:bbox/@y) + number(current()/sbgn:bbox/@h)) and
+  					(number(sbgn:bbox/@y) + number(sbgn:bbox/@h) >= number(current()/sbgn:bbox/@y))
+					)
+
+				]
+				)"
+				diagnostics="id">Illegal overlapping nodes are not allowed in SBGN AF.
 			</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
