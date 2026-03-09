@@ -44,9 +44,11 @@ Schematron validation for SBGN AF
 		<iso:rule context="//*[@id]">
 			<iso:let name="id" value="@id"/>
 			<iso:assert 
-			id="00001"
-			role="error"
-			test="count(//@id[. = current()/@id]) = 1" diagnostics="id">ID needs to be unique.</iso:assert>
+id="00001"
+role="error"
+test="count(//@id[. = current()/@id]) = 1" diagnostics="id">
+Error: Each SBGN element must have a unique ID. Duplicate ID detected in the diagram.
+</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
 	
@@ -54,10 +56,12 @@ Schematron validation for SBGN AF
 		<iso:rule context="sbgn:arc">
 			<iso:let name="target" value="@target"/>
 			<iso:assert
-			id="00002"
-			role="error"
-			test="//*/@id[. = $target]" diagnostics="target">An arc target should be a glyph defined in the diagram.</iso:assert>
-		</iso:rule> 
+id="00002"
+role="error"
+test="//*/@id[. = $target]" diagnostics="target">
+Error: The target attribute of this arc references an ID that does not exist as a glyph in the diagram.
+Ensure that all arc targets reference valid glyph IDs.
+</iso:assert>
 	</iso:pattern> 
 
 	<iso:pattern id="af10101">
@@ -98,7 +102,7 @@ Schematron validation for SBGN AF
 				test="
 				$target-class='biological activity' or 
 				$target-class='phenotype'" 
-				diagnostics="id target target-class port-class">Incorrect target reference for influence arc
+				diagnostics="id target target-class port-class">IError: Influence arcs must target a valid node such as 'biological activity' or 'phenotype'.
 			</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
@@ -121,7 +125,7 @@ Schematron validation for SBGN AF
 				$class='necessary stimulation' or
 				$class='unknown influence'
 				"
-				diagnostics="id class">This arc class is not allowed in Activity Flow
+				diagnostics="id class">Error: This arc class is not valid for SBGN Activity Flow diagrams.
 			</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
@@ -149,7 +153,7 @@ Schematron validation for SBGN AF
 				$class='perturbation' or
 				$class='phenotype'
 				"
-				diagnostics="id class">This glyph class is not allowed in Activity Flow
+				diagnostics="id class">Error: This glyph class is not allowed in SBGN Activity Flow diagrams.
 			</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
@@ -166,7 +170,7 @@ Schematron validation for SBGN AF
 				see="sbgn-af-L1V1.0-3.3.1"				
 				test="
 				$source-class='biological activity'" 
-				diagnostics="id source source-class">Incorrect source reference for arc with class "logic arc"
+				diagnostics="id source source-class">Error: Logic arcs must originate from a 'biological activity' glyph.
 			</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
@@ -187,7 +191,7 @@ Schematron validation for SBGN AF
 				$port-class='or' or
 				$port-class='not' or
 				$port-class='delay'" 
-				diagnostics="id target target-class port-class">Incorrect target reference for arc with class "logic arc"
+				diagnostics="id target target-class port-class">Error: Logic arcs must target a logic operator glyph such as 'and', 'or', 'not', or 'delay'.
 			</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
@@ -204,8 +208,7 @@ Schematron validation for SBGN AF
 				role="error"
 				see="sbgn-pd-L1V1.3-3.4.1"				
 				test="$count = 1"
-				diagnostics="id port-id count">'not' glyph can only be connected to one logic arc glyph. 
-			</iso:assert>	
+				diagnostics="id port-id count">Error: A 'not' logic glyph must have exactly one incoming logic arc connection.
 		</iso:rule>	
 	</iso:pattern> 
 	
@@ -222,7 +225,7 @@ Schematron validation for SBGN AF
 				test="
 				$source-class='biological activity' or
 				$source-class='compartment'" 
-				diagnostics="id source source-class">Incorrect source reference for arc with class "equivalence arc"
+				diagnostics="id source source-class">Error: Equivalence arcs must originate from a 'biological activity' or 'compartment' glyph.
 			</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
@@ -240,7 +243,7 @@ Schematron validation for SBGN AF
 				$target-class='tag' or
 				$target-class='submap' or
 				$target-class='terminal'" 
-				diagnostics="id target target-class">Incorrect target reference for arc with class "equivalence arc"
+				diagnostics="id target target-class">Error: Equivalence arcs must target a 'tag', 'submap', or 'terminal' glyph.
 			</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
@@ -255,7 +258,7 @@ Schematron validation for SBGN AF
 				role="error"
 				test="
 				(($compartment-count = 0) and not (@compartmentRef)) or (($compartment-count &gt; 0) and @compartmentRef)"
-				diagnostics="id">If there are compartments defined, top-level glyphs must have a compartmentRef"
+				diagnostics="id">Error: If compartments exist in the diagram, each top-level biological activity glyph must define a valid compartmentRef.
 			</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
