@@ -630,4 +630,16 @@ Schematron validation for SBGN PD
 		<iso:diagnostic id="count"><iso:value-of select="$count"/></iso:diagnostic> 			
 		<iso:diagnostic id="arc-count"><iso:value-of select="$arc-count"/></iso:diagnostic> 			
 	</iso:diagnostics> 
+        <iso:pattern id="pd10143">
+                <iso:rule context="sbgn:glyph[@compartmentRef]">
+                        <iso:let name="ref" value="@compartmentRef"/>
+                        <iso:assert
+                                id="pd10143"
+                                name="check-compartmentRef-exists"
+                                role="error"
+                                test="//sbgn:glyph[@class='compartment' and @id=$ref]"
+                                diagnostics="id ref">Glyph '<iso:value-of select="@id"/>' has compartmentRef='<iso:value-of select="$ref"/>' but no compartment with that id exists in the diagram. Check that the compartmentRef value matches the id of an existing compartment glyph.</iso:assert>
+                </iso:rule>
+        </iso:pattern>
+
 </iso:schema>
