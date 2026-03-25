@@ -444,7 +444,7 @@ Schematron validation for SBGN PD
 				see="sbgn-pd-L1V1.3-3.5.1-1"
 				role="error"
 				test="count(../../sbgn:port/sbgn:state[@variable = current()/@variable]) &lt;= 2"
-				diagnostics="id">All state variables associated with a Stateful Entity Pool Node should be unique and note duplicated within that node. 
+				diagnostics="id">All state variables associated with a Stateful Entity Pool Node should be unique and not duplicated within that node. Found duplicate state variable '<iso:value-of select="@variable"/>' on node '<iso:value-of select="../../@id"/>'. 
 			</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
@@ -458,7 +458,7 @@ Schematron validation for SBGN PD
 				name="subunit-mod-arc-source"
 				role="error"
 				test="@class = 'modulation'"
-				diagnostics="id class">[NOT SURE]
+				diagnostics="id class">An arc connecting to a subunit of a complex must be of class 'modulation'. Arc '<iso:value-of select="@id"/>' has class '<iso:value-of select="$class"/>' which is not allowed here.
 			</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
@@ -594,7 +594,7 @@ Schematron validation for SBGN PD
 				see="sbgn-pd-L1V1.3-3.5.2.1-1"
 				role="error"
 				test="($count &gt;= 2)"
-				diagnostics="id count">All process nodes should have at least one input and at least one ouput pointing to the arcs 
+				diagnostics="id count">Process node '<iso:value-of select="@id"/>' must have at least one input arc (consumption) and at least one output arc (production) connected to its ports. Found <iso:value-of select="$count"/> arc(s) — at least 2 are required. 
 			</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
