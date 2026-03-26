@@ -79,7 +79,7 @@ Schematron validation for SBGN AF
 				$port-class='or' or 	
 				$port-class='not' or 
 				$port-class='delay'"
-				diagnostics="id source source-class port-class">Incorrect source reference for influence arc
+				diagnostics="id source source-class port-class">Arc has an incorrect source reference. The source glyph has a class which is not allowed as a source for a positive influence arc. Source must be an activity node or a delay glyph.
 			</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
@@ -98,7 +98,7 @@ Schematron validation for SBGN AF
 				test="
 				$target-class='biological activity' or 
 				$target-class='phenotype'" 
-				diagnostics="id target target-class port-class">Incorrect target reference for influence arc
+				diagnostics="id target target-class port-class">Arc has an incorrect target reference. The target glyph has a class which is not allowed as a target for a positive influence arc. Target must be an activity node or phenotype.
 			</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
@@ -121,7 +121,7 @@ Schematron validation for SBGN AF
 				$class='necessary stimulation' or
 				$class='unknown influence'
 				"
-				diagnostics="id class">This arc class is not allowed in Activity Flow
+				diagnostics="id class">Arc has a class which is not permitted in an Activity Flow diagram. Please check the SBGN AF specification for the list of allowed arc classes.
 			</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
@@ -149,7 +149,7 @@ Schematron validation for SBGN AF
 				$class='perturbation' or
 				$class='phenotype'
 				"
-				diagnostics="id class">This glyph class is not allowed in Activity Flow
+				diagnostics="id class">Glyph has a class which is not permitted in an Activity Flow diagram. Please check the SBGN AF specification for the list of allowed glyph classes.
 			</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
@@ -166,7 +166,7 @@ Schematron validation for SBGN AF
 				see="sbgn-af-L1V1.0-3.3.1"				
 				test="
 				$source-class='biological activity'" 
-				diagnostics="id source source-class">Incorrect source reference for arc with class "logic arc"
+				diagnostics="id source source-class">Arc has an incorrect source reference. The source glyph has a class which is not allowed as a source for a logic arc. Source must be a biological activity node or a logic operator.
 			</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
@@ -187,7 +187,7 @@ Schematron validation for SBGN AF
 				$port-class='or' or
 				$port-class='not' or
 				$port-class='delay'" 
-				diagnostics="id target target-class port-class">Incorrect target reference for arc with class "logic arc"
+				diagnostics="id target target-class port-class">Arc has an incorrect target reference. The target glyph has a class which is not allowed as a target for a logic arc. Target must be a logic operator or delay glyph.
 			</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
@@ -222,7 +222,7 @@ Schematron validation for SBGN AF
 				test="
 				$source-class='biological activity' or
 				$source-class='compartment'" 
-				diagnostics="id source source-class">Incorrect source reference for arc with class "equivalence arc"
+				diagnostics="id source source-class">Arc has an incorrect source reference. The source glyph has a class which is not allowed as a source for an equivalence arc. Source must be a biological activity or compartment glyph.
 			</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
@@ -240,7 +240,7 @@ Schematron validation for SBGN AF
 				$target-class='tag' or
 				$target-class='submap' or
 				$target-class='terminal'" 
-				diagnostics="id target target-class">Incorrect target reference for arc with class "equivalence arc"
+				diagnostics="id target target-class">Arc has an incorrect target reference. The target glyph has a class which is not allowed as a target for an equivalence arc. Target must be a tag, submap, or terminal glyph.
 			</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
