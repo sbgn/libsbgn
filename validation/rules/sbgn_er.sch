@@ -93,7 +93,7 @@ Schematron validation for SBGN ER
 				test="
 				$class='variable value' or
 				$class='implicit xor'" 
-				diagnostics="source class">Incorrect source reference for arc with class "assignment"
+				diagnostics="source class">Arc has an incorrect source reference. The source glyph has a class which is not allowed as a source for an assignment arc. Please check the SBGN ER specification for allowed source classes.
 			</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
@@ -112,7 +112,7 @@ Schematron validation for SBGN ER
 				$target-class='existence' or
 				$target-class='location' or
 				$target-class='implicit xor'"
-				diagnostics="id target target-class">Incorrect target reference for arc with class "assignment"
+				diagnostics="id target target-class">Arc has an incorrect target reference. The target glyph has a class which is not allowed as a target for an assignment arc. Please check the SBGN ER specification for allowed target classes.
 			</iso:assert>
 		</iso:rule> 	
 	</iso:pattern> 
@@ -132,7 +132,7 @@ Schematron validation for SBGN ER
 				$class='outcome' or 
 				$class='unit of information' or
 				$class='interaction'" 
-				diagnostics="id source class">Incorrect source reference for arc with class "interaction"
+				diagnostics="id source class">Arc has an incorrect source reference. The source glyph has a class which is not allowed as a source for an interaction arc. Source must be an entity or interaction glyph.
 			</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
@@ -150,7 +150,7 @@ Schematron validation for SBGN ER
 				$target-class='entity' or 
 				$target-class='outcome' or 
 				$target-class='unit of information'" 
-				diagnostics="id target target-class">Incorrect target reference for arc with class "interaction"
+				diagnostics="id target target-class">Arc has an incorrect target reference. The target glyph has a class which is not allowed as a target for an interaction arc. Target must be an entity or unit of information glyph.
 			</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
@@ -191,7 +191,7 @@ Schematron validation for SBGN ER
 				$port-class='not' or 	
 				$port-class='delay' or 				
 				$class='perturbing agent'" 
-				diagnostics="id source port-class class">Incorrect source reference for influence arc
+				diagnostics="id source port-class class">Arc has an incorrect source reference. The source glyph has a class which is not allowed as a source for an influence arc. Source must be an entity or perturbing agent glyph.
 			</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
@@ -215,7 +215,7 @@ Schematron validation for SBGN ER
 				$port-class='assignment' or
 				$port-class='interaction' or
 				$class='phenotype'" 
-				diagnostics="id target port-class class">Incorrect target reference for influence arc
+				diagnostics="id target port-class class">Arc has an incorrect target reference. The target glyph has a class which is not allowed as a target for an influence arc. Target must be an interaction or phenotype glyph.
 			</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
@@ -252,7 +252,7 @@ Schematron validation for SBGN ER
 				$port-class='or' or
 				$port-class='not' or
 				$port-class='delay'" 
-				diagnostics="id target port-class">Incorrect target reference for arc with class "logic arc"
+				diagnostics="id target port-class">Arc has an incorrect target reference. The target glyph has a class which is not allowed as a target for a logic arc. Target must be a logic operator or delay glyph.
 			</iso:assert>
 		</iso:rule> 
 	</iso:pattern> 
